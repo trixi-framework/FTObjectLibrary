@@ -112,6 +112,11 @@
          CHARACTER(LEN=*)              :: testName
          TYPE(TestCaseRecord), POINTER :: newTestCase
          
+         INTERFACE
+            SUBROUTINE fun()
+            END SUBROUTINE  fun
+         END INTERFACE
+         
          ALLOCATE(newTestCase)
          newTestCase%testName     = TRIM(ADJUSTL(testName))
          newTestCase%TestSubroutine => fun
