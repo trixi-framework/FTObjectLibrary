@@ -213,7 +213,7 @@
 !        Always call the superclass init
 !        -------------------------------
 !
-         CALL self % FTObject % init
+         CALL self % FTObject % init()
 !
 !        --------------------------------------
 !        Then call the subclass initializations
@@ -516,7 +516,7 @@
       SUBROUTINE castObjectToLinkedList(obj,cast) 
 !
 !     -----------------------------------------------------
-!     Cast the base class FTObject to the FTException class
+!     Cast the base class FTObject to the LinkedList class
 !     -----------------------------------------------------
 !
          IMPLICIT NONE  
@@ -598,6 +598,7 @@
          CONTAINS
 !        ========
 !
+         PROCEDURE :: init => initEmpty
          PROCEDURE :: initWithFTLinkedList
          PROCEDURE :: destruct => destructIterator
          PROCEDURE :: isAtEnd => FTLinkedListIsAtEnd
@@ -617,6 +618,28 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+      SUBROUTINE initEmpty(self) 
+         IMPLICIT NONE 
+         CLASS(FTLinkedListIterator)  :: self
+         CLASS(FTLinkedList), POINTER :: list
+!
+!        --------------------------------------------
+!        Always call the superclass initializer first
+!        --------------------------------------------
+!
+         CALL self % FTObject % init()
+!
+!        ----------------------------------------------
+!        Then call the initializations for the subclass
+!        ----------------------------------------------
+!
+         self % list    => NULL()
+         self % current => NULL()
+         
+      END SUBROUTINE initEmpty   
+!
+!////////////////////////////////////////////////////////////////////////
+!
       SUBROUTINE initWithFTLinkedList(self,list) 
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
@@ -626,7 +649,7 @@
 !        Always call the superclass initializer first
 !        --------------------------------------------
 !
-         CALL self % FTObject % init
+         CALL self % FTObject % init()
 !
 !        ----------------------------------------------
 !        Then call the initializations for the subclass
@@ -635,9 +658,6 @@
          self % list    => NULL()
          self % current => NULL()
          CALL self % setLinkedList(list)
-!         self % list => list
-!         CALL self % list % retain()
-!         CALL self % setToStart
          
       END SUBROUTINE initWithFTLinkedList   
 !
@@ -698,7 +718,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE setLinkedList(self,list) 
+      SUBROUTINE setLinkedList(self,list)
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
          CLASS(FTLinkedList), POINTER :: list
@@ -707,24 +727,35 @@
 !        Remove current list if there is one
 !        -----------------------------------
 !
-         IF ( ASSOCIATED(self % list, list) )     THEN
-            RETURN 
-         END IF 
+         IF ( ASSOCIATED(list) )     THEN
          
-         IF ( ASSOCIATED(self % list) )     THEN
-            CALL self % list % release()
-            IF ( self % list % isUnreferenced() )     THEN
-               DEALLOCATE(self % list) 
+            IF ( ASSOCIATED(self % list, list) )     THEN
+               CALL self % setToStart()
+            ELSE IF( ASSOCIATED(self % list) )     THEN
+               CALL self % list % release()
+               IF ( self % list % isUnreferenced() )     THEN
+                  DEALLOCATE(self % list) 
+               END IF 
+               self % list => list
+               CALL self % list % retain()
+               CALL self % setToStart
+            ELSE
+               self % list => list
+               CALL self % list % retain()
+               CALL self % setToStart
             END IF 
-         END IF 
-!
-!        ----------------
-!        Set the new list
-!        ----------------
-!
-         self % list => list
-         CALL self % list % retain()
-         CALL self % setToStart
+            
+         ELSE
+         
+            IF( ASSOCIATED(self % list) )     THEN
+               CALL self % list % release()
+               IF ( self % list % isUnreferenced() )     THEN
+                  DEALLOCATE(self % list) 
+               END IF 
+            END IF 
+            self % list => NULL()
+            
+         END IF
          
       END SUBROUTINE setLinkedList   
 !

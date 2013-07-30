@@ -20,6 +20,7 @@
       EXTERNAL :: FTLinkedListClassTests
       EXTERNAL :: StackClassTests
       EXTERNAL :: MutableArrayClassTests
+      EXTERNAL :: HashTableTests
 !      CALL setvbuf3f(6,2,0) !PGIFortran only
 !
 !     -----
@@ -35,6 +36,7 @@
       CALL testSuite % addTestSubroutineWithName(FTLinkedListClassTests,"FTLinkedListClass Tests")
       CALL testSuite % addTestSubroutineWithName(StackClassTests,"StackClass Tests")
       CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,"Mutable Array Tests")
+      CALL testSuite % addTestSubroutineWithName(HashTableTests,"Hash Table Tests")
 !
 !     -------------
 !     Run the tests
