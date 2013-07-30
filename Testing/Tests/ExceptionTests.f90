@@ -63,8 +63,8 @@
          CLASS(FTValueDictionary), POINTER       :: userDictionary
          REAL                                    :: r
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: msg
-            DOUBLE PRECISION                     :: doubleTol = 2*EPSILON(1.0d0)
-            REAL                                 :: singleTol = 2*EPSILON(1.0e0)
+         DOUBLE PRECISION                        :: doubleTol = 2*EPSILON(1.0d0)
+         REAL                                    :: singleTol = 2*EPSILON(1.0e0)
 
          CALL initializeFTExceptions
          CALL subroutineThatThrowsError
