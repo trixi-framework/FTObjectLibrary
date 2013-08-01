@@ -33,7 +33,7 @@
 !
          PROCEDURE, PUBLIC :: initWithSize => initObjectArrayWithSize
          PROCEDURE, PUBLIC :: destruct     => destructObjectArray
-         PROCEDURE, PUBLIC :: addObject
+         PROCEDURE, PUBLIC :: addObject    => addObjectToArray
          PROCEDURE, PUBLIC :: replaceObjectAtIndexWithObject
          PROCEDURE, PUBLIC :: removeObjectAtIndex
          PROCEDURE, PUBLIC :: objectAtIndex
@@ -72,9 +72,8 @@
       SUBROUTINE initObjectArrayWithSize( self, arraySize )    
          IMPLICIT NONE  
          CLASS( FTMutableObjectArray) :: self
-         INTEGER              :: arraySize
-         
-         INTEGER              :: i
+         INTEGER                      :: arraySize
+         INTEGER                      :: i
          
          CALL self % FTObject % init
          
@@ -128,7 +127,7 @@
 !>       obj => p
 !>       CALL array % addObject(obj)
 !>
-      SUBROUTINE addObject(self,obj)
+      SUBROUTINE addObjectToArray(self,obj)
          IMPLICIT NONE  
          CLASS( FTMutableObjectArray) :: self
          CLASS(FTObject), POINTER     :: obj
@@ -141,7 +140,7 @@
          self % array(self % count_) %  object => obj
          CALL obj % retain()
          
-      END SUBROUTINE addObject
+      END SUBROUTINE addObjectToArray
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

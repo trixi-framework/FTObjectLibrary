@@ -284,15 +284,23 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoRealArrays1D(a,b,tol)  
+      SUBROUTINE assertWithinToleranceTwoRealArrays1D(a,b,tol,msg)  
          IMPLICIT NONE  
          REAL, INTENT(IN), DIMENSION(:) :: a, b
          REAL, INTENT(IN)               :: tol
+         CHARACTER(LEN=*), OPTIONAL     :: msg
+         INTEGER                        :: k
+         
+         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
          numberOfTests_ = numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b,tol) )     THEN
-             
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
+            DO k = 1, SIZE(a)
+               WRITE(expected,*) a(k)
+               WRITE(actual,*)   b(k)
+               CALL addAssertionFailureForParameters(msg,expected,actual)
+               numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
+            END DO  
          END IF 
          
       END SUBROUTINE assertWithinToleranceTwoRealArrays1D
@@ -334,16 +342,27 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(a,b,tol)  
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(a,b,tol,msg)  
          IMPLICIT NONE  
          DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: a, b
          DOUBLE PRECISION, INTENT(IN)               :: tol
+         CHARACTER(LEN=*), OPTIONAL                 :: msg
+         INTEGER                                    :: code
+         INTEGER                                    :: k
          
-         IF ( .NOT.isEqual(a,b,tol) )     THEN
-             
-             numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
-        END IF 
-
+         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual,eMsg
+         
+         numberOfTests_ = numberOfTests_ + 1
+         IF ( .NOT.isEqual(a,b,tol,code) )     THEN
+            eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
+            DO k = 1, SIZE(a)
+               WRITE(expected,*) a(k)
+               WRITE(actual,*)   b(k)
+               CALL addAssertionFailureForParameters(eMsg,expected,actual)
+               numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
+            END DO  
+         END IF 
+         
       END SUBROUTINE assertWithinToleranceTwoDoubleArrays1D
 !
 !//////////////////////////////////////////////////////////////////////// 

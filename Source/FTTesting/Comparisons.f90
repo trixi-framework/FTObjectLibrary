@@ -16,9 +16,13 @@
       INTEGER, PARAMETER, PUBLIC :: ASSERT_SUCCESS       = 0, ASSERT_SIZE_DIFFERS = 1
       INTEGER, PARAMETER, PUBLIC :: ASSERT_VALUES_DIFFER = 2
       
-      CHARACTER(LEN=18), PARAMETER :: ASSERT_SIZE_DIFFERS_NAME   = "Array sizes differ"
+      CHARACTER(LEN=21), PARAMETER :: ASSERT_SIZE_DIFFERS_NAME   = "Array sizes differ"
       CHARACTER(LEN=21), PARAMETER :: ASSERT_VALUES_DIFFERS_NAME = "Array elements differ"
-      CHARACTER(LEN=12), PARAMETER :: ASSERT_VALUES_OK_NAME      = "Arrays match"
+      CHARACTER(LEN=21), PARAMETER :: ASSERT_VALUES_OK_NAME      = "Arrays match"
+      
+      CHARACTER(LEN=21), PARAMETER, PUBLIC :: compareCodeStrings(0:2) = [ASSERT_VALUES_OK_NAME,   &
+                                                               ASSERT_SIZE_DIFFERS_NAME,&
+                                                               ASSERT_VALUES_DIFFERS_NAME]
       
       INTERFACE isEqual
          MODULE PROCEDURE isEqualTwoIntegers
@@ -190,7 +194,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) <= tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -211,7 +215,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoRealArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) <= tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b)> tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoRealArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -238,7 +242,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoDoubleArrays1D(a,b,tol,code)  
+      LOGICAL FUNCTION isWithinToleranceTwoDoubleArrays1D(a,b,tol,code)
          IMPLICIT NONE  
          DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: a, b
          DOUBLE PRECISION, INTENT(IN)               :: tol
@@ -250,7 +254,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoDoubleArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) <= tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoDoubleArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -271,7 +275,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoDoubleArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) <= tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoDoubleArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
