@@ -182,7 +182,7 @@
 !        ---------
 !
          CLASS(FTHashTable) :: self
-         INTEGER                :: N
+         INTEGER            :: N
 !
 !        ---------------
 !        Local variables
@@ -211,7 +211,7 @@
 !        Arguments
 !        ---------
 !
-         CLASS(FTHashTable)   :: self
+         CLASS(FTHashTable)       :: self
          CLASS(FTObject), POINTER :: obj
          INTEGER                  :: i,j
 !
@@ -248,7 +248,7 @@
 !        Arguments
 !        ---------
 !
-         CLASS(FTHashTable)   :: self
+         CLASS(FTHashTable)       :: self
          INTEGER                  :: i,j
          CLASS(FTObject), POINTER :: r
 !
@@ -357,8 +357,8 @@
                DEALLOCATE(self % table(j) % list) 
             END IF 
          END DO
-         
-         DEALLOCATE(self % table)
+
+         IF(ALLOCATED(self % table))   DEALLOCATE(self % table)
 
          CALL self % iterator % release()
          

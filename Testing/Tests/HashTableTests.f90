@@ -17,7 +17,7 @@
 !        We will store values in a matrix
 !        --------------------------------
 !
-         TYPE(FTValue)  , POINTER :: v
+         CLASS(FTValue) , POINTER :: v
          CLASS(FTValue) , POINTER :: vTest
          CLASS(FTObject), POINTER :: obj
          
@@ -56,12 +56,7 @@
          obj => hashTable % objectforKeys(2,3)
          CALL cast(obj,vTest)
          CALL assertEqual(42,vTest % integerValue(),"Table entry retrieval")
-         
-!         The following fails because hashTable has been destructed. Must check for constructed.
-!         CALL hashTable % release()
-!         t = hashTable % containsKeys(2,3)
-!         CALL assertEqual(.FALSE.,t,"Contains value for key after release")
-         
+
          CALL hashTable % release()
          CALL assertEqual(1, v % refCount(),"Table release object refCount")
          CALL v % release()
@@ -104,7 +99,7 @@
          END DO
          CALL vTest % retain()
          CALL assertEqual(2  , vTest % refCount(),"Retain refCount")
-         
+
          CALL hashTable % release()
          CALL assertEqual(1, vTest % refCount(),"Table release object refCount")
          CALL vTest % release()
