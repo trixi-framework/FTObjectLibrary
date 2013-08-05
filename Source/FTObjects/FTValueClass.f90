@@ -177,7 +177,7 @@
          REAL           :: v
          INTEGER        :: dataLength
          
-         CALL self % FTObject % init
+         CALL self % FTObject % init()
          
          dataLength = SIZE(TRANSFER(v,self % valueStorage))
          ALLOCATE(self % valueStorage(dataLength))

@@ -352,9 +352,11 @@
          INTEGER :: j
          
          DO j = 1, SIZE(self % table)
-            CALL self % table(j) % list % release() 
-            IF ( self % table(j) % list % isUnreferenced() )     THEN
-               DEALLOCATE(self % table(j) % list) 
+            IF ( ASSOCIATED(self % table(j) % list) )     THEN
+               CALL self % table(j) % list % release() 
+               IF ( self % table(j) % list % isUnreferenced() )     THEN
+                  DEALLOCATE(self % table(j) % list) 
+               END IF 
             END IF 
          END DO
          
