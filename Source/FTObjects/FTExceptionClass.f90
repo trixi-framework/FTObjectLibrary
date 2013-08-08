@@ -246,7 +246,7 @@
 ! 
       SUBROUTINE destructFTExceptions  
          IMPLICIT NONE
-         TYPE(FTLinkedListIterator)  :: iterator
+         TYPE(FTLinkedListIterator)   :: iterator
          CLASS(FTLinkedList), POINTER :: list
          CLASS(FTObject)    , POINTER :: objectPtr
          CLASS(FTException) , POINTER :: e
@@ -267,25 +267,7 @@
            PRINT *,"***********************************"
            PRINT *
            
-           list => errorStack
-           CALL iterator%initWithFTLinkedList(list)
-!
-!          ----------------------------------------------------
-!          Write out the descriptions of each of the exceptions
-!          ----------------------------------------------------
-!
-           CALL iterator%setToStart
-           DO WHILE (.NOT.iterator%isAtEnd())
-               objectPtr => iterator%object()
-               CALL cast(objectPtr,e)
-               CALL e%printDescription(6)
-               CALL iterator%moveToNext()
-            END DO
-            
-            CALL iterator%release
-            IF ( iterator%isUnreferenced() )     THEN
-               !iterator is not a pointer
-            END IF
+           CALL printAllExceptions
             
          END IF 
 !
@@ -430,6 +412,37 @@
          CALL cast(obj,peekLastException)
          
       END FUNCTION peekLastException
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE printAllExceptions  
+         IMPLICIT NONE  
+         TYPE(FTLinkedListIterator)   :: iterator
+         CLASS(FTLinkedList), POINTER :: list
+         CLASS(FTObject)    , POINTER :: objectPtr
+         CLASS(FTException) , POINTER :: e
+           
+        list => errorStack
+        CALL iterator%initWithFTLinkedList(list)
+!
+!       ----------------------------------------------------
+!       Write out the descriptions of each of the exceptions
+!       ----------------------------------------------------
+!
+        CALL iterator%setToStart
+        DO WHILE (.NOT.iterator%isAtEnd())
+            objectPtr => iterator%object()
+            CALL cast(objectPtr,e)
+            CALL e%printDescription(6)
+            CALL iterator%moveToNext()
+         END DO
+         
+         CALL iterator%release
+         IF ( iterator%isUnreferenced() )     THEN
+            !iterator is not a pointer
+         END IF
+            
+      END SUBROUTINE printAllExceptions
 
       END MODULE SharedExceptionManagerModule    
       

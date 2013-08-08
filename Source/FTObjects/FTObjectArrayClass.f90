@@ -101,10 +101,12 @@
 
          DO i = 1, self % count_
             obj => self % array(i) % object 
-            CALL obj % release()
-            IF ( obj % isUnreferenced() )     THEN
-               DEALLOCATE(obj)
-               obj => NULL() 
+            IF ( ASSOCIATED(obj) )     THEN
+               CALL obj % release()
+               IF ( obj % isUnreferenced() )     THEN
+                  DEALLOCATE(obj)
+                  obj => NULL() 
+               END IF 
             END IF 
          END DO
          
@@ -129,10 +131,11 @@
 !>
       SUBROUTINE addObjectToArray(self,obj)
          IMPLICIT NONE  
-         CLASS( FTMutableObjectArray) :: self
-         CLASS(FTObject), POINTER     :: obj
-         
+         CLASS(FTMutableObjectArray) :: self
+         CLASS(FTObject), POINTER    :: obj
+
          self % count_ = self % count_ + 1
+
          IF ( self % count_ > SIZE(self % array) )     THEN
             CALL increaseArraysize( self, self % count_ ) 
          END IF 
@@ -171,11 +174,14 @@
          CLASS(FTObject), POINTER    :: obj
          
          obj => self % array(indx) %  object
-         CALL obj % release()
-         IF ( obj % isUnreferenced() )     THEN
-            DEALLOCATE(obj)
-            obj => NULL() 
-         END IF
+         
+         IF ( ASSOCIATED(obj) )     THEN
+            CALL obj % release()
+            IF ( obj % isUnreferenced() )     THEN
+               DEALLOCATE(obj)
+               obj => NULL() 
+            END IF
+         END IF 
          
          DO i = indx, self % count_-1
             self % array(i) % object => self % array(i+1) % object

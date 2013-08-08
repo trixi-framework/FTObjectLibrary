@@ -97,10 +97,12 @@
          IMPLICIT NONE  
          CLASS(MatrixData) :: self
          
-         CALL self % object % release()
-         IF ( self % object % isUnreferenced() )     THEN
-            DEALLOCATE(self % object)
-            self % object => NULL() 
+         IF ( ASSOCIATED(self % object) )     THEN
+            CALL self % object % release()
+            IF ( self % object % isUnreferenced() )     THEN
+               DEALLOCATE(self % object)
+               self % object => NULL() 
+            END IF 
          END IF 
          
          CALL self % FTObject % destruct

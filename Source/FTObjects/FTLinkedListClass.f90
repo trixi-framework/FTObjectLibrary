@@ -78,11 +78,13 @@
          IMPLICIT NONE
          CLASS(FTLinkedListRecord) :: self
          
-         CALL self % recordObject % release()
-         IF ( self % recordObject % isUnreferenced() )     THEN
-            DEALLOCATE(self % recordObject)
-            self % recordObject => NULL()
-         END IF
+         IF ( ASSOCIATED(self % recordObject) )     THEN
+            CALL self % recordObject % release()
+            IF ( self % recordObject % isUnreferenced() )     THEN
+               DEALLOCATE(self % recordObject)
+               self % recordObject => NULL()
+            END IF
+         END IF 
          self % next => NULL()
 !
 !        ------------------------------------------
@@ -185,6 +187,7 @@
          PROCEDURE :: insert           => insertObjectAfter
          PROCEDURE :: remove           => removeObject
          PROCEDURE :: removeRecord     => removeLinkedListRecord
+         PROCEDURE :: reversedCopy     => reversedLinkedListCopy
          PROCEDURE :: destruct         => destructFTLinkedList
          PROCEDURE :: count            => numberOfRecords
          PROCEDURE :: description      => FTLinkedListDescription
@@ -509,7 +512,43 @@
             listRecord => listRecord % next
          END DO
          
-      END SUBROUTINE printFTLinkedListDescription    
+      END SUBROUTINE printFTLinkedListDescription
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE reverseLinkedList(self)
+!
+!     ----------------------------------------------
+!     Returns a retained copy of the list that runs 
+!     in the opposite order
+!     ----------------------------------------------
+!
+         IMPLICIT NONE 
+!
+!        ---------
+!        Arguments
+!        ---------
+!
+         CLASS(FTLinkedList)          :: self
+!
+!        ---------------
+!        Local variables
+!        ---------------
+!
+         CLASS(linkedListRecord), POINTER :: listRecord, tmp, next => NULL()
+         
+         IF(.NOT.ASSOCIATED(self % head)) RETURN
+                  
+         listRecord  => self % head
+
+         DO WHILE (ASSOCIATED(listRecord))
+            tmp                   => listRecord % next
+            listRecord % next     => next
+            listRecord % previous => tmp
+            listRecord            => tmp
+         END DO
+         
+      END FUNCTION reversedLinkedListCopy
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -531,7 +570,7 @@
                
          END SELECT
          
-      END SUBROUTINE castObjectToLinkedList
+      END SUBROUTINE reverseLinkedList
 !
       END MODULE FTLinkedListClass
 !
@@ -669,12 +708,14 @@
       SUBROUTINE destructIterator(self)
           IMPLICIT NONE 
           CLASS(FTLinkedListIterator) :: self
-                    
-          CALL self % list % release()
-          IF(self % list % isUnreferenced()) THEN
-             DEALLOCATE(self % list)
-             self % list => NULL()
-          END IF
+          
+          IF ( ASSOCIATED(self % list) )     THEN
+             CALL self % list % release()
+             IF(self % list % isUnreferenced()) THEN
+                DEALLOCATE(self % list)
+                self % list => NULL()
+             END IF
+          END IF 
           
           self % current => NULL()
 !
