@@ -186,8 +186,8 @@
          PROCEDURE :: add              => addObject
          PROCEDURE :: insert           => insertObjectAfter
          PROCEDURE :: remove           => removeObject
+         PROCEDURE :: reverse          => reverseLinkedList
          PROCEDURE :: removeRecord     => removeLinkedListRecord
-         PROCEDURE :: reversedCopy     => reversedLinkedListCopy
          PROCEDURE :: destruct         => destructFTLinkedList
          PROCEDURE :: count            => numberOfRecords
          PROCEDURE :: description      => FTLinkedListDescription
@@ -529,26 +529,29 @@
 !        Arguments
 !        ---------
 !
-         CLASS(FTLinkedList)          :: self
+         CLASS(FTLinkedList) :: self
 !
 !        ---------------
 !        Local variables
 !        ---------------
 !
-         CLASS(linkedListRecord), POINTER :: listRecord, tmp, next => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: current, tmp, next => NULL()
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
                   
-         listRecord  => self % head
+         current  => self % head
 
-         DO WHILE (ASSOCIATED(listRecord))
-            tmp                   => listRecord % next
-            listRecord % next     => next
-            listRecord % previous => tmp
-            listRecord            => tmp
+         DO WHILE (ASSOCIATED(current))
+            tmp                => current % next
+            current % next     => current % previous
+            current % previous => tmp
+            current            => tmp
          END DO
+         tmp => self % head
+         self % head => self % tail
+         self % tail => tmp
          
-      END FUNCTION reversedLinkedListCopy
+      END SUBROUTINE reverseLinkedList
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -570,7 +573,7 @@
                
          END SELECT
          
-      END SUBROUTINE reverseLinkedList
+      END SUBROUTINE castObjectToLinkedList
 !
       END MODULE FTLinkedListClass
 !

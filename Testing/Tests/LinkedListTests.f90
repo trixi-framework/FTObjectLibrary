@@ -276,7 +276,7 @@
          CLASS(FTLinkedListRecord), POINTER :: recordPtr
          
          TYPE(FTLinkedListIterator)        :: iterator
-         INTEGER                           :: j
+         INTEGER                           :: j, N
 !
 !        ----------------------------------------------
 !        Create the two lists that will be concatenated
@@ -363,7 +363,29 @@
             CALL iterator % moveToNext()
             j = j + 1
          END DO
+!
+!        -------------------------------------------
+!        Now reverse the list and iterate through it
+!        -------------------------------------------
+!
+         CALL list1 % reverse()
+         N = list1 % COUNT()
+         j = N
+         CALL iterator % setToStart
+         DO WHILE (.NOT.iterator % isAtEnd())
          
+            objectPtr => iterator % object()
+            CALL cast(objectPtr,v)
+            CALL AssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL AssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
+            
+            recordPtr => iterator % currentRecord()
+            CALL AssertEqual(1, recordPtr % refCount(), "Objects owned by one list")
+            CALL iterator % moveToNext()
+            j = j - 1
+         END DO
          
+         CALL list1 % release()
+         CALL iterator % release()
          
       END SUBROUTINE testAppendingLists
