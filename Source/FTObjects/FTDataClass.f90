@@ -46,11 +46,11 @@
 ! 
       SUBROUTINE initWithDataOfType(self,genericData,dataType)  
          IMPLICIT NONE  
-         CLASS(FTData)                         :: self
-         CHARACTER(LEN=DATA_CLASS_TYPE_LENGTH) :: dataType
-         CHARACTER(LEN=1)                      :: genericData(:)
+         CLASS(FTData)    :: self
+         CHARACTER(LEN=*) :: dataType
+         CHARACTER(LEN=1) :: genericData(:)
          
-         INTEGER                               :: dataSize
+         INTEGER          :: dataSize
           
           CALL self % FTObject % init()
           

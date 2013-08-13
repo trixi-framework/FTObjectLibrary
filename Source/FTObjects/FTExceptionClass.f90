@@ -93,9 +93,9 @@
          
          CALL self%FTObject%init
          
-         self%severity_        = severity
-         self%exceptionName_   = exceptionName
-         self%infoDictionary_  => NULL()
+         self % severity_        = severity
+         self % exceptionName_   = exceptionName
+         self % infoDictionary_  => NULL()
          IF(PRESENT(infoDictionary))   CALL self%setInfoDictionary(infoDictionary)
          
       END SUBROUTINE initFTException
@@ -176,7 +176,7 @@
         
         CLASS(FTDictionary), POINTER :: dict
         
-        WRITE(iUnit,*) "Exception Named: ", TRIM(self%exceptionName())
+        WRITE(iUnit,*) "Exception Named: ", TRIM(self % exceptionName())
         dict => self%infoDictionary()
         CALL dict%printDescription(iUnit)
         
