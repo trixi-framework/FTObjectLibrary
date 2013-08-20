@@ -192,7 +192,7 @@
       SUBROUTINE initFTObject(self)
          IMPLICIT NONE 
          CLASS(FTObject) :: self
-         self%refCount_ = 1
+         self % refCount_ = 1
       END SUBROUTINE initFTObject
 !
 !////////////////////////////////////////////////////////////////////////
@@ -216,13 +216,13 @@
 !>  Retain increases the reference count by one and implies ownership
 !!  to the caller.
 !!  ### Usage:
-!!        CALL obj\%retain()
+!!        CALL obj\ % retain()
 !      -----------------------------------------------------------------
 !
        SUBROUTINE retainFTObject(self)
          IMPLICIT NONE 
          CLASS(FTObject) :: self
-         self%refCount_ = self%refCount_ + 1
+         self % refCount_ = self % refCount_ + 1
       END SUBROUTINE retainFTObject
 !
 !////////////////////////////////////////////////////////////////////////
@@ -240,16 +240,16 @@
          IMPLICIT NONE 
          CLASS(FTObject) :: self
          
-         self%refCount_ = self%refCount_ - 1
+         self % refCount_ = self % refCount_ - 1
          
-         IF ( self%refCount_ < 0 )     THEN
+         IF ( self % refCount_ < 0 )     THEN
             PRINT *, "Attempt to release object with refCount_ 0"
             CALL self % printDescription(6)
-            self%refCount_ = 0
+            self % refCount_ = 0
          END IF
          
-         IF ( self%refCount_ == 0 )     THEN
-            CALL self%destruct() 
+         IF ( self % refCount_ == 0 )     THEN
+            CALL self % destruct() 
          END IF 
           
       END SUBROUTINE releaseFTObject
@@ -264,7 +264,7 @@
 !!
 !!     ### Usage: ###
 !!
-!>           IF ( v%isUnreferenced() )     THEN
+!>           IF ( v % isUnreferenced() )     THEN
 !>              DEALLOCATE(v)
 !>              v => NULL()
 !>           END IF
@@ -274,7 +274,7 @@
       LOGICAL FUNCTION isUnreferenced(self)
          IMPLICIT NONE 
          CLASS(FTObject) :: self
-         IF ( self%refCount_ == 0 )     THEN
+         IF ( self % refCount_ == 0 )     THEN
             isUnreferenced = .true.
          ELSE
             isUnreferenced = .false.
@@ -294,7 +294,7 @@
       INTEGER FUNCTION refCount(self)
          IMPLICIT NONE 
          CLASS(FTObject) :: self
-         refCount = self%refCount_
+         refCount = self % refCount_
       END FUNCTION refCount 
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -351,7 +351,7 @@
          CLASS(FTObject), INTENT(IN) :: self
          CLASS(FTObject), POINTER    :: copy
 !         ALLOCATE(copy, source=self)
-         copy%refCount_ = 1
+         copy % refCount_ = 1
       END FUNCTION copyFTObject
       
       END MODULE FTObjectClass

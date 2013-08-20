@@ -218,12 +218,18 @@
 !//////////////////////////////////////////////////////////////////////// 
 ! 
          SUBROUTINE initWithSize(self,sze)  
+!
+!           ----------------------
+!           Designated initializer
+!           ----------------------
+!
             IMPLICIT NONE
             CLASS(FTDictionary) :: self
             INTEGER, INTENT(in) :: sze
             INTEGER             :: i
             
             CALL self % FTObject % init
+            
             self % isCaseSensitive = .true.
             self % numberOfEntries = 0
 !

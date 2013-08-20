@@ -91,7 +91,7 @@
          CHARACTER(LEN=*)                       :: exceptionName
          CLASS(FTDictionary), POINTER, OPTIONAL :: infoDictionary
          
-         CALL self%FTObject%init
+         CALL self % FTObject % init()
          
          self % severity_        = severity
          self % exceptionName_   = exceptionName
