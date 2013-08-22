@@ -155,6 +155,7 @@
 !
       TYPE FTObject
          INTEGER, PRIVATE   :: refCount_
+         INTEGER, PRIVATE   :: objectCode_
 !
 !        ========         
          CONTAINS
@@ -170,6 +171,7 @@
          PROCEDURE, NON_OVERRIDABLE :: release => releaseFTObject
          PROCEDURE, NON_OVERRIDABLE :: isUnreferenced
          PROCEDURE, NON_OVERRIDABLE :: refCount
+         PROCEDURE, NON_OVERRIDABLE :: setObjectCode
       END TYPE FTObject
       
       PRIVATE :: copyFTObject
@@ -192,7 +194,8 @@
       SUBROUTINE initFTObject(self)
          IMPLICIT NONE 
          CLASS(FTObject) :: self
-         self % refCount_ = 1
+         self % refCount_   = 1
+         self % objectCode_ = 0
       END SUBROUTINE initFTObject
 !
 !////////////////////////////////////////////////////////////////////////
@@ -243,8 +246,11 @@
          self % refCount_ = self % refCount_ - 1
          
          IF ( self % refCount_ < 0 )     THEN
-            PRINT *, "Attempt to release object with refCount_ 0"
+            PRINT *, "Attempt to release object with refCount = 0"
             CALL self % printDescription(6)
+            PRINT *, "Object code = ", self % objectCode_
+            PRINT *, "--------------------------------------------"
+            PRINT *, " "
             self % refCount_ = 0
          END IF
          
@@ -299,6 +305,15 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE setObjectCode(self,objectCode)  
+         IMPLICIT NONE  
+         CLASS(FTObject) :: self
+         INTEGER         :: objectCode
+         self % objectCode_ = objectCode
+      END SUBROUTINE setObjectCode
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
 !
 !     ----------------------------------------------------------------------
 !>    Returns a character string of length DESCRIPTION_CHARACTER_LENGTH that
@@ -350,7 +365,6 @@
          IMPLICIT NONE  
          CLASS(FTObject), INTENT(IN) :: self
          CLASS(FTObject), POINTER    :: copy
-!         ALLOCATE(copy, source=self)
          copy % refCount_ = 1
       END FUNCTION copyFTObject
       

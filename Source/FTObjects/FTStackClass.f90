@@ -67,6 +67,8 @@
          PROCEDURE :: pop
          PROCEDURE :: peek
       END TYPE FTStack
+      
+      INTEGER, PARAMETER, PRIVATE :: FTSTACK_OBJECT_CODE = 70
 !
 !     ----------
 !     Procedures
@@ -93,7 +95,8 @@
 !        Call the initializer of the superclass first
 !        --------------------------------------------
 !
-         CALL self%FTLinkedList%init
+         CALL self%FTLinkedList%init()
+         CALL self % setObjectCode(FTSTACK_OBJECT_CODE)
 !
 !        ---------------------------------
 !        Then initialize ivars of subclass 

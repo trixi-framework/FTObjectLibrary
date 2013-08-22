@@ -51,6 +51,7 @@
          MODULE PROCEDURE castToMutableObjectArray
       END INTERFACE cast
 
+      INTEGER, PARAMETER, PRIVATE :: FTMUTABLEOBJECTARRAYCLASS_OBJECT_CODE = 70
 !
 !     ======== 
       CONTAINS  
@@ -75,7 +76,8 @@
          INTEGER                      :: arraySize
          INTEGER                      :: i
          
-         CALL self % FTObject % init
+         CALL self % FTObject % init()
+         CALL self % setObjectCode(FTMUTABLEOBJECTARRAYCLASS_OBJECT_CODE)
          
          ALLOCATE( self % array(arraySize) )
          

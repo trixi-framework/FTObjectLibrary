@@ -15,7 +15,8 @@
 !    Module constants:
 !    -----------------
 !
-         INTEGER, PARAMETER, PUBLIC  :: FTDICT_KWD_STRING_LENGTH   = 64
+         INTEGER, PARAMETER, PUBLIC  :: FTDICT_KWD_STRING_LENGTH    = 64
+         INTEGER, PARAMETER, PRIVATE :: FTKEYOBJECTPAIR_OBJECT_CODE = 30
 !
 !        ----------
 !        Class type
@@ -54,6 +55,7 @@
             CLASS(FTObject) , POINTER   :: v
             
             CALL self % FTObject % init
+            CALL self % setObjectCode(FTKEYOBJECTPAIR_OBJECT_CODE)
             
             self % keyString   = key
             self % valueObject => v
@@ -201,6 +203,8 @@
          INTERFACE cast
             MODULE PROCEDURE castToDictionary
          END INTERFACE cast
+         
+         INTEGER, PARAMETER, PRIVATE :: FTDICITONARY_OBJECT_CODE = 35
 !
 !        ========         
          CONTAINS  
@@ -228,7 +232,8 @@
             INTEGER, INTENT(in) :: sze
             INTEGER             :: i
             
-            CALL self % FTObject % init
+            CALL self % FTObject % init()
+            CALL self % setObjectCode(FTDICITONARY_OBJECT_CODE)
             
             self % isCaseSensitive = .true.
             self % numberOfEntries = 0

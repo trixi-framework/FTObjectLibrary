@@ -21,7 +21,8 @@
 !     Constants
 !     ---------
 !
-      INTEGER, PARAMETER :: DATA_CLASS_TYPE_LENGTH = 32
+      INTEGER, PARAMETER          :: DATA_CLASS_TYPE_LENGTH = 32
+      INTEGER, PARAMETER, PRIVATE :: FTDATA_OBJECT_CODE     = 20
 !
 !     ---------------------
 !     Class type definition
@@ -53,6 +54,7 @@
          INTEGER          :: dataSize
           
           CALL self % FTObject % init()
+          CALL self % setObjectCode(FTDATA_OBJECT_CODE)
           
           dataSize = SIZE(genericData)
           ALLOCATE(self % dataStorage(dataSize))
