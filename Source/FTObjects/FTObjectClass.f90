@@ -88,7 +88,7 @@
 !>         IMPLICIT NONE
 !>         CLASS(Subclass) :: self
 !>         
-!>         CALL self % FTObject % init
+!>         CALL self % FTObject % init()
 !>         Allocate and initialize all member objects
 !>         ... Other Subclass specific code
 !>      END SUBROUTINE initSubclass
