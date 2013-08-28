@@ -75,7 +75,23 @@
 !> - printDescription()
 !> 
 !> They should also provide a cast() subroutine to convert from the base class to a subclass.
-!> 
+!> The cast() routine can look something like
+!>
+!>      SUBROUTINE castToSubclass(obj,cast) 
+!>         IMPLICIT NONE  
+!>         CLASS(FTObject), POINTER :: obj
+!>         CLASS(SubClass), POINTER :: cast
+!>         
+!>         cast => NULL()
+!>         SELECT TYPE (e => obj)
+!>            TYPE is (SubClass)
+!>               cast => e
+!>            CLASS DEFAULT
+!>               
+!>         END SELECT
+!>         
+!>      END SUBROUTINE castToSubclass
+!>
 !>
 !> ### Subclassing init ###
 !>
