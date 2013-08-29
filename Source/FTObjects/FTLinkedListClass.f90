@@ -404,22 +404,26 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(FTLinkedListRecord), POINTER :: previous
+         CLASS(FTLinkedListRecord), POINTER :: previous, next
                   
          previous => listRecord % previous
+         next     => listRecord % next
          
          IF ( ASSOCIATED(previous) )     THEN
-            previous % next => listRecord % next
+            previous % next => next
+            next % previous => previous
          ELSE
-            self % head => listRecord % next
+            self % head     => next
+            next % previous => NULL()
          END IF 
          
          IF ( ASSOCIATED(listRecord,self % tail) )     THEN
             self % tail => previous 
+            self % tail % next => NULL()
          END IF 
                
          CALL listRecord % release()
-         IF ( listRecord%isUnreferenced() )     THEN
+         IF ( listRecord % isUnreferenced() )     THEN
             DEALLOCATE(listRecord)
             listRecord => NULL()
          END IF 
@@ -656,6 +660,7 @@
          PROCEDURE :: setLinkedList
          PROCEDURE :: setToStart
          PROCEDURE :: moveToNext
+         PROCEDURE :: removeCurrentRecord
       END TYPE FTLinkedListIterator
       
       INTEGER, PARAMETER, PRIVATE :: FTLINKEDLISTITERATORCLASS_OBJECT_CODE = 67
@@ -838,5 +843,19 @@
          CLASS(FTLinkedListRecord), POINTER :: o
          o => self % current
       END FUNCTION FTLinkedListCurrentRecord 
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE removeCurrentRecord(self)  
+         IMPLICIT NONE  
+         CLASS(FTLinkedListIterator)        :: self
+         CLASS(FTLinkedListRecord), POINTER :: r, n
+         r => self % current
+         n => self % current % next
+         
+         CALL self % list % removeRecord(r)
+         self % current => n
+         
+      END SUBROUTINE removeCurrentRecord
       
       END MODULE FTLinkedListIteratorClass   
