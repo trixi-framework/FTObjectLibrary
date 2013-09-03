@@ -314,12 +314,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE makeCircular(self)  
+      SUBROUTINE makeCircular(self,circular)  
          IMPLICIT NONE  
          CLASS(FTLinkedList) :: self
-         self % head % previous => self % tail
-         self % tail % next     => self % head
-         self % isCircular_ = .TRUE.
+         LOGICAL             :: circular
+         
+         IF ( circular )     THEN
+            self % head % previous => self % tail
+            self % tail % next     => self % head
+            self % isCircular_ = .TRUE.
+         ELSE
+            self % head % previous => NULL()
+            self % tail % next     => NULL()
+            self % isCircular_ = .FALSE.
+         END IF 
       END SUBROUTINE makeCircular
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -581,7 +589,12 @@
          CLASS(FTLinkedListRecord), POINTER :: current, tmp, next => NULL()
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
-                  
+         
+         IF ( self % isCircular_ )     THEN
+            self % head % previous => NULL()
+            self % tail % next     => NULL() 
+         END IF
+         
          current  => self % head
 
          DO WHILE (ASSOCIATED(current))
@@ -590,11 +603,13 @@
             current % previous => tmp
             current            => tmp
          END DO
+         
          tmp => self % head
          self % head => self % tail
          self % tail => tmp
+         
          IF ( self % isCircular_ )     THEN
-            CALL self % makeCircular() 
+            CALL self % makeCircular(.TRUE.) 
          END IF 
          
       END SUBROUTINE reverseLinkedList
@@ -795,7 +810,13 @@
       SUBROUTINE moveToNext(self) 
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
+         
          self % current => self % current % next
+         
+         IF ( ASSOCIATED(self % current, self % list % head) )     THEN
+            self % current => NULL() 
+         END IF 
+         
       END SUBROUTINE moveToNext 
 !
 !////////////////////////////////////////////////////////////////////////
