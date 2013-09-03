@@ -378,7 +378,11 @@
       INTEGER FUNCTION allocatedSize(self)  
          IMPLICIT NONE  
          CLASS( FTMutableObjectArray) :: self
-         allocatedSize = SIZE(self % array)
+         IF ( ASSOCIATED(self % array) )     THEN
+            allocatedSize = SIZE(self % array)
+         ELSE
+            allocatedSize = 0
+         END IF 
       END FUNCTION allocatedSize
 !
 !---------------------------------------------------------------------------

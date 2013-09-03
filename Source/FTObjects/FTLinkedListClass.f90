@@ -180,6 +180,7 @@
       
          CLASS(FTLinkedListRecord), POINTER :: head, tail
          INTEGER                            :: nRecords
+         LOGICAL                            :: isCircular_
 !
 !        ========         
          CONTAINS
@@ -196,6 +197,8 @@
          PROCEDURE :: description      => FTLinkedListDescription
          PROCEDURE :: printDescription => printFTLinkedListDescription
          PROCEDURE :: addObjectsFromList
+         PROCEDURE :: makeCircular
+         PROCEDURE :: isCircular
          
       END TYPE FTLinkedList
       
@@ -228,7 +231,8 @@
 !        Then call the subclass initializations
 !        --------------------------------------
 !
-         self % nRecords = 0
+         self % nRecords    = 0
+         self % isCircular_ = .FALSE.
          
          self % head => NULL(); self % tail => NULL()
          
@@ -307,6 +311,24 @@
          self % nRecords = self % nRecords + 1
          
       END SUBROUTINE insertObjectAfter 
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE makeCircular(self)  
+         IMPLICIT NONE  
+         CLASS(FTLinkedList) :: self
+         self % head % previous => self % tail
+         self % tail % next     => self % head
+         self % isCircular_ = .TRUE.
+      END SUBROUTINE makeCircular
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      LOGICAL FUNCTION isCircular(self)  
+         IMPLICIT NONE  
+         CLASS(FTLinkedList) :: self
+         isCircular = self % isCircular_
+      END FUNCTION isCircular
 !
 !////////////////////////////////////////////////////////////////////////
 !
@@ -409,17 +431,23 @@
          previous => listRecord % previous
          next     => listRecord % next
          
-         IF ( ASSOCIATED(previous) )     THEN
-            previous % next => next
-            next % previous => previous
-         ELSE
-            self % head     => next
-            next % previous => NULL()
+         IF ( ASSOCIATED(listRecord, self % head) )     THEN
+            self % head => next
+            IF ( ASSOCIATED(next) )     THEN
+               next % previous => NULL() 
+            END IF  
          END IF 
          
-         IF ( ASSOCIATED(listRecord,self % tail) )     THEN
-            self % tail => previous 
-            self % tail % next => NULL()
+         IF ( ASSOCIATED(listRecord, self % tail) )     THEN
+            self % tail => previous
+            IF ( ASSOCIATED(previous) )     THEN
+               previous % next => NULL() 
+            END IF  
+         END IF 
+         
+         IF ( ASSOCIATED(previous) .AND. ASSOCIATED(next) )     THEN
+            previous % next => next
+            next % previous => previous 
          END IF 
                
          CALL listRecord % release()
@@ -520,6 +548,11 @@
          DO WHILE (ASSOCIATED(listRecord))
             CALL listRecord % recordObject % printDescription(iUnit)
             listRecord => listRecord % next
+            IF ( self % isCircular_ )     THEN
+               IF ( ASSOCIATED(listRecord,self % head) )     THEN
+                  EXIT 
+               END IF  
+            END IF 
          END DO
          
       END SUBROUTINE printFTLinkedListDescription
@@ -560,6 +593,9 @@
          tmp => self % head
          self % head => self % tail
          self % tail => tmp
+         IF ( self % isCircular_ )     THEN
+            CALL self % makeCircular() 
+         END IF 
          
       END SUBROUTINE reverseLinkedList
 !
