@@ -16,7 +16,6 @@
 !    -----------------
 !
          INTEGER, PARAMETER, PUBLIC  :: FTDICT_KWD_STRING_LENGTH    = 64
-         INTEGER, PARAMETER, PRIVATE :: FTKEYOBJECTPAIR_OBJECT_CODE = 30
 !
 !        ----------
 !        Class type
@@ -55,7 +54,6 @@
             CLASS(FTObject) , POINTER   :: v
             
             CALL self % FTObject % init
-            CALL self % setObjectCode(FTKEYOBJECTPAIR_OBJECT_CODE)
             
             self % keyString   = key
             self % valueObject => v
@@ -233,7 +231,6 @@
             INTEGER             :: i
             
             CALL self % FTObject % init()
-            CALL self % setObjectCode(FTDICITONARY_OBJECT_CODE)
             
             self % isCaseSensitive = .true.
             self % numberOfEntries = 0

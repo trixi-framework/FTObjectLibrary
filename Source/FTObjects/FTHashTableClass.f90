@@ -65,7 +65,6 @@
          MODULE PROCEDURE castObjectToMatrixData
       END INTERFACE cast
       
-      INTEGER, PARAMETER, PRIVATE :: FTHASHTABLEDATA_OBJECT_CODE = 50
 !
 !     ========      
       CONTAINS
@@ -86,7 +85,6 @@
          INTEGER                  :: key
          
          CALL self % FTObject % init()
-         CALL self % setObjectCode(FTHASHTABLEDATA_OBJECT_CODE)
          
          self % key = key
          self % object => object
@@ -172,7 +170,6 @@
          
       END TYPE FTHashTable
       
-      INTEGER, PARAMETER, PRIVATE :: FTHASHTABLE_OBJECT_CODE = 55
 !
 !     ========
       CONTAINS
@@ -198,7 +195,6 @@
          INTEGER :: j
          
          CALL self % FTObject % init()
-         CALL self % setObjectCode(FTHASHTABLE_OBJECT_CODE)
          
          ALLOCATE(self % table(N))
          DO j = 1, N

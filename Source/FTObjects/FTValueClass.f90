@@ -91,8 +91,6 @@
       INTEGER, PARAMETER, PRIVATE :: FTVALUECLASS_INTEGER = 1, FTVALUECLASS_REAL   = 2, &
                                      FTVALUECLASS_DOUBLE  = 3, FTVALUECLASS_STRING = 4, &
                                      FTVALUECLASS_LOGICAL = 5
-                                     
-      INTEGER, PARAMETER, PRIVATE :: FTVALUECLASS_OBJECT_CODE = 10
 !
 !     ---------------------
 !     Class type definition 
@@ -180,7 +178,6 @@
          INTEGER        :: dataLength
          
          CALL self % FTObject % init()
-         CALL self % setObjectCode(FTVALUECLASS_OBJECT_CODE)
          
          dataLength = SIZE(TRANSFER(v,self % valueStorage))
          ALLOCATE(self % valueStorage(dataLength))

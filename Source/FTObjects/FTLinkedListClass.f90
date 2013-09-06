@@ -38,8 +38,6 @@
          PROCEDURE :: destruct => destructFTLinkedListRecord
          
       END TYPE FTLinkedListRecord
-      
-      INTEGER, PARAMETER, PRIVATE :: FTLINKEDLISTRECORDCLASS_OBJECT_CODE = 60
 !
 !     ----------
 !     Procedures
@@ -59,7 +57,6 @@
 !        -------------------------------
 !
          CALL self % FTObject % init
-         CALL self % setObjectCode(FTLINKEDLISTRECORDCLASS_OBJECT_CODE)
 !
 !        ------------------------
 !        Subclass initializations
@@ -89,13 +86,14 @@
             END IF
          END IF 
          self % next => NULL()
+         self % previous => NULL()
 !
 !        ------------------------------------------
 !        Always call the superclass destructor here
 !        at the end of the subclass destructor.
 !        ------------------------------------------
 !
-         CALL self % FTObject % destruct
+         CALL self % FTObject % destruct()
         
       END SUBROUTINE destructFTLinkedListRecord     
       
@@ -206,7 +204,6 @@
          MODULE PROCEDURE castObjectToLinkedList
       END INTERFACE cast
       
-      INTEGER, PARAMETER, PRIVATE :: FTLINKEDLIST_OBJECT_CODE = 65
 !
 !     ----------
 !     Procedures
@@ -225,7 +222,6 @@
 !        -------------------------------
 !
          CALL self % FTObject % init()
-         CALL self % setObjectCode(FTLINKEDLIST_OBJECT_CODE)
 !
 !        --------------------------------------
 !        Then call the subclass initializations
@@ -442,14 +438,14 @@
          IF ( ASSOCIATED(listRecord, self % head) )     THEN
             self % head => next
             IF ( ASSOCIATED(next) )     THEN
-               next % previous => NULL() 
+               self % head % previous => NULL() 
             END IF  
          END IF 
          
          IF ( ASSOCIATED(listRecord, self % tail) )     THEN
             self % tail => previous
             IF ( ASSOCIATED(previous) )     THEN
-               previous % next => NULL() 
+               self % tail % next => NULL() 
             END IF  
          END IF 
          
@@ -713,8 +709,6 @@
          PROCEDURE :: moveToNext
          PROCEDURE :: removeCurrentRecord
       END TYPE FTLinkedListIterator
-      
-      INTEGER, PARAMETER, PRIVATE :: FTLINKEDLISTITERATORCLASS_OBJECT_CODE = 67
 !
 !     ----------
 !     Procedures
@@ -756,7 +750,6 @@
 !        --------------------------------------------
 !
          CALL self % FTObject % init()
-         CALL self % setObjectCode(FTLINKEDLISTITERATORCLASS_OBJECT_CODE)
 !
 !        ----------------------------------------------
 !        Then call the initializations for the subclass

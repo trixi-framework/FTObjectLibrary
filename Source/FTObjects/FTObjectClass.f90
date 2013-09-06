@@ -171,7 +171,6 @@
 !
       TYPE FTObject
          INTEGER, PRIVATE   :: refCount_
-         INTEGER, PRIVATE   :: objectCode_
 !
 !        ========         
          CONTAINS
@@ -187,7 +186,6 @@
          PROCEDURE, NON_OVERRIDABLE :: release => releaseFTObject
          PROCEDURE, NON_OVERRIDABLE :: isUnreferenced
          PROCEDURE, NON_OVERRIDABLE :: refCount
-         PROCEDURE, NON_OVERRIDABLE :: setObjectCode
       END TYPE FTObject
       
       PRIVATE :: copyFTObject
@@ -211,7 +209,6 @@
          IMPLICIT NONE 
          CLASS(FTObject) :: self
          self % refCount_   = 1
-         self % objectCode_ = 0
       END SUBROUTINE initFTObject
 !
 !////////////////////////////////////////////////////////////////////////
@@ -264,7 +261,6 @@
          IF ( self % refCount_ < 0 )     THEN
             PRINT *, "Attempt to release object with refCount = 0"
             CALL self % printDescription(6)
-            PRINT *, "Object code = ", self % objectCode_
             PRINT *, "--------------------------------------------"
             PRINT *, " "
             self % refCount_ = 0
@@ -318,15 +314,6 @@
          CLASS(FTObject) :: self
          refCount = self % refCount_
       END FUNCTION refCount 
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE setObjectCode(self,objectCode)  
-         IMPLICIT NONE  
-         CLASS(FTObject) :: self
-         INTEGER         :: objectCode
-         self % objectCode_ = objectCode
-      END SUBROUTINE setObjectCode
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

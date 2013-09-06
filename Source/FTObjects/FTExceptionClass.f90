@@ -48,7 +48,6 @@
 !
       INTEGER, PARAMETER :: FT_ERROR_NONE = 0, FT_ERROR_WARNING = 1, FT_ERROR_FATAL = 2
       INTEGER, PARAMETER :: ERROR_MSG_STRING_LENGTH = 132
-      INTEGER, PARAMETER, PRIVATE :: FTEXCEPTIONCLASS_OBJECT_CODE = 40
 !
 !     ---------------
 !     Error base type
@@ -93,7 +92,6 @@
          CLASS(FTDictionary), POINTER, OPTIONAL :: infoDictionary
          
          CALL self % FTObject % init()
-         CALL self % setObjectCode(FTEXCEPTIONCLASS_OBJECT_CODE)
          
          self % severity_        = severity
          self % exceptionName_   = exceptionName
