@@ -15,11 +15,11 @@
 !         *Initialization*
 !
 !            ALLOCATE(stack) ! If stack is a pointer
-!            CALL stack % init
+!            CALL stack  %  init
 !
 !         *Destruction*
-!            CALL stack % release
-!            IF ( stack % isUnreferenced() )     THEN
+!            CALL stack  %  release
+!            IF ( stack  %  isUnreferenced() )     THEN
 !               DEALLOCATE(stack) ! If stack is a pointer
 !               stack => NULL()
 !            END IF 
@@ -28,11 +28,11 @@
 !
 !            TYPE(FTObject) :: objectPtr
 !            objectPtr => r1
-!            CALL stack%push(objectPtr)
+!            CALL stack % push(objectPtr)
 !
 !         *Peeking at the top of the stack*
 !
-!            objectPtr => stack%peek() ! No change of ownership
+!            objectPtr => stack % peek() ! No change of ownership
 !            SELECT TYPE(objectPtr)
 !               TYPE is (*SubclassType*)
 !                  … Do something with ObjectPtr as subclass
@@ -42,7 +42,7 @@
 !
 !         *Popping the top of the stack*
 !
-!            objectPtr => stack%pop() ! Ownership transferred to caller
+!            objectPtr => stack % pop() ! Ownership transferred to caller
 !            SELECT TYPE(objectPtr)
 !               TYPE is (*SubclassType*)
 !                  … Do something with ObjectPtr as subclass
@@ -93,7 +93,7 @@
 !        Call the initializer of the superclass first
 !        --------------------------------------------
 !
-         CALL self%FTLinkedList%init()
+         CALL self % FTLinkedList % init()
 !
 !        ---------------------------------
 !        Then initialize ivars of subclass 
@@ -122,17 +122,17 @@
          CLASS(FTLinkedListRecord), POINTER :: tmp
          
          ALLOCATE(newRecord)
-         CALL newRecord%initWithObject(obj)
+         CALL newRecord % initWithObject(obj)
          
-         IF ( .NOT.ASSOCIATED(self%head) )     THEN
-            self%head => newRecord
-            self%tail => newRecord
+         IF ( .NOT.ASSOCIATED(self % head) )     THEN
+            self % head => newRecord
+            self % tail => newRecord
          ELSE
-            tmp            => self%head
-            self%head      => newRecord
-            self%head%next => tmp
+            tmp            => self % head
+            self % head      => newRecord
+            self % head % next => tmp
          END IF
-         self%nRecords = self%nRecords + 1
+         self % nRecords = self % nRecords + 1
          
       END SUBROUTINE push
 !
@@ -149,12 +149,12 @@
          CLASS(FTStack)           :: self
          CLASS(FTObject), POINTER :: peek
          
-         IF ( .NOT. ASSOCIATED(self%head) )     THEN
+         IF ( .NOT. ASSOCIATED(self % head) )     THEN
             peek => NULL()
             RETURN 
          END IF 
 
-         peek => self%head%recordObject
+         peek => self % head % recordObject
 
       END FUNCTION peek    
 !
@@ -173,32 +173,24 @@
          CLASS(FTObject)          , POINTER :: p
          CLASS(FTLinkedListRecord), POINTER :: tmp
          
-         IF ( .NOT. ASSOCIATED(self%head) )     THEN
+         IF ( .NOT. ASSOCIATED(self % head) )     THEN
             p => NULL()
             RETURN 
          END IF 
             
-         p => self%head%recordObject
-         CALL p%retain()
+         p => self % head % recordObject
+         CALL p % retain()
          
-         tmp => self%head
-         self%head => self%head%next
+         tmp => self % head
+         self % head => self % head % next
          
-         CALL tmp%release()
-         IF( tmp%isUnreferenced())     THEN
+         CALL tmp % release()
+         IF( tmp % isUnreferenced())     THEN
             DEALLOCATE(tmp)
             tmp => NULL()
          END IF
-         self%nRecords = self%nRecords - 1
+         self % nRecords = self % nRecords - 1
 
       END SUBROUTINE pop
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-!      INTEGER FUNCTION SIZE(self)  
-!         IMPLICIT NONE  
-!         CLASS(FTStack) :: self
-!         SIZE = self%nRecords
-!      END FUNCTION SIZE    
     
       END Module FTStackClass    

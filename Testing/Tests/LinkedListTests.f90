@@ -258,6 +258,12 @@
 !        ---------------------------------
 !
          CALL testAppendingLists
+!
+!        --------------------------------------
+!        Do more with deleting objects in lists
+!        --------------------------------------
+!
+         CALL TestDeletingObjects
          
       END SUBROUTINE FTLinkedListClassTests
 !
@@ -389,3 +395,127 @@
          CALL iterator % release()
          
       END SUBROUTINE testAppendingLists
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE TestDeletingObjects
+         USE FTLinkedListClass
+         USE FTLinkedListIteratorClass
+         USE FTValueClass
+         USE FTAssertions
+         IMPLICIT NONE  
+!
+!        -----------------------------------------------
+!        Add a number of objects to a list and then test
+!        out removing them
+!        -----------------------------------------------
+!
+         CLASS(FTValue)           , POINTER   :: v 
+         CLASS(FTObject)          , POINTER   :: obj
+         CLASS(FTLinkedList)      , POINTER   :: list
+         CLASS(FTLinkedListRecord), POINTER   :: recordPtr
+         
+         TYPE(FTLinkedListIterator), POINTER :: iterator
+         INTEGER                             :: j, N
+!
+!        ----------------------------------------------
+!        Create the two lists that will be concatenated
+!        ----------------------------------------------
+!
+         ALLOCATE(list)
+         CALL list % init()
+!
+!        -----------------------------
+!        Add some objects to the lists
+!        -----------------------------
+!
+         DO j = 1, 6
+            ALLOCATE(v)
+            CALL v % initWithValue(j)
+            obj => v
+            CALL list % add(obj)
+            CALL v % release()
+         END DO
+!
+!        ------------------------------------------------------------
+!        Create an iterator on the list and remove an "interior" item
+!        ------------------------------------------------------------
+!
+         ALLOCATE(iterator)
+         CALL iterator % initwithFTLinkedList(list)
+!
+!        ---------------
+!        Delete the tail
+!        ---------------
+!
+         CALL iterator % setToStart()
+         j = 1
+         DO WHILE( .NOT.iterator % isAtEnd() )
+            IF ( j == 6 )     THEN
+               obj => iterator % object()
+               CALL cast(obj,v)
+               CALL assertEqual(6,v % integerValue(),"Value of object to be deleted")
+               CALL iterator % removeCurrentRecord() 
+            END IF  
+            CALL iterator % moveToNext()
+            j = j + 1
+         END DO
+         
+         CALL assertEqual(5,list % COUNT(),"Count after deletion of tail object")
+!
+!        -----------------------
+!        Delete the third record
+!        -----------------------
+!
+         CALL iterator % setToStart()
+         j = 1
+         DO WHILE( .NOT.iterator % isAtEnd() )
+            IF ( j == 3 )     THEN
+               obj => iterator % object()
+               CALL cast(obj,v)
+               CALL assertEqual(3,v % integerValue(),"Value of object to be deleted")
+               CALL iterator % removeCurrentRecord() 
+               EXIT 
+            END IF  
+            CALL iterator % moveToNext()
+            j = j + 1
+         END DO
+        
+         CALL assertEqual(4,list % COUNT(),"Count after deletion of middle object")
+         obj => iterator % object()
+         CALL cast(obj,v)
+         CALL assertEqual(4,v % integerValue(),"Value of current object after deleting")
+!
+!        ---------------------------------
+!        Make sure connections are correct
+!        ---------------------------------
+!
+         recordPtr => iterator % currentRecord()
+         obj => recordPtr % previous % recordObject
+         CALL cast(obj,v)
+         CALL assertEqual(2,v % integerValue(), "Value of previous object after deleting")
+         obj => recordPtr % next % recordObject
+         CALL cast(obj,v)
+         CALL assertEqual(5,v % integerValue(), "Value of next object after deleting")
+!
+!        -----------------------
+!        Delete the first record
+!        -----------------------
+!
+         CALL iterator % setToStart()
+         CALL iterator % removeCurrentRecord()
+         CALL assertEqual(3, list % COUNT(), "count after deleting head")
+         obj => iterator % object()
+         CALL cast(obj,v)
+         CALL assertEqual(2,v % integerValue(),"Value of current head after deleting")
+!
+!        --------
+!        Clean up
+!        --------
+!
+         CALL iterator % release()
+         DEALLOCATE(iterator)
+         CALL list % release()
+         DEALLOCATE(list)         
+         
+      END SUBROUTINE TestDeletingObjects

@@ -28,11 +28,11 @@
 !
 !         Initialization
 !
-!            e % initFTException(severity,exceptionName,infoDictionary)
+!            e  %  initFTException(severity,exceptionName,infoDictionary)
 !
 !         Setting components
 !
-!            e % setInfoDictionary(infoDictionary)
+!            e  %  setInfoDictionary(infoDictionary)
 !
 !////////////////////////////////////////////////////////////////////////
 !
@@ -91,12 +91,12 @@
          CHARACTER(LEN=*)                       :: exceptionName
          CLASS(FTDictionary), POINTER, OPTIONAL :: infoDictionary
          
-         CALL self % FTObject % init()
+         CALL self  %  FTObject  %  init()
          
-         self % severity_        = severity
-         self % exceptionName_   = exceptionName
-         self % infoDictionary_  => NULL()
-         IF(PRESENT(infoDictionary))   CALL self%setInfoDictionary(infoDictionary)
+         self  %  severity_        = severity
+         self  %  exceptionName_   = exceptionName
+         self  %  infoDictionary_  => NULL()
+         IF(PRESENT(infoDictionary))   CALL self % setInfoDictionary(infoDictionary)
          
       END SUBROUTINE initFTException
 
@@ -105,10 +105,10 @@
       SUBROUTINE destructException(self)
          IMPLICIT NONE  
          CLASS(FTException) :: self
-         
-         IF(ASSOCIATED(self%infoDictionary_))   CALL releaseInfoDictionary(self)
 
-         CALL self%FTObject%destruct
+         IF(ASSOCIATED(self % infoDictionary_))   CALL releaseInfoDictionary(self)
+
+         CALL self % FTObject % destruct()
          
       END SUBROUTINE destructException 
 !
@@ -120,8 +120,8 @@
          CLASS(FTDictionary), POINTER :: dict
          
          CALL releaseInfoDictionary(self)
-         self % infoDictionary_ => dict
-         CALL self % infoDictionary_ % retain()
+         self  %  infoDictionary_ => dict
+         CALL self  %  infoDictionary_  %  retain()
       END SUBROUTINE setInfoDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -131,7 +131,7 @@
         CLASS(FTException) :: self
         CLASS(FTDictionary), POINTER :: infoDictionary
         
-        infoDictionary => self%infoDictionary_
+        infoDictionary => self % infoDictionary_
         
      END FUNCTION infoDictionary
 !
@@ -141,7 +141,7 @@
         IMPLICIT NONE  
         CLASS(FTException) :: self
         CHARACTER(LEN=ERROR_MSG_STRING_LENGTH) :: exceptionName
-        exceptionName = self%exceptionName_
+        exceptionName = self % exceptionName_
      END FUNCTION exceptionName
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -149,7 +149,7 @@
      INTEGER FUNCTION severity(self)  
         IMPLICIT NONE  
         CLASS(FTException) :: self
-        severity = self%severity_
+        severity = self % severity_
      END FUNCTION severity    
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -158,11 +158,11 @@
          IMPLICIT NONE  
          CLASS(FTException) :: self
          
-         IF(ASSOCIATED(self%infoDictionary_))     THEN
-            CALL self%infodictionary_%release()
-            IF ( self%infodictionary_%isUnreferenced() )     THEN
-               DEALLOCATE(self%infodictionary_)
-               self%infodictionary_ => NULL()
+         IF(ASSOCIATED(self % infoDictionary_))     THEN
+            CALL self % infodictionary_ % release()
+            IF ( self % infodictionary_ % isUnreferenced() )     THEN
+               DEALLOCATE(self % infodictionary_)
+               self % infodictionary_ => NULL()
             END IF
          END IF
      END SUBROUTINE releaseInfoDictionary
@@ -176,9 +176,9 @@
         
         CLASS(FTDictionary), POINTER :: dict
         
-        WRITE(iUnit,*) "Exception Named: ", TRIM(self % exceptionName())
-        dict => self%infoDictionary()
-        CALL dict%printDescription(iUnit)
+        WRITE(iUnit,*) "Exception Named: ", TRIM(self  %  exceptionName())
+        dict => self % infoDictionary()
+        CALL dict % printDescription(iUnit)
         
      END SUBROUTINE printFTExceptionDescription     
 !
@@ -238,7 +238,7 @@
       SUBROUTINE initializeFTExceptions  
          IMPLICIT NONE
          ALLOCATE(errorStack)
-         CALL errorStack%init()
+         CALL errorStack % init()
          currentError_ => NULL()
       END SUBROUTINE initializeFTExceptions
 !
@@ -259,7 +259,7 @@
          IF ( catch() )     THEN
            PRINT *
            PRINT *,"***********************************"
-           IF(errorStack%COUNT() == 1)     THEN
+           IF(errorStack % COUNT() == 1)     THEN
               PRINT *, "An uncaught exception was raised:"
            ELSE
               PRINT *, "Uncaught exceptions were raised:"
@@ -275,9 +275,11 @@
 !        Destruct the exceptions
 !        -----------------------
 !
-         CALL errorStack%destruct()
-         DEALLOCATE(errorStack)
-         currentError_ => NULL()
+         CALL errorStack % release()
+         IF ( errorStack % isUnreferenced() )     THEN
+            DEALLOCATE(errorStack)
+            currentError_ => NULL()
+         END IF 
       END SUBROUTINE destructFTExceptions
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -292,7 +294,7 @@
          END IF 
          
          ptr => thisError
-         CALL errorStack%push(ptr)
+         CALL errorStack % push(ptr)
          
       END SUBROUTINE throw
 !
@@ -306,7 +308,7 @@
          END IF 
          
          catchAll = .false.
-         IF ( errorStack%count() > 0 )     THEN
+         IF ( errorStack % count() > 0 )     THEN
             catchAll = .true.
          END IF
          currentError_ => NULL()
@@ -321,7 +323,7 @@
             CALL initializeFTExceptions 
          END IF 
 
-         errorCount = errorStack%count() 
+         errorCount = errorStack % count() 
       END FUNCTION    
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -342,28 +344,28 @@
             RETURN 
          END IF 
          
-         IF ( errorStack%COUNT() == 0 )     THEN
+         IF ( errorStack % COUNT() == 0 )     THEN
             RETURN 
          END IF 
 
          ptr => errorStack
-         CALL iterator%initWithFTLinkedList(ptr)
-         CALL iterator%setToStart
+         CALL iterator % initWithFTLinkedList(ptr)
+         CALL iterator % setToStart()
          
-         DO WHILE (.NOT.iterator%isAtEnd())
-            obj => iterator%object()
+         DO WHILE (.NOT.iterator % isAtEnd())
+            obj => iterator % object()
             CALL cast(obj,e)
-            IF ( e%exceptionName() == errorName )     THEN
+            IF ( e % exceptionName() == errorName )     THEN
                currentError_ => e
                catchErrorWithName = .true.
-               CALL currentError_%retain()
-               CALL errorStack%remove(obj)
+               CALL currentError_ % retain()
+               CALL errorStack % remove(obj)
                EXIT
            END IF 
-           CALL iterator%moveToNext()
+           CALL iterator % moveToNext()
          END DO
          
-         CALL iterator%destruct
+         CALL iterator % destruct
          
       END FUNCTION catchErrorWithName
 !
@@ -391,7 +393,7 @@
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             CALL initializeFTExceptions 
          ELSE
-            CALL errorStack%pop(obj)
+            CALL errorStack % pop(obj)
             CALL cast(obj,popLastException)
          END IF 
          
@@ -408,7 +410,7 @@
             CALL initializeFTExceptions 
          END IF 
                   
-         obj => errorStack%peek()
+         obj => errorStack % peek()
          CALL cast(obj,peekLastException)
          
       END FUNCTION peekLastException
@@ -423,22 +425,22 @@
          CLASS(FTException) , POINTER :: e
            
         list => errorStack
-        CALL iterator%initWithFTLinkedList(list)
+        CALL iterator % initWithFTLinkedList(list)
 !
 !       ----------------------------------------------------
 !       Write out the descriptions of each of the exceptions
 !       ----------------------------------------------------
 !
-        CALL iterator%setToStart
-        DO WHILE (.NOT.iterator%isAtEnd())
-            objectPtr => iterator%object()
+        CALL iterator % setToStart
+        DO WHILE (.NOT.iterator % isAtEnd())
+            objectPtr => iterator % object()
             CALL cast(objectPtr,e)
-            CALL e%printDescription(6)
-            CALL iterator%moveToNext()
+            CALL e % printDescription(6)
+            CALL iterator % moveToNext()
          END DO
          
-         CALL iterator%release
-         IF ( iterator%isUnreferenced() )     THEN
+         CALL iterator % release
+         IF ( iterator % isUnreferenced() )     THEN
             !iterator is not a pointer
          END IF
             

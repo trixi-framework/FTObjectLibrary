@@ -481,16 +481,16 @@
          IMPLICIT NONE
          CLASS(FTLinkedList)                :: self
          CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
-         
+
          IF(.NOT.ASSOCIATED(self % head)) THEN
-            CALL self % FTObject % destruct
+            CALL self % FTObject % destruct()
             RETURN
          END IF
 
          listRecord => self % head
          DO WHILE (ASSOCIATED(listRecord))
             tmp => listRecord % next
-            
+
             CALL listRecord % release()
 
             IF(listRecord % isUnreferenced()) THEN
@@ -508,7 +508,7 @@
 !        at the end of the subclass destructor.
 !        ------------------------------------------
 !
-         CALL self % FTObject % destruct
+         CALL self % FTObject % destruct()
 
       END SUBROUTINE destructFTLinkedList
 !
@@ -804,7 +804,12 @@
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
          
-         self % current => self % current % next
+         IF ( ASSOCIATED(self % current) )     THEN
+            self % current => self % current % next
+         ELSE 
+            self % current => NULL() 
+         END IF 
+         !^ 
          
          IF ( ASSOCIATED(self % current, self % list % head) )     THEN
             self % current => NULL() 

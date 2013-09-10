@@ -88,9 +88,9 @@
          IMPLICIT NONE
          CLASS(TestSuiteManager) :: self
 
-            self%testCasesHead => NULL()
-            self%testCasesTail => NULL()
-            self%numberOfTests = 0
+            self % testCasesHead => NULL()
+            self % testCasesTail => NULL()
+            self % numberOfTests = 0
             
       END SUBROUTINE initializeTestSuiteManager
 !
@@ -100,7 +100,7 @@
          IMPLICIT NONE 
          CLASS(TestSuiteManager) :: self
          INTEGER                 :: iUnit
-         self%stdOut = iUnit
+         self % stdOut = iUnit
       END SUBROUTINE setOutputUnit    
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -118,17 +118,17 @@
          END INTERFACE
          
          ALLOCATE(newTestCase)
-         newTestCase%testName     = TRIM(ADJUSTL(testName))
-         newTestCase%TestSubroutine => fun
-         newTestCase%next         => NULL()
-         self%numberOfTests       = self%numberOfTests + 1
+         newTestCase % testName     = TRIM(ADJUSTL(testName))
+         newTestCase % TestSubroutine => fun
+         newTestCase % next         => NULL()
+         self % numberOfTests       = self % numberOfTests + 1
          
-         IF ( ASSOCIATED(self%testCasesHead) )     THEN
-            self%testCasesTail%next => newTestCase
-            self%testCasesTail      => newTestCase 
+         IF ( ASSOCIATED(self % testCasesHead) )     THEN
+            self % testCasesTail % next => newTestCase
+            self % testCasesTail      => newTestCase 
          ELSE
-            self%testCasesHead => newTestCase
-            self%testCasesTail => newTestCase
+            self % testCasesHead => newTestCase
+            self % testCasesTail => newTestCase
          END IF 
          
       END SUBROUTINE addTestSubroutineWithName    
@@ -140,20 +140,20 @@
          CLASS(TestSuiteManager)       :: self
          TYPE(TestCaseRecord), POINTER :: tmp, current
          
-         IF ( .NOT.ASSOCIATED(self%testCasesHead) )     THEN
+         IF ( .NOT.ASSOCIATED(self % testCasesHead) )     THEN
            RETURN 
          END IF 
          
-         current => self%testCasesHead
+         current => self % testCasesHead
          DO WHILE (ASSOCIATED(tmp))
-            tmp => current%next
+            tmp => current % next
             DEALLOCATE(current)
             current => tmp
          END DO
 
-         self%testCasesHead => NULL()
-         self%testCasesTail => NULL()
-         self%numberOfTests = 0
+         self % testCasesHead => NULL()
+         self % testCasesTail => NULL()
+         self % numberOfTests = 0
       END SUBROUTINE finalizeTestSuiteManager
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -163,34 +163,35 @@
           CLASS(TestSuiteManager)       :: self
           TYPE(TestCaseRecord), POINTER :: current
           INTEGER                       :: numberOfFailedTests = 0
-        WRITE(self%stdOut,*)
-        WRITE(self%stdOut,*) "*************************************************************"
-        WRITE(self%stdOut,*) "                        Begin Test Suites"
-        WRITE(self%stdOut,*) "*************************************************************"
+          
+          WRITE(self % stdOut,*)
+          WRITE(self % stdOut,*) "*************************************************************"
+          WRITE(self % stdOut,*) "                        Begin Test Suites"
+          WRITE(self % stdOut,*) "*************************************************************"
         
-          current => self%testCasesHead
+          current => self % testCasesHead
           DO WHILE (ASSOCIATED(current))
           
             CALL initializeSharedAssertionsManager
             
-            CALL current%TestSubroutine
+            CALL current % TestSubroutine
             
             IF ( numberOfAssertionFailures() /= 0 )     THEN
                numberOfFailedTests = numberOfFailedTests + 1 
             END IF 
                
-            CALL SummarizeFTAssertions(current%testName,self%stdOut)
+            CALL SummarizeFTAssertions(current % testName,self % stdOut)
             
             CALL finalizeSharedAssertionsManager
             
-            current => current%next
+            current => current % next
           END DO
         
-        WRITE(self%stdOut,*)
-        WRITE(self%stdOut,*) "*************************************************************"
-        WRITE(self%stdOut,*) "                     Summary of failed test suites"
-        WRITE(self%stdOut,*)  numberOfFailedTests," suite(s) failed out of ", self%numberOfTests 
-        WRITE(self%stdOut,*) "*************************************************************"
+        WRITE(self % stdOut,*)
+        WRITE(self % stdOut,*) "*************************************************************"
+        WRITE(self % stdOut,*) "                     Summary of failed test suites"
+        WRITE(self % stdOut,*)  numberOfFailedTests," suite(s) failed out of ", self % numberOfTests 
+        WRITE(self % stdOut,*) "*************************************************************"
 
           
       END SUBROUTINE performTests    

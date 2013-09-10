@@ -27,16 +27,16 @@
 !     Setup
 !     -----
 !
-      CALL testSuite % init
+      CALL testSuite % init()
       
       CALL testSuite % addTestSubroutineWithName(FTValueClassTests,"FTValueClass Tests")
       CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,"FTDictionaryClass Tests")
-      CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,"FTExceptionClass Tests")
       CALL testSuite % addTestSubroutineWithName(FTValueDictionaryClassTests,"FTValueDictionaryClass Tests")
       CALL testSuite % addTestSubroutineWithName(FTLinkedListClassTests,"FTLinkedListClass Tests")
       CALL testSuite % addTestSubroutineWithName(StackClassTests,"StackClass Tests")
       CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,"Mutable Array Tests")
       CALL testSuite % addTestSubroutineWithName(HashTableTests,"Hash Table Tests")
+      CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,"FTExceptionClass Tests")
 !
 !     -------------
 !     Run the tests
