@@ -265,6 +265,8 @@
          CLASS(FTLinkedList)      , POINTER :: list
          CLASS(FTLinkedListRecord), POINTER :: recordPtr
          
+         IF(.NOT.ASSOCIATED(list % head)) RETURN
+         
          IF ( .NOT.ASSOCIATED( self % head ) )     THEN
             self % head => list % head
             self % tail => list % head
