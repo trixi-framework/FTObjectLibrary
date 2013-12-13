@@ -264,25 +264,23 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTLinkedList)      , POINTER :: list
          CLASS(FTLinkedListRecord), POINTER :: recordPtr
+         LOGICAL                            :: circular
+         CLASS(FtObject)          , POINTER :: obj
          
          IF(.NOT.ASSOCIATED(list % head)) RETURN
          
-         IF ( .NOT.ASSOCIATED( self % head ) )     THEN
-            self % head => list % head
-            self % tail => list % head
-         ELSE
-            self % tail % next     => list % head
-            list % head % previous => self % tail
-            self % tail            => list % tail
-         END IF
+         circular = list % isCircular()
+         CALL list % makeCircular(.FALSE.)
 
          recordPtr => list % head
-
          DO WHILE(ASSOCIATED( recordPtr ))
-            CALL recordPtr % retain()
-            self % nRecords = self % nRecords + 1
+            obj => recordPtr % recordObject
+            CALL self % add(obj)
+            
             recordPtr => recordPtr % next
          END DO
+         
+         CALL list % makeCircular(circular) 
          
       END SUBROUTINE addObjectsFromList 
 !
@@ -488,6 +486,8 @@
             CALL self % FTObject % destruct()
             RETURN
          END IF
+         
+         CALL self % makeCircular(.FALSE.)
 
          listRecord => self % head
          DO WHILE (ASSOCIATED(listRecord))
@@ -542,24 +542,30 @@
 ! 
       SUBROUTINE printFTLinkedListDescription(self,iUnit)  
          IMPLICIT NONE  
-         CLASS(FTLinkedList)                         :: self
-         INTEGER                                     :: iUnit
-         CLASS(FTLinkedListRecord), POINTER          :: listRecord
+         CLASS(FTLinkedList)                 :: self
+         INTEGER                             :: iUnit
+         CLASS(FTLinkedListRecord), POINTER  :: listRecord
+         LOGICAL                             :: circular
          
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
+         
+         IF(self % isCircular_) circular = .TRUE.
+         CALL self % makeCircular(.FALSE.)
          
          listRecord              => self % head
 
          DO WHILE (ASSOCIATED(listRecord))
             CALL listRecord % recordObject % printDescription(iUnit)
             listRecord => listRecord % next
-            IF ( self % isCircular_ )     THEN
-               IF ( ASSOCIATED(listRecord,self % head) )     THEN
-                  EXIT 
-               END IF  
-            END IF 
+!            IF ( self % isCircular_ )     THEN
+!               IF ( ASSOCIATED(listRecord,self % head) )     THEN
+!                  EXIT 
+!               END IF  
+!            END IF 
          END DO
+         
+         IF(circular) CALL self % makeCircular (.TRUE.)
          
       END SUBROUTINE printFTLinkedListDescription
 !
@@ -567,10 +573,9 @@
 ! 
       SUBROUTINE reverseLinkedList(self)
 !
-!     ----------------------------------------------
-!     Returns a retained copy of the list that runs 
-!     in the opposite order
-!     ----------------------------------------------
+!     ------------------------
+!     Reverses the linked list
+!     ------------------------
 !
          IMPLICIT NONE 
 !
@@ -633,6 +638,28 @@
          END SELECT
          
       END SUBROUTINE castObjectToLinkedList
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION linkedListFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the LinkedList class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject)    , POINTER :: obj
+         CLASS(FTLinkedList), POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTLinkedList)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION linkedListFromObject
 !
       END MODULE FTLinkedListClass
 !
@@ -857,7 +884,7 @@
             ELSE
                self % list => list
                CALL self % list % retain()
-               CALL self % setToStart
+               CALL self % setToStart()
             END IF 
             
          ELSE

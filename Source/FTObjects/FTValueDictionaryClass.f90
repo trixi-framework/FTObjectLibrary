@@ -288,6 +288,50 @@
          END SELECT
          
       END SUBROUTINE castObjectToValueDictionary
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION valueDictionaryFromDictionary(dict) RESULT(valueDict)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the FTException class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTDictionary)     , POINTER :: dict
+         CLASS(FTValueDictionary), POINTER :: valueDict
+         
+         valueDict => NULL()
+         SELECT TYPE (dict)
+            TYPE is (FTValueDictionary)
+               valueDict => dict
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION valueDictionaryFromDictionary
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION valueDictionaryFromObject(obj) RESULT(valueDict)
+!
+!     -----------------------------------------------------------
+!     Cast the base class FTObject to the FTValueDictionary class
+!     -----------------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTValueDictionary), POINTER :: valueDict
+         CLASS(FTObject)         , POINTER :: obj
+         
+         obj => NULL()
+         SELECT TYPE (obj)
+            TYPE is (FTValueDictionary)
+               valueDict => obj
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION valueDictionaryFromObject
  
       
       END Module FTValueDictionaryClass    

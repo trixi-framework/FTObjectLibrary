@@ -59,8 +59,8 @@
 !
 !         CALL array % printDescription(6) ! To print the array, if desired.
          DO i = 1, 10
-            obj => array % objectAtIndex(i) ! Get the object
-            CALL cast(obj,v)                ! Convert it to a value. We *should* check and see that v is associated.
+            obj => array % objectAtIndex(i)   ! Get the object
+            v   => valueFromObject(obj = obj) ! Convert it to a value. We *should* check and see that v is associated.
             CALL AssertEqual(values(i),v % integerValue(),"Object values")
          END DO
 !
@@ -82,7 +82,7 @@
 !        ----------------------
 !
          obj => array % objectAtIndex(5)
-         CALL cast(obj,v)
+         v   => valueFromObject(obj = obj)
          CALL AssertEqual(22, v % integerValue(),"Replacement value")
          CALL AssertEqual(1, v % refCount(),"Refcount after main release")
 !

@@ -600,6 +600,28 @@
          END SELECT
          
       END SUBROUTINE castToValue
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION valueFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the FTValue class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue) , POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTValue)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION valueFromObject
 !!
 !!//////////////////////////////////////////////////////////////////////// 
 !! 

@@ -203,7 +203,29 @@
          END SELECT
          
       END SUBROUTINE castToException
-      
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION exceptionFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the FTException class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject)   , POINTER :: obj
+         CLASS(FTException), POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTException)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION exceptionFromObject
+
       END Module FTExceptionClass
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -394,7 +416,7 @@
             CALL initializeFTExceptions 
          ELSE
             CALL errorStack % pop(obj)
-            CALL cast(obj,popLastException)
+            IF(ASSOCIATED(obj)) CALL cast(obj,popLastException)
          END IF 
          
       END FUNCTION popLastException

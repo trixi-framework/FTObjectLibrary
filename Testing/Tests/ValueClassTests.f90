@@ -6,7 +6,16 @@
 !      By: David Kopriva  
 !
 !     Demonstrate and test the components of 
-!     the FTValue class
+!     the FTValue class. An FTValue is a wrapper
+!     to a
+!         double precision
+!         real
+!         logical
+!         string of length FTVALUE_STRING_LENGTH
+!         integer
+!         
+!     These values can then be stored in one of the collection
+!     classes.
 !
 !////////////////////////////////////////////////////////////////////////
 !

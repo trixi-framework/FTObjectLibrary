@@ -70,9 +70,9 @@
          CALL subroutineThatThrowsError
          
          IF ( catch("FTTestException") )     THEN
-            e => errorObject()
-            d => e % infoDictionary()
-            CALL castDictionaryToValueDictionary(d,userDictionary)
+            e              => errorObject()
+            d              => e % infoDictionary()
+            userDictionary => valueDictionaryFromDictionary(dict = d)
             
             msg = userDictionary % stringValueForKey("message",FTDICT_KWD_STRING_LENGTH)
             CALL AssertEqual(msg,"An error has occurred","String for key: message")

@@ -131,6 +131,28 @@
          END SELECT
          
       END SUBROUTINE castObjectToMatrixData
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION matrixDataCast(obj)  RESULT(cast)
+         IMPLICIT NONE  
+!
+!        -----------------------------------------------------
+!        Cast the base class FTObject to the FTException class
+!        -----------------------------------------------------
+!
+         CLASS(FTObject)  , POINTER :: obj
+         CLASS(MatrixData), POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (MatrixData)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION matrixDataCast
       
       END Module FTHashTableData
 !@mark -
@@ -383,6 +405,28 @@
             hashTableSize = 0
          END IF 
       END FUNCTION hashTableSize
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION hashTableFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the FTException class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject)   , POINTER :: obj
+         CLASS(FTHashTable), POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTHashTable)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION hashTableFromObject
 !
 !////////////////////////////////////////////////////////////////////////
 !

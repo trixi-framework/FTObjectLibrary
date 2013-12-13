@@ -325,15 +325,15 @@
 !        -------------------------------------------
 !
          CALL iterator % initWithFTLinkedList(list1)
-         CALL iterator % setToStart
+         CALL iterator % setToStart()
          j = 1
          DO WHILE (.NOT.iterator % isAtEnd())
             objectPtr => iterator % object()
-            CALL cast(objectPtr,v)
+            v         => valueFromObject(obj = objectPtr)
             CALL AssertEqual(j, v % integerValue(),"Item value stored properly")
             IF ( j >= 6 )     THEN
-               recordPtr => iterator % currentRecord()
-               CALL AssertEqual(2, recordPtr % refCount(), "Records owned by two lists")
+               objectPtr => iterator % object()
+               CALL AssertEqual(2, objectPtr % refCount(), "Records owned by two lists")
             END IF 
             CALL iterator % moveToNext()
             j = j + 1
@@ -360,12 +360,11 @@
          DO WHILE (.NOT.iterator % isAtEnd())
          
             objectPtr => iterator % object()
-            CALL cast(objectPtr,v)
+            v         => valueFromObject(obj = objectPtr)
             CALL AssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
             CALL AssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
-            recordPtr => iterator % currentRecord()
-            CALL AssertEqual(1, recordPtr % refCount(), "Objects owned by one list")
+            CALL AssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j + 1
          END DO
@@ -381,12 +380,11 @@
          DO WHILE (.NOT.iterator % isAtEnd())
          
             objectPtr => iterator % object()
-            CALL cast(objectPtr,v)
+            v         => valueFromObject(objectPtr)
             CALL AssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
             CALL AssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
-            recordPtr => iterator % currentRecord()
-            CALL AssertEqual(1, recordPtr % refCount(), "Objects owned by one list")
+            CALL AssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j - 1
          END DO
@@ -453,7 +451,7 @@
          DO WHILE( .NOT.iterator % isAtEnd() )
             IF ( j == 6 )     THEN
                obj => iterator % object()
-               CALL cast(obj,v)
+               v   => valueFromObject(obj = obj)
                CALL assertEqual(6,v % integerValue(),"Value of object to be deleted")
                CALL iterator % removeCurrentRecord() 
             END IF  
@@ -472,7 +470,7 @@
          DO WHILE( .NOT.iterator % isAtEnd() )
             IF ( j == 3 )     THEN
                obj => iterator % object()
-               CALL cast(obj,v)
+               v   => valueFromObject(obj)
                CALL assertEqual(3,v % integerValue(),"Value of object to be deleted")
                CALL iterator % removeCurrentRecord() 
                EXIT 
@@ -483,7 +481,7 @@
         
          CALL assertEqual(4,list % COUNT(),"Count after deletion of middle object")
          obj => iterator % object()
-         CALL cast(obj,v)
+         v   => valueFromObject(obj = obj)
          CALL assertEqual(4,v % integerValue(),"Value of current object after deleting")
 !
 !        ---------------------------------
@@ -492,10 +490,10 @@
 !
          recordPtr => iterator % currentRecord()
          obj => recordPtr % previous % recordObject
-         CALL cast(obj,v)
+         v   => valueFromObject(obj)
          CALL assertEqual(2,v % integerValue(), "Value of previous object after deleting")
          obj => recordPtr % next % recordObject
-         CALL cast(obj,v)
+         v   => valueFromObject(obj)
          CALL assertEqual(5,v % integerValue(), "Value of next object after deleting")
 !
 !        -----------------------
@@ -506,7 +504,7 @@
          CALL iterator % removeCurrentRecord()
          CALL assertEqual(3, list % COUNT(), "count after deleting head")
          obj => iterator % object()
-         CALL cast(obj,v)
+         v   => valueFromObject(obj)
          CALL assertEqual(2,v % integerValue(),"Value of current head after deleting")
 !
 !        --------

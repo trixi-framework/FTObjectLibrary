@@ -18,9 +18,9 @@
 !        Example values and keys
 !        -----------------------
 !
-         CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys = ["first ","second","third ","fourth"]
-         INTEGER                                , DIMENSION(4) :: values = [1,2,3,4]
-         REAL                                   , DIMENSION(4) :: realValues = [1.1, 2.1, 3.1, 4.1]
+         CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys         = ["first ","second","third ","fourth"]
+         INTEGER                                , DIMENSION(4) :: values       = [1,2,3,4]
+         REAL                                   , DIMENSION(4) :: realValues   = [1.1, 2.1, 3.1, 4.1]
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: stringValues = ['1', '2', '3', '4']
          INTEGER                                               :: i, s
          REAL                                                  :: x

@@ -179,6 +179,7 @@
          END IF 
             
          p => self % head % recordObject
+         IF(.NOT.ASSOCIATED(p)) RETURN 
          CALL p % retain()
          
          tmp => self % head
@@ -192,5 +193,27 @@
          self % nRecords = self % nRecords - 1
 
       END SUBROUTINE pop
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION stackFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the LinkedList class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject), POINTER :: obj
+         CLASS(FTStack) , POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTStack)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION stackFromObject
     
       END Module FTStackClass    

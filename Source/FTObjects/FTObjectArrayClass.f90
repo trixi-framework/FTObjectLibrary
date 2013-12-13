@@ -227,8 +227,8 @@
                DEALLOCATE(obj)
                obj => NULL() 
             END IF
-         ELSE
-            RETURN 
+!         ELSE
+!            RETURN 
          END IF 
          
          self % array(indx) %  object => replacement
@@ -387,6 +387,28 @@
 !> 
 !> Cast a pointer to the base class to an FTMutableObjectArray pointer 
 !---------------------------------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION objectArrayFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the FTException class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject)            , POINTER :: obj
+         CLASS(FTMutableObjectArray), POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTMutableObjectArray)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION objectArrayFromObject
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

@@ -53,8 +53,8 @@
          t = hashTable % containsKeys(2,3)
          CALL assertEqual(.TRUE.,t,"contains value for key")
          
-         obj => hashTable % objectforKeys(2,3)
-         CALL cast(obj,vTest)
+         obj   => hashTable % objectforKeys(2,3)
+         vTest => valueFromObject(obj)
          CALL assertEqual(42,vTest % integerValue(),"Table entry retrieval")
 
          CALL hashTable % release()
@@ -87,10 +87,10 @@
 !
          DO j = 1,N
             DO i = 1,N
-               h1 = Hash1([i,j])
-               h2 = Hash2([i,j])
-               obj => hashTable % objectForKeys(h1,h2)
-               CALL cast(obj,vTest)
+               h1    =  Hash1([i,j])
+               h2    =  Hash2([i,j])
+               obj   => hashTable % objectForKeys(h1,h2)
+               vTest => valueFromObject(obj)
                
                CALL assertEqual(1  , vTest % refCount(),"Table add refCount")
                CALL assertEqual(i+j, vTest % integerValue(), "Table entry value")

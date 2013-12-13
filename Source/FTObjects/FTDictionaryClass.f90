@@ -30,8 +30,8 @@
 !           --------
 !          
             PROCEDURE :: initWithObjectAndKey
-            PROCEDURE :: destruct    => destructFTKeyObjectPair
-            PROCEDURE :: description => FTKeyObjectPairDescription
+            PROCEDURE :: destruct         => destructFTKeyObjectPair
+            PROCEDURE :: description      => FTKeyObjectPairDescription
             PROCEDURE :: printDescription => printFTKeyObjectPairDescription
             
             PROCEDURE :: key
@@ -428,6 +428,28 @@
          END SELECT
          
       END SUBROUTINE castToDictionary
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION dictionaryFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the FTException class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject)    , POINTER :: obj
+         CLASS(FTDictionary), POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTDictionary)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION dictionaryFromObject
 
       END Module FTDictionaryClass    
       
