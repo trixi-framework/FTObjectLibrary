@@ -175,6 +175,7 @@
          USE FTKeyObjectPairClass
          USE FTLinkedListClass
          USE FTLinkedListIteratorClass
+         USE FTMutableObjectArrayClass
          IMPLICIT NONE  
          
          TYPE, EXTENDS(FTObject) :: FTDictionary
@@ -190,6 +191,8 @@
             PROCEDURE :: init
             PROCEDURE :: setCaseSensitive
             PROCEDURE :: caseSensitive
+            PROCEDURE :: allKeys
+            PROCEDURE :: allObjects
             PROCEDURE :: destruct => destructFTDictionary
             PROCEDURE :: addObjectForKey
             PROCEDURE :: description => FTDictionaryDescription
@@ -405,7 +408,107 @@
                CALL self % entries(i) % printDescription(iUnit)
             END DO
             
-         END SUBROUTINE printFTDictionaryDescription    
+         END SUBROUTINE printFTDictionaryDescription
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+         FUNCTION AllObjects(self) RESULT(objectArray)
+            IMPLICIT NONE  
+!
+!           ---------
+!           Arguments
+!           ---------
+!
+            CLASS(FTDictionary)                  :: self
+            CLASS(FTMutableObjectArray), POINTER :: objectArray 
+!
+!           ---------------
+!           Local Variables
+!           ---------------
+!
+            INTEGER                                 :: i
+            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr
+            CLASS(FTObject)               , POINTER :: obj
+            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
+!
+!           --------------------------------------------
+!           Allocate a pointer to the object array to be
+!           returned with refCount = 1
+!           --------------------------------------------
+!
+            ALLOCATE(objectArray)
+            CALL objectArray % initWithSize(arraySize = self % COUNT())
+            
+            DO i = 1, SIZE(self % entries)
+               listRecordPtr => self % entries(i) % head
+               DO WHILE(ASSOCIATED(listRecordPtr))
+!
+!                 --------------------------------------------
+!                 The list's recordObject is a FTKeyObjectPair
+!                 --------------------------------------------
+!
+                  SELECT TYPE (pair => listRecordPtr % recordObject)
+                     TYPE is (FTKeyObjectPair)
+                        keyString = pair % key()
+                        obj  => pair % object()
+                        CALL objectArray % addObject(obj)
+                     CLASS DEFAULT
+                  END SELECT
+                  listRecordPtr  => listRecordPtr % next
+               END DO    
+            END DO  
+            
+         END FUNCTION AllObjects
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+         FUNCTION AllKeys(self) RESULT(keys)
+            IMPLICIT NONE  
+!
+!           ---------
+!           Arguments
+!           ---------
+!
+            CLASS(FTDictionary)                              :: self
+            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
+!
+!           ---------------
+!           Local Variables
+!           ---------------
+!
+            INTEGER                                 :: i, c
+            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr
+            CLASS(FTObject)               , POINTER :: obj
+            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
+!
+!           --------------------------------------------
+!           Allocate a pointer to the object array to be
+!           returned with refCount = 1
+!           --------------------------------------------
+!
+            ALLOCATE(keys(self % COUNT()))
+            
+            c = 1
+            DO i = 1, SIZE(self % entries)
+               listRecordPtr => self % entries(i) % head
+               DO WHILE(ASSOCIATED(listRecordPtr))
+!
+!                 --------------------------------------------
+!                 The list's recordObject is a FTKeyObjectPair
+!                 --------------------------------------------
+!
+                  SELECT TYPE (pair => listRecordPtr % recordObject)
+                     TYPE is (FTKeyObjectPair)
+                        keyString = pair % key()
+                        keys(c)   = keyString
+                     CLASS DEFAULT
+                  END SELECT
+                  c = c + 1
+                  listRecordPtr  => listRecordPtr % next
+               END DO    
+            END DO  
+            
+         END FUNCTION AllKeys
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

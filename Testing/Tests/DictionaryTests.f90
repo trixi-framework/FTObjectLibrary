@@ -13,9 +13,12 @@
          USE FTAssertions
          IMPLICIT NONE  
          
-         TYPE(FTDictionary)       :: dict
-         CLASS(FTObject), POINTER :: obj
-         CLASS(FTValue) , POINTER :: v
+         TYPE(FTDictionary)                               :: dict
+         CLASS(FTObject)                        , POINTER :: obj
+         CLASS(FTValue)                         , POINTER :: v
+         CLASS(FTMutableObjectArray)            , POINTER :: storedObjects
+         CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: storedKeys(:)
+
          
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys   = ["first ","second","third ","fourth"]
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: values = ["one  ","two  ","three","four "]
@@ -53,7 +56,30 @@
                CALL assert(.false.,msg)
             END IF 
          END DO
-         
+!
+!        -------------------------
+!        Find the keys and objects
+!        -------------------------
+!
+!         storedKeys    => dict % AllKeys()
+!         storedObjects => dict % AllObjects()
+!         
+!         DO i = 1, 4
+!            obj => storedObjects % objectAtIndex(indx = i)
+!            v   => valueFromObject(obj)
+!            s   =  v%stringValue(FTDICT_KWD_STRING_LENGTH)
+!            PRINT *, TRIM(storedKeys(i)), "  ",TRIM(STRING = s)
+!         END DO   
+!
+!        ---------------
+!        Clean up memory
+!        ---------------
+!
+         DEALLOCATE(storedKeys)
+         CALL storedObjects % release()
+         IF ( storedObjects % isUnreferenced() )     THEN
+            DEALLOCATE(storedObjects) 
+         END IF 
          CALL dict % release()
          
       END SUBROUTINE FTDictionaryClassTests    
