@@ -1,0 +1,939 @@
+\documentclass[9pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\usepackage{url}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{listings}
+\usepackage[colorlinks]{hyperref}
+\usepackage{color}
+%\hypersetup{citecolor=DeepPink4}
+%\hypersetup{linkcolor=DarkRed}
+%\hypersetup{urlcolor=blueColor}
+%\usepackage{cleveref}
+
+
+\textwidth = 6.5 in
+\textheight = 9 in
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = 0.0 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.2in
+\parindent = 0.0in
+\renewcommand{\familydefault}{\sfdefault}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{FTObjectLibrary}
+\author{David A. Kopriva}
+\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\lstset{language=Fortran}          % Set your language (you can change the language for each code-block optionally)
+\tableofcontents{}
+\section{Introduction}
+  FTObjectLibrary provides a collection of reference counted Fortran 2003 classes to 
+ facilitate writing generic object oriented Fortran programs. Reference counting
+ is implemented to assist with memory management so that the lifespans of objects
+ are properly maintained and are so that objects are deleted only when no other references are made to them.
+
+
+ FTObjectLibrary tries, as much as the maturity of Fortran compilers allow, to
+ use the new F2003/2008 features to make generic programming possible. The LCD
+ for the library is gfortran, and as modern features get implemented in the
+ compiler, FTObjectLibrary will be updated to include those features. In the meantime, there
+ are a few workarounds that exist.
+
+ The library is inspired, for the large part, by 
+ \href{https://developer.apple.com/library/mac/documentation/General/Conceptual/CocoaEncyclopedia/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010810-CH1-SW1}{Apple's Cocoa Foundation Framework}. 
+ Reading about the philosophy behind that
+ would go a long way towards understanding the why's and wherefore's of the FTObjectLibrary.
+
+ The library includes
+ three categories of classes:
+ \begin{itemize}
+\item Value classes
+\item Container classes
+\item Error reporting and testing classes
+\end{itemize}
+% \subsection{Value Classes}
+
+ Value classes include the base class, FTObject and a subclass, FTValue.
+ \begin{itemize}
+ \item {\bf FTObject}
+ 
+  FTObject is the base class that implements
+ the reference counting mechanism and other functions that should be overridden in subclasses.
+ It the base class for all classes in the FTObjectLibrary library. You will usually not allocate objects
+ of this class. Instead you will create subclasses of it that have data and procedures as needed.
+ \item {\bf FTValue}
+ 
+  FTValue is a wrapper class that
+ allows storage of real, integer, character and logical
+ values, which can then be stored in containers. Programmers can create their own value
+ classes by extending FTObject and store instances of those classes in the containers.
+ 
+ \end{itemize}
+
+% \subsection{Container Classes}
+ Container classes let you store any subclass of the base class FTObject in them. This makes it easy to
+ store, for instance, a linked list of linked lists, or an array of dictionaries.
+ Included in the library are the following standard container classes:
+ \begin{itemize}
+\item {\bf FTLinkedList}
+
+FTLinkedList is an implementation of a doubly (and, optionally, circular) linked list.
+
+\item {\bf FTStack}
+
+FTStack is a subclass of FTLinkedList that adds the usual push, pop, and peek routines.
+
+\item {\bf FTDictionary}
+
+FTDictionary is an ``associative container'', that associates a string to another object. 
+
+\item {\bf FTValueDictionary}
+
+FTValueDictionary is a subclass of FTDictionary that has additional methods to store and retrieve
+values.
+
+\item {\bf FTObjectArray}
+
+A mutable one-dimensional array class that can store any object.
+
+\end{itemize}
+
+% \subsection {Error and Testing Classes}
+ The library also contains classes for testing (FTAssertions, TestSuiteManagerClass) and for reporting
+ errors through the FTException class.
+
+% \subsection {Example Usage}
+To give an idea about how to use the library, we show how to use a dictionary to store a real value and a string that describes the value.
+In the snippet of code below, we prepare the dictionary for objects to be added to it by the init() method. We then create two values that are
+added to the dictionary. 
+
+{\color{blue}\begin{verbatim}
+         SUBROUTINE constructDictionary(dict)
+                 CLASS(FTDictionary), POINTER :: dict
+                 CLASS(FTObject)    , POINTER :: obj
+                 CLASS(FTValue)     , POINTER :: v
+                 
+                 ALLOCATE(dict)
+                 CALL dict % initWithSize(64)
+	         
+                 ALLOCATE(v)
+                 CALL v % initWithValue(3.14159)
+                 obj => v
+                 CALL dict % addObjectForKey(obj,``Pi'')
+                 CALL v % release()
+	         
+                 ALLOCATE(v)
+                 CALL v % initWithValue(``Ratio of circumference to radius'')
+                 obj => v
+                 CALL dict % addObjectForKey(obj,"definition")
+                 CALL v % release()
+         END SUBROUTINE constructDictionary
+\end{verbatim}}
+ 
+ Notice that in the subroutine we have allocated memory for the dictionary ``dict'' and two FTValue objects. The dictionary
+ is returned to the calling procedure and can be accessed by the actual argument. The two value objects would normally
+ be expected to be deallocated when leaving the subroutine, since otherwise they would not be accessible outside
+ of the procedure. It would be dangerous if we deallocated the two objects that we created and then try to use them later through
+the dictionary. This is where a systematic approach to memory management comes in. When we allocate and initialize an object, we assume ownership of it.
+When we add it to the dictionary, it assumes partial ownership. So instead of deallocating the two value objects, we relinquish ownership
+by way of the release() procedure, leaving only the dictionary to be responsible for deallocating them when it does not need them any more.
+  
+ We use the dictionary a shown in the next snippet of code:
+
+{\color{blue}\begin{verbatim}
+            CLASS(FTDICTIONARY), POINTER :: dict
+            CLASS(FTObject)    , POINTER :: obj
+            CLASS(FTValue)     , POINTER :: v
+            REAL                         :: pi
+            CHARACTER                    :: s(FTDICT_KWD_STRING_LENGTH)
+            CALL constructDictionary(dict)
+            
+            obj => dict % objectForKey("Pi")
+            v   => valueFromObject(obj)
+            pi = v % realValue()
+            
+            obj => dict % objectForKey(``definition'')
+            v   => valueFromObject(obj)
+            s = v % stringValue(FTDICT_KWD_STRING_LENGTH)
+            PRINT *, "The num pi = ", pi," is defined as", TRIM(s)
+            CALL dict % release()
+            IF( dict % isUnreferenced() ) DEALLOCATE(dict)
+            DEALLOCATE(dict)
+\end{verbatim}}
+  
+ In this snippet, the values for the two keys ``Pi'' and ``definition'' are retrieved and then used.
+ (Notice the fixed length string workaround.)
+ The function valueFromObject() converts the generic object to the specific FTValue type. Finally, the dictionary is
+ released, which will release all of its objects and then deallocate all of those objects that it is
+ sole owner of, which in this example is both the value and definition of $\pi$, and then DEALLOCATE it
+ if it is no longer owned (referenced) by another object, which is the case here.
+ 
+ In this way, any object that inherits from FTObject can be stored in a container, including other containers, making these
+ containers quite generic, up to the limits of the language.
+
+ \section {Memory Management}
+ FTObjectLibrary uses a manual retain-release memory management model known as reference counting. A description of 
+ this model can be found at 
+ \url{https:developer.apple.com/library/mac/#documentation/cocoa/Conceptual/MemoryMgmt/Articles/mmRules.html#apple_ref/doc/uid/20000994-BAJHFBGH}.
+ The basic idea is that a pointer object exists as long as someone "owns" it. When no one owns it any more, the last owner
+ is responsible for deallocating the object. This approach makes it easy to keep track of when to deallocate
+ pointers, and ensures that a pointer that is in use is not prematurely deallocated. In long, complex, programs, this mechanism automatically keeps track of which
+ objects (pointers) that have been allocated need to be deallocated, and when.
+  
+ Ownership rules are as follows:
+ \begin{itemize}
+\item If you allocate() and initialize an object, you own it.
+\item You own an object if you call the retain() subroutine on that object.
+\item You may inherit the ownership of an object by allying a method that creates (allocates and initializes) it.
+\item When you no longer need an object you must release it using the release() subroutine, and if you are the last owner, you must deallocate it.
+\item You must neither relinquish ownership, nor deallocate, a pointer object that you do not own.
+\item You generally do not own objects returned as pointers by functions or subroutines.
+  \end{itemize}
+ In the example below, the main program creates a linked list to store points in, a ``point'' object (e.g. that stores x,y,z values), and adds
+ the point object to the linked list. 
+
+{\color{blue}\begin{verbatim}
+      PROGRAM main
+         CLASS(FTLinkedList), POINTER :: list ! Subclass of FTObject
+         CLASS(Point)       , POINTER :: pnt  ! Subclass of FTObject
+         CLASS(FTObject)    , POINTER :: obj
+         
+         ALLOCATE(list)
+         CALL list % init() ! main now owns the list
+         
+         ALLOCATE(pnt)
+         CALL pnt % initWithXYZ(0.0,0.0,0.0) ! main now owns pnt
+         
+         obj => pnt
+         CALL list % add(obj) !list also owns pnt
+         CALL pnt % release() ! main gives up ownership to pnt
+         ! For the case where we are the last owner. Is .FALSE. here.
+         IF ( pnt % isUnreferenced() )     THEN
+            DEALLOCATE(pnt) 
+         END IF 
+         .
+         .
+         .
+         ! we're done with the list, it will deallocate pnt since the list is the last owner.
+         CALL list % release() 
+         IF( list % isUnreferenced() )     THEN ! main IS the last owner, and must deallocate.
+            DEALLOCATE(list)
+         END IF
+
+      END PROGRAM main
+\end{verbatim}}
+
+\section{Class Descriptions}
+
+\subsection{FTObject}
+
+ FTObject defines the basic methods that are essential for reference counted objects.
+FTObject is generally not going to be instantiated by itself, but rather it will 
+ be subclassed and you will work with instances of the subclasses. FTValue, for instance,
+ is a subclass of FTObject.
+ Otherwise, pointers of type FTObject that point to instances of subclasses
+ will be stored in the container classes.
+
+
+ \subsubsection{Tasks}
+\begin{itemize}
+\item {\bf init()}
+
+      Initializes an object and any memory that it needs to allocate, etc. 
+      Should be implemented in subclasses.The base class implementation does nothing but
+      increase the reference count of the object.
+
+\item {\bf destruct()}
+
+      Destructor of the object, which releases and deallocates owned objects and memory.
+      Should be implemented in subclasses. The base class implementation does nothing but
+      decrease the reference count of the object. \emph{One does not call the destruct 
+      subroutine except to call the superclass destruct in a subclasses destructor.}
+
+\item {\bf printDescription(iUnit)}
+
+      Prints a description of the object to a specified file unit. The base class implementation
+      does nothing but print ``FTObject''
+
+\item{\bf  copy()}
+
+      Creates a copy (pointer) to the object of CLASS(FTObject) sourced with the object.
+
+\item {\bf retain()}
+
+      Increases the reference count of the object. Any procedure or object that retain()'s
+      an object gains an ownership stake in that object. \emph{This procedure is not overridable.}
+
+\item {\bf release()}
+
+      Decreases the reference count of an object. To be called only by objects or procedures
+      that have ownership in an object, i.e., for which init() or retain() have been called.
+      The last owner of an object is responsible for deallocating a pointer to an object.
+      \emph{This procedure is not overridable.}
+
+\item {\bf isUnreferenced()}
+
+      Test to see if there are no more owners of an object. If true, then the last owner is responsible
+      for deallocating the pointer. \emph{This procedure is not overridable.}
+
+\item {\bf refCount()}
+
+      Returns the number of owners of an object. Usually this is of interest only for debugging purposes.
+      \emph{This procedure is not overridable.}
+\end{itemize}
+
+ \subsubsection{Subclassing FTObject}
+
+ In general, subclasses of FTObject implement
+\begin{itemize}
+\item {\bf init()}
+\item {\bf destruct()}
+\item {\bf printDescription()}
+\end{itemize}
+ 
+% A subclass should also provide function to convert from the base class to a subclass.
+% The procedure can look something like
+%
+%{\color{blue}\begin{verbatim}
+%      FUNCTION subclassFromObject(obj) RESULT(cast)
+%         IMPLICIT NONE  
+%         CLASS(FTObject), POINTER :: obj
+%         CLASS(SubClass), POINTER :: cast
+%         
+%         cast => NULL()
+%         SELECT TYPE (e => obj)
+%            TYPE is (SubClass)
+%               cast => e
+%            CLASS DEFAULT
+%               
+%         END SELECT
+%         
+%      END FUNCTION subclassFromObject
+%\end{verbatim}}
+
+
+{\bf Implementing init() }
+
+ The init() procedure performs subclass specific operations to initialize an object.
+
+ Subclasses that override init() must include 
+ a call to the super class method. For example, overriding init looks like
+
+{\color{blue}\begin{verbatim}
+      SUBROUTINE initSubclass(self) 
+         IMPLICIT NONE
+         CLASS(Subclass) :: self
+         
+         CALL self % FTObject % init()
+         Allocate and initialize all member objects
+         ... Other Subclass specific code
+      END SUBROUTINE initSubclass
+\end{verbatim}}
+
+{\bf Implementing destruct()}
+
+ The destruct() procedure reverses the operations done in the init() procedure. It releases and
+ deallocates any pointers that it owns.  Subclasses that override destruct() must include 
+ a call to the super class method. For example, overriding destruct looks like
+
+{\color{blue}\begin{verbatim}
+      SUBROUTINE destructSubclass(self) 
+         IMPLICIT NONE
+         CLASS(Subclass) :: self
+         
+         Release and deallocate (if necessary) all member objects
+         CALL self % FTObject % destruct()
+         
+      END SUBROUTINE destructSubclass
+\end{verbatim}}
+
+{\bf Implementing printDescription(iUnit)}
+
+ printDescription is a method whose existence is to support debugging. Call printDescription(iUnit)
+ on any objects owned by self for a cascading of what is stored in the object.
+
+
+{\bf Converting an object from the base to a subclass}
+
+ Container classes and the copy function return pointers to a CLASS(FTObject). To use
+ any subclass features one must ``cast'' or convert a pointer to a pointer to the subclass. We like to have a specific 
+ cast routine to do this as painlessly as possible. Each subclass should include a 
+ function like this:
+
+{\color{blue}\begin{verbatim}
+      FUNCTION subclassFromSuperclass(obj) RESULT(cast)
+         IMPLICIT NONE  
+         CLASS(FTObject), POINTER :: obj
+         CLASS(Subclass), POINTER :: cast
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (Subclass)
+               cast => e
+            CLASS DEFAULT
+         END SELECT
+      END FUNCTION subclassFromSuperclass
+\end{verbatim}}
+
+\subsection{FTValue}
+ FTValue is a not completely F2003/2008 version of an immutable class
+ to store primitive values: integer, real, double precision, logical,
+ character. (To Add: complex)
+
+ This version does not use CLASS(*) or deferred length strings
+ so that it can be used with gfortran 4.7/4.8
+
+ \subsubsection{Usage}
+\begin{itemize}
+\item Initialization
+
+{\color{blue}\begin{verbatim}
+            TYPE(FTValue) :: r, i, s, l, d
+
+            CALL r % initValue(3.14)
+            CALL i % initValue(6)
+            CALL d % initValue(3.14d0)
+            CALL l % initValue(.true.)
+            CALL s % initValue("A string")
+\end{verbatim}}
+
+\item Destruction 
+
+{\color{blue}\begin{verbatim}
+            CALL r % destruct()   *See method definition
+\end{verbatim}}
+
+\item Accessors
+
+{\color{blue}\begin{verbatim}
+            real = r % realValue()
+            int  = i % integerValue()
+            doub = d % doublePrecisionValue()
+            logc = l % logicalValue()
+            str  = s % stringValue(nChars)
+\end{verbatim}}
+
+\item Description
+
+{\color{blue}\begin{verbatim}
+            str = v % description()
+            call v % printDescription(unit)
+\end{verbatim}}
+
+\item Converting a generic object to an FTValue
+
+{\color{blue}\begin{verbatim}
+            CLASS(FTValue) , POINTER :: v
+            CLASS(FTObject), POINTER :: obj
+            v => valueFromObject(obj)
+\end{verbatim}}
+\end{itemize} 
+ The class will attempt to convert between the different types:
+
+{\color{blue}\begin{verbatim}
+            CALL r % initWithReal(3.14)
+            print *, r % stringValue(8)
+
+            Logical variables rules:
+
+            real, doublePrecision, integer values
+            logicalValue = .FALSE. if input = 0
+            logicalValue = .TRUE.  if input /= 0
+\end{verbatim}}
+
+ String values can be converted to numeric types. If the string is
+ not a numeric, $Huge(x)$ will be returned, where $x$ is of the
+ requested type.
+
+\subsection{Linked Lists}
+
+A linked list is a dynamic container that links the objects added to it in a chain. The chain can be of 
+any length and objects can be added or removed at any time and at any location in the chain. Linked lists
+are useful when you don't know how many objects will be stored. They are fast to add or delete
+objects from, but they are slow to access any given object. To access objects, you start at the beginning
+of the chain and then follow the chain it until you reach the desired entry. You use a linked list when sequential
+access is more typical than random access. Special classes of linked lists are singly linked lists, which
+can be followed in only one direction from the start, double linked lists that can be followed in either direction,
+and circular lists where the ends are connected.
+
+\subsubsection{FTLinkedList}
+ FTLinkedList is a container class that stores objects in a doubly linked list. Optionally, the list
+ can be made circular. As usual, FTLinkedList inherits from FTObjectClass.
+ 
+ 
+      {\bf Definition (Subclass of FTObject):}
+	{\color{blue}\begin{verbatim}
+               TYPE(FTLinkedList) :: list
+	\end{verbatim}}
+	
+     { \bf Usage:}
+     
+\begin{itemize}
+         \item Initialization
+
+		{\color{blue}\begin{verbatim}
+	               CLASS(FTLinkedList), POINTER :: list
+	               ALLOCATE(list)
+	               CALL list % init()
+		\end{verbatim}
+}
+         \item Adding an object
+
+		{\color{blue}\begin{verbatim}
+	               CLASS(FTLinkedList), POINTER :: list
+	               CLASS(FTObject)    , POINTER :: obj
+	
+	               obj => r                ! r is subclass of FTObject
+	               CALL list % Add(obj)    ! Pointer is retained by list
+	               CALL obj % release()    ! If caller reliquishes ownership
+		\end{verbatim}}
+		
+         \item Combining lists
+
+		{\color{blue}\begin{verbatim}
+	               CLASS(FTLinkedList), POINTER :: list, listToAdd
+	               CLASS(FTObject)    , POINTER :: obj
+	               .
+	               .
+	               .
+	               CALL list % addObjectsFromList(listToAdd)
+		\end{verbatim}}
+
+         \item Inserting objects
+
+		{\color{blue}\begin{verbatim}
+	               CLASS(FTLinkedList)      , POINTER :: list
+	               CLASS(FTObject)          , POINTER :: obj
+	               CLASS(FTLinkedListRecord), POINTER :: record
+	
+	               obj => r                            ! r is subclass of FTObject
+	               CALL list % insertAfter(obj,record) ! Pointer is retained by list
+	               CALL obj % release()                ! If caller reliquishes ownership
+		\end{verbatim}}
+
+         \item Removing objects
+
+		{\color{blue}\begin{verbatim}
+	               CLASS(FTLinkedList), POINTER :: list
+	               CLASS(FTObject)    , POINTER :: obj
+	               obj => r                 ! r is subclass of FTObject
+	               CALL list % remove(obj)
+		\end{verbatim}}
+
+	\item Making a linked list circular or not. The default is not circular.
+		{\color{blue}\begin{verbatim}
+	              LOGICAL :: c = .true.
+	              CALL list % makeCircular( c )
+		\end{verbatim}}
+		
+	\item Checking to see if a linked list circular or not
+		{\color{blue}\begin{verbatim}
+	              LOGICAL :: c 
+	              c = list % isCircular()
+		\end{verbatim}}
+		
+         \item Counting the number of objects in the list
+
+		{\color{blue}\begin{verbatim}
+		               n = list % count()
+		\end{verbatim}}
+
+         \item Destruction
+         
+		{\color{blue}\begin{verbatim}
+		               CALL list % release()
+		               IF ( list % isUnreferenced() )     THEN ! If list is a pointer
+		                  DEALLOCATE(list)
+		                  list => NULL()
+		               END IF
+		\end{verbatim}}
+\end{itemize}
+
+\subsubsection{FTLinkedListIterator}
+Linked lists must be navigated in order along the chain. This is usually accomplished with the help of
+an \emph{iterator} to navigate linked lists. FTObjectLibrary includes a class called FTLinkedListIterator for stepping through (iterating) a linked
+list to access its entries.
+
+
+      {\bf Definition (Subclass of FTObject):}
+	{\color{blue}\begin{verbatim}
+               TYPE(FTLinkedListIterator) :: iterator
+	\end{verbatim}}
+	
+     { \bf Usage:}
+\begin{itemize}
+         \item Initialization
+
+{\color{blue}\begin{verbatim}
+              CLASS(FTLinkedListIterator), POINTER :: iterator
+              CLASS(FTLinkedList)        , POINTER :: list
+              ALLOCATE(iterator)
+              CALL iterator % init()
+              .
+              .
+              .
+              CALL iterator % setLinkedList(list)
+\end{verbatim}}
+Or
+{\color{blue}\begin{verbatim}
+              CLASS(FTLinkedList)        , POINTER :: list
+              CLASS(FTLinkedListIterator), POINTER :: iterator
+              ALLOCATE(iterator)
+              .
+              .
+              .
+              CALL iterator % initWithFTLinkedList(list)
+\end{verbatim}}
+
+         \item Setting the iterator to the beginning of the list
+
+{\color{blue}\begin{verbatim}
+               CALL iterator % setToStart()
+\end{verbatim}}
+
+\item Testing if the iterator is at the end of the list
+
+{\color{blue}\begin{verbatim}
+               IF( iterator % isAtEnd() )
+\end{verbatim}}
+
+\item Iterating through the list and accessing contained objects
+{\color{blue}\begin{verbatim}
+              CLASS(FTObject), POINTER :: obj
+              CALL iterator % setToStart()
+              DO WHILE (.NOT.iterator % isAtEnd())
+                  obj => iterator % object()        ! if the object is wanted
+                  recordPtr => iterator % currentRecord() ! if the record is wanted
+                  
+                  !Do something with object or record
+
+                  CALL iterator % moveToNext()
+              END DO
+\end{verbatim}}
+
+         \item Destruction
+
+{\color{blue}\begin{verbatim}
+               CALL iterator % release()
+               IF ( iterator % isUnreferenced() )     THEN ! if it is a pointer
+                  DEALLOCATE(iterator) 
+                  iterator => null()
+               END IF
+\end{verbatim}}
+\end{itemize}
+
+\subsection{Stacks}
+A stack is a data structure that enforces last-in/first-out access to the objects stored in it. One puts
+a new object onto the top of the stack with a \emph{push} operation, and pulls off the object at the
+top of the stack with a \emph{pop} operation. Usually one has the option to just look at the top of 
+the stack with a \emph{peek} operation that doesn't remove the top object. You would implement a 
+Reverse Polish calculator with a stack, for instance.
+
+     {\bf Definition (Subclass of FTLinkedListClass):}
+	{\color{blue}\begin{verbatim}
+        	TYPE(FTStack) :: stack
+	\end{verbatim}}
+     {\bf Usage:}
+
+\begin{itemize}
+        \item Initialization
+	{\color{blue}\begin{verbatim}
+           ALLOCATE(stack) ! If stack is a pointer
+           CALL stack  %  init()
+	\end{verbatim}}
+        \item Destruction
+	{\color{blue}\begin{verbatim}
+           CALL stack  %  release()
+           IF ( stack  %  isUnreferenced() )     THEN
+              DEALLOCATE(stack) ! If stack is a pointer
+              stack => NULL()
+           END IF 
+	\end{verbatim}}
+        \item Pushing an object onto the stack
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           obj => r1
+           CALL stack % push(obj)
+	\end{verbatim}}
+        \item Peeking at the top of the stack
+	{\color{blue}\begin{verbatim}
+           obj => stack % peek() ! No change of ownership
+           SELECT TYPE(obj)
+              TYPE is (*SubclassType*)
+                 É Do something with obj as subclass
+              CLASS DEFAULT
+                 É Problem with casting
+           END SELECT
+	\end{verbatim}}
+        \item Popping the top of the stack
+	{\color{blue}\begin{verbatim}
+           obj => stack % pop() ! Ownership transferred to caller
+	\end{verbatim}}
+\end{itemize}
+\subsection{Object Arrays}
+Fortran has pointers to arrays, but not arrays of pointers. To do the latter, one creates
+a wrapper derived type and creates an array of that wrapper type. Fortran arrays are great, but
+they are of fixed length, and they don't easily implement reference counting to keep track of
+memory. For that, we have the FTMutableObjectArray. Performance reasons dictate that you 
+will use regular arrays for numeric types and the like, but for generic objects we would use
+an Object Array.
+
+You initialize a FTMutableObjectArray with the number of objects that you expect it to hold.
+However, it can re-size itself if necessary. To be efficient, it adds more than one entries at a time
+given by the ``chunkSize'', which you can choose for yourself. (The default is 10.)
+
+     {\bf Definition (Subclass of FTObject):}
+	{\color{blue}\begin{verbatim}
+        	TYPE(FTMutableObjectArray) :: array
+	\end{verbatim}}
+     {\bf Usage:}
+
+\begin{itemize}
+        \item Initialization
+		{\color{blue}\begin{verbatim}
+      CLASS(FTMutableObjectArray)  :: array
+      INTEGER                      :: N = 11
+      CALL array % initWithSize(N)
+	\end{verbatim}}
+	
+        \item Destruction
+		{\color{blue}\begin{verbatim}
+           CALL array  %  release()
+           IF ( array  %  isUnreferenced() )     THEN
+              DEALLOCATE(array) ! If stack is a pointer
+              array => NULL()
+           END IF 
+	\end{verbatim}}
+	
+        \item Adding an object
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           obj => r1
+           CALL array % addObject(obj)
+	\end{verbatim}}
+	
+        \item Removing an object
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           CALL array % removeObjectAtIndex(i)
+	\end{verbatim}}
+		
+        \item Accessing an object
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           obj => array % objectAtIndex(i)
+	\end{verbatim}}
+
+        \item Replacing an object
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           obj => r1
+           CALL array % replaceObjectAtIndexWithObject(i,obj)
+	\end{verbatim}}
+	
+        \item Setting the chunk size
+	{\color{blue}\begin{verbatim}
+           CALL array % setChunkSize(size)
+	\end{verbatim}}
+	
+        \item Getting the chunk size
+	{\color{blue}\begin{verbatim}
+           CALL array % setChunkSize(size)
+	\end{verbatim}}
+	
+        \item Finding the number of items in the array
+	{\color{blue}\begin{verbatim}
+           n =  array % count()
+	\end{verbatim}}
+	
+        \item Finding the actual allocated size of the array
+	{\color{blue}\begin{verbatim}
+           n =  array % allocatedSize()
+	\end{verbatim}}
+	
+        \item Converting a base class pointer to an object array 
+	{\color{blue}\begin{verbatim}
+           Array =>  objectArrayFromObject(obj)
+	\end{verbatim}}
+	
+\end{itemize}
+
+\subsection{Hash Tables}
+Hash tables are data structures designed to enable storage and fast
+retrieval of key-value pairs. An example of a key-value pair is
+a variable name (``gamma'') and its associated value (``1.4'').
+The table itself is typically an array.
+The location of the value in a hash table associated with
+a key, $k$, is specified by way of a \emph{hash function}, $H(k)$.
+In the case of a variable name and value, the hash function
+would convert the name into an integer that tells where to
+find the associated value in the table.
+
+A very simple example of a
+hash table is, in fact, a singly dimensioned array. The key is 
+the array index and the value is what is stored at that index.
+Multiple keys can be used to identify data; a two dimensional
+array provides an example of where two keys are used to access memory
+and retrieve the value at that location.
+If we view a singly dimensioned array as a special case of a hash table,
+its hash function is just the array index, $H(j)=j$. A doubly dimensioned array
+could be (and often is) stored columnwise as a singly dimensioned array by creating a hash
+function that maps the two indices to a single location in the array, e.g.,
+$H(i,j) = i + j*N$, where $N$ is the range of the first index, $i$. 
+
+The hash table included in the FTObjectLibrary is very simple in that it has a predefined
+hash function to describe a sparse matrix with two keys, $(i,j)$. You will initialize the table
+with the number of rows.
+     {\bf Definition (Subclass of FTObject):}
+	{\color{blue}\begin{verbatim}
+        	TYPE(FTHashTable) :: table
+	\end{verbatim}}
+     {\bf Usage:}
+
+\begin{itemize}
+        \item Initialization
+		{\color{blue}\begin{verbatim}
+      CLASS(FTHashTable)  :: table
+      INTEGER             :: N = 11 ! Number of rows
+      CALL array % initWithSize(N)
+	\end{verbatim}}
+	
+        \item Destruction
+		{\color{blue}\begin{verbatim}
+           CALL table  %  release()
+           IF ( table  %  isUnreferenced() )     THEN
+              DEALLOCATE(table) ! If table is a pointer
+              table => NULL()
+           END IF 
+	\end{verbatim}}
+	
+        \item Adding an object
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           table % addObjectForKeys(obj,i,j)
+	\end{verbatim}}
+	
+        \item Accessing an object
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           obj => table % objectForKeys(i,j)
+	\end{verbatim}}
+	
+        \item Checking if an entry exists
+	{\color{blue}\begin{verbatim}
+           LOGICAL :: exists
+           exists = table % containsKeys()
+	\end{verbatim}}
+	
+\end{itemize}
+
+\subsection{Dictionaries}
+A dictionary is a special case of a hash table that stores \emph{key-value pairs}. It is an
+example of what is called an ``associative container''. In the implementation of FTObjectLibrary,
+the value can be any subclass of FTObject and the key is a character variable. The library
+includes the base dictionary that can store and retrieve any subclass of FTObject. It also includes a
+subclass that is designed to store and retrieve FTValue objects.
+
+\subsubsection{FTDictionary}
+     {\bf Definition (Subclass of FTObject):}
+	{\color{blue}\begin{verbatim}
+        	TYPE(FTDictionary) :: dict
+	\end{verbatim}}
+     {\bf Usage:}
+
+\begin{itemize}
+        \item Initialization
+		{\color{blue}\begin{verbatim}
+      CLASS(FTDictionary)  :: dict
+      INTEGER              :: N = 11 ! Should be a power of two.
+      CALL dict % initWithSize(N)
+	\end{verbatim}}
+	
+        \item Destruction
+		{\color{blue}\begin{verbatim}
+           CALL dict  %  release()
+           IF ( dict  %  isUnreferenced() )     THEN
+              DEALLOCATE(dict) ! If table is a pointer
+              dict => NULL()
+           END IF 
+	\end{verbatim}}
+	
+        \item Adding a key-object pair
+
+	{\color{blue}\begin{verbatim}
+              CLASS(FTDictionary), POINTER :: dict
+              CLASS(FTObject)    , POINTER :: obj
+              CHARACTER(LEN=M)             :: key
+              obj => r                            ! r is subclass of FTObject
+              CALL dict % addObjectForKey(obj,key)
+	\end{verbatim}}
+	
+        \item Accessing an object
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           obj => dict % objectForKey(key)
+	\end{verbatim}}
+	
+        \item Converting a base class pointer to an dictionary
+	{\color{blue}\begin{verbatim}
+           dict =>  dictionaryFromObject(obj)
+	\end{verbatim}}
+	
+\end{itemize}
+\subsubsection{FTValueDictionary}
+FTValueDictionary adds methods to store and retrieve FTValue objects.
+
+     {\bf Definition (Subclass of FTDictionary):}
+	{\color{blue}\begin{verbatim}
+        	TYPE(FTValueDictionary) :: dict
+	\end{verbatim}}
+     {\bf Usage:}
+\begin{itemize}
+\item Adding a value
+	{\color{blue}\begin{verbatim}
+    CALL dict % addValueForKey(1,"integer")
+    CALL dict % addValueForKey(3.14,"real")
+    CALL dict % addValueForKey(98.6d0,"double")
+    CALL dict % addValueForKey(.true.,"logical")
+    CALL dict % addValueForKey("Hello World","string")
+	\end{verbatim}}
+	
+\item Accessing a value
+	{\color{blue}\begin{verbatim}
+     i = dict % integerValueForKey("integer")
+     r = dict % realValueForKey("real")
+     d = dict % doublePrecisionValueForKey("double")
+     l = dict % logicalValueForKey("logical")
+     s = dict % stringValueForKey("string",15)
+	\end{verbatim}}
+\item Converting an FTDictionary to an FTValueDictionary
+	{\color{blue}\begin{verbatim}
+        	 valueDict => valueDictionaryFromDictionary(dict)
+	\end{verbatim}}
+\item Converting an FTObject to an FTValueDictionary
+	{\color{blue}\begin{verbatim}
+        	 valueDict => valueDictionaryFromObject(obj)
+	\end{verbatim}}
+
+\end{itemize}
+\section{Advanced Classes: Testing and Error Reporting}
+
+The library includes classes for testing and reporting errors. Errors are reported through
+instances of the FTException class. Testing is made semi-automatic through the
+TestSuiteManager class and procedures defined in the FTAssertions module.
+\end{document}  

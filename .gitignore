@@ -16,3 +16,9 @@ xcuserdata
 # svn & cvs
 .svn
 CVS
+Docs/FTObjectLibrary.aux
+Docs/FTObjectLibrary.log
+Docs/FTObjectLibrary.out
+Docs/FTObjectLibrary.pdf
+Docs/FTObjectLibrary.synctex.gz
+Docs/FTObjectLibrary.toc
