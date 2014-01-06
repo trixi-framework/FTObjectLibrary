@@ -223,7 +223,7 @@
 !        ------------------------------------------------------
 !
          CALL list % release()
-         CALL assertEqual(1,list % refCount(),"Ref count descrease on release")
+         CALL assertEqual(1,list % refCount(),"Ref count decrease on release")
 !
 !        -------------------------------------------------------------------
 !        Normally we would now check if the list should be deallocated. But 
@@ -276,13 +276,14 @@
          USE FTLinkedListIteratorClass
          IMPLICIT NONE
 !         
-         CLASS(FTValue)           , POINTER :: v 
-         CLASS(FTObject)          , POINTER :: objectPtr
-         CLASS(FTLinkedList)      , POINTER :: list1, list2
-         CLASS(FTLinkedListRecord), POINTER :: recordPtr
+         CLASS(FTValue)             , POINTER :: v 
+         CLASS(FTObject)            , POINTER :: objectPtr
+         CLASS(FTLinkedList)        , POINTER :: list1, list2
+         CLASS(FTLinkedListRecord)  , POINTER :: recordPtr
+         CLASS(FTMutableObjectArray), POINTER :: array
          
-         TYPE(FTLinkedListIterator)        :: iterator
-         INTEGER                           :: j, N
+         TYPE(FTLinkedListIterator)           :: iterator
+         INTEGER                              :: j, N
 !
 !        ----------------------------------------------
 !        Create the two lists that will be concatenated
@@ -369,6 +370,23 @@
             j = j + 1
          END DO
 !
+!        -------------------------------------
+!        Create an object array from the list.
+!        -------------------------------------
+!
+         array => list1 % allObjects()
+         DO j = 1, array % COUNT()
+            objectPtr => array % objectAtIndex(j)
+            v         => valueFromObject(obj = objectPtr)
+            CALL AssertEqual(j, v % integerValue(),"Item value stored in array created from list")
+            CALL AssertEqual(2, objectPtr % refCount(), "Objects owned by one list and one array")
+         END DO
+         CALL array % release()
+         CALL assert(test = array % isUnreferenced(),msg = "Array unreferenced")
+         IF ( array % isUnreferenced() )     THEN
+            DEALLOCATE(array) 
+         END IF 
+!
 !        -------------------------------------------
 !        Now reverse the list and iterate through it
 !        -------------------------------------------
@@ -388,7 +406,11 @@
             CALL iterator % moveToNext()
             j = j - 1
          END DO
-         
+!
+!        --------
+!        Clean up
+!        --------
+!
          CALL list1 % release()
          CALL iterator % release()
          

@@ -19,6 +19,7 @@
 !>
       Module FTLinkedListRecordClass 
       USE FTObjectClass
+      USE FTMutableObjectArrayClass
       IMPLICIT NONE 
 !
 !     -----------------------------
@@ -153,6 +154,12 @@
 !>               objectPtr => r                 ! r is subclass of FTObject
 !>               CALL list % remove(objectPtr)
 !>
+!>         *Getting all objects as an object array*
+!>
+!>               CLASS(FTLinkedList)        , POINTER :: list
+!>               CLASS(FTMutableObjectArray), POINTER :: array
+!>               array => list % allObjects() ! Array has refCount = 1
+!>
 !>         *Counting the number of objects in the list*
 !>
 !>               n = list % count()
@@ -194,6 +201,7 @@
          PROCEDURE :: count            => numberOfRecords
          PROCEDURE :: description      => FTLinkedListDescription
          PROCEDURE :: printDescription => printFTLinkedListDescription
+         PROCEDURE :: allObjects       => allLinkedListObjects
          PROCEDURE :: addObjectsFromList
          PROCEDURE :: makeCircular
          PROCEDURE :: isCircular
@@ -616,6 +624,45 @@
          END IF 
          
       END SUBROUTINE reverseLinkedList
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION allLinkedListObjects(self)  RESULT(array)
+         IMPLICIT NONE  
+!
+!        ---------
+!        Arguments
+!        ---------
+!
+         CLASS (FTLinkedList)                 :: self
+         CLASS(FTMutableObjectArray), POINTER :: array
+!
+!        ---------------
+!        Local variables
+!        ---------------
+!
+         INTEGER                            :: N
+         CLASS(FTLinkedListRecord), POINTER :: listRecord
+         CLASS(FTObject)          , POINTER :: obj
+         
+         array => NULL()
+         N = self % count()
+         IF(N==0)     RETURN
+         
+         ALLOCATE(array)
+         CALL array % initWithSize(arraySize  = N)
+         
+         listRecord => self % head
+
+         DO WHILE (ASSOCIATED(listRecord))
+            obj => listRecord % recordObject
+            CALL array % addObject(obj)
+            listRecord => listRecord % next
+         END DO
+         
+      END FUNCTION allLinkedListObjects
+!@mark -
+! type conversions
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
