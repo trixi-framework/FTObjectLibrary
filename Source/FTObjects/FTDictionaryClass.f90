@@ -244,7 +244,7 @@
 !
             ALLOCATE(self % entries(sze))
             DO i = 1, sze
-               CALL self % entries(i) % init
+               CALL self % entries(i) % init()
             END DO    
             
          END SUBROUTINE initWithSize
@@ -264,13 +264,14 @@
                END IF 
             END DO
             DEALLOCATE(self % entries)
+            self % entries => NULL()
 !
 !           ----------------------------------------------------
 !           Call superclass destructor after processing subclass
 !           specific items
 !           ----------------------------------------------------
 !
-           CALL self % FTObject % destruct
+           CALL self % FTObject % destruct()
             
          END SUBROUTINE destructFTDictionary    
 !
@@ -404,6 +405,7 @@
             INTEGER             :: iUnit
             
             INTEGER :: i
+
             DO i = 1, SIZE(self % entries)
                CALL self % entries(i) % printDescription(iUnit)
             END DO

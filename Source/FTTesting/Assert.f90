@@ -217,17 +217,17 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertEqualTwoIntegers(i,j,msg)  
+      SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)  
          IMPLICIT NONE  
-         INTEGER, INTENT(in)        :: i, j
+         INTEGER, INTENT(in)        :: expectedValue,actualValue
          CHARACTER(LEN=*), OPTIONAL :: msg
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
          numberOfTests_ = numberOfTests_ + 1
-         IF ( .NOT.isEqual(i,j) )     THEN
-            WRITE(expected,*) i
-            WRITE(actual,*) j
+         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
+            WRITE(expected,*) expectedValue
+            WRITE(actual,*) actualValue
             CALL addAssertionFailureForParameters(msg,expected,actual)
             numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 

@@ -267,6 +267,8 @@
          END IF
          
          IF ( self % refCount_ == 0 )     THEN
+!            PRINT *, "Destructing object:"!DEBUGPRINT
+!            CALL self % printDescription(iUnit = 6)!DEBUGPRINT
             CALL self % destruct() 
          END IF 
           

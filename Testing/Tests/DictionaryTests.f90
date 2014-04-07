@@ -47,10 +47,10 @@
 !
          DO i = 1,4
             obj => dict%objectForKey(keys(i))
-            CALL cast(obj,v)
+            v   => valueFromObject(obj)
             IF ( ASSOCIATED(v) )     THEN
-               s = v%stringValue(FTDICT_KWD_STRING_LENGTH)
-               CALL assertEqual(s,values(i),"Value for key")
+               s = v % stringValue(FTDICT_KWD_STRING_LENGTH)
+               CALL assertEqual(values(i),s,"Value for key in dictionary class")
             ELSE
                msg = "Value for key "//TRIM(values(i))// " not of correct type"
                CALL assert(.false.,msg)
@@ -61,25 +61,25 @@
 !        Find the keys and objects
 !        -------------------------
 !
-!         storedKeys    => dict % AllKeys()
-!         storedObjects => dict % AllObjects()
-!         
-!         DO i = 1, 4
-!            obj => storedObjects % objectAtIndex(indx = i)
-!            v   => valueFromObject(obj)
-!            s   =  v%stringValue(FTDICT_KWD_STRING_LENGTH)
-!            PRINT *, TRIM(storedKeys(i)), "  ",TRIM(STRING = s)
-!         END DO   
+         storedKeys    => dict % AllKeys()
+         storedObjects => dict % AllObjects()
+         
+         DO i = 1, 4
+            obj => storedObjects % objectAtIndex(indx = i)
+            v   => valueFromObject(obj)
+            s   =  v%stringValue(FTDICT_KWD_STRING_LENGTH)
+            PRINT *, TRIM(storedKeys(i)), "  ",TRIM(STRING = s)
+         END DO   
 !
 !        ---------------
 !        Clean up memory
 !        ---------------
 !
-!         DEALLOCATE(storedKeys)
-!         CALL storedObjects % release()
-!         IF ( storedObjects % isUnreferenced() )     THEN
-!            DEALLOCATE(storedObjects) 
-!         END IF 
+         DEALLOCATE(storedKeys)
+         CALL storedObjects % release()
+         IF ( storedObjects % isUnreferenced() )     THEN
+            DEALLOCATE(storedObjects) 
+         END IF 
          CALL dict % release()
          
       END SUBROUTINE FTDictionaryClassTests    

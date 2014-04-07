@@ -65,14 +65,14 @@
 !        Test to make sure it is right
 !        -----------------------------
 !
-         CALL AssertEqual("3.140000",s(1:8),"Compare description for real value")
+         CALL assertEqual("3.140000",s(1:8),"Compare description for real value")
 !
 !        --------------------------
 !        Also test the string value
 !        --------------------------
 !
          s = v % stringValue(8)
-         CALL AssertEqual("3.140000",s(1:8),"Compare string value for real value")
+         CALL assertEqual("3.140000",s(1:8),"Compare string value for real value")
 
 !
 !        --------------------------------------------------------------------------
@@ -100,7 +100,8 @@
          CALL assertEqual(3.14,v % realValue(),singleTol,"Real storage to real")
          CALL assertEqual(3,v % integerValue(),"Integer return for real object")
          CALL assertEqual(DBLE(3.14),v % doublePrecisionValue(),doubleTol,"Double return for real object")
-         CALL assertEqual("3.140000",v % stringValue(8),"String return for real object")
+         s = v % stringValue(8)
+         CALL assertEqual("3.140000",s(1:8),"String return for real object")
          CALL assertEqual(.true.,v % logicalValue(),"Logical return for real object")
 !
 !        ----------------------------------------------------------------
@@ -151,7 +152,8 @@
          CALL assertEqual(REAL(d),v % realValue(),singleTol,"Double storage to real")
          CALL assertEqual(0,v % integerValue(),"Double storage to integer")
          CALL assertEqual(d,v % doublePrecisionValue(),doubleTol,"Double storage to double")
-         CALL assertEqual("0.333333333333333",v % stringValue(17),"Double storage to string")
+         s = v % stringValue(16)
+         CALL assertEqual("0.33333333333333",s(1:16),"Double storage to string")
          CALL assertEqual(.true.,v % logicalValue(),"Double storage to logical")
 !
 !        -----------------------------------------------

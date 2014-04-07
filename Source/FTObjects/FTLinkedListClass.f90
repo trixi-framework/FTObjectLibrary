@@ -36,7 +36,8 @@
 !        ========
 !
          PROCEDURE :: initWithObject
-         PROCEDURE :: destruct => destructFTLinkedListRecord
+         PROCEDURE :: destruct         => destructFTLinkedListRecord
+         PROCEDURE :: printDescription => printFTLinkedRecordDescription
          
       END TYPE FTLinkedListRecord
 !
@@ -57,7 +58,7 @@
 !        Always call the superclass init
 !        -------------------------------
 !
-         CALL self % FTObject % init
+         CALL self % FTObject % init()
 !
 !        ------------------------
 !        Subclass initializations
@@ -86,7 +87,7 @@
                self % recordObject => NULL()
             END IF
          END IF 
-         self % next => NULL()
+         self % next     => NULL()
          self % previous => NULL()
 !
 !        ------------------------------------------
@@ -96,7 +97,22 @@
 !
          CALL self % FTObject % destruct()
         
-      END SUBROUTINE destructFTLinkedListRecord     
+      END SUBROUTINE destructFTLinkedListRecord
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE printFTLinkedRecordDescription(self,iUnit)  
+         IMPLICIT NONE  
+         CLASS(FTLinkedListRecord) :: self
+         INTEGER                   :: iUnit
+         
+         WRITE(iUnit,*) "Linked list record description:"
+         IF ( ASSOCIATED(POINTER = self % recordObject) )     THEN
+            CALL self % recordObject % printDescription(iUnit)
+         END IF 
+         
+      END SUBROUTINE printFTLinkedRecordDescription
+
       
       END MODULE FTLinkedListRecordClass  
 !@mark -
@@ -439,22 +455,32 @@
 !        ---------------
 !
          CLASS(FTLinkedListRecord), POINTER :: previous, next
-                  
+!
+!        ---------------------------------------------------
+!        Turn cirularity off and then back on
+!        to work around an what appears to be an
+!        ifort bug testing the association of two pointers. 
+!        ---------------------------------------------------
+!
+         LOGICAL :: circ
+         circ = self % isCircular()
+         IF(circ) CALL self % makeCircular(.FALSE.)
+         
          previous => listRecord % previous
          next     => listRecord % next
          
-         IF ( ASSOCIATED(listRecord, self % head) )     THEN
+         IF ( .NOT.ASSOCIATED(listRecord % previous) )     THEN
             self % head => next
             IF ( ASSOCIATED(next) )     THEN
                self % head % previous => NULL() 
             END IF  
          END IF 
          
-         IF ( ASSOCIATED(listRecord, self % tail) )     THEN
+         IF ( .NOT.ASSOCIATED(listRecord % next) )     THEN
             self % tail => previous
             IF ( ASSOCIATED(previous) )     THEN
                self % tail % next => NULL() 
-            END IF  
+            END IF
          END IF 
          
          IF ( ASSOCIATED(previous) .AND. ASSOCIATED(next) )     THEN
@@ -469,6 +495,7 @@
          END IF 
          
          self % nRecords = self % nRecords - 1
+         IF(circ) CALL self % makeCircular(.TRUE.)
          
       END SUBROUTINE removeLinkedListRecord 
 !
@@ -506,8 +533,8 @@
             IF(listRecord % isUnreferenced()) THEN
                DEALLOCATE(listRecord)
                listRecord => NULL()
+               self % nRecords = self % nRecords - 1
             END IF
-            self % nRecords = self % nRecords - 1
             listRecord => tmp
          END DO
 
@@ -561,16 +588,11 @@
          IF(self % isCircular_) circular = .TRUE.
          CALL self % makeCircular(.FALSE.)
          
-         listRecord              => self % head
+         listRecord => self % head
 
          DO WHILE (ASSOCIATED(listRecord))
             CALL listRecord % recordObject % printDescription(iUnit)
             listRecord => listRecord % next
-!            IF ( self % isCircular_ )     THEN
-!               IF ( ASSOCIATED(listRecord,self % head) )     THEN
-!                  EXIT 
-!               END IF  
-!            END IF 
          END DO
          
          IF(circular) CALL self % makeCircular (.TRUE.)
@@ -773,13 +795,13 @@
          CONTAINS
 !        ========
 !
-         PROCEDURE :: init => initEmpty
+         PROCEDURE :: init           => initEmpty
          PROCEDURE :: initWithFTLinkedList
-         PROCEDURE :: destruct => destructIterator
-         PROCEDURE :: isAtEnd => FTLinkedListIsAtEnd
-         PROCEDURE :: object  => FTLinkedListObject
+         PROCEDURE :: destruct       => destructIterator
+         PROCEDURE :: isAtEnd        => FTLinkedListIsAtEnd
+         PROCEDURE :: object         => FTLinkedListObject
          PROCEDURE :: currentRecord  => FTLinkedListCurrentRecord
-         PROCEDURE :: linkedList => returnLinkedList
+         PROCEDURE :: linkedList     => returnLinkedList
          PROCEDURE :: setLinkedList
          PROCEDURE :: setToStart
          PROCEDURE :: moveToNext
@@ -861,9 +883,8 @@
 !        at the end of the subclass destructor.
 !        ------------------------------------------
 !
-          CALL self % FTObject % destruct
+          CALL self % FTObject % destruct()
           
-!          PRINT *, "Linked list iterator destructed"
       END SUBROUTINE destructIterator
 !
 !////////////////////////////////////////////////////////////////////////
@@ -885,7 +906,6 @@
          ELSE 
             self % current => NULL() 
          END IF 
-         !^ 
          
          IF ( ASSOCIATED(self % current, self % list % head) )     THEN
             self % current => NULL() 

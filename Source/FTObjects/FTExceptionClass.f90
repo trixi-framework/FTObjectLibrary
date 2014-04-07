@@ -30,6 +30,16 @@
 !
 !            e  %  initFTException(severity,exceptionName,infoDictionary)
 !
+!            Plus the convenience initializers, which automatically 
+!            create a FTValueDictionary with a single key called "message":
+!
+!            e % initWarningException(msg = "message")
+!            e % initFatalException(msg = "message")
+!
+!            Plus an assertion exception
+!
+!            e % initAssertionFailureException(msg,expectedValueObject,observedValueObject,level)
+!
 !         Setting components
 !
 !            e  %  setInfoDictionary(infoDictionary)
@@ -39,6 +49,7 @@
       Module FTExceptionClass
       USE FTStackClass
       USE FTDictionaryClass
+      USE FTValueDictionaryClass
       USE FTLinkedListIteratorClass
       IMPLICIT NONE
 !
@@ -48,6 +59,10 @@
 !
       INTEGER, PARAMETER :: FT_ERROR_NONE = 0, FT_ERROR_WARNING = 1, FT_ERROR_FATAL = 2
       INTEGER, PARAMETER :: ERROR_MSG_STRING_LENGTH = 132
+      
+      CHARACTER(LEN=21), PARAMETER :: FTFatalErrorException       = "FTFatalErrorException"
+      CHARACTER(LEN=23), PARAMETER :: FTWarningErrorException     = "FTWarningErrorException"
+      CHARACTER(LEN=27), PARAMETER :: FTAssertionFailureException = "FTAssertionFailureException"
 !
 !     ---------------
 !     Error base type
@@ -63,6 +78,9 @@
 !        --------         
 !
          PROCEDURE :: initFTException
+         PROCEDURE :: initWarningException
+         PROCEDURE :: initFatalException
+         PROCEDURE :: initAssertionFailureException
          PROCEDURE :: destruct => destructException
          PROCEDURE :: setInfoDictionary
          PROCEDURE :: infoDictionary
@@ -81,10 +99,76 @@
       CONTAINS
 !     ========
 !
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE initWarningException(self,msg)  
+!
+!     ---------------------------------------------
+!     A convenience initializer for a warning error 
+!     that includes the key "message" in the
+!     infoDictionary
+!     --------------------------------------------
+!
+         IMPLICIT NONE
+         CLASS(FTException)                     :: self
+         CHARACTER(LEN=*)                       :: msg
+         
+         CLASS(FTValueDictionary), POINTER :: userDictionary
+         CLASS(FTDictionary)     , POINTER :: dictPtr
+         CLASS(FTObject)         , POINTER :: objectPtr
+            
+         ALLOCATE(userDictionary)
+         CALL userDictionary % initWithSize(64)
+         CALL userDictionary % addValueForKey(msg,"message")
+         
+         dictPtr => userDictionary
+         CALL self % initFTException(severity       = FT_ERROR_WARNING,&
+                                     exceptionName  = FTWarningErrorException,&
+                                     infoDictionary = dictPtr)
+         
+         CALL userDictionary % release()
+         
+      END SUBROUTINE initWarningException
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE initFTException(self,severity,exceptionName,infoDictionary)  
+      SUBROUTINE initFatalException(self,msg)  
+!
+!     ---------------------------------------------
+!     A convenience initializer for a fatal error 
+!     that includes the key "message" in the
+!     infoDictionary
+!     --------------------------------------------
+!
+         IMPLICIT NONE
+         CLASS(FTException)                     :: self
+         CHARACTER(LEN=*)                       :: msg
+         
+         CLASS(FTValueDictionary), POINTER :: userDictionary
+         CLASS(FTDictionary)     , POINTER :: dictPtr
+         CLASS(FTObject)         , POINTER :: objectPtr
+            
+         ALLOCATE(userDictionary)
+         CALL userDictionary % initWithSize(8)
+         CALL userDictionary % addValueForKey(msg,"message")
+         
+         dictPtr => userDictionary
+         CALL self % initFTException(severity       = FT_ERROR_FATAL,&
+                                     exceptionName  = FTFatalErrorException,&
+                                     infoDictionary = dictPtr)
+         
+         CALL userDictionary % release()
+         
+      END SUBROUTINE initFatalException
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE initFTException(self,severity,exceptionName,infoDictionary)
+!
+!     -----------------------------------
+!     The main initializer for the class 
+!     -----------------------------------
+!
          IMPLICIT NONE
          CLASS(FTException)                     :: self
          INTEGER                                :: severity
@@ -96,16 +180,61 @@
          self  %  severity_        = severity
          self  %  exceptionName_   = exceptionName
          self  %  infoDictionary_  => NULL()
-         IF(PRESENT(infoDictionary))   CALL self % setInfoDictionary(infoDictionary)
+         IF(PRESENT(infoDictionary) .AND. ASSOCIATED(infoDictionary))   THEN 
+            CALL self % setInfoDictionary(infoDictionary)
+         END IF 
          
       END SUBROUTINE initFTException
-
+!
 !//////////////////////////////////////////////////////////////////////// 
- 
+! 
+      SUBROUTINE initAssertionFailureException(self,msg,expectedValueObject,observedValueObject,level)
+!
+!     ------------------------------------------------
+!     A convenience initializer for an assertion error 
+!     that includes the keys:
+!
+!     "message"
+!     "expectedValue"
+!     "observedValue"
+!
+!     in the infoDictionary
+!
+!     ------------------------------------------------
+!
+         IMPLICIT NONE
+         CLASS(FTException)      :: self
+         CLASS(FTValue), POINTER :: expectedValueObject, ObservedValueObject
+         INTEGER                 :: level
+         CHARACTER(LEN=*)        :: msg
+         
+         CLASS(FTValueDictionary), POINTER :: userDictionary
+         CLASS(FTDictionary)     , POINTER :: dictPtr
+         CLASS(FTObject)         , POINTER :: objectPtr
+            
+         ALLOCATE(userDictionary)
+         CALL userDictionary % initWithSize(8)
+         CALL userDictionary % addValueForKey(msg,"message")
+         objectPtr => expectedValueObject
+         CALL userDictionary % addObjectForKey(object = objectPtr,key = "expectedValue")
+         objectPtr => ObservedValueObject
+         CALL userDictionary % addObjectForKey(object = objectPtr,key = "observedValue")
+         
+         dictPtr => userDictionary
+         CALL self % initFTException(severity       = level,&
+                                     exceptionName  = FTAssertionFailureException,&
+                                     infoDictionary = dictPtr)
+         
+         CALL userDictionary % release()
+         
+      END SUBROUTINE initAssertionFailureException
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE destructException(self)
          IMPLICIT NONE  
          CLASS(FTException) :: self
-
+         
          IF(ASSOCIATED(self % infoDictionary_))   CALL releaseInfoDictionary(self)
 
          CALL self % FTObject % destruct()
@@ -178,7 +307,7 @@
         
         WRITE(iUnit,*) "Exception Named: ", TRIM(self  %  exceptionName())
         dict => self % infoDictionary()
-        CALL dict % printDescription(iUnit)
+        IF(ASSOCIATED(dict)) CALL dict % printDescription(iUnit)
         
      END SUBROUTINE printFTExceptionDescription     
 !
@@ -298,6 +427,7 @@
 !        -----------------------
 !
          CALL errorStack % release()
+
          IF ( errorStack % isUnreferenced() )     THEN
             DEALLOCATE(errorStack)
             currentError_ => NULL()
@@ -306,16 +436,16 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE throw(thisError)  
+      SUBROUTINE throw(exceptionToThrow)  
          IMPLICIT NONE  
-         CLASS(FTException), POINTER :: thisError
+         CLASS(FTException), POINTER :: exceptionToThrow
          CLASS(FTObject)   , POINTER :: ptr
          
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             CALL initializeFTExceptions 
          END IF 
          
-         ptr => thisError
+         ptr => exceptionToThrow
          CALL errorStack % push(ptr)
          
       END SUBROUTINE throw
