@@ -263,6 +263,7 @@
                   !The entries are not pointers 
                END IF 
             END DO
+
             DEALLOCATE(self % entries)
             self % entries => NULL()
 !

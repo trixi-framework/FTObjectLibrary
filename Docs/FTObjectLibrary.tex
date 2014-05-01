@@ -898,7 +898,7 @@ with the number of rows.
         \item Checking if an entry exists
 	{\color{blue}\begin{verbatim}
            LOGICAL :: exists
-           exists = table % containsKeys()
+           exists = table % containsKeys(i,j)
 	\end{verbatim}}
 	
 \end{itemize}
@@ -1048,7 +1048,6 @@ You can get a summary of the assertions by calling the subroutine
         IMPLICIT NONE
         CHARACTER(LEN=*)                        :: title
         INTEGER                                 :: iUnit
-        TYPE(FTAssertionFailureRecord), POINTER :: current
 	\end{verbatim}}
 When you are done, you finalize the sharedAssertionsManager with
 	{\color{blue}\begin{verbatim}
@@ -1246,17 +1245,19 @@ where
 
       It is expected that classes will define exceptions that use instances
       of the FTException Class.
-
+      \end{itemize}
+      
       Defined constants:
-
+{\color{blue}\begin{verbatim}
          FT_ERROR_NONE    = 0
          FT_ERROR_WARNING = 1
          FT_ERROR_FATAL   = 2
+\end{verbatim}}
 
-      Usage:
-
-         Initialization
-
+     {\bf Usage:}
+\begin{itemize}
+\item Initialization
+	{\color{blue}\begin{verbatim}
             e  %  initFTException(severity,exceptionName,infoDictionary)
 
             Plus the convenience initializers, which automatically 
@@ -1264,9 +1265,13 @@ where
 
             e % initWarningException(msg = "message")
             e % initFatalException(msg = "message")
-
-         Setting components
-
+	\end{verbatim}}
+	
+\item Setting components
+   Create subroutines with the interface
+{\color{blue}\begin{verbatim}
             e  %  setInfoDictionary(infoDictionary)
+\end{verbatim}}
 
+\end{itemize}
 \end{document}  

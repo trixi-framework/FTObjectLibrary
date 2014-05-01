@@ -409,16 +409,16 @@
 !
          IF ( catch() )     THEN
            PRINT *
-           PRINT *,"***********************************"
+           PRINT *,"   ***********************************"
            IF(errorStack % COUNT() == 1)     THEN
-              PRINT *, "An uncaught exception was raised:"
+              PRINT *, "   An uncaught exception was raised:"
            ELSE
-              PRINT *, "Uncaught exceptions were raised:"
+              PRINT *, "   Uncaught exceptions were raised:"
            END IF
-           PRINT *,"***********************************"
+           PRINT *,"   ***********************************"
            PRINT *
            
-           CALL printAllExceptions
+!           CALL printAllExceptions !DEBUG
             
          END IF 
 !
@@ -426,11 +426,18 @@
 !        Destruct the exceptions
 !        -----------------------
 !
+         IF ( ASSOCIATED(currentError_) )     THEN
+            CALL currentError_ % release()
+            IF ( currentError_ % isUnreferenced() )     THEN
+               DEALLOCATE(currentError_) 
+               currentError_ => NULL()
+            END IF  
+         END IF 
+         
          CALL errorStack % release()
 
          IF ( errorStack % isUnreferenced() )     THEN
             DEALLOCATE(errorStack)
-            currentError_ => NULL()
          END IF 
       END SUBROUTINE destructFTExceptions
 !
@@ -463,7 +470,15 @@
          IF ( errorStack % count() > 0 )     THEN
             catchAll = .true.
          END IF
-         currentError_ => NULL()
+         
+         IF ( ASSOCIATED(currentError_) )     THEN
+            CALL currentError_ % release()
+            IF ( currentError_ % isUnreferenced() )     THEN
+               DEALLOCATE(currentError_) 
+               currentError_ => NULL()
+            END IF 
+         END IF 
+         
       END FUNCTION catchAll
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -480,9 +495,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION catchErrorWithName(errorName)
+      LOGICAL FUNCTION catchErrorWithName(exceptionName)
          IMPLICIT NONE  
-         CHARACTER(LEN=*) :: errorName
+         CHARACTER(LEN=*) :: exceptionName
          
          TYPE(FTLinkedListIterator)   :: iterator
          CLASS(FTLinkedList), POINTER :: ptr
@@ -507,10 +522,9 @@
          DO WHILE (.NOT.iterator % isAtEnd())
             obj => iterator % object()
             CALL cast(obj,e)
-            IF ( e % exceptionName() == errorName )     THEN
-               currentError_ => e
+            IF ( e % exceptionName() == exceptionName )     THEN
+               CALL setCurrentError(e)
                catchErrorWithName = .true.
-               CALL currentError_ % retain()
                CALL errorStack % remove(obj)
                EXIT
            END IF 
@@ -532,7 +546,35 @@
          END IF 
          
          errorObject => currentError_
-      END FUNCTION errorObject    
+      END FUNCTION errorObject
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE setCurrentError(e)  
+         IMPLICIT NONE  
+         CLASS(FTException) , POINTER :: e
+!
+!        --------------------------------------------------------------
+!        Check first to see if there is a current error. Since it
+!        is retained, the current one must be released before resetting
+!        the pointer.
+!        --------------------------------------------------------------
+!
+         IF ( ASSOCIATED(POINTER = currentError_) )     THEN
+            CALL currentError_ % release()
+            IF ( currentError_ % isUnreferenced() )     THEN
+               DEALLOCATE(currentError_) 
+            END IF  
+         END IF 
+!
+!        ------------------------------------
+!        Set the pointer and retain ownership
+!        ------------------------------------
+!
+         currentError_ => e
+         CALL currentError_ % retain()
+         
+      END SUBROUTINE setCurrentError
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -588,6 +630,7 @@
             objectPtr => iterator % object()
             CALL cast(objectPtr,e)
             CALL e % printDescription(6)
+            WRITE(6,*) e % refCount()
             CALL iterator % moveToNext()
          END DO
          

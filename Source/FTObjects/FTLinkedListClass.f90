@@ -523,9 +523,10 @@
          END IF
          
          CALL self % makeCircular(.FALSE.)
-
+         
          listRecord => self % head
          DO WHILE (ASSOCIATED(listRecord))
+
             tmp => listRecord % next
 
             CALL listRecord % release()
