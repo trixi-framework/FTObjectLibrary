@@ -60,7 +60,7 @@
          DO i = 1,4
             sValue = dict % stringValueForKey(keys(i),8)
             CALL AssertEqual(sValue,stringValues(i),"Value for key")
-         END DO         
+         END DO   
 !
 !        ------------------------------------------------------------
 !        The dictionary is not a pointer, so we need only

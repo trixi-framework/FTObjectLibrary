@@ -13,6 +13,7 @@
       
       TYPE(TestSuiteManager) :: testSuite
       
+      
       EXTERNAL :: FTDictionaryClassTests
       EXTERNAL :: FTExceptionClassTests
       EXTERNAL :: FTValueClassTests

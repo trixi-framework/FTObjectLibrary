@@ -73,11 +73,9 @@
          TYPE(TestCaseRecord), POINTER :: testCasesHead => NULL()
          TYPE(TestCaseRecord), POINTER :: testCasesTail => NULL()
          CONTAINS
-         PROCEDURE :: addTestSubroutineWithName
-         PROCEDURE :: performTests
+         PROCEDURE :: addTestSubroutineWithName, performTests, finalize => finalizeTestSuiteManager
          PROCEDURE :: setOutputUnit
          PROCEDURE :: init     => initializeTestSuiteManager
-         PROCEDURE :: finalize => finalizeTestSuiteManager
       END TYPE TestSuiteManager
       
       CONTAINS
@@ -105,10 +103,10 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE addTestSubroutineWithName(self,fun,testName)
+      SUBROUTINE addTestSubroutineWithName(self,testFunction ,testName)
          IMPLICIT NONE
          CLASS(TestSuiteManager)       :: self
-         EXTERNAL                      :: fun
+         EXTERNAL                      :: testFunction
          CHARACTER(LEN=*)              :: testName
          TYPE(TestCaseRecord), POINTER :: newTestCase
          
@@ -119,7 +117,7 @@
          
          ALLOCATE(newTestCase)
          newTestCase % testName     = TRIM(ADJUSTL(testName))
-         newTestCase % TestSubroutine => fun
+         newTestCase % TestSubroutine => testFunction
          newTestCase % next         => NULL()
          self % numberOfTests       = self % numberOfTests + 1
          

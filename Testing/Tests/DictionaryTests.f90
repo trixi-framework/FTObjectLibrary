@@ -75,11 +75,11 @@
 !        Clean up memory
 !        ---------------
 !
-         DEALLOCATE(storedKeys)
-         CALL storedObjects % release()
-         IF ( storedObjects % isUnreferenced() )     THEN
-            DEALLOCATE(storedObjects) 
-         END IF 
+!         DEALLOCATE(storedKeys)
+!         CALL storedObjects % release()
+!         IF ( storedObjects % isUnreferenced() )     THEN
+!            DEALLOCATE(storedObjects) 
+!         END IF 
          CALL dict % release()
          
       END SUBROUTINE FTDictionaryClassTests    

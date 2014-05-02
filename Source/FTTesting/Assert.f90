@@ -51,9 +51,10 @@
       INTEGER, PARAMETER, PUBLIC :: FT_ASSERTION_STRING_LENGTH = 128
       
       INTERFACE assertEqual
-         MODULE PROCEDURE assertEqualTwoIntegers
-         MODULE PROCEDURE assertEqualTwoIntegerArrays1D
-         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
+         MODULE PROCEDURE assertEqualTwoIntegers,assertEqualTwoIntegerArrays1D, &
+         assertEqualTwoIntegerArrays2D
+!         MODULE PROCEDURE assertEqualTwoIntegerArrays1D
+!         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
          MODULE PROCEDURE assertWithinToleranceTwoReal
          MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
          MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
