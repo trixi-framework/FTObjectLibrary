@@ -533,7 +533,6 @@
 
             IF(listRecord % isUnreferenced()) THEN
                DEALLOCATE(listRecord)
-               listRecord => NULL()
                self % nRecords = self % nRecords - 1
             END IF
             listRecord => tmp
