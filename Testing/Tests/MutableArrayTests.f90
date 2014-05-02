@@ -60,7 +60,7 @@
 !         CALL array % printDescription(6) ! To print the array, if desired.
          DO i = 1, 10
             obj => array % objectAtIndex(i)   ! Get the object
-            v   => valueFromObject(obj = obj) ! Convert it to a value. We *should* check and see that v is associated.
+            v   => valueFromObject(obj) ! Convert it to a value. We *should* check and see that v is associated.
             CALL assertEqual(values(i),v % integerValue(),"Object values")
          END DO
 !
