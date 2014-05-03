@@ -33,7 +33,7 @@
 !        ------------------------------------------------------------
 !
          CALL array % initwithsize(10)
-         CALL AssertEqual(0,array % COUNT(),"Initial array count")
+         CALL assertEqual(0,array % COUNT(),"Initial array count")
 !
 !        --------------------------------------------------------
 !        Add objects to the array
@@ -48,10 +48,10 @@
             CALL v % initwithValue(values(i))
             obj => v
             CALL array % addObject(obj)
-            CALL AssertEqual( 2, v % refCount(), "Adding object adds ownership" )
+            CALL assertEqual( 2, v % refCount(), "Adding object adds ownership" )
             CALL v % release()
          END DO
-         CALL AssertEqual(10, array % COUNT(), "Number of objects in array is equal to number of objects added")
+         CALL assertEqual(10, array % COUNT(), "Number of objects in array is equal to number of objects added")
 !
 !        -----------------------------
 !        Check the values in the array
@@ -61,7 +61,7 @@
          DO i = 1, 10
             obj => array % objectAtIndex(i)   ! Get the object
             v   => valueFromObject(obj = obj) ! Convert it to a value. We *should* check and see that v is associated.
-            CALL AssertEqual(values(i),v % integerValue(),"Object values")
+            CALL assertEqual(values(i),v % integerValue(),"Object values")
          END DO
 !
 !        ---------------------------------------------------
@@ -74,7 +74,7 @@
          CALL v % initwithValue(22)
          obj => v
          CALL array % replaceObjectAtIndexWithObject(5,obj)
-         CALL AssertEqual(2,v % refCount(),"Replacement refCount")
+         CALL assertEqual(2,v % refCount(),"Replacement refCount")
          CALL v % release()
 !
 !        ----------------------
@@ -83,8 +83,8 @@
 !
          obj => array % objectAtIndex(5)
          v   => valueFromObject(obj = obj)
-         CALL AssertEqual(22, v % integerValue(),"Replacement value")
-         CALL AssertEqual(1, v % refCount(),"Refcount after main release")
+         CALL assertEqual(22, v % integerValue(),"Replacement value")
+         CALL assertEqual(1, v % refCount(),"Refcount after main release")
 !
 !        ------------------------------------------
 !        Add another value - this should reallocate
@@ -95,8 +95,8 @@
          obj => v
          CALL array % addObject(obj)
          CALL v % release()
-         CALL AssertEqual(11, array % COUNT(), "Number of objects in array is increased")
-         CALL AssertEqual(20, array % allocatedSize(),"Memory increased by chunk size")
+         CALL assertEqual(11, array % COUNT(), "Number of objects in array is increased")
+         CALL assertEqual(20, array % allocatedSize(),"Memory increased by chunk size")
 !
 !        -----------------------------------------------
 !        Remove an item from the array. For this test we
@@ -107,8 +107,8 @@
          obj => array % objectAtIndex(8)
          CALL obj % retain()
          CALL array % removeObjectAtIndex(8)
-         CALL AssertEqual(10, array % COUNT(), "Item deleted count")
-         CALL AssertEqual(1, obj % refcount(), "Refcount after removal")
+         CALL assertEqual(10, array % COUNT(), "Item deleted count")
+         CALL assertEqual(1, obj % refcount(), "Refcount after removal")
          CALL obj % release()
          IF ( obj % isUnreferenced() )     THEN
             DEALLOCATE(obj)
@@ -125,7 +125,7 @@
          DO i = 1, 10
             obj => array % objectAtIndex(i)
             CALL cast(obj,v)
-            CALL AssertEqual(modifiedValues(i),v % integerValue(),"Object values after deletion")
+            CALL assertEqual(modifiedValues(i),v % integerValue(),"Object values after deletion")
          END DO
 !
 !        -------------------------------------------------------------

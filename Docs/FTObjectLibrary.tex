@@ -48,7 +48,7 @@
  use the new F2003/2008 features to make generic programming possible. The LCD
  for the library is gfortran, and as modern features get implemented in the
  compiler, FTObjectLibrary will be updated to include those features. In the meantime, there
- are a few workarounds that exist.
+ are a few workarounds that exist in the code.
 
  The library is inspired, for the large part, by 
  \href{https://developer.apple.com/library/mac/documentation/General/Conceptual/CocoaEncyclopedia/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010810-CH1-SW1}{Apple's Cocoa Foundation Framework}. 
@@ -64,22 +64,24 @@
 \end{itemize}
 % \subsection{Value Classes}
 
- Value classes include the base class, FTObject and a subclass, FTValue.
+ Value classes include the base class, FTObject and at the current time, a subclass, FTValue.
  \begin{itemize}
  \item {\bf FTObject}
  
   FTObject is the base class that implements
  the reference counting mechanism and other functions that should be overridden in subclasses.
  It the base class for all classes in the FTObjectLibrary library. You will usually not allocate objects
- of this class. Instead you will create subclasses of it that have data and procedures as needed.
+ of this class. Instead you will create your own subclasses of it that have data and procedures as needed.
  \item {\bf FTValue}
  
   FTValue is a wrapper class that
  allows storage of real, integer, character and logical
- values, which can then be stored in containers. Programmers can create their own value
- classes by extending FTObject and store instances of those classes in the containers.
+ values, which can then be stored in containers.
  
  \end{itemize}
+ 
+  You can create your own value
+ classes by extending FTObject and store instances of those classes in the containers.
 
 % \subsection{Container Classes}
  Container classes let you store any subclass of the base class FTObject in them. This makes it easy to
@@ -94,18 +96,22 @@ FTLinkedList is an implementation of a doubly (and, optionally, circular) linked
 
 FTStack is a subclass of FTLinkedList that adds the usual push, pop, and peek routines.
 
+\item {\bf FTHashTable}
+
+FTHashTable is an ``associative container'', that associates a double index (i,j) to and FTObject. Basically this is a two dimensional sparse matrix of pointers to FTObjects.
+
 \item {\bf FTDictionary}
 
-FTDictionary is an ``associative container'', that associates a string to another object. 
+FTDictionary is an ``associative container'', that associates a string to another FTObject. 
 
 \item {\bf FTValueDictionary}
 
 FTValueDictionary is a subclass of FTDictionary that has additional methods to store and retrieve
 values.
 
-\item {\bf FTObjectArray}
+\item {\bf FTMutableObjectArray}
 
-A mutable one-dimensional array class that can store any object.
+A mutable one-dimensional array class that can store any FTObject.
 
 \end{itemize}
 
@@ -134,7 +140,7 @@ added to the dictionary.
                  CALL v % release()
 	         
                  ALLOCATE(v)
-                 CALL v % initWithValue(``Ratio of circumference to radius'')
+                 CALL v % initWithValue(``Ratio of circumference to diameter'')
                  obj => v
                  CALL dict % addObjectForKey(obj,"definition")
                  CALL v % release()
@@ -142,13 +148,13 @@ added to the dictionary.
 \end{verbatim}}
  
  Notice that in the subroutine we have allocated memory for the dictionary ``dict'' and two FTValue objects. The dictionary
- is returned to the calling procedure and can be accessed by the actual argument. The two value objects would normally
+ is returned to the calling procedure and can be accessed from that point through the actual argument. The two value objects would normally
  be expected to be deallocated when leaving the subroutine, since otherwise they would not be accessible outside
  of the procedure. It would be dangerous if we deallocated the two objects that we created and then try to use them later through
-the dictionary. This is where a systematic approach to memory management comes in. When we allocate and initialize an object, we assume ownership of it.
+the dictionary. This is where a systematic approach to memory management comes in. When we initialize an object, we assume ownership of it.
 When we add it to the dictionary, it assumes partial ownership. So instead of deallocating the two value objects, we relinquish ownership
 by way of the release() procedure, leaving only the dictionary to be responsible for deallocating them when it does not need them any more.
-  
+
  We use the dictionary a shown in the next snippet of code:
 
 {\color{blue}\begin{verbatim}
@@ -161,45 +167,47 @@ by way of the release() procedure, leaving only the dictionary to be responsible
             
             obj => dict % objectForKey("Pi")
             v   => valueFromObject(obj)
-            pi = v % realValue()
+            pi  = v % realValue()
             
             obj => dict % objectForKey(``definition'')
             v   => valueFromObject(obj)
-            s = v % stringValue(FTDICT_KWD_STRING_LENGTH)
+            s   = v % stringValue(FTDICT_KWD_STRING_LENGTH)
             PRINT *, "The num pi = ", pi," is defined as", TRIM(s)
             CALL dict % release()
             IF( dict % isUnreferenced() ) DEALLOCATE(dict)
-            DEALLOCATE(dict)
 \end{verbatim}}
   
  In this snippet, the values for the two keys ``Pi'' and ``definition'' are retrieved and then used.
  (Notice the fixed length string workaround.)
- The function valueFromObject() converts the generic object to the specific FTValue type. Finally, the dictionary is
+ The function valueFromObject() converts the generic object to the specific FTValue type. (If we try to convert something that is not an FTValue, the method returns an ASSOCIATED(v) == .FALSE. pointer.) Finally, the dictionary is
  released, which will release all of its objects and then deallocate all of those objects that it is
  sole owner of, which in this example is both the value and definition of $\pi$, and then DEALLOCATE it
  if it is no longer owned (referenced) by another object, which is the case here.
  
  In this way, any object that inherits from FTObject can be stored in a container, including other containers, making these
- containers quite generic, up to the limits of the language.
+ containers quite generic, up to the limits of the Fortran language.
 
  \section {Memory Management}
  FTObjectLibrary uses a manual retain-release memory management model known as reference counting. A description of 
  this model can be found at 
  \url{https:developer.apple.com/library/mac/#documentation/cocoa/Conceptual/MemoryMgmt/Articles/mmRules.html#apple_ref/doc/uid/20000994-BAJHFBGH}.
- The basic idea is that a pointer object exists as long as someone "owns" it. When no one owns it any more, the last owner
+ The basic idea is that a pointer object exists as long as someone ``owns'' it. When no one owns it any more, the last owner
  is responsible for deallocating the object. This approach makes it easy to keep track of when to deallocate
  pointers, and ensures that a pointer that is in use is not prematurely deallocated. In long, complex, programs, this mechanism automatically keeps track of which
  objects (pointers) that have been allocated need to be deallocated, and when.
   
  Ownership rules are as follows:
  \begin{itemize}
-\item If you allocate() and initialize an object, you own it.
+\item If you initialize an object, you own it.
 \item You own an object if you call the retain() subroutine on that object.
-\item You may inherit the ownership of an object by allying a method that creates (allocates and initializes) it.
-\item When you no longer need an object you must release it using the release() subroutine, and if you are the last owner, you must deallocate it.
+\item You may inherit the ownership of an object by calling a method that creates (allocates and initializes) it.
+\item When you no longer need an object (or are going out of scope) you must release it using the release() subroutine, and if you are the last owner, you must deallocate it.
 \item You must neither relinquish ownership, nor deallocate, a pointer object that you do not own.
 \item You generally do not own objects returned as pointers by functions or subroutines.
   \end{itemize}
+  
+\emph{Fundamentally, if you call an init() method on an object, you should call a release() and check for deallocation in the same scope.}
+  
  In the example below, the main program creates a linked list to store points in, a ``point'' object (e.g. that stores x,y,z values), and adds
  the point object to the linked list. 
 
@@ -328,7 +336,7 @@ FTObject is generally not going to be instantiated by itself, but rather it will
  The init() procedure performs subclass specific operations to initialize an object.
 
  Subclasses that override init() must include 
- a call to the super class method. For example, overriding init looks like
+ a call to the super class method. For example, overriding init() looks like
 
 {\color{blue}\begin{verbatim}
       SUBROUTINE initSubclass(self) 
@@ -341,11 +349,50 @@ FTObject is generally not going to be instantiated by itself, but rather it will
       END SUBROUTINE initSubclass
 \end{verbatim}}
 
+You can have multiple initializers for an object, so it is also worthwhile understanding the concept of the ``designated initializer''. Generally speaking this is the
+initializer that has the most arguments. For example, the designated initializer for a ``point'' class would be the one that takes the (x,y,z) values.
+
+{\color{blue}\begin{verbatim}
+      SUBROUTINE initPointWithXYZ(self,x,y,z) 
+         IMPLICIT NONE
+         CLASS(Subclass) :: self
+         
+         CALL self % FTObject % init()
+         self % x = x
+         self % y = y
+         self % z = z
+      END SUBROUTINE initPointWithXYZ
+\end{verbatim}}
+
+Other initializers might be the default, and the initializer that takes an array of length three. They will
+do nothing but call the designated initializer. The default initializer sets the location to the origin, or some other
+reasonable value.
+
+{\color{blue}\begin{verbatim}
+      SUBROUTINE initPoint(self) 
+         IMPLICIT NONE
+         CLASS(Subclass) :: self
+         
+         call self % initPointWithXYZ(0.0,0.0,0.0)
+      END SUBROUTINE initPointWithXYZ
+\end{verbatim}}
+
+The array initializer is
+{\color{blue}\begin{verbatim}
+      SUBROUTINE initPointwithArray(self,w) 
+         IMPLICIT NONE
+         CLASS(Subclass) :: self
+         REAL            :: w(3)
+         
+         call self % initPointWithXYZ(w(1),w(2),w(3))
+      END SUBROUTINE initPointwithArray
+\end{verbatim}}
+
 {\bf Implementing destruct()}
 
  The destruct() procedure reverses the operations done in the init() procedure. It releases and
  deallocates any pointers that it owns.  Subclasses that override destruct() must include 
- a call to the super class method. For example, overriding destruct looks like
+ a call to the superclass method. For example, overriding destruct looks like
 
 {\color{blue}\begin{verbatim}
       SUBROUTINE destructSubclass(self) 
@@ -385,13 +432,14 @@ FTObject is generally not going to be instantiated by itself, but rather it will
       END FUNCTION subclassFromSuperclass
 \end{verbatim}}
 
+You saw an example above in the ``valueFromObject(obj)'' function.
 \subsection{FTValue}
  FTValue is a not completely F2003/2008 version of an immutable class
  to store primitive values: integer, real, double precision, logical,
  character. (To Add: complex)
 
  This version does not use CLASS(*) or deferred length strings
- so that it can be used with gfortran 4.7/4.8
+ so that it can be used with gfortran 4.7/4.8. That's a shame, because both are really useful features to have.
 
  \subsubsection{Usage}
 \begin{itemize}
@@ -522,12 +570,19 @@ and circular lists where the ends are connected.
 		\end{verbatim}}
 
          \item Removing objects
-
 		{\color{blue}\begin{verbatim}
 	               CLASS(FTLinkedList), POINTER :: list
 	               CLASS(FTObject)    , POINTER :: obj
 	               obj => r                 ! r is subclass of FTObject
 	               CALL list % remove(obj)
+		\end{verbatim}}
+		
+         \item Getting an array of all of the objects
+
+		{\color{blue}\begin{verbatim}
+	               CLASS(FTLinkedList)         , POINTER :: list
+               CLASS(FTMutableObjectArray) , POINTER :: array
+               array => list % allObjects() ! Array has refCount = 1
 		\end{verbatim}}
 
 	\item Making a linked list circular or not. The default is not circular.
@@ -546,6 +601,12 @@ and circular lists where the ends are connected.
 
 		{\color{blue}\begin{verbatim}
 		               n = list % count()
+		\end{verbatim}}
+		
+         \item Reversing the order of the list
+
+		{\color{blue}\begin{verbatim}
+		               CALL list % reverse()
 		\end{verbatim}}
 
          \item Destruction
@@ -612,12 +673,12 @@ Or
               CLASS(FTObject), POINTER :: obj
               CALL iterator % setToStart()
               DO WHILE (.NOT.iterator % isAtEnd())
-                  obj => iterator % object()        ! if the object is wanted
+                  obj => iterator % object()              ! if the object is wanted
                   recordPtr => iterator % currentRecord() ! if the record is wanted
                   
                   !Do something with object or record
 
-                  CALL iterator % moveToNext()
+                  CALL iterator % moveToNext() ! FORGET THIS CALL AND YOU GET AN INFINITE LOOP!
               END DO
 \end{verbatim}}
 
@@ -690,7 +751,7 @@ will use regular arrays for numeric types and the like, but for generic objects 
 an Object Array.
 
 You initialize a FTMutableObjectArray with the number of objects that you expect it to hold.
-However, it can re-size itself if necessary. To be efficient, it adds more than one entries at a time
+However, it can re-size itself if necessary. To be efficient, it adds more than one entry at a time
 given by the ``chunkSize'', which you can choose for yourself. (The default is 10.)
 
      {\bf Definition (Subclass of FTObject):}
@@ -711,7 +772,7 @@ given by the ``chunkSize'', which you can choose for yourself. (The default is 1
 		{\color{blue}\begin{verbatim}
            CALL array  %  release()
            IF ( array  %  isUnreferenced() )     THEN
-              DEALLOCATE(array) ! If stack is a pointer
+              DEALLOCATE(array) ! If array is a pointer
               array => NULL()
            END IF 
 	\end{verbatim}}
@@ -750,7 +811,7 @@ given by the ``chunkSize'', which you can choose for yourself. (The default is 1
 	
         \item Getting the chunk size
 	{\color{blue}\begin{verbatim}
-           CALL array % setChunkSize(size)
+           CALL array % chunkSize(size)
 	\end{verbatim}}
 	
         \item Finding the number of items in the array
@@ -796,6 +857,7 @@ $H(i,j) = i + j*N$, where $N$ is the range of the first index, $i$.
 The hash table included in the FTObjectLibrary is very simple in that it has a predefined
 hash function to describe a sparse matrix with two keys, $(i,j)$. You will initialize the table
 with the number of rows.
+\clearpage
      {\bf Definition (Subclass of FTObject):}
 	{\color{blue}\begin{verbatim}
         	TYPE(FTHashTable) :: table
@@ -836,7 +898,7 @@ with the number of rows.
         \item Checking if an entry exists
 	{\color{blue}\begin{verbatim}
            LOGICAL :: exists
-           exists = table % containsKeys()
+           exists = table % containsKeys(i,j)
 	\end{verbatim}}
 	
 \end{itemize}
@@ -857,9 +919,9 @@ subclass that is designed to store and retrieve FTValue objects.
 
 \begin{itemize}
         \item Initialization
-		{\color{blue}\begin{verbatim}
+	{\color{blue}\begin{verbatim}
       CLASS(FTDictionary)  :: dict
-      INTEGER              :: N = 11 ! Should be a power of two.
+      INTEGER              :: N = 16 ! Should be a power of two.
       CALL dict % initWithSize(N)
 	\end{verbatim}}
 	
@@ -893,6 +955,18 @@ subclass that is designed to store and retrieve FTValue objects.
 	{\color{blue}\begin{verbatim}
            dict =>  dictionaryFromObject(obj)
 	\end{verbatim}}
+		
+        \item Getting all of the keys
+	{\color{blue}\begin{verbatim}
+           CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
+           keys =>  dict % allKeys()
+	\end{verbatim}}
+	
+        \item Getting all of the objects
+	{\color{blue}\begin{verbatim}
+           CLASS(FTMutableObjectArray), POINTER :: objectArray
+           objectArray =>  dict % allObjects()
+	\end{verbatim}}
 	
 \end{itemize}
 \subsubsection{FTValueDictionary}
@@ -921,6 +995,12 @@ FTValueDictionary adds methods to store and retrieve FTValue objects.
      l = dict % logicalValueForKey("logical")
      s = dict % stringValueForKey("string",15)
 	\end{verbatim}}
+	
+	Note that the FTValue class will do type conversion, so you can also access something like
+	{\color{blue}\begin{verbatim}
+     i = dict % integerValueForKey("real")
+     s = dict % stringValueForKey(``real'',15)
+	\end{verbatim}}
 \item Converting an FTDictionary to an FTValueDictionary
 	{\color{blue}\begin{verbatim}
         	 valueDict => valueDictionaryFromDictionary(dict)
@@ -936,4 +1016,262 @@ FTValueDictionary adds methods to store and retrieve FTValue objects.
 The library includes classes for testing and reporting errors. Errors are reported through
 instances of the FTException class. Testing is made semi-automatic through the
 TestSuiteManager class and procedures defined in the FTAssertions module.
+\subsection{Assertions}
+An assertion is a true-false statement that you expect to be true. Assertions are used
+to test for exceptional situations (AKA ``Failures'') in a code. For example, knowing that density
+always must be positive, you might assert that fact before using it, and if the result is false 
+generate an error. With FTObjectLibrary that would be
+	{\color{blue}\begin{verbatim}
+        	CALL assert(rho > 0,``Density must be positive'')
+	\end{verbatim}}
+
+
+Fortran does not have an assertion mechanism, and so pretty much everyone writes their own. 
+There are a couple of open source projects available, but one never knows how actively they will be 
+maintained. In the grand Fortran tradition of writing one's own, FTObjectLibrary has
+an (incomplete) assertion module. 
+
+To use assertions, you will USE the FTAssertions module and initialize the assertions system by calling
+	{\color{blue}\begin{verbatim}
+        	CALL initializeSharedAssertionsManager
+	\end{verbatim}}
+During the course of your program, the sharedAssertionsManager will keep track of the 
+success or failure of the assertions that you make. You can enquire at any time how many assertions
+have failed and how many assertions have been made with the two enquiry functions
+	{\color{blue}\begin{verbatim}
+     INTEGER FUNCTION numberOfAssertionFailures()
+     INTEGER FUNCTION numberOfAssertions()
+	\end{verbatim}}
+You can get a summary of the assertions by calling the subroutine
+	{\color{blue}\begin{verbatim}
+     SUBROUTINE SummarizeFTAssertions(title,iUnit)  
+        IMPLICIT NONE
+        CHARACTER(LEN=*)                        :: title
+        INTEGER                                 :: iUnit
+	\end{verbatim}}
+When you are done, you finalize the sharedAssertionsManager with
+	{\color{blue}\begin{verbatim}
+        	CALL finalizeSharedAssertionsManager
+	\end{verbatim}}
+
+So how do you make assertions? FTObjectLibrary supplies two subroutines that post 
+failures to the sharedAssertionsManager. The first takes a LOGICAL variable
+	{\color{blue}\begin{verbatim}
+      SUBROUTINE assert(test,msg)  
+         IMPLICIT NONE
+         CHARACTER(LEN=*), OPTIONAL :: msg
+         LOGICAL                    :: test
+	\end{verbatim}}
+The second tests equality through the overloaded subroutine assertEqual, which allows a variety 
+of argument type listed below:
+	{\color{blue}\begin{verbatim}
+       INTERFACE assertEqual
+         MODULE PROCEDURE assertEqualTwoIntegers
+         MODULE PROCEDURE assertEqualTwoIntegerArrays1D
+         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
+         MODULE PROCEDURE assertWithinToleranceTwoReal
+         MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
+         MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
+         MODULE PROCEDURE assertWithinToleranceTwoDouble
+         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays1D
+         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
+         MODULE PROCEDURE assertEqualTwoLogicals
+         MODULE PROCEDURE assertEqualString
+      END INTERFACE assertEqual
+	\end{verbatim}}
+The individual calls have the signatures
+	{\color{blue}\begin{verbatim}
+      SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)  
+         IMPLICIT NONE  
+         INTEGER, INTENT(in)        :: expectedValue,actualValue
+         CHARACTER(LEN=*), OPTIONAL :: msg
+         
+      SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
+         IMPLICIT NONE  
+         INTEGER, INTENT(in)    , DIMENSION(:)            :: expectedValue,actualValue
+         
+      SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
+         IMPLICIT NONE  
+         INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
+      SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,msg)  
+         IMPLICIT NONE  
+         REAL, INTENT(in)           :: x,y,tol
+         CHARACTER(LEN=*), OPTIONAL :: msg
+         
+      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,msg)  
+         IMPLICIT NONE  
+         REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+         REAL, INTENT(IN)               :: tol
+         CHARACTER(LEN=*), OPTIONAL     :: msg
+         
+      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
+         IMPLICIT NONE  
+         REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+         REAL, INTENT(IN)                 :: tol
+         
+      SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,msg)  
+         IMPLICIT NONE  
+         DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
+         CHARACTER(LEN=*), OPTIONAL   :: msg
+         
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,msg)  
+         IMPLICIT NONE  
+         DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+         DOUBLE PRECISION, INTENT(IN)               :: tol
+         CHARACTER(LEN=*), OPTIONAL                 :: msg
+         
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol)  
+         IMPLICIT NONE  
+         DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+         DOUBLE PRECISION, INTENT(IN)                 :: tol
+         
+      SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
+         IMPLICIT NONE
+         CHARACTER(LEN=*)           :: expectedValue,actualValue
+         CHARACTER(LEN=*), OPTIONAL :: msg
+         
+      SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)  
+         IMPLICIT NONE  
+         LOGICAL, INTENT(in)        :: expectedValue,actualValue
+         CHARACTER(LEN=*), OPTIONAL :: msg
+	\end{verbatim}}
+	Notice that you can only check the equality of two floating point numbers to within some tolerance.
+\subsection{Testing}
+FTObjectLibrary also includes a testing suite with which you can create a suite of tests
+to make sure your codes are working and stay working. The tests are managed by an instance of the
+{\color{blue}{TestSuiteManager}} class. It is designed to be used with minimal fuss. You
+\begin{enumerate}
+\item Initialize the test suite
+\item Add test subroutines
+\item Have the testSuiteManager perform the tests
+\item Finalize the test suite manager
+\end{enumerate}
+
+
+An example of running a suite of tests is the following:
+	{\color{blue}\begin{verbatim}
+      TYPE(TestSuiteManager) :: testSuite
+      
+      EXTERNAL :: FTDictionaryClassTests
+      EXTERNAL :: FTExceptionClassTests
+      EXTERNAL :: FTValueClassTests
+      EXTERNAL :: FTValueDictionaryClassTests
+      EXTERNAL :: FTLinkedListClassTests
+      EXTERNAL :: StackClassTests
+      EXTERNAL :: MutableArrayClassTests
+      EXTERNAL :: HashTableTests
+
+      CALL testSuite % init()
+      
+      CALL testSuite % addTestSubroutineWithName(FTValueClassTests,"FTValueClass Tests")
+      CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,"FTDictionaryClass Tests")
+      CALL testSuite % addTestSubroutineWithName(FTValueDictionaryClassTests,"FTValueDictionaryClass Tests")
+      CALL testSuite % addTestSubroutineWithName(FTLinkedListClassTests,"FTLinkedListClass Tests")
+      CALL testSuite % addTestSubroutineWithName(StackClassTests,"StackClass Tests")
+      CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,"Mutable Array Tests")
+      CALL testSuite % addTestSubroutineWithName(HashTableTests,"Hash Table Tests")
+      CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,"FTExceptionClass Tests")
+
+      CALL testSuite % performTests()
+
+      CALL testSuite % finalize()
+	\end{verbatim}}
+The test subroutines have no arguments. The interface is
+{\color{blue}\begin{verbatim}
+      ABSTRACT INTERFACE
+         SUBROUTINE testSuiteFunction()
+         END SUBROUTINE testSuiteFunction
+      END INTERFACE
+\end{verbatim}}
+
+The test functions should USE the FTAssertions module as in the previous section. You don't have to do any reporting code in your tests, however. Reporting is managed by the testSuiteManager at the end of performTests.
+
+     {\bf Definition:}
+	{\color{blue}\begin{verbatim}
+        	TYPE(TestSuiteManager) :: tester
+	\end{verbatim}}
+     {\bf Usage:}
+\begin{itemize}
+\item Initialization
+	{\color{blue}\begin{verbatim}
+    CALL tester % init()
+	\end{verbatim}}
+	
+\item Creating a test
+   Create subroutines with the interface
+{\color{blue}\begin{verbatim}
+      ABSTRACT INTERFACE
+         SUBROUTINE testSuiteFunction()
+         END SUBROUTINE testSuiteFunction
+      END INTERFACE
+\end{verbatim}}
+that (typically) includes unit test calls. 
+\item Adding a test case
+	{\color{blue}\begin{verbatim}
+         CALL tester % addTestSubroutineWithName(SubroutineName, description)
+	\end{verbatim}}
+where
+\begin{itemize}
+\item SubroutineName = a subroutine with the interface as above, and 
+\item description = a CHARACTER(LEN=128) character string that names the test
+\end{itemize}
+
+\item Setting the output location
+	{\color{blue}\begin{verbatim}
+         CALL tester % setOutputUnit(iUnit)
+	\end{verbatim}}
+\item Running tests
+	{\color{blue}\begin{verbatim}
+         CALL tester % performTests()
+	\end{verbatim}}
+\item Finalizing the test suite
+	{\color{blue}\begin{verbatim}
+         CALL tester % finalize()
+	\end{verbatim}}
+
+\end{itemize}
+
+\subsection{Exceptions}
+      An FTException object provides a way to pass generic
+      information about an exceptional situation. Methods for
+      dealing with exceptions are defined in the SharedExceptionManagerModule
+      module.
+
+      An FTException object wraps:
+      \begin{itemize}
+      \item A severity indicator
+      \item A name for the exception
+      \item An optional dictionary that contains whatever information is deemed necessary.
+
+      It is expected that classes will define exceptions that use instances
+      of the FTException Class.
+      \end{itemize}
+      
+      Defined constants:
+{\color{blue}\begin{verbatim}
+         FT_ERROR_NONE    = 0
+         FT_ERROR_WARNING = 1
+         FT_ERROR_FATAL   = 2
+\end{verbatim}}
+
+     {\bf Usage:}
+\begin{itemize}
+\item Initialization
+	{\color{blue}\begin{verbatim}
+            e  %  initFTException(severity,exceptionName,infoDictionary)
+
+            Plus the convenience initializers, which automatically 
+            create a FTValueDictionary with a single key called "message":
+
+            e % initWarningException(msg = "message")
+            e % initFatalException(msg = "message")
+	\end{verbatim}}
+	
+\item Setting components
+   Create subroutines with the interface
+{\color{blue}\begin{verbatim}
+            e  %  setInfoDictionary(infoDictionary)
+\end{verbatim}}
+
+\end{itemize}
 \end{document}  

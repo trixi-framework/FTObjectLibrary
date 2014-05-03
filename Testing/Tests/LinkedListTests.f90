@@ -15,7 +15,32 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE FTLinkedListClassTests
+      SUBROUTINE FTLinkedListClassTests  
+         IMPLICIT NONE
+!
+!        ------------
+!        Basic tests 
+!        ------------
+!
+         CALL basicTests
+!
+!        --------------------------------------
+!        Do more with deleting objects in lists
+!        --------------------------------------
+!
+         CALL TestDeletingObjects
+!
+!        ---------------------------------
+!        Now test appending lists to lists
+!        ---------------------------------
+!
+         CALL testAppendingLists
+         
+      END SUBROUTINE FTLinkedListClassTests
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE basicTests
          USE FTAssertions
          USE FTValueClass
          USE FTLinkedListClass
@@ -40,8 +65,8 @@
 !        can be a non-pointer, too, like the iterator.
 !        -------------------------------------------------
 !
-         CLASS(FTLinkedList), POINTER :: list
-         TYPE(FTLinkedListIterator)   :: iterator
+         CLASS(FTLinkedList)       , POINTER :: list
+         TYPE(FTLinkedListIterator), POINTER :: iterator
          
          INTEGER                      :: i
          LOGICAL                      :: test
@@ -150,6 +175,7 @@
 !        the list after we release it, it will destruct the list.
 !        ---------------------------------------------------------------------------------
 !
+         ALLOCATE(iterator)
          CALL iterator % initWithFTLinkedList(list)
          CALL assertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
 !
@@ -157,7 +183,7 @@
 !        Iterate through the list from the beginning
 !        -------------------------------------------
 !
-         CALL iterator % setToStart
+         CALL iterator % setToStart()
          i = 1
          
          DO WHILE (.NOT.iterator % isAtEnd() )
@@ -196,6 +222,7 @@
          objectPtr => r2
          CALL list % remove(objectPtr)
          CALL assertEqual(2,list % COUNT(),"List has two objects after removing one")
+         CALL assertEqual(1,r2 % refCount(),msg = "Refcount after removing object")
          
          CALL iterator % setToStart
          i = 1
@@ -223,7 +250,7 @@
 !        ------------------------------------------------------
 !
          CALL list % release()
-         CALL assertEqual(1,list % refCount(),"Ref count descrease on release")
+         CALL assertEqual(1,list % refCount(),"Ref count decrease on release")
 !
 !        -------------------------------------------------------------------
 !        Normally we would now check if the list should be deallocated. But 
@@ -241,7 +268,7 @@
 !
          CALL iterator % release()
          IF ( iterator % isUnreferenced() )     THEN
-            ! iterator is not a pointer, so we don't deallocate it 
+            DEALLOCATE(iterator) 
          END IF 
 !
 !        --------------------------------------------------------------------------
@@ -249,23 +276,11 @@
 !        it. Check to make sure.
 !        --------------------------------------------------------------------------
 !
-         list => iterator % linkedList()
-         test = ASSOCIATED(list)
-         CALL assert(.NOT.test,"List pointer nullified")
-!
-!        ---------------------------------
-!        Now test appending lists to lists
-!        ---------------------------------
-!
-         CALL testAppendingLists
-!
-!        --------------------------------------
-!        Do more with deleting objects in lists
-!        --------------------------------------
-!
-         CALL TestDeletingObjects
+!         list => iterator % linkedList()
+!         test = ASSOCIATED(list)
+!         CALL assert(.NOT.test,"List pointer nullified")
          
-      END SUBROUTINE FTLinkedListClassTests
+      END SUBROUTINE basicTests
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -276,13 +291,14 @@
          USE FTLinkedListIteratorClass
          IMPLICIT NONE
 !         
-         CLASS(FTValue)           , POINTER :: v 
-         CLASS(FTObject)          , POINTER :: objectPtr
-         CLASS(FTLinkedList)      , POINTER :: list1, list2
-         CLASS(FTLinkedListRecord), POINTER :: recordPtr
+         CLASS(FTValue)             , POINTER :: v 
+         CLASS(FTObject)            , POINTER :: objectPtr
+         CLASS(FTLinkedList)        , POINTER :: list1, list2
+         CLASS(FTLinkedListRecord)  , POINTER :: recordPtr
+         CLASS(FTMutableObjectArray), POINTER :: array
          
-         TYPE(FTLinkedListIterator)        :: iterator
-         INTEGER                           :: j, N
+         TYPE(FTLinkedListIterator)           :: iterator
+         INTEGER                              :: j, N
 !
 !        ----------------------------------------------
 !        Create the two lists that will be concatenated
@@ -317,7 +333,7 @@
 !        -----------------------------------
 !
          CALL list1 % addObjectsFromList(list2)
-         CALL AssertEqual(10, list1 % COUNT(),"Append list increases list size")
+         CALL assertEqual(10, list1 % COUNT(),"Append list increases list size")
 !
 !        -------------------------------------------
 !        See that the new list contains the old one.
@@ -330,10 +346,10 @@
          DO WHILE (.NOT.iterator % isAtEnd())
             objectPtr => iterator % object()
             v         => valueFromObject(obj = objectPtr)
-            CALL AssertEqual(j, v % integerValue(),"Item value stored properly")
+            CALL assertEqual(j, v % integerValue(),"Item value stored properly")
             IF ( j >= 6 )     THEN
                objectPtr => iterator % object()
-               CALL AssertEqual(2, objectPtr % refCount(), "Records owned by two lists")
+               CALL assertEqual(2, objectPtr % refCount(), "Records owned by two lists")
             END IF 
             CALL iterator % moveToNext()
             j = j + 1
@@ -345,7 +361,7 @@
 !        --------------------------------------------------
 !
          CALL list2 % release()
-         CALL AssertEqual(.TRUE., list2 % isUnreferenced(),"List has only one owner and should deallocate on release")
+         CALL assertEqual(.TRUE., list2 % isUnreferenced(),"List has only one owner and should deallocate on release")
          IF ( list2 % isUnreferenced() )     THEN
             DEALLOCATE(list2) 
          END IF 
@@ -361,13 +377,30 @@
          
             objectPtr => iterator % object()
             v         => valueFromObject(obj = objectPtr)
-            CALL AssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
-            CALL AssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
+            CALL assertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL assertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
-            CALL AssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
+            CALL assertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j + 1
          END DO
+!
+!        -------------------------------------
+!        Create an object array from the list.
+!        -------------------------------------
+!
+         array => list1 % allObjects()
+         DO j = 1, array % COUNT()
+            objectPtr => array % objectAtIndex(j)
+            v         => valueFromObject(obj = objectPtr)
+            CALL assertEqual(j, v % integerValue(),"Item value stored in array created from list")
+            CALL assertEqual(2, objectPtr % refCount(), "Objects owned by one list and one array")
+         END DO
+         CALL array % release()
+         CALL assert(test = array % isUnreferenced(),msg = "Array unreferenced")
+         IF ( array % isUnreferenced() )     THEN
+            DEALLOCATE(array) 
+         END IF 
 !
 !        -------------------------------------------
 !        Now reverse the list and iterate through it
@@ -381,14 +414,18 @@
          
             objectPtr => iterator % object()
             v         => valueFromObject(objectPtr)
-            CALL AssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
-            CALL AssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
+            CALL assertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL assertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
-            CALL AssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
+            CALL assertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j - 1
          END DO
-         
+!
+!        --------
+!        Clean up
+!        --------
+!
          CALL list1 % release()
          CALL iterator % release()
          
@@ -451,7 +488,7 @@
          DO WHILE( .NOT.iterator % isAtEnd() )
             IF ( j == 6 )     THEN
                obj => iterator % object()
-               v   => valueFromObject(obj = obj)
+               v   => valueFromObject(obj)
                CALL assertEqual(6,v % integerValue(),"Value of object to be deleted")
                CALL iterator % removeCurrentRecord() 
             END IF  
@@ -460,11 +497,11 @@
          END DO
          
          CALL assertEqual(5,list % COUNT(),"Count after deletion of tail object")
-!
-!        -----------------------
-!        Delete the third record
-!        -----------------------
-!
+!!
+!!        -----------------------
+!!        Delete the third record
+!!        -----------------------
+!!
          CALL iterator % setToStart()
          j = 1
          DO WHILE( .NOT.iterator % isAtEnd() )
@@ -481,7 +518,7 @@
         
          CALL assertEqual(4,list % COUNT(),"Count after deletion of middle object")
          obj => iterator % object()
-         v   => valueFromObject(obj = obj)
+         v   => valueFromObject(obj)
          CALL assertEqual(4,v % integerValue(),"Value of current object after deleting")
 !
 !        ---------------------------------
@@ -489,11 +526,11 @@
 !        ---------------------------------
 !
          recordPtr => iterator % currentRecord()
-         obj => recordPtr % previous % recordObject
-         v   => valueFromObject(obj)
+         obj       => recordPtr % previous % recordObject
+         v         => valueFromObject(obj)
          CALL assertEqual(2,v % integerValue(), "Value of previous object after deleting")
-         obj => recordPtr % next % recordObject
-         v   => valueFromObject(obj)
+         obj       => recordPtr % next % recordObject
+         v         => valueFromObject(obj)
          CALL assertEqual(5,v % integerValue(), "Value of next object after deleting")
 !
 !        -----------------------
@@ -513,6 +550,7 @@
 !
          CALL iterator % release()
          DEALLOCATE(iterator)
+
          CALL list % release()
          DEALLOCATE(list)         
          

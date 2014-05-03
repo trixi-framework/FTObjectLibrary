@@ -62,7 +62,8 @@
          CONTAINS
 !        ========
 !
-         PROCEDURE :: init     => initFTStack
+         PROCEDURE :: init             => initFTStack
+         PROCEDURE :: printDescription => printStackDescription
          PROCEDURE :: push
          PROCEDURE :: pop
          PROCEDURE :: peek
@@ -128,9 +129,10 @@
             self % head => newRecord
             self % tail => newRecord
          ELSE
-            tmp            => self % head
-            self % head      => newRecord
+            tmp                => self % head
+            self % head        => newRecord
             self % head % next => tmp
+            tmp  % previous    => newRecord
          END IF
          self % nRecords = self % nRecords + 1
          
@@ -215,5 +217,16 @@
          END SELECT
          
       END FUNCTION stackFromObject
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      SUBROUTINE printStackDescription(self, iUnit) 
+         IMPLICIT NONE 
+         CLASS(FTStack) :: self
+         INTEGER        :: iUnit
+         
+         CALL self % FTLinkedList % printDescription(iUnit = iUnit)
+         
+      END SUBROUTINE printStackDescription
     
       END Module FTStackClass    

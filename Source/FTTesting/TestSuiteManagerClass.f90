@@ -73,7 +73,9 @@
          TYPE(TestCaseRecord), POINTER :: testCasesHead => NULL()
          TYPE(TestCaseRecord), POINTER :: testCasesTail => NULL()
          CONTAINS
-         PROCEDURE :: addTestSubroutineWithName, performTests, finalize => finalizeTestSuiteManager
+         PROCEDURE :: addTestSubroutineWithName
+         PROCEDURE :: performTests
+         PROCEDURE :: finalize => finalizeTestSuiteManager
          PROCEDURE :: setOutputUnit
          PROCEDURE :: init     => initializeTestSuiteManager
       END TYPE TestSuiteManager
@@ -111,8 +113,8 @@
          TYPE(TestCaseRecord), POINTER :: newTestCase
          
          INTERFACE
-            SUBROUTINE fun()
-            END SUBROUTINE  fun
+            SUBROUTINE testFunction()
+            END SUBROUTINE  testFunction
          END INTERFACE
          
          ALLOCATE(newTestCase)
