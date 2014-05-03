@@ -305,6 +305,8 @@
         
         CLASS(FTDictionary), POINTER :: dict
         
+        WRITE(iUnit,*) "-------------"
+        WRITE(iUnit,*) " "
         WRITE(iUnit,*) "Exception Named: ", TRIM(self  %  exceptionName())
         dict => self % infoDictionary()
         IF(ASSOCIATED(dict)) CALL dict % printDescription(iUnit)
@@ -418,7 +420,7 @@
            PRINT *,"   ***********************************"
            PRINT *
            
-!           CALL printAllExceptions !DEBUG
+           CALL printAllExceptions !DEBUG
             
          END IF 
 !
@@ -630,7 +632,6 @@
             objectPtr => iterator % object()
             CALL cast(objectPtr,e)
             CALL e % printDescription(6)
-            WRITE(6,*) e % refCount()
             CALL iterator % moveToNext()
          END DO
          
