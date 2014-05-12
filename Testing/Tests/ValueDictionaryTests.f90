@@ -30,7 +30,7 @@
 !        Initialize the dictionary. We set it up with
 !        64 elements. The size should be large enough
 !        so that there are not a lot of name collisions, but not
-!        so beg as to use up massive amounts of memory. The size
+!        so big as to use up massive amounts of memory. The size
 !        should be a power of two. 
 !        -------------------------------------------------------
 !

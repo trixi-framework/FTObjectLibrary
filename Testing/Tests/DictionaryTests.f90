@@ -25,7 +25,7 @@
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH)               :: s, msg
          INTEGER                                               :: i
 
-         CALL dict%initWithSize(64)
+         CALL dict % initWithSize(64)
 !
 !        -----------------------------------------
 !        Add the keys and values to the dictionary
@@ -33,12 +33,12 @@
 !
          DO i = 1, 4
             ALLOCATE(v)
-            CALL v%initWithValue(values(i))
+            CALL v % initWithValue(values(i))
             obj => v
-            CALL dict%addObjectForKey(obj,keys(i))
+            CALL dict % addObjectForKey(obj,keys(i))
             CALL v % release()
-            CALL assertEqual(1,v%refCount(),"Reference Counting: Addition of object and release")
-            CALL assertEqual(i,dict%count(),"Adding to dictionary object count")
+            CALL assertEqual(1,v % refCount(),"Reference Counting: Addition of object and release")
+            CALL assertEqual(i,dict % count(),"Adding to dictionary object count")
          END DO
 !
 !        ------------------
@@ -46,7 +46,7 @@
 !        ------------------
 !
          DO i = 1,4
-            obj => dict%objectForKey(keys(i))
+            obj => dict % objectForKey(keys(i))
             v   => valueFromObject(obj)
             IF ( ASSOCIATED(v) )     THEN
                s = v % stringValue(FTDICT_KWD_STRING_LENGTH)
@@ -75,11 +75,11 @@
 !        Clean up memory
 !        ---------------
 !
-!         DEALLOCATE(storedKeys)
-!         CALL storedObjects % release()
-!         IF ( storedObjects % isUnreferenced() )     THEN
-!            DEALLOCATE(storedObjects) 
-!         END IF 
+         DEALLOCATE(storedKeys)
+         CALL storedObjects % release()
+         IF ( storedObjects % isUnreferenced() )     THEN
+            DEALLOCATE(storedObjects) 
+         END IF 
          CALL dict % release()
          
       END SUBROUTINE FTDictionaryClassTests    
