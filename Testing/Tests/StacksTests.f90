@@ -23,7 +23,7 @@
 !
          ALLOCATE(stack)
          CALL stack%init
-         CALL assertEqual(1,stack%refCount(),"Reference Counting: Initial reference count")
+         CALL FTAssertEqual(1,stack%refCount(),"Reference Counting: Initial reference count")
 !
 !        ------------
 !        Add an entry
@@ -33,11 +33,11 @@
          CALL r1%initWithValue(3.14d0)
          objectPtr => r1
          CALL stack%push(objectPtr)
-         CALL assertEqual(1,stack%COUNT(),"Reference Counting: Initial push")
+         CALL FTAssertEqual(1,stack%COUNT(),"Reference Counting: Initial push")
          
-         CALL assertEqual(2,r1%refCount(),"Reference Counting: Reference count on stored object")
+         CALL FTAssertEqual(2,r1%refCount(),"Reference Counting: Reference count on stored object")
          CALL r1%release()
-         CALL assertEqual(1,r1%refCount(),"Reference Counting: Release on stored object")
+         CALL FTAssertEqual(1,r1%refCount(),"Reference Counting: Release on stored object")
 !
 !        ------------
 !        Second entry
@@ -48,7 +48,7 @@
          objectPtr => r2
          CALL stack%push(objectPtr)
          CALL r2%release()
-         CALL assertEqual(2,stack%count(),"Reference Counting: Stack size after push")
+         CALL FTAssertEqual(2,stack%count(),"Reference Counting: Stack size after push")
 !
 !        -----------
 !        Third entry
@@ -58,7 +58,7 @@
          CALL r3%initWithValue(17)
          objectPtr => r3
          CALL stack%push(objectPtr)
-         CALL assertEqual(3,stack%COUNT(),"Reference Counting: Stack size after push")
+         CALL FTAssertEqual(3,stack%COUNT(),"Reference Counting: Stack size after push")
          CALL r3%release()
 !
 !        ------------
@@ -68,7 +68,7 @@
          objectPtr => stack%peek()
          SELECT TYPE(objectPtr)
             TYPE is (FTValue)
-               CALL assertEqual(17,objectPtr%integerValue(),"Interger value stored at top of stack")
+               CALL FTAssertEqual(17,objectPtr%integerValue(),"Interger value stored at top of stack")
             CLASS DEFAULT
                PRINT *, "uncaught cast in stack object"
          END SELECT
@@ -76,11 +76,11 @@
          CALL stack%pop(objectPtr)
          SELECT TYPE(objectPtr)
             TYPE is (FTValue)
-               CALL assertEqual(17,objectPtr%integerValue(),"Incorrect integervalue popped from top of stack")
+               CALL FTAssertEqual(17,objectPtr%integerValue(),"Incorrect integervalue popped from top of stack")
             CLASS DEFAULT
-               CALL assert(.false.,"Known type stored in linked list")
+               CALL FTAssert(.false.,"Known type stored in linked list")
          END SELECT
-         CALL assertEqual(2,stack%COUNT(),"Stack count after popping")
+         CALL FTAssertEqual(2,stack%COUNT(),"Stack count after popping")
 !
 !        ------------------------
 !        Finish up with the stack

@@ -75,10 +75,10 @@
             userDictionary => valueDictionaryFromDictionary(dict = d)
             
             msg = userDictionary % stringValueForKey("message",FTDICT_KWD_STRING_LENGTH)
-            CALL assertEqual("An error has occurred",msg,"String for key: message")
+            CALL FTAssertEqual("An error has occurred",msg,"String for key: message")
 
             r   = userDictionary % realValueForKey("value")
-            CALL assertEqual(3.1416,r,singleTol,"Value for key: value")
+            CALL FTAssertEqual(3.1416,r,singleTol,"Value for key: value")
          END IF 
          
          CALL destructFTExceptions

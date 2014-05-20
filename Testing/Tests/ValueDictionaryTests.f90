@@ -50,7 +50,7 @@
 !
          DO i = 1,4
             s = dict % integerValueForKey(keys(i))
-            CALL assertEqual(s,values(i),"Value for key as integer ")
+            CALL FTAssertEqual(s,values(i),"Value for key as integer ")
          END DO
 !
 !        -----------------------
@@ -59,7 +59,7 @@
 !
          DO i = 1,4
             sValue = dict % stringValueForKey(keys(i),8)
-            CALL assertEqual(sValue,stringValues(i),"Value for key as string ")
+            CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
          END DO         
 !
 !        ------------------------------------------------------------
@@ -90,7 +90,7 @@
 !
          DO i = 1,4
             x = dict % realValueForKey(keys(i))
-            CALL assertEqual(x,realValues(i),2*EPSILON(x),"Value for key as real ")
+            CALL FTAssertEqual(x,realValues(i),2*EPSILON(x),"Value for key as real ")
          END DO
 !
 !        ------------------------------------------------------------

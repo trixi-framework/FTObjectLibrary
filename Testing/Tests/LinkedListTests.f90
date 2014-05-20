@@ -92,17 +92,17 @@
 !           and releases: init + # retains = # releases
 !        --------------------------------------------------------------------------
 !
-         CALL assertEqual(1,list % refCount(),"Reference counting: Initial object refCount")
+         CALL FTAssertEqual(1,list % refCount(),"Reference counting: Initial object refCount")
          CALL list % retain()
-         CALL assertEqual(2,list % refCount(), "Reference counting: Test retain")
+         CALL FTAssertEqual(2,list % refCount(), "Reference counting: Test retain")
          CALL list % release()
-         CALL assertEqual(1,list % refCount(),"Reference counting: test release")
+         CALL FTAssertEqual(1,list % refCount(),"Reference counting: test release")
 !
 !        ---------------------------------------------------------------------------------
 !        A linked list that is just initialized has no items in it, so its COUNT is zero. 
 !        ---------------------------------------------------------------------------------
 !
-         CALL assertEqual(0,list % COUNT(),"Initial list size")
+         CALL FTAssertEqual(0,list % COUNT(),"Initial list size")
 !
 !        ------------------------------------------------------------------
 !        Add some items to the linked list.
@@ -121,18 +121,18 @@
          CALL r1 % initWithValue(1)
          objectPtr => r1
          CALL list % add(objectPtr)
-         CALL assertEqual(1,list % COUNT(),"List size after adding one object")
+         CALL FTAssertEqual(1,list % COUNT(),"List size after adding one object")
 !         
-         CALL assertEqual(2,r1 % refCount(),&
+         CALL FTAssertEqual(2,r1 % refCount(),&
          "Reference counting: Stored object should have reference count increased")
          CALL r1 % release()
          IF ( r1 % isUnreferenced() )     THEN
-            CALL Assert(.false.,"Object slated for deallocation should have refCount = 1")
+            CALL FTAssert(.false.,"Object slated for deallocation should have refCount = 1")
             DEALLOCATE(r1)
             r1 => NULL() 
          END IF 
             
-         CALL assertEqual(1,objectPtr % refCount(),&
+         CALL FTAssertEqual(1,objectPtr % refCount(),&
          "Reference counting: Stored object should have reference count decreased")
 !
 !        ---------------------------------------------------------------------
@@ -145,7 +145,7 @@
          CALL r2 % initWithValue("r2 is a string")
          objectPtr => r2
          CALL list % add(objectPtr)
-         CALL assertEqual(2,list % COUNT(),"List size after adding second object")
+         CALL FTAssertEqual(2,list % COUNT(),"List size after adding second object")
 !
 !        -------------------------------------
 !        The final object we add stores a real
@@ -155,7 +155,7 @@
          CALL r3 % initWithValue(3.14)
          objectPtr => r3
          CALL list % add(objectPtr)
-         CALL assertEqual(3,list % COUNT(),"List size after adding third object")
+         CALL FTAssertEqual(3,list % COUNT(),"List size after adding third object")
          CALL r3 % release()
          IF ( r3 % isUnreferenced() )     THEN
             DEALLOCATE(r3)
@@ -177,7 +177,7 @@
 !
          ALLOCATE(iterator)
          CALL iterator % initWithFTLinkedList(list)
-         CALL assertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
+         CALL FTAssertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
 !
 !        -------------------------------------------
 !        Iterate through the list from the beginning
@@ -200,14 +200,14 @@
                TYPE IS (FTValue)
                  SELECT CASE(i)
                      CASE(1)  
-                        CALL assertEqual(1,v % integerValue(),"First item is integer value")
+                        CALL FTAssertEqual(1,v % integerValue(),"First item is integer value")
                      CASE(2)
-                        CALL assertEqual("r2 is a string",v % stringValue(14),"Second item is string value")
+                        CALL FTAssertEqual("r2 is a string",v % stringValue(14),"Second item is string value")
                      CASE(3)
-                        CALL assertEqual(3.14,v % realValue(),singleTol,"Third item in list is real value")
+                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,"Third item in list is real value")
                   END SELECT
                CLASS DEFAULT
-                  CALL assert(.false.,"Unknown type stored in linked list")
+                  CALL FTAssert(.false.,"Unknown type stored in linked list")
             END SELECT 
             CALL iterator % moveToNext()
             i = i + 1
@@ -221,8 +221,8 @@
 !
          objectPtr => r2
          CALL list % remove(objectPtr)
-         CALL assertEqual(2,list % COUNT(),"List has two objects after removing one")
-         CALL assertEqual(1,r2 % refCount(),msg = "Refcount after removing object")
+         CALL FTAssertEqual(2,list % COUNT(),"List has two objects after removing one")
+         CALL FTAssertEqual(1,r2 % refCount(),msg = "Refcount after removing object")
          
          CALL iterator % setToStart
          i = 1
@@ -233,12 +233,12 @@
                TYPE IS (FTValue)
                  SELECT CASE(i)
                      CASE(1)  
-                        CALL assertEqual(1,v % integerValue(),"First item in list doesn't have proper value")
+                        CALL FTAssertEqual(1,v % integerValue(),"First item in list doesn't have proper value")
                      CASE(3)
-                        CALL assertEqual(3.14,v % realValue(),singleTol,"third item in list doesn't have proper value")
+                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,"third item in list doesn't have proper value")
                   END SELECT
                CLASS DEFAULT
-                  CALL assert(.false.,"Known type stored in linked list")
+                  CALL FTAssert(.false.,"Known type stored in linked list")
             END SELECT 
             CALL iterator % moveToNext()
             i = i + 1
@@ -250,7 +250,7 @@
 !        ------------------------------------------------------
 !
          CALL list % release()
-         CALL assertEqual(1,list % refCount(),"Ref count decrease on release")
+         CALL FTAssertEqual(1,list % refCount(),"Ref count decrease on release")
 !
 !        -------------------------------------------------------------------
 !        Normally we would now check if the list should be deallocated. But 
@@ -278,7 +278,7 @@
 !
 !         list => iterator % linkedList()
 !         test = ASSOCIATED(list)
-!         CALL assert(.NOT.test,"List pointer nullified")
+!         CALL FTAssert(.NOT.test,"List pointer nullified")
          
       END SUBROUTINE basicTests
 !
@@ -333,7 +333,7 @@
 !        -----------------------------------
 !
          CALL list1 % addObjectsFromList(list2)
-         CALL assertEqual(10, list1 % COUNT(),"Append list increases list size")
+         CALL FTAssertEqual(10, list1 % COUNT(),"Append list increases list size")
 !
 !        -------------------------------------------
 !        See that the new list contains the old one.
@@ -346,10 +346,10 @@
          DO WHILE (.NOT.iterator % isAtEnd())
             objectPtr => iterator % object()
             v         => valueFromObject(obj = objectPtr)
-            CALL assertEqual(j, v % integerValue(),"Item value stored properly")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly")
             IF ( j >= 6 )     THEN
                objectPtr => iterator % object()
-               CALL assertEqual(2, objectPtr % refCount(), "Records owned by two lists")
+               CALL FTAssertEqual(2, objectPtr % refCount(), "Records owned by two lists")
             END IF 
             CALL iterator % moveToNext()
             j = j + 1
@@ -361,7 +361,7 @@
 !        --------------------------------------------------
 !
          CALL list2 % release()
-         CALL assertEqual(.TRUE., list2 % isUnreferenced(),"List has only one owner and should deallocate on release")
+         CALL FTAssertEqual(.TRUE., list2 % isUnreferenced(),"List has only one owner and should deallocate on release")
          IF ( list2 % isUnreferenced() )     THEN
             DEALLOCATE(list2) 
          END IF 
@@ -377,10 +377,10 @@
          
             objectPtr => iterator % object()
             v         => valueFromObject(obj = objectPtr)
-            CALL assertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
-            CALL assertEqual(1, v % refCount(),"Item value pointed to by list refCount")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
-            CALL assertEqual(1, objectPtr % refCount(), "Objects owned by one list")
+            CALL FTAssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j + 1
          END DO
@@ -393,11 +393,11 @@
          DO j = 1, array % COUNT()
             objectPtr => array % objectAtIndex(j)
             v         => valueFromObject(obj = objectPtr)
-            CALL assertEqual(j, v % integerValue(),"Item value stored in array created from list")
-            CALL assertEqual(2, objectPtr % refCount(), "Objects owned by one list and one array")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored in array created from list")
+            CALL FTAssertEqual(2, objectPtr % refCount(), "Objects owned by one list and one array")
          END DO
          CALL array % release()
-         CALL assert(test = array % isUnreferenced(),msg = "Array unreferenced")
+         CALL FTAssert(test = array % isUnreferenced(),msg = "Array unreferenced")
          IF ( array % isUnreferenced() )     THEN
             DEALLOCATE(array) 
          END IF 
@@ -414,10 +414,10 @@
          
             objectPtr => iterator % object()
             v         => valueFromObject(objectPtr)
-            CALL assertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
-            CALL assertEqual(1, v % refCount(),"Item value pointed to by list refCount")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
-            CALL assertEqual(1, objectPtr % refCount(), "Objects owned by one list")
+            CALL FTAssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j - 1
          END DO
@@ -489,14 +489,14 @@
             IF ( j == 6 )     THEN
                obj => iterator % object()
                v   => valueFromObject(obj)
-               CALL assertEqual(6,v % integerValue(),"Value of object to be deleted")
+               CALL FTAssertEqual(6,v % integerValue(),"Value of object to be deleted")
                CALL iterator % removeCurrentRecord() 
             END IF  
             CALL iterator % moveToNext()
             j = j + 1
          END DO
          
-         CALL assertEqual(5,list % COUNT(),"Count after deletion of tail object")
+         CALL FTAssertEqual(5,list % COUNT(),"Count after deletion of tail object")
 !!
 !!        -----------------------
 !!        Delete the third record
@@ -508,7 +508,7 @@
             IF ( j == 3 )     THEN
                obj => iterator % object()
                v   => valueFromObject(obj)
-               CALL assertEqual(3,v % integerValue(),"Value of object to be deleted")
+               CALL FTAssertEqual(3,v % integerValue(),"Value of object to be deleted")
                CALL iterator % removeCurrentRecord() 
                EXIT 
             END IF  
@@ -516,10 +516,10 @@
             j = j + 1
          END DO
         
-         CALL assertEqual(4,list % COUNT(),"Count after deletion of middle object")
+         CALL FTAssertEqual(4,list % COUNT(),"Count after deletion of middle object")
          obj => iterator % object()
          v   => valueFromObject(obj)
-         CALL assertEqual(4,v % integerValue(),"Value of current object after deleting")
+         CALL FTAssertEqual(4,v % integerValue(),"Value of current object after deleting")
 !
 !        ---------------------------------
 !        Make sure connections are correct
@@ -528,10 +528,10 @@
          recordPtr => iterator % currentRecord()
          obj       => recordPtr % previous % recordObject
          v         => valueFromObject(obj)
-         CALL assertEqual(2,v % integerValue(), "Value of previous object after deleting")
+         CALL FTAssertEqual(2,v % integerValue(), "Value of previous object after deleting")
          obj       => recordPtr % next % recordObject
          v         => valueFromObject(obj)
-         CALL assertEqual(5,v % integerValue(), "Value of next object after deleting")
+         CALL FTAssertEqual(5,v % integerValue(), "Value of next object after deleting")
 !
 !        -----------------------
 !        Delete the first record
@@ -539,10 +539,10 @@
 !
          CALL iterator % setToStart()
          CALL iterator % removeCurrentRecord()
-         CALL assertEqual(3, list % COUNT(), "count after deleting head")
+         CALL FTAssertEqual(3, list % COUNT(), "count after deleting head")
          obj => iterator % object()
          v   => valueFromObject(obj)
-         CALL assertEqual(2,v % integerValue(),"Value of current head after deleting")
+         CALL FTAssertEqual(2,v % integerValue(),"Value of current head after deleting")
 !
 !        --------
 !        Clean up

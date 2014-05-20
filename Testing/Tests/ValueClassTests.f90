@@ -65,14 +65,14 @@
 !        Test to make sure it is right
 !        -----------------------------
 !
-         CALL assertEqual("3.140000",s(1:8),"Compare description for real value")
+         CALL FTAssertEqual("3.140000",s(1:8),"Compare description for real value")
 !
 !        --------------------------
 !        Also test the string value
 !        --------------------------
 !
          s = v % stringValue(8)
-         CALL assertEqual("3.140000",s(1:8),"Compare string value for real value")
+         CALL FTAssertEqual("3.140000",s(1:8),"Compare string value for real value")
 
 !
 !        --------------------------------------------------------------------------
@@ -85,11 +85,11 @@
 !           object after the retain+release.
 !        --------------------------------------------------------------------------
 !
-         CALL assertEqual(1,v % refCount(),"Reference counting: Initial object refCount")
+         CALL FTAssertEqual(1,v % refCount(),"Reference counting: Initial object refCount")
          CALL v % retain()
-         CALL assertEqual(2,v % refCount(),"Reference counting: Retain count increase")
+         CALL FTAssertEqual(2,v % refCount(),"Reference counting: Retain count increase")
          CALL v % release()
-         CALL assertEqual(1,v % refCount(),"Reference counting: retain count decrease")
+         CALL FTAssertEqual(1,v % refCount(),"Reference counting: retain count decrease")
 !
 !        -----------------------------------------------------------------
 !        Test storage of the real value. An FTObject can return any one of 
@@ -97,12 +97,12 @@
 !        each is correct.
 !        ----------------------------------------------------------------
 !
-         CALL assertEqual(3.14,v % realValue(),singleTol,"Real storage to real")
-         CALL assertEqual(3,v % integerValue(),"Integer return for real object")
-         CALL assertEqual(DBLE(3.14),v % doublePrecisionValue(),doubleTol,"Double return for real object")
+         CALL FTAssertEqual(3.14,v % realValue(),singleTol,"Real storage to real")
+         CALL FTAssertEqual(3,v % integerValue(),"Integer return for real object")
+         CALL FTAssertEqual(DBLE(3.14),v % doublePrecisionValue(),doubleTol,"Double return for real object")
          s = v % stringValue(8)
-         CALL assertEqual("3.140000",s(1:8),"String return for real object")
-         CALL assertEqual(.true.,v % logicalValue(),"Logical return for real object")
+         CALL FTAssertEqual("3.140000",s(1:8),"String return for real object")
+         CALL FTAssertEqual(.true.,v % logicalValue(),"Logical return for real object")
 !
 !        ----------------------------------------------------------------
 !        Destruction. When we release an object we must check to see
@@ -112,7 +112,7 @@
 !        ----------------------------------------------------------------
 !
          CALL v % release()
-         CALL assertEqual(0,v % refCount(),"Reference counting: Object should be ready to deallocate")
+         CALL FTAssertEqual(0,v % refCount(),"Reference counting: Object should be ready to deallocate")
          IF ( v % isUnreferenced() )     THEN
             DEALLOCATE(v)
             v => NULL()
@@ -125,11 +125,11 @@
          ALLOCATE(v)
          CALL v % initWithValue(i)
          
-         CALL assertEqual(666.0,v % realValue(),singleTol,"Integer storage to real")
-         CALL assertEqual(666,v % integerValue(),"Integer storage to integer")
-         CALL assertEqual(DBLE(666.0),v % doublePrecisionValue(),doubleTol,"Integer storage to double")
-         CALL assertEqual("666",v % stringValue(3),"Integer storage to string")
-         CALL assertEqual(.true.,v % logicalValue(),"Integer storage to logical")
+         CALL FTAssertEqual(666.0,v % realValue(),singleTol,"Integer storage to real")
+         CALL FTAssertEqual(666,v % integerValue(),"Integer storage to integer")
+         CALL FTAssertEqual(DBLE(666.0),v % doublePrecisionValue(),doubleTol,"Integer storage to double")
+         CALL FTAssertEqual("666",v % stringValue(3),"Integer storage to string")
+         CALL FTAssertEqual(.true.,v % logicalValue(),"Integer storage to logical")
 !
 !        ------------------------------------------
 !        We are done with this value, so release it
@@ -149,12 +149,12 @@
          ALLOCATE(v)
          CALL v % initWithValue(d)
          
-         CALL assertEqual(REAL(d),v % realValue(),singleTol,"Double storage to real")
-         CALL assertEqual(0,v % integerValue(),"Double storage to integer")
-         CALL assertEqual(d,v % doublePrecisionValue(),doubleTol,"Double storage to double")
+         CALL FTAssertEqual(REAL(d),v % realValue(),singleTol,"Double storage to real")
+         CALL FTAssertEqual(0,v % integerValue(),"Double storage to integer")
+         CALL FTAssertEqual(d,v % doublePrecisionValue(),doubleTol,"Double storage to double")
          s = v % stringValue(16)
-         CALL assertEqual("0.33333333333333",s(1:16),"Double storage to string")
-         CALL assertEqual(.true.,v % logicalValue(),"Double storage to logical")
+         CALL FTAssertEqual("0.33333333333333",s(1:16),"Double storage to string")
+         CALL FTAssertEqual(.true.,v % logicalValue(),"Double storage to logical")
 !
 !        -----------------------------------------------
 !        We are done with this value, too, so release it

@@ -33,10 +33,10 @@
 !
          N = 4
          CALL hashTable % initWithSize(4)
-         CALL assertEqual(N,hashTable % hashTableSize(),"Table size size")
+         CALL FTAssertEqual(N,hashTable % hashTableSize(),"Table size size")
          
          obj => hashTable % objectForKeys(2,3)
-         CALL assertEqual(.FALSE.,ASSOCIATED(obj),"Empty table test")
+         CALL FTAssertEqual(.FALSE.,ASSOCIATED(obj),"Empty table test")
 !
 !        ---------------------------------------------------------
 !        Add an object to the table, retrieve it and then destroy 
@@ -48,17 +48,17 @@
          
          obj => v
          CALL hashTable % addObjectForKeys(obj,2,3)
-         CALL assertEqual(2,v % refcount(),"Add object to table reference count")
+         CALL FTAssertEqual(2,v % refcount(),"Add object to table reference count")
          
          t = hashTable % containsKeys(2,3)
-         CALL assertEqual(.TRUE.,t,"contains value for key")
+         CALL FTAssertEqual(.TRUE.,t,"contains value for key")
          
          obj   => hashTable % objectforKeys(2,3)
          vTest => valueFromObject(obj)
-         CALL assertEqual(42,vTest % integerValue(),"Table entry retrieval")
+         CALL FTAssertEqual(42,vTest % integerValue(),"Table entry retrieval")
 
          CALL hashTable % release()
-         CALL assertEqual(1, v % refCount(),"Table release object refCount")
+         CALL FTAssertEqual(1, v % refCount(),"Table release object refCount")
          CALL v % release()
          DEALLOCATE(v)
 !
@@ -92,21 +92,21 @@
                obj   => hashTable % objectForKeys(h1,h2)
                vTest => valueFromObject(obj)
                
-               CALL assertEqual(1  , vTest % refCount(),"Table add refCount")
-               CALL assertEqual(i+j, vTest % integerValue(), "Table entry value")
+               CALL FTAssertEqual(1  , vTest % refCount(),"Table add refCount")
+               CALL FTAssertEqual(i+j, vTest % integerValue(), "Table entry value")
                
             END DO   
          END DO
          CALL vTest % retain()
-         CALL assertEqual(2  , vTest % refCount(),"Retain refCount")
+         CALL FTAssertEqual(2  , vTest % refCount(),"Retain refCount")
 
          CALL hashTable % release()
-         CALL assertEqual(1, vTest % refCount(),"Table release object refCount")
+         CALL FTAssertEqual(1, vTest % refCount(),"Table release object refCount")
          CALL vTest % release()
          IF ( vTest % isUnreferenced() )     THEN
             DEALLOCATE(vTest)
          ELSE 
-            CALL assert(.FALSE.,"Release object count") 
+            CALL FTAssert(.FALSE.,"Release object count") 
          END IF 
          
       END SUBROUTINE HashTableTests

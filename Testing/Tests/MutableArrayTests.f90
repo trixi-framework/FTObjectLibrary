@@ -33,7 +33,7 @@
 !        ------------------------------------------------------------
 !
          CALL array % initwithsize(10)
-         CALL assertEqual(0,array % COUNT(),"Initial array count")
+         CALL FTAssertEqual(0,array % COUNT(),"Initial array count")
 !
 !        --------------------------------------------------------
 !        Add objects to the array
@@ -48,10 +48,10 @@
             CALL v % initwithValue(values(i))
             obj => v
             CALL array % addObject(obj)
-            CALL assertEqual( 2, v % refCount(), "Adding object adds ownership" )
+            CALL FTAssertEqual( 2, v % refCount(), "Adding object adds ownership" )
             CALL v % release()
          END DO
-         CALL assertEqual(10, array % COUNT(), "Number of objects in array is equal to number of objects added")
+         CALL FTAssertEqual(10, array % COUNT(), "Number of objects in array is equal to number of objects added")
 !
 !        -----------------------------
 !        Check the values in the array
@@ -61,7 +61,7 @@
          DO i = 1, 10
             obj => array % objectAtIndex(i)   ! Get the object
             v   => valueFromObject(obj) ! Convert it to a value. We *should* check and see that v is associated.
-            CALL assertEqual(values(i),v % integerValue(),"Object values")
+            CALL FTAssertEqual(values(i),v % integerValue(),"Object values")
          END DO
 !
 !        ---------------------------------------------------
@@ -74,7 +74,7 @@
          CALL v % initwithValue(22)
          obj => v
          CALL array % replaceObjectAtIndexWithObject(5,obj)
-         CALL assertEqual(2,v % refCount(),"Replacement refCount")
+         CALL FTAssertEqual(2,v % refCount(),"Replacement refCount")
          CALL v % release()
 !
 !        ----------------------
@@ -83,8 +83,8 @@
 !
          obj => array % objectAtIndex(5)
          v   => valueFromObject(obj = obj)
-         CALL assertEqual(22, v % integerValue(),"Replacement value")
-         CALL assertEqual(1, v % refCount(),"Refcount after main release")
+         CALL FTAssertEqual(22, v % integerValue(),"Replacement value")
+         CALL FTAssertEqual(1, v % refCount(),"Refcount after main release")
 !
 !        ------------------------------------------
 !        Add another value - this should reallocate
@@ -95,8 +95,8 @@
          obj => v
          CALL array % addObject(obj)
          CALL v % release()
-         CALL assertEqual(11, array % COUNT(), "Number of objects in array is increased")
-         CALL assertEqual(20, array % allocatedSize(),"Memory increased by chunk size")
+         CALL FTAssertEqual(11, array % COUNT(), "Number of objects in array is increased")
+         CALL FTAssertEqual(20, array % allocatedSize(),"Memory increased by chunk size")
 !
 !        -----------------------------------------------
 !        Remove an item from the array. For this test we
@@ -107,14 +107,14 @@
          obj => array % objectAtIndex(8)
          CALL obj % retain()
          CALL array % removeObjectAtIndex(8)
-         CALL assertEqual(10, array % COUNT(), "Item deleted count")
-         CALL assertEqual(1, obj % refcount(), "Refcount after removal")
+         CALL FTAssertEqual(10, array % COUNT(), "Item deleted count")
+         CALL FTAssertEqual(1, obj % refcount(), "Refcount after removal")
          CALL obj % release()
          IF ( obj % isUnreferenced() )     THEN
             DEALLOCATE(obj)
-            CALL Assert(.true., "Object properly deallocated") 
+            CALL FTAssert(.true., "Object properly deallocated") 
          ELSE
-            CALL Assert(.FALSE., "Object properly deallocated") 
+            CALL FTAssert(.FALSE., "Object properly deallocated") 
          END IF 
 !
 !        -----------------------------------
@@ -125,7 +125,7 @@
          DO i = 1, 10
             obj => array % objectAtIndex(i)
             CALL cast(obj,v)
-            CALL assertEqual(modifiedValues(i),v % integerValue(),"Object values after deletion")
+            CALL FTAssertEqual(modifiedValues(i),v % integerValue(),"Object values after deletion")
          END DO
 !
 !        -------------------------------------------------------------

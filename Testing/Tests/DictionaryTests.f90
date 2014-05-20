@@ -37,8 +37,8 @@
             obj => v
             CALL dict % addObjectForKey(obj,keys(i))
             CALL v % release()
-            CALL assertEqual(1,v % refCount(),"Reference Counting: Addition of object and release")
-            CALL assertEqual(i,dict % count(),"Adding to dictionary object count")
+            CALL FTAssertEqual(1,v % refCount(),"Reference Counting: Addition of object and release")
+            CALL FTAssertEqual(i,dict % count(),"Adding to dictionary object count")
          END DO
 !
 !        ------------------
@@ -50,10 +50,10 @@
             v   => valueFromObject(obj)
             IF ( ASSOCIATED(v) )     THEN
                s = v % stringValue(FTDICT_KWD_STRING_LENGTH)
-               CALL assertEqual(values(i),s,"Value for key in dictionary class")
+               CALL FTAssertEqual(values(i),s,"Value for key in dictionary class")
             ELSE
                msg = "Value for key "//TRIM(values(i))// " not of correct type"
-               CALL assert(.false.,msg)
+               CALL FTAssert(.false.,msg)
             END IF 
          END DO
 !

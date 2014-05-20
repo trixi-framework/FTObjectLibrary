@@ -24,7 +24,7 @@
 !!
 !! ### Asserting ###
 !!
-!!      CALL assertEqual(expectedValue,resultValue,message)
+!!      CALL FTAssertEqual(expectedValue,resultValue,message)
 !!
 !! ### Summarizing Assertions ###
 !!
@@ -50,11 +50,10 @@
 !
       INTEGER, PARAMETER, PUBLIC :: FT_ASSERTION_STRING_LENGTH = 128
       
-      INTERFACE assertEqual
-         MODULE PROCEDURE assertEqualTwoIntegers,assertEqualTwoIntegerArrays1D, &
-         assertEqualTwoIntegerArrays2D
-!         MODULE PROCEDURE assertEqualTwoIntegerArrays1D
-!         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
+      INTERFACE FTAssertEqual
+         MODULE PROCEDURE assertEqualTwoIntegers
+         MODULE PROCEDURE assertEqualTwoIntegerArrays1D
+         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
          MODULE PROCEDURE assertWithinToleranceTwoReal
          MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
          MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
@@ -63,10 +62,10 @@
          MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
          MODULE PROCEDURE assertEqualTwoLogicals
          MODULE PROCEDURE assertEqualString
-      END INTERFACE assertEqual
+      END INTERFACE FTAssertEqual
       
-      PUBLIC :: assertEqual, initializeSharedAssertionsManager, finalizeSharedAssertionsManager
-      PUBLIC :: SummarizeFTAssertions, numberOfAssertionFailures, assert
+      PUBLIC :: FTAssertEqual, initializeSharedAssertionsManager, finalizeSharedAssertionsManager
+      PUBLIC :: SummarizeFTAssertions, numberOfAssertionFailures, FTAssert
 !
 !     -------
 !     Private
@@ -203,7 +202,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assert(test,msg)  
+      SUBROUTINE FTAssert(test,msg)  
          IMPLICIT NONE
          CHARACTER(LEN=*), OPTIONAL :: msg
          LOGICAL                    :: test
@@ -213,7 +212,7 @@
             CALL addAssertionFailureForParameters(msg,"True","False")
             numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
-      END SUBROUTINE assert      
+      END SUBROUTINE FTAssert      
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 
