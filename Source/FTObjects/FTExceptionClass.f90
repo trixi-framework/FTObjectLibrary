@@ -420,7 +420,7 @@
            PRINT *,"   ***********************************"
            PRINT *
            
-           CALL printAllExceptions !DEBUG
+!           CALL printAllExceptions !DEBUG
             
          END IF 
 !
