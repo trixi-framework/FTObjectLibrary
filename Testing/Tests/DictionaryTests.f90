@@ -22,7 +22,7 @@
          
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys   = ["first ","second","third ","fourth"]
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: values = ["one  ","two  ","three","four "]
-         CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH)               :: s, msg
+         CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH)               :: s, msg, storedKey, sExpected, sActual
          INTEGER                                               :: i
 
          CALL dict % initWithSize(64)
@@ -65,10 +65,16 @@
          storedObjects => dict % AllObjects()
          
          DO i = 1, 4
-            obj => storedObjects % objectAtIndex(indx = i)
-            v   => valueFromObject(obj)
-            s   =  v%stringValue(FTDICT_KWD_STRING_LENGTH)
-            PRINT *, TRIM(storedKeys(i)), "  ",TRIM(STRING = s)
+            storedKey = storedKeys(i)
+            obj       => dict % objectForKey(storedKey)
+            v         => valueFromObject(obj)
+            sExpected = v % stringValue(FTDICT_KWD_STRING_LENGTH)
+            
+            obj      => storedObjects % objectAtIndex(indx = i)
+            v        => valueFromObject(obj)
+            sActual  =  v%stringValue(FTDICT_KWD_STRING_LENGTH)
+            
+            CALL FTAssertEqual(sExpected, sActual,"String for stored key")
          END DO   
 !
 !        ---------------
