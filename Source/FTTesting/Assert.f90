@@ -120,7 +120,11 @@
              isInitialized_ = .false.
            RETURN 
          END IF 
-         
+!
+!        ------------------------------
+!        Delete linked list of failures
+!        ------------------------------
+!
          current => failureListHead
          DO WHILE (ASSOCIATED(tmp))
             tmp => current%next
@@ -265,18 +269,18 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoReal(expectedValue,actualValue,tol,msg)  
          IMPLICIT NONE  
-         REAL, INTENT(in)           :: x,y,tol
+         REAL, INTENT(in)           :: expectedValue,actualValue,tol
          CHARACTER(LEN=*), OPTIONAL :: msg
 
-         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
+         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expectedS,actualS
         
          numberOfTests_ = numberOfTests_ + 1
-         IF ( .NOT.isEqual(x,y,tol) )     THEN
-            WRITE(expected,*) x
-            WRITE(actual,*) y
-            CALL addAssertionFailureForParameters(msg,expected,actual)
+         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+            WRITE(expectedS,*) expectedValue
+            WRITE(actualS,*) actualValue
+            CALL addAssertionFailureForParameters(msg,expectedS,actualS)
             numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
          
