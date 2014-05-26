@@ -162,9 +162,10 @@
 ! 
       SUBROUTINE performTests(self)  
           IMPLICIT NONE  
-          CLASS(TestSuiteManager)       :: self
-          TYPE(TestCaseRecord), POINTER :: current
-          INTEGER                       :: numberOfFailedTests = 0
+          CLASS(TestSuiteManager)            :: self
+          TYPE(TestCaseRecord)     , POINTER :: current
+          TYPE(FTAssertionsManager), POINTER :: sharedManager
+          INTEGER                            :: numberOfFailedTests = 0
           
           WRITE(self % stdOut,*)
           WRITE(self % stdOut,*) "*************************************************************"
@@ -175,14 +176,15 @@
           DO WHILE (ASSOCIATED(current))
           
             CALL initializeSharedAssertionsManager
+            sharedManager => sharedAssertionsManager()
             
             CALL current % TestSubroutine
             
-            IF ( numberOfAssertionFailures() /= 0 )     THEN
+            IF ( sharedManager % numberOfAssertionFailures() /= 0 )     THEN
                numberOfFailedTests = numberOfFailedTests + 1 
             END IF 
                
-            CALL SummarizeFTAssertions(current % testName,self % stdOut)
+            CALL sharedManager % SummarizeAssertions(current % testName,self % stdOut)
             
             CALL finalizeSharedAssertionsManager
             

@@ -50,6 +50,28 @@
 !
       INTEGER, PARAMETER, PUBLIC :: FT_ASSERTION_STRING_LENGTH = 128
       
+      TYPE FTAssertionsManager
+         PRIVATE
+          
+         INTEGER                                 :: numberOfTests_
+         INTEGER                                 :: numberOfAssertionFailures_
+         TYPE(FTAssertionFailureRecord), POINTER :: failureListHead => NULL()
+         TYPE(FTAssertionFailureRecord), POINTER :: failureListTail => NULL()
+!
+!        ========
+         CONTAINS
+!        ========
+!         
+         PROCEDURE, PUBLIC  :: init
+         PROCEDURE, PUBLIC  :: finalize
+         PROCEDURE, PUBLIC  :: numberOfAssertionFailures
+         PROCEDURE, PUBLIC  :: numberOfAssertions
+         PROCEDURE, PUBLIC  :: summarizeAssertions
+         
+      END TYPE FTAssertionsManager
+      
+      PUBLIC :: FTAssertionsManager
+      
       INTERFACE FTAssertEqual
          MODULE PROCEDURE assertEqualTwoIntegers
          MODULE PROCEDURE assertEqualTwoIntegerArrays1D
@@ -64,8 +86,9 @@
          MODULE PROCEDURE assertEqualString
       END INTERFACE FTAssertEqual
       
-      PUBLIC :: FTAssertEqual, initializeSharedAssertionsManager, finalizeSharedAssertionsManager
-      PUBLIC :: SummarizeFTAssertions, numberOfAssertionFailures, FTAssert
+      PUBLIC :: FTAssertEqual
+      PUBLIC :: initializeSharedAssertionsManager, finalizeSharedAssertionsManager
+      PUBLIC :: FTAssert, sharedAssertionsManager, numberOfAssertionFailures, numberOfAssertions
 !
 !     -------
 !     Private
@@ -75,21 +98,79 @@
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: msg, expected, actual
          TYPE(FTAssertionFailureRecord), POINTER   :: next
       END TYPE FTAssertionFailureRecord
-      
-      LOGICAL :: isInitialized_ = .false.
-      INTEGER :: numberOfTests_, numberOfAssertionFailures_
 !
-!     ---------------------------------------------------------------------
-!     Assertion failures are stored in a linked list managed by the manager
-!     to be independent of any dependencies
-!     ---------------------------------------------------------------------
+!     -------------------------
+!     Shared Assertions manager
+!     -------------------------
 !
-      TYPE(FTAssertionFailureRecord), POINTER :: failureListHead => NULL()
-      TYPE(FTAssertionFailureRecord), POINTER :: failureListTail => NULL()
-
+      TYPE(FTAssertionsManager), POINTER, PRIVATE  :: sharedManager
+!
 !     ========      
       CONTAINS
 !     ========
+!@mark -
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION sharedAssertionsManager()
+         IMPLICIT NONE  
+         TYPE(FTAssertionsManager), POINTER :: sharedAssertionsManager
+         sharedAssertionsManager => sharedManager 
+      END FUNCTION sharedAssertionsManager
+! 
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      INTEGER FUNCTION numberOfAssertions(self) 
+         IMPLICIT NONE  
+         CLASS(FTAssertionsManager) :: self
+         numberOfAssertions = self % numberOfTests_
+      END FUNCTION numberOfAssertions
+! 
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      INTEGER FUNCTION numberOfAssertionFailures(self) 
+         IMPLICIT NONE  
+         CLASS(FTAssertionsManager) :: self
+         numberOfAssertionFailures = self % numberOfAssertionFailures_
+      END FUNCTION numberOfAssertionFailures
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE init(self)  
+         IMPLICIT NONE
+         CLASS(FTAssertionsManager) :: self
+         
+         self % numberOfTests_             = 0
+         self % numberOfAssertionFailures_ = 0
+         NULLIFY(self % failureListHead, self % failureListTail)
+         
+      END SUBROUTINE init
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE finalize(self)
+         IMPLICIT NONE
+         CLASS(FTAssertionsManager)              :: self
+         TYPE(FTAssertionFailureRecord), POINTER :: tmp, current
+         
+         IF ( .NOT.ASSOCIATED(self % failureListHead) ) RETURN 
+!
+!        ------------------------------
+!        Delete linked list of failures
+!        ------------------------------
+!
+         current => self % failureListHead
+         DO WHILE (ASSOCIATED(tmp))
+            tmp => current % next
+            DEALLOCATE(current)
+            current => tmp
+         END DO
+         
+         self % numberOfTests_    = 0
+         self % numberOfAssertionFailures_ = 0
+         NULLIFY(self % failureListHead, self % failureListTail)
+        
+      END SUBROUTINE finalize    
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -101,42 +182,21 @@
 !        per run.
 !        --------------------------------------------------
 !
-         IF ( .NOT.isInitialized_ )     THEN
-            isInitialized_             = .true.
-            numberOfTests_             = 0
-            numberOfAssertionFailures_ = 0
-            NULLIFY(failureListHead, failureListTail)
-         END IF
+         IF ( ASSOCIATED(sharedManager) )     RETURN 
+         
+         ALLOCATE(sharedManager)
+         CALL sharedManager % init()
          
       END SUBROUTINE initializeSharedAssertionsManager
-!
+! 
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE finalizeSharedAssertionsManager
+      SUBROUTINE finalizeSharedAssertionsManager 
          IMPLICIT NONE
-         TYPE(FTAssertionFailureRecord), POINTER :: tmp, current
          
-         IF ( .NOT.ASSOCIATED(failureListHead) )     THEN
-             isInitialized_ = .false.
-           RETURN 
-         END IF 
-!
-!        ------------------------------
-!        Delete linked list of failures
-!        ------------------------------
-!
-         current => failureListHead
-         DO WHILE (ASSOCIATED(tmp))
-            tmp => current%next
-            DEALLOCATE(current)
-            current => tmp
-         END DO
+         IF(ASSOCIATED(sharedManager)) CALL sharedManager % finalize()
          
-         numberOfTests_    = 0
-         numberOfAssertionFailures_ = 0
-         NULLIFY(failureListHead, failureListTail)
-        
-      END SUBROUTINE finalizeSharedAssertionsManager    
+      END SUBROUTINE finalizeSharedAssertionsManager
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -146,24 +206,28 @@
          TYPE(FTAssertionFailureRecord), POINTER :: newFailure
          
          ALLOCATE(newFailure)
-         newFailure%msg      = TRIM(ADJUSTL(msg))
-         newFailure%expected = TRIM(ADJUSTL(expected))
-         newFailure%actual   = TRIM(ADJUSTL(actual))
-         newFailure%next     => NULL()
+         newFailure % msg      = TRIM(ADJUSTL(msg))
+         newFailure % expected = TRIM(ADJUSTL(expected))
+         newFailure % actual   = TRIM(ADJUSTL(actual))
+         newFailure % next     => NULL()
          
-         IF ( ASSOCIATED(failureListTail) )     THEN
-            failureListTail%next => newFailure
-            failureListTail=> failureListTail%next
+         IF ( ASSOCIATED(sharedManager % failureListTail) )     THEN
+            sharedManager % failureListTail % next => newFailure
+            sharedManager % failureListTail        => sharedManager % failureListTail % next
          ELSE
-            failureListHead => newFailure
-            failureListTail => newFailure
+            sharedManager % failureListHead => newFailure
+            sharedManager % failureListTail => newFailure
          END IF 
+         
+         sharedManager % numberOfAssertionFailures_ = sharedManager % numberOfAssertionFailures_ + 1
+         
       END SUBROUTINE addAssertionFailureForParameters
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-     SUBROUTINE SummarizeFTAssertions(title,iUnit)  
+     SUBROUTINE summarizeAssertions(self,title,iUnit)  
         IMPLICIT NONE
+        CLASS(FTAssertionsManager)              :: self
         CHARACTER(LEN=*)                        :: title
         INTEGER                                 :: iUnit
         TYPE(FTAssertionFailureRecord), POINTER :: current
@@ -171,37 +235,22 @@
         WRITE(iUnit,*)
         WRITE(iUnit,*) "   -------------------------------------------------------------"
         WRITE(iUnit,*) "   Summary of failed tests for test suite ",TRIM(title)
-        WRITE(iUnit,*)  "   ",numberOfAssertionFailures_," failures out of ", numberOfTests_," tests." 
+        WRITE(iUnit,*)  "   ",self % numberOfAssertionFailures()," failures out of ", &
+                              self % numberOfAssertions()," tests." 
         WRITE(iUnit,*) "   -------------------------------------------------------------"
-         
-         IF ( .NOT.ASSOCIATED(failureListHead) )     THEN
-             isInitialized_ = .false.
-           RETURN 
-         END IF 
-         
-         current => failureListHead
+                  
+         current => self % failureListHead
          DO WHILE (ASSOCIATED(current))
-            WRITE(iUnit,*) "   ",TRIM(current%msg)," failure: Expected [",TRIM(current%expected),"], Got [",TRIM(current%actual),"]"
-            current => current%next
+            WRITE(iUnit,*) "   ",TRIM(current % msg),&
+                               " failure: Expected [",TRIM(current % expected),&
+                               "], Got [",TRIM(current % actual),"]"
+            current => current % next
          END DO
          
          WRITE(iUnit,*)
          
-     END SUBROUTINE SummarizeFTAssertions    
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-     INTEGER FUNCTION numberOfAssertions()
-        IMPLICIT NONE  
-        numberOfAssertions = numberOfTests_
-     END FUNCTION numberOfAssertions    
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-     INTEGER FUNCTION numberOfAssertionFailures()
-        IMPLICIT NONE  
-        numberOfAssertionFailures = numberOfAssertionFailures_
-     END FUNCTION numberOfAssertionFailures  
+     END SUBROUTINE summarizeAssertions    
+
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -211,10 +260,13 @@
          CHARACTER(LEN=*), OPTIONAL :: msg
          LOGICAL                    :: test
          
-         numberOfTests_ = numberOfTests_ + 1
-         IF ( .NOT.test )     THEN
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+        sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
+        IF ( .NOT.test )     THEN
             CALL addAssertionFailureForParameters(msg,"True","False")
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
       END SUBROUTINE FTAssert      
 !@mark -
@@ -228,12 +280,15 @@
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+        sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
             WRITE(expected,*) expectedValue
             WRITE(actual,*) actualValue
             CALL addAssertionFailureForParameters(msg,expected,actual)
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
          
       END SUBROUTINE assertEqualTwoIntegers    
@@ -244,10 +299,13 @@
          IMPLICIT NONE  
          INTEGER, INTENT(in)    , DIMENSION(:)            :: a, b
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b) )     THEN
-             
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
+             PRINT *, "assertEqualTwoIntegerArrays1D not implemented"
          END IF 
          
       END SUBROUTINE assertEqualTwoIntegerArrays1D
@@ -258,10 +316,13 @@
          IMPLICIT NONE  
          INTEGER, INTENT(in)    , DIMENSION(:,:)          :: a, b
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b) )     THEN
-             
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
+             PRINT *, "assertEqualTwoIntegerArrays2D not implemented"
          END IF 
          
       END SUBROUTINE assertEqualTwoIntegerArrays2D
@@ -275,13 +336,16 @@
          CHARACTER(LEN=*), OPTIONAL :: msg
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expectedS,actualS
-        
-         numberOfTests_ = numberOfTests_ + 1
+         
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
             WRITE(expectedS,*) expectedValue
             WRITE(actualS,*) actualValue
             CALL addAssertionFailureForParameters(msg,expectedS,actualS)
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
          
       END SUBROUTINE assertWithinToleranceTwoReal    
@@ -297,13 +361,16 @@
          
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b,tol) )     THEN
             DO k = 1, SIZE(a)
                WRITE(expected,*) a(k)
                WRITE(actual,*)   b(k)
                CALL addAssertionFailureForParameters(msg,expected,actual)
-               numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
             END DO  
          END IF 
          
@@ -316,10 +383,13 @@
          REAL, INTENT(IN), DIMENSION(:,:) :: a, b
          REAL, INTENT(IN)                 :: tol
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b,tol) )     THEN
-             
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
+             PRINT *, "assertWithinToleranceTwoRealArrays2D not implemented"
          END IF 
          
       END SUBROUTINE assertWithinToleranceTwoRealArrays2D
@@ -334,12 +404,15 @@
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
-          numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
         IF ( .NOT.isEqual(x,y,tol) )     THEN
             WRITE(expected,*) x
             WRITE(actual,*) y
             CALL addAssertionFailureForParameters(msg,expected,actual)
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
          
       END SUBROUTINE assertWithinToleranceTwoDouble    
@@ -356,14 +429,17 @@
          
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual,eMsg
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b,tol,code) )     THEN
             eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
             DO k = 1, SIZE(a)
                WRITE(expected,*) a(k)
                WRITE(actual,*)   b(k)
                CALL addAssertionFailureForParameters(eMsg,expected,actual)
-               numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
             END DO  
          END IF 
          
@@ -377,10 +453,13 @@
          DOUBLE PRECISION, INTENT(IN)                 :: tol
          INTEGER                         :: code
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b,tol,code) )     THEN
-             
-             numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
+             PRINT *, "assertWithinToleranceTwoDoubleArrays2D not implemented"
         END IF 
          
       END SUBROUTINE assertWithinToleranceTwoDoubleArrays2D
@@ -393,10 +472,13 @@
          CHARACTER(LEN=*)           :: s1,s2
          CHARACTER(LEN=*), OPTIONAL :: msg
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(s1,s2) )     THEN
             CALL addAssertionFailureForParameters(msg,s1,s2)
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
          
       END SUBROUTINE assertEqualString
@@ -411,12 +493,15 @@
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
-         numberOfTests_ = numberOfTests_ + 1
+         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+            CALL initializeSharedAssertionsManager
+         END IF 
+         
+         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.(i .EQV. j) )     THEN
             WRITE(expected,*) i
             WRITE(actual,*) j
             CALL addAssertionFailureForParameters(msg,expected,actual)
-            numberOfAssertionFailures_ = numberOfAssertionFailures_ + 1
          END IF 
          
       END SUBROUTINE assertEqualTwoLogicals    
