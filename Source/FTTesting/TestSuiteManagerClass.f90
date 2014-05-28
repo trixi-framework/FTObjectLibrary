@@ -63,6 +63,7 @@
 
       TYPE TestCaseRecord
          CHARACTER(LEN=128)                            :: testName
+         TYPE(FTAssertionsManager)   , POINTER         :: assertionsManager
          PROCEDURE(testSuiteFunction), POINTER, NOPASS :: TestSubroutine
          TYPE(TestCaseRecord), POINTER                 :: next
       END TYPE TestCaseRecord
@@ -149,6 +150,11 @@
          current => self % testCasesHead
          DO WHILE (ASSOCIATED(tmp))
             tmp => current % next
+            
+            IF(ASSOCIATED(current % assertionsManager)) THEN
+               DEALLOCATE(current % assertionsManager)
+            END IF 
+            
             DEALLOCATE(current)
             current => tmp
          END DO
@@ -156,6 +162,7 @@
          self % testCasesHead => NULL()
          self % testCasesTail => NULL()
          self % numberOfTests = 0
+         
       END SUBROUTINE finalizeTestSuiteManager
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -176,7 +183,8 @@
           DO WHILE (ASSOCIATED(current))
           
             CALL initializeSharedAssertionsManager
-            sharedManager => sharedAssertionsManager()
+            sharedManager               => sharedAssertionsManager()
+            current % assertionsManager => sharedManager
             
             CALL current % TestSubroutine
             
@@ -185,8 +193,9 @@
             END IF 
                
             CALL sharedManager % SummarizeAssertions(current % testName,self % stdOut)
+            CALL detachSharedAssertionsManager
             
-            CALL finalizeSharedAssertionsManager
+!            CALL finalizeSharedAssertionsManager
             
             current => current % next
           END DO
