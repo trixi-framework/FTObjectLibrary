@@ -89,6 +89,7 @@
       PUBLIC :: FTAssertEqual
       PUBLIC :: initializeSharedAssertionsManager, finalizeSharedAssertionsManager
       PUBLIC :: FTAssert, sharedAssertionsManager, numberOfAssertionFailures, numberOfAssertions
+      PUBLIC :: detachSharedAssertionsManager
 !
 !     -------
 !     Private
@@ -96,6 +97,7 @@
 !
       TYPE FTAssertionFailureRecord
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: msg, expected, actual
+         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: assertionType
          TYPE(FTAssertionFailureRecord), POINTER   :: next
       END TYPE FTAssertionFailureRecord
 !
@@ -117,6 +119,20 @@
          TYPE(FTAssertionsManager), POINTER :: sharedAssertionsManager
          sharedAssertionsManager => sharedManager 
       END FUNCTION sharedAssertionsManager
+! 
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE detachSharedAssertionsManager 
+         IMPLICIT NONE
+!
+!     --------------------------------------------------------------------------
+!     To create a new sharedAssertionsManager, 
+!     call this procedure after storing a pointer to the sharedAssertionsManager
+!     and before initializing again.
+!     --------------------------------------------------------------------------
+!
+         sharedManager => NULL()
+      END SUBROUTINE detachSharedAssertionsManager
 ! 
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -200,16 +216,17 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE addAssertionFailureForParameters(msg,expected,actual)
+      SUBROUTINE addAssertionFailureForParameters(msg,expected,actual, assertionType)
          IMPLICIT NONE  
-         CHARACTER(LEN=*)                        :: msg, expected, actual
+         CHARACTER(LEN=*)                        :: msg, expected, actual, assertionType
          TYPE(FTAssertionFailureRecord), POINTER :: newFailure
          
          ALLOCATE(newFailure)
-         newFailure % msg      = TRIM(ADJUSTL(msg))
-         newFailure % expected = TRIM(ADJUSTL(expected))
-         newFailure % actual   = TRIM(ADJUSTL(actual))
-         newFailure % next     => NULL()
+         newFailure % msg           = TRIM(msg)
+         newFailure % expected      = TRIM(ADJUSTL(expected))
+         newFailure % actual        = TRIM(ADJUSTL(actual))
+         newFailure % assertionType = assertionType
+         newFailure % next          => NULL()
          
          IF ( ASSOCIATED(sharedManager % failureListTail) )     THEN
             sharedManager % failureListTail % next => newFailure
@@ -241,8 +258,8 @@
                   
          current => self % failureListHead
          DO WHILE (ASSOCIATED(current))
-            WRITE(iUnit,*) "   ",TRIM(current % msg),&
-                               " failure: Expected [",TRIM(current % expected),&
+            WRITE(iUnit,*) "   ",TRIM(current % assertionType),TRIM(current % msg),&
+                               " Expected [",TRIM(current % expected),&
                                "], Got [",TRIM(current % actual),"]"
             current => current % next
          END DO
@@ -266,8 +283,13 @@
          
         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
         IF ( .NOT.test )     THEN
-            CALL addAssertionFailureForParameters(msg,"True","False")
+            IF ( PRESENT(msg) )     THEN
+               CALL addAssertionFailureForParameters(msg,"True","False","Logical assertion failed: ")
+            ELSE 
+               CALL addAssertionFailureForParameters("","True","False","Logical assertion failed: ")
+            END IF 
          END IF 
+         
       END SUBROUTINE FTAssert      
 !@mark -
 !
@@ -288,7 +310,11 @@
          IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
             WRITE(expected,*) expectedValue
             WRITE(actual,*) actualValue
-            CALL addAssertionFailureForParameters(msg,expected,actual)
+            IF ( PRESENT(msg) )     THEN
+               CALL addAssertionFailureForParameters(msg,expected,actual,"Integer equality failed: ")
+            ELSE 
+               CALL addAssertionFailureForParameters("",expected,actual,"Integer equality failed: ")
+            END IF 
          END IF 
          
       END SUBROUTINE assertEqualTwoIntegers    
@@ -345,7 +371,11 @@
          IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
             WRITE(expectedS,*) expectedValue
             WRITE(actualS,*) actualValue
-            CALL addAssertionFailureForParameters(msg,expectedS,actualS)
+            IF ( PRESENT(msg) )     THEN
+               CALL addAssertionFailureForParameters(msg,expectedS,actualS,"Real equality failed: ")
+            ELSE 
+               CALL addAssertionFailureForParameters("",expectedS,actualS,"Real equality failed: ")
+            END IF 
          END IF 
          
       END SUBROUTINE assertWithinToleranceTwoReal    
@@ -370,7 +400,11 @@
             DO k = 1, SIZE(a)
                WRITE(expected,*) a(k)
                WRITE(actual,*)   b(k)
-               CALL addAssertionFailureForParameters(msg,expected,actual)
+               IF ( PRESENT(msg) )     THEN
+                  CALL addAssertionFailureForParameters(msg,expected,actual,"Real Array equality failed: ")
+               ELSE 
+                  CALL addAssertionFailureForParameters("",expected,actual,"Real Array equality failed: ")
+               END IF 
             END DO  
          END IF 
          
@@ -412,7 +446,11 @@
         IF ( .NOT.isEqual(x,y,tol) )     THEN
             WRITE(expected,*) x
             WRITE(actual,*) y
-            CALL addAssertionFailureForParameters(msg,expected,actual)
+            IF ( PRESENT(msg) )     THEN
+               CALL addAssertionFailureForParameters(msg,expected,actual, "Double Precision equality failed: ")
+            ELSE 
+               CALL addAssertionFailureForParameters("",expected,actual, "Double Precision equality failed: ")
+            END IF 
          END IF 
          
       END SUBROUTINE assertWithinToleranceTwoDouble    
@@ -435,11 +473,16 @@
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(a,b,tol,code) )     THEN
-            eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
+            IF ( PRESENT(msg) )     THEN
+               eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
+            ELSE 
+               eMsg = "---" // TRIM(compareCodeStrings(code))
+            END IF 
+            
             DO k = 1, SIZE(a)
                WRITE(expected,*) a(k)
                WRITE(actual,*)   b(k)
-               CALL addAssertionFailureForParameters(eMsg,expected,actual)
+               CALL addAssertionFailureForParameters(eMsg,expected,actual,"Double Precision 1D Array equality failed: ")
             END DO  
          END IF 
          
@@ -478,7 +521,11 @@
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(s1,s2) )     THEN
-            CALL addAssertionFailureForParameters(msg,s1,s2)
+            IF ( PRESENT(msg) )     THEN
+               CALL addAssertionFailureForParameters(msg,s1,s2,"String equality failed: ")
+            ELSE 
+               CALL addAssertionFailureForParameters("",s1,s2,"String equality failed: ")
+            END IF 
          END IF 
          
       END SUBROUTINE assertEqualString
@@ -501,7 +548,11 @@
          IF ( .NOT.(i .EQV. j) )     THEN
             WRITE(expected,*) i
             WRITE(actual,*) j
-            CALL addAssertionFailureForParameters(msg,expected,actual)
+            IF ( PRESENT(msg) )     THEN
+               CALL addAssertionFailureForParameters(msg,expected,actual,"Logical equality failed: ")
+            ELSE 
+               CALL addAssertionFailureForParameters(msg,expected,actual,"Logical equality failed: ")
+            END IF 
          END IF 
          
       END SUBROUTINE assertEqualTwoLogicals    
