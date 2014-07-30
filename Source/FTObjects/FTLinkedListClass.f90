@@ -155,12 +155,16 @@
 !>         *Inserting objects*
 !>
 !>               CLASS(FTLinkedList)      , POINTER :: list
-!>               CLASS(FTObject)          , POINTER :: objectPtr
+!>               CLASS(FTObject)          , POINTER :: objectPtr, obj
 !>               CLASS(FTLinkedListRecord), POINTER :: record
 !>
-!>               objectPtr => r                            ! r is subclass of FTObject
-!>               CALL list % insertAfter(objectPtr,record) ! Pointer is retained by list
-!>               CALL objectPtr % release()                ! If caller reliquishes ownership
+!>               objectPtr => r                                        ! r is subclass of FTObject
+!>               CALL list % insertObjectAfterRecord(objectPtr,record) ! Pointer is retained by list
+!>               CALL objectPtr % release()                            ! If caller reliquishes ownership
+!>
+!>               objectPtr => r                                     ! r is subclass of FTObject
+!>               CALL list % insertObjectAfterObject(objectPtr,obj) ! Pointer is retained by list
+!>               CALL objectPtr % release()                         ! If caller reliquishes ownership
 !>
 !>         *Removing objects*
 !>
@@ -208,8 +212,7 @@
 !        ========
 !
          PROCEDURE :: init             => initFTLinkedList
-         PROCEDURE :: add     !         => addObject
-         PROCEDURE :: insert           => insertObjectAfter
+         PROCEDURE :: add              !=> addObject
          PROCEDURE :: remove           => removeObject
          PROCEDURE :: reverse          => reverseLinkedList
          PROCEDURE :: removeRecord     => removeLinkedListRecord
@@ -221,6 +224,8 @@
          PROCEDURE :: addObjectsFromList
          PROCEDURE :: makeCircular
          PROCEDURE :: isCircular
+         PROCEDURE :: insertObjectAfterRecord
+         PROCEDURE :: insertObjectAfterObject
          
       END TYPE FTLinkedList
       
@@ -310,19 +315,21 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE insertObjectAfter(self,obj,after)
+      SUBROUTINE insertObjectAfterRecord(self,obj,after)
          IMPLICIT NONE 
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj
          CLASS(FTLinkedListRecord), POINTER :: newRecord
-         CLASS(FTLinkedListRecord), POINTER :: after
+         CLASS(FTLinkedListRecord), POINTER :: after, next
          
          ALLOCATE(newRecord)
          CALL newRecord % initWithObject(obj)
          
-         newRecord % next     => after % next
+         next                 => after % next
+         newRecord % next     => next
          newRecord % previous => after
-         after % next     => newRecord
+         after % next         => newRecord
+         next % previous      => newRecord
          
          IF ( .NOT.ASSOCIATED( newRecord % next ) )     THEN
             self % tail => newRecord 
@@ -330,7 +337,43 @@
          
          self % nRecords = self % nRecords + 1
          
-      END SUBROUTINE insertObjectAfter 
+      END SUBROUTINE insertObjectAfterRecord 
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      SUBROUTINE insertObjectAfterObject(self,obj,after)
+         IMPLICIT NONE 
+         CLASS(FTLinkedList)                :: self
+         CLASS(FTObject)          , POINTER :: obj, after
+         
+         CLASS(FTLinkedListRecord), POINTER :: current, previous
+                  
+         IF ( .NOT.ASSOCIATED(self % head) )     THEN
+            CALL self % add(obj)
+            RETURN 
+         END IF 
+         
+         current  => self % head
+         previous => NULL()
+!
+!        -------------------------------------------------------------
+!        Find the object in the list by a linear search and 
+!        add the new object after it.
+!        It will be deallocated if necessary.
+!        -------------------------------------------------------------
+!
+         DO WHILE (ASSOCIATED(current))
+         
+            IF ( ASSOCIATED(current % recordObject,after) )     THEN
+               CALL self % insertObjectAfterRecord(obj = obj,after = current)
+               RETURN 
+            END IF 
+            
+            previous => current
+            current  => current % next
+         END DO
+         
+      END SUBROUTINE insertObjectAfterObject 
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
