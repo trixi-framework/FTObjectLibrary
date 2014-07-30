@@ -21,8 +21,8 @@
       CHARACTER(LEN=21), PARAMETER :: ASSERT_VALUES_OK_NAME      = "Arrays match"
       
       CHARACTER(LEN=21), PARAMETER, PUBLIC :: compareCodeStrings(0:2) = [ASSERT_VALUES_OK_NAME,   &
-                                                               ASSERT_SIZE_DIFFERS_NAME,&
-                                                               ASSERT_VALUES_DIFFERS_NAME]
+                                                                         ASSERT_SIZE_DIFFERS_NAME,&
+                                                                         ASSERT_VALUES_DIFFERS_NAME]
       
       INTERFACE isEqual
          MODULE PROCEDURE isEqualTwoIntegers
