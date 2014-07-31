@@ -78,6 +78,9 @@
  allows storage of real, integer, character and logical
  values, which can then be stored in containers.
  
+% \item {\bf FTData}
+% 
+% Is a class that allows one to store any kind of data structure.
  \end{itemize}
  
   You can create your own value
@@ -155,7 +158,7 @@ the dictionary. This is where a systematic approach to memory management comes i
 When we add it to the dictionary, it assumes partial ownership. So instead of deallocating the two value objects, we relinquish ownership
 by way of the release() procedure, leaving only the dictionary to be responsible for deallocating them when it does not need them any more.
 
- We use the dictionary a shown in the next snippet of code:
+ We use the dictionary as shown in the next snippet of code:
 
 {\color{blue}\begin{verbatim}
             CLASS(FTDICTIONARY), POINTER :: dict
@@ -335,8 +338,8 @@ FTObject is generally not going to be instantiated by itself, but rather it will
 
  The init() procedure performs subclass specific operations to initialize an object.
 
- Subclasses that override init() must include 
- a call to the super class method. For example, overriding init() looks like
+ Subclasses that override init() \emph{must} include 
+ a call to the super class method. For example, if ``Subclass'' EXTENDS(FTObject), overriding init() looks like
 
 {\color{blue}\begin{verbatim}
       SUBROUTINE initSubclass(self) 
@@ -350,7 +353,7 @@ FTObject is generally not going to be instantiated by itself, but rather it will
 \end{verbatim}}
 
 You can have multiple initializers for an object, so it is also worthwhile understanding the concept of the ``designated initializer''. Generally speaking this is the
-initializer that has the most arguments. For example, the designated initializer for a ``point'' class would be the one that takes the (x,y,z) values.
+initializer that has the most arguments. It is also the only one that includes the call to the super class init procedure. For example, the designated initializer for a ``point'' class would be the one that takes the (x,y,z) values.
 
 {\color{blue}\begin{verbatim}
       SUBROUTINE initPointWithXYZ(self,x,y,z) 
@@ -391,8 +394,8 @@ The array initializer is
 {\bf Implementing destruct()}
 
  The destruct() procedure reverses the operations done in the init() procedure. It releases and
- deallocates any pointers that it owns.  Subclasses that override destruct() must include 
- a call to the superclass method. For example, overriding destruct looks like
+ deallocates any pointers that it owns.  Subclasses that override destruct() \emph{must} include 
+ a call to the superclass method. For example, if ``Subclass'' EXTENDS(FTObject) then overriding destruct looks like
 
 {\color{blue}\begin{verbatim}
       SUBROUTINE destructSubclass(self) 
@@ -448,11 +451,11 @@ You saw an example above in the ``valueFromObject(obj)'' function.
 {\color{blue}\begin{verbatim}
             TYPE(FTValue) :: r, i, s, l, d
 
-            CALL r % initValue(3.14)
-            CALL i % initValue(6)
-            CALL d % initValue(3.14d0)
-            CALL l % initValue(.true.)
-            CALL s % initValue("A string")
+            CALL r % initWithValue(3.14)
+            CALL i % initWithValue(6)
+            CALL d % initWithValue(3.14d0)
+            CALL l % initWithValue(.true.)
+            CALL s % initWithValue("A string")
 \end{verbatim}}
 
 \item Destruction 
@@ -478,7 +481,7 @@ You saw an example above in the ``valueFromObject(obj)'' function.
             call v % printDescription(unit)
 \end{verbatim}}
 
-\item Converting a generic object to an FTValue
+\item Converting a base FTObject to an FTValue
 
 {\color{blue}\begin{verbatim}
             CLASS(FTValue) , POINTER :: v
@@ -565,9 +568,20 @@ and circular lists where the ends are connected.
 	               CLASS(FTLinkedListRecord), POINTER :: record
 	
 	               obj => r                            ! r is subclass of FTObject
-	               CALL list % insertAfter(obj,record) ! Pointer is retained by list
+	               CALL list % insertObjectAfterRecord(obj,record) ! Pointer is retained by list
 	               CALL obj % release()                ! If caller reliquishes ownership
 		\end{verbatim}}
+		OR
+		{\color{blue}\begin{verbatim}
+	               CLASS(FTLinkedList)      , POINTER :: list
+	               CLASS(FTObject)          , POINTER :: obj, otherObject
+	               CLASS(FTLinkedListRecord), POINTER :: record
+	
+	               obj => r                            ! r is subclass of FTObject
+	               CALL list % insertObjectAfterObject(obj,otherObject) ! Pointer is retained by list
+	               CALL obj % release()                ! If caller reliquishes ownership
+		\end{verbatim}}
+		
 
          \item Removing objects
 		{\color{blue}\begin{verbatim}
@@ -643,7 +657,7 @@ list to access its entries.
               .
               .
               .
-              CALL iterator % setLinkedList(list)
+              CALL iterator % setLinkedList(list) ! Increases refCount of list
 \end{verbatim}}
 Or
 {\color{blue}\begin{verbatim}
@@ -653,7 +667,7 @@ Or
               .
               .
               .
-              CALL iterator % initWithFTLinkedList(list)
+              CALL iterator % initWithFTLinkedList(list) ! Increases refCount of list
 \end{verbatim}}
 
          \item Setting the iterator to the beginning of the list
@@ -811,7 +825,7 @@ given by the ``chunkSize'', which you can choose for yourself. (The default is 1
 	
         \item Getting the chunk size
 	{\color{blue}\begin{verbatim}
-           CALL array % chunkSize(size)
+           i = array % chunkSize(size)
 	\end{verbatim}}
 	
         \item Finding the number of items in the array
@@ -951,12 +965,12 @@ subclass that is designed to store and retrieve FTValue objects.
            obj => dict % objectForKey(key)
 	\end{verbatim}}
 	
-        \item Converting a base class pointer to an dictionary
+        \item Converting a base class pointer to a dictionary
 	{\color{blue}\begin{verbatim}
            dict =>  dictionaryFromObject(obj)
 	\end{verbatim}}
 		
-        \item Getting all of the keys
+        \item Getting all of the keys (The target of the pointer must be deallocated by the caller)
 	{\color{blue}\begin{verbatim}
            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
            keys =>  dict % allKeys()
@@ -965,7 +979,7 @@ subclass that is designed to store and retrieve FTValue objects.
         \item Getting all of the objects
 	{\color{blue}\begin{verbatim}
            CLASS(FTMutableObjectArray), POINTER :: objectArray
-           objectArray =>  dict % allObjects()
+           objectArray =>  dict % allObjects() ! The array is owned by the caller.
 	\end{verbatim}}
 	
 \end{itemize}
