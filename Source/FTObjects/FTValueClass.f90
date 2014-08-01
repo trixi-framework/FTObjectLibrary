@@ -83,6 +83,9 @@
       REAL             , PARAMETER :: FTVALUE_NOT_REAL            = HUGE(1.0)
       DOUBLE PRECISION , PARAMETER :: FTVALUE_NOT_DOUBLEPRECISION = HUGE(1.0D0)
       INTEGER          , PARAMETER :: FTVALUE_STRING_LENGTH       = 512 ! Until vary length strings are available.
+      
+      INTEGER, PARAMETER :: FT_REAL_KIND             = SELECTED_REAL_KIND(6)
+      INTEGER, PARAMETER :: FT_DOUBLE_PRECISION_KIND = SELECTED_REAL_KIND(15)
 !
 !     -----------------
 !     Private constants
