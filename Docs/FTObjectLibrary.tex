@@ -99,9 +99,9 @@ FTLinkedList is an implementation of a doubly (and, optionally, circular) linked
 
 FTStack is a subclass of FTLinkedList that adds the usual push, pop, and peek routines.
 
-\item {\bf FTHashTable}
+\item {\bf FTSparseMatrix}
 
-FTHashTable is an ``associative container'', that associates a double index (i,j) to and FTObject. Basically this is a two dimensional sparse matrix of pointers to FTObjects.
+FTSparseMatrix associates a double index (i,j) to an FTObject. Basically this is a two dimensional sparse matrix of pointers to FTObjects.
 
 \item {\bf FTDictionary}
 
@@ -845,7 +845,7 @@ given by the ``chunkSize'', which you can choose for yourself. (The default is 1
 	
 \end{itemize}
 
-\subsection{Hash Tables}
+\subsection{Sparse Matrices}
 Hash tables are data structures designed to enable storage and fast
 retrieval of key-value pairs. An example of a key-value pair is
 a variable name (``gamma'') and its associated value (``1.4'').
@@ -868,28 +868,28 @@ could be (and often is) stored columnwise as a singly dimensioned array by creat
 function that maps the two indices to a single location in the array, e.g.,
 $H(i,j) = i + j*N$, where $N$ is the range of the first index, $i$. 
 
-The hash table included in the FTObjectLibrary is very simple in that it has a predefined
-hash function to describe a sparse matrix with two keys, $(i,j)$. You will initialize the table
+The sparse matrix included in the FTObjectLibrary is very simple in that it has a predefined
+hash function with two keys, $(i,j)$. You will initialize the matrix
 with the number of rows.
 \clearpage
      {\bf Definition (Subclass of FTObject):}
 	{\color{blue}\begin{verbatim}
-        	TYPE(FTHashTable) :: table
+        	TYPE(FTSparseMatrix) :: matrix
 	\end{verbatim}}
      {\bf Usage:}
 
 \begin{itemize}
         \item Initialization
 		{\color{blue}\begin{verbatim}
-      CLASS(FTHashTable)  :: table
-      INTEGER             :: N = 11 ! Number of rows
+      CLASS(FTSparseMatrix)  :: matrix
+      INTEGER                :: N = 11 ! Number of rows
       CALL array % initWithSize(N)
 	\end{verbatim}}
 	
         \item Destruction
 		{\color{blue}\begin{verbatim}
-           CALL table  %  release()
-           IF ( table  %  isUnreferenced() )     THEN
+           CALL matrix  %  release()
+           IF ( matrix  %  isUnreferenced() )     THEN
               DEALLOCATE(table) ! If table is a pointer
               table => NULL()
            END IF 
@@ -899,20 +899,20 @@ with the number of rows.
 
 	{\color{blue}\begin{verbatim}
            TYPE(FTObject) :: obj
-           table % addObjectForKeys(obj,i,j)
+           matrix % addObjectForKeys(obj,i,j)
 	\end{verbatim}}
 	
         \item Accessing an object
 
 	{\color{blue}\begin{verbatim}
            TYPE(FTObject) :: obj
-           obj => table % objectForKeys(i,j)
+           obj => matrix % objectForKeys(i,j)
 	\end{verbatim}}
 	
         \item Checking if an entry exists
 	{\color{blue}\begin{verbatim}
            LOGICAL :: exists
-           exists = table % containsKeys(i,j)
+           exists = matrix % containsKeys(i,j)
 	\end{verbatim}}
 	
 \end{itemize}
