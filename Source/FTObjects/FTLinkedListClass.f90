@@ -212,7 +212,7 @@
 !        ========
 !
          PROCEDURE :: init             => initFTLinkedList
-         PROCEDURE :: add              !=> addObject
+         PROCEDURE :: add              
          PROCEDURE :: remove           => removeObject
          PROCEDURE :: reverse          => reverseLinkedList
          PROCEDURE :: removeRecord     => removeLinkedListRecord
@@ -221,6 +221,7 @@
          PROCEDURE :: description      => FTLinkedListDescription
          PROCEDURE :: printDescription => printFTLinkedListDescription
          PROCEDURE :: allObjects       => allLinkedListObjects
+         PROCEDURE :: removeAllObjects => removeAllLinkedListObjects
          PROCEDURE :: addObjectsFromList
          PROCEDURE :: makeCircular
          PROCEDURE :: isCircular
@@ -540,7 +541,38 @@
          self % nRecords = self % nRecords - 1
          IF(circ) CALL self % makeCircular(.TRUE.)
          
-      END SUBROUTINE removeLinkedListRecord 
+      END SUBROUTINE removeLinkedListRecord
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE removeAllLinkedListObjects(self)  
+         IMPLICIT NONE
+         CLASS(FTLinkedList)                :: self
+         CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
+         LOGICAL                            :: circular
+
+         IF(.NOT.ASSOCIATED(self % head)) RETURN 
+         
+         circular = self % isCircular()
+         CALL self % makeCircular(.FALSE.)
+         
+         listRecord => self % head
+         DO WHILE (ASSOCIATED(listRecord))
+
+            tmp => listRecord % next
+
+            CALL listRecord % release()
+
+            IF(listRecord % isUnreferenced()) THEN
+               DEALLOCATE(listRecord)
+               self % nRecords = self % nRecords - 1
+            END IF
+            listRecord => tmp
+         END DO
+
+         self % head => NULL(); self % tail => NULL()
+         
+      END SUBROUTINE removeAllLinkedListObjects
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -560,28 +592,29 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
 
-         IF(.NOT.ASSOCIATED(self % head)) THEN
-            CALL self % FTObject % destruct()
-            RETURN
-         END IF
-         
-         CALL self % makeCircular(.FALSE.)
-         
-         listRecord => self % head
-         DO WHILE (ASSOCIATED(listRecord))
-
-            tmp => listRecord % next
-
-            CALL listRecord % release()
-
-            IF(listRecord % isUnreferenced()) THEN
-               DEALLOCATE(listRecord)
-               self % nRecords = self % nRecords - 1
-            END IF
-            listRecord => tmp
-         END DO
-
-         self % head => NULL(); self % tail => NULL()
+         CALL self % removeAllObjects()
+!         IF(.NOT.ASSOCIATED(self % head)) THEN
+!            CALL self % FTObject % destruct()
+!            RETURN
+!         END IF
+!         
+!         CALL self % makeCircular(.FALSE.)
+!         
+!         listRecord => self % head
+!         DO WHILE (ASSOCIATED(listRecord))
+!
+!            tmp => listRecord % next
+!
+!            CALL listRecord % release()
+!
+!            IF(listRecord % isUnreferenced()) THEN
+!               DEALLOCATE(listRecord)
+!               self % nRecords = self % nRecords - 1
+!            END IF
+!            listRecord => tmp
+!         END DO
+!
+!         self % head => NULL(); self % tail => NULL()
 !
 !        ------------------------------------------
 !        Always call the superclass destructor here
