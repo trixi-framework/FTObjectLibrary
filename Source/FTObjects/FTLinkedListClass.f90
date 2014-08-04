@@ -593,28 +593,6 @@
          CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
 
          CALL self % removeAllObjects()
-!         IF(.NOT.ASSOCIATED(self % head)) THEN
-!            CALL self % FTObject % destruct()
-!            RETURN
-!         END IF
-!         
-!         CALL self % makeCircular(.FALSE.)
-!         
-!         listRecord => self % head
-!         DO WHILE (ASSOCIATED(listRecord))
-!
-!            tmp => listRecord % next
-!
-!            CALL listRecord % release()
-!
-!            IF(listRecord % isUnreferenced()) THEN
-!               DEALLOCATE(listRecord)
-!               self % nRecords = self % nRecords - 1
-!            END IF
-!            listRecord => tmp
-!         END DO
-!
-!         self % head => NULL(); self % tail => NULL()
 !
 !        ------------------------------------------
 !        Always call the superclass destructor here
