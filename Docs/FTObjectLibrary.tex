@@ -50,10 +50,10 @@
  compiler, FTObjectLibrary will be updated to include those features. In the meantime, there
  are a few workarounds that exist in the code.
 
- The library is inspired, for the large part, by 
- \href{https://developer.apple.com/library/mac/documentation/General/Conceptual/CocoaEncyclopedia/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010810-CH1-SW1}{Apple's Cocoa Foundation Framework}. 
- Reading about the philosophy behind that
- would go a long way towards understanding the why's and wherefore's of the FTObjectLibrary.
+% The library is inspired, for the large part, by 
+% \href{https://developer.apple.com/library/mac/documentation/General/Conceptual/CocoaEncyclopedia/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010810-CH1-SW1}{Apple's Cocoa Foundation Framework}. 
+% Reading about the philosophy behind that
+% would go a long way towards understanding the why's and wherefore's of the FTObjectLibrary.
 
  The library includes
  three categories of classes:
@@ -162,18 +162,15 @@ by way of the release() procedure, leaving only the dictionary to be responsible
 
 {\color{blue}\begin{verbatim}
             CLASS(FTDICTIONARY), POINTER :: dict
-            CLASS(FTObject)    , POINTER :: obj
             CLASS(FTValue)     , POINTER :: v
             REAL                         :: pi
             CHARACTER                    :: s(FTDICT_KWD_STRING_LENGTH)
             CALL constructDictionary(dict)
             
-            obj => dict % objectForKey("Pi")
-            v   => valueFromObject(obj)
+            v   => valueFromObject(dict % objectForKey("Pi"))
             pi  = v % realValue()
             
-            obj => dict % objectForKey(``definition'')
-            v   => valueFromObject(obj)
+            v   => valueFromObject(dict % objectForKey(``definition''))
             s   = v % stringValue(FTDICT_KWD_STRING_LENGTH)
             PRINT *, "The num pi = ", pi," is defined as", TRIM(s)
             CALL dict % release()
@@ -198,6 +195,8 @@ by way of the release() procedure, leaving only the dictionary to be responsible
  is responsible for deallocating the object. This approach makes it easy to keep track of when to deallocate
  pointers, and ensures that a pointer that is in use is not prematurely deallocated. In long, complex, programs, this mechanism automatically keeps track of which
  objects (pointers) that have been allocated need to be deallocated, and when.
+ 
+ (It would be really nice if an object could detect when it should be deallocated, and deallocate itself. This does not seem to be doable in Fortran as a type bound procedure. This is the reason for the rule of deallocation by the last owner.)
   
  Ownership rules are as follows:
  \begin{itemize}
@@ -382,13 +381,13 @@ reasonable value.
 
 The array initializer is
 {\color{blue}\begin{verbatim}
-      SUBROUTINE initPointwithArray(self,w) 
+      SUBROUTINE initPointWithArray(self,w) 
          IMPLICIT NONE
          CLASS(Subclass) :: self
          REAL            :: w(3)
          
          call self % initPointWithXYZ(w(1),w(2),w(3))
-      END SUBROUTINE initPointwithArray
+      END SUBROUTINE initPointWithArray
 \end{verbatim}}
 
 {\bf Implementing destruct()}
