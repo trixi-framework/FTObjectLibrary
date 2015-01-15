@@ -50,7 +50,7 @@
 !
       TYPE, EXTENDS(FTObject) :: MatrixData
          INTEGER                  :: key
-         CLASS(FTObject), POINTER :: object
+         CLASS(FTObject), POINTER :: object => NULL()
 !
 !        ========
          CONTAINS
@@ -171,7 +171,7 @@
 !     ----------------------
 !
       TYPE FTLinkedListPtr
-         CLASS(FTLinkedList), POINTER :: list
+         CLASS(FTLinkedList), POINTER :: list => NULL()
       END TYPE FTLinkedListPtr
       PRIVATE :: FTLinkedListPtr
       
@@ -245,8 +245,8 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(MatrixData), POINTER :: mData
-         CLASS(FTObject)  , POINTER :: ptr
+         CLASS(MatrixData), POINTER :: mData => NULL()
+         CLASS(FTObject)  , POINTER :: ptr   => NULL()
          
          IF ( .NOT.self % containsKeys(i,j) )     THEN
             ALLOCATE(mData)
@@ -282,9 +282,9 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(MatrixData)  , POINTER :: mData
-         CLASS(FTObject)    , POINTER :: obj
-         CLASS(FTLinkedList), POINTER :: list
+         CLASS(MatrixData)  , POINTER :: mData => NULL()
+         CLASS(FTObject)    , POINTER :: obj   => NULL()
+         CLASS(FTLinkedList), POINTER :: list  => NULL()
          
          r    => NULL()
          IF(.NOT.ALLOCATED(self % table))     RETURN 
@@ -330,9 +330,9 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(FTObject)    , POINTER :: obj
-         CLASS(MatrixData)  , POINTER :: mData
-         CLASS(FTLinkedList), POINTER :: list
+         CLASS(FTObject)    , POINTER :: obj   => NULL()
+         CLASS(MatrixData)  , POINTER :: mData => NULL()
+         CLASS(FTLinkedList), POINTER :: list  => NULL()
          
          r = .FALSE.
          IF(.NOT.ALLOCATED(self % table))                RETURN 

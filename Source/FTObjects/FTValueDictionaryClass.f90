@@ -78,8 +78,8 @@
          CLASS(FTValueDictionary) :: self
          INTEGER                  :: i
          CHARACTER(LEN=*)         :: key
-         CLASS(FTValue), POINTER  :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue), POINTER  :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          ALLOCATE(v)
          CALL v % initWithValue(i)
@@ -95,8 +95,8 @@
          CLASS(FTValueDictionary) :: self
          REAL                     :: r
          CHARACTER(LEN=*)         :: key
-         CLASS(FTValue), POINTER  :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue), POINTER  :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          ALLOCATE(v)
          CALL v % initWithValue(r)
@@ -112,8 +112,8 @@
          CLASS(FTValueDictionary) :: self
          DOUBLE PRECISION         :: r
          CHARACTER(LEN=*)         :: key
-         CLASS(FTValue), POINTER  :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue), POINTER  :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          ALLOCATE(v)
          CALL v % initWithValue(r)
@@ -129,8 +129,8 @@
          CLASS(FTValueDictionary) :: self
          CHARACTER(LEN=*)         :: s
          CHARACTER(LEN=*)         :: key
-         CLASS(FTValue), POINTER  :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue), POINTER  :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          ALLOCATE(v)
          CALL v % initWithValue(s)
@@ -146,8 +146,8 @@
          CLASS(FTValueDictionary) :: self
          LOGICAL                  :: l
          CHARACTER(LEN=*)         :: key
-         CLASS(FTValue), POINTER  :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue), POINTER  :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          ALLOCATE(v)
          CALL v % initWithValue(l)
@@ -164,8 +164,8 @@
          CLASS(FTValueDictionary) :: self
          CHARACTER(LEN=*)         :: key
          
-         CLASS(FTValue) , POINTER :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
          CALL cast(obj,v)
@@ -181,8 +181,8 @@
          CLASS(FTValueDictionary) :: self
          CHARACTER(LEN=*)         :: key
          
-         CLASS(FTValue) , POINTER :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
          CALL cast(obj,v)
@@ -198,8 +198,8 @@
          CLASS(FTValueDictionary) :: self
          CHARACTER(LEN=*)         :: key
          
-         CLASS(FTValue) , POINTER :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
          CALL cast(obj,v)
@@ -215,8 +215,8 @@
          CLASS(FTValueDictionary) :: self
          CHARACTER(LEN=*)         :: key
          
-         CLASS(FTValue) , POINTER :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
          CALL cast(obj,v)
@@ -234,8 +234,8 @@
          INTEGER                        :: requestedLength
          CHARACTER(LEN=requestedLength) :: stringValueForKey
          
-         CLASS(FTValue) , POINTER :: v
-         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
          CALL cast(obj,v)

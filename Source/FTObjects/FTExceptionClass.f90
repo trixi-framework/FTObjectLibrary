@@ -71,7 +71,7 @@
       TYPE, EXTENDS(FTObject) :: FTException
          INTEGER, PRIVATE                                :: severity_
          CHARACTER(LEN=ERROR_MSG_STRING_LENGTH), PRIVATE :: exceptionName_
-         CLASS(FTDictionary), POINTER, PRIVATE           :: infoDictionary_
+         CLASS(FTDictionary), POINTER, PRIVATE           :: infoDictionary_ => NULL()
 !
 !        --------         
          CONTAINS
@@ -113,9 +113,9 @@
          CLASS(FTException)                     :: self
          CHARACTER(LEN=*)                       :: msg
          
-         CLASS(FTValueDictionary), POINTER :: userDictionary
-         CLASS(FTDictionary)     , POINTER :: dictPtr
-         CLASS(FTObject)         , POINTER :: objectPtr
+         CLASS(FTValueDictionary), POINTER :: userDictionary => NULL()
+         CLASS(FTDictionary)     , POINTER :: dictPtr        => NULL()
+         CLASS(FTObject)         , POINTER :: objectPtr      => NULL()
             
          ALLOCATE(userDictionary)
          CALL userDictionary % initWithSize(64)
@@ -144,9 +144,9 @@
          CLASS(FTException)                     :: self
          CHARACTER(LEN=*)                       :: msg
          
-         CLASS(FTValueDictionary), POINTER :: userDictionary
-         CLASS(FTDictionary)     , POINTER :: dictPtr
-         CLASS(FTObject)         , POINTER :: objectPtr
+         CLASS(FTValueDictionary), POINTER :: userDictionary => NULL()
+         CLASS(FTDictionary)     , POINTER :: dictPtr        => NULL()
+         CLASS(FTObject)         , POINTER :: objectPtr      => NULL()
             
          ALLOCATE(userDictionary)
          CALL userDictionary % initWithSize(8)
@@ -208,9 +208,9 @@
          INTEGER                 :: level
          CHARACTER(LEN=*)        :: msg
          
-         CLASS(FTValueDictionary), POINTER :: userDictionary
-         CLASS(FTDictionary)     , POINTER :: dictPtr
-         CLASS(FTObject)         , POINTER :: objectPtr
+         CLASS(FTValueDictionary), POINTER :: userDictionary => NULL()
+         CLASS(FTDictionary)     , POINTER :: dictPtr        => NULL()
+         CLASS(FTObject)         , POINTER :: objectPtr      => NULL()
             
          ALLOCATE(userDictionary)
          CALL userDictionary % initWithSize(8)
@@ -303,7 +303,7 @@
         CLASS(FTException) :: self
         INTEGER            :: iUnit
         
-        CLASS(FTDictionary), POINTER :: dict
+        CLASS(FTDictionary), POINTER :: dict => NULL()
         
         WRITE(iUnit,*) "-------------"
         WRITE(iUnit,*) " "
@@ -371,8 +371,8 @@
 !     Global error stack  
 !     --------------------
 !
-      CLASS(FTStack)    , POINTER, PRIVATE :: errorStack
-      CLASS(FTException), POINTER, PRIVATE :: currentError_
+      CLASS(FTStack)    , POINTER, PRIVATE :: errorStack    => NULL()
+      CLASS(FTException), POINTER, PRIVATE :: currentError_ => NULL()
       
       INTERFACE catch
          MODULE PROCEDURE catchAll
@@ -400,9 +400,9 @@
       SUBROUTINE destructFTExceptions  
          IMPLICIT NONE
          TYPE(FTLinkedListIterator)   :: iterator
-         CLASS(FTLinkedList), POINTER :: list
-         CLASS(FTObject)    , POINTER :: objectPtr
-         CLASS(FTException) , POINTER :: e
+         CLASS(FTLinkedList), POINTER :: list       => NULL()
+         CLASS(FTObject)    , POINTER :: objectPtr  => NULL()
+         CLASS(FTException) , POINTER :: e          => NULL()
 !  
 !        --------------------------------------------------
 !        First see if there are any uncaught exceptions and
@@ -448,7 +448,7 @@
       SUBROUTINE throw(exceptionToThrow)  
          IMPLICIT NONE  
          CLASS(FTException), POINTER :: exceptionToThrow
-         CLASS(FTObject)   , POINTER :: ptr
+         CLASS(FTObject)   , POINTER :: ptr => NULL()
          
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             CALL initializeFTExceptions 
@@ -502,9 +502,9 @@
          CHARACTER(LEN=*) :: exceptionName
          
          TYPE(FTLinkedListIterator)   :: iterator
-         CLASS(FTLinkedList), POINTER :: ptr
-         CLASS(FTObject)    , POINTER :: obj
-         CLASS(FTException) , POINTER :: e
+         CLASS(FTLinkedList), POINTER :: ptr => NULL()
+         CLASS(FTObject)    , POINTER :: obj => NULL()
+         CLASS(FTException) , POINTER :: e   => NULL()
          
          catchErrorWithName = .false.
                   
@@ -583,7 +583,7 @@
       FUNCTION popLastException()
          IMPLICIT NONE  
          CLASS(FTException), POINTER :: popLastException
-         CLASS(FTObject)   , POINTER :: obj
+         CLASS(FTObject)   , POINTER :: obj => NULL()
          
          obj => NULL()
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
@@ -600,7 +600,7 @@
       FUNCTION peekLastException()  
          IMPLICIT NONE  
          CLASS(FTException), POINTER :: peekLastException
-         CLASS(FTObject)   , POINTER :: obj
+         CLASS(FTObject)   , POINTER :: obj => NULL()
          
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             CALL initializeFTExceptions 
@@ -616,9 +616,9 @@
       SUBROUTINE printAllExceptions  
          IMPLICIT NONE  
          TYPE(FTLinkedListIterator)   :: iterator
-         CLASS(FTLinkedList), POINTER :: list
-         CLASS(FTObject)    , POINTER :: objectPtr
-         CLASS(FTException) , POINTER :: e
+         CLASS(FTLinkedList), POINTER :: list      => NULL()
+         CLASS(FTObject)    , POINTER :: objectPtr => NULL()
+         CLASS(FTException) , POINTER :: e         => NULL()
            
         list => errorStack
         CALL iterator % initWithFTLinkedList(list)

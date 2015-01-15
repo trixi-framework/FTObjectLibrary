@@ -27,8 +27,8 @@
 !
       TYPE, EXTENDS(FTObject) :: FTLinkedListRecord
       
-         CLASS(FTObject)          , POINTER :: recordObject
-         CLASS(FTLinkedListRecord), POINTER :: next, previous
+         CLASS(FTObject)          , POINTER :: recordObject => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: next => NULL(), previous => NULL()
 !
 !        ========         
          CONTAINS
@@ -203,7 +203,7 @@
 !
       TYPE, EXTENDS(FTObject) :: FTLinkedList
       
-         CLASS(FTLinkedListRecord), POINTER :: head, tail
+         CLASS(FTLinkedListRecord), POINTER :: head => NULL(), tail => NULL()
          INTEGER                            :: nRecords
          LOGICAL                            :: isCircular_
 !
@@ -270,7 +270,7 @@
          IMPLICIT NONE 
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj
-         CLASS(FTLinkedListRecord), POINTER :: newRecord
+         CLASS(FTLinkedListRecord), POINTER :: newRecord => NULL()
          
          ALLOCATE(newRecord)
          CALL newRecord % initWithObject(obj)
@@ -293,9 +293,9 @@
          IMPLICIT NONE 
          CLASS(FTLinkedList)                :: self
          CLASS(FTLinkedList)      , POINTER :: list
-         CLASS(FTLinkedListRecord), POINTER :: recordPtr
+         CLASS(FTLinkedListRecord), POINTER :: recordPtr => NULL()
+         CLASS(FtObject)          , POINTER :: obj       => NULL()
          LOGICAL                            :: circular
-         CLASS(FtObject)          , POINTER :: obj
          
          IF(.NOT.ASSOCIATED(list % head)) RETURN
          
@@ -320,8 +320,8 @@
          IMPLICIT NONE 
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj
-         CLASS(FTLinkedListRecord), POINTER :: newRecord
-         CLASS(FTLinkedListRecord), POINTER :: after, next
+         CLASS(FTLinkedListRecord), POINTER :: newRecord   => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: after, next => NULL()
          
          ALLOCATE(newRecord)
          CALL newRecord % initWithObject(obj)
@@ -347,7 +347,7 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj, after
          
-         CLASS(FTLinkedListRecord), POINTER :: current, previous
+         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), previous => NULL()
                   
          IF ( .NOT.ASSOCIATED(self % head) )     THEN
             CALL self % add(obj)
@@ -409,7 +409,7 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj
          
-         CLASS(FTLinkedListRecord), POINTER :: current, previous
+         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), previous => NULL()
                   
          IF ( .NOT.ASSOCIATED(self % head) )     RETURN
          
@@ -457,7 +457,7 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj
          
-         CLASS(FTLinkedListRecord), POINTER :: current, previous
+         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), previous => NULL()
                   
          IF ( .NOT.ASSOCIATED(self % head) )     RETURN
          
@@ -498,7 +498,7 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(FTLinkedListRecord), POINTER :: previous, next
+         CLASS(FTLinkedListRecord), POINTER :: previous => NULL(), next => NULL()
 !
 !        ---------------------------------------------------
 !        Turn cirularity off and then back on
@@ -548,7 +548,7 @@
       SUBROUTINE removeAllLinkedListObjects(self)  
          IMPLICIT NONE
          CLASS(FTLinkedList)                :: self
-         CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
+         CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL(), tmp => NULL()
          LOGICAL                            :: circular
 
          IF(.NOT.ASSOCIATED(self % head)) RETURN 
@@ -590,7 +590,7 @@
       SUBROUTINE destructFTLinkedList(self) 
          IMPLICIT NONE
          CLASS(FTLinkedList)                :: self
-         CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
+         CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL(), tmp => NULL()
 
          CALL self % removeAllObjects()
 !
@@ -608,7 +608,7 @@
       FUNCTION FTLinkedListDescription(self)  
          IMPLICIT NONE  
          CLASS(FTLinkedList)                         :: self
-         CLASS(FTLinkedListRecord), POINTER          :: listRecord
+         CLASS(FTLinkedListRecord), POINTER          :: listRecord => NULL()
          CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH) :: FTLinkedListDescription
          
          
@@ -633,7 +633,7 @@
          IMPLICIT NONE  
          CLASS(FTLinkedList)                 :: self
          INTEGER                             :: iUnit
-         CLASS(FTLinkedListRecord), POINTER  :: listRecord
+         CLASS(FTLinkedListRecord), POINTER  :: listRecord => NULL()
          LOGICAL                             :: circular
          
          
@@ -673,7 +673,7 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(FTLinkedListRecord), POINTER :: current, tmp, next => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), tmp => NULL(), next => NULL()
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
@@ -718,8 +718,8 @@
 !        ---------------
 !
          INTEGER                            :: N
-         CLASS(FTLinkedListRecord), POINTER :: listRecord
-         CLASS(FTObject)          , POINTER :: obj
+         CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL()
+         CLASS(FTObject)          , POINTER :: obj        => NULL()
          
          array => NULL()
          N = self % count()
@@ -771,7 +771,7 @@
 !     -----------------------------------------------------
 !
          IMPLICIT NONE  
-         CLASS(FTObject)    , POINTER :: obj
+         CLASS(FTObject)    , POINTER :: obj 
          CLASS(FTLinkedList), POINTER :: cast
          
          cast => NULL()
@@ -842,8 +842,8 @@
 !     -----------------
 !
       TYPE, EXTENDS(FTObject) :: FTLinkedListIterator
-         CLASS(FTLinkedList)      , POINTER :: list
-         CLASS(FTLinkedListRecord), POINTER :: current
+         CLASS(FTLinkedList)      , POINTER :: list    => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: current => NULL()
 !
 !        ========         
          CONTAINS
@@ -873,7 +873,7 @@
       SUBROUTINE initEmpty(self) 
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
-         CLASS(FTLinkedList), POINTER :: list
+         CLASS(FTLinkedList), POINTER :: list => NULL()
 !
 !        --------------------------------------------
 !        Always call the superclass initializer first

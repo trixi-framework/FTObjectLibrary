@@ -23,7 +23,7 @@
 !
          TYPE, EXTENDS(FTObject) :: FTKeyObjectPair
             CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
-            CLASS(FTObject) , POINTER               :: valueObject
+            CLASS(FTObject) , POINTER               :: valueObject => NULL()
 !
 !           --------            
             CONTAINS
@@ -181,7 +181,7 @@
          TYPE, EXTENDS(FTObject) :: FTDictionary
             INTEGER                                   :: numberOfEntries
             LOGICAL                                   :: isCaseSensitive
-            TYPE(FTLinkedList), DIMENSION(:), POINTER :: entries
+            TYPE(FTLinkedList), DIMENSION(:), POINTER :: entries => NULL()
 !
 !           --------
             CONTAINS
@@ -308,8 +308,8 @@
             CLASS(FTDictionary)                 :: self
             CLASS(FTObject)       , POINTER     :: object
             CHARACTER(LEN=*)                    :: key
-            CLASS(FTKeyObjectPair), POINTER     :: pair
-            CLASS(FTObject)       , POINTER     :: ptr
+            CLASS(FTKeyObjectPair), POINTER     :: pair => NULL()
+            CLASS(FTObject)       , POINTER     :: ptr => NULL()
             INTEGER(KIND=SELECTED_REAL_KIND(8)) :: h
             
             INTEGER(KIND=SELECTED_REAL_KIND(8)), EXTERNAL :: b3hs_hash_key_jenkins
@@ -352,7 +352,7 @@
             CLASS(FTLinkedList)         :: list
             CLASS(FTObject), POINTER    :: objectForKeyInList
             
-            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr
+            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
             CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
 
             objectForKeyInList => NULL()
@@ -423,15 +423,15 @@
 !           ---------
 !
             CLASS(FTDictionary)                  :: self
-            CLASS(FTMutableObjectArray), POINTER :: objectArray 
+            CLASS(FTMutableObjectArray), POINTER :: objectArray
 !
 !           ---------------
 !           Local Variables
 !           ---------------
 !
             INTEGER                                 :: i
-            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr
-            CLASS(FTObject)               , POINTER :: obj
+            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
+            CLASS(FTObject)               , POINTER :: obj           => NULL()
             CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
 !
 !           --------------------------------------------
@@ -480,8 +480,8 @@
 !           ---------------
 !
             INTEGER                                 :: i, c
-            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr
-            CLASS(FTObject)               , POINTER :: obj
+            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
+            CLASS(FTObject)               , POINTER :: obj           => NULL()
             CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
 !
 !           --------------------------------------------

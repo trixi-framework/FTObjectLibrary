@@ -119,8 +119,8 @@
          IMPLICIT NONE 
          CLASS(FTStack)                     :: self
          CLASS(FTObject)          , POINTER :: obj
-         CLASS(FTLinkedListRecord), POINTER :: newRecord
-         CLASS(FTLinkedListRecord), POINTER :: tmp
+         CLASS(FTLinkedListRecord), POINTER :: newRecord => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: tmp       => NULL()
          
          ALLOCATE(newRecord)
          CALL newRecord % initWithObject(obj)
@@ -173,7 +173,7 @@
          IMPLICIT NONE  
          CLASS(FTStack)                     :: self
          CLASS(FTObject)          , POINTER :: p
-         CLASS(FTLinkedListRecord), POINTER :: tmp
+         CLASS(FTLinkedListRecord), POINTER :: tmp => NULL()
          
          IF ( .NOT. ASSOCIATED(self % head) )     THEN
             p => NULL()

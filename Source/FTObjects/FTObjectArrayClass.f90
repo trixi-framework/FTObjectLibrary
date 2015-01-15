@@ -16,7 +16,7 @@
       IMPLICIT NONE
       
       TYPE FTObjectPointerWrapper
-         CLASS(FTObject), POINTER ::  object
+         CLASS(FTObject), POINTER ::  object => NULL()
       END TYPE FTObjectPointerWrapper
       
       PRIVATE :: FTObjectPointerWrapper
@@ -24,7 +24,7 @@
       
       TYPE, EXTENDS(FTObject) ::  FTMutableObjectArray
          INTEGER                                            , PRIVATE :: count_
-         TYPE(FTObjectPointerWrapper), DIMENSION(:), POINTER, PRIVATE :: array
+         TYPE(FTObjectPointerWrapper), DIMENSION(:), POINTER, PRIVATE :: array => NULL()
          INTEGER                                            , PRIVATE :: chunkSize_ = 10
 !
 !        --------
@@ -95,7 +95,7 @@
          IMPLICIT NONE
          CLASS( FTMutableObjectArray) :: self
          TYPE(FTObjectPointerWrapper) :: wrapper
-         CLASS(FTObject), POINTER     :: obj
+         CLASS(FTObject), POINTER     :: obj     => NULL()
          INTEGER                      :: i
 
          DO i = 1, self % count_
@@ -170,7 +170,7 @@
 !        ---------------
 !
          INTEGER                     :: i
-         CLASS(FTObject), POINTER    :: obj
+         CLASS(FTObject), POINTER    :: obj  => NULL()
          
          obj => self % array(indx) %  object
          
@@ -217,7 +217,7 @@
 !        ---------------
 !
          INTEGER                     :: i
-         CLASS(FTObject), POINTER    :: obj
+         CLASS(FTObject), POINTER    :: obj => NULL()
          
          obj => self % array(indx) %  object
          
@@ -243,7 +243,7 @@
          CLASS(FTMutableObjectArray) :: self
          INTEGER                     :: iUnit
          INTEGER                     :: i
-         CLASS(FTObject), POINTER    :: obj
+         CLASS(FTObject), POINTER    :: obj => NULL()
          
          DO i = 1, self % count_
             obj => self % array(i) % object
