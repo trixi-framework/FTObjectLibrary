@@ -75,7 +75,7 @@
          ALLOCATE(v)
          CALL v % initWithValue(99)
          obj => v
-         CALL list % insertObjectAfterObject(obj,after = objToDelete)
+         CALL list % insertObjectAfterObject(obj,objToDelete)
          PRINT *, "After adding 99 after value 5, the values in the list are:"
          CALL list % printDescription(iUnit = 6)
 !

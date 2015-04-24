@@ -68,9 +68,8 @@
             v         => valueFromObject(dict % objectForKey(storedKey))
             sExpected = v % stringValue(FTDICT_KWD_STRING_LENGTH)
             
-            obj      => storedObjects % objectAtIndex(indx = i)
-            v        => valueFromObject(obj)
-            sActual  =  v%stringValue(FTDICT_KWD_STRING_LENGTH)
+            v        => valueFromObject(storedObjects % objectAtIndex(indx = i))
+            sActual  =  v % stringValue(FTDICT_KWD_STRING_LENGTH)
             
             CALL FTAssertEqual(sExpected, sActual,"String for stored key")
          END DO   

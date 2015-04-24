@@ -19,7 +19,7 @@
 !        -----------------------
 !
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys         = ["first ","second","third ","fourth"]
-         INTEGER                                , DIMENSION(4) :: values       = [1,2,3,4]
+         INTEGER                                , DIMENSION(4) :: intValues    = [1,2,3,4]
          REAL                                   , DIMENSION(4) :: realValues   = [1.1, 2.1, 3.1, 4.1]
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: stringValues = ['1', '2', '3', '4']
          INTEGER                                               :: i, s
@@ -41,7 +41,7 @@
 !        -----------------------------------------
 !
          DO i = 1, 4
-            CALL dict % addValueForKey(values(i),keys(i))
+            CALL dict % addValueForKey(intValues(i),keys(i))
          END DO
 !
 !        ------------------
@@ -50,7 +50,7 @@
 !
          DO i = 1,4
             s = dict % integerValueForKey(keys(i))
-            CALL FTAssertEqual(s,values(i),"Value for key as integer ")
+            CALL FTAssertEqual(s,intValues(i),"Value for key as integer ")
          END DO
 !
 !        -----------------------
@@ -60,7 +60,7 @@
          DO i = 1,4
             sValue = dict % stringValueForKey(keys(i),8)
             CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
-         END DO         
+         END DO       
 !
 !        ------------------------------------------------------------
 !        The dictionary is not a pointer, so we need only

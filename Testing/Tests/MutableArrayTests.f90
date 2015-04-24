@@ -60,8 +60,11 @@
 !         CALL array % printDescription(6) ! To print the array, if desired.
          DO i = 1, 10
             obj => array % objectAtIndex(i)   ! Get the object
-            v   => valueFromObject(obj) ! Convert it to a value. We *should* check and see that v is associated.
-            CALL FTAssertEqual(values(i),v % integerValue(),"Object values")
+            v   => valueFromObject(obj)       ! Convert it to a value.
+            CALL FTAssert(test = ASSOCIATED(v),msg = "Object not found at index")
+            IF ( ASSOCIATED(v) )     THEN
+               CALL FTAssertEqual(values(i),v % integerValue(),"Object values")
+            END IF 
          END DO
 !
 !        ---------------------------------------------------

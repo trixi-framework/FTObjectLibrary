@@ -6,7 +6,8 @@
 !      By: David Kopriva  
 !
 !> FTMutableObjectArray is a mutable array class to which objects
-!> can be added, deleted and accessed according to their index in the array.
+!> can be added, removed, replaced and accessed according to their 
+!> index in the array.
 !>
 !
 !////////////////////////////////////////////////////////////////////////
