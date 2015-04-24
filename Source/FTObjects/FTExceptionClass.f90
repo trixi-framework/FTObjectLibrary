@@ -419,9 +419,7 @@
            END IF
            PRINT *,"   ***********************************"
            PRINT *
-           
-!           CALL printAllExceptions !DEBUG
-            
+                       
          END IF 
 !
 !        -----------------------
@@ -586,6 +584,7 @@
          CLASS(FTObject)   , POINTER :: obj => NULL()
          
          obj => NULL()
+         popLastException => NULL()
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             CALL initializeFTExceptions 
          ELSE
@@ -605,7 +604,8 @@
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             CALL initializeFTExceptions 
          END IF 
-                  
+         
+         peekLastException => NULL()
          obj => errorStack % peek()
          CALL cast(obj,peekLastException)
          
