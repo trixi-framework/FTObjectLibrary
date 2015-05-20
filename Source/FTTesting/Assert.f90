@@ -321,16 +321,16 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertEqualTwoIntegerArrays1D(a,b)  
+      SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
          IMPLICIT NONE  
-         INTEGER, INTENT(in)    , DIMENSION(:)            :: a, b
+         INTEGER, INTENT(in)    , DIMENSION(:)            :: expectedValue,actualValue
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
             CALL initializeSharedAssertionsManager
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(a,b) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
              PRINT *, "assertEqualTwoIntegerArrays1D not implemented"
          END IF 
          
@@ -338,16 +338,16 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertEqualTwoIntegerArrays2D(a,b)  
+      SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
          IMPLICIT NONE  
-         INTEGER, INTENT(in)    , DIMENSION(:,:)          :: a, b
+         INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
             CALL initializeSharedAssertionsManager
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(a,b) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
              PRINT *, "assertEqualTwoIntegerArrays2D not implemented"
          END IF 
          
@@ -382,9 +382,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoRealArrays1D(a,b,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,msg)  
          IMPLICIT NONE  
-         REAL, INTENT(IN), DIMENSION(:) :: a, b
+         REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
          REAL, INTENT(IN)               :: tol
          CHARACTER(LEN=*), OPTIONAL     :: msg
          INTEGER                        :: k
@@ -396,10 +396,10 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(a,b,tol) )     THEN
-            DO k = 1, SIZE(a)
-               WRITE(expected,*) a(k)
-               WRITE(actual,*)   b(k)
+         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+            DO k = 1, SIZE(expectedValue)
+               WRITE(expected,*) expectedValue(k)
+               WRITE(actual,*)   actualValue(k)
                IF ( PRESENT(msg) )     THEN
                   CALL addAssertionFailureForParameters(msg,expected,actual,"Real Array equality failed: ")
                ELSE 
@@ -412,9 +412,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoRealArrays2D(a,b,tol)  
+      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
          IMPLICIT NONE  
-         REAL, INTENT(IN), DIMENSION(:,:) :: a, b
+         REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
          REAL, INTENT(IN)                 :: tol
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
@@ -422,7 +422,7 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(a,b,tol) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
              PRINT *, "assertWithinToleranceTwoRealArrays2D not implemented"
          END IF 
          
@@ -431,9 +431,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDouble(x,y,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,msg)  
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(in) :: x,y,tol
+         DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
          CHARACTER(LEN=*), OPTIONAL   :: msg
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
@@ -443,9 +443,9 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-        IF ( .NOT.isEqual(x,y,tol) )     THEN
-            WRITE(expected,*) x
-            WRITE(actual,*) y
+         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+            WRITE(expected,*) expectedValue
+            WRITE(actual,*) actualValue
             IF ( PRESENT(msg) )     THEN
                CALL addAssertionFailureForParameters(msg,expected,actual, "Double Precision equality failed: ")
             ELSE 
@@ -457,9 +457,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(a,b,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,msg)  
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: a, b
+         DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
          DOUBLE PRECISION, INTENT(IN)               :: tol
          CHARACTER(LEN=*), OPTIONAL                 :: msg
          INTEGER                                    :: code
@@ -472,16 +472,16 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(a,b,tol,code) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,tol,code) )     THEN
             IF ( PRESENT(msg) )     THEN
                eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
             ELSE 
                eMsg = "---" // TRIM(compareCodeStrings(code))
             END IF 
             
-            DO k = 1, SIZE(a)
-               WRITE(expected,*) a(k)
-               WRITE(actual,*)   b(k)
+            DO k = 1, SIZE(expectedValue)
+               WRITE(expected,*) expectedValue(k)
+               WRITE(actual,*)   actualValue(k)
                CALL addAssertionFailureForParameters(eMsg,expected,actual,"Double Precision 1D Array equality failed: ")
             END DO  
          END IF 
@@ -490,9 +490,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(a,b,tol)  
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol)  
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: a, b
+         DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
          DOUBLE PRECISION, INTENT(IN)                 :: tol
          INTEGER                         :: code
          
@@ -501,7 +501,7 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(a,b,tol,code) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,tol,code) )     THEN
              PRINT *, "assertWithinToleranceTwoDoubleArrays2D not implemented"
         END IF 
          
@@ -510,9 +510,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertEqualString(s1,s2,msg)
+      SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
          IMPLICIT NONE
-         CHARACTER(LEN=*)           :: s1,s2
+         CHARACTER(LEN=*)           :: expectedValue,actualValue
          CHARACTER(LEN=*), OPTIONAL :: msg
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
@@ -520,11 +520,11 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(s1,s2) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
             IF ( PRESENT(msg) )     THEN
-               CALL addAssertionFailureForParameters(msg,s1,s2,"String equality failed: ")
+               CALL addAssertionFailureForParameters(msg,expectedValue,actualValue,"String equality failed: ")
             ELSE 
-               CALL addAssertionFailureForParameters("",s1,s2,"String equality failed: ")
+               CALL addAssertionFailureForParameters("",expectedValue,actualValue,"String equality failed: ")
             END IF 
          END IF 
          
@@ -533,9 +533,9 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertEqualTwoLogicals(i,j,msg)  
+      SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)  
          IMPLICIT NONE  
-         LOGICAL, INTENT(in)        :: i, j
+         LOGICAL, INTENT(in)        :: expectedValue,actualValue
          CHARACTER(LEN=*), OPTIONAL :: msg
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
@@ -545,9 +545,9 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.(i .EQV. j) )     THEN
-            WRITE(expected,*) i
-            WRITE(actual,*) j
+         IF ( .NOT.(expectedValue .EQV. actualValue) )     THEN
+            WRITE(expected,*) expectedValue
+            WRITE(actual,*)   actualValue
             IF ( PRESENT(msg) )     THEN
                CALL addAssertionFailureForParameters(msg,expected,actual,"Logical equality failed: ")
             ELSE 

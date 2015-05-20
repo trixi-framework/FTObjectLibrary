@@ -230,7 +230,11 @@
          DOUBLE PRECISION, INTENT(in) :: x,y,tol
          LOGICAL                      :: test
          
-         test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+         IF ( x == 0.0d0 )     THEN
+            test = ABS(x-y) <= tol
+         ELSE
+            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+         END IF 
          
          IF ( test )     THEN
             isWithinToleranceTwoDouble = .true.
