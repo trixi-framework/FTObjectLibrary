@@ -22,6 +22,7 @@
       EXTERNAL :: StackClassTests
       EXTERNAL :: MutableArrayClassTests
       EXTERNAL :: SparseMatrixTests
+      EXTERNAL :: MultiIndexTableTests
 !      CALL setvbuf3f(6,2,0) !PGIFortran only
 !
 !     -----
@@ -38,6 +39,7 @@
       CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,"Mutable Array Tests")
       CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,"FTExceptionClass Tests")
       CALL testSuite % addTestSubroutineWithName(SparseMatrixTests,"SparseMatrixClass Tests")
+      CALL testSuite % addTestSubroutineWithName(MultiIndexTableTests,"MultiIndexTable Tests" )
 !
 !     -------------
 !     Run the tests

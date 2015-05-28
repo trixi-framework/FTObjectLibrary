@@ -251,16 +251,17 @@
         
         WRITE(iUnit,*)
         WRITE(iUnit,*) "   -------------------------------------------------------------"
-        WRITE(iUnit,*) "   Summary of failed tests for test suite ",TRIM(title)
+        WRITE(iUnit,*) "   Summary of failed tests for test suite: ",TRIM(title)
         WRITE(iUnit,*)  "   ",self % numberOfAssertionFailures()," failures out of ", &
                               self % numberOfAssertions()," tests." 
         WRITE(iUnit,*) "   -------------------------------------------------------------"
                   
          current => self % failureListHead
          DO WHILE (ASSOCIATED(current))
-            WRITE(iUnit,*) "   ",TRIM(current % assertionType),TRIM(current % msg),&
-                               " Expected [",TRIM(current % expected),&
-                               "], Got [",TRIM(current % actual),"]"
+            WRITE(iUnit,*) "   ",TRIM(current % assertionType)
+            WRITE(iUnit,*) "      ",TRIM(current % msg)
+            WRITE(iUnit,*) "      ","Expected [",TRIM(current % expected),&
+                                           "], Got [",TRIM(current % actual),"]"
             current => current % next
          END DO
          
@@ -323,7 +324,8 @@
 ! 
       SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
          IMPLICIT NONE  
-         INTEGER, INTENT(in)    , DIMENSION(:)            :: expectedValue,actualValue
+         INTEGER, INTENT(in)    , DIMENSION(:)     :: expectedValue,actualValue
+         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
             CALL initializeSharedAssertionsManager
@@ -331,6 +333,7 @@
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
          IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
+             
              PRINT *, "assertEqualTwoIntegerArrays1D not implemented"
          END IF 
          
