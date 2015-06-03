@@ -81,9 +81,9 @@
             CALL FTAssert(test, msg = "Keys found in table")
          END DO
 !
-!        -----------------------------------------
+!        -------------------------------
 !        Retrieve objects from the table          
-!        -----------------------------------------
+!        -------------------------------
 !
          DO j = 1, 4
             obj => table % objectForKeys(keys(:,j))

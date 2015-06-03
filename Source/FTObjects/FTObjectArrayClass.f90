@@ -95,7 +95,6 @@
       SUBROUTINE destructObjectArray(self)  
          IMPLICIT NONE
          CLASS( FTMutableObjectArray) :: self
-         TYPE(FTObjectPointerWrapper) :: wrapper
          CLASS(FTObject), POINTER     :: obj     => NULL()
          INTEGER                      :: i
 
@@ -217,7 +216,6 @@
 !        Local variables
 !        ---------------
 !
-         INTEGER                     :: i
          CLASS(FTObject), POINTER    :: obj => NULL()
          
          obj => self % array(indx) %  object

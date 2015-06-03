@@ -169,22 +169,15 @@
       Module FTMultiIndexTableClass
       USE FTObjectClass
       USE FTLinkedListClass
-      USE FTLinkedListIteratorClass
       USE FTMultiIndexTableData
       IMPLICIT NONE
 !
-!     ----------------------
-!     Class type definitions
-!     ----------------------
-!
-      TYPE FTLinkedListPtr
-         CLASS(FTLinkedList), POINTER :: list
-      END TYPE FTLinkedListPtr
-      PRIVATE :: FTLinkedListPtr
-      
+!     ---------------------
+!     Class type definition
+!     ---------------------
+!      
       TYPE, EXTENDS(FTObject) :: FTMultiIndexTable
-         TYPE(FTLinkedListPtr)     , DIMENSION(:), ALLOCATABLE :: table
-         TYPE(FTLinkedListIterator), PRIVATE                   :: iterator
+         CLASS(FTLinkedList), DIMENSION(:), ALLOCATABLE :: table
 !
 !        ========
          CONTAINS
@@ -195,6 +188,7 @@
          PROCEDURE :: containsKeys     => MultiIndexTableContainsKeys
          PROCEDURE :: addObjectForKeys => addObjectToMultiIndexTableForKeys
          PROCEDURE :: objectForKeys    => objectInMultiIndexTableForKeys
+         PROCEDURE :: printDescription => printMultiIndexTableDescription
          PROCEDURE :: MultiIndexTableSize
          
       END TYPE FTMultiIndexTable
@@ -227,13 +221,39 @@
          
          ALLOCATE(self % table(N))
          DO j = 1, N
-            ALLOCATE(self % table(j) % list)
-            CALL self % table(j) % list % init()
+            CALL self % table(j) % init()
          END DO
          
-         CALL self % iterator % init()
-         
       END SUBROUTINE initMultiIndexTableWithSize
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE destructMultiIndexTable(self)
+         IMPLICIT NONE  
+!
+!        ---------
+!        Arguments
+!        ---------
+!
+         CLASS(FTMultiIndexTable) :: self
+!
+!        ---------------
+!        Local variables
+!        ---------------
+!
+         INTEGER :: j
+         CLASS(FTLinkedList), POINTER :: list
+         
+         IF(ALLOCATED(self % table))   THEN
+            DO j = 1, SIZE(self % table)
+               CALL self % table(j) % release() 
+            END DO
+            DEALLOCATE(self % table)
+         END IF
+         
+         CALL self % FTObject % destruct()
+         
+      END SUBROUTINE destructMultiIndexTable
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -255,17 +275,18 @@
          CLASS(MultiIndexMatrixData), POINTER :: mData
          CLASS(FTObject)            , POINTER :: ptr
          INTEGER                              :: i
-         INTEGER                              :: keysCopy(SIZE(keys))
+         INTEGER                              :: orderedKeys(SIZE(keys))
          
-         keysCopy = keys
-         CALL sortKeysAscending(keysCopy)
+         orderedKeys = keys
+         CALL sortKeysAscending(orderedKeys)
          
-         i = keysCopy(1)
-         IF ( .NOT.self % containsKeys(keysCopy) )     THEN
+         i = orderedKeys(1)
+         IF ( .NOT.self % containsKeys(orderedKeys) )     THEN
             ALLOCATE(mData)
-            CALL mData % initWithObjectAndKeys(obj,keysCopy)
+            CALL mData % initWithObjectAndKeys(obj,orderedKeys)
             ptr => mData
-            CALL self % table(i) % list % add(ptr)
+            
+            CALL self % table(i) % add(ptr)
             CALL mData % release()
          END IF 
          
@@ -297,19 +318,17 @@
 !
          CLASS(MultiIndexMatrixData)  , POINTER :: mData
          CLASS(FTObject)              , POINTER :: obj
-         CLASS(FTLinkedList)          , POINTER :: list
+         CLASS(FTLinkedListRecord)    , POINTER :: currentRecord
          INTEGER                                :: i
-         INTEGER                                :: keysCopy(SIZE(keys))
+         INTEGER                                :: orderedKeys(SIZE(keys))
   
-         keysCopy = keys
-         CALL sortKeysAscending(keysCopy)
+         orderedKeys = keys
+         CALL sortKeysAscending(orderedKeys)
          
          r => NULL()
-         i = keysCopy(1)
-         IF(.NOT.ALLOCATED(self % table))     RETURN 
-         list => self % table(i) % list
-         IF(.NOT.ASSOCIATED(list))    RETURN 
-         IF (  list % COUNT() == 0 )  RETURN
+         i = orderedKeys(1)
+         IF(.NOT.ALLOCATED(self % table))        RETURN 
+         IF (  self % table(i) % COUNT() == 0 )  RETURN
 !
 !        ----------------------------
 !        Step through the linked list
@@ -317,17 +336,17 @@
 !
          r => NULL()
          
-         CALL self % iterator % setLinkedList(self % table(i) % list)
-         DO WHILE (.NOT.self % iterator % isAtEnd())
+         currentRecord => self % table(i) % head
+         DO WHILE (ASSOCIATED(currentRecord))
          
-            obj => self % iterator % object()
+            obj => currentRecord % recordObject
             CALL cast(obj,mData)
-            IF ( keysMatch(key1 = mData % key,key2 = keysCopy) )     THEN
+            IF ( keysMatch(key1 = mData % key,key2 = orderedKeys) )     THEN
                r => mData % object
                EXIT 
             END IF 
             
-            CALL self % iterator % moveToNext()
+            currentRecord => currentRecord % next
          END DO
 
       END FUNCTION objectInMultiIndexTableForKeys
@@ -351,73 +370,36 @@
 !
          CLASS(FTObject)              , POINTER :: obj
          CLASS(MultiIndexMatrixData)  , POINTER :: mData
-         CLASS(FTLinkedList)          , POINTER :: list
+         CLASS(FTLinkedListRecord)    , POINTER :: currentRecord
          INTEGER                                :: i
-         INTEGER                                :: keysCopy(SIZE(keys))
+         INTEGER                                :: orderedKeys(SIZE(keys))
 
-         keysCopy = keys
-         CALL sortKeysAscending(keysCopy)
+         orderedKeys = keys
+         CALL sortKeysAscending(orderedKeys)
          
          r = .FALSE.
-         i = keysCopy(1)
-         IF(.NOT.ALLOCATED(self % table))                RETURN 
-         IF(.NOT.ASSOCIATED(self % table(i) % list))     RETURN
-         IF ( self % table(i) % list % COUNT() == 0 )    RETURN 
+         i = orderedKeys(1)
+         IF(.NOT.ALLOCATED(self % table))         RETURN 
+         IF ( self % table(i) % COUNT() == 0 )    RETURN 
 !
 !        ----------------------------
 !        Step through the linked list
 !        ----------------------------
 !
-         list => self % table(i) % list
-         CALL self % iterator % setLinkedList(list)
-         CALL self % iterator % setToStart()
-         DO WHILE (.NOT.self % iterator % isAtEnd())
+         currentRecord => self % table(i) % head
+         DO WHILE (ASSOCIATED(currentRecord))
          
-            obj => self % iterator % object()
+            obj => currentRecord % recordObject
             CALL cast(obj,mData)
-            IF ( keysMatch(key1 = mData % key,key2 = keysCopy))     THEN
+            IF ( keysMatch(key1 = mData % key,key2 = orderedKeys))     THEN
                r = .TRUE.
-               RETURN  
+               EXIT   
             END IF 
             
-            CALL self % iterator % moveToNext()
+            currentRecord => currentRecord % next
          END DO
          
       END FUNCTION MultiIndexTableContainsKeys
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE destructMultiIndexTable(self)
-         IMPLICIT NONE  
-!
-!        ---------
-!        Arguments
-!        ---------
-!
-         CLASS(FTMultiIndexTable) :: self
-!
-!        ---------------
-!        Local variables
-!        ---------------
-!
-         INTEGER :: j
-         
-         DO j = 1, SIZE(self % table)
-            IF ( ASSOCIATED(self % table(j) % list) )     THEN
-               CALL self % table(j) % list % release() 
-               IF ( self % table(j) % list % isUnreferenced() )     THEN
-                  DEALLOCATE(self % table(j) % list) 
-               END IF 
-            END IF 
-         END DO
-
-         IF(ALLOCATED(self % table))   DEALLOCATE(self % table)
-
-         CALL self % iterator % release()
-         
-         CALL self % FTObject % destruct()
-         
-      END SUBROUTINE destructMultiIndexTable
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -469,7 +451,13 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE sortKeysAscending(keys)  
+      SUBROUTINE sortKeysAscending(keys)
+!
+!     ----------------------------------------------------
+!     Use an insertion sort for the keys, since the number
+!     of them should be small
+!     ----------------------------------------------------
+!
          IMPLICIT NONE
          INTEGER, DIMENSION(:) :: keys
          INTEGER               :: i, j, N, t
@@ -498,5 +486,19 @@
          END SELECT 
           
       END SUBROUTINE sortKeysAscending
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE printMultiIndexTableDescription(self, iUnit)  
+         IMPLICIT NONE  
+         CLASS(FTMultiIndexTable) :: self
+         INTEGER                  :: iUnit
+         INTEGER                  :: i
+         
+         DO i = 1, SIZE(self % table)
+            CALL self % table(i) % printDescription(iUnit) 
+         END DO 
+          
+      END SUBROUTINE printMultiIndexTableDescription
 
       END Module FTMultiIndexTableClass

@@ -590,7 +590,6 @@
       SUBROUTINE destructFTLinkedList(self) 
          IMPLICIT NONE
          CLASS(FTLinkedList)                :: self
-         CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL(), tmp => NULL()
 
          CALL self % removeAllObjects()
 !
@@ -673,7 +672,7 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), tmp => NULL(), next => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), tmp => NULL()
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
@@ -873,7 +872,6 @@
       SUBROUTINE initEmpty(self) 
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
-         CLASS(FTLinkedList), POINTER :: list => NULL()
 !
 !        --------------------------------------------
 !        Always call the superclass initializer first
