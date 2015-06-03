@@ -46,7 +46,8 @@
 !        ------------------
 !
          DO i = 1,4
-            v   => valueFromObject(dict % objectForKey(keys(i)))
+            obj => dict % objectForKey(keys(i))
+            v   => valueFromObject(obj)
             IF ( ASSOCIATED(v) )     THEN
                s = v % stringValue(FTDICT_KWD_STRING_LENGTH)
                CALL FTAssertEqual(values(i),s,"Value for key in dictionary class")
@@ -65,10 +66,12 @@
          
          DO i = 1, 4
             storedKey = storedKeys(i)
-            v         => valueFromObject(dict % objectForKey(storedKey))
+            obj       => dict % objectForKey(storedKey)
+            v         => valueFromObject(obj)
             sExpected = v % stringValue(FTDICT_KWD_STRING_LENGTH)
             
-            v        => valueFromObject(storedObjects % objectAtIndex(indx = i))
+            obj      => storedObjects % objectAtIndex(indx = i)
+            v        => valueFromObject(obj)
             sActual  =  v % stringValue(FTDICT_KWD_STRING_LENGTH)
             
             CALL FTAssertEqual(sExpected, sActual,"String for stored key")

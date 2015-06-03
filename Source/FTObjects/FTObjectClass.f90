@@ -252,7 +252,7 @@
 !!     is called automatically.
 !      -------------------------------------------------------------------
 !
-       SUBROUTINE releaseFTObject(self)
+       RECURSIVE SUBROUTINE releaseFTObject(self)
          IMPLICIT NONE 
          CLASS(FTObject) :: self
          

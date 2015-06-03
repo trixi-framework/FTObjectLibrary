@@ -480,6 +480,7 @@
                   DO WHILE( j > 1 .AND. keys(j-1) > t )
                      keys(j) = keys(j-1)
                      j = j - 1 
+                     IF(j == 1) EXIT 
                   END DO 
                   keys(j) = t
                END DO  
