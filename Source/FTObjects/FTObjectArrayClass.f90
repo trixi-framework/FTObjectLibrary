@@ -267,7 +267,7 @@
          CLASS(FTMutableObjectArray) :: self
          INTEGER                     :: indx
          CLASS(FTObject), POINTER    :: obj
-         IF ( indx > self % count_ )     THEN
+         IF ( indx > self % count_ .OR. indx < 1)     THEN
             obj => NULL() 
          ELSE 
             obj => self % array(indx) % object
