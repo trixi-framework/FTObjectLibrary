@@ -115,7 +115,6 @@
          
          CLASS(FTValueDictionary), POINTER :: userDictionary => NULL()
          CLASS(FTDictionary)     , POINTER :: dictPtr        => NULL()
-         CLASS(FTObject)         , POINTER :: objectPtr      => NULL()
             
          ALLOCATE(userDictionary)
          CALL userDictionary % initWithSize(64)
@@ -146,7 +145,6 @@
          
          CLASS(FTValueDictionary), POINTER :: userDictionary => NULL()
          CLASS(FTDictionary)     , POINTER :: dictPtr        => NULL()
-         CLASS(FTObject)         , POINTER :: objectPtr      => NULL()
             
          ALLOCATE(userDictionary)
          CALL userDictionary % initWithSize(8)
@@ -399,10 +397,6 @@
 ! 
       SUBROUTINE destructFTExceptions  
          IMPLICIT NONE
-         TYPE(FTLinkedListIterator)   :: iterator
-         CLASS(FTLinkedList), POINTER :: list       => NULL()
-         CLASS(FTObject)    , POINTER :: objectPtr  => NULL()
-         CLASS(FTException) , POINTER :: e          => NULL()
 !  
 !        --------------------------------------------------
 !        First see if there are any uncaught exceptions and

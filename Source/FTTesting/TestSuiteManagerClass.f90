@@ -195,15 +195,13 @@
             CALL sharedManager % SummarizeAssertions(current % testName,self % stdOut)
             CALL detachSharedAssertionsManager
             
-!            CALL finalizeSharedAssertionsManager
-            
             current => current % next
           END DO
         
         WRITE(self % stdOut,*)
         WRITE(self % stdOut,*) "*************************************************************"
         WRITE(self % stdOut,*) "                     Summary of failed test suites"
-        WRITE(self % stdOut,*)  numberOfFailedTests," suite(s) failed out of ", self % numberOfTests 
+        WRITE(self % stdOut,'(i3,A,i3)')  numberOfFailedTests," suite(s) failed out of ", self % numberOfTests 
         WRITE(self % stdOut,*) "*************************************************************"
 
           

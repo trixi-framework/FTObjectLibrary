@@ -252,7 +252,7 @@
         WRITE(iUnit,*)
         WRITE(iUnit,*) "   -------------------------------------------------------------"
         WRITE(iUnit,*) "   Summary of failed tests for test suite: ",TRIM(title)
-        WRITE(iUnit,*)  "   ",self % numberOfAssertionFailures()," failures out of ", &
+        WRITE(iUnit,'(3x,i3,A,i5,A)')  self % numberOfAssertionFailures()," failures out of ", &
                               self % numberOfAssertions()," tests." 
         WRITE(iUnit,*) "   -------------------------------------------------------------"
                   
@@ -325,7 +325,7 @@
       SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
          IMPLICIT NONE  
          INTEGER, INTENT(in)    , DIMENSION(:)     :: expectedValue,actualValue
-         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
+!         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
             CALL initializeSharedAssertionsManager

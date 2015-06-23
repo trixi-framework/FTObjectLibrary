@@ -481,7 +481,6 @@
 !
             INTEGER                                 :: i, c
             CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
-            CLASS(FTObject)               , POINTER :: obj           => NULL()
             CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
 !
 !           --------------------------------------------

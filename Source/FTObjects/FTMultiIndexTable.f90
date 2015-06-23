@@ -242,7 +242,6 @@
 !        ---------------
 !
          INTEGER :: j
-         CLASS(FTLinkedList), POINTER :: list
          
          IF(ALLOCATED(self % table))   THEN
             DO j = 1, SIZE(self % table)

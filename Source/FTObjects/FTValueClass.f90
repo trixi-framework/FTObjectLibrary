@@ -321,7 +321,6 @@
          CLASS(FTValue)   :: self
          INTEGER          :: iErr
          
-         REAL                                  :: r
          INTEGER                               :: i
          DOUBLE PRECISION                      :: d
          LOGICAL                               :: l
@@ -367,7 +366,6 @@
          
          REAL                                  :: r
          INTEGER                               :: i
-         DOUBLE PRECISION                      :: d
          LOGICAL                               :: l
          CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s
          
@@ -451,7 +449,6 @@
       LOGICAL FUNCTION logicalValue(self)
          IMPLICIT NONE 
          CLASS(FTValue)  :: self
-         INTEGER         :: iErr
          
          REAL                                  :: r
          INTEGER                               :: i
