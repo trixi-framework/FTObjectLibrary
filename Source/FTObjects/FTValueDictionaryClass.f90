@@ -168,9 +168,12 @@
          CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
-         CALL cast(obj,v)
-         
-         realValueForKey = v % realValue()
+         IF ( ASSOCIATED(obj) )     THEN
+            CALL cast(obj,v)
+            realValueForKey = v % realValue()
+         ELSE
+            realValueForKey = HUGE(realValueForKey)
+         END IF 
          
       END FUNCTION realValueForKey    
 !
@@ -185,9 +188,12 @@
          CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
-         CALL cast(obj,v)
-         
-         integerValueForKey = v % integerValue()
+         IF ( ASSOCIATED(obj) )     THEN
+            CALL cast(obj,v)
+            integerValueForKey = v % integerValue()
+         ELSE
+            integerValueForKey = HUGE(integerValueForKey)
+         END IF 
          
       END FUNCTION integerValueForKey    
 !
@@ -202,9 +208,12 @@
          CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
-         CALL cast(obj,v)
-         
-         doublePrecisionValueForKey = v % doublePrecisionValue()
+         IF ( ASSOCIATED(obj) )     THEN
+            CALL cast(obj,v)
+            doublePrecisionValueForKey = v % doublePrecisionValue()
+         ELSE
+            doublePrecisionValueForKey = HUGE(doublePrecisionValueForKey)
+         END IF 
          
       END FUNCTION doublePrecisionValueForKey    
 !
@@ -219,9 +228,12 @@
          CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
-         CALL cast(obj,v)
-         
-         logicalValueForKey = v % logicalValue()
+         IF ( ASSOCIATED(obj) )     THEN
+            CALL cast(obj,v)
+            logicalValueForKey = v % logicalValue()
+         ELSE 
+            logicalValueForKey = .FALSE.
+         END IF 
          
       END FUNCTION logicalValueForKey    
 !
@@ -238,9 +250,12 @@
          CLASS(FTObject), POINTER :: obj => NULL()
          
          obj => self % objectForKey(key)
-         CALL cast(obj,v)
-           
-         stringValueForKey = v % stringValue(requestedLength)
+         IF ( ASSOCIATED(obj) )     THEN
+            CALL cast(obj,v)
+            stringValueForKey = v % stringValue(requestedLength)
+         ELSE 
+            stringValueForKey = "" 
+         END IF 
          
       END FUNCTION stringValueForKey    
 !@mark -
