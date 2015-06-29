@@ -253,7 +253,7 @@
         WRITE(iUnit,*) "   -------------------------------------------------------------"
         WRITE(iUnit,*) "   Summary of failed tests for test suite: ",TRIM(title)
         WRITE(iUnit,'(3x,i3,A,i5,A)')  self % numberOfAssertionFailures()," failures out of ", &
-                              self % numberOfAssertions()," tests." 
+                              self % numberOfAssertions()," assertions." 
         WRITE(iUnit,*) "   -------------------------------------------------------------"
                   
          current => self % failureListHead

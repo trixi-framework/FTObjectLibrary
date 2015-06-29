@@ -62,6 +62,7 @@
       END INTERFACE
 
       TYPE TestCaseRecord
+         LOGICAL                                       :: passed
          CHARACTER(LEN=128)                            :: testName
          TYPE(FTAssertionsManager)   , POINTER         :: assertionsManager
          PROCEDURE(testSuiteFunction), POINTER, NOPASS :: TestSubroutine
@@ -124,6 +125,7 @@
          newTestCase % testName     = TRIM(ADJUSTL(testName))
          newTestCase % TestSubroutine => testSubroutine
          newTestCase % next         => NULL()
+         newTestCase % passed       = .TRUE.
          self % numberOfTests       = self % numberOfTests + 1
          
          IF ( ASSOCIATED(self % testCasesHead) )     THEN
@@ -175,9 +177,10 @@
           INTEGER                            :: numberOfFailedTests = 0
           
           WRITE(self % stdOut,*)
-          WRITE(self % stdOut,*) "*************************************************************"
-          WRITE(self % stdOut,*) "                        Begin Test Suites"
-          WRITE(self % stdOut,*) "*************************************************************"
+          WRITE(self % stdOut,*) "                   ////////////////////////////////"
+          WRITE(self % stdOut,*) "                   ////    Begin Test Suites   ////"
+          WRITE(self % stdOut,*) "                   ////////////////////////////////"
+          WRITE(self % stdOut,*)
         
           current => self % testCasesHead
           DO WHILE (ASSOCIATED(current))
@@ -190,6 +193,7 @@
             
             IF ( sharedManager % numberOfAssertionFailures() /= 0 )     THEN
                numberOfFailedTests = numberOfFailedTests + 1 
+               current % passed = .FALSE.
             END IF 
                
             CALL sharedManager % SummarizeAssertions(current % testName,self % stdOut)
@@ -198,11 +202,41 @@
             current => current % next
           END DO
         
-        WRITE(self % stdOut,*)
-        WRITE(self % stdOut,*) "*************************************************************"
-        WRITE(self % stdOut,*) "                     Summary of failed test suites"
-        WRITE(self % stdOut,'(i3,A,i3)')  numberOfFailedTests," suite(s) failed out of ", self % numberOfTests 
-        WRITE(self % stdOut,*) "*************************************************************"
+          WRITE(self % stdOut,*)
+          WRITE(self % stdOut,*) "   **********************************************************"
+          WRITE(self % stdOut,*) "                     Summary of failed test suites:"
+          WRITE(self % stdOut,'(i6,A,i3)')  numberOfFailedTests," suite(s) failed out of ", self % numberOfTests 
+          WRITE(self % stdOut,*) "   **********************************************************"
+          
+          WRITE(self % stdOut,*)
+          WRITE(self % stdOut,*) "                   ////////////////////////////////////"
+          WRITE(self % stdOut,*) "                   ////    Test Suites Completed   ////"
+          WRITE(self % stdOut,*) "                   ////////////////////////////////////"
+          WRITE(self % stdOut,*)
+        
+!
+!         ------------------
+!         Test matrix output
+!         ------------------
+!
+          WRITE(self % stdOut,*)
+          WRITE(self % stdOut,*) "                   ////////////////////////////////"
+          WRITE(self % stdOut,*) "                   ////   Test Status Matrix   ////"
+          WRITE(self % stdOut,*) "                   ////////////////////////////////"
+          WRITE(self % stdOut,*)
+        
+          current => self % testCasesHead
+          DO WHILE (ASSOCIATED(current))
+            
+            IF ( current % passed )     THEN
+               WRITE(self % stdOut,*) TRIM(current % testName), " ...Passed"
+            ELSE 
+               WRITE(self % stdOut,*) TRIM(current % testName), " ...Failed"
+            END IF 
+            
+            current => current % next
+          END DO
+        
 
           
       END SUBROUTINE performTests    
