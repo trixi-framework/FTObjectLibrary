@@ -102,6 +102,9 @@ FTStack is a subclass of FTLinkedList that adds the usual push, pop, and peek ro
 \item {\bf FTSparseMatrix}
 
 FTSparseMatrix associates a double index (i,j) to an FTObject. Basically this is a two dimensional sparse matrix of pointers to FTObjects.
+\item {\bf FTMultiIndexTable}
+
+FTMultiIndexTable associates an integer array keys(:) to an FTObject. Basically this is an m--dimensional sparse matrix of pointers to FTObjects.
 
 \item {\bf FTDictionary}
 
@@ -867,10 +870,32 @@ could be (and often is) stored columnwise as a singly dimensioned array by creat
 function that maps the two indices to a single location in the array, e.g.,
 $H(i,j) = i + j*N$, where $N$ is the range of the first index, $i$. 
 
+Two classes are included in FTObjectLibrary. The first, FTSparseMatrix, works with an ordered pair, (i,j), as the
+keys. The second, FTMultiIndexTable, uses an array of integers as the keys.
+
+Both classes include enquiry functions to see of an object exists for the given keys. Otherwise,
+the function that returns an object for a given key will return an UNASSOCIATED pointer if there
+is no object for the key. Be sure to retain any object returned by the objectForKeys methods if 
+you want to keep it beyond the lifespan of the matrix or table. For example,
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           obj => matrix % objectForKeys(i,j)
+           IF ( ASSOCIATED(OBJ) ) THEN
+           	 CALL obj % retain()
+	             ! Cast obj to something useful
+           ELSE
+             ! Perform some kind of error recovery
+           END IF 
+        	\end{verbatim}}
+
+
+
+\subsubsection{FTSparseMatrix}
 The sparse matrix included in the FTObjectLibrary is very simple in that it has a predefined
 hash function with two keys, $(i,j)$. You will initialize the matrix
 with the number of rows.
-\clearpage
+
      {\bf Definition (Subclass of FTObject):}
 	{\color{blue}\begin{verbatim}
         	TYPE(FTSparseMatrix) :: matrix
@@ -882,15 +907,15 @@ with the number of rows.
 		{\color{blue}\begin{verbatim}
       CLASS(FTSparseMatrix)  :: matrix
       INTEGER                :: N = 11 ! Number of rows
-      CALL array % initWithSize(N)
+      CALL matrix % initWithSize(N)
 	\end{verbatim}}
 	
         \item Destruction
 		{\color{blue}\begin{verbatim}
            CALL matrix  %  release()
            IF ( matrix  %  isUnreferenced() )     THEN
-              DEALLOCATE(table) ! If table is a pointer
-              table => NULL()
+              DEALLOCATE(matrix) ! If matrix is a pointer
+              matrix => NULL()
            END IF 
 	\end{verbatim}}
 	
@@ -912,6 +937,58 @@ with the number of rows.
 	{\color{blue}\begin{verbatim}
            LOGICAL :: exists
            exists = matrix % containsKeys(i,j)
+	\end{verbatim}}
+	
+\end{itemize}
+\subsubsection{FTMultiIndexTable}
+An extension (not in the subclass sense) of the sparse matrix class is the MultiIndexTable. It uses an integer array
+of keys instead of just an (i,j) pair. A multiIndexTable can be used, for instance, to determine if the four node ids of
+a face of an element match those of another face of another element.
+
+     {\bf Definition (Subclass of FTObject):}
+	{\color{blue}\begin{verbatim}
+        	TYPE(FTMultiIndexTable) :: table
+	\end{verbatim}}
+     {\bf Usage:}
+
+\begin{itemize}
+        \item Initialization
+		{\color{blue}\begin{verbatim}
+      CLASS(FTMultiIndexTable)  :: table
+      INTEGER                   :: N = 11 ! maximum over all keys
+      CALL table % initWithSize(N)
+	\end{verbatim}}
+	
+        \item Destruction
+		{\color{blue}\begin{verbatim}
+           CALL table  %  release()
+           IF ( table  %  isUnreferenced() )     THEN
+              DEALLOCATE(table) ! If table is a pointer
+              table => NULL()
+           END IF 
+	\end{verbatim}}
+	
+        \item Adding an object
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           INTEGER        :: keys(m) ! m = # keys
+           matrix % addObjectForKeys(obj,keys)
+	\end{verbatim}}
+	
+        \item Accessing an object
+
+	{\color{blue}\begin{verbatim}
+           TYPE(FTObject) :: obj
+           INTEGER        :: keys(m) ! m = # keys
+           obj => matrix % objectForKeys(keys)
+	\end{verbatim}}
+	
+        \item Checking if an entry exists
+	{\color{blue}\begin{verbatim}
+           LOGICAL :: exists
+           INTEGER :: keys(m) ! m = # keys
+           exists = matrix % containsKeys(keys)
 	\end{verbatim}}
 	
 \end{itemize}

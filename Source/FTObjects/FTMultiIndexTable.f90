@@ -5,8 +5,9 @@
 !      Created: July 29, 2013 10:59 AM 
 !      By: David Kopriva  
 !
-!      The sparse matrix stores an FTObject pointer associated
-!      with two keys (i,j) as a hash table. The size, N = the range of i.
+!      The MultiIndexTable stores an FTObject pointer associated
+!      with any number of integer keys(:) as a hash table. 
+!      The size, N = the maximum value of all of the keys.
 !
 !      * Definition (Subclass of FTObject) *
 !
