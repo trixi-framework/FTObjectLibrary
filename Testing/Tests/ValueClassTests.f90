@@ -38,7 +38,6 @@
 !
          REAL                            :: r = 3.14
          REAL(KIND=KIND(1.0d0))          :: d
-         LOGICAL                         :: l
          INTEGER                         :: i = 666
          CHARACTER(LEN=:), ALLOCATABLE   :: s
          DOUBLE PRECISION                :: doubleTol = 2*EPSILON(1.0d0)

@@ -169,19 +169,21 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE performTests(self)  
+      SUBROUTINE performTests(self, numberOfFailedTests)  
           IMPLICIT NONE  
-          CLASS(TestSuiteManager)            :: self
-          TYPE(TestCaseRecord)     , POINTER :: current
-          TYPE(FTAssertionsManager), POINTER :: sharedManager
-          INTEGER                            :: numberOfFailedTests = 0
+          CLASS(TestSuiteManager)             :: self
+          TYPE(TestCaseRecord)     , POINTER  :: current
+          TYPE(FTAssertionsManager), POINTER  :: sharedManager
+          INTEGER                  , OPTIONAL :: numberOfFailedTests
+          
+          numberOfFailedTests = 0
           
           WRITE(self % stdOut,*)
           WRITE(self % stdOut,*) "                   ////////////////////////////////"
           WRITE(self % stdOut,*) "                   ////    Begin Test Suites   ////"
           WRITE(self % stdOut,*) "                   ////////////////////////////////"
           WRITE(self % stdOut,*)
-        
+          
           current => self % testCasesHead
           DO WHILE (ASSOCIATED(current))
           

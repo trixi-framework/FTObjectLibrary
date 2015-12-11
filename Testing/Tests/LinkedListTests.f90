@@ -69,7 +69,6 @@
          TYPE(FTLinkedListIterator), POINTER :: iterator
          
          INTEGER                      :: i
-         LOGICAL                      :: test
          REAL                         :: singleTol = 2*EPSILON(1.0e0)
 !
 !        -------------------------------------------------------
@@ -294,7 +293,6 @@
          CLASS(FTValue)             , POINTER :: v 
          CLASS(FTObject)            , POINTER :: objectPtr
          CLASS(FTLinkedList)        , POINTER :: list1, list2
-         CLASS(FTLinkedListRecord)  , POINTER :: recordPtr
          CLASS(FTMutableObjectArray), POINTER :: array
          
          TYPE(FTLinkedListIterator)           :: iterator
@@ -451,7 +449,7 @@
          CLASS(FTLinkedListRecord), POINTER   :: recordPtr
          
          TYPE(FTLinkedListIterator), POINTER :: iterator
-         INTEGER                             :: j, N
+         INTEGER                             :: j
 !
 !        ----------------------------------------------
 !        Create the two lists that will be concatenated

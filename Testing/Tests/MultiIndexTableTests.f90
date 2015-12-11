@@ -16,7 +16,6 @@
          
          INTEGER                  :: e
          CLASS(FTValue) , POINTER :: v
-         CLASS(FTValue) , POINTER :: vTest
          CLASS(FTObject), POINTER :: obj
          
          TYPE(FTMultiIndexTable) :: table

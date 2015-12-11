@@ -368,7 +368,9 @@
          IMPLICIT NONE  
          CLASS(FTObject), INTENT(IN) :: self
          CLASS(FTObject), POINTER    :: copy
-         copy % refCount_ = 1
+         
+         ALLOCATE(copy)
+         CALL initFTObject(self = copy)
       END FUNCTION copyFTObject
       
       END MODULE FTObjectClass

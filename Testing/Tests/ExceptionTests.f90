@@ -16,7 +16,6 @@
             CLASS(FTException)      , POINTER :: testException
             CLASS(FTValueDictionary), POINTER :: userDictionary
             CLASS(FTDictionary)     , POINTER :: ptr
-            CLASS(FTObject)         , POINTER :: objectPtr
             REAL                              :: r = 3.1416
             
             ALLOCATE(userDictionary)
@@ -43,7 +42,6 @@
          IMPLICIT NONE 
          
          CLASS(FTException) , POINTER :: exception
-         CLASS(FTObject)    , POINTER :: ptr
          exception => testException()
          CALL throw(exception)
          CALL exception % release()
@@ -63,7 +61,6 @@
          CLASS(FTValueDictionary), POINTER       :: userDictionary
          REAL                                    :: r
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: msg
-         DOUBLE PRECISION                        :: doubleTol = 2*EPSILON(1.0d0)
          REAL                                    :: singleTol = 2*EPSILON(1.0e0)
 
          CALL initializeFTExceptions

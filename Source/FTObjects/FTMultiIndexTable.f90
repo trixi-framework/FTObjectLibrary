@@ -422,7 +422,7 @@
 !     -----------------------------------------------------
 !
          IMPLICIT NONE  
-         CLASS(FTObject)   , POINTER :: obj
+         CLASS(FTObject)         , POINTER :: obj
          CLASS(FTMultiIndexTable), POINTER :: cast
          
          cast => NULL()
