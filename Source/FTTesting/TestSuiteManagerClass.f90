@@ -222,9 +222,9 @@
 !         ------------------
 !
           WRITE(self % stdOut,*)
-          WRITE(self % stdOut,*) "                   ////////////////////////////////"
-          WRITE(self % stdOut,*) "                   ////   Test Status Matrix   ////"
-          WRITE(self % stdOut,*) "                   ////////////////////////////////"
+          WRITE(self % stdOut,*) "////////////////////////////////"
+          WRITE(self % stdOut,*) "////   Test Status Matrix   ////"
+          WRITE(self % stdOut,*) "////////////////////////////////"
           WRITE(self % stdOut,*)
         
           current => self % testCasesHead
