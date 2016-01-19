@@ -12,6 +12,7 @@
       IMPLICIT NONE
       
       TYPE(TestSuiteManager) :: testSuite
+      INTEGER                :: numberOfFailedTests
       
       
       EXTERNAL :: FTDictionaryClassTests
@@ -45,7 +46,7 @@
 !     Run the tests
 !     -------------
 !
-      CALL testSuite % performTests()
+      CALL testSuite % performTests(numberOfFailedTests)
 !
 !     -------
 !     Cleanup
