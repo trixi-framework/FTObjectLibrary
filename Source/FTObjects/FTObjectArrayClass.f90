@@ -193,9 +193,10 @@
 !//////////////////////////////////////////////////////////////////////// 
 ! 
 !>
-!> Remove an object at the index indx
+!> Replace an object at the index indx
 !>
-!> *Usage
+!> Usage
+!> -----
 !>
 !>       CLASS(FTMutableObjectArray) :: array
 !>       INTEGER                     :: indx

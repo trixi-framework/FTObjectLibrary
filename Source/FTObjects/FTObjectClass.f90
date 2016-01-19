@@ -17,7 +17,7 @@
 !>
 !>
 !> Tasks
-!> ------
+!> -----
 !
 !>
 !>
@@ -93,7 +93,7 @@
 !>      END SUBROUTINE castToSubclass
 !>
 !>
-!> ### Subclassing init ###
+!> ## Subclassing init
 !>
 !> The init() procedure performs subclass specific operations to initialize an object.
 !>
@@ -109,7 +109,7 @@
 !>         ... Other Subclass specific code
 !>      END SUBROUTINE initSubclass
 !>
-!> ### Subclassing destruct ###
+!> ## Subclassing destruct
 !>
 !> The destruct() procedure reverses the operations done in the init() procedure. It releases and
 !> deallocates any pointers that it owns.  Subclasses that override destruct() must include 
@@ -124,13 +124,13 @@
 !>         
 !>      END SUBROUTINE destructSubclass
 !>
-!> ### Subclassing printDescription(iUnit) ###
+!> ## Subclassing printDescription(iUnit)
 !>
 !> printDescription is a method whose existence is to support debugging. Call printDescription(iUnit)
 !> on any objects owned by self for a cascading of what is stored in the object.
 !>
 !>
-!> ### Casting an object from the base to a subclass ###
+!> ## Casting an object from the base to a subclass
 !>
 !> Container classes and the copy function return pointers to a CLASS(FTObject). To use
 !> any subclass features one must "cast" to the subclass. We like to have a specific 
