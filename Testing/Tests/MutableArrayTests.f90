@@ -127,7 +127,7 @@
 !         CALL array % printDescription(6)
          DO i = 1, 10
             obj => array % objectAtIndex(i)
-            CALL cast(obj,v)
+            v   => valueFromObject(obj)
             CALL FTAssertEqual(modifiedValues(i),v % integerValue(),"Object values after deletion")
          END DO
 !

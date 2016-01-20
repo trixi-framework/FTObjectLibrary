@@ -85,8 +85,7 @@
 !        -------------------------------
 !
          DO j = 1, 4
-            obj => table % objectForKeys(keys(:,j))
-            CALL cast(obj,v)
+            v   => valueFromObject(table % objectForKeys(keys(:,j)))
             str = v % stringValue(5)
             CALL FTAssertEqual(expectedValue = strs(j),actualValue = str,msg = "object retrieval")
          END DO

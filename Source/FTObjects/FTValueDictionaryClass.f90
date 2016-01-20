@@ -169,7 +169,7 @@
          
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
-            CALL cast(obj,v)
+            v => valueFromObject(obj)
             realValueForKey = v % realValue()
          ELSE
             realValueForKey = HUGE(realValueForKey)
@@ -189,7 +189,7 @@
          
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
-            CALL cast(obj,v)
+            v => valueFromObject(obj)
             integerValueForKey = v % integerValue()
          ELSE
             integerValueForKey = HUGE(integerValueForKey)
@@ -209,7 +209,7 @@
          
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
-            CALL cast(obj,v)
+            v => valueFromObject(obj)
             doublePrecisionValueForKey = v % doublePrecisionValue()
          ELSE
             doublePrecisionValueForKey = HUGE(doublePrecisionValueForKey)
@@ -229,7 +229,7 @@
          
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
-            CALL cast(obj,v)
+            v => valueFromObject(obj)
             logicalValueForKey = v % logicalValue()
          ELSE 
             logicalValueForKey = .FALSE.
@@ -251,7 +251,7 @@
          
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
-            CALL cast(obj,v)
+            v => valueFromObject(obj)
             stringValueForKey = v % stringValue(requestedLength)
          ELSE 
             stringValueForKey = "" 
