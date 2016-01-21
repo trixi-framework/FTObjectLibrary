@@ -324,7 +324,7 @@
          INTEGER                               :: i
          DOUBLE PRECISION                      :: d
          LOGICAL                               :: l
-         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s
+         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s, tmpString
          
          SELECT CASE (self % valueType)
             CASE (FTVALUECLASS_INTEGER)
@@ -336,7 +336,8 @@
             CASE (FTVALUECLASS_REAL)
                 realValue = TRANSFER(self % valueStorage, realValue)
             CASE (FTVALUECLASS_STRING)
-               s = TRANSFER(self % valueStorage, s)
+               tmpString = TRANSFER(self % valueStorage, tmpString)
+               s         = tmpString(1:SIZE(self % valueStorage))
                READ(s,*,IOSTAT = iErr) realValue
                IF (iErr /= 0)     THEN
                   realValue = HUGE(1.0)
@@ -367,7 +368,7 @@
          REAL                                  :: r
          INTEGER                               :: i
          LOGICAL                               :: l
-         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s
+         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s, tmpString
          
          SELECT CASE (self % valueType)
             CASE (FTVALUECLASS_INTEGER)
@@ -379,7 +380,8 @@
             CASE (FTVALUECLASS_DOUBLE)
                 doublePrecisionValue = TRANSFER(self % valueStorage, doublePrecisionValue)
             CASE (FTVALUECLASS_STRING)
-               s = TRANSFER(self % valueStorage, s)
+               tmpString = TRANSFER(self % valueStorage, tmpString)
+               s         = tmpString(1:SIZE(self % valueStorage))
                READ(s,*,IOSTAT = iErr) doublePrecisionValue
                IF (iErr /= 0)     THEN
                   doublePrecisionValue = HUGE(1.0)
@@ -411,7 +413,7 @@
          INTEGER                               :: i
          DOUBLE PRECISION                      :: d
          LOGICAL                               :: l
-         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s
+         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s, tmpString
          
          SELECT CASE (self % valueType)
             CASE (FTVALUECLASS_INTEGER)
@@ -423,7 +425,8 @@
                r            = TRANSFER(self % valueStorage, r)
                integerValue = INT(r)
             CASE (FTVALUECLASS_STRING)
-               s = TRANSFER(self % valueStorage, s)
+               tmpString = TRANSFER(self % valueStorage, tmpString)
+               s         = tmpString(1:SIZE(self % valueStorage))
                READ(s,*,IOSTAT = iErr) integerValue
                IF (iErr /= 0)     THEN
                   integerValue = HUGE(1)
@@ -454,7 +457,7 @@
          INTEGER                               :: i
          DOUBLE PRECISION                      :: d
          LOGICAL                               :: l
-         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s
+         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s, tmpString
          
          SELECT CASE (self % valueType)
             CASE (FTVALUECLASS_INTEGER)
@@ -479,7 +482,8 @@
                   logicalValue = .false.
                END IF
             CASE (FTVALUECLASS_STRING)
-               s = TRANSFER(self % valueStorage, s)
+               tmpString = TRANSFER(self % valueStorage, tmpString)
+               s         = tmpString(1:SIZE(self % valueStorage))
                IF ( TRIM(s) == ".true." .OR. TRIM(s) == ".false." .OR. &
                     TRIM(s) == ".TRUE." .OR. TRIM(s) == ".FALSE.")     THEN
                   READ(s,*) logicalValue

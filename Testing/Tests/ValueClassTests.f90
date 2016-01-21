@@ -36,9 +36,9 @@
 !        Some values to convert into FTValue objects
 !        -------------------------------------------
 !
-         REAL                            :: r = 3.14
-         REAL(KIND=KIND(1.0d0))          :: d
-         INTEGER                         :: i = 666
+         REAL                            :: r = 3.14, x
+         REAL(KIND=KIND(1.0d0))          :: d, dd
+         INTEGER                         :: i = 666, j
          CHARACTER(LEN=:), ALLOCATABLE   :: s
          DOUBLE PRECISION                :: doubleTol = 2*EPSILON(1.0d0)
          REAL                            :: singleTol = 2*EPSILON(1.0e0)
@@ -140,9 +140,9 @@
             v => NULL()
          END IF
 !
-!        ---------------------------------------
-!        Finally store a double precision number
-!        ---------------------------------------
+!        -------------------------------
+!        Store a double precision number
+!        -------------------------------
 !
          d = 1.0d0/3.0d0
          ALLOCATE(v)
@@ -164,4 +164,30 @@
             DEALLOCATE(v)
             v => NULL()
          END IF
+!
+!        ---------------------------------------------------
+!        Lastly, save a string and read it as numeric values
+!        ---------------------------------------------------
+!
+         ALLOCATE(v)
+         CALL v % initWithValue("3.14")
+         x = v % realValue()
+         CALL FTAssertEqual(3.14e0,x,singleTol,"String storage to real")
+         CALL v % release()
+         DEALLOCATE(v)
+
+         ALLOCATE(v)
+         CALL v % initWithValue("3567")
+         j = v % integerValue()
+         CALL FTAssertEqual(3567,j,"String storage to integer")
+         CALL v % release()
+         DEALLOCATE(v)
+         
+         ALLOCATE(v)
+         CALL v % initWithValue("3.141592653589793")
+         dd = v % doublePrecisionValue()
+         CALL FTAssertEqual(3.141592653589793d0,dd,doubleTol,"String storage to real")
+         CALL v % release()
+         DEALLOCATE(v)
+
       END SUBROUTINE FTValueClassTests   
