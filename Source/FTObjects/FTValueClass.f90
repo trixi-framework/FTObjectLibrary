@@ -57,11 +57,8 @@
 !>               logicalValue = .TRUE.  if input /= 0
 !>
 !> String values can be converted to numeric types. If the string is
-!> not a numeric, Huge(x) will be returned, where x is of the
-!> requested type.
+!> not a numeric, Huge(1) will be returned, for integers and NaN for reals.
 !>      
-!> TODO: Use IEEE arithmetic capabilities when they become available in 
-!> gfortran.
 !>
 !> FTValueClass.f90
 !> Created: January 9, 2013 12:20 PM 
@@ -71,7 +68,7 @@
 !////////////////////////////////////////////////////////////////////////
 !
       Module FTValueClass
-!      USE IEEE_ARITHMETIC
+      USE IEEE_ARITHMETIC
       USE FTObjectClass
       IMPLICIT NONE
 !
@@ -340,7 +337,7 @@
                s         = tmpString(1:SIZE(self % valueStorage))
                READ(s,*,IOSTAT = iErr) realValue
                IF (iErr /= 0)     THEN
-                  realValue = HUGE(1.0)
+                  realValue = IEEE_VALUE(realValue,IEEE_QUIET_NAN)
                END IF
             CASE (FTVALUECLASS_LOGICAL)
                l = TRANSFER(self % valueStorage, l)
@@ -384,7 +381,7 @@
                s         = tmpString(1:SIZE(self % valueStorage))
                READ(s,*,IOSTAT = iErr) doublePrecisionValue
                IF (iErr /= 0)     THEN
-                  doublePrecisionValue = HUGE(1.0)
+                  doublePrecisionValue = IEEE_VALUE(doublePrecisionValue,IEEE_QUIET_NAN)
                END IF
             CASE (FTVALUECLASS_LOGICAL)
                l = TRANSFER(self % valueStorage, l)
