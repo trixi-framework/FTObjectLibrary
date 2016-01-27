@@ -171,12 +171,24 @@
 ! 
       SUBROUTINE performTests(self, numberOfFailedTests)  
           IMPLICIT NONE  
+!
+!         ---------
+!         Arguments
+!         ---------
+!
           CLASS(TestSuiteManager)             :: self
+          INTEGER                  , OPTIONAL :: numberOfFailedTests
+!
+!         ---------------
+!         Local variables
+!         ---------------
+!
           TYPE(TestCaseRecord)     , POINTER  :: current
           TYPE(FTAssertionsManager), POINTER  :: sharedManager
-          INTEGER                  , OPTIONAL :: numberOfFailedTests
+          INTEGER                             :: maxMessageLength
           
           numberOfFailedTests = 0
+          maxMessageLength    = 0
           
           WRITE(self % stdOut,*)
           WRITE(self % stdOut,*) "                   ////////////////////////////////"
@@ -200,6 +212,8 @@
                
             CALL sharedManager % SummarizeAssertions(current % testName,self % stdOut)
             CALL detachSharedAssertionsManager
+            
+            maxMessageLength = MAX(maxMessageLength,LEN_TRIM(current % testName))
             
             current => current % next
           END DO
@@ -231,9 +245,9 @@
           DO WHILE (ASSOCIATED(current))
             
             IF ( current % passed )     THEN
-               WRITE(self % stdOut,*) TRIM(current % testName), " ...Passed"
+               WRITE(self % stdOut,*) current % testName(1:maxMessageLength), " ... Passed"
             ELSE 
-               WRITE(self % stdOut,*) TRIM(current % testName), " ...Failed"
+               WRITE(self % stdOut,*) current % testName(1:maxMessageLength), " ... Failed"
             END IF 
             
             current => current % next
