@@ -336,6 +336,7 @@
             INTEGER(KIND=SELECTED_REAL_KIND(8)), EXTERNAL :: b3hs_hash_key_jenkins
            
             objectForKey => NULL()
+            IF(self % COUNT() == 0)     RETURN 
             
             h = b3hs_hash_key_jenkins(key,SIZE(self % entries))
             IF ( self % entries(h) % COUNT() > 0 )     THEN
@@ -387,6 +388,9 @@
             
             INTEGER :: i
             FTDictionaryDescription = ""
+
+            IF(SELF % COUNT() == 0) RETURN
+            
             DO i = 1, SIZE(self % entries)
                s = self % entries(i) % description()
                IF ( LEN_TRIM(s) > 0 )     THEN
@@ -407,6 +411,10 @@
             
             INTEGER :: i
 
+            IF(SELF % COUNT() == 0) THEN
+               WRITE(iUnit,*) "Empty Dictionary"
+            END IF  
+            
             DO i = 1, SIZE(self % entries)
                CALL self % entries(i) % printDescription(iUnit)
             END DO

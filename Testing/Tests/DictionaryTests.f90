@@ -27,6 +27,17 @@
 
          CALL dict % initWithSize(64)
 !
+!        ----------------------
+!        Check empty dictionary
+!        ----------------------
+!
+         CALL FTAssertEqual(expectedValue = 0,             &
+                            actualValue =  dict % COUNT(), &
+                            msg = "Empty dictionary count")
+         obj => dict % objectForKey(keys(1))
+         CALL FTAssert(test = .NOT.ASSOCIATED(obj),msg = "No object for empty dictionary")
+         
+!
 !        -----------------------------------------
 !        Add the keys and values to the dictionary
 !        -----------------------------------------
