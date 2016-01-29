@@ -93,6 +93,13 @@
             CALL FTAssertEqual(x,realValues(i),2*EPSILON(x),"Value for key as real ")
          END DO
 !
+!        -----------------------
+!        Check superclass method
+!        -----------------------
+!
+         CALL FTAssert( dict % containsKey("first")   ,msg = "dictionary contains key")
+         CALL FTAssert(.NOT. dict % containsKey("bob"),msg = "dictionary does not contain key")
+!
 !        ------------------------------------------------------------
 !        The dictionary is not a pointer, so we need only
 !        to call release for it to release (and here, deallocate) its

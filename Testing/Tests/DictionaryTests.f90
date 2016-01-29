@@ -88,6 +88,13 @@
             CALL FTAssertEqual(sExpected, sActual,"String for stored key")
          END DO   
 !
+!        ----------------------
+!        Check inquiry routines
+!        ----------------------
+!
+         CALL FTAssert( dict % containsKey("first")    ,msg = "dictionary contains key")
+         CALL FTAssert( .NOT. dict % containsKey("bob"),msg = "dictionary doesn't contain key")
+!
 !        ---------------
 !        Clean up memory
 !        ---------------

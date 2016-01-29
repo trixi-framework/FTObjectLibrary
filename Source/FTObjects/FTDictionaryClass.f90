@@ -198,14 +198,13 @@
             PROCEDURE :: description => FTDictionaryDescription
             PROCEDURE :: printDescription => printFTDictionaryDescription
             PROCEDURE :: objectForKey
+            PROCEDURE :: containsKey
             PROCEDURE :: COUNT
          END TYPE FTDictionary
          
          INTERFACE cast
             MODULE PROCEDURE castToDictionary
          END INTERFACE cast
-         
-         INTEGER, PARAMETER, PRIVATE :: FTDICITONARY_OBJECT_CODE = 35
 !
 !        ========         
          CONTAINS  
@@ -344,6 +343,23 @@
             END IF 
  
          END FUNCTION ObjectForKey
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+         FUNCTION containsKey(self,key)  RESULT(r)
+            IMPLICIT NONE  
+            CLASS(FTDictionary)      :: self
+            CHARACTER(LEN=*)         :: key
+            CLASS(FTObject), POINTER :: obj
+            LOGICAL                  :: r
+           
+            IF ( ASSOCIATED( self % objectForKey(key)) )     THEN
+               r = .TRUE. 
+            ELSE 
+               r = .FALSE. 
+            END IF 
+ 
+         END FUNCTION containsKey
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
