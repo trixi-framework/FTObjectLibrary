@@ -20,7 +20,7 @@
 !!However, it can re-size itself if necessary. To be efficient, it adds more than one entry at a time
 !!given by the ``chunkSize'', which you can choose for yourself. (The default is 10.)
 !!##Definition
-!!        	TYPE(FTMutableObjectArray) :: array
+!!           TYPE(FTMutableObjectArray) :: array
 !!#Usage
 !!##Initialization
 !!      CLASS(FTMutableObjectArray)  :: array

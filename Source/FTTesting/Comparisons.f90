@@ -11,7 +11,6 @@
 !!
 !! The generic interface for testing equality is
 !!
-!!        isEqual()
 !
       Module ComparisonsModule
       IMPLICIT NONE

@@ -5,38 +5,79 @@
 !      Created: July 29, 2013 10:59 AM 
 !      By: David Kopriva  
 !
-!      The sparse matrix stores an FTObject pointer associated
-!      with two keys (i,j) as a hash table. The size, N = the range of i.
+!!The sparse matrix stores an FTObject pointer associated
+!!with two keys (i,j) as a hash table.
 !
-!      * Definition (Subclass of FTObject) *
-!
-!               TYPE(FTSparseMatrix) :: SparseMatrix
-!
-!      * Initialization *
-!
-!               CALL SparseMatrix % initWithSize(N)
-!
-!      * Destruction *
-!
-!               CALL SparseMatrix % release()
-!
-!      * Adding an object *
-!
-!               CLASS(FTObject), POINTER :: obj
-!               CALL SparseMatrix % addObjectForKeys(obj,i,j)
-!
-!      * Retrieving an object *
-!
-!               CLASS(FTObject), POINTER :: obj
-!               obj => SparseMatrix % objectForKeys(i,j)
-!
-!            Be sure to retain the object if you want it to live
-!            beyond the life of the table.
-!
-!      * Testing the presence of keys *
-!
-!               LOGICAL :: exists
-!               exists = SparseMatrix % containsKeys(i,j)
+!!Hash tables are data structures designed to enable storage and fast
+!!retrieval of key-value pairs. An example of a key-value pair is
+!!a variable name (``gamma'') and its associated value (``1.4'').
+!!The table itself is typically an array.
+!!The location of the value in a hash table associated with
+!!a key, $k$, is specified by way of a hash function, $H(k)$.
+!!In the case of a variable name and value, the hash function
+!!would convert the name into an integer that tells where to
+!!find the associated value in the table.
+!!
+!!A very simple example of a
+!!hash table is, in fact, a singly dimensioned array. The key is 
+!!the array index and the value is what is stored at that index.
+!!Multiple keys can be used to identify data; a two dimensional
+!!array provides an example of where two keys are used to access memory
+!!and retrieve the value at that location.
+!!If we view a singly dimensioned array as a special case of a hash table,
+!!its hash function is just the array index, $H(j)=j$. A doubly dimensioned array
+!!could be (and often is) stored columnwise as a singly dimensioned array by creating a hash
+!!function that maps the two indices to a single location in the array, e.g.,
+!!$H(i,j) = i + j*N$, where $N$ is the range of the first index, $i$. 
+!!
+!!Two classes are included in FTObjectLibrary. The first, FTSparseMatrix, works with an ordered pair, (i,j), as the
+!!keys. The second, FTMultiIndexTable, uses an array of integers as the keys.
+!!
+!!Both classes include enquiry functions to see of an object exists for the given keys. Otherwise,
+!!the function that returns an object for a given key will return an UNASSOCIATED pointer if there
+!!is no object for the key. Be sure to retain any object returned by the objectForKeys methods if 
+!!you want to keep it beyond the lifespan of the matrix or table. For example,
+!!
+!!           TYPE(FTObject) :: obj
+!!           obj => matrix % objectForKeys(i,j)
+!!           IF ( ASSOCIATED(OBJ) ) THEN
+!!           	 CALL obj % retain()
+!!	              Cast obj to something useful
+!!           ELSE
+!!              Perform some kind of error recovery
+!!           END IF 
+!!The sparse matrix stores an FTObject pointer associated
+!!with two keys (i,j) as a hash table. The size, N = the range of i.
+!!
+!!##Definition (Subclass of FTObject)
+!!
+!!         TYPE(FTSparseMatrix) :: SparseMatrix
+!!#Usage
+!!##Initialization
+!!
+!!         CALL SparseMatrix % initWithSize(N)
+!!
+!!##Destruction
+!!
+!!         CALL SparseMatrix % release()
+!!
+!!##Adding an object
+!!
+!!         CLASS(FTObject), POINTER :: obj
+!!         CALL SparseMatrix % addObjectForKeys(obj,i,j)
+!!
+!!##Retrieving an object
+!!
+!!         CLASS(FTObject), POINTER :: obj
+!!         obj => SparseMatrix % objectForKeys(i,j)
+!!
+!!Be sure to retain the object if you want it to live
+!!      beyond the life of the table.
+!!
+!!##Testing the presence of keys
+!!
+!!         LOGICAL :: exists
+!!         exists = SparseMatrix % containsKeys(i,j)
 !
 !////////////////////////////////////////////////////////////////////////
 !

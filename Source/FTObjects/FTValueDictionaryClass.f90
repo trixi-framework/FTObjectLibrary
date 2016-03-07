@@ -26,9 +26,9 @@
 !!     l = dict % logicalValueForKey("logical")
 !!     s = dict % stringValueForKey("string",15)
 !!#Converting an FTDictionary to an FTValueDictionary
-!!        	 valueDict => valueDictionaryFromDictionary(dict)
+!!            valueDict => valueDictionaryFromDictionary(dict)
 !!#Converting an FTObject to an FTValueDictionary
-!!        	 valueDict => valueDictionaryFromObject(obj)
+!!            valueDict => valueDictionaryFromObject(obj)
 !
 !////////////////////////////////////////////////////////////////////////
 !

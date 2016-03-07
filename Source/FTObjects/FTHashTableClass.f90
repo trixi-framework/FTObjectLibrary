@@ -5,38 +5,39 @@
 !      Created: July 29, 2013 10:59 AM 
 !      By: David Kopriva  
 !
-!      The hash table matrix stores an FTObject pointer associated
-!      with two keys (i,j). The size, N = the range of i.
-!
-!      * Definition (Subclass of FTObject) *
-!
-!               TYPE(FTHashTable) :: hashTable
-!
-!      * Initialization *
-!
-!               CALL hashTable % initWithSize(N)
-!
-!      * Destruction *
-!
-!               CALL hashTable % release()
-!
-!      * Adding an object *
-!
-!               CLASS(FTObject), POINTER :: obj
-!               CALL hashTable % addObjectForKeys(obj,i,j)
-!
-!      * Retrieving an object *
-!
-!               CLASS(FTObject), POINTER :: obj
-!               obj => hashTable % objectForKeys(i,j)
-!
-!            Be sure to retain the object if you want it to live
-!            beyond the life of the table.
-!
-!      * Testing the presence of keys *
-!
-!               LOGICAL :: exists
-!               exists = hashTable % containsKeys()
+!!The hash table matrix stores an FTObject pointer associated
+!!with two keys (i,j).
+!!
+!!##Definition (Subclass of FTObject)
+!!
+!!         TYPE(FTHashTable) :: hashTable
+!!#Usage
+!!##Initialization
+!!
+!!         CALL hashTable % initWithSize(N)
+!!
+!!The size, N = the range of i.
+!!##Destruction
+!!
+!!         CALL hashTable % release()
+!!
+!!##Adding an object
+!!
+!!         CLASS(FTObject), POINTER :: obj
+!!         CALL hashTable % addObjectForKeys(obj,i,j)
+!!
+!!##Retrieving an object
+!!
+!!         CLASS(FTObject), POINTER :: obj
+!!         obj => hashTable % objectForKeys(i,j)
+!!
+!!Be sure to retain the object if you want it to live
+!!      beyond the life of the table.
+!!
+!!##Testing the presence of keys
+!!
+!!         LOGICAL :: exists
+!!         exists = hashTable % containsKeys()
 !
 !////////////////////////////////////////////////////////////////////////
 !

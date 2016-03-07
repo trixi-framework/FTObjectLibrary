@@ -9,32 +9,126 @@
 !! that can be placed in a program to test whether
 !! a predicate is true.
 !!
-!! To use the assertions module, it must be initialized,
-!! usually in the main program. When it is no longer needed,
-!! it is finalized. Assertions are posted to the module as they
-!! are called, and can be summarized later at an appropriate time.
+!!An assertion is a true-false statement that you expect to be true. Assertions are used
+!!to test for exceptional situations (AKA ``Failures'') in a code. For example, knowing that density
+!!always must be positive, you might assert that fact before using it, and if the result is false 
+!!generate an error. With FTObjectLibrary that would be
 !!
-!!### Initialization ###
+!!        	CALL assert(rho > 0,``Density must be positive'')
 !!
-!!      CALL initializeSharedAssertionsManager
 !!
-!!### Finalization ###
+!!Fortran does not have an assertion mechanism, and so pretty much everyone writes their own. 
+!!There are a couple of open source projects available, but one never knows how actively they will be 
+!!maintained. In the grand Fortran tradition of writing one's own, FTObjectLibrary has
+!!an (incomplete) assertion module. 
 !!
-!!      CALL finalizeSharedAssertionsManager
+!!##Initialization
 !!
-!!### Asserting ###
+!!To use assertions, you will USE the FTAssertions module and initialize the assertions system by calling
 !!
-!!      CALL FTAssertEqual(expectedValue,resultValue,message)
+!!        	CALL initializeSharedAssertionsManager
 !!
-!!### Summarizing Assertions ###
+!!##Inquiry Functions
+!!During the course of your program, the sharedAssertionsManager will keep track of the 
+!!success or failure of the assertions that you make. You can enquire at any time how many assertions
+!!have failed and how many assertions have been made with the two enquiry functions
 !!
-!!      CALL SummarizeFTAssertions(title,unit)
+!!     INTEGER FUNCTION numberOfAssertionFailures()
+!!     INTEGER FUNCTION numberOfAssertions()
+!!##Summary Output
+!!You can get a summary of the assertions by calling the subroutine
 !!
-!!### Additional enquiry functions ###
+!!     SUBROUTINE SummarizeFTAssertions(title,iUnit)  
+!!        IMPLICIT NONE
+!!        CHARACTER(LEN=*)                        :: title
+!!        INTEGER                                 :: iUnit
+!!##Finalization
+!!When you are done, you finalize the sharedAssertionsManager with
 !!
-!!      INTEGER :: nf, nA
-!!       nF = numberOfAssertionFailures()
-!!       nA = numberOfAssertions()
+!!        	CALL finalizeSharedAssertionsManager
+!!##Posting Assertions
+!! FTObjectLibrary supplies two subroutines that post 
+!!failures to the sharedAssertionsManager. The first takes a LOGICAL variable
+!!
+!!      SUBROUTINE assert(test,msg)  
+!!         IMPLICIT NONE
+!!         CHARACTER(LEN=*), OPTIONAL :: msg
+!!         LOGICAL                    :: test
+!!
+!!The second tests equality through the overloaded subroutine assertEqual, which allows a variety 
+!!of argument type listed below:
+!!
+!!       INTERFACE assertEqual
+!!         MODULE PROCEDURE assertEqualTwoIntegers
+!!         MODULE PROCEDURE assertEqualTwoIntegerArrays1D
+!!         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
+!!         MODULE PROCEDURE assertWithinToleranceTwoReal
+!!         MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
+!!         MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
+!!         MODULE PROCEDURE assertWithinToleranceTwoDouble
+!!         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays1D
+!!         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
+!!         MODULE PROCEDURE assertEqualTwoLogicals
+!!         MODULE PROCEDURE assertEqualString
+!!      END INTERFACE assertEqual
+!!
+!!The individual calls have the signatures
+!!
+!!      SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)  
+!!         IMPLICIT NONE  
+!!         INTEGER, INTENT(in)        :: expectedValue,actualValue
+!!         CHARACTER(LEN=*), OPTIONAL :: msg
+!!         
+!!      SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
+!!         IMPLICIT NONE  
+!!         INTEGER, INTENT(in)    , DIMENSION(:)            :: expectedValue,actualValue
+!!         
+!!      SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
+!!         IMPLICIT NONE  
+!!         INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
+!!      SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,msg)  
+!!         IMPLICIT NONE  
+!!         REAL, INTENT(in)           :: x,y,tol
+!!         CHARACTER(LEN=*), OPTIONAL :: msg
+!!         
+!!      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,msg)  
+!!         IMPLICIT NONE  
+!!         REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+!!         REAL, INTENT(IN)               :: tol
+!!         CHARACTER(LEN=*), OPTIONAL     :: msg
+!!         
+!!      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
+!!         IMPLICIT NONE  
+!!         REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+!!         REAL, INTENT(IN)                 :: tol
+!!         
+!!      SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,msg)  
+!!         IMPLICIT NONE  
+!!         DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
+!!         CHARACTER(LEN=*), OPTIONAL   :: msg
+!!         
+!!      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,msg)  
+!!         IMPLICIT NONE  
+!!         DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+!!         DOUBLE PRECISION, INTENT(IN)               :: tol
+!!         CHARACTER(LEN=*), OPTIONAL                 :: msg
+!!         
+!!      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol)  
+!!         IMPLICIT NONE  
+!!         DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+!!         DOUBLE PRECISION, INTENT(IN)                 :: tol
+!!         
+!!      SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
+!!         IMPLICIT NONE
+!!         CHARACTER(LEN=*)           :: expectedValue,actualValue
+!!         CHARACTER(LEN=*), OPTIONAL :: msg
+!!         
+!!      SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)  
+!!         IMPLICIT NONE  
+!!         LOGICAL, INTENT(in)        :: expectedValue,actualValue
+!!         CHARACTER(LEN=*), OPTIONAL :: msg
+!!
+!!Notice that you can only check the equality of two floating point numbers to within some tolerance.
 !
 !
 !////////////////////////////////////////////////////////////////////////

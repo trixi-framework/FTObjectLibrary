@@ -5,41 +5,43 @@
 !      Created: July 29, 2013 10:59 AM 
 !      By: David Kopriva  
 !
-!      The MultiIndexTable stores an FTObject pointer associated
-!      with any number of integer keys(:) as a hash table. 
-!      The size, N = the maximum value of all of the keys.
-!
-!      * Definition (Subclass of FTObject) *
-!
-!               TYPE(FTMultiIndexTable) :: multiIndexTable
-!
-!      * Initialization *
-!
-!               CALL MultiIndexTable % initWithSize(N)
-!
-!      * Destruction *
-!
-!               CALL MultiIndexTable % release()
-!
-!      * Adding an object *
-!
-!               CLASS(FTObject), POINTER :: obj
-!               INTEGER, DIMENSION(dim)  :: keys
-!               CALL MultiIndexTable % addObjectForKeys(obj,keys)
-!
-!      * Retrieving an object *
-!
-!               CLASS(FTObject), POINTER :: obj
-!               INTEGER, DIMENSION(dim)  :: keys
-!               obj => MultiIndexTable % objectForKeys(keys)
-!
-!            Be sure to retain the object if you want it to live
-!            beyond the life of the table.
-!
-!      * Testing the presence of keys *
-!
-!               LOGICAL :: exists
-!               exists = MultiIndexTable % containsKeys(keys)
+!!The MultiIndexTable stores an FTObject pointer associated
+!!with any number of integer keys(:) as a hash table. 
+!!
+!!#Usage
+!!## Definition (Subclass of FTObject)
+!!
+!!         TYPE(FTMultiIndexTable) :: multiIndexTable
+!!
+!!##Initialization
+!!
+!!         CALL MultiIndexTable % initWithSize(N)
+!!
+!!The size, N = the maximum value of all of the keys.
+!!
+!!## Destruction
+!!
+!!         CALL MultiIndexTable % release()
+!!
+!!##Adding an object
+!!
+!!         CLASS(FTObject), POINTER :: obj
+!!         INTEGER, DIMENSION(dim)  :: keys
+!!         CALL MultiIndexTable % addObjectForKeys(obj,keys)
+!!
+!!##Retrieving an object
+!!
+!!         CLASS(FTObject), POINTER :: obj
+!!         INTEGER, DIMENSION(dim)  :: keys
+!!         obj => MultiIndexTable % objectForKeys(keys)
+!!
+!!Be sure to retain the object if you want it to live
+!!      beyond the life of the table.
+!!
+!!##Testing the presence of keys
+!!
+!!         LOGICAL :: exists
+!!         exists = MultiIndexTable % containsKeys(keys)
 !
 !////////////////////////////////////////////////////////////////////////
 !

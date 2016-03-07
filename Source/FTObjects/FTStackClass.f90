@@ -5,50 +5,50 @@
 !      Created: January 25, 2013 12:56 PM 
 !      By: David Kopriva  
 !
-!      Inherits from FTLinkedListClass : FTObjectClass
-!
-!      Definition (Subclass of FTLinkedListClass):
-!         TYPE(FTStack) :: list
-!
-!      *Usage:
-!
-!         *Initialization*
-!
-!            ALLOCATE(stack) ! If stack is a pointer
-!            CALL stack  %  init
-!
-!         *Destruction*
-!            CALL stack  %  release
-!            IF ( stack  %  isUnreferenced() )     THEN
-!               DEALLOCATE(stack) ! If stack is a pointer
-!               stack => NULL()
-!            END IF 
-!
-!         *Pushing an object onto the stack*
-!
-!            TYPE(FTObject) :: objectPtr
-!            objectPtr => r1
-!            CALL stack % push(objectPtr)
-!
-!         *Peeking at the top of the stack*
-!
-!            objectPtr => stack % peek() ! No change of ownership
-!            SELECT TYPE(objectPtr)
-!               TYPE is (*SubclassType*)
-!                  … Do something with ObjectPtr as subclass
-!               CLASS DEFAULT
-!                  … Problem with casting
-!            END SELECT
-!
-!         *Popping the top of the stack*
-!
-!            objectPtr => stack % pop() ! Ownership transferred to caller
-!            SELECT TYPE(objectPtr)
-!               TYPE is (*SubclassType*)
-!                  … Do something with ObjectPtr as subclass
-!               CLASS DEFAULT
-!                  … Problem with casting
-!            END SELECT
+!!Inherits from FTLinkedListClass : FTObjectClass
+!!
+!!##Definition (Subclass of FTLinkedListClass):
+!!   TYPE(FTStack) :: list
+!!
+!!#Usage:
+!!
+!!##Initialization
+!!
+!!      ALLOCATE(stack)  If stack is a pointer
+!!      CALL stack  %  init
+!!
+!!##Destruction
+!!      CALL stack  %  release
+!!      IF ( stack  %  isUnreferenced() )     THEN
+!!         DEALLOCATE(stack)  If stack is a pointer
+!!         stack => NULL()
+!!      END IF 
+!!
+!!##Pushing an object onto the stack
+!!
+!!      TYPE(FTObject) :: objectPtr
+!!      objectPtr => r1
+!!      CALL stack % push(objectPtr)
+!!
+!!##Peeking at the top of the stack
+!!
+!!      objectPtr => stack % peek()  No change of ownership
+!!      SELECT TYPE(objectPtr)
+!!         TYPE is (*SubclassType*)
+!!            … Do something with ObjectPtr as subclass
+!!         CLASS DEFAULT
+!!            … Problem with casting
+!!      END SELECT
+!!
+!!##Popping the top of the stack
+!!
+!!      objectPtr => stack % pop()  Ownership transferred to caller
+!!      SELECT TYPE(objectPtr)
+!!         TYPE is (*SubclassType*)
+!!            … Do something with ObjectPtr as subclass
+!!         CLASS DEFAULT
+!!            … Problem with casting
+!!      END SELECT
 !
 !////////////////////////////////////////////////////////////////////////
 !
