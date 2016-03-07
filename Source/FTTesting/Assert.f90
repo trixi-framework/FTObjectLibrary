@@ -5,7 +5,7 @@
 ! Created: February 21, 2013 2:34 PM 
 ! By: David Kopriva  
 !
-!> Assertions are functions that return true or false
+!! Assertions are functions that return true or false
 !! that can be placed in a program to test whether
 !! a predicate is true.
 !!
@@ -14,28 +14,28 @@
 !! it is finalized. Assertions are posted to the module as they
 !! are called, and can be summarized later at an appropriate time.
 !!
-!! ### Initialization ###
+!!### Initialization ###
 !!
 !!      CALL initializeSharedAssertionsManager
 !!
-!! ### Finalization ###
+!!### Finalization ###
 !!
 !!      CALL finalizeSharedAssertionsManager
 !!
-!! ### Asserting ###
+!!### Asserting ###
 !!
 !!      CALL FTAssertEqual(expectedValue,resultValue,message)
 !!
-!! ### Summarizing Assertions ###
+!!### Summarizing Assertions ###
 !!
 !!      CALL SummarizeFTAssertions(title,unit)
 !!
-!! ### Additional enquiry functions ###
+!!### Additional enquiry functions ###
 !!
 !!      INTEGER :: nf, nA
 !!       nF = numberOfAssertionFailures()
 !!       nA = numberOfAssertions()
-!<
+!
 !
 !////////////////////////////////////////////////////////////////////////
 !

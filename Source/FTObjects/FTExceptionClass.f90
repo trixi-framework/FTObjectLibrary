@@ -5,45 +5,48 @@
 !      Created: January 29, 2013 5:06 PM 
 !      By: David Kopriva  
 !
-!      An FTException object gives a way to pass generic
-!      information about an exceptional situation. Methods for
-!      dealing with exceptions are defined in the SharedExceptionManagerModule
-!      module.
 !
-!      An FTException object wraps:
-!      (1) A severity indicator
-!      (2) A name for the exception
-!      (3) An optional dictionary that contains whatever information is deemed necessary.
-!
-!      It is expected that classes will define exceptions that use instances
-!      of the FTException Class.
-!
-!      Defined constants:
-!
-!         FT_ERROR_NONE    = 0
-!         FT_ERROR_WARNING = 1
-!         FT_ERROR_FATAL   = 2
-!
-!      Usage:
-!
-!         Initialization
-!
-!            e  %  initFTException(severity,exceptionName,infoDictionary)
-!
-!            Plus the convenience initializers, which automatically 
-!            create a FTValueDictionary with a single key called "message":
-!
-!            e % initWarningException(msg = "message")
-!            e % initFatalException(msg = "message")
-!
-!            Plus an assertion exception
-!
-!            e % initAssertionFailureException(msg,expectedValueObject,observedValueObject,level)
-!
-!         Setting components
-!
-!            e  %  setInfoDictionary(infoDictionary)
-!
+!>An FTException object gives a way to pass generic
+!>information about an exceptional situation.
+
+!>An FTException object gives a way to pass generic
+!>information about an exceptional situation. Methods for
+!>dealing with exceptions are defined in the SharedExceptionManagerModule
+!>module.
+!>
+!>An FTException object wraps:
+!>- A severity indicator
+!>- A name for the exception
+!>- An optional dictionary that contains whatever information is deemed necessary.
+!>
+!>It is expected that classes will define exceptions that use instances
+!>of the FTException Class.
+!>
+!>## Defined constants:
+!>
+!>   FT_ERROR_NONE    = 0
+!>   FT_ERROR_WARNING = 1
+!>   FT_ERROR_FATAL   = 2
+!>
+!># Usage:
+!>
+!>* Initialization
+!>
+!>         e  %  initFTException(severity,exceptionName,infoDictionary)
+!>
+!>    Plus the convenience initializers, which automatically create a FTValueDictionary with a single key called "message":
+!>
+!>        e % initWarningException(msg = "message")
+!>        e % initFatalException(msg = "message")
+!>
+!>    Plus an assertion exception
+!>
+!>        e % initAssertionFailureException(msg,expectedValueObject,observedValueObject,level)
+!>
+!>* Setting components
+!>
+!>        e  %  setInfoDictionary(infoDictionary)
+!<
 !////////////////////////////////////////////////////////////////////////
 !
       Module FTExceptionClass

@@ -7,8 +7,12 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-!> Defines methods that test equality of different kinds of arguments.
-!<
+!! Defines methods that test equality of different kinds of arguments.
+!!
+!! The generic interface for testing equality is
+!!
+!!        isEqual()
+!
       Module ComparisonsModule
       IMPLICIT NONE
       PRIVATE

@@ -5,23 +5,30 @@
 !      Created: February 6, 2013 8:54 AM 
 !      By: David Kopriva  
 !
-!> The FTValueDictionary subclass of FTDictionary adds convenient methods
-!> to easily add fundamental (Real, integer,…) values to a dicitonary.
-!> As a subclass, all other methods are still available.
-!>
-! Usage:
-!
-!     CALL dict % addValueForKey(1,"integer")
-!     CALL dict % addValueForKey(3.14,"real")
-!     CALL dict % addValueForKey(98.6d0,"double")
-!     CALL dict % addValueForKey(.true.,"logical")
-!     CALL dict % addValueForKey("Hello World","string")
-!
-!     i = dict % integerValueForKey("integer")
-!     r = dict % realValueForKey("real")
-!     d = dict % doublePrecisionValueForKey("double")
-!     l = dict % logicalValueForKey("logical")
-!     s = dict % stringValueForKey("string",15)
+!!
+!! The FTValueDictionary subclass of FTDictionary adds convenient methods
+!! to easily add fundamental (Real, integer,…) values to a dictionary.
+!!
+!! As a subclass, all other methods are still available.
+!!
+!!#Usage:
+!!#Adding a value
+!!
+!!     CALL dict % addValueForKey(1,"integer")
+!!     CALL dict % addValueForKey(3.14,"real")
+!!     CALL dict % addValueForKey(98.6d0,"double")
+!!     CALL dict % addValueForKey(.true.,"logical")
+!!     CALL dict % addValueForKey("Hello World","string")
+!!#Accessing a value
+!!     i = dict % integerValueForKey("integer")
+!!     r = dict % realValueForKey("real")
+!!     d = dict % doublePrecisionValueForKey("double")
+!!     l = dict % logicalValueForKey("logical")
+!!     s = dict % stringValueForKey("string",15)
+!!#Converting an FTDictionary to an FTValueDictionary
+!!        	 valueDict => valueDictionaryFromDictionary(dict)
+!!#Converting an FTObject to an FTValueDictionary
+!!        	 valueDict => valueDictionaryFromObject(obj)
 !
 !////////////////////////////////////////////////////////////////////////
 !

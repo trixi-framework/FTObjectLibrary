@@ -5,10 +5,54 @@
 !      Created: February 7, 2013 3:24 PM 
 !      By: David Kopriva  
 !
-!> FTMutableObjectArray is a mutable array class to which objects
-!> can be added, removed, replaced and accessed according to their 
-!> index in the array.
-!>
+!!FTMutableObjectArray is a mutable array class to which objects
+!!can be added, removed, replaced and accessed according to their 
+!!index in the array.
+!!
+!!Fortran has pointers to arrays, but not arrays of pointers. To do the latter, one creates
+!!a wrapper derived type and creates an array of that wrapper type. Fortran arrays are great, but
+!!they are of fixed length, and they don't easily implement reference counting to keep track of
+!!memory. For that, we have the FTMutableObjectArray. Performance reasons dictate that you 
+!!will use regular arrays for numeric types and the like, but for generic objects we would use
+!!an Object Array.
+!!
+!!You initialize a FTMutableObjectArray with the number of objects that you expect it to hold.
+!!However, it can re-size itself if necessary. To be efficient, it adds more than one entry at a time
+!!given by the ``chunkSize'', which you can choose for yourself. (The default is 10.)
+!!##Definition
+!!        	TYPE(FTMutableObjectArray) :: array
+!!#Usage
+!!##Initialization
+!!      CLASS(FTMutableObjectArray)  :: array
+!!      INTEGER                      :: N = 11
+!!      CALL array % initWithSize(N)
+!!#Destruction
+!!           CALL array  %  release()
+!!           IF ( array  %  isUnreferenced() )     THEN
+!!              DEALLOCATE(array) ! If array is a pointer
+!!              array => NULL()
+!!           END IF 
+!!#Adding an Object
+!!           TYPE(FTObject) :: obj
+!!           obj => r1
+!!           CALL array % addObject(obj)
+!!#Removing an Object
+!!           TYPE(FTObject) :: obj
+!!           CALL array % removeObjectAtIndex(i)
+!!#Accessing an Object
+!!           TYPE(FTObject) :: obj
+!!           obj => array % objectAtIndex(i)
+!!#Replacing an Object
+!!           TYPE(FTObject) :: obj
+!!           obj => r1
+!!           CALL array % replaceObjectAtIndexWithObject(i,obj)
+!!#Setting the Chunk Size
+!!           CALL array % setChunkSize(size)
+!!#Finding The Number Of Items In The Array
+!!           n =  array % count()
+!!#Finding The Actual Allocated Size Of The Array
+!!           n =  array % allocatedSize()
+
 !
 !////////////////////////////////////////////////////////////////////////
 !
