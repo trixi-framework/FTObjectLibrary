@@ -41,8 +41,8 @@
 !!           TYPE(FTObject) :: obj
 !!           obj => matrix % objectForKeys(i,j)
 !!           IF ( ASSOCIATED(OBJ) ) THEN
-!!           	 CALL obj % retain()
-!!	              Cast obj to something useful
+!!               CALL obj % retain()
+!!                 Cast obj to something useful
 !!           ELSE
 !!              Perform some kind of error recovery
 !!           END IF 

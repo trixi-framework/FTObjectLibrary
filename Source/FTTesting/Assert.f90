@@ -14,7 +14,7 @@
 !!always must be positive, you might assert that fact before using it, and if the result is false 
 !!generate an error. With FTObjectLibrary that would be
 !!
-!!        	CALL assert(rho > 0,``Density must be positive'')
+!!           CALL assert(rho > 0,``Density must be positive'')
 !!
 !!
 !!Fortran does not have an assertion mechanism, and so pretty much everyone writes their own. 
@@ -26,7 +26,7 @@
 !!
 !!To use assertions, you will USE the FTAssertions module and initialize the assertions system by calling
 !!
-!!        	CALL initializeSharedAssertionsManager
+!!           CALL initializeSharedAssertionsManager
 !!
 !!##Inquiry Functions
 !!During the course of your program, the sharedAssertionsManager will keep track of the 
@@ -45,7 +45,7 @@
 !!##Finalization
 !!When you are done, you finalize the sharedAssertionsManager with
 !!
-!!        	CALL finalizeSharedAssertionsManager
+!!           CALL finalizeSharedAssertionsManager
 !!##Posting Assertions
 !! FTObjectLibrary supplies two subroutines that post 
 !!failures to the sharedAssertionsManager. The first takes a LOGICAL variable
