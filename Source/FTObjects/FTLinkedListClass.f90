@@ -11,12 +11,12 @@
 !
 !@mark -
 !
-!!FTLinkedListRecord is the record type (object and next) for the
-!!LinkedList class.
-!!
-!!One will generally not instantiate a record oneself. They are 
-!!created automatically when one adds an object to a linked list.
-!!
+!>FTLinkedListRecord is the record type (object and next) for the
+!>LinkedList class.
+!>
+!>One will generally not instantiate a record oneself. They are 
+!>created automatically when one adds an object to a linked list.
+!>
       Module FTLinkedListRecordClass 
       USE FTObjectClass
       IMPLICIT NONE 
@@ -121,73 +121,73 @@
 !     Implements the basics of a linked list of objects
 !     --------------------------------------------------
 !
-!!
-!!FTLinkedList is a container class that stores objects in a linked list.
-!!
-!!Inherits from FTObjectClass
-!!
-!!##Definition (Subclass of FTObject):
-!!
-!!         TYPE(FTLinkedList) :: list
-!!
-!!#Usage:
-!!
-!!##Initialization
-!!
-!!         CLASS(FTLinkedList), POINTER :: list
-!!         ALLOCATE(list)
-!!         CALL list % init
-!!
-!!##Adding objects
-!!
-!!         CLASS(FTLinkedList), POINTER :: list, listToAdd
-!!         CLASS(FTObject)    , POINTER :: objectPtr
-!!
-!!         objectPtr => r                ! r is subclass of FTObject
-!!         CALL list % Add(objectPtr)    ! Pointer is retained by list
-!!         CALL objectPtr % release()    ! If caller relinquishes ownership
-!!
-!!         CALL list % addObjectsFromList(listToAdd)
-!!
-!!##Inserting objects
-!!
-!!         CLASS(FTLinkedList)      , POINTER :: list
-!!         CLASS(FTObject)          , POINTER :: objectPtr, obj
-!!         CLASS(FTLinkedListRecord), POINTER :: record
-!!
-!!         objectPtr => r                                        ! r is subclass of FTObject
-!!         CALL list % insertObjectAfterRecord(objectPtr,record) ! Pointer is retained by list
-!!         CALL objectPtr % release()                            ! If caller reliquishes ownership
-!!
-!!         objectPtr => r                                     ! r is subclass of FTObject
-!!         CALL list % insertObjectAfterObject(objectPtr,obj) ! Pointer is retained by list
-!!         CALL objectPtr % release()                         ! If caller reliquishes ownership
-!!
-!!##Removing objects
-!!
-!!         CLASS(FTLinkedList), POINTER :: list
-!!         CLASS(FTObject)    , POINTER :: objectPtr
-!!         objectPtr => r                 ! r is subclass of FTObject
-!!         CALL list % remove(objectPtr)
-!!
-!!##Getting all objects as an object array
-!!
-!!         CLASS(FTLinkedList)        , POINTER :: list
-!!         CLASS(FTMutableObjectArray), POINTER :: array
-!!         array => list % allObjects() ! Array has refCount = 1
-!!
-!!##Counting the number of objects in the list
-!!
-!!         n = list % count()
-!!
-!!##Destruction
-!!   
-!!         CALL list % release()
-!!         IF ( list % isUnreferenced() )     THEN ! If list is a pointer
-!!            DEALLOCATE(list)
-!!            list => NULL()
-!!         END IF
-!!!
+!>
+!>FTLinkedList is a container class that stores objects in a linked list.
+!>
+!>Inherits from FTObjectClass
+!>
+!>##Definition (Subclass of FTObject):
+!>
+!>         TYPE(FTLinkedList) :: list
+!>
+!>#Usage:
+!>
+!>##Initialization
+!>
+!>         CLASS(FTLinkedList), POINTER :: list
+!>         ALLOCATE(list)
+!>         CALL list % init
+!>
+!>##Adding objects
+!>
+!>         CLASS(FTLinkedList), POINTER :: list, listToAdd
+!>         CLASS(FTObject)    , POINTER :: objectPtr
+!>
+!>         objectPtr => r                ! r is subclass of FTObject
+!>         CALL list % Add(objectPtr)    ! Pointer is retained by list
+!>         CALL objectPtr % release()    ! If caller relinquishes ownership
+!>
+!>         CALL list % addObjectsFromList(listToAdd)
+!>
+!>##Inserting objects
+!>
+!>         CLASS(FTLinkedList)      , POINTER :: list
+!>         CLASS(FTObject)          , POINTER :: objectPtr, obj
+!>         CLASS(FTLinkedListRecord), POINTER :: record
+!>
+!>         objectPtr => r                                        ! r is subclass of FTObject
+!>         CALL list % insertObjectAfterRecord(objectPtr,record) ! Pointer is retained by list
+!>         CALL objectPtr % release()                            ! If caller reliquishes ownership
+!>
+!>         objectPtr => r                                     ! r is subclass of FTObject
+!>         CALL list % insertObjectAfterObject(objectPtr,obj) ! Pointer is retained by list
+!>         CALL objectPtr % release()                         ! If caller reliquishes ownership
+!>
+!>##Removing objects
+!>
+!>         CLASS(FTLinkedList), POINTER :: list
+!>         CLASS(FTObject)    , POINTER :: objectPtr
+!>         objectPtr => r                 ! r is subclass of FTObject
+!>         CALL list % remove(objectPtr)
+!>
+!>##Getting all objects as an object array
+!>
+!>         CLASS(FTLinkedList)        , POINTER :: list
+!>         CLASS(FTMutableObjectArray), POINTER :: array
+!>         array => list % allObjects() ! Array has refCount = 1
+!>
+!>##Counting the number of objects in the list
+!>
+!>         n = list % count()
+!>
+!>##Destruction
+!>   
+!>         CALL list % release()
+!>         IF ( list % isUnreferenced() )     THEN ! If list is a pointer
+!>            DEALLOCATE(list)
+!>            list => NULL()
+!>         END IF
+!>!
       Module FTLinkedListClass
 !      
       USE FTLinkedListRecordClass
@@ -582,7 +582,7 @@
 !////////////////////////////////////////////////////////////////////////
 !
 !< The destructor must only be called from within the destructors of subclasses
-!! It is automatically called by release().
+!> It is automatically called by release().
 !
       SUBROUTINE destructFTLinkedList(self) 
          IMPLICIT NONE
@@ -786,46 +786,45 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-!!An object for stepping through a linked list.
-!!
-!!Definition (Subclass of FTObject):
-!!   TYPE(FTLinkedListIterator) :: list
-!!
-!!Usage:
-!!
-!!   *Initialization*
-!!
-!!         CLASS(FTLinkedList)        , POINTER :: list
-!!         CLASS(FTLinkedListIterator), POINTER :: iterator
-!!         ALLOCATE(iterator)
-!!         CALL iterator % initWithFTLinkedList(list)
-!!
-!!   *Accessors*
-!!
-!!         ptr => iterator % list()
-!!         ptr => iterator % object()
-!!         ptr => iterator % currentRecord()
-!!
-!!   *Iterating*
-!!
-!!         CLASS(FTObject), POINTER :: objectPtr
-!!         CALL iterator % setToStart
-!!         DO WHILE (.NOT.iterator % isAtEnd())
-!!            objectPtr => iterator % object()        ! if the object is wanted
-!!            recordPtr => iterator % currentRecord() ! if the record is wanted
-!!            
-!!             Do something with object or record
-!!
-!!            CALL iterator % moveToNext()
-!!         END DO
-!!
-!!   *Destruction*
-!!   
-!!         CALL iterator % release()
-!!         IF ( iterator % isUnreferenced() )     THEN ! if it is a pointer
-!!            DEALLOCATE(iterator) 
-!!            iterator => null()
-!!         END IF
+!>An object for stepping through a linked list.
+!>
+!>###Definition (Subclass of FTObject):
+!>   TYPE(FTLinkedListIterator) :: list
+!>
+!>
+!>###Initialization
+!>
+!>         CLASS(FTLinkedList)        , POINTER :: list
+!>         CLASS(FTLinkedListIterator), POINTER :: iterator
+!>         ALLOCATE(iterator)
+!>         CALL iterator % initWithFTLinkedList(list)
+!>
+!>###Accessors
+!>
+!>         ptr => iterator % list()
+!>         ptr => iterator % object()
+!>         ptr => iterator % currentRecord()
+!>
+!>###Iterating
+!>
+!>         CLASS(FTObject), POINTER :: objectPtr
+!>         CALL iterator % setToStart
+!>         DO WHILE (.NOT.iterator % isAtEnd())
+!>            objectPtr => iterator % object()        ! if the object is wanted
+!>            recordPtr => iterator % currentRecord() ! if the record is wanted
+!>            
+!>             Do something with object or record
+!>
+!>            CALL iterator % moveToNext() ! DON'T FORGET THIS!!
+!>         END DO
+!>
+!>###Destruction
+!>   
+!>         CALL iterator % release()
+!>         IF ( iterator % isUnreferenced() )     THEN ! if it is a pointer
+!>            DEALLOCATE(iterator) 
+!>            iterator => null()
+!>         END IF
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

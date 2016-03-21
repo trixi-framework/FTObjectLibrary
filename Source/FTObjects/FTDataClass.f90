@@ -5,13 +5,13 @@
 !      Created: July 11, 2013 2:00 PM 
 !      By: David Kopriva  
 !
-!!      FTData defines a subclass of FTObject to contain immutable
-!!      generic data, including derived types. 
-!!
-!!      The initializer
-!!      copies the data and takes ownership of that copy. FTData
-!!      gives a way to use derived types without having to subclass
-!!      FTObject.
+!>FTData defines a subclass of FTObject to contain immutable
+!>generic data, including derived types. 
+!>
+!>The initializer
+!>copies the data and takes ownership of that copy. FTData
+!>gives a way to use derived types without having to subclass
+!>FTObject.
 !
 !////////////////////////////////////////////////////////////////////////
 !

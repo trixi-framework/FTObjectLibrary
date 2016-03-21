@@ -137,61 +137,60 @@
 !////////////////////////////////////////////////////////////////////////
 !
 !@mark -
-!!
-!!A dictionary is a special case of a hash table that stores key-value pairs. 
-!!
-!!It is an
-!!example of what is called an ``associative container''. In the implementation of FTObjectLibrary,
-!!the value can be any subclass of FTObject and the key is a character variable. The library
-!!includes the base dictionary that can store and retrieve any subclass of FTObject. It also includes a
-!!subclass that is designed to store and retrieve FTValue objects.
-!! 
-!!FTDictionary (Inherits from FTObject)
-!!
-!!# Usage:
-!!
-!!##Initialization
-!!
-!!         CLASS(FTDictionary), POINTER :: dict
-!!         ALLOCATE(dict)
-!!         CALL dict % initWithSize(N) ! N = size of dictionary. Should be power of two
-!!
-!!##Adding entries
-!!
-!!         CLASS(FTDictionary), POINTER :: dict
-!!         CLASS(FTObject)    , POINTER :: obj
-!!         CHARACTER(LEN=N)             :: key
-!!         obj => r                            ! r is subclass of FTObject
-!!         CALL dict % addObjectForKey(obj,key)
-!!
-!!##Accessing entries
-!!
-!!         obj => dict % objectForKey(key)
-!!         CALL cast(obj,v) ! v is the type of object to be extracted
-!!
-!!##Destruction
-!!   
-!!         CALL dict % release()
-!!         IF ( dict % isUnreferenced() )     THEN ! If dict is a pointer
-!!            DEALLOCATE(dict)
-!!            dict => NULL()
-!!         END IF
-!!##Accessing an object
-!!
-!!           TYPE(FTObject) :: obj
-!!           obj => dict % objectForKey(key)
-!!
-!!##Converting a base class pointer to a dictionary
-!!           dict =>  dictionaryFromObject(obj)
-!!
-!!##Getting all of the keys (The target of the pointer must be deallocated by the caller)
-!!           CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
-!!           keys =>  dict % allKeys()
-!!
-!!##Getting all of the objects
-!!           CLASS(FTMutableObjectArray), POINTER :: objectArray
-!!           objectArray =>  dict % allObjects() ! The array is owned by the caller.
-!!
+!>
+!>A dictionary is a special case of a hash table that stores key-value pairs. 
+!>
+!>It is an
+!>example of what is called an ``associative container''. In the implementation of FTObjectLibrary,
+!>the value can be any subclass of FTObject and the key is a character variable. The library
+!>includes the base dictionary that can store and retrieve any subclass of FTObject. It also includes a
+!>subclass that is designed to store and retrieve FTValue objects.
+!> 
+!>FTDictionary (Inherits from FTObject)
+!>
+!>###Initialization
+!>
+!>         CLASS(FTDictionary), POINTER :: dict
+!>         ALLOCATE(dict)
+!>         CALL dict % initWithSize(N) ! N = size of dictionary. Should be power of two
+!>
+!>###Adding entries
+!>
+!>         CLASS(FTDictionary), POINTER :: dict
+!>         CLASS(FTObject)    , POINTER :: obj
+!>         CHARACTER(LEN=N)             :: key
+!>         obj => r                            ! r is subclass of FTObject
+!>         CALL dict % addObjectForKey(obj,key)
+!>
+!>###Accessing entries
+!>
+!>         obj => dict % objectForKey(key)
+!>         CALL cast(obj,v) ! v is the type of object to be extracted
+!>
+!>###Destruction
+!>   
+!>         CALL dict % release()
+!>         IF ( dict % isUnreferenced() )     THEN ! If dict is a pointer
+!>            DEALLOCATE(dict)
+!>            dict => NULL()
+!>         END IF
+!>###Accessing an object
+!>
+!>           TYPE(FTObject) :: obj
+!>           obj => dict % objectForKey(key)
+!>
+!>###Converting a base class pointer to a dictionary
+!>           dict =>  dictionaryFromObject(obj)
+!>
+!>###Getting all of the keys
+!>           CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
+!>           keys =>  dict % allKeys()
+!>(The target of the pointer must be deallocated by the caller)
+!>###Getting all of the objects
+!>           CLASS(FTMutableObjectArray), POINTER :: objectArray
+!>           objectArray =>  dict % allObjects() ! The array is owned by the caller.
+!>(The target of the pointer must be deallocated by the caller)
+!>
       Module FTDictionaryClass
          USE FTKeyObjectPairClass
          USE FTLinkedListClass

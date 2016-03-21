@@ -5,34 +5,35 @@
 !      Created: February 6, 2013 8:54 AM 
 !      By: David Kopriva  
 !
-!!
-!! The FTValueDictionary subclass of FTDictionary adds convenient methods
-!! to easily add fundamental (Real, integer,…) values to a dictionary.
-!!
-!! As a subclass, all other methods are still available.
-!!
-!!#Usage:
-!!#Adding a value
-!!
-!!     CALL dict % addValueForKey(1,"integer")
-!!     CALL dict % addValueForKey(3.14,"real")
-!!     CALL dict % addValueForKey(98.6d0,"double")
-!!     CALL dict % addValueForKey(.true.,"logical")
-!!     CALL dict % addValueForKey("Hello World","string")
-!!#Accessing a value
-!!     i = dict % integerValueForKey("integer")
-!!     r = dict % realValueForKey("real")
-!!     d = dict % doublePrecisionValueForKey("double")
-!!     l = dict % logicalValueForKey("logical")
-!!     s = dict % stringValueForKey("string",15)
-!!#Converting an FTDictionary to an FTValueDictionary
-!!            valueDict => valueDictionaryFromDictionary(dict)
-!!#Converting an FTObject to an FTValueDictionary
-!!            valueDict => valueDictionaryFromObject(obj)
+!>
+!> The FTValueDictionary subclass of FTDictionary adds convenient methods
+!> to easily add fundamental (Real, integer,…) values to a dictionary.
+!>
+!> As a subclass, all other methods are still available.
+!>
+!>#Usage:
+!>#Adding a value
+!>
+!>     CALL dict % addValueForKey(1,"integer")
+!>     CALL dict % addValueForKey(3.14,"real")
+!>     CALL dict % addValueForKey(98.6d0,"double")
+!>     CALL dict % addValueForKey(.true.,"logical")
+!>     CALL dict % addValueForKey("Hello World","string")
+!>#Accessing a value
+!>     i = dict % integerValueForKey("integer")
+!>     r = dict % realValueForKey("real")
+!>     d = dict % doublePrecisionValueForKey("double")
+!>     l = dict % logicalValueForKey("logical")
+!>     s = dict % stringValueForKey("string",15)
+!>#Converting an FTDictionary to an FTValueDictionary
+!>            valueDict => valueDictionaryFromDictionary(dict)
+!>#Converting an FTObject to an FTValueDictionary
+!>            valueDict => valueDictionaryFromObject(obj)
 !
 !////////////////////////////////////////////////////////////////////////
 !
       Module FTValueDictionaryClass
+      USE ISO_FORTRAN_ENV
       USE FTDictionaryClass
       USE FTValueClass
       IMPLICIT NONE
@@ -52,11 +53,13 @@
          PROCEDURE, PRIVATE :: addIntegerValueForKey
          PROCEDURE, PRIVATE :: addStringValueForKey
          PROCEDURE, PRIVATE :: addLogicalValueForKey
+         PROCEDURE, PRIVATE :: addQuadValueForKey
          GENERIC, PUBLIC    :: addValueForKey => addRealValueForKey,  &
                                       addDoublePrecisionValueForKey,  &
                                       addIntegerValueForKey,          &
                                       addStringValueForKey,           &
-                                      addLogicalValueForKey
+                                      addLogicalValueForKey,          &
+                                      addQuadValueForKey
 !
 !        -------
 !        Getters
@@ -64,6 +67,7 @@
 !
          PROCEDURE :: realValueForKey
          PROCEDURE :: doublePrecisionValueForKey
+         PROCEDURE :: quadValueForKey
          PROCEDURE :: integerValueForKey
          PROCEDURE :: stringValueForKey
          PROCEDURE :: logicalValueForKey
@@ -128,6 +132,23 @@
          CALL self % addObjectforKey(obj,key)
          CALL v % release()
       END SUBROUTINE addDoublePrecisionValueForKey
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE addQuadValueForKey(self,r,key)
+         IMPLICIT NONE
+         CLASS(FTValueDictionary) :: self
+         REAL(KIND=SELECTED_REAL_KIND(30))       :: r
+         CHARACTER(LEN=*)         :: key
+         CLASS(FTValue), POINTER  :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
+         
+         ALLOCATE(v)
+         CALL v % initWithValue(r)
+         obj => v
+         CALL self % addObjectforKey(obj,key)
+         CALL v % release()
+      END SUBROUTINE addQuadValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -223,6 +244,26 @@
          END IF 
          
       END FUNCTION doublePrecisionValueForKey    
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      REAL(KIND=SELECTED_REAL_KIND(30)) FUNCTION quadValueForKey(self,key)  
+         IMPLICIT NONE  
+         CLASS(FTValueDictionary) :: self
+         CHARACTER(LEN=*)         :: key
+         
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
+         
+         obj => self % objectForKey(key)
+         IF ( ASSOCIATED(obj) )     THEN
+            v => valueFromObject(obj)
+            quadValueForKey = v % quadValue()
+         ELSE
+            quadValueForKey = HUGE(quadValueForKey)
+         END IF 
+         
+      END FUNCTION quadValueForKey    
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

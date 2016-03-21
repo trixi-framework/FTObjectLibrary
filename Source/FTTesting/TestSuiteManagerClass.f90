@@ -8,56 +8,56 @@
 !> The TestSuiteManager class defines methods to easily
 !> put together and run a suite of unit tests. 
 !>
-!!
-!! The tests are managed by an instance of the
-!!**TestSuiteManager** class. It is designed to be used with minimal fuss. You
-!!
-!!- Initialize the test suite
-!!- Add test subroutines
-!!- Have the testSuiteManager perform the tests
-!!- Finalize the test suite manager
-!!
-!!# Usage: #
-!!
-!!##Definition
-!!
-!!      TYPE(TestSuiteManager) :: testSuite
-!!
-!!##Initialization
-!!         call testSuite % init()
-!!
-!!##Creating a test ###
-!!
-!!   A test is a subroutine with interface
-!!
-!!         ABSTRACT INTERFACE
-!!            SUBROUTINE testSuiteSubroutine()
-!!            END SUBROUTINE testSuiteSubroutine
-!!         END INTERFACE
-!!   
-!!   that (typically) includes unit test calls. You add
-!!   a test suite function by the add subroutine
-!!   
-!!         CALL testSuite % addTestSubroutineWithName(SubroutineName, description)
-!!
-!!   where 
-!!
-!! - SubroutineName = a subroutine with the interface as above, and 
-!! - description = a CHARACTER(LEN=128) character string that names the test
-!!   
-!!##Setting the output location ###
-!!   Set the unit to which the output is written by
-!!
-!!         CALL testSuite % setOutputUnit(iUnit)
-!!
-!!##Running tests ###
-!!   To run the tests call
-!!         CALL testSuite % performTests()
-!!   
-!!##Finalizing the test suite ###
-!!   When done, call
-!!
-!!         CALL testSuite % finalize()
+!>
+!> The tests are managed by an instance of the
+!>**TestSuiteManager** class. It is designed to be used with minimal fuss. You
+!>
+!>- Initialize the test suite
+!>- Add test subroutines
+!>- Have the testSuiteManager perform the tests
+!>- Finalize the test suite manager
+!>
+!># Usage: #
+!>
+!>##Definition
+!>
+!>      TYPE(TestSuiteManager) :: testSuite
+!>
+!>##Initialization
+!>         call testSuite % init()
+!>
+!>##Creating a test ###
+!>
+!>   A test is a subroutine with interface
+!>
+!>         ABSTRACT INTERFACE
+!>            SUBROUTINE testSuiteSubroutine()
+!>            END SUBROUTINE testSuiteSubroutine
+!>         END INTERFACE
+!>   
+!>   that (typically) includes unit test calls. You add
+!>   a test suite function by the add subroutine
+!>   
+!>         CALL testSuite % addTestSubroutineWithName(SubroutineName, description)
+!>
+!>   where 
+!>
+!> - SubroutineName = a subroutine with the interface as above, and 
+!> - description = a CHARACTER(LEN=128) character string that names the test
+!>   
+!>##Setting the output location ###
+!>   Set the unit to which the output is written by
+!>
+!>         CALL testSuite % setOutputUnit(iUnit)
+!>
+!>##Running tests ###
+!>   To run the tests call
+!>         CALL testSuite % performTests()
+!>   
+!>##Finalizing the test suite ###
+!>   When done, call
+!>
+!>         CALL testSuite % finalize()
 !
 !////////////////////////////////////////////////////////////////////////
 !
@@ -257,7 +257,7 @@
             IF ( current % passed )     THEN
                WRITE(self % stdOut,*) current % testName(1:maxMessageLength), " ... Passed"
             ELSE 
-               WRITE(self % stdOut,*) current % testName(1:maxMessageLength), " ... Failed"
+               WRITE(self % stdOut,*) current % testName(1:maxMessageLength), " ... F A I L E D"
             END IF 
             
             current => current % next

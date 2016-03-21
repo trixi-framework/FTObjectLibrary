@@ -7,12 +7,11 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-!! Defines methods that test equality of different kinds of arguments.
-!!
-!! The generic interface for testing equality is
-!!
+!> Defines procedures that test equality of different kinds of arguments.
+!> Procedures defined here are USEd by the FTAssertions Module.
 !
       Module ComparisonsModule
+      USE ISO_FORTRAN_ENV
       IMPLICIT NONE
       PRIVATE
       
@@ -38,6 +37,7 @@
          MODULE PROCEDURE isWithinToleranceTwoDoubleArrays1D
          MODULE PROCEDURE isWithinToleranceTwoDoubleArrays2D
          MODULE PROCEDURE isEqualString
+         MODULE PROCEDURE isWithinToleranceTwoQuad
       END INTERFACE isEqual
       
       TYPE assertInfoArray1D
@@ -173,7 +173,11 @@
          REAL, INTENT(in)  :: x,y,tol
          LOGICAL           :: test
          
-         test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+         IF ( x == 0.0e0 )     THEN
+            test = ABS(x-y) <= tol
+         ELSE
+            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+         END IF 
          
          IF ( test )     THEN
             isWithinToleranceTwoReal = .true.
@@ -288,6 +292,29 @@
          END IF 
          
       END FUNCTION isWithinToleranceTwoDoubleArrays2D
+!@mark -
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      LOGICAL FUNCTION isWithinToleranceTwoQuad(x,y,tol)  
+         IMPLICIT NONE  
+         REAL(KIND=SELECTED_REAL_KIND(30)), INTENT(in)  :: x,y,tol
+         LOGICAL                         :: test
+         
+         IF ( x == 0.0d0 )     THEN
+            test = ABS(x-y) <= tol
+         ELSE
+            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+         END IF 
+         
+         IF ( test )     THEN
+            isWithinToleranceTwoQuad = .true.
+         ELSE
+            isWithinToleranceTwoQuad = .false.
+         END IF 
+         
+      END FUNCTION isWithinToleranceTwoQuad    
+
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 

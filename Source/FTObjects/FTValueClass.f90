@@ -69,6 +69,7 @@
 !
       Module FTValueClass
       USE IEEE_ARITHMETIC
+      USE ISO_FORTRAN_ENV
       USE FTObjectClass
       IMPLICIT NONE
 !
@@ -90,7 +91,7 @@
 !
       INTEGER, PARAMETER, PRIVATE :: FTVALUECLASS_INTEGER = 1, FTVALUECLASS_REAL   = 2, &
                                      FTVALUECLASS_DOUBLE  = 3, FTVALUECLASS_STRING = 4, &
-                                     FTVALUECLASS_LOGICAL = 5
+                                     FTVALUECLASS_LOGICAL = 5, FTVALUECLASS_QUAD   = 6
 !
 !     ---------------------
 !     Class type definition 
@@ -111,12 +112,13 @@
 !
          PROCEDURE, PRIVATE :: initWithReal
          PROCEDURE, PRIVATE :: initWithDoublePrecision
+         PROCEDURE, PRIVATE :: initWithQuad
          PROCEDURE, PRIVATE :: initWithString
          PROCEDURE, PRIVATE :: initWithLogical
          PROCEDURE, PRIVATE :: initWithInteger
          GENERIC  , PUBLIC  :: initWithValue => initWithReal,   initWithDoublePrecision, &
                                                 initWithString, initWithLogical,         &
-                                                initWithInteger
+                                                initWithInteger, initWithQuad
 !
 !        -----------
 !        Destruction
@@ -130,6 +132,7 @@
 !
          PROCEDURE :: realValue
          PROCEDURE :: doublePrecisionValue
+         PROCEDURE :: quadValue
          PROCEDURE :: stringValue
          PROCEDURE :: logicalValue
          PROCEDURE :: integerValue
@@ -211,6 +214,32 @@
          self % valueType = FTVALUECLASS_DOUBLE
          
       END SUBROUTINE initWithDoublePrecision
+!
+!---------------------------------------------------
+!> Public, generic name: initwithValue()
+!>
+!> Initialize the value object with a quad precision
+!> number
+!---------------------------------------------------
+!
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      SUBROUTINE initWithQuad(self,v) 
+         IMPLICIT NONE
+         CLASS(FTValue)                    :: self
+         REAL(KIND=SELECTED_REAL_KIND(30)) :: v
+         INTEGER                           :: dataLength
+         
+         CALL self % FTObject % init()
+         
+         dataLength = SIZE(TRANSFER(v,self % valueStorage))
+         ALLOCATE(self % valueStorage(dataLength))
+         self % valueStorage = TRANSFER(v,self % valueStorage)
+         
+         self % valueType = FTVALUECLASS_QUAD
+         
+      END SUBROUTINE initWithQuad
 !
 !-----------------------------------------------
 !> Public, generic name: initwithValue()
@@ -393,6 +422,50 @@
          END SELECT
          
       END FUNCTION doublePrecisionValue   
+!
+!---------------------------------------------------------------------------
+!> Get the double precision value stored in the object, or convert the value
+!> in the object to a double precision if it is of a different type.
+!---------------------------------------------------------------------------
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      DOUBLE PRECISION FUNCTION quadValue(self)
+         IMPLICIT NONE 
+         CLASS(FTValue)  :: self
+         INTEGER         :: iErr
+         
+         REAL                                  :: r
+         INTEGER                               :: i
+         LOGICAL                               :: l
+         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: s, tmpString
+         
+         SELECT CASE (self % valueType)
+            CASE (FTVALUECLASS_INTEGER)
+               i                    = TRANSFER(self % valueStorage, i)
+               quadValue = REAL(A = i, KIND = SELECTED_REAL_KIND(30))
+            CASE (FTVALUECLASS_REAL)
+               r                    = TRANSFER(self % valueStorage, r)
+               quadValue = REAL(A = r, KIND = SELECTED_REAL_KIND(30))
+            CASE (FTVALUECLASS_DOUBLE)
+                quadValue = TRANSFER(self % valueStorage, quadValue)
+            CASE (FTVALUECLASS_STRING)
+               tmpString = TRANSFER(self % valueStorage, tmpString)
+               s         = tmpString(1:SIZE(self % valueStorage))
+               READ(s,*,IOSTAT = iErr) quadValue
+               IF (iErr /= 0)     THEN
+                  quadValue = IEEE_VALUE(quadValue,IEEE_QUIET_NAN)
+               END IF
+            CASE (FTVALUECLASS_LOGICAL)
+               l = TRANSFER(self % valueStorage, l)
+               IF ( l )     THEN
+                  quadValue = 1.0
+               ELSE
+                  quadValue = 0.0
+               END IF
+         END SELECT
+         
+      END FUNCTION quadValue   
 !
 !---------------------------------------------------------------------------
 !> Get the integer value stored in the object, or convert the value

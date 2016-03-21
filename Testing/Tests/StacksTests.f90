@@ -86,7 +86,7 @@
 !        Finish up with the stack
 !        ------------------------
 !
-         CALL stack%release
+         CALL stack%release()
          IF ( stack%isUnreferenced() )     THEN
             DEALLOCATE(stack) 
             stack => NULL()

@@ -60,7 +60,7 @@
          DO WHILE( .NOT.iterator % isAtEnd() )
          
             obj => iterator % object()
-            v => valueFromObject(obj)
+            v   => valueFromObject(obj)
             PRINT *, v % integerValue()
             
             IF ( v % integerValue() == 5 ) objToDelete => obj
@@ -100,10 +100,10 @@
 !        --------
 !
          CALL iterator % release()
-         IF(iterator % isUnreferenced()) DEALLOCATE(iterator)
+         IF(iterator % isUnreferenced()) DEALLOCATE(iterator) !It will be. No additional references
          
          CALL list % release()
-         IF(list % isUnreferenced()) DEALLOCATE(list)
+         IF(list % isUnreferenced()) DEALLOCATE(list) !It will be. No additional references
          
       END SUBROUTINE demonstrateLinkedList
    END MODULE linkedListDemonstrationModule
