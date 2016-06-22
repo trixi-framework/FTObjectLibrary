@@ -7,6 +7,9 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+!>The FTKeyObjectPairClass is for use by the FTDictionary Class and will
+!>generally not be interacted with by the user.
+!>
       Module FTKeyObjectPairClass
          USE FTObjectClass
          IMPLICIT NONE  
@@ -219,6 +222,7 @@
             PROCEDURE :: printDescription => printFTDictionaryDescription
             PROCEDURE :: objectForKey
             PROCEDURE :: containsKey
+            PROCEDURE :: className => dictionaryClassName
             PROCEDURE :: COUNT
          END TYPE FTDictionary
          
@@ -599,6 +603,25 @@
          END SELECT
          
       END FUNCTION dictionaryFromObject
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTDictionary")
+!>
+      FUNCTION dictionaryClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTDictionary)                        :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTDictionary"
+ 
+      END FUNCTION dictionaryClassName
 
       END Module FTDictionaryClass    
       

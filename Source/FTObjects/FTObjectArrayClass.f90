@@ -84,6 +84,7 @@
          PROCEDURE, PUBLIC :: objectAtIndex
          
          PROCEDURE, PUBLIC :: printDescription => printArray
+         PROCEDURE, PUBLIC :: className        => arrayClassName
 !         
          PROCEDURE, PUBLIC :: setChunkSize
          PROCEDURE, PUBLIC :: chunkSize
@@ -475,6 +476,25 @@
          END SELECT
          
       END SUBROUTINE castToMutableObjectArray
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTMutableObjectArray")
+!>
+      FUNCTION arrayClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTMutableObjectArray)                :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTMutableObjectArray"
+ 
+      END FUNCTION arrayClassName
 
       
       END Module  FTMutableObjectArrayClass    

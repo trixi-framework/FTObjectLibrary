@@ -52,6 +52,7 @@
 !>
 !>##Running tests ###
 !>   To run the tests call
+!>
 !>         CALL testSuite % performTests()
 !>   
 !>##Finalizing the test suite ###

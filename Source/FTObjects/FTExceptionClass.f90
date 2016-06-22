@@ -107,6 +107,7 @@
          PROCEDURE :: exceptionName
          PROCEDURE :: severity
          PROCEDURE :: printDescription => printFTExceptionDescription
+         PROCEDURE :: className => exceptionClassName
       END TYPE FTException
       
       PRIVATE :: releaseInfoDictionary
@@ -124,10 +125,10 @@
       SUBROUTINE initWarningException(self,msg)  
 !
 ! ---------------------------------------------
-!!A convenience initializer for a warning error 
-!!that includes the key "message" in the
-!!infoDictionary. Use this initializer as an 
-!!example of how to write one's own exception.
+!>A convenience initializer for a warning error 
+!>that includes the key "message" in the
+!>infoDictionary. Use this initializer as an 
+!>example of how to write one's own exception.
 ! --------------------------------------------
 !
          IMPLICIT NONE
@@ -155,10 +156,10 @@
       SUBROUTINE initFatalException(self,msg)  
 !
 ! ---------------------------------------------
-!!A convenience initializer for a fatal error 
-!!that includes the key "message" in the
-!!infoDictionary.Use this initializer as an 
-!!example of how to write one's own exception.
+!>A convenience initializer for a fatal error 
+!>that includes the key "message" in the
+!>infoDictionary.Use this initializer as an 
+!>example of how to write one's own exception.
 ! --------------------------------------------
 !
          IMPLICIT NONE
@@ -186,7 +187,7 @@
       SUBROUTINE initFTException(self,severity,exceptionName,infoDictionary)
 !
 ! -----------------------------------
-!!The main initializer for the class 
+!>The main initializer for the class 
 ! -----------------------------------
 !
          IMPLICIT NONE
@@ -211,14 +212,14 @@
       SUBROUTINE initAssertionFailureException(self,msg,expectedValueObject,observedValueObject,level)
 !
 ! ------------------------------------------------
-!!A convenience initializer for an assertion error 
-!!that includes the keys:
-!!
-!!-"message"
-!!-"expectedValue"
-!!-"observedValue"
-!!
-!!in the infoDictionary
+!>A convenience initializer for an assertion error 
+!>that includes the keys:
+!>
+!>-"message"
+!>-"expectedValue"
+!>-"observedValue"
+!>
+!>in the infoDictionary
 !
 ! ------------------------------------------------
 !
@@ -254,8 +255,8 @@
       SUBROUTINE destructException(self)
 !
 ! --------------------------------------------------------------
-!!The destructor for the class. Do not call this direectly. Call
-!!the release() procedure instead
+!>The destructor for the class. Do not call this direectly. Call
+!>the release() procedure instead
 ! --------------------------------------------------------------
 !
 
@@ -273,7 +274,7 @@
       SUBROUTINE setInfoDictionary( self, dict )  
 !
 ! ---------------------------------------------
-!!Sets and retains the exception infoDictionary
+!>Sets and retains the exception infoDictionary
 ! ---------------------------------------------
 !
          IMPLICIT NONE
@@ -290,9 +291,9 @@
      FUNCTION infoDictionary(self)
 !
 ! ---------------------------------------------
-!!Returns the exception's infoDictionary. Does
-!!not transfer ownership/reference count is 
-!!unchanged.
+!>Returns the exception's infoDictionary. Does
+!>not transfer ownership/reference count is 
+!>unchanged.
 ! ---------------------------------------------
 !
         IMPLICIT NONE  
@@ -308,8 +309,8 @@
      FUNCTION exceptionName(self)  
 !
 ! ---------------------------------------------
-!!Returns the string representing the name set
-!!for the exception.
+!>Returns the string representing the name set
+!>for the exception.
 ! ---------------------------------------------
 !
         IMPLICIT NONE  
@@ -323,7 +324,7 @@
      INTEGER FUNCTION severity(self)  
 !
 ! ---------------------------------------------
-!!Returns the severity level of the exception.
+!>Returns the severity level of the exception.
 ! ---------------------------------------------
 !
         IMPLICIT NONE  
@@ -336,8 +337,8 @@
      SUBROUTINE releaseInfoDictionary(self)  
 !
 ! ---------------------------------------------
-!!Called to release the infoDicitonary and the
-!!objects it owns. InfoDicitonary is set to NULL.
+!>Called to release the infoDicitonary and the
+!>objects it owns. InfoDicitonary is set to NULL.
 ! ---------------------------------------------
 !
          IMPLICIT NONE  
@@ -357,8 +358,8 @@
      SUBROUTINE printFTExceptionDescription(self,iUnit)  
 !
 ! ----------------------------------------------
-!!A basic printing of the exception and the info
-!!held in the infoDicitonary.
+!>A basic printing of the exception and the info
+!>held in the infoDicitonary.
 ! ----------------------------------------------
 !
         IMPLICIT NONE  
@@ -367,7 +368,7 @@
         
         CLASS(FTDictionary), POINTER :: dict => NULL()
         
-        WRITE(iUnit,*) "-------------"
+!        WRITE(iUnit,*) "-------------"
         WRITE(iUnit,*) " "
         WRITE(iUnit,*) "Exception Named: ", TRIM(self  %  exceptionName())
         dict => self % infoDictionary()
@@ -380,7 +381,7 @@
       SUBROUTINE castToException(obj,cast) 
 !
 ! -----------------------------------------------------
-!!Cast the base class FTObject to the FTException class
+!>Cast the base class FTObject to the FTException class
 ! -----------------------------------------------------
 !
          IMPLICIT NONE  
@@ -418,6 +419,25 @@
          END SELECT
          
       END FUNCTION exceptionFromObject
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTException")
+!>
+      FUNCTION exceptionClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTException)                         :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTException"
+ 
+      END FUNCTION exceptionClassName
 
       END Module FTExceptionClass
 !
@@ -426,48 +446,49 @@
 !@mark -
      
       Module SharedExceptionManagerModule
-!
-!!All exceptions are posted to the SharedExceptionManagerModule. To use exceptions,
-!!first initialize it
-!!        CALL initializeFTExceptions
-!!From that point on, all exceptions will be posted there. Note that the
-!!FTTestSuiteManager class will initialize the SharedExceptionManagerModule,
-!!so there is no need to do the initialization separately if the FTTestSuiteManager
-!!class has been initialized.
-!!
-!!The exceptions are posted to a stack. To access the exceptions they will be
-!!peeked or popped from that stack.
-!!
-!!###Initialization
-!!        CALL initializeFTExceptions
-!!###Finalization
-!!        CALL destructFTExceptions
-!!###Throwing an exception
-!!         CALL throw(exception)
-!!###Getting the number of exceptions
-!!         n = errorCount()
-!!###Catching all exceptions
-!!         IF(catch())     THEN
-!!            Do something with the exceptions
-!!         END IF
-!!###Getting the named exception caught
-!!         CLASS(FTException), POINTER :: e
-!!         e => errorObject()
-!!###Popping the top exception
-!!         e => popLastException()
-!!###Peeking the top exception
-!!         e => peekLastException()
-!!###Catching an exception with a given name
-!!         IF(catch(name))   THEN
-!!            !Do something with the exception, e.g.
-!!            e              => errorObject()
-!!            d              => e % infoDictionary()
-!!            userDictionary => valueDictionaryFromDictionary(dict = d)
-!!            msg = userDictionary % stringValueForKey("message",FTDICT_KWD_STRING_LENGTH)
-!!         END IF
-!!###Printing all exceptions
-!!      call printAllExceptions
-!!         
+!>
+!>All exceptions are posted to the SharedExceptionManagerModule. 
+!>
+!>To use exceptions,first initialize it
+!>        CALL initializeFTExceptions
+!>From that point on, all exceptions will be posted there. Note that the
+!>FTTestSuiteManager class will initialize the SharedExceptionManagerModule,
+!>so there is no need to do the initialization separately if the FTTestSuiteManager
+!>class has been initialized.
+!>
+!>The exceptions are posted to a stack. To access the exceptions they will be
+!>peeked or popped from that stack.
+!>
+!>###Initialization
+!>        CALL initializeFTExceptions
+!>###Finalization
+!>        CALL destructFTExceptions
+!>###Throwing an exception
+!>         CALL throw(exception)
+!>###Getting the number of exceptions
+!>         n = errorCount()
+!>###Catching all exceptions
+!>         IF(catch())     THEN
+!>            Do something with the exceptions
+!>         END IF
+!>###Getting the named exception caught
+!>         CLASS(FTException), POINTER :: e
+!>         e => errorObject()
+!>###Popping the top exception
+!>         e => popLastException()
+!>###Peeking the top exception
+!>         e => peekLastException()
+!>###Catching an exception with a given name
+!>         IF(catch(name))   THEN
+!>            !Do something with the exception, e.g.
+!>            e              => errorObject()
+!>            d              => e % infoDictionary()
+!>            userDictionary => valueDictionaryFromDictionary(dict = d)
+!>            msg = userDictionary % stringValueForKey("message",FTDICT_KWD_STRING_LENGTH)
+!>         END IF
+!>###Printing all exceptions
+!>      call printAllExceptions
+!>         
       USE FTExceptionClass
       IMPLICIT NONE  
 !
@@ -494,8 +515,8 @@
 ! 
       SUBROUTINE initializeFTExceptions
 !
-!!Called at start of execution. Will be called automatically if an 
-!!exception is thrown.
+!>Called at start of execution. Will be called automatically if an 
+!>exception is thrown.
 !
          IMPLICIT NONE
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
@@ -509,8 +530,8 @@
 ! 
       SUBROUTINE destructFTExceptions
 !
-!!Called at the end of execution. This procedure will announce if there
-!!are uncaught exceptions raised and print them.
+!>Called at the end of execution. This procedure will announce if there
+!>are uncaught exceptions raised and print them.
 !
          IMPLICIT NONE
 !  
@@ -529,13 +550,20 @@
            END IF
            PRINT *,"   ***********************************"
            PRINT *
-           CALL printAllExceptions
+           !DEBUG CALL printAllExceptions
+           CALL errorStack % printDescription(iUnit = 6)!DEBUG
          END IF 
 !
 !        -----------------------
 !        Destruct the exceptions
 !        -----------------------
 !
+         CALL errorStack % release()
+
+         IF ( errorStack % isUnreferenced() )     THEN
+            DEALLOCATE(errorStack)
+         END IF 
+         
          IF ( ASSOCIATED(currentError_) )     THEN
             CALL currentError_ % release()
             IF ( currentError_ % isUnreferenced() )     THEN
@@ -543,19 +571,14 @@
                currentError_ => NULL()
             END IF  
          END IF 
-         
-         CALL errorStack % release()
-
-         IF ( errorStack % isUnreferenced() )     THEN
-            DEALLOCATE(errorStack)
-         END IF 
+        
       END SUBROUTINE destructFTExceptions
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
       SUBROUTINE throw(exceptionToThrow)
 !
-!!Throws the exception: exceptionToThrow
+!>Throws the exception: exceptionToThrow
 !
          IMPLICIT NONE  
          CLASS(FTException), POINTER :: exceptionToThrow
@@ -575,13 +598,14 @@
       LOGICAL FUNCTION catchAll()
 !
 ! -------------------------------------------
-!!Returns .TRUE. if there are any exceptions.
+!>Returns .TRUE. if there are any exceptions.
 ! -------------------------------------------
 !
          IMPLICIT NONE
          
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
-            CALL initializeFTExceptions 
+            catchAll = .FALSE.
+            RETURN 
          END IF 
          
          catchAll = .false.
@@ -604,8 +628,8 @@
       INTEGER FUNCTION errorCount()
 !
 ! ------------------------------------------
-!!Returns the number of exceptions that have 
-!!been thrown.
+!>Returns the number of exceptions that have 
+!>been thrown.
 ! ------------------------------------------
 !
          IMPLICIT NONE
@@ -622,11 +646,11 @@
       LOGICAL FUNCTION catchErrorWithName(exceptionName)
 !
 ! --------------------------------------------
-!!Returns .TRUE. if there is an exception with
-!!the requested name. If so, it pops the 
-!!exception and saves the pointer to it so that
-!!it can be accessed with the currentError()
-!!function.
+!>Returns .TRUE. if there is an exception with
+!>the requested name. If so, it pops the 
+!>exception and saves the pointer to it so that
+!>it can be accessed with the currentError()
+!>function.
 ! --------------------------------------------
 !
      
@@ -665,7 +689,7 @@
            CALL iterator % moveToNext()
          END DO
          
-         CALL iterator % destruct
+         CALL iterator % destruct()
          
       END FUNCTION catchErrorWithName
 !
@@ -674,7 +698,7 @@
       FUNCTION errorObject()
 !
 ! -------------------------------------------
-!!Returns a pointer to the current exception.
+!>Returns a pointer to the current exception.
 ! -------------------------------------------
 !
          IMPLICIT NONE
@@ -720,8 +744,8 @@
       FUNCTION popLastException()
 !
 ! ----------------------------------------------------------------
-!!Get the last exception posted. This is popped from the stack.
-!!The caller is responsible for releasing the object after popping
+!>Get the last exception posted. This is popped from the stack.
+!>The caller is responsible for releasing the object after popping
 ! ----------------------------------------------------------------
 !
          IMPLICIT NONE  
@@ -744,8 +768,8 @@
       FUNCTION peekLastException()  
 !
 ! ----------------------------------------------------------------
-!!Get the last exception posted. This is NOT popped from the stack.
-!!The caller does not own the object.
+!>Get the last exception posted. This is NOT popped from the stack.
+!>The caller does not own the object.
 ! ----------------------------------------------------------------
 !
          IMPLICIT NONE  
@@ -786,7 +810,7 @@
             CALL iterator % moveToNext()
          END DO
          
-         CALL iterator % release
+         CALL iterator % release()
          IF ( iterator % isUnreferenced() )     THEN
             !iterator is not a pointer
          END IF
