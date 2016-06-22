@@ -7,6 +7,8 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+!>A module that simply USEs the entire library modules.
+!>
       Module FTObjectLibrary
       
          USE FTAssertions
@@ -15,7 +17,7 @@
          USE TestSuiteManagerClass
          USE FTObjectClass
          USE FTDictionaryClass
-         USE FTHashTableClass
+         USE FTSparseMatrixClass
          USE FTMutableObjectArrayClass
          USE FTStackClass
          USE FTLinkedListClass

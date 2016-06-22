@@ -64,6 +64,7 @@
 !
          PROCEDURE :: init             => initFTStack
          PROCEDURE :: printDescription => printStackDescription
+         PROCEDURE :: className        => stackClassName
          PROCEDURE :: push
          PROCEDURE :: pop
          PROCEDURE :: peek
@@ -228,5 +229,24 @@
          CALL self % FTLinkedList % printDescription(iUnit = iUnit)
          
       END SUBROUTINE printStackDescription
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTStack")
+!>
+      FUNCTION stackClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTStack)                             :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTStack"
+ 
+      END FUNCTION stackClassName
     
       END Module FTStackClass    

@@ -8,6 +8,9 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+!>FTSparseMatrixData is used by the FTSparseMatrix Class. Users will 
+!>usually not interact with or use this class directly.
+!>
       Module FTSparseMatrixData 
       USE FTObjectClass
       IMPLICIT NONE
@@ -126,7 +129,7 @@
 !@mark -
 !>The sparse matrix stores an FTObject pointer associated
 !>with two keys (i,j) as a hash table.
-!
+!>
 !>Hash tables are data structures designed to enable storage and fast
 !>retrieval of key-value pairs. An example of a key-value pair is
 !>a variable name (``gamma'') and its associated value (``1.4'').
@@ -278,7 +281,7 @@
 !        Arguments
 !        ---------
 !
-         CLASS(FTSparseMatrix)       :: self
+         CLASS(FTSparseMatrix)    :: self
          CLASS(FTObject), POINTER :: obj
 !         INTEGER                  :: key1,key2
 !

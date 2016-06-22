@@ -149,6 +149,7 @@
 !
          PROCEDURE :: description      => FTValueDescription
          PROCEDURE :: printDescription => printValueDescription
+         PROCEDURE :: className        => valueClassName
 !
 !        ----------
 !        Comparison
@@ -707,6 +708,25 @@
          END SELECT
          
       END FUNCTION valueFromObject
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTValue")
+!>
+      FUNCTION valueClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTValue)                             :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTValue"
+ 
+      END FUNCTION valueClassName
 !!
 !!//////////////////////////////////////////////////////////////////////// 
 !! 

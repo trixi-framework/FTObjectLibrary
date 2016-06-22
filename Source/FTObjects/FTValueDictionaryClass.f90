@@ -75,7 +75,12 @@
          PROCEDURE :: integerValueForKey
          PROCEDURE :: stringValueForKey
          PROCEDURE :: logicalValueForKey
-         
+!
+!        -------------
+!        Introspection
+!        -------------
+!
+         PROCEDURE :: className => valueDictionaryClassName         
       END TYPE FTValueDictionary
 !
          
@@ -403,6 +408,25 @@
          END SELECT
          
       END FUNCTION valueDictionaryFromObject
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTValueDictionary")
+!>
+      FUNCTION valueDictionaryClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTValueDictionary)                   :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTValueDictionary"
+ 
+      END FUNCTION valueDictionaryClassName
  
       
       END Module FTValueDictionaryClass    

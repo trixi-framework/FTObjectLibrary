@@ -40,6 +40,7 @@
 !         
          PROCEDURE, PUBLIC :: initWithDataOfType
          PROCEDURE, PUBLIC :: storedData
+         PROCEDURE, PUBLIC :: className => dataClassName
       END TYPE FTData
       
       CONTAINS 
@@ -81,6 +82,25 @@
          CHARACTER(LEN=DATA_CLASS_TYPE_LENGTH) :: t
          t = self % dataType
       END FUNCTION dataType
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTData")
+!>
+      FUNCTION dataClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTData)                              :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTData"
+ 
+      END FUNCTION dataClassName
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

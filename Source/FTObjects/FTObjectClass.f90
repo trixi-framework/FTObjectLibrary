@@ -162,7 +162,8 @@
 !     ---------
 !
       ! Until all compilers can do allocatables
-      INTEGER, PARAMETER :: DESCRIPTION_CHARACTER_LENGTH = 1024 
+      INTEGER, PARAMETER :: DESCRIPTION_CHARACTER_LENGTH = 1024
+      INTEGER, PARAMETER :: CLASS_NAME_CHARACTER_LENGTH  = 32
 !
 !     --------------------------
 !     Derived type for the class
@@ -179,6 +180,7 @@
          PROCEDURE                  :: destruct         => destructFTObject
          PROCEDURE                  :: description      => FTObjectDescription
          PROCEDURE                  :: printDescription => printFTObjectDescription
+         PROCEDURE                  :: className
          
          PROCEDURE, NON_OVERRIDABLE :: copy    => copyFTObject
          PROCEDURE, NON_OVERRIDABLE :: retain  => retainFTObject
@@ -270,6 +272,27 @@
          END IF 
           
       END SUBROUTINE releaseFTObject
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTObject")
+!>
+!      -----------------------------------------------------------------
+!
+      FUNCTION className(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTObject)                            :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTObject"
+ 
+      END FUNCTION className
 !
 !////////////////////////////////////////////////////////////////////////
 !

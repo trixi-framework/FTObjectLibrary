@@ -37,6 +37,7 @@
          PROCEDURE :: initWithObject
          PROCEDURE :: destruct         => destructFTLinkedListRecord
          PROCEDURE :: printDescription => printFTLinkedRecordDescription
+         PROCEDURE :: className        => llRecordClassName
          
       END TYPE FTLinkedListRecord
 !
@@ -104,13 +105,31 @@
          IMPLICIT NONE  
          CLASS(FTLinkedListRecord) :: self
          INTEGER                   :: iUnit
-         
-         WRITE(iUnit,*) "Linked list record description:"
-         IF ( ASSOCIATED(POINTER = self % recordObject) )     THEN
+
+         IF ( ASSOCIATED(self % recordObject) )     THEN
             CALL self % recordObject % printDescription(iUnit)
          END IF 
          
       END SUBROUTINE printFTLinkedRecordDescription
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTLinkedListRecord")
+!>
+      FUNCTION llRecordClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTLinkedListRecord)                  :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTLinkedListRecord"
+ 
+      END FUNCTION llRecordClassName
 
       
       END MODULE FTLinkedListRecordClass  
@@ -217,6 +236,7 @@
          PROCEDURE :: count            => numberOfRecords
          PROCEDURE :: description      => FTLinkedListDescription
          PROCEDURE :: printDescription => printFTLinkedListDescription
+         PROCEDURE :: className        => linkedListClassName
          PROCEDURE :: allObjects       => allLinkedListObjects
          PROCEDURE :: removeAllObjects => removeAllLinkedListObjects
          PROCEDURE :: addObjectsFromList
@@ -641,7 +661,7 @@
          listRecord => self % head
 
          DO WHILE (ASSOCIATED(listRecord))
-            CALL listRecord % recordObject % printDescription(iUnit)
+            CALL listRecord % printDescription(iUnit)
             listRecord => listRecord % next
          END DO
          
@@ -733,6 +753,25 @@
          END DO
          
       END FUNCTION allLinkedListObjects
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTLinkedList")
+!>
+      FUNCTION linkedListClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTLinkedList)                        :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTLinkedList"
+ 
+      END FUNCTION linkedListClassName
 !@mark -
 ! type conversions
 !
@@ -851,6 +890,7 @@
          PROCEDURE :: object         => FTLinkedListObject
          PROCEDURE :: currentRecord  => FTLinkedListCurrentRecord
          PROCEDURE :: linkedList     => returnLinkedList
+         PROCEDURE :: className      => linkedListIteratorClassName
          PROCEDURE :: setLinkedList
          PROCEDURE :: setToStart
          PROCEDURE :: moveToNext
@@ -1056,5 +1096,24 @@
          self % current => n
          
       END SUBROUTINE removeCurrentRecord
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!      -----------------------------------------------------------------
+!> Class name returns a string with the name of the type of the object
+!>
+!>  ### Usage:
+!>
+!>        PRINT *,  obj % className()
+!>        if( obj % className = "FTLinkedListIterator")
+!>
+      FUNCTION linkedListIteratorClassName(self)  RESULT(s)
+         IMPLICIT NONE  
+         CLASS(FTLinkedListIterator)                :: self
+         CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
+         
+         s = "FTLinkedListIterator"
+ 
+      END FUNCTION linkedListIteratorClassName
       
       END MODULE FTLinkedListIteratorClass   
