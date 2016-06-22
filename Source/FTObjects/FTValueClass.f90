@@ -70,6 +70,7 @@
       Module FTValueClass
       USE IEEE_ARITHMETIC
       USE ISO_FORTRAN_ENV
+      USE Constants
       USE FTObjectClass
       IMPLICIT NONE
 !
@@ -112,13 +113,16 @@
 !
          PROCEDURE, PRIVATE :: initWithReal
          PROCEDURE, PRIVATE :: initWithDoublePrecision
-         PROCEDURE, PRIVATE :: initWithQuad
          PROCEDURE, PRIVATE :: initWithString
          PROCEDURE, PRIVATE :: initWithLogical
          PROCEDURE, PRIVATE :: initWithInteger
          GENERIC  , PUBLIC  :: initWithValue => initWithReal,   initWithDoublePrecision, &
                                                 initWithString, initWithLogical,         &
-                                                initWithInteger, initWithQuad
+                                                initWithInteger
+#ifdef _has_Quad
+         PROCEDURE, PRIVATE :: initWithQuad
+         GENERIC  , PUBLIC  :: initWithValue => initWithQuad
+#endif
 !
 !        -----------
 !        Destruction
@@ -132,7 +136,9 @@
 !
          PROCEDURE :: realValue
          PROCEDURE :: doublePrecisionValue
+#ifdef _has_Quad
          PROCEDURE :: quadValue
+#endif
          PROCEDURE :: stringValue
          PROCEDURE :: logicalValue
          PROCEDURE :: integerValue
@@ -225,10 +231,12 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+#ifdef _has_Quad
+
       SUBROUTINE initWithQuad(self,v) 
          IMPLICIT NONE
          CLASS(FTValue)                    :: self
-         REAL(KIND=SELECTED_REAL_KIND(30)) :: v
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)) :: v
          INTEGER                           :: dataLength
          
          CALL self % FTObject % init()
@@ -240,6 +248,7 @@
          self % valueType = FTVALUECLASS_QUAD
          
       END SUBROUTINE initWithQuad
+#endif
 !
 !-----------------------------------------------
 !> Public, generic name: initwithValue()
@@ -430,6 +439,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+#ifdef _has_Quad
       DOUBLE PRECISION FUNCTION quadValue(self)
          IMPLICIT NONE 
          CLASS(FTValue)  :: self
@@ -443,10 +453,10 @@
          SELECT CASE (self % valueType)
             CASE (FTVALUECLASS_INTEGER)
                i                    = TRANSFER(self % valueStorage, i)
-               quadValue = REAL(A = i, KIND = SELECTED_REAL_KIND(30))
+               quadValue = REAL(A = i, KIND = SELECTED_REAL_KIND(QUAD_DIGITS))
             CASE (FTVALUECLASS_REAL)
                r                    = TRANSFER(self % valueStorage, r)
-               quadValue = REAL(A = r, KIND = SELECTED_REAL_KIND(30))
+               quadValue = REAL(A = r, KIND = SELECTED_REAL_KIND(QUAD_DIGITS))
             CASE (FTVALUECLASS_DOUBLE)
                 quadValue = TRANSFER(self % valueStorage, quadValue)
             CASE (FTVALUECLASS_STRING)
@@ -465,7 +475,8 @@
                END IF
          END SELECT
          
-      END FUNCTION quadValue   
+      END FUNCTION quadValue 
+#endif  
 !
 !---------------------------------------------------------------------------
 !> Get the integer value stored in the object, or convert the value

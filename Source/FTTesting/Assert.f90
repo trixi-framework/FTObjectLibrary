@@ -41,6 +41,7 @@
 !
       Module FTAssertions
       USE ComparisonsModule
+      USE Constants
       USE ISO_FORTRAN_ENV
       IMPLICIT NONE
       PRIVATE
@@ -83,12 +84,17 @@
          MODULE PROCEDURE assertWithinToleranceTwoDouble
          MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays1D
          MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
+#ifdef _has_Quad
          MODULE PROCEDURE assertWithinToleranceTwoQuad
+#endif
          MODULE PROCEDURE assertEqualTwoLogicals
          MODULE PROCEDURE assertEqualString
       END INTERFACE FTAssertEqual
       
-      PUBLIC :: FTAssertEqual,assertWithinToleranceTwoQuad
+      PUBLIC :: FTAssertEqual
+#ifdef _has_Quad
+      PUBLIC :: assertWithinToleranceTwoQuad
+#endif
       PUBLIC :: initializeSharedAssertionsManager, finalizeSharedAssertionsManager
       PUBLIC :: FTAssert, sharedAssertionsManager, numberOfAssertionFailures, numberOfAssertions
       PUBLIC :: detachSharedAssertionsManager
@@ -513,12 +519,13 @@
          
       END SUBROUTINE assertWithinToleranceTwoDoubleArrays2D
 !@mark -
+#ifdef _has_Quad
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
       SUBROUTINE assertWithinToleranceTwoQuad(expectedValue,actualValue,tol,msg)  
          IMPLICIT NONE  
-         REAL(KIND=SELECTED_REAL_KIND(30)), INTENT(in) :: expectedValue,actualValue,tol
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in) :: expectedValue,actualValue,tol
          CHARACTER(LEN=*)  , OPTIONAL   :: msg
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expectedS,actualS
@@ -532,13 +539,14 @@
             WRITE(expectedS,*) expectedValue
             WRITE(actualS,*) actualValue
             IF ( PRESENT(msg) )     THEN
-               CALL addAssertionFailureForParameters(msg,expectedS,actualS,"Real equality failed: ")
+               CALL addAssertionFailureForParameters(msg,expectedS,actualS,"Quad equality failed: ")
             ELSE 
-               CALL addAssertionFailureForParameters("",expectedS,actualS,"Real equality failed: ")
+               CALL addAssertionFailureForParameters("",expectedS,actualS,"Quad equality failed: ")
             END IF 
          END IF 
          
       END SUBROUTINE assertWithinToleranceTwoQuad    
+#endif
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 

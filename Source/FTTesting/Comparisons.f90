@@ -12,6 +12,7 @@
 !
       Module ComparisonsModule
       USE ISO_FORTRAN_ENV
+      USE Constants
       IMPLICIT NONE
       PRIVATE
       
@@ -37,7 +38,9 @@
          MODULE PROCEDURE isWithinToleranceTwoDoubleArrays1D
          MODULE PROCEDURE isWithinToleranceTwoDoubleArrays2D
          MODULE PROCEDURE isEqualString
+#ifdef _has_Quad
          MODULE PROCEDURE isWithinToleranceTwoQuad
+#endif
       END INTERFACE isEqual
       
       TYPE assertInfoArray1D
@@ -293,12 +296,13 @@
          
       END FUNCTION isWithinToleranceTwoDoubleArrays2D
 !@mark -
+#ifdef _has_Quad
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoQuad(x,y,tol)  
          IMPLICIT NONE  
-         REAL(KIND=SELECTED_REAL_KIND(30)), INTENT(in)  :: x,y,tol
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in)  :: x,y,tol
          LOGICAL                         :: test
          
          IF ( x == 0.0d0 )     THEN
@@ -314,7 +318,7 @@
          END IF 
          
       END FUNCTION isWithinToleranceTwoQuad    
-
+#endif
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 

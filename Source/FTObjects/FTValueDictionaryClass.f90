@@ -53,13 +53,15 @@
          PROCEDURE, PRIVATE :: addIntegerValueForKey
          PROCEDURE, PRIVATE :: addStringValueForKey
          PROCEDURE, PRIVATE :: addLogicalValueForKey
-         PROCEDURE, PRIVATE :: addQuadValueForKey
          GENERIC, PUBLIC    :: addValueForKey => addRealValueForKey,  &
                                       addDoublePrecisionValueForKey,  &
                                       addIntegerValueForKey,          &
                                       addStringValueForKey,           &
-                                      addLogicalValueForKey,          &
-                                      addQuadValueForKey
+                                      addLogicalValueForKey
+#ifdef _has_Quad
+         PROCEDURE, PRIVATE :: addQuadValueForKey
+         GENERIC, PUBLIC    :: addValueForKey => addQuadValueForKey
+#endif
 !
 !        -------
 !        Getters
@@ -67,7 +69,9 @@
 !
          PROCEDURE :: realValueForKey
          PROCEDURE :: doublePrecisionValueForKey
+#ifdef _has_Quad
          PROCEDURE :: quadValueForKey
+#endif
          PROCEDURE :: integerValueForKey
          PROCEDURE :: stringValueForKey
          PROCEDURE :: logicalValueForKey
@@ -135,10 +139,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+#ifdef _has_Quad
       SUBROUTINE addQuadValueForKey(self,r,key)
          IMPLICIT NONE
          CLASS(FTValueDictionary) :: self
-         REAL(KIND=SELECTED_REAL_KIND(30))       :: r
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS))       :: r
          CHARACTER(LEN=*)         :: key
          CLASS(FTValue), POINTER  :: v   => NULL()
          CLASS(FTObject), POINTER :: obj => NULL()
@@ -149,6 +154,7 @@
          CALL self % addObjectforKey(obj,key)
          CALL v % release()
       END SUBROUTINE addQuadValueForKey
+#endif
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -247,7 +253,8 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      REAL(KIND=SELECTED_REAL_KIND(30)) FUNCTION quadValueForKey(self,key)  
+#ifdef _has_Quad
+      REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)) FUNCTION quadValueForKey(self,key)  
          IMPLICIT NONE  
          CLASS(FTValueDictionary) :: self
          CHARACTER(LEN=*)         :: key
@@ -263,7 +270,8 @@
             quadValueForKey = HUGE(quadValueForKey)
          END IF 
          
-      END FUNCTION quadValueForKey    
+      END FUNCTION quadValueForKey  
+#endif  
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
