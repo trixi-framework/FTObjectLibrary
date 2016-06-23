@@ -70,7 +70,7 @@
       Module FTValueClass
       USE IEEE_ARITHMETIC
       USE ISO_FORTRAN_ENV
-      USE Constants
+      USE FTOLConstants
       USE FTObjectClass
       IMPLICIT NONE
 !

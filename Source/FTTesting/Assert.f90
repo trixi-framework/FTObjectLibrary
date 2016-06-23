@@ -41,7 +41,7 @@
 !
       Module FTAssertions
       USE ComparisonsModule
-      USE Constants
+      USE FTOLConstants
       USE ISO_FORTRAN_ENV
       IMPLICIT NONE
       PRIVATE

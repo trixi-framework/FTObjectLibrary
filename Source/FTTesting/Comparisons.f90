@@ -12,7 +12,7 @@
 !
       Module ComparisonsModule
       USE ISO_FORTRAN_ENV
-      USE Constants
+      USE FTOLConstants
       IMPLICIT NONE
       PRIVATE
       
