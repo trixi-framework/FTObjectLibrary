@@ -41,6 +41,10 @@
             PROCEDURE :: object
 
          END TYPE FTKeyObjectPair
+      
+      INTERFACE release
+         MODULE PROCEDURE :: releaseFTKeyObjectPair
+      END INTERFACE  
 !
 !        ========       
          CONTAINS  
@@ -72,22 +76,37 @@
             CLASS(FTKeyObjectPair) :: self
             
             self % keyString = ""
-            
-            CALL self % valueObject % release
-            
-            IF ( self % valueObject % isUnreferenced() )     THEN
-               DEALLOCATE(self % valueObject)
-               self % valueObject => NULL() 
-            END IF
+            CALL releaseFTObject(self % valueObject)
 !
 !           ----------------------------------------------------
 !           Call superclass destructor after processing subclass
 !           specific items
 !           ----------------------------------------------------
 !
-            CALL self % FTObject % destruct
+            CALL self % FTObject % destruct()
              
          END SUBROUTINE destructFTKeyObjectPair
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTKeyObjectPair(self)  
+         IMPLICIT NONE
+         CLASS(FTKeyObjectPair) , POINTER :: self
+         CLASS(FTObject)        , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTKeyObjectPair
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -281,10 +300,7 @@
             INTEGER :: i
             
             DO i = 1, SIZE(self % entries)
-               CALL self % entries(i) % release()
-               IF ( self % entries(i) % isUnreferenced() )     THEN
-                  !The entries are not pointers 
-               END IF 
+               CALL self % entries(i) % destruct()
             END DO
 
             DEALLOCATE(self % entries)
@@ -298,6 +314,27 @@
            CALL self % FTObject % destruct()
             
          END SUBROUTINE destructFTDictionary    
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTDictionary(self)  
+         IMPLICIT NONE
+         CLASS(FTDictionary) , POINTER :: self
+         CLASS(FTObject)     , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

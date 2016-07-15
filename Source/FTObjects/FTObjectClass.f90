@@ -184,7 +184,6 @@
          
          PROCEDURE, NON_OVERRIDABLE :: copy    => copyFTObject
          PROCEDURE, NON_OVERRIDABLE :: retain  => retainFTObject
-         PROCEDURE, NON_OVERRIDABLE :: release => releaseFTObject
          PROCEDURE, NON_OVERRIDABLE :: isUnreferenced
          PROCEDURE, NON_OVERRIDABLE :: refCount
       END TYPE FTObject
@@ -246,16 +245,16 @@
 !
 !
 !      -------------------------------------------------------------------
-!>    Release decreases the reference count by one and implies 
+!>     releaseFTObject decreases the reference count by one and implies 
 !>     relinquishing ownership by the caller. Call this if control
 !>     over the existence of an object is no longer desired by the caller.
 !>     When the reference count goes to zero, the destructor of the object
-!>     is called automatically.
+!>     is called automatically and the object is deallocated.
 !      -------------------------------------------------------------------
 !
-       RECURSIVE SUBROUTINE releaseFTObject(self)
+       SUBROUTINE releaseFTObject(self)
          IMPLICIT NONE 
-         CLASS(FTObject) :: self
+         CLASS(FTObject), POINTER  :: self
          
          self % refCount_ = self % refCount_ - 1
          
@@ -264,11 +263,13 @@
             CALL self % printDescription(6)
             PRINT *, "--------------------------------------------"
             PRINT *, " "
-            self % refCount_ = 0
+            RETURN 
          END IF
          
          IF ( self % refCount_ == 0 )     THEN
-            CALL self % destruct() 
+            CALL self % destruct()
+            DEALLOCATE(self)
+            self => NULL()
          END IF 
           
       END SUBROUTINE releaseFTObject

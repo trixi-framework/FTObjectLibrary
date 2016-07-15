@@ -40,6 +40,10 @@
          PROCEDURE :: className        => llRecordClassName
          
       END TYPE FTLinkedListRecord
+      
+      INTERFACE release
+         MODULE PROCEDURE :: releaseFTLinkedListRecord
+      END INTERFACE  
 !
 !     ----------
 !     Procedures
@@ -80,13 +84,7 @@
          IMPLICIT NONE
          CLASS(FTLinkedListRecord) :: self
          
-         IF ( ASSOCIATED(self % recordObject) )     THEN
-            CALL self % recordObject % release()
-            IF ( self % recordObject % isUnreferenced() )     THEN
-               DEALLOCATE(self % recordObject)
-               self % recordObject => NULL()
-            END IF
-         END IF 
+         IF ( ASSOCIATED(self % recordObject) ) CALL releaseFTObject(self % recordObject)
          self % next     => NULL()
          self % previous => NULL()
 !
@@ -98,6 +96,19 @@
          CALL self % FTObject % destruct()
         
       END SUBROUTINE destructFTLinkedListRecord
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedListRecord(self)  
+         IMPLICIT NONE
+         CLASS(FTLinkedListRecord) , POINTER :: self
+         CLASS(FTObject)           , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTLinkedListRecord
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -250,6 +261,10 @@
       INTERFACE cast
          MODULE PROCEDURE castObjectToLinkedList
       END INTERFACE cast
+      
+      INTERFACE release
+         MODULE PROCEDURE :: releaseFTLinkedList 
+      END INTERFACE  
       
 !
 !     ----------
@@ -451,11 +466,7 @@
                   self % tail => previous 
                END IF 
                
-               CALL current % release()
-               IF ( current%isUnreferenced() )     THEN
-                  DEALLOCATE(current)
-                  current => NULL()
-               END IF 
+               CALL releaseFTLinkedListRecord(current)
                
                self % nRecords = self % nRecords - 1
                EXIT
@@ -548,12 +559,8 @@
             previous % next => next
             next % previous => previous 
          END IF 
-               
-         CALL listRecord % release()
-         IF ( listRecord % isUnreferenced() )     THEN
-            DEALLOCATE(listRecord)
-            listRecord => NULL()
-         END IF 
+         
+         CALL releaseFTLinkedListRecord(listRecord)
          
          self % nRecords = self % nRecords - 1
          IF(circ) CALL self % makeCircular(.TRUE.)
@@ -578,10 +585,9 @@
 
             tmp => listRecord % next
 
-            CALL listRecord % release()
+            CALL releaseFTLinkedListRecord(listRecord)
 
-            IF(listRecord % isUnreferenced()) THEN
-               DEALLOCATE(listRecord)
+            IF(.NOT. ASSOCIATED(listRecord)) THEN
                self % nRecords = self % nRecords - 1
             END IF
             listRecord => tmp
@@ -618,6 +624,27 @@
          CALL self % FTObject % destruct()
 
       END SUBROUTINE destructFTLinkedList
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedList(self)  
+         IMPLICIT NONE
+         CLASS(FTLinkedList) , POINTER :: self
+         CLASS(FTObject)     , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTLinkedList
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -860,10 +887,6 @@
 !>###Destruction
 !>   
 !>         CALL iterator % release()
-!>         IF ( iterator % isUnreferenced() )     THEN ! if it is a pointer
-!>            DEALLOCATE(iterator) 
-!>            iterator => null()
-!>         END IF
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -896,6 +919,10 @@
          PROCEDURE :: moveToNext
          PROCEDURE :: removeCurrentRecord
       END TYPE FTLinkedListIterator
+      
+      INTERFACE release
+         MODULE PROCEDURE :: releaseFTLinkedListIterator 
+      END INTERFACE  
 !
 !     ----------
 !     Procedures
@@ -957,11 +984,7 @@
           CLASS(FTLinkedListIterator) :: self
           
           IF ( ASSOCIATED(self % list) )     THEN
-             CALL self % list % release()
-             IF(self % list % isUnreferenced()) THEN
-                DEALLOCATE(self % list)
-                self % list => NULL()
-             END IF
+             CALL release(self % list)
           END IF 
           
           self % current => NULL()
@@ -974,6 +997,27 @@
           CALL self % FTObject % destruct()
           
       END SUBROUTINE destructIterator
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedListIterator(self)  
+         IMPLICIT NONE
+         CLASS(FTLinkedListIterator) , POINTER :: self
+         CLASS(FTObject)             , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTLinkedListIterator
 !
 !////////////////////////////////////////////////////////////////////////
 !
@@ -1029,10 +1073,7 @@
             IF ( ASSOCIATED(self % list, list) )     THEN
                CALL self % setToStart()
             ELSE IF( ASSOCIATED(self % list) )     THEN
-               CALL self % list % release()
-               IF ( self % list % isUnreferenced() )     THEN
-                  DEALLOCATE(self % list) 
-               END IF 
+               CALL release(self % list)
                self % list => list
                CALL self % list % retain()
                CALL self % setToStart
@@ -1045,10 +1086,7 @@
          ELSE
          
             IF( ASSOCIATED(self % list) )     THEN
-               CALL self % list % release()
-               IF ( self % list % isUnreferenced() )     THEN
-                  DEALLOCATE(self % list) 
-               END IF 
+               CALL release(self % list)
             END IF 
             self % list => NULL()
             

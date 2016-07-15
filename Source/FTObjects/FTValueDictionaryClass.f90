@@ -105,7 +105,7 @@
          CALL v % initWithValue(i)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addIntegerValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -122,7 +122,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addRealValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -139,7 +139,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addDoublePrecisionValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -157,7 +157,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addQuadValueForKey
 #endif
 !
@@ -175,7 +175,7 @@
          CALL v % initWithValue(s)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addStringValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -192,7 +192,7 @@
          CALL v % initWithValue(l)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addLogicalValueForKey
 !@mark -
 !

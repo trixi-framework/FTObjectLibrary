@@ -64,11 +64,11 @@
 !
 !        ------------------------------------------------------------
 !        The dictionary is not a pointer, so we need only
-!        to call release for it to release (and here, deallocate) its
+!        to call destruct for it to release (and here, deallocate) its
 !        objects
 !        ------------------------------------------------------------
 !
-         CALL dict % release()
+         CALL dict % destruct()
 !
 !        ---------------------
 !        Redo with real values
@@ -106,7 +106,7 @@
 !        objects
 !        ------------------------------------------------------------
 !
-         CALL dict % release()
+         CALL dict % destruct()
          
          
       END SUBROUTINE FTValueDictionaryClassTests    

@@ -47,7 +47,7 @@
             CALL v % initWithValue(values(i))
             obj => v
             CALL dict % addObjectForKey(obj,keys(i))
-            CALL v % release()
+            CALL release(v)
             CALL FTAssertEqual(1,v % refCount(),"Reference Counting: Addition of object and release")
             CALL FTAssertEqual(i,dict % count(),"Adding to dictionary object count")
          END DO
@@ -100,10 +100,7 @@
 !        ---------------
 !
          DEALLOCATE(storedKeys)
-         CALL storedObjects % release()
-         IF ( storedObjects % isUnreferenced() )     THEN
-            DEALLOCATE(storedObjects) 
-         END IF 
-         CALL dict % release()
+         CALL release(storedObjects)
+         CALL dict % destruct()
          
       END SUBROUTINE FTDictionaryClassTests    

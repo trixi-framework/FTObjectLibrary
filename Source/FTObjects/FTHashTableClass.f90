@@ -69,6 +69,10 @@
          MODULE PROCEDURE castObjectToMatrixData
       END INTERFACE cast
       
+      INTERFACE release
+         MODULE PROCEDURE :: releaseMatrixData
+      END INTERFACE  
+      
 !
 !     ========      
       CONTAINS
@@ -103,16 +107,33 @@
          CLASS(MatrixData) :: self
          
          IF ( ASSOCIATED(self % object) )     THEN
-            CALL self % object % release()
-            IF ( self % object % isUnreferenced() )     THEN
-               DEALLOCATE(self % object)
-               self % object => NULL() 
-            END IF 
+            CALL releaseFTObject(self % object)
          END IF 
          
          CALL self % FTObject % destruct
 
       END SUBROUTINE destructMatrixData
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseMatrixData(self)  
+         IMPLICIT NONE
+         CLASS(MatrixData) , POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseMatrixData
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -257,7 +278,7 @@
             CALL mData % initWithObjectAndKey(obj,j)
             ptr => mData
             CALL self % table(i) % list % add(ptr)
-            CALL mData % release()
+            CALL release(mData)
          END IF 
          
       END SUBROUTINE addObjectToHashTableForKeys
@@ -383,17 +404,12 @@
          
          DO j = 1, SIZE(self % table)
             IF ( ASSOCIATED(self % table(j) % list) )     THEN
-               CALL self % table(j) % list % release() 
-               IF ( self % table(j) % list % isUnreferenced() )     THEN
-                  DEALLOCATE(self % table(j) % list) 
-               END IF 
+               CALL release(self % table(j) % list)
             END IF 
          END DO
 
          IF(ALLOCATED(self % table))   DEALLOCATE(self % table)
-
-         CALL self % iterator % release()
-         
+         CALL self % iterator % destruct()         
          CALL self % FTObject % destruct()
          
       END SUBROUTINE destructHashTable
