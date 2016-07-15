@@ -142,8 +142,7 @@
 !        Finish up with the stack
 !        ------------------------
 !
-         CALL releaseFTStack(stack)
-!         CALL release(stack % FTLinkedList)
+         CALL release(stack)
 
       END SUBROUTINE StackClassTests
       

@@ -637,7 +637,7 @@
 ! 
       SUBROUTINE releaseFTLinkedList(self)  
          IMPLICIT NONE
-         CLASS(FTLinkedList) , POINTER :: self
+         TYPE(FTLinkedList) , POINTER :: self
          CLASS(FTObject)     , POINTER :: obj
          obj => self
          CALL releaseFTObject(self = obj)

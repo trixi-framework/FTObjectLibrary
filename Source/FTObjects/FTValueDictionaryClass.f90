@@ -83,13 +83,36 @@
          PROCEDURE :: className => valueDictionaryClassName         
       END TYPE FTValueDictionary
 !
-         
+       INTERFACE release
+          MODULE PROCEDURE ::  releaseFTValueDictionary
+       END INTERFACE  
 !      INTERFACE cast
 !         MODULE PROCEDURE castObjectToValueDictionary
 !      END INTERFACE cast
 !      
       CONTAINS  
 !@mark -
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTValueDictionary(self)  
+         IMPLICIT NONE
+         TYPE(FTValueDictionary) , POINTER :: self
+         CLASS(FTObject)         , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTValueDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

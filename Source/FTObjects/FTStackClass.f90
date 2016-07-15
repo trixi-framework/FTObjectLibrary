@@ -65,6 +65,10 @@
          PROCEDURE :: pop
          PROCEDURE :: peek
       END TYPE FTStack
+      
+      INTERFACE release
+         MODULE PROCEDURE ::  releaseFTStack
+      END INTERFACE  
 !
 !     ----------
 !     Procedures
@@ -113,7 +117,7 @@
 ! 
       SUBROUTINE releaseFTStack(self)  
          IMPLICIT NONE
-         CLASS(FTStack) , POINTER :: self
+         TYPE(FTStack)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
          obj => self
          CALL releaseFTObject(self = obj)

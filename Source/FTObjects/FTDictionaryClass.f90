@@ -191,11 +191,8 @@
 !>
 !>###Destruction
 !>   
-!>         CALL dict % release()
-!>         IF ( dict % isUnreferenced() )     THEN ! If dict is a pointer
-!>            DEALLOCATE(dict)
-!>            dict => NULL()
-!>         END IF
+!>         CALL release(dict) ! Pointer
+!>         call dict % destruct() ! Stack variable
 !>###Accessing an object
 !>
 !>           TYPE(FTObject) :: obj
@@ -248,6 +245,10 @@
          INTERFACE cast
             MODULE PROCEDURE castToDictionary
          END INTERFACE cast
+         
+         INTERFACE release
+            MODULE PROCEDURE :: releaseFTDictionary 
+         END INTERFACE  
 !
 !        ========         
          CONTAINS  
