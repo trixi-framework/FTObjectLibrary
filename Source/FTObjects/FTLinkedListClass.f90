@@ -42,7 +42,7 @@
       END TYPE FTLinkedListRecord
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTLinkedListRecord
+         MODULE PROCEDURE releaseFTLinkedListRecord
       END INTERFACE  
 !
 !     ----------
@@ -263,7 +263,7 @@
       END INTERFACE cast
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTLinkedList 
+         MODULE PROCEDURE releaseFTLinkedList 
       END INTERFACE  
       
 !
@@ -921,7 +921,7 @@
       END TYPE FTLinkedListIterator
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTLinkedListIterator 
+         MODULE PROCEDURE releaseFTLinkedListIterator 
       END INTERFACE  
 !
 !     ----------

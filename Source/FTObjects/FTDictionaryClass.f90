@@ -43,7 +43,7 @@
          END TYPE FTKeyObjectPair
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTKeyObjectPair
+         MODULE PROCEDURE releaseFTKeyObjectPair
       END INTERFACE  
 !
 !        ========       
@@ -247,7 +247,7 @@
          END INTERFACE cast
          
          INTERFACE release
-            MODULE PROCEDURE :: releaseFTDictionary 
+            MODULE PROCEDURE releaseFTDictionary 
          END INTERFACE  
 !
 !        ========         

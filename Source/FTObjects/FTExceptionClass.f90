@@ -115,7 +115,7 @@
       END INTERFACE cast
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTException 
+         MODULE PROCEDURE releaseFTException 
       END INTERFACE  
 !
 !     ========      

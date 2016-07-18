@@ -233,7 +233,7 @@
       END TYPE FTSparseMatrix
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTSparseMatrix 
+         MODULE PROCEDURE releaseFTSparseMatrix 
       END INTERFACE  
       
 !

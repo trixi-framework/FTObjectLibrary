@@ -70,7 +70,7 @@
       END INTERFACE cast
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseMatrixData
+         MODULE PROCEDURE releaseMatrixData
       END INTERFACE  
       
 !

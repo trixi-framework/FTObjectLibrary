@@ -189,7 +189,7 @@
       END TYPE FTMultiIndexTable
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTMultiIndexTable 
+         MODULE PROCEDURE releaseFTMultiIndexTable 
       END INTERFACE  
 !
 !     ========

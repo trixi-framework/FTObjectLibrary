@@ -24,7 +24,8 @@
 !>
 !> - Destruction 
 !>
-!>            CALL r % destruct()   *See method definition
+!>            CALL r % destruct()   [non pointers]
+!>            call release(r) [Pointers]
 !>
 !> - Accessors
 !>
@@ -165,7 +166,7 @@
       END INTERFACE cast
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTValue 
+         MODULE PROCEDURE releaseFTValue 
       END INTERFACE  
 
 !     ----------
@@ -332,10 +333,7 @@
 !------------------------------------------------
 !> Public, generic name: destruct()
 !>
-!> Destructor for the class. One does not call 
-!! the destructor directly. Instead it is called
-!! automatically when the reference count becomes
-!! zero.
+!> Destructor for the class.
 !------------------------------------------------
 !
 !////////////////////////////////////////////////////////////////////////
@@ -752,18 +750,5 @@
          s = "FTValue"
  
       END FUNCTION valueClassName
-!!
-!!//////////////////////////////////////////////////////////////////////// 
-!! 
-!      SUBROUTINE deallocateValue(self)  
-!         IMPLICIT NONE
-!         TYPE(FTValue), POINTER :: self
-!         
-!         IF ( self % isUnreferenced() )     THEN
-!            DEALLOCATE(self)
-!            self => NULL()
-!         END IF
-!
-!      END SUBROUTINE deallocateValue
 
       END MODULE FTValueClass   

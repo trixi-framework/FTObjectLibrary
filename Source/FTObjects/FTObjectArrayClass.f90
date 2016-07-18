@@ -27,11 +27,8 @@
 !>      INTEGER                      :: N = 11
 !>      CALL array % initWithSize(N)
 !>#Destruction
-!>           CALL array  %  release()
-!>           IF ( array  %  isUnreferenced() )     THEN
-!>              DEALLOCATE(array) ! If array is a pointer
-!>              array => NULL()
-!>           END IF 
+!>           CALL array  %  destuct() [Non Pointers]
+!>           call release(array) [Pointers]
 !>#Adding an Object
 !>           TYPE(FTObject) :: obj
 !>           obj => r1
@@ -98,7 +95,7 @@
       END INTERFACE cast
       
       INTERFACE release
-         MODULE PROCEDURE :: releaseFTMutableObjectArray 
+         MODULE PROCEDURE releaseFTMutableObjectArray 
       END INTERFACE  
 !
 !     ======== 
@@ -170,7 +167,7 @@
 ! 
       SUBROUTINE releaseFTMutableObjectArray(self)  
          IMPLICIT NONE
-         CLASS(FTMutableObjectArray) , POINTER :: self
+         TYPE(FTMutableObjectArray) , POINTER :: self
          CLASS(FTObject), POINTER :: obj
          obj => self
          CALL releaseFTObject(self = obj)
