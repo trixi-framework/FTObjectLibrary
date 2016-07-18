@@ -22,7 +22,7 @@
 !         CALL calc % enter(5.0d0)
 !         CALL calc % enter("-")
 !         PRINT *, "3*(4+2*3)-5 = ",calc % readDisplay()
-!         CALL calc%release()
+!         CALL calc % destruct()
 !
 !
 !////////////////////////////////////////////////////////////////////////
@@ -76,12 +76,24 @@
             IMPLICIT NONE  
             CLASS(Calculator) :: self
             
-            CALL self % stack % release()
-            DEALLOCATE(self % stack)
+            CALL release(self % stack)
             
             CALL self % FTObject % destruct()
             
          END SUBROUTINE destructCalculator
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseCalculator(self)  
+         IMPLICIT NONE
+         CLASS(Calculator) , POINTER :: self
+         CLASS(FTObject)     , POINTER :: obj
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseCalculator
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -137,11 +149,11 @@
             REAL(KIND=FT_DOUBLE_PRECISION_KIND) :: r
       
             CALL stack % pop(obj)
+            
             v   => valueFromObject(obj)
             r   = v % doublePrecisionValue()
             
-            CALL v % release()
-            IF(v % isUnreferenced()) DEALLOCATE(v)
+            CALL release(v)
             
          END FUNCTION popValue
 !
@@ -156,10 +168,10 @@
             
             ALLOCATE(vValue)
             CALL vValue % initWithValue(v)
-            CALL vValue % release()
            
             obj => vValue
             CALL self % stack % push(obj)
+            CALL release(vValue)
             
          END SUBROUTINE enterValue
 !

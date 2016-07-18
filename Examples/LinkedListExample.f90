@@ -43,7 +43,7 @@
             CALL v % initWithValue(values(j))
             obj => v
             CALL list % add(obj)
-            CALL v % release()
+            CALL release(v)
          END DO  
          PRINT *, "There are ", list % COUNT(), " records in the list"
 !
@@ -99,11 +99,8 @@
 !        Clean up
 !        --------
 !
-         CALL iterator % release()
-         IF(iterator % isUnreferenced()) DEALLOCATE(iterator) !It will be. No additional references
-         
-         CALL list % release()
-         IF(list % isUnreferenced()) DEALLOCATE(list) !It will be. No additional references
-         
+         CALL release(iterator)
+         CALL release(list)
+                  
       END SUBROUTINE demonstrateLinkedList
    END MODULE linkedListDemonstrationModule
