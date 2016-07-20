@@ -103,6 +103,9 @@
          IMPLICIT NONE
          CLASS(FTLinkedListRecord) , POINTER :: self
          CLASS(FTObject)           , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
          obj => self
          CALL releaseFTObject(self = obj)
          IF ( .NOT. ASSOCIATED(obj) )     THEN
@@ -175,7 +178,7 @@
 !>
 !>         objectPtr => r                ! r is subclass of FTObject
 !>         CALL list % Add(objectPtr)    ! Pointer is retained by list
-!>         CALL objectPtr % release()    ! If caller relinquishes ownership
+!>         CALL release(r)               ! If caller relinquishes ownership
 !>
 !>         CALL list % addObjectsFromList(listToAdd)
 !>
@@ -187,11 +190,11 @@
 !>
 !>         objectPtr => r                                        ! r is subclass of FTObject
 !>         CALL list % insertObjectAfterRecord(objectPtr,record) ! Pointer is retained by list
-!>         CALL objectPtr % release()                            ! If caller reliquishes ownership
+!>         CALL release(r)                                       ! If caller reliquishes ownership
 !>
 !>         objectPtr => r                                     ! r is subclass of FTObject
 !>         CALL list % insertObjectAfterObject(objectPtr,obj) ! Pointer is retained by list
-!>         CALL objectPtr % release()                         ! If caller reliquishes ownership
+!>         CALL release(r)                                    ! If caller reliquishes ownership
 !>
 !>##Removing objects
 !>
@@ -212,11 +215,8 @@
 !>
 !>##Destruction
 !>   
-!>         CALL list % release()
-!>         IF ( list % isUnreferenced() )     THEN ! If list is a pointer
-!>            DEALLOCATE(list)
-!>            list => NULL()
-!>         END IF
+!>         CALL release(list) [Pointers]
+!>         CALL list % destruct() [Non Pointers]
 !>!
       Module FTLinkedListClass
 !      
@@ -639,6 +639,9 @@
          IMPLICIT NONE
          CLASS(FTLinkedList) , POINTER :: self
          CLASS(FTObject)     , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
          obj => self
          CALL releaseFTObject(self = obj)
          IF ( .NOT. ASSOCIATED(obj) )     THEN
@@ -886,7 +889,8 @@
 !>
 !>###Destruction
 !>   
-!>         CALL iterator % release()
+!>         CALL iterator % destruct() [Non Pointers]
+!>         CALL release(iterator) [Pointers]
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -1012,6 +1016,9 @@
          IMPLICIT NONE
          CLASS(FTLinkedListIterator) , POINTER :: self
          CLASS(FTObject)             , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
          obj => self
          CALL releaseFTObject(self = obj)
          IF ( .NOT. ASSOCIATED(obj) )     THEN

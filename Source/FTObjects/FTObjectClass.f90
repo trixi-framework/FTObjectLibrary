@@ -259,6 +259,9 @@
          IMPLICIT NONE 
          CLASS(FTObject), POINTER  :: self
          
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
          self % refCount_ = self % refCount_ - 1
          
          IF ( self % refCount_ < 0 )     THEN

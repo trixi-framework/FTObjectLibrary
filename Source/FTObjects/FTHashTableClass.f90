@@ -22,7 +22,8 @@
 !>The size, N = the range of i.
 !>##Destruction
 !>
-!>         CALL hashTable % release()
+!>         CALL  release(hashTable) [Pointer]
+!>         CALL hashTable % destruct() [Non Pointer]
 !>
 !>##Adding an object
 !>
