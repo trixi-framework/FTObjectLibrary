@@ -70,6 +70,7 @@
          
          INTEGER                      :: i
          REAL                         :: singleTol = 2*EPSILON(1.0e0)
+         LOGICAL                      :: test
 !
 !        -------------------------------------------------------
 !        Allocate and initialize the linked list. Remember that
@@ -266,18 +267,23 @@
 !        ------------------------------------------------------------------------------
 !
          CALL iterator % release()
-         IF ( iterator % isUnreferenced() )     THEN
-            DEALLOCATE(iterator) 
-         END IF 
 !
 !        --------------------------------------------------------------------------
 !        At this point, the iterator should not have a linked list associated with 
 !        it. Check to make sure.
 !        --------------------------------------------------------------------------
 !
-!         list => iterator % linkedList()
-!         test = ASSOCIATED(list)
-!         CALL FTAssert(.NOT.test,"List pointer nullified")
+         list => iterator % linkedList()
+         test = ASSOCIATED(list)
+         CALL FTAssert(.NOT.test,"List pointer nullified")
+!
+!        --------
+!        Clean up
+!        --------
+!
+         IF ( iterator % isUnreferenced() )     THEN
+            DEALLOCATE(iterator) 
+         END IF 
          
       END SUBROUTINE basicTests
 !
