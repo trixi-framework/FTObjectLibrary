@@ -66,11 +66,10 @@
 !        -------------------------------------------------
 !
          CLASS(FTLinkedList)       , POINTER :: list
-         TYPE(FTLinkedListIterator), POINTER :: iterator
+         CLASS(FTLinkedListIterator), POINTER :: iterator
          
          INTEGER                      :: i
          REAL                         :: singleTol = 2*EPSILON(1.0e0)
-         LOGICAL                      :: test
 !
 !        -------------------------------------------------------
 !        Allocate and initialize the linked list. Remember that
@@ -95,7 +94,7 @@
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: Initial object refCount")
          CALL list % retain()
          CALL FTAssertEqual(2,list % refCount(), "Reference counting: Test retain")
-         CALL list % release()
+         CALL release(list)
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: test release")
 !
 !        ---------------------------------------------------------------------------------
@@ -125,12 +124,7 @@
 !         
          CALL FTAssertEqual(2,r1 % refCount(),&
          "Reference counting: Stored object should have reference count increased")
-         CALL r1 % release()
-         IF ( r1 % isUnreferenced() )     THEN
-            CALL FTAssert(.false.,"Object slated for deallocation should have refCount = 1")
-            DEALLOCATE(r1)
-            r1 => NULL() 
-         END IF 
+         CALL release(r1)
             
          CALL FTAssertEqual(1,objectPtr % refCount(),&
          "Reference counting: Stored object should have reference count decreased")
@@ -156,11 +150,7 @@
          objectPtr => r3
          CALL list % add(objectPtr)
          CALL FTAssertEqual(3,list % COUNT(),"List size after adding third object")
-         CALL r3 % release()
-         IF ( r3 % isUnreferenced() )     THEN
-            DEALLOCATE(r3)
-            r3 => NULL() 
-         END IF 
+         CALL release(r3)
 !
 !        ---------------------------------------------------------------------------------
 !        Check integrity of stored objects. We iterate
@@ -249,7 +239,7 @@
 !        Otherwise, it is possible to get an undefined pointer.
 !        ------------------------------------------------------
 !
-         CALL list % release()
+         CALL release(list)
          CALL FTAssertEqual(1,list % refCount(),"Ref count decrease on release")
 !
 !        -------------------------------------------------------------------
@@ -266,24 +256,16 @@
 !        since it is the last owner.
 !        ------------------------------------------------------------------------------
 !
-         CALL iterator % release()
+         CALL release(iterator)
 !
 !        --------------------------------------------------------------------------
 !        At this point, the iterator should not have a linked list associated with 
 !        it. Check to make sure.
 !        --------------------------------------------------------------------------
 !
-         list => iterator % linkedList()
-         test = ASSOCIATED(list)
-         CALL FTAssert(.NOT.test,"List pointer nullified")
-!
-!        --------
-!        Clean up
-!        --------
-!
-         IF ( iterator % isUnreferenced() )     THEN
-            DEALLOCATE(iterator) 
-         END IF 
+!         list => iterator % linkedList()
+!         test = ASSOCIATED(list)
+!         CALL FTAssert(.NOT.test,"List pointer nullified")
          
       END SUBROUTINE basicTests
 !
@@ -301,8 +283,10 @@
          CLASS(FTLinkedList)        , POINTER :: list1, list2
          CLASS(FTMutableObjectArray), POINTER :: array
          
-         TYPE(FTLinkedListIterator)           :: iterator
+         CLASS(FTLinkedListIterator), POINTER :: iterator
          INTEGER                              :: j, N
+         
+         ALLOCATE(iterator)
 !
 !        ----------------------------------------------
 !        Create the two lists that will be concatenated
@@ -321,7 +305,7 @@
             CALL v % initWithValue(j)
             objectPtr => v
             CALL list1 % add(objectPtr)
-            CALL v % release()
+            CALL release(v)
          END DO
          
          DO j = 6, 10
@@ -329,7 +313,7 @@
             CALL v % initWithValue(j)
             objectPtr => v
             CALL list2 % add(objectPtr)
-            CALL v % release()
+            CALL release(v)
          END DO
 !
 !        -----------------------------------
@@ -364,11 +348,8 @@
 !        in list1
 !        --------------------------------------------------
 !
-         CALL list2 % release()
-         CALL FTAssertEqual(.TRUE., list2 % isUnreferenced(),"List has only one owner and should deallocate on release")
-         IF ( list2 % isUnreferenced() )     THEN
-            DEALLOCATE(list2) 
-         END IF 
+         CALL release(list2)
+         CALL FTAssertEqual(.TRUE., .NOT. ASSOCIATED(list2),"List has only one owner and should deallocate on release")
 !
 !        --------------------------------------------------
 !        List1 should have its contents plus the other list
@@ -400,11 +381,8 @@
             CALL FTAssertEqual(j, v % integerValue(),"Item value stored in array created from list")
             CALL FTAssertEqual(2, objectPtr % refCount(), "Objects owned by one list and one array")
          END DO
-         CALL array % release()
-         CALL FTAssert(test = array % isUnreferenced(),msg = "Array unreferenced")
-         IF ( array % isUnreferenced() )     THEN
-            DEALLOCATE(array) 
-         END IF 
+         CALL release(array)
+         CALL FTAssert(test = .NOT. ASSOCIATED(array),msg = "Array unreferenced")
 !
 !        -------------------------------------------
 !        Now reverse the list and iterate through it
@@ -430,8 +408,9 @@
 !        Clean up
 !        --------
 !
-         CALL list1 % release()
-         CALL iterator % release()
+         CALL release(list1)
+         CALL release(iterator)
+
          
       END SUBROUTINE testAppendingLists
 !
@@ -454,7 +433,7 @@
          CLASS(FTLinkedList)      , POINTER   :: list
          CLASS(FTLinkedListRecord), POINTER   :: recordPtr
          
-         TYPE(FTLinkedListIterator), POINTER :: iterator
+         CLASS(FTLinkedListIterator), POINTER :: iterator
          INTEGER                             :: j
 !
 !        ----------------------------------------------
@@ -473,7 +452,7 @@
             CALL v % initWithValue(j)
             obj => v
             CALL list % add(obj)
-            CALL v % release()
+            CALL release(v)
          END DO
 !
 !        ------------------------------------------------------------
@@ -552,10 +531,7 @@
 !        Clean up
 !        --------
 !
-         CALL iterator % release()
-         DEALLOCATE(iterator)
+         CALL release(iterator)
+         CALL release(list)
 
-         CALL list % release()
-         DEALLOCATE(list)         
-         
       END SUBROUTINE TestDeletingObjects

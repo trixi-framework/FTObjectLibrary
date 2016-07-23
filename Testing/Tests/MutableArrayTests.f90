@@ -20,7 +20,8 @@
 !        Declarations
 !        ------------
 !
-         TYPE(FTMutableObjectArray) :: array
+         CLASS(FTMutableObjectArray), POINTER :: array
+         
          INTEGER                    :: i
          INTEGER, DIMENSION(10)     :: values         = [(i,i=1,10)]
          INTEGER, DIMENSION(10)     :: modifiedValues = [1,2,3,4,22,6,7,9,10,11]
@@ -32,6 +33,7 @@
 !        Initialize an empty array with an initial size of 10 objects
 !        ------------------------------------------------------------
 !
+         ALLOCATE(array)
          CALL array % initwithsize(10)
          CALL FTAssertEqual(0,array % COUNT(),"Initial array count")
 !
@@ -49,7 +51,7 @@
             obj => v
             CALL array % addObject(obj)
             CALL FTAssertEqual( 2, v % refCount(), "Adding object adds ownership" )
-            CALL v % release()
+            CALL release(v)
          END DO
          CALL FTAssertEqual(10, array % COUNT(), "Number of objects in array is equal to number of objects added")
 !
@@ -78,7 +80,7 @@
          obj => v
          CALL array % replaceObjectAtIndexWithObject(5,obj)
          CALL FTAssertEqual(2,v % refCount(),"Replacement refCount")
-         CALL v % release()
+         CALL release(v)
 !
 !        ----------------------
 !        Get the replaced value
@@ -97,7 +99,7 @@
          CALL v % initWithValue(11)
          obj => v
          CALL array % addObject(obj)
-         CALL v % release()
+         CALL release(v)
          CALL FTAssertEqual(11, array % COUNT(), "Number of objects in array is increased")
          CALL FTAssertEqual(20, array % allocatedSize(),"Memory increased by chunk size")
 !
@@ -112,9 +114,8 @@
          CALL array % removeObjectAtIndex(8)
          CALL FTAssertEqual(10, array % COUNT(), "Item deleted count")
          CALL FTAssertEqual(1, obj % refcount(), "Refcount after removal")
-         CALL obj % release()
-         IF ( obj % isUnreferenced() )     THEN
-            DEALLOCATE(obj)
+         CALL releaseFTObject(obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
             CALL FTAssert(.true., "Object properly deallocated") 
          ELSE
             CALL FTAssert(.FALSE., "Object properly deallocated") 
@@ -124,7 +125,6 @@
 !        Check the values in the array again
 !        -----------------------------------
 !
-!         CALL array % printDescription(6)
          DO i = 1, 10
             obj => array % objectAtIndex(i)
             v   => valueFromObject(obj)
@@ -133,9 +133,8 @@
 !
 !        -------------------------------------------------------------
 !        Release array contents
-!        array is not a pointer, so there is no need to deallocate it.
 !        -------------------------------------------------------------
 !
-         CALL array % release()
+         CALL release(array)
          
       END SUBROUTINE MutableArrayClassTests

@@ -15,14 +15,11 @@
 !>##Initialization
 !>
 !>      ALLOCATE(stack)  If stack is a pointer
-!>      CALL stack  %  init
+!>      CALL stack  %  init()
 !>
 !>##Destruction
-!>      CALL stack  %  release
-!>      IF ( stack  %  isUnreferenced() )     THEN
-!>         DEALLOCATE(stack)  If stack is a pointer
-!>         stack => NULL()
-!>      END IF 
+!>      CALL release(stack) [Pointers]
+!>      CALL stack % destruct() [Non pointers]
 !>
 !>##Pushing an object onto the stack
 !>
@@ -69,6 +66,10 @@
          PROCEDURE :: pop
          PROCEDURE :: peek
       END TYPE FTStack
+      
+      INTERFACE release
+         MODULE PROCEDURE  releaseFTStack
+      END INTERFACE  
 !
 !     ----------
 !     Procedures
@@ -104,6 +105,30 @@
          !None to intialize
          
       END SUBROUTINE initFTStack
+!
+!------------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of a pointer object. If its reference count is zero, 
+!> then it is deallocated.
+!------------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTStack(self)  
+         IMPLICIT NONE
+         TYPE(FTStack)  , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTStack
 !
 !     -----------------------------------
 !     push: Push an object onto the stack
@@ -188,11 +213,7 @@
          tmp => self % head
          self % head => self % head % next
          
-         CALL tmp % release()
-         IF( tmp % isUnreferenced())     THEN
-            DEALLOCATE(tmp)
-            tmp => NULL()
-         END IF
+         CALL release(tmp)
          self % nRecords = self % nRecords - 1
 
       END SUBROUTINE pop

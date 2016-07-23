@@ -30,7 +30,7 @@
 !        container.
 !        -------------------------------------------------------
 !
-         TYPE(FTValue), POINTER :: v
+         CLASS(FTValue), POINTER :: v
 !
 !        -------------------------------------------
 !        Some values to convert into FTValue objects
@@ -87,7 +87,7 @@
          CALL FTAssertEqual(1,v % refCount(),"Reference counting: Initial object refCount")
          CALL v % retain()
          CALL FTAssertEqual(2,v % refCount(),"Reference counting: Retain count increase")
-         CALL v % release()
+         CALL release(v)
          CALL FTAssertEqual(1,v % refCount(),"Reference counting: retain count decrease")
 !
 !        -----------------------------------------------------------------
@@ -104,18 +104,11 @@
          CALL FTAssertEqual(.true.,v % logicalValue(),"Logical return for real object")
 !
 !        ----------------------------------------------------------------
-!        Destruction. When we release an object we must check to see
-!        if we are the last owner. It is the last owner's responsibility
-!        to destruct an object. Don't forget to nullify the pointer after
-!        deallocation.
+!        Destruction.
 !        ----------------------------------------------------------------
 !
-         CALL v % release()
-         CALL FTAssertEqual(0,v % refCount(),"Reference counting: Object should be ready to deallocate")
-         IF ( v % isUnreferenced() )     THEN
-            DEALLOCATE(v)
-            v => NULL()
-         END IF
+         CALL release(v)
+         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 1")
 !
 !        --------------------------------------
 !        Now do the same with an integer number
@@ -134,11 +127,8 @@
 !        We are done with this value, so release it
 !        ------------------------------------------
 !
-         CALL v % release()         
-         IF ( v % isUnreferenced() )     THEN
-            DEALLOCATE(v)
-            v => NULL()
-         END IF
+         CALL release(v)
+         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 2")
 !
 !        -------------------------------
 !        Store a double precision number
@@ -159,11 +149,8 @@
 !        We are done with this value, too, so release it
 !        -----------------------------------------------
 !
-         CALL v % release()         
-         IF ( v % isUnreferenced() )     THEN
-            DEALLOCATE(v)
-            v => NULL()
-         END IF
+         CALL release(v)
+         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 3")
 !
 !        ---------------------------------------------------
 !        Lastly, save a string and read it as numeric values
@@ -173,21 +160,21 @@
          CALL v % initWithValue("3.14")
          x = v % realValue()
          CALL FTAssertEqual(3.14e0,x,singleTol,"String storage to real")
-         CALL v % release()
-         DEALLOCATE(v)
+         CALL release(v)
+         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 4")
 
          ALLOCATE(v)
          CALL v % initWithValue("3567")
          j = v % integerValue()
          CALL FTAssertEqual(3567,j,"String storage to integer")
-         CALL v % release()
-         DEALLOCATE(v)
+         CALL release(v)
+         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 5")
          
          ALLOCATE(v)
          CALL v % initWithValue("3.141592653589793")
          dd = v % doublePrecisionValue()
          CALL FTAssertEqual(3.141592653589793d0,dd,doubleTol,"String storage to real")
-         CALL v % release()
-         DEALLOCATE(v)
+         CALL release(v)
+         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 6")
 
       END SUBROUTINE FTValueClassTests   

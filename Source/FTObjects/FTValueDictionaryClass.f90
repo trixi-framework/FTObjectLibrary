@@ -83,13 +83,39 @@
          PROCEDURE :: className => valueDictionaryClassName         
       END TYPE FTValueDictionary
 !
-         
+       INTERFACE release
+          MODULE PROCEDURE  releaseFTValueDictionary
+       END INTERFACE  
 !      INTERFACE cast
 !         MODULE PROCEDURE castObjectToValueDictionary
 !      END INTERFACE cast
 !      
       CONTAINS  
 !@mark -
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTValueDictionary(self)  
+         IMPLICIT NONE
+         TYPE(FTValueDictionary) , POINTER :: self
+         CLASS(FTObject)         , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTValueDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -105,7 +131,7 @@
          CALL v % initWithValue(i)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addIntegerValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -122,7 +148,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addRealValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -139,7 +165,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addDoublePrecisionValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -157,7 +183,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addQuadValueForKey
 #endif
 !
@@ -175,7 +201,7 @@
          CALL v % initWithValue(s)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addStringValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -192,7 +218,7 @@
          CALL v % initWithValue(l)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL v % release()
+         CALL release(v)
       END SUBROUTINE addLogicalValueForKey
 !@mark -
 !

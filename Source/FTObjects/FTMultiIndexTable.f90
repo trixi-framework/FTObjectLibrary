@@ -67,17 +67,8 @@
          IMPLICIT NONE  
          CLASS(MultiIndexMatrixData) :: self
          
-         IF ( ASSOCIATED(self % object) )     THEN
-            CALL self % object % release()
-            IF ( self % object % isUnreferenced() )     THEN
-               DEALLOCATE(self % object)
-               self % object => NULL() 
-            END IF 
-         END IF 
-         
-         IF ( ALLOCATED(self % key) )     THEN
-            DEALLOCATE(self % key) 
-         END IF 
+         IF ( ASSOCIATED(self % object) ) CALL releaseFTObject(self % object )
+         IF ( ALLOCATED(self % key) )     DEALLOCATE(self % key) 
          
          CALL self % FTObject % destruct()
 
@@ -145,7 +136,8 @@
 !>
 !>## Destruction
 !>
-!>         CALL MultiIndexTable % release()
+!>         CALL release(MultiIndexTable)     ... Pointers
+!>         call MultiIndexTable % destruct() ... non Pointers
 !>
 !>##Adding an object
 !>
@@ -196,6 +188,9 @@
          
       END TYPE FTMultiIndexTable
       
+      INTERFACE release
+         MODULE PROCEDURE releaseFTMultiIndexTable 
+      END INTERFACE  
 !
 !     ========
       CONTAINS
@@ -248,7 +243,7 @@
          
          IF(ALLOCATED(self % table))   THEN
             DO j = 1, SIZE(self % table)
-               CALL self % table(j) % release() 
+               CALL self % table(j) % destruct()
             END DO
             DEALLOCATE(self % table)
          END IF
@@ -256,6 +251,30 @@
          CALL self % FTObject % destruct()
          
       END SUBROUTINE destructMultiIndexTable
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTMultiIndexTable(self)  
+         IMPLICIT NONE
+         CLASS(FTMultiIndexTable) , POINTER :: self
+         CLASS(FTObject)          , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTMultiIndexTable
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -289,7 +308,7 @@
             ptr => mData
             
             CALL self % table(i) % add(ptr)
-            CALL mData % release()
+            CALL releaseFTObject(ptr)
          END IF 
          
       END SUBROUTINE addObjectToMultiIndexTableForKeys

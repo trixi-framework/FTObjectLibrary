@@ -109,12 +109,14 @@
          PROCEDURE :: printDescription => printFTExceptionDescription
          PROCEDURE :: className => exceptionClassName
       END TYPE FTException
-      
-      PRIVATE :: releaseInfoDictionary
-      
+            
       INTERFACE cast
          MODULE PROCEDURE castToException
       END INTERFACE cast
+      
+      INTERFACE release
+         MODULE PROCEDURE releaseFTException 
+      END INTERFACE  
 !
 !     ========      
       CONTAINS
@@ -147,7 +149,7 @@
                                      exceptionName  = FTWarningErrorException,&
                                      infoDictionary = dictPtr)
          
-         CALL userDictionary % release()
+         CALL release(userDictionary)
          
       END SUBROUTINE initWarningException
 !
@@ -178,7 +180,7 @@
                                      exceptionName  = FTFatalErrorException,&
                                      infoDictionary = dictPtr)
          
-         CALL userDictionary % release()
+         CALL release(userDictionary)
          
       END SUBROUTINE initFatalException
 !
@@ -246,7 +248,7 @@
                                      exceptionName  = FTAssertionFailureException,&
                                      infoDictionary = dictPtr)
          
-         CALL userDictionary % release()
+         CALL release(userDictionary)
          
       END SUBROUTINE initAssertionFailureException
 !
@@ -261,13 +263,38 @@
 !
 
          IMPLICIT NONE  
-         CLASS(FTException) :: self
+         CLASS(FTException)       :: self
          
-         IF(ASSOCIATED(self % infoDictionary_))   CALL releaseInfoDictionary(self)
+         IF(ASSOCIATED(self % infoDictionary_))   THEN
+            CALL release(self % infoDictionary_)
+         END IF
 
          CALL self % FTObject % destruct()
          
       END SUBROUTINE destructException 
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTException(self)  
+         IMPLICIT NONE
+         CLASS(FTException) , POINTER :: self
+         CLASS(FTObject)          , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTException
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -281,7 +308,7 @@
          CLASS(FTException)           :: self
          CLASS(FTDictionary), POINTER :: dict
          
-         CALL releaseInfoDictionary(self)
+         IF(ASSOCIATED(self % infoDictionary_)) CALL release(self % infoDictionary_)
          self  %  infoDictionary_ => dict
          CALL self  %  infoDictionary_  %  retain()
       END SUBROUTINE setInfoDictionary
@@ -331,27 +358,6 @@
         CLASS(FTException) :: self
         severity = self % severity_
      END FUNCTION severity    
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-     SUBROUTINE releaseInfoDictionary(self)  
-!
-! ---------------------------------------------
-!>Called to release the infoDicitonary and the
-!>objects it owns. InfoDicitonary is set to NULL.
-! ---------------------------------------------
-!
-         IMPLICIT NONE  
-         CLASS(FTException) :: self
-         
-         IF(ASSOCIATED(self % infoDictionary_))     THEN
-            CALL self % infodictionary_ % release()
-            IF ( self % infodictionary_ % isUnreferenced() )     THEN
-               DEALLOCATE(self % infodictionary_)
-               self % infodictionary_ => NULL()
-            END IF
-         END IF
-     END SUBROUTINE releaseInfoDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -558,18 +564,9 @@
 !        Destruct the exceptions
 !        -----------------------
 !
-         CALL errorStack % release()
-
-         IF ( errorStack % isUnreferenced() )     THEN
-            DEALLOCATE(errorStack)
-         END IF 
-         
+         CALL release(errorStack)
          IF ( ASSOCIATED(currentError_) )     THEN
-            CALL currentError_ % release()
-            IF ( currentError_ % isUnreferenced() )     THEN
-               DEALLOCATE(currentError_) 
-               currentError_ => NULL()
-            END IF  
+            CALL release(currentError_)
          END IF 
         
       END SUBROUTINE destructFTExceptions
@@ -614,11 +611,7 @@
          END IF
          
          IF ( ASSOCIATED(currentError_) )     THEN
-            CALL currentError_ % release()
-            IF ( currentError_ % isUnreferenced() )     THEN
-               DEALLOCATE(currentError_) 
-               currentError_ => NULL()
-            END IF 
+            CALL release(currentError_)
          END IF 
          
       END FUNCTION catchAll
@@ -724,10 +717,7 @@
 !        --------------------------------------------------------------
 !
          IF ( ASSOCIATED(POINTER = currentError_) )     THEN
-            CALL currentError_ % release()
-            IF ( currentError_ % isUnreferenced() )     THEN
-               DEALLOCATE(currentError_) 
-            END IF  
+            CALL release(currentError_)
          END IF 
 !
 !        ------------------------------------
@@ -810,10 +800,7 @@
             CALL iterator % moveToNext()
          END DO
          
-         CALL iterator % release()
-         IF ( iterator % isUnreferenced() )     THEN
-            !iterator is not a pointer
-         END IF
+         CALL iterator % destruct() !iterator is not a pointer
             
       END SUBROUTINE printAllExceptions
 

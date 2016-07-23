@@ -49,14 +49,12 @@
 !>- release()
 !>
 !>     Decreases the reference count of an object. To be called only by objects or procedures
-!>     that have ownership in an object, i.e., for which init() or retain() have been called.
-!>     The last owner of an object is responsible for deallocating a pointer to an object.
-!>     This procedure is not overridable.
+!>     that have ownership in an object pointer, i.e., for which init() or retain() have been called.
+!>     Override this procedure in subclasses for releasing the actual type.
 !>
 !>- isUnreferenced()
 !>
-!>     Test to see if there are no more owners of an object. If true, then the last owner is responsible
-!>     for deallocating the pointer. this procedure is not overridable.
+!>     Test to see if there are no more owners of an object.
 !>
 !>- refCount()
 !>
@@ -72,6 +70,7 @@
 !>- init()
 !>- destruct()
 !>- printDescription()
+!>- release()
 !>
 !>They should also provide a cast() subroutine to convert from the base class to a subclass.
 !>The cast() routine can look something like
@@ -119,7 +118,7 @@
 !>        CLASS(Subclass) :: self
 !>        
 !>        Release and deallocate (if necessary) all member objects
-!>        CALL self % FTObject % destruct
+!>        CALL self % FTObject % destruct()
 !>        
 !>     END SUBROUTINE destructSubclass
 !>
@@ -147,7 +146,11 @@
 !>           CLASS DEFAULT
 !>        END SELECT
 !>     END SUBROUTINE castToValue
+!>## Subclassing className
 !>
+!>The className() procedure returns the name of the class.
+!>
+!>Subclasses should override className() !>
 !>
 !>Created: January 7, 2013 11:30 AM 
 
@@ -184,7 +187,6 @@
          
          PROCEDURE, NON_OVERRIDABLE :: copy    => copyFTObject
          PROCEDURE, NON_OVERRIDABLE :: retain  => retainFTObject
-         PROCEDURE, NON_OVERRIDABLE :: release => releaseFTObject
          PROCEDURE, NON_OVERRIDABLE :: isUnreferenced
          PROCEDURE, NON_OVERRIDABLE :: refCount
       END TYPE FTObject
@@ -245,17 +247,20 @@
 !////////////////////////////////////////////////////////////////////////
 !
 !
-!      -------------------------------------------------------------------
-!>    Release decreases the reference count by one and implies 
+!      ---------------------------------------------------------------------------
+!>     releaseFTObject decreases the reference count by one and implies 
 !>     relinquishing ownership by the caller. Call this if control
-!>     over the existence of an object is no longer desired by the caller.
+!>     over the existence of an object pointer is no longer desired by the caller.
 !>     When the reference count goes to zero, the destructor of the object
-!>     is called automatically.
-!      -------------------------------------------------------------------
+!>     is called automatically and the object is deallocated.
+!      ---------------------------------------------------------------------------
 !
-       RECURSIVE SUBROUTINE releaseFTObject(self)
+       SUBROUTINE releaseFTObject(self)
          IMPLICIT NONE 
-         CLASS(FTObject) :: self
+         CLASS(FTObject), POINTER  :: self
+         
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
          
          self % refCount_ = self % refCount_ - 1
          
@@ -264,11 +269,13 @@
             CALL self % printDescription(6)
             PRINT *, "--------------------------------------------"
             PRINT *, " "
-            self % refCount_ = 0
+            RETURN 
          END IF
          
          IF ( self % refCount_ == 0 )     THEN
-            CALL self % destruct() 
+            CALL self % destruct()
+            DEALLOCATE(self)
+            self => NULL()
          END IF 
           
       END SUBROUTINE releaseFTObject

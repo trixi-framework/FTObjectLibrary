@@ -57,10 +57,9 @@
          vTest => valueFromObject(obj)
          CALL FTAssertEqual(42,vTest % integerValue(),"Table entry retrieval")
 
-         CALL hashTable % release()
+         CALL hashTable % destruct()
          CALL FTAssertEqual(1, v % refCount(),"Table release object refCount")
-         CALL v % release()
-         DEALLOCATE(v)
+         CALL release(v)
 !
 !        ---------------------------------------------
 !        Now create a hash table with a lot of entries
@@ -76,7 +75,7 @@
                CALL v % initWithValue(i+j)
                obj => v
                CALL hashTable % addObjectForKeys(obj,h1,h2)
-               CALL v % release()
+               CALL release(v)
                 
             END DO   
          END DO
@@ -100,12 +99,10 @@
          CALL vTest % retain()
          CALL FTAssertEqual(2  , vTest % refCount(),"Retain refCount")
 
-         CALL hashTable % release()
+         CALL hashTable % destruct()
          CALL FTAssertEqual(1, vTest % refCount(),"Table release object refCount")
-         CALL vTest % release()
-         IF ( vTest % isUnreferenced() )     THEN
-            DEALLOCATE(vTest)
-         ELSE 
+         CALL release(vTest)
+         IF ( ASSOCIATED(vTest) )     THEN
             CALL FTAssert(.FALSE.,"Release object count") 
          END IF 
          

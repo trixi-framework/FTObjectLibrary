@@ -52,7 +52,7 @@
          
          CALL FTAssertEqual(2,r1%refCount()  ,"testStackPush: Reference count on stored object")
          
-         CALL r1 % release()
+         CALL release(r1)
          CALL FTAssertEqual(1,r1 % refCount(),"testStackPush: Release on stored object")
          
          objectPtr => stack % peek()
@@ -101,7 +101,7 @@
          CALL r2%initWithValue("r2 is a string")
          objectPtr => r2
          CALL stack%push(objectPtr)
-         CALL r2%release()
+         CALL release(r2)
          CALL FTAssertEqual(2,stack%count(),"StackClassTests: Stack size after second push")
 !
 !        -----------
@@ -113,7 +113,7 @@
          objectPtr => r3
          CALL stack%push(objectPtr)
          CALL FTAssertEqual(3,stack%COUNT(),"StackClassTests: Stack size after third push")
-         CALL r3%release()
+         CALL release(r3)
 !
 !        ------------
 !        Peek and pop
@@ -142,11 +142,7 @@
 !        Finish up with the stack
 !        ------------------------
 !
-         CALL stack%release()
-         IF ( stack%isUnreferenced() )     THEN
-            DEALLOCATE(stack) 
-            stack => NULL()
-         END IF 
+         CALL release(stack)
 
       END SUBROUTINE StackClassTests
       

@@ -24,7 +24,8 @@
 !>
 !> - Destruction 
 !>
-!>            CALL r % destruct()   *See method definition
+!>            CALL r % destruct()   [non pointers]
+!>            call release(r) [Pointers]
 !>
 !> - Accessors
 !>
@@ -163,7 +164,11 @@
       INTERFACE cast
          MODULE PROCEDURE castToValue
       END INTERFACE cast
-!
+      
+      INTERFACE release
+         MODULE PROCEDURE releaseFTValue 
+      END INTERFACE  
+
 !     ----------
 !     Procedures
 !     ----------
@@ -328,10 +333,7 @@
 !------------------------------------------------
 !> Public, generic name: destruct()
 !>
-!> Destructor for the class. One does not call 
-!! the destructor directly. Instead it is called
-!! automatically when the reference count becomes
-!! zero.
+!> Destructor for the class.
 !------------------------------------------------
 !
 !////////////////////////////////////////////////////////////////////////
@@ -340,9 +342,33 @@
          IMPLICIT NONE
          CLASS(FTValue)  :: self
          
-         CALL self % FTObject % destruct
+         CALL self % FTObject % destruct()
          
       END SUBROUTINE destructValue
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTValue(self)  
+         IMPLICIT NONE
+         CLASS(FTValue) , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTValue
 !@mark -
 !
 !---------------------------------------------------------------
@@ -727,18 +753,5 @@
          s = "FTValue"
  
       END FUNCTION valueClassName
-!!
-!!//////////////////////////////////////////////////////////////////////// 
-!! 
-!      SUBROUTINE deallocateValue(self)  
-!         IMPLICIT NONE
-!         TYPE(FTValue), POINTER :: self
-!         
-!         IF ( self % isUnreferenced() )     THEN
-!            DEALLOCATE(self)
-!            self => NULL()
-!         END IF
-!
-!      END SUBROUTINE deallocateValue
 
       END MODULE FTValueClass   

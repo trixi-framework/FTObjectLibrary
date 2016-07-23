@@ -27,11 +27,8 @@
 !>      INTEGER                      :: N = 11
 !>      CALL array % initWithSize(N)
 !>#Destruction
-!>           CALL array  %  release()
-!>           IF ( array  %  isUnreferenced() )     THEN
-!>              DEALLOCATE(array) ! If array is a pointer
-!>              array => NULL()
-!>           END IF 
+!>           CALL array  %  destuct() [Non Pointers]
+!>           call release(array) [Pointers]
 !>#Adding an Object
 !>           TYPE(FTObject) :: obj
 !>           obj => r1
@@ -96,6 +93,10 @@
       INTERFACE cast
          MODULE PROCEDURE castToMutableObjectArray
       END INTERFACE cast
+      
+      INTERFACE release
+         MODULE PROCEDURE releaseFTMutableObjectArray 
+      END INTERFACE  
 !
 !     ======== 
       CONTAINS  
@@ -145,13 +146,7 @@
 
          DO i = 1, self % count_
             obj => self % array(i) % object 
-            IF ( ASSOCIATED(obj) )     THEN
-               CALL obj % release()
-               IF ( obj % isUnreferenced() )     THEN
-                  DEALLOCATE(obj)
-                  obj => NULL() 
-               END IF 
-            END IF 
+            IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
          END DO
          
          DEALLOCATE(self % array)
@@ -159,6 +154,30 @@
          self % count_ = 0  
 
       END SUBROUTINE
+!
+!------------------------------------------------
+!> Public, generic name: release(self)
+!>
+!> Call release(self) on an object to release control
+!> of an object. If its reference count is zero, then 
+!> it is deallocated.
+!------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTMutableObjectArray(self)  
+         IMPLICIT NONE
+         TYPE(FTMutableObjectArray) , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTMutableObjectArray
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -220,11 +239,7 @@
          obj => self % array(indx) %  object
          
          IF ( ASSOCIATED(obj) )     THEN
-            CALL obj % release()
-            IF ( obj % isUnreferenced() )     THEN
-               DEALLOCATE(obj)
-               obj => NULL() 
-            END IF
+            CALL releaseFTObject(self = obj)
          END IF 
          
          DO i = indx, self % count_-1
@@ -266,15 +281,7 @@
          
          obj => self % array(indx) %  object
          
-         IF ( ASSOCIATED(obj) )     THEN
-            CALL obj % release()
-            IF ( obj % isUnreferenced() )     THEN
-               DEALLOCATE(obj)
-               obj => NULL() 
-            END IF
-!         ELSE
-!            RETURN 
-         END IF 
+         IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
          
          self % array(indx) %  object => replacement
          CALL replacement % retain()
