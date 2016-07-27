@@ -43,6 +43,10 @@
          PROCEDURE, PUBLIC :: className => dataClassName
       END TYPE FTData
       
+      INTERFACE release
+         MODULE PROCEDURE releaseFTData 
+      END INTERFACE  
+      
       CONTAINS 
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -64,6 +68,23 @@
           self % dataType    = dataType
           
       END SUBROUTINE initWithDataOfType
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTData(self)  
+         IMPLICIT NONE
+         CLASS(FTData)  , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTData
+!@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
