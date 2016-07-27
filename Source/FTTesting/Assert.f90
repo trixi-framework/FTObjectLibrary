@@ -333,7 +333,6 @@
       SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
          IMPLICIT NONE  
          INTEGER, INTENT(in)    , DIMENSION(:)     :: expectedValue,actualValue
-!         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
             CALL initializeSharedAssertionsManager
