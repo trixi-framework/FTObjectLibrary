@@ -281,7 +281,7 @@
          
          obj => self % array(indx) %  object
          
-         IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
+         CALL releaseFTObject(obj)
          
          self % array(indx) %  object => replacement
          CALL replacement % retain()
