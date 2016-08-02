@@ -208,7 +208,7 @@
 !>###Getting all of the objects
 !>           CLASS(FTMutableObjectArray), POINTER :: objectArray
 !>           objectArray =>  dict % allObjects() ! The array is owned by the caller.
-!>(The target of the pointer must be deallocated by the caller)
+!>(The target of the pointer must be released by the caller)
 !>
       Module FTDictionaryClass
          USE FTKeyObjectPairClass
