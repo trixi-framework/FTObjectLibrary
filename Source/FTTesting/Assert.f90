@@ -224,7 +224,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE addAssertionFailureForParameters(msg,expected,actual, assertionType)
+      SUBROUTINE addAssertionFailureForParameters(msg, expected, actual, assertionType)
          IMPLICIT NONE  
          CHARACTER(LEN=*)                        :: msg, expected, actual, assertionType
          TYPE(FTAssertionFailureRecord), POINTER :: newFailure

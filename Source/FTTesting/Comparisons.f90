@@ -112,24 +112,24 @@
          isEqualTwoIntegerArrays1D = .true.
          
          IF(PRESENT(info)) THEN
-            info%failureType = ASSERT_SUCCESS
-            info%failureName = ASSERT_VALUES_OK_NAME
+            info % failureType = ASSERT_SUCCESS
+            info % failureName = ASSERT_VALUES_OK_NAME
          END IF
         
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isEqualTwoIntegerArrays1D = .false.
             IF(PRESENT(info))     THEN 
-               info%failureType = ASSERT_SIZE_DIFFERS
-               info%failureName = ASSERT_SIZE_DIFFERS_NAME
+               info % failureType = ASSERT_SIZE_DIFFERS
+               info % failureName = ASSERT_SIZE_DIFFERS_NAME
             END IF
          ELSE IF(ANY(a /= b))     THEN
             isEqualTwoIntegerArrays1D = .false.
              IF(PRESENT(info))     THEN 
-               info%failureType = ASSERT_VALUES_DIFFER
-               info%failureName = ASSERT_VALUES_DIFFERS_NAME
-               ALLOCATE(info%locations(SIZE(a)))
-               info%locations = .true.
-               WHERE(a /= b) info%locations = .false.
+               info % failureType = ASSERT_VALUES_DIFFER
+               info % failureName = ASSERT_VALUES_DIFFERS_NAME
+               ALLOCATE(info % locations(SIZE(a)))
+               info % locations = .true.
+               WHERE(a /= b) info % locations = .false.
             END IF
          END IF 
          
@@ -145,24 +145,24 @@
          isEqualTwoIntegerArrays2D = .true.
          
          IF(PRESENT(info)) THEN
-            info%failureType = ASSERT_SUCCESS
-            info%failureName = ASSERT_VALUES_OK_NAME
+            info % failureType = ASSERT_SUCCESS
+            info % failureName = ASSERT_VALUES_OK_NAME
          END IF
          
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isEqualTwoIntegerArrays2D = .false.
             IF(PRESENT(info))     THEN 
-               info%failureType = ASSERT_SIZE_DIFFERS
-               info%failureName = ASSERT_SIZE_DIFFERS_NAME
+               info % failureType = ASSERT_SIZE_DIFFERS
+               info % failureName = ASSERT_SIZE_DIFFERS_NAME
             END IF
          ELSE IF(ANY(a /= b))     THEN
             isEqualTwoIntegerArrays2D = .false.
              IF(PRESENT(info))     THEN 
-               info%failureType = ASSERT_VALUES_DIFFER
-               info%failureName = ASSERT_VALUES_DIFFERS_NAME
-               ALLOCATE(info%locations(SIZE(a,1),SIZE(a,2)))
-               info%locations = .true.
-               WHERE(a /= b) info%locations = .false.
+               info % failureType = ASSERT_VALUES_DIFFER
+               info % failureName = ASSERT_VALUES_DIFFERS_NAME
+               ALLOCATE(info % locations(SIZE(a,1),SIZE(a,2)))
+               info % locations = .true.
+               WHERE(a /= b) info % locations = .false.
             END IF
          END IF 
          
