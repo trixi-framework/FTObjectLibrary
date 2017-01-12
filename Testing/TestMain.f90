@@ -46,7 +46,7 @@
 !     Run the tests
 !     -------------
 !
-      CALL testSuite % performTests(numberOfFailedTests)
+      CALL testSuite % performTests()
 !
 !     -------
 !     Cleanup

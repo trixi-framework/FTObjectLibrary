@@ -479,7 +479,7 @@ You saw an example above in the ``valueFromObject(obj)'' function.
 
 {\color{blue}\begin{verbatim}
             CALL destruct(r)   !For Non-Pointer objects
-            CALL release(r)     !For Pointers
+            CALL release(r)    !For Pointers
 \end{verbatim}}
 
 \item Accessors
@@ -672,17 +672,16 @@ list to access its entries.
               .
               .
               .
-              CALL iterator % setLinkedList(list) ! Increases refCount of list
 \end{verbatim}}
 Or
 {\color{blue}\begin{verbatim}
               CLASS(FTLinkedList)        , POINTER :: list
               CLASS(FTLinkedListIterator), POINTER :: iterator
               ALLOCATE(iterator)
-              .
-              .
-              .
               CALL iterator % initWithFTLinkedList(list) ! Increases refCount of list
+              .
+              .
+              .
 \end{verbatim}}
 
          \item Setting the iterator to the beginning of the list

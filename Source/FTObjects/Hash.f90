@@ -6,6 +6,7 @@
 !      By: David Kopriva  
 !
 !      Code by Rich Townsend, 2005
+!      See: https://groups.google.com/forum/#!topic/comp.lang.fortran/RWoHZFt39ng
 !
 !////////////////////////////////////////////////////////////////////////
 !

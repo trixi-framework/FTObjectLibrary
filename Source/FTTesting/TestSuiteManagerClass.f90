@@ -53,7 +53,8 @@
 !>##Running tests ###
 !>   To run the tests call
 !>
-!>         CALL testSuite % performTests()
+!>         CALL testSuite % performTests() OR
+!>         CALL testSuite % performTests(numFailed)
 !>   
 !>##Finalizing the test suite ###
 !>   When done, call
@@ -180,7 +181,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE performTests(self, numberOfFailedTests)  
+      SUBROUTINE performTests(self, numberOfFailedTestsRet)  
           IMPLICIT NONE  
 !
 !         ---------
@@ -188,7 +189,7 @@
 !         ---------
 !
           CLASS(TestSuiteManager)             :: self
-          INTEGER                  , OPTIONAL :: numberOfFailedTests
+          INTEGER                  , OPTIONAL :: numberOfFailedTestsRet
 !
 !         ---------------
 !         Local variables
@@ -196,7 +197,7 @@
 !
           TYPE(TestCaseRecord)     , POINTER  :: current
           TYPE(FTAssertionsManager), POINTER  :: sharedManager
-          INTEGER                             :: maxMessageLength
+          INTEGER                             :: maxMessageLength, numberOfFailedTests
           
           numberOfFailedTests = 0
           maxMessageLength    = 0
@@ -264,7 +265,7 @@
             current => current % next
           END DO
         
-
+          IF(PRESENT(numberOfFailedTestsRet)) numberOfFailedTestsRet = numberOfFailedTests
           
       END SUBROUTINE performTests    
       

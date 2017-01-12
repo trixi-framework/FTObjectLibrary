@@ -65,7 +65,7 @@
 !        can be a non-pointer, too, like the iterator.
 !        -------------------------------------------------
 !
-         CLASS(FTLinkedList)       , POINTER :: list
+         CLASS(FTLinkedList)        , POINTER :: list
          CLASS(FTLinkedListIterator), POINTER :: iterator
          
          INTEGER                      :: i
@@ -173,7 +173,7 @@
 !        Iterate through the list from the beginning
 !        -------------------------------------------
 !
-         CALL iterator % setToStart()
+         CALL iterator % setToStart() !(This is automatically done in the init)
          i = 1
          
          DO WHILE (.NOT.iterator % isAtEnd() )
@@ -214,7 +214,7 @@
          CALL FTAssertEqual(2,list % COUNT(),"List has two objects after removing one")
          CALL FTAssertEqual(1,r2 % refCount(),msg = "Refcount after removing object")
          
-         CALL iterator % setToStart
+         CALL iterator % setToStart()
          i = 1
          
          DO WHILE (.NOT.iterator % isAtEnd())
@@ -329,11 +329,9 @@
 !        -------------------------------------------
 !
          CALL iterator % initWithFTLinkedList(list1)
-         CALL iterator % setToStart()
          j = 1
          DO WHILE (.NOT.iterator % isAtEnd())
-            objectPtr => iterator % object()
-            v         => valueFromObject(obj = objectPtr)
+            v => valueFromObject(iterator % object())
             CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly")
             IF ( j >= 6 )     THEN
                objectPtr => iterator % object()
@@ -356,15 +354,15 @@
 !        with refCount 1
 !        --------------------------------------------------
 !
-         CALL iterator % setToStart
+         CALL iterator % setToStart()
          j = 1
          DO WHILE (.NOT.iterator % isAtEnd())
          
-            objectPtr => iterator % object()
-            v         => valueFromObject(obj = objectPtr)
+            v         => valueFromObject(iterator % object())
             CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
             CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
+            objectPtr => iterator % object()
             CALL FTAssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j + 1
@@ -376,9 +374,9 @@
 !
          array => list1 % allObjects()
          DO j = 1, array % COUNT()
-            objectPtr => array % objectAtIndex(j)
-            v         => valueFromObject(obj = objectPtr)
+            v => valueFromObject(array % objectAtIndex(j))
             CALL FTAssertEqual(j, v % integerValue(),"Item value stored in array created from list")
+            objectPtr => array % objectAtIndex(j)
             CALL FTAssertEqual(2, objectPtr % refCount(), "Objects owned by one list and one array")
          END DO
          CALL release(array)
@@ -394,11 +392,11 @@
          CALL iterator % setToStart
          DO WHILE (.NOT.iterator % isAtEnd())
          
-            objectPtr => iterator % object()
-            v         => valueFromObject(objectPtr)
+            v => valueFromObject(iterator % object())
             CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
             CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
+            objectPtr => iterator % object()
             CALL FTAssertEqual(1, objectPtr % refCount(), "Objects owned by one list")
             CALL iterator % moveToNext()
             j = j - 1
@@ -470,8 +468,7 @@
          j = 1
          DO WHILE( .NOT.iterator % isAtEnd() )
             IF ( j == 6 )     THEN
-               obj => iterator % object()
-               v   => valueFromObject(obj)
+               v => valueFromObject(iterator % object())
                CALL FTAssertEqual(6,v % integerValue(),"Value of object to be deleted")
                CALL iterator % removeCurrentRecord() 
             END IF  
@@ -489,8 +486,7 @@
          j = 1
          DO WHILE( .NOT.iterator % isAtEnd() )
             IF ( j == 3 )     THEN
-               obj => iterator % object()
-               v   => valueFromObject(obj)
+               v   => valueFromObject(iterator % object())
                CALL FTAssertEqual(3,v % integerValue(),"Value of object to be deleted")
                CALL iterator % removeCurrentRecord() 
                EXIT 
@@ -500,8 +496,7 @@
          END DO
         
          CALL FTAssertEqual(4,list % COUNT(),"Count after deletion of middle object")
-         obj => iterator % object()
-         v   => valueFromObject(obj)
+         v   => valueFromObject(iterator % object())
          CALL FTAssertEqual(4,v % integerValue(),"Value of current object after deleting")
 !
 !        ---------------------------------
@@ -509,11 +504,9 @@
 !        ---------------------------------
 !
          recordPtr => iterator % currentRecord()
-         obj       => recordPtr % previous % recordObject
-         v         => valueFromObject(obj)
+         v         => valueFromObject(recordPtr % previous % recordObject)
          CALL FTAssertEqual(2,v % integerValue(), "Value of previous object after deleting")
-         obj       => recordPtr % next % recordObject
-         v         => valueFromObject(obj)
+         v         => valueFromObject(recordPtr % next % recordObject)
          CALL FTAssertEqual(5,v % integerValue(), "Value of next object after deleting")
 !
 !        -----------------------
@@ -523,8 +516,7 @@
          CALL iterator % setToStart()
          CALL iterator % removeCurrentRecord()
          CALL FTAssertEqual(3, list % COUNT(), "count after deleting head")
-         obj => iterator % object()
-         v   => valueFromObject(obj)
+         v   => valueFromObject(iterator % object())
          CALL FTAssertEqual(2,v % integerValue(),"Value of current head after deleting")
 !
 !        --------

@@ -39,8 +39,7 @@
 !        -------------------------------------------
 !
          DO j = 1, 6
-            ALLOCATE(v)
-            CALL v % initWithValue(values(j))
+            ALLOCATE(v); CALL v % initWithValue(values(j))
             obj => v
             CALL list % add(obj)
             CALL release(v)
@@ -54,16 +53,14 @@
 !
          ALLOCATE(iterator)
          CALL iterator % initWithFTLinkedList(list)
-         CALL iterator % setToStart()
          
          PRINT *, "Values in the list are:"
          DO WHILE( .NOT.iterator % isAtEnd() )
          
-            obj => iterator % object()
-            v   => valueFromObject(obj)
+            v   => valueFromObject(iterator % object())
             PRINT *, v % integerValue()
             
-            IF ( v % integerValue() == 5 ) objToDelete => obj
+            IF ( v % integerValue() == 5 ) objToDelete => iterator % object()
             
             CALL iterator % moveToNext() ! DON'T FORGET THIS CALL !
          END DO
@@ -72,9 +69,7 @@
 !        Insert a value after the tagged object.
 !        ---------------------------------------
 !
-         ALLOCATE(v)
-         CALL v % initWithValue(99)
-         obj => v
+         ALLOCATE(v); CALL v % initWithValue(99); obj => v
          CALL list % insertObjectAfterObject(obj,objToDelete)
          PRINT *, "After adding 99 after value 5, the values in the list are:"
          CALL list % printDescription(iUnit = 6)

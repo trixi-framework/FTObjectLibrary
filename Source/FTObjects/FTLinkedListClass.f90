@@ -975,6 +975,7 @@
          self % list    => NULL()
          self % current => NULL()
          CALL self % setLinkedList(list)
+         CALL self % setToStart()
          
       END SUBROUTINE initWithFTLinkedList   
 !
