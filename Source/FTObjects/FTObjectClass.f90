@@ -255,7 +255,7 @@
 !>     is called automatically and the object is deallocated.
 !      ---------------------------------------------------------------------------
 !
-       SUBROUTINE releaseFTObject(self)
+       RECURSIVE SUBROUTINE releaseFTObject(self)
          IMPLICIT NONE 
          CLASS(FTObject), POINTER  :: self
          
