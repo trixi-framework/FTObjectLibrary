@@ -358,7 +358,7 @@
 ! 
       SUBROUTINE releaseFTValue(self)  
          IMPLICIT NONE
-         CLASS(FTValue) , POINTER :: self
+         TYPE(FTValue)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN

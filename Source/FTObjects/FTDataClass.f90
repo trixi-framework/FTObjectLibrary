@@ -73,7 +73,7 @@
 ! 
       SUBROUTINE releaseFTData(self)  
          IMPLICIT NONE
-         CLASS(FTData)  , POINTER :: self
+         TYPE(FTData)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN

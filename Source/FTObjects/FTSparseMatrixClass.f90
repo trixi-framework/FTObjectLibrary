@@ -447,8 +447,8 @@
 ! 
       SUBROUTINE releaseFTSparseMatrix(self)  
          IMPLICIT NONE
-         CLASS(FTSparseMatrix) , POINTER :: self
-         CLASS(FTObject)       , POINTER :: obj
+         TYPE(FTSparseMatrix) , POINTER :: self
+         CLASS(FTObject)      , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
          
