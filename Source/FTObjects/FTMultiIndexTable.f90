@@ -264,8 +264,8 @@
 ! 
       SUBROUTINE releaseFTMultiIndexTable(self)  
          IMPLICIT NONE
-         TYPE(FTMultiIndexTable) , POINTER :: self
-         CLASS(FTObject)         , POINTER :: obj
+         CLASS(FTMultiIndexTable) , POINTER :: self
+         CLASS(FTObject)          , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
          

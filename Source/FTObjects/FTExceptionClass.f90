@@ -284,8 +284,8 @@
 ! 
       SUBROUTINE releaseFTException(self)  
          IMPLICIT NONE
-         TYPE(FTException) , POINTER :: self
-         CLASS(FTObject)   , POINTER :: obj
+         CLASS(FTException) , POINTER :: self
+         CLASS(FTObject)          , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
          
