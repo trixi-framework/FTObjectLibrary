@@ -328,8 +328,8 @@
 ! 
       SUBROUTINE releaseFTDictionary(self)  
          IMPLICIT NONE
-         CLASS(FTDictionary) , POINTER :: self
-         CLASS(FTObject)     , POINTER :: obj
+         TYPE(FTDictionary) , POINTER :: self
+         CLASS(FTObject)    , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
          
