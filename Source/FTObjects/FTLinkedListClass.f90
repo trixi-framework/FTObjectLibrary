@@ -637,7 +637,7 @@
 ! 
       SUBROUTINE releaseFTLinkedList(self)  
          IMPLICIT NONE
-         TYPE(FTLinkedList) , POINTER :: self
+         TYPE (FTLinkedList), POINTER :: self
          CLASS(FTObject)    , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
@@ -903,7 +903,7 @@
 !     -----------------
 !
       TYPE, EXTENDS(FTObject) :: FTLinkedListIterator
-         CLASS(FTLinkedList)      , POINTER :: list    => NULL()
+         TYPE (FTLinkedList)      , POINTER :: list    => NULL()
          CLASS(FTLinkedListRecord), POINTER :: current => NULL()
 !
 !        ========         
