@@ -903,7 +903,7 @@
 !     -----------------
 !
       TYPE, EXTENDS(FTObject) :: FTLinkedListIterator
-         TYPE (FTLinkedList)      , POINTER :: list    => NULL()
+         CLASS(FTLinkedList)      , POINTER :: list    => NULL()
          CLASS(FTLinkedListRecord), POINTER :: current => NULL()
 !
 !        ========         
@@ -987,11 +987,9 @@
       SUBROUTINE destructIterator(self)
           IMPLICIT NONE 
           CLASS(FTLinkedListIterator) :: self
+          CLASS(FTObject), POINTER    :: obj
           
-          IF ( ASSOCIATED(self % list) )     THEN
-             CALL release(self % list)
-          END IF 
-          
+          CALL releaseMemberList(self)
           self % current => NULL()
 !
 !        ------------------------------------------
@@ -1002,6 +1000,20 @@
           CALL self % FTObject % destruct()
           
       END SUBROUTINE destructIterator
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseMemberList(self)  
+          IMPLICIT NONE  
+          CLASS(FTLinkedListIterator) :: self
+          CLASS(FTObject), POINTER    :: obj
+          
+          IF ( ASSOCIATED(self % list) )     THEN
+             obj => self % list
+             CALL releaseFTObject(self = obj)
+             IF(.NOT. ASSOCIATED(obj)) self % list => NULL()
+          END IF 
+      END SUBROUTINE releaseMemberList
 !
 !------------------------------------------------
 !> Public, generic name: release(self)
@@ -1081,7 +1093,7 @@
             IF ( ASSOCIATED(self % list, list) )     THEN
                CALL self % setToStart()
             ELSE IF( ASSOCIATED(self % list) )     THEN
-               CALL release(self % list)
+               CALL releaseMemberList(self)
                self % list => list
                CALL self % list % retain()
                CALL self % setToStart
@@ -1094,7 +1106,7 @@
          ELSE
          
             IF( ASSOCIATED(self % list) )     THEN
-               CALL release(self % list)
+               CALL releaseMemberList(self)
             END IF 
             self % list => NULL()
             

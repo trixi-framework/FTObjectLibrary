@@ -264,11 +264,8 @@
 
          IMPLICIT NONE  
          CLASS(FTException)       :: self
-         
-         IF(ASSOCIATED(self % infoDictionary_))   THEN
-            CALL release(self % infoDictionary_)
-         END IF
 
+         CALL releaseMemberDictionary(self)
          CALL self % FTObject % destruct()
          
       END SUBROUTINE destructException 
@@ -285,7 +282,7 @@
       SUBROUTINE releaseFTException(self)  
          IMPLICIT NONE
          CLASS(FTException) , POINTER :: self
-         CLASS(FTObject)          , POINTER :: obj
+         CLASS(FTObject)    , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
          
@@ -308,10 +305,24 @@
          CLASS(FTException)           :: self
          CLASS(FTDictionary), POINTER :: dict
          
-         IF(ASSOCIATED(self % infoDictionary_)) CALL release(self % infoDictionary_)
+         IF(ASSOCIATED(self % infoDictionary_)) CALL releaseMemberDictionary(self)
          self  %  infoDictionary_ => dict
          CALL self  %  infoDictionary_  %  retain()
       END SUBROUTINE setInfoDictionary
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseMemberDictionary(self)  
+         IMPLICIT NONE  
+         CLASS(FTException)       :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(ASSOCIATED(self % infoDictionary_))   THEN
+            obj => self % infoDictionary_
+            CALL releaseFTObject(self = obj)
+            IF(.NOT. ASSOCIATED(obj)) self% infoDictionary_ => NULL()
+         END IF
+      END SUBROUTINE releaseMemberDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
