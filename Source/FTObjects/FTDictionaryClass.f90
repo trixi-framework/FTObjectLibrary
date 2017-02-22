@@ -374,9 +374,9 @@
             CHARACTER(LEN=*)                    :: key
             CLASS(FTKeyObjectPair), POINTER     :: pair => NULL()
             CLASS(FTObject)       , POINTER     :: ptr => NULL()
-            INTEGER(KIND=SELECTED_REAL_KIND(8)) :: h
+            INTEGER                             :: h
             
-            INTEGER(KIND=SELECTED_REAL_KIND(8)), EXTERNAL :: b3hs_hash_key_jenkins
+            INTEGER, EXTERNAL                   :: b3hs_hash_key_jenkins
             
             h = b3hs_hash_key_jenkins(key,SIZE(self % entries))
             
@@ -395,9 +395,9 @@
             CLASS(FTDictionary)                  :: self
             CHARACTER(LEN=*)                     :: key
             CLASS(FTObject)       , POINTER      :: objectForKey
-            INTEGER(KIND=SELECTED_REAL_KIND(8))  :: h
+            INTEGER                              :: h
             
-            INTEGER(KIND=SELECTED_REAL_KIND(8)), EXTERNAL :: b3hs_hash_key_jenkins
+            INTEGER, EXTERNAL                    :: b3hs_hash_key_jenkins
            
             objectForKey => NULL()
             IF(self % COUNT() == 0)     RETURN 
