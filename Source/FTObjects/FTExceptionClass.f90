@@ -148,8 +148,7 @@
          CALL self % initFTException(severity       = FT_ERROR_WARNING,&
                                      exceptionName  = FTWarningErrorException,&
                                      infoDictionary = dictPtr)
-         
-         CALL release(userDictionary)
+         CALL releaseMemberDictionary(self)
          
       END SUBROUTINE initWarningException
 !
@@ -180,7 +179,7 @@
                                      exceptionName  = FTFatalErrorException,&
                                      infoDictionary = dictPtr)
          
-         CALL release(userDictionary)
+         CALL releaseMemberDictionary(self)
          
       END SUBROUTINE initFatalException
 !
@@ -248,7 +247,7 @@
                                      exceptionName  = FTAssertionFailureException,&
                                      infoDictionary = dictPtr)
          
-         CALL release(userDictionary)
+         CALL releaseMemberDictionary(self)
          
       END SUBROUTINE initAssertionFailureException
 !

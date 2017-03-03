@@ -423,7 +423,7 @@
          
          DO j = 1, SIZE(self % table)
             IF ( ASSOCIATED(self % table(j) % list) )     THEN
-               CALL release(self % table(j) % list)
+               CALL releaseSMMemberList(list = self % table(j) % list)
             END IF 
          END DO
 
@@ -458,6 +458,18 @@
             self => NULL() 
          END IF      
       END SUBROUTINE releaseFTSparseMatrix
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseSMMemberList(list)  
+          IMPLICIT NONE  
+          CLASS(FTLinkedList), POINTER     :: list
+          CLASS(FTObject)    , POINTER :: obj
+          
+          obj => list
+          CALL releaseFTObject(self = obj)
+          IF(.NOT. ASSOCIATED(obj)) list => NULL()
+      END SUBROUTINE releaseSMMemberList
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
