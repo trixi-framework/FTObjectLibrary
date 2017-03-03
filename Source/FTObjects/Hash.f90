@@ -11,7 +11,7 @@
 !////////////////////////////////////////////////////////////////////////
 !
 function b3hs_hash_key_jenkins (key, range) result (code)
-  INTEGER, PARAMETER       :: KIND_I32 = SELECTED_INT_KIND(8)
+  INTEGER, PARAMETER       :: KIND_I32 = SELECTED_INT_KIND(10)
   character(*), intent(in) :: key
   integer, intent(in)      :: range
   integer                  :: code
