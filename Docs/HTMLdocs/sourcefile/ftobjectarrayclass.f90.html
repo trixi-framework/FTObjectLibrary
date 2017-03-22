@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="A library for reference counted object and container classes">
+    
+    <meta name="author" content="David A. Kopriva" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>FTObjectArrayClass.f90 &ndash; FTObjectLibrary</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/testobjectsmain.html">Program</a></li>
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>FTObjectArrayClass.f90
+    <small>Source File</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title=" 4.4% of total for source files.">203 statements</a>
+     </li> 
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/FTObjectArrayClass.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li class="active">FTObjectArrayClass.f90</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
+  <div id="mods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftmutableobjectarrayclass.html">FTMutableObjectArrayClass</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html#src">FTObjectArrayClass.f90</a>
+  </div>
+</div>
+
+
+  <hr>
+  
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles-0">All Source Files</a></h3></div>
+  <div id="allfiles-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../sourcefile/assert.f90.html">Assert.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/calculator.f90.html">Calculator.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/comparisons.f90.html">Comparisons.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/dictionarytests.f90.html">DictionaryTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/exceptiontests.f90.html">ExceptionTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftdataclass.f90.html">FTDataClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftdictionaryclass.f90.html">FTDictionaryClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftexceptionclass.f90.html">FTExceptionClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftlinkedlistclass.f90.html">FTLinkedListClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftmultiindextable.f90.html">FTMultiIndexTable.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html">FTObjectArrayClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftobjectclass.f90.html">FTObjectClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftobjectlibrary.f90.html">FTObjectLibrary.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html">FTOLConstants.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftsparsematrixclass.f90.html">FTSparseMatrixClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftstackclass.f90.html">FTStackClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftvalueclass.f90.html">FTValueClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftvaluedictionaryclass.f90.html">FTValueDictionaryClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/hash.f90.html">Hash.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/hashtabletests.f90.html">HashTableTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/linkedlistexample.f90.html">LinkedListExample.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/linkedlisttests.f90.html">LinkedListTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/multiindextabletests.f90.html">MultiIndexTableTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/mutablearraytests.f90.html">MutableArrayTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/sparsematrixtests.f90.html">SparseMatrixTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/stackstests.f90.html">StacksTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/testmain.f90.html">TestMain.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/testsuitemanagerclass.f90.html">TestSuiteManagerClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/valueclasstests.f90.html">ValueClassTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/valuedictionarytests.f90.html">ValueDictionaryTests.f90</a>
+      
+    </div>
+  </div>
+</div>
+
+
+</div>  
+
+    </div>
+    <div class="col-md-9" id='text'>
+    
+    
+    <h3>This File Depends On</h3>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: sourcefile~~ftobjectarrayclass.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefileftobjectarrayclassf90EfferentGraph" width="270pt" height="32pt"
+ viewBox="0.00 0.00 270.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~ftobjectarrayclass.f90~~EfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>sourcefile~~ftobjectarrayclass.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 266,-28 266,4 -4,4"/>
+<!-- sourcefile~ftobjectarrayclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~EfferentGraph_node1" class="node"><title>sourcefile~ftobjectarrayclass.f90</title>
+<polygon fill="none" stroke="black" points="261.5,-24 136.5,-24 136.5,-0 261.5,-0 261.5,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTObjectArrayClass.f90</text>
+</g>
+<!-- sourcefile~ftobjectclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~EfferentGraph_node2" class="node"><title>sourcefile~ftobjectclass.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/ftobjectclass.f90.html" xlink:title="FTObjectClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="99.5,-24 0.5,-24 0.5,-0 99.5,-0 99.5,-24"/>
+<text text-anchor="middle" x="50" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftobjectclass.f90&#45;&gt;sourcefile~ftobjectarrayclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~EfferentGraph_edge1" class="edge"><title>sourcefile~ftobjectclass.f90&#45;&gt;sourcefile~ftobjectarrayclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M99.5407,-12C108.108,-12 117.189,-12 126.235,-12"/>
+<polygon fill="#000000" stroke="#000000" points="126.403,-15.5001 136.403,-12 126.403,-8.5001 126.403,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 184,-28 184,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node"><title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="66,-24 0,-24 0,-0 66,-0 66,-24"/>
+<text text-anchor="middle" x="33" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="180,-24 84,-24 84,-0 180,-0 180,-24"/>
+<text text-anchor="middle" x="132" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which depends upon it. A file 
+    is dependent upon another if the latter must be compiled before the former
+    can be.
+    </p>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+      
+      <h3>Files Dependent On This One</h3>
+      
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: sourcefile~~ftobjectarrayclass.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefileftobjectarrayclassf90AfferentGraph" width="641pt" height="348pt"
+ viewBox="0.00 0.00 641.00 347.66" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph" class="graph" transform="scale(0.679025 0.679025) rotate(0) translate(4 508)">
+<title>sourcefile~~ftobjectarrayclass.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-508 940,-508 940,4 -4,4"/>
+<!-- sourcefile~ftobjectarrayclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node1" class="node"><title>sourcefile~ftobjectarrayclass.f90</title>
+<polygon fill="none" stroke="black" points="125.5,-145 0.5,-145 0.5,-121 125.5,-121 125.5,-145"/>
+<text text-anchor="middle" x="63" y="-130.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTObjectArrayClass.f90</text>
+</g>
+<!-- sourcefile~ftdictionaryclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node2" class="node"><title>sourcefile~ftdictionaryclass.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/ftdictionaryclass.f90.html" xlink:title="FTDictionaryClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="440,-424 324,-424 324,-400 440,-400 440,-424"/>
+<text text-anchor="middle" x="382" y="-409.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~ftdictionaryclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge26" class="edge"><title>sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~ftdictionaryclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M72.9396,-145.062C102.971,-184.822 204.625,-313.343 316,-386 321.677,-389.703 327.965,-393.027 334.328,-395.96"/>
+<polygon fill="#000000" stroke="#000000" points="333.074,-399.231 343.643,-399.978 335.847,-392.804 333.074,-399.231"/>
+</g>
+<!-- sourcefile~mutablearraytests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node3" class="node"><title>sourcefile~mutablearraytests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/mutablearraytests.f90.html" xlink:title="MutableArrayTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="280,-24 162,-24 162,-0 280,-0 280,-24"/>
+<text text-anchor="middle" x="221" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">MutableArrayTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~mutablearraytests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge27" class="edge"><title>sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~mutablearraytests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M74.0592,-120.807C90.6927,-101.254 125.712,-62.5943 162,-38 167.033,-34.5892 172.585,-31.4422 178.201,-28.6036"/>
+<polygon fill="#000000" stroke="#000000" points="180.1,-31.5766 187.631,-24.1252 177.097,-25.2534 180.1,-31.5766"/>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node4" class="node"><title>sourcefile~ftlinkedlistclass.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/ftlinkedlistclass.f90.html" xlink:title="FTLinkedListClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="279,-226 163,-226 163,-202 279,-202 279,-226"/>
+<text text-anchor="middle" x="221" y="-211.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~ftlinkedlistclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge28" class="edge"><title>sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~ftlinkedlistclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.3548,-145.127C113.969,-158.945 157.639,-181.62 187.552,-197.152"/>
+<polygon fill="#000000" stroke="#000000" points="186.253,-200.421 196.741,-201.923 189.479,-194.209 186.253,-200.421"/>
+</g>
+<!-- sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node5" class="node"><title>sourcefile~ftobjectlibrary.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/ftobjectlibrary.f90.html" xlink:title="FTObjectLibrary.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="935.5,-324 830.5,-324 830.5,-300 935.5,-300 935.5,-324"/>
+<text text-anchor="middle" x="883" y="-309.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge29" class="edge"><title>sourcefile~ftobjectarrayclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M91.804,-120.873C146.222,-98.2772 271.086,-52 381,-52 381,-52 381,-52 557,-52 665.442,-52 711.058,-40.1419 794,-110 850.402,-157.504 871.76,-248.007 878.869,-289.814"/>
+<polygon fill="#000000" stroke="#000000" points="875.428,-290.461 880.449,-299.79 882.342,-289.366 875.428,-290.461"/>
+</g>
+<!-- sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge10" class="edge"><title>sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M412.537,-399.988C493.084,-367.362 711.655,-279.745 728,-283"/>
+</g>
+<!-- sourcefile~ftvaluedictionaryclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node6" class="node"><title>sourcefile~ftvaluedictionaryclass.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/ftvaluedictionaryclass.f90.html" xlink:title="FTValueDictionaryClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="627.5,-504 484.5,-504 484.5,-480 627.5,-480 627.5,-504"/>
+<text text-anchor="middle" x="556" y="-489.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge7" class="edge"><title>sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M403.466,-424.037C423.574,-435.6 455.327,-453.161 484,-466 492.095,-469.625 500.864,-473.148 509.386,-476.37"/>
+<polygon fill="#000000" stroke="#000000" points="508.26,-479.685 518.854,-479.869 510.687,-473.119 508.26,-479.685"/>
+</g>
+<!-- sourcefile~dictionarytests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node7" class="node"><title>sourcefile~dictionarytests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/dictionarytests.f90.html" xlink:title="DictionaryTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="607,-424 505,-424 505,-400 607,-400 607,-424"/>
+<text text-anchor="middle" x="556" y="-409.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DictionaryTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~dictionarytests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge8" class="edge"><title>sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~dictionarytests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M440.274,-412C457.755,-412 477.027,-412 494.703,-412"/>
+<polygon fill="#000000" stroke="#000000" points="494.9,-415.5 504.9,-412 494.9,-408.5 494.9,-415.5"/>
+</g>
+<!-- sourcefile~ftexceptionclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node8" class="node"><title>sourcefile~ftexceptionclass.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/ftexceptionclass.f90.html" xlink:title="FTExceptionClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="786.5,-384 671.5,-384 671.5,-360 786.5,-360 786.5,-384"/>
+<text text-anchor="middle" x="729" y="-369.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge9" class="edge"><title>sourcefile~ftdictionaryclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416.133,-424.096C464.601,-439.781 556.801,-461.906 628,-433 648.676,-424.606 645.317,-410.203 664,-398 669.599,-394.343 675.796,-391.045 682.064,-388.124"/>
+<polygon fill="#000000" stroke="#000000" points="683.476,-391.327 691.238,-384.115 680.673,-384.912 683.476,-391.327"/>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftdictionaryclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge18" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftdictionaryclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M228.833,-226.26C239.725,-245.829 261.667,-285.351 280,-319 296.173,-348.684 290.79,-363.479 316,-386 319.922,-389.503 324.374,-392.565 329.066,-395.235"/>
+<polygon fill="#000000" stroke="#000000" points="327.804,-398.518 338.308,-399.897 330.957,-392.268 327.804,-398.518"/>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge21" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.059,-226.1C284.726,-229.424 300.953,-232.733 316,-235 421.368,-250.878 450.54,-232.961 555,-254"/>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge22" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.266,-226.006C259.78,-231.591 271.335,-239.006 280,-248 303.455,-272.343 288.246,-295.701 316,-315 419.646,-387.072 573.877,-387.289 661.263,-380.18"/>
+<polygon fill="#000000" stroke="#000000" points="661.663,-383.659 671.322,-379.305 661.056,-376.685 661.663,-383.659"/>
+</g>
+<!-- sourcefile~ftsparsematrixclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node11" class="node"><title>sourcefile~ftsparsematrixclass.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/ftsparsematrixclass.f90.html" xlink:title="FTSparseMatrixClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="447.5,-184 316.5,-184 316.5,-160 447.5,-160 447.5,-184"/>
+<text text-anchor="middle" x="382" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftsparsematrixclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge19" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftsparsematrixclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M267.563,-201.964C285.693,-197.176 306.721,-191.621 325.711,-186.605"/>
+<polygon fill="#000000" stroke="#000000" points="326.656,-189.975 335.43,-184.037 324.868,-183.207 326.656,-189.975"/>
+</g>
+<!-- sourcefile~linkedlisttests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node12" class="node"><title>sourcefile~linkedlisttests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node12"><a xlink:href="../sourcefile/linkedlisttests.f90.html" xlink:title="LinkedListTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="433.5,-104 330.5,-104 330.5,-80 433.5,-80 433.5,-104"/>
+<text text-anchor="middle" x="382" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LinkedListTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~linkedlisttests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge20" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~linkedlisttests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M231.145,-201.792C246.639,-181.843 279.905,-142.074 316,-118 321.571,-114.284 327.754,-110.964 334.029,-108.041"/>
+<polygon fill="#000000" stroke="#000000" points="335.451,-111.239 343.226,-104.042 332.66,-104.819 335.451,-111.239"/>
+</g>
+<!-- sourcefile~ftmultiindextable.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node13" class="node"><title>sourcefile~ftmultiindextable.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node13"><a xlink:href="../sourcefile/ftmultiindextable.f90.html" xlink:title="FTMultiIndexTable.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="440.5,-306 323.5,-306 323.5,-282 440.5,-282 440.5,-306"/>
+<text text-anchor="middle" x="382" y="-291.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTable.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftmultiindextable.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge23" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftmultiindextable.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.369,-226.203C260.076,-237.729 289.406,-255.122 316,-268 323.23,-271.501 331.059,-274.927 338.697,-278.084"/>
+<polygon fill="#000000" stroke="#000000" points="337.625,-281.426 348.208,-281.924 340.246,-274.935 337.625,-281.426"/>
+</g>
+<!-- sourcefile~ftstackclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node14" class="node"><title>sourcefile~ftstackclass.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node14"><a xlink:href="../sourcefile/ftstackclass.f90.html" xlink:title="FTStackClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="603.5,-164 508.5,-164 508.5,-140 603.5,-140 603.5,-164"/>
+<text text-anchor="middle" x="556" y="-149.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftstackclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge24" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~ftstackclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M234.688,-201.811C251.623,-186.476 283.295,-160.946 316,-151 376.226,-132.684 449.005,-136.428 498.308,-142.518"/>
+<polygon fill="#000000" stroke="#000000" points="498.09,-146.019 508.46,-143.846 498.998,-139.079 498.09,-146.019"/>
+</g>
+<!-- sourcefile~linkedlistexample.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node15" class="node"><title>sourcefile~linkedlistexample.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node15"><a xlink:href="../sourcefile/linkedlistexample.f90.html" xlink:title="LinkedListExample.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="441,-226 323,-226 323,-202 441,-202 441,-226"/>
+<text text-anchor="middle" x="382" y="-211.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LinkedListExample.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~linkedlistexample.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge25" class="edge"><title>sourcefile~ftlinkedlistclass.f90&#45;&gt;sourcefile~linkedlistexample.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M279.403,-214C290.231,-214 301.654,-214 312.776,-214"/>
+<polygon fill="#000000" stroke="#000000" points="312.88,-217.5 322.88,-214 312.88,-210.5 312.88,-217.5"/>
+</g>
+<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge1" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M580.595,-479.954C594.532,-472.695 612.439,-463.117 628,-454 644.382,-444.402 646.714,-438.854 664,-431 718.804,-406.1 741.588,-422.606 794,-393 822.378,-376.97 849.039,-350.147 865.42,-331.792"/>
+<polygon fill="#000000" stroke="#000000" points="868.259,-333.861 872.192,-324.024 862.983,-329.261 868.259,-333.861"/>
+</g>
+<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge3" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M605.12,-479.866C613.352,-476.319 621.373,-471.783 628,-466 653.766,-443.517 638.63,-420.929 664,-398 667.904,-394.472 672.349,-391.389 677.036,-388.703"/>
+<polygon fill="#000000" stroke="#000000" points="678.938,-391.663 686.268,-384.014 675.768,-385.422 678.938,-391.663"/>
+</g>
+<!-- sourcefile~valuedictionarytests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node9" class="node"><title>sourcefile~valuedictionarytests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/valuedictionarytests.f90.html" xlink:title="ValueDictionaryTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="793.5,-464 664.5,-464 664.5,-440 793.5,-440 793.5,-464"/>
+<text text-anchor="middle" x="729" y="-449.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ValueDictionaryTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~valuedictionarytests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge2" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~valuedictionarytests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M608.306,-479.999C626.652,-475.707 647.514,-470.827 666.624,-466.357"/>
+<polygon fill="#000000" stroke="#000000" points="667.495,-469.748 676.435,-464.062 665.901,-462.932 667.495,-469.748"/>
+</g>
+<!-- sourcefile~exceptiontests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node10" class="node"><title>sourcefile~exceptiontests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/exceptiontests.f90.html" xlink:title="ExceptionTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="934,-404 832,-404 832,-380 934,-380 934,-404"/>
+<text text-anchor="middle" x="883" y="-389.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ExceptionTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~exceptiontests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge4" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~exceptiontests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M627.58,-498.127C676.307,-499.59 741.519,-495.935 794,-473 824.331,-459.745 851.01,-431.59 866.824,-412.231"/>
+<polygon fill="#000000" stroke="#000000" points="869.647,-414.305 873.108,-404.291 864.158,-409.96 869.647,-414.305"/>
+</g>
+<!-- sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge5" class="edge"><title>sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M760.759,-359.858C784.22,-350.597 816.724,-337.767 842.172,-327.722"/>
+<polygon fill="#000000" stroke="#000000" points="843.53,-330.949 851.546,-324.021 840.959,-324.437 843.53,-330.949"/>
+</g>
+<!-- sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~exceptiontests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge6" class="edge"><title>sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~exceptiontests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M786.599,-379.447C798.089,-380.959 810.213,-382.554 821.821,-384.082"/>
+<polygon fill="#000000" stroke="#000000" points="821.49,-387.568 831.861,-385.403 822.403,-380.628 821.49,-387.568"/>
+</g>
+<!-- sourcefile~ftsparsematrixclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge11" class="edge"><title>sourcefile~ftsparsematrixclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M557,-254C632.568,-269.22 652.29,-268.505 728,-283"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.167,-184.015C432.886,-186.665 440.779,-189.684 448,-193 497.746,-215.846 501.337,-243.192 555,-254"/>
+</g>
+<!-- sourcefile~sparsematrixtests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node16" class="node"><title>sourcefile~sparsematrixtests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node16"><a xlink:href="../sourcefile/sparsematrixtests.f90.html" xlink:title="SparseMatrixTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="615,-206 497,-206 497,-182 615,-182 615,-206"/>
+<text text-anchor="middle" x="556" y="-191.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SparseMatrixTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftsparsematrixclass.f90&#45;&gt;sourcefile~sparsematrixtests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge12" class="edge"><title>sourcefile~ftsparsematrixclass.f90&#45;&gt;sourcefile~sparsematrixtests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M447.536,-180.255C460.323,-181.89 473.786,-183.612 486.693,-185.263"/>
+<polygon fill="#000000" stroke="#000000" points="486.538,-188.772 496.902,-186.569 487.427,-181.828 486.538,-188.772"/>
+</g>
+<!-- sourcefile~multiindextabletests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node17" class="node"><title>sourcefile~multiindextabletests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node17"><a xlink:href="../sourcefile/multiindextabletests.f90.html" xlink:title="MultiIndexTableTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="621,-306 491,-306 491,-282 621,-282 621,-306"/>
+<text text-anchor="middle" x="556" y="-291.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">MultiIndexTableTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftmultiindextable.f90&#45;&gt;sourcefile~multiindextabletests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge13" class="edge"><title>sourcefile~ftmultiindextable.f90&#45;&gt;sourcefile~multiindextabletests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M440.752,-294C453.584,-294 467.36,-294 480.749,-294"/>
+<polygon fill="#000000" stroke="#000000" points="480.89,-297.5 490.89,-294 480.89,-290.5 480.89,-297.5"/>
+</g>
+<!-- sourcefile~ftstackclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge14" class="edge"><title>sourcefile~ftstackclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M603.653,-161.827C612.115,-164.696 620.596,-168.355 628,-173 683.97,-208.112 663.201,-270.096 728,-283"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M730,-283C759.684,-288.911 792.68,-295.236 820.324,-300.466"/>
+<polygon fill="#000000" stroke="#000000" points="819.775,-303.924 830.251,-302.341 821.074,-297.046 819.775,-303.924"/>
+</g>
+<!-- sourcefile~ftstackclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge17" class="edge"><title>sourcefile~ftstackclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M603.826,-158.654C612.764,-161.782 621.381,-166.348 628,-173 668.477,-213.68 636.765,-246.488 664,-297 675.378,-318.103 693.464,-338.565 707.511,-352.77"/>
+<polygon fill="#000000" stroke="#000000" points="705.252,-355.457 714.831,-359.982 710.164,-350.471 705.252,-355.457"/>
+</g>
+<!-- sourcefile~stackstests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node18" class="node"><title>sourcefile~stackstests.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node18"><a xlink:href="../sourcefile/stackstests.f90.html" xlink:title="StacksTests.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="772.5,-185 685.5,-185 685.5,-161 772.5,-161 772.5,-185"/>
+<text text-anchor="middle" x="729" y="-170.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">StacksTests.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftstackclass.f90&#45;&gt;sourcefile~stackstests.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge15" class="edge"><title>sourcefile~ftstackclass.f90&#45;&gt;sourcefile~stackstests.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M603.727,-157.738C625.851,-160.455 652.37,-163.712 675.218,-166.518"/>
+<polygon fill="#000000" stroke="#000000" points="675.076,-170.027 685.428,-167.772 675.929,-163.079 675.076,-170.027"/>
+</g>
+<!-- sourcefile~calculator.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node19" class="node"><title>sourcefile~calculator.f90</title>
+<g id="a_sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_node19"><a xlink:href="../sourcefile/calculator.f90.html" xlink:title="Calculator.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="767.5,-143 690.5,-143 690.5,-119 767.5,-119 767.5,-143"/>
+<text text-anchor="middle" x="729" y="-128.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Calculator.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftstackclass.f90&#45;&gt;sourcefile~calculator.f90 -->
+<g id="sourcefile~~ftobjectarrayclass.f90~~AfferentGraph_edge16" class="edge"><title>sourcefile~ftstackclass.f90&#45;&gt;sourcefile~calculator.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M603.727,-146.262C627.415,-143.353 656.141,-139.825 680.005,-136.894"/>
+<polygon fill="#000000" stroke="#000000" points="680.75,-140.329 690.248,-135.636 679.896,-133.381 680.75,-140.329"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var pansourcefileftobjectarrayclassf90AfferentGraph = svgPanZoom('#sourcefileftobjectarrayclassf90AfferentGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 184,-28 184,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node"><title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="66,-24 0,-24 0,-0 66,-0 66,-24"/>
+<text text-anchor="middle" x="33" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="180,-24 84,-24 84,-0 180,-0 180,-24"/>
+<text text-anchor="middle" x="132" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which depends upon it. A file 
+    is dependent upon another if the latter must be compiled before the former
+    can be.
+    </p>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+      
+      <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
+  <div id="mods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftmutableobjectarrayclass.html">FTMutableObjectArrayClass</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html#src">FTObjectArrayClass.f90</a>
+  </div>
+</div>
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="c">!</span>
+<a name="ln-2"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
+<a name="ln-3"></a><span class="c">!</span>
+<a name="ln-4"></a><span class="c">!      FTMutableObjectArray.f90</span>
+<a name="ln-5"></a><span class="c">!      Created: February 7, 2013 3:24 PM </span>
+<a name="ln-6"></a><span class="c">!      By: David Kopriva  </span>
+<a name="ln-7"></a><span class="c">!</span>
+<a name="ln-8"></a><span class="c">!&gt;FTMutableObjectArray is a mutable array class to which objects</span>
+<a name="ln-9"></a><span class="c">!&gt;can be added, removed, replaced and accessed according to their </span>
+<a name="ln-10"></a><span class="c">!&gt;index in the array.</span>
+<a name="ln-11"></a><span class="c">!&gt;</span>
+<a name="ln-12"></a><span class="c">!&gt;Fortran has pointers to arrays, but not arrays of pointers. To do the latter, one creates</span>
+<a name="ln-13"></a><span class="c">!&gt;a wrapper derived type and creates an array of that wrapper type. Fortran arrays are great, but</span>
+<a name="ln-14"></a><span class="c">!&gt;they are of fixed length, and they don&#39;t easily implement reference counting to keep track of</span>
+<a name="ln-15"></a><span class="c">!&gt;memory. For that, we have the FTMutableObjectArray. Performance reasons dictate that you </span>
+<a name="ln-16"></a><span class="c">!&gt;will use regular arrays for numeric types and the like, but for generic objects we would use</span>
+<a name="ln-17"></a><span class="c">!&gt;an Object Array.</span>
+<a name="ln-18"></a><span class="c">!&gt;</span>
+<a name="ln-19"></a><span class="c">!&gt;You initialize a FTMutableObjectArray with the number of objects that you expect it to hold.</span>
+<a name="ln-20"></a><span class="c">!&gt;However, it can re-size itself if necessary. To be efficient, it adds more than one entry at a time</span>
+<a name="ln-21"></a><span class="c">!&gt;given by the ``chunkSize&#39;&#39;, which you can choose for yourself. (The default is 10.)</span>
+<a name="ln-22"></a><span class="c">!&gt;##Definition</span>
+<a name="ln-23"></a><span class="c">!&gt;           TYPE(FTMutableObjectArray) :: array</span>
+<a name="ln-24"></a><span class="c">!&gt;#Usage</span>
+<a name="ln-25"></a><span class="c">!&gt;##Initialization</span>
+<a name="ln-26"></a><span class="c">!&gt;      CLASS(FTMutableObjectArray)  :: array</span>
+<a name="ln-27"></a><span class="c">!&gt;      INTEGER                      :: N = 11</span>
+<a name="ln-28"></a><span class="c">!&gt;      CALL array % initWithSize(N)</span>
+<a name="ln-29"></a><span class="c">!&gt;#Destruction</span>
+<a name="ln-30"></a><span class="c">!&gt;           CALL array  %  destuct() [Non Pointers]</span>
+<a name="ln-31"></a><span class="c">!&gt;           call release(array) [Pointers]</span>
+<a name="ln-32"></a><span class="c">!&gt;#Adding an Object</span>
+<a name="ln-33"></a><span class="c">!&gt;           TYPE(FTObject) :: obj</span>
+<a name="ln-34"></a><span class="c">!&gt;           obj =&gt; r1</span>
+<a name="ln-35"></a><span class="c">!&gt;           CALL array % addObject(obj)</span>
+<a name="ln-36"></a><span class="c">!&gt;#Removing an Object</span>
+<a name="ln-37"></a><span class="c">!&gt;           TYPE(FTObject) :: obj</span>
+<a name="ln-38"></a><span class="c">!&gt;           CALL array % removeObjectAtIndex(i)</span>
+<a name="ln-39"></a><span class="c">!&gt;#Accessing an Object</span>
+<a name="ln-40"></a><span class="c">!&gt;           TYPE(FTObject) :: obj</span>
+<a name="ln-41"></a><span class="c">!&gt;           obj =&gt; array % objectAtIndex(i)</span>
+<a name="ln-42"></a><span class="c">!&gt;#Replacing an Object</span>
+<a name="ln-43"></a><span class="c">!&gt;           TYPE(FTObject) :: obj</span>
+<a name="ln-44"></a><span class="c">!&gt;           obj =&gt; r1</span>
+<a name="ln-45"></a><span class="c">!&gt;           CALL array % replaceObjectAtIndexWithObject(i,obj)</span>
+<a name="ln-46"></a><span class="c">!&gt;#Setting the Chunk Size</span>
+<a name="ln-47"></a><span class="c">!&gt;           CALL array % setChunkSize(size)</span>
+<a name="ln-48"></a><span class="c">!&gt;#Finding The Number Of Items In The Array</span>
+<a name="ln-49"></a><span class="c">!&gt;           n =  array % count()</span>
+<a name="ln-50"></a><span class="c">!&gt;#Finding The Actual Allocated Size Of The Array</span>
+<a name="ln-51"></a><span class="c">!&gt;           n =  array % allocatedSize()</span>
+<a name="ln-52"></a>
+<a name="ln-53"></a><span class="c">!</span>
+<a name="ln-54"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
+<a name="ln-55"></a><span class="c">!</span>
+<a name="ln-56"></a>      <span class="k">MODULE </span><span class="n">FTMutableObjectArrayClass</span>
+<a name="ln-57"></a>      <span class="k">USE </span><span class="n">FTObjectClass</span>
+<a name="ln-58"></a>      <span class="k">IMPLICIT NONE</span>
+<a name="ln-59"></a><span class="k">      </span>
+<a name="ln-60"></a><span class="k">      TYPE </span><span class="n">FTObjectPointerWrapper</span>
+<a name="ln-61"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span> <span class="kd">::</span>  <span class="n">object</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-62"></a>      <span class="k">END TYPE </span><span class="n">FTObjectPointerWrapper</span>
+<a name="ln-63"></a>      
+<a name="ln-64"></a>      <span class="k">PRIVATE</span> <span class="kd">::</span> <span class="n">FTObjectPointerWrapper</span>
+<a name="ln-65"></a>      <span class="k">PRIVATE</span> <span class="kd">::</span> <span class="n">increaseArraysize</span>
+<a name="ln-66"></a>      
+<a name="ln-67"></a>      <span class="k">TYPE</span><span class="p">,</span> <span class="k">EXTENDS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span> <span class="kd">::</span>  <span class="n">FTMutableObjectArray</span>
+<a name="ln-68"></a>         <span class="kt">INTEGER</span>                                            <span class="p">,</span> <span class="k">PRIVATE</span> <span class="kd">::</span> <span class="n">count_</span>
+<a name="ln-69"></a>         <span class="k">TYPE</span><span class="p">(</span><span class="n">FTObjectPointerWrapper</span><span class="p">),</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">PRIVATE</span> <span class="kd">::</span> <span class="k">array</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-70"></a>         <span class="kt">INTEGER</span>                                            <span class="p">,</span> <span class="k">PRIVATE</span> <span class="kd">::</span> <span class="n">chunkSize_</span> <span class="o">=</span> <span class="mi">10</span>
+<a name="ln-71"></a><span class="c">!</span>
+<a name="ln-72"></a><span class="c">!        --------</span>
+<a name="ln-73"></a>         <span class="k">CONTAINS</span>
+<a name="ln-74"></a><span class="c">!        --------</span>
+<a name="ln-75"></a><span class="c">!</span>
+<a name="ln-76"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">initWithSize</span> <span class="o">=&gt;</span> <span class="n">initObjectArrayWithSize</span>
+<a name="ln-77"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">destruct</span>     <span class="o">=&gt;</span> <span class="n">destructObjectArray</span>
+<a name="ln-78"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">addObject</span>    <span class="o">=&gt;</span> <span class="n">addObjectToArray</span>
+<a name="ln-79"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">replaceObjectAtIndexWithObject</span>
+<a name="ln-80"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">removeObjectAtIndex</span>
+<a name="ln-81"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">objectAtIndex</span>
+<a name="ln-82"></a>         
+<a name="ln-83"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">printDescription</span> <span class="o">=&gt;</span> <span class="n">printArray</span>
+<a name="ln-84"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">className</span>        <span class="o">=&gt;</span> <span class="n">arrayClassName</span>
+<a name="ln-85"></a><span class="c">!         </span>
+<a name="ln-86"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">setChunkSize</span>
+<a name="ln-87"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">chunkSize</span>
+<a name="ln-88"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="nb">COUNT</span> <span class="o">=&gt;</span> <span class="n">numberOfItems</span>
+<a name="ln-89"></a>         <span class="k">PROCEDURE</span><span class="p">,</span> <span class="k">PUBLIC</span> <span class="kd">::</span> <span class="n">allocatedSize</span>
+<a name="ln-90"></a>         
+<a name="ln-91"></a>      <span class="k">END TYPE </span>
+<a name="ln-92"></a><span class="k">         </span>
+<a name="ln-93"></a><span class="k">      INTERFACE </span><span class="n">cast</span>
+<a name="ln-94"></a>         <span class="k">MODULE PROCEDURE </span><span class="n">castToMutableObjectArray</span>
+<a name="ln-95"></a>      <span class="k">END INTERFACE </span><span class="n">cast</span>
+<a name="ln-96"></a>      
+<a name="ln-97"></a>      <span class="k">INTERFACE </span><span class="n">release</span>
+<a name="ln-98"></a>         <span class="k">MODULE PROCEDURE </span><span class="n">releaseFTMutableObjectArray</span> 
+<a name="ln-99"></a>      <span class="k">END INTERFACE</span>  
+<a name="ln-100"></a><span class="c">!</span>
+<a name="ln-101"></a><span class="c">!     ======== </span>
+<a name="ln-102"></a>      <span class="k">CONTAINS</span>  
+<a name="ln-103"></a><span class="c">!     ======== </span>
+<a name="ln-104"></a><span class="c">!</span>
+<a name="ln-105"></a><span class="c">!</span>
+<a name="ln-106"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-107"></a><span class="c">! </span>
+<a name="ln-108"></a><span class="c">!&gt;</span>
+<a name="ln-109"></a><span class="c">!&gt; Designated initializer. Initializes the amount of storage, but</span>
+<a name="ln-110"></a><span class="c">!&gt; the array remains empty.</span>
+<a name="ln-111"></a><span class="c">!&gt;</span>
+<a name="ln-112"></a><span class="c">!&gt; *Usage</span>
+<a name="ln-113"></a><span class="c">!&gt;</span>
+<a name="ln-114"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray)  :: array</span>
+<a name="ln-115"></a><span class="c">!&gt;       integer                      :: N = 11</span>
+<a name="ln-116"></a><span class="c">!&gt;       CALL array % initWithSize(N)</span>
+<a name="ln-117"></a><span class="c">!&gt;</span>
+<a name="ln-118"></a>      <span class="k">SUBROUTINE </span><span class="n">initObjectArrayWithSize</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">arraySize</span> <span class="p">)</span>    
+<a name="ln-119"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-120"></a><span class="k">         CLASS</span><span class="p">(</span> <span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-121"></a>         <span class="kt">INTEGER</span>                      <span class="kd">::</span> <span class="n">arraySize</span>
+<a name="ln-122"></a>         <span class="kt">INTEGER</span>                      <span class="kd">::</span> <span class="n">i</span>
+<a name="ln-123"></a>         
+<a name="ln-124"></a>         <span class="k">CALL </span><span class="n">self</span> <span class="p">%</span> <span class="n">FTObject</span> <span class="p">%</span> <span class="n">init</span><span class="p">()</span>
+<a name="ln-125"></a>         
+<a name="ln-126"></a>         <span class="k">ALLOCATE</span><span class="p">(</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">arraySize</span><span class="p">)</span> <span class="p">)</span>
+<a name="ln-127"></a>         
+<a name="ln-128"></a>         <span class="k">DO </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">arraySize</span>
+<a name="ln-129"></a>            <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-130"></a>         <span class="k">END DO</span>
+<a name="ln-131"></a><span class="k">         </span><span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="ln-132"></a>         
+<a name="ln-133"></a>      <span class="k">END SUBROUTINE </span><span class="n">initObjectArrayWithSize</span>
+<a name="ln-134"></a><span class="c">!</span>
+<a name="ln-135"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-136"></a><span class="c">! </span>
+<a name="ln-137"></a><span class="c">!&gt;</span>
+<a name="ln-138"></a><span class="c">!&gt; Destructor for the class. This is called automatically when the</span>
+<a name="ln-139"></a><span class="c">!&gt; reference count reaches zero. Do not call this yourself.</span>
+<a name="ln-140"></a><span class="c">!&gt;</span>
+<a name="ln-141"></a>      <span class="k">SUBROUTINE </span><span class="n">destructObjectArray</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>  
+<a name="ln-142"></a>         <span class="k">IMPLICIT NONE</span>
+<a name="ln-143"></a><span class="k">         CLASS</span><span class="p">(</span> <span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-144"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span>     <span class="kd">::</span> <span class="n">obj</span>     <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-145"></a>         <span class="kt">INTEGER</span>                      <span class="kd">::</span> <span class="n">i</span>
+<a name="ln-146"></a>
+<a name="ln-147"></a>         <span class="k">DO </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span>
+<a name="ln-148"></a>            <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">%</span> <span class="n">object</span> 
+<a name="ln-149"></a>            <span class="k">IF</span> <span class="p">(</span> <span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="p">)</span> <span class="k">CALL </span><span class="n">releaseFTObject</span><span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
+<a name="ln-150"></a>         <span class="k">END DO</span>
+<a name="ln-151"></a><span class="k">         </span>
+<a name="ln-152"></a><span class="k">         DEALLOCATE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span>
+<a name="ln-153"></a>         <span class="n">self</span> <span class="p">%</span> <span class="k">array</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-154"></a>         <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="o">=</span> <span class="mi">0</span>  
+<a name="ln-155"></a>
+<a name="ln-156"></a>      <span class="k">END SUBROUTINE</span>
+<a name="ln-157"></a><span class="c">!</span>
+<a name="ln-158"></a><span class="c">!------------------------------------------------</span>
+<a name="ln-159"></a><span class="c">!&gt; Public, generic name: release(self)</span>
+<a name="ln-160"></a><span class="c">!&gt;</span>
+<a name="ln-161"></a><span class="c">!&gt; Call release(self) on an object to release control</span>
+<a name="ln-162"></a><span class="c">!&gt; of an object. If its reference count is zero, then </span>
+<a name="ln-163"></a><span class="c">!&gt; it is deallocated.</span>
+<a name="ln-164"></a><span class="c">!------------------------------------------------</span>
+<a name="ln-165"></a><span class="c">!</span>
+<a name="ln-166"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-167"></a><span class="c">! </span>
+<a name="ln-168"></a>      <span class="k">SUBROUTINE </span><span class="n">releaseFTMutableObjectArray</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>  
+<a name="ln-169"></a>         <span class="k">IMPLICIT NONE</span>
+<a name="ln-170"></a><span class="k">         TYPE</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="p">,</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-171"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">obj</span>
+<a name="ln-172"></a>         
+<a name="ln-173"></a>         <span class="k">IF</span><span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span> <span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">self</span><span class="p">))</span> <span class="k">RETURN</span>
+<a name="ln-174"></a><span class="k">         </span>
+<a name="ln-175"></a><span class="k">         </span><span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">self</span>
+<a name="ln-176"></a>         <span class="k">CALL </span><span class="n">releaseFTObject</span><span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
+<a name="ln-177"></a>         <span class="k">IF</span> <span class="p">(</span> <span class="p">.</span><span class="nb">NOT</span><span class="p">.</span> <span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="p">)</span>     <span class="k">THEN</span>
+<a name="ln-178"></a><span class="k">            </span><span class="n">self</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span> 
+<a name="ln-179"></a>         <span class="k">END IF      </span>
+<a name="ln-180"></a><span class="k">      END SUBROUTINE </span><span class="n">releaseFTMutableObjectArray</span>
+<a name="ln-181"></a><span class="c">!</span>
+<a name="ln-182"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-183"></a><span class="c">! </span>
+<a name="ln-184"></a><span class="c">!&gt;</span>
+<a name="ln-185"></a><span class="c">!&gt; Add an object to the end of the array</span>
+<a name="ln-186"></a><span class="c">!&gt;</span>
+<a name="ln-187"></a><span class="c">!&gt; *Usage</span>
+<a name="ln-188"></a><span class="c">!&gt;</span>
+<a name="ln-189"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray)      :: array</span>
+<a name="ln-190"></a><span class="c">!&gt;       CLASS(FTObject)        , POINTER :: obj</span>
+<a name="ln-191"></a><span class="c">!&gt;       CLASS(FTObjectSubclass), POINTER :: p</span>
+<a name="ln-192"></a><span class="c">!&gt;       obj =&gt; p</span>
+<a name="ln-193"></a><span class="c">!&gt;       CALL array % addObject(obj)</span>
+<a name="ln-194"></a><span class="c">!&gt;</span>
+<a name="ln-195"></a>      <span class="k">SUBROUTINE </span><span class="n">addObjectToArray</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+<a name="ln-196"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-197"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-198"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span>    <span class="kd">::</span> <span class="n">obj</span>
+<a name="ln-199"></a>
+<a name="ln-200"></a>         <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="o">=</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-201"></a>
+<a name="ln-202"></a>         <span class="k">IF</span> <span class="p">(</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="o">&gt;</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span> <span class="p">)</span>     <span class="k">THEN</span>
+<a name="ln-203"></a><span class="k">            CALL </span><span class="n">increaseArraysize</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="p">)</span> 
+<a name="ln-204"></a>         <span class="k">END IF </span>
+<a name="ln-205"></a><span class="k">         </span>
+<a name="ln-206"></a><span class="k">         </span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="n">count_</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span> <span class="o">=&gt;</span> <span class="n">obj</span>
+<a name="ln-207"></a>         <span class="k">CALL </span><span class="n">obj</span> <span class="p">%</span> <span class="n">retain</span><span class="p">()</span>
+<a name="ln-208"></a>         
+<a name="ln-209"></a>      <span class="k">END SUBROUTINE </span><span class="n">addObjectToArray</span>
+<a name="ln-210"></a><span class="c">!</span>
+<a name="ln-211"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-212"></a><span class="c">! </span>
+<a name="ln-213"></a><span class="c">!&gt;</span>
+<a name="ln-214"></a><span class="c">!&gt; Remove an object at the index indx</span>
+<a name="ln-215"></a><span class="c">!&gt;</span>
+<a name="ln-216"></a><span class="c">!&gt; *Usage</span>
+<a name="ln-217"></a><span class="c">!&gt;</span>
+<a name="ln-218"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray) :: array</span>
+<a name="ln-219"></a><span class="c">!&gt;       INTEGER                     :: indx</span>
+<a name="ln-220"></a><span class="c">!&gt;       CALL array % removeObjectAtIndex(indx)</span>
+<a name="ln-221"></a><span class="c">!&gt;</span>
+<a name="ln-222"></a>      <span class="k">SUBROUTINE </span><span class="n">removeObjectAtIndex</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">indx</span><span class="p">)</span>  
+<a name="ln-223"></a>         <span class="k">IMPLICIT NONE</span>
+<a name="ln-224"></a><span class="c">!</span>
+<a name="ln-225"></a><span class="c">!        ---------</span>
+<a name="ln-226"></a><span class="c">!        Arguments</span>
+<a name="ln-227"></a><span class="c">!        ---------</span>
+<a name="ln-228"></a><span class="c">!</span>
+<a name="ln-229"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-230"></a>         <span class="kt">INTEGER</span>                     <span class="kd">::</span> <span class="n">indx</span>
+<a name="ln-231"></a><span class="c">!</span>
+<a name="ln-232"></a><span class="c">!        ---------------</span>
+<a name="ln-233"></a><span class="c">!        Local variables</span>
+<a name="ln-234"></a><span class="c">!        ---------------</span>
+<a name="ln-235"></a><span class="c">!</span>
+<a name="ln-236"></a>         <span class="kt">INTEGER</span>                     <span class="kd">::</span> <span class="n">i</span>
+<a name="ln-237"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span>    <span class="kd">::</span> <span class="n">obj</span>  <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-238"></a>         
+<a name="ln-239"></a>         <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">indx</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span>
+<a name="ln-240"></a>         
+<a name="ln-241"></a>         <span class="k">IF</span> <span class="p">(</span> <span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="p">)</span>     <span class="k">THEN</span>
+<a name="ln-242"></a><span class="k">            CALL </span><span class="n">releaseFTObject</span><span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
+<a name="ln-243"></a>         <span class="k">END IF </span>
+<a name="ln-244"></a><span class="k">         </span>
+<a name="ln-245"></a><span class="k">         DO </span><span class="n">i</span> <span class="o">=</span> <span class="n">indx</span><span class="p">,</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span><span class="o">-</span><span class="mi">1</span>
+<a name="ln-246"></a>            <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">%</span> <span class="n">object</span> <span class="o">=&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">%</span> <span class="n">object</span>
+<a name="ln-247"></a>         <span class="k">END DO</span>
+<a name="ln-248"></a><span class="k">         </span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="n">count_</span><span class="p">)</span> <span class="p">%</span> <span class="n">object</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-249"></a>         <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span>                        <span class="o">=</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="o">-</span> <span class="mi">1</span>
+<a name="ln-250"></a>         
+<a name="ln-251"></a>      <span class="k">END SUBROUTINE </span><span class="n">removeObjectAtIndex</span>
+<a name="ln-252"></a><span class="c">!</span>
+<a name="ln-253"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-254"></a><span class="c">! </span>
+<a name="ln-255"></a><span class="c">!&gt;</span>
+<a name="ln-256"></a><span class="c">!&gt; Replace an object at the index indx</span>
+<a name="ln-257"></a><span class="c">!&gt;</span>
+<a name="ln-258"></a><span class="c">!&gt; Usage</span>
+<a name="ln-259"></a><span class="c">!&gt; -----</span>
+<a name="ln-260"></a><span class="c">!&gt;</span>
+<a name="ln-261"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray) :: array</span>
+<a name="ln-262"></a><span class="c">!&gt;       INTEGER                     :: indx</span>
+<a name="ln-263"></a><span class="c">!&gt;       CALL array % replaceObjectAtIndexWithObject(indx)</span>
+<a name="ln-264"></a><span class="c">!&gt;</span>
+<a name="ln-265"></a>      <span class="k">SUBROUTINE </span><span class="n">replaceObjectAtIndexWithObject</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">indx</span><span class="p">,</span><span class="n">replacement</span><span class="p">)</span>  
+<a name="ln-266"></a>         <span class="k">IMPLICIT NONE</span>
+<a name="ln-267"></a><span class="c">!</span>
+<a name="ln-268"></a><span class="c">!        ---------</span>
+<a name="ln-269"></a><span class="c">!        Arguments</span>
+<a name="ln-270"></a><span class="c">!        ---------</span>
+<a name="ln-271"></a><span class="c">!</span>
+<a name="ln-272"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-273"></a>         <span class="kt">INTEGER</span>                     <span class="kd">::</span> <span class="n">indx</span>
+<a name="ln-274"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span>    <span class="kd">::</span> <span class="n">replacement</span>
+<a name="ln-275"></a><span class="c">!</span>
+<a name="ln-276"></a><span class="c">!        ---------------</span>
+<a name="ln-277"></a><span class="c">!        Local variables</span>
+<a name="ln-278"></a><span class="c">!        ---------------</span>
+<a name="ln-279"></a><span class="c">!</span>
+<a name="ln-280"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span>    <span class="kd">::</span> <span class="n">obj</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-281"></a>         
+<a name="ln-282"></a>         <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">indx</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span>
+<a name="ln-283"></a>         
+<a name="ln-284"></a>         <span class="k">CALL </span><span class="n">releaseFTObject</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<a name="ln-285"></a>         
+<a name="ln-286"></a>         <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">indx</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span> <span class="o">=&gt;</span> <span class="n">replacement</span>
+<a name="ln-287"></a>         <span class="k">CALL </span><span class="n">replacement</span> <span class="p">%</span> <span class="n">retain</span><span class="p">()</span>
+<a name="ln-288"></a>         
+<a name="ln-289"></a>      <span class="k">END SUBROUTINE  </span><span class="n">replaceObjectAtIndexWithObject</span>
+<a name="ln-290"></a><span class="c">!</span>
+<a name="ln-291"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-292"></a><span class="c">! </span>
+<a name="ln-293"></a>      <span class="k">SUBROUTINE </span><span class="n">printArray</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">iUnit</span><span class="p">)</span>  
+<a name="ln-294"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-295"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-296"></a>         <span class="kt">INTEGER</span>                     <span class="kd">::</span> <span class="n">iUnit</span>
+<a name="ln-297"></a>         <span class="kt">INTEGER</span>                     <span class="kd">::</span> <span class="n">i</span>
+<a name="ln-298"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span>    <span class="kd">::</span> <span class="n">obj</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-299"></a>         
+<a name="ln-300"></a>         <span class="k">DO </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span>
+<a name="ln-301"></a>            <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">%</span> <span class="n">object</span>
+<a name="ln-302"></a>            <span class="k">CALL </span><span class="n">obj</span> <span class="p">%</span> <span class="n">printDescription</span><span class="p">(</span><span class="n">iUnit</span><span class="p">)</span>
+<a name="ln-303"></a>         <span class="k">END DO  </span>
+<a name="ln-304"></a><span class="k">      END SUBROUTINE </span><span class="n">printArray</span>
+<a name="ln-305"></a><span class="c">!</span>
+<a name="ln-306"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-307"></a><span class="c">! </span>
+<a name="ln-308"></a><span class="c">!&gt;</span>
+<a name="ln-309"></a><span class="c">!&gt; Access the object at the index indx</span>
+<a name="ln-310"></a><span class="c">!&gt;</span>
+<a name="ln-311"></a><span class="c">!&gt; *Usage</span>
+<a name="ln-312"></a><span class="c">!&gt;</span>
+<a name="ln-313"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray) :: array</span>
+<a name="ln-314"></a><span class="c">!&gt;       INTEGER                     :: indx</span>
+<a name="ln-315"></a><span class="c">!&gt;       CLASS(FTObject), POINTER    :: obj</span>
+<a name="ln-316"></a><span class="c">!&gt;       obj =&gt; array % objectAtIndex(indx)</span>
+<a name="ln-317"></a><span class="c">!&gt;</span>
+<a name="ln-318"></a>      <span class="k">FUNCTION </span><span class="n">objectAtIndex</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">indx</span><span class="p">)</span>  <span class="k">RESULT</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<a name="ln-319"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-320"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-321"></a>         <span class="kt">INTEGER</span>                     <span class="kd">::</span> <span class="n">indx</span>
+<a name="ln-322"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="k">POINTER</span>    <span class="kd">::</span> <span class="n">obj</span>
+<a name="ln-323"></a>         <span class="k">IF</span> <span class="p">(</span> <span class="n">indx</span> <span class="o">&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span> <span class="p">.</span><span class="nb">OR</span><span class="p">.</span> <span class="n">indx</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>     <span class="k">THEN</span>
+<a name="ln-324"></a><span class="k">            </span><span class="n">obj</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span> 
+<a name="ln-325"></a>         <span class="k">ELSE </span>
+<a name="ln-326"></a><span class="k">            </span><span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">indx</span><span class="p">)</span> <span class="p">%</span> <span class="n">object</span>
+<a name="ln-327"></a>         <span class="k">END IF </span>
+<a name="ln-328"></a><span class="k">         </span>
+<a name="ln-329"></a><span class="k">      END FUNCTION </span><span class="n">objectAtIndex</span>
+<a name="ln-330"></a><span class="c">!</span>
+<a name="ln-331"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-332"></a><span class="c">! </span>
+<a name="ln-333"></a>      <span class="k">SUBROUTINE </span><span class="n">increaseArraySize</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">n</span> <span class="p">)</span>  
+<a name="ln-334"></a>         <span class="k">IMPLICIT NONE</span> 
+<a name="ln-335"></a><span class="c">!</span>
+<a name="ln-336"></a><span class="c">!        ---------</span>
+<a name="ln-337"></a><span class="c">!        Arguments</span>
+<a name="ln-338"></a><span class="c">!        ---------</span>
+<a name="ln-339"></a><span class="c">!</span>
+<a name="ln-340"></a>         <span class="k">CLASS</span><span class="p">(</span> <span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-341"></a>         <span class="kt">INTEGER</span>                      <span class="kd">::</span> <span class="n">n</span>
+<a name="ln-342"></a><span class="c">!</span>
+<a name="ln-343"></a><span class="c">!        ---------------</span>
+<a name="ln-344"></a><span class="c">!        Local Variables</span>
+<a name="ln-345"></a><span class="c">!        ---------------</span>
+<a name="ln-346"></a><span class="c">!</span>
+<a name="ln-347"></a>         <span class="k">TYPE</span><span class="p">(</span><span class="n">FTObjectPointerWrapper</span><span class="p">),</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">newArray</span> 
+<a name="ln-348"></a>         <span class="kt">INTEGER</span>                                             <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span>
+<a name="ln-349"></a>         
+<a name="ln-350"></a>         <span class="k">IF</span> <span class="p">(</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span> <span class="p">)</span>     <span class="k">THEN</span>
+<a name="ln-351"></a><span class="k">            RETURN </span>
+<a name="ln-352"></a><span class="k">         END IF </span>
+<a name="ln-353"></a><span class="k">         </span>
+<a name="ln-354"></a><span class="k">         </span><span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">))</span><span class="o">/</span><span class="n">self</span> <span class="p">%</span> <span class="n">chunkSize_</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-355"></a>         <span class="k">ALLOCATE</span><span class="p">(</span> <span class="n">newArray</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span><span class="o">*</span><span class="n">self</span> <span class="p">%</span> <span class="n">chunkSize_</span><span class="p">)</span> <span class="p">)</span>
+<a name="ln-356"></a>         
+<a name="ln-357"></a>         <span class="k">DO </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">SIZE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span>
+<a name="ln-358"></a>            <span class="n">newArray</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span> <span class="o">=&gt;</span> <span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span>
+<a name="ln-359"></a>         <span class="k">END DO</span>
+<a name="ln-360"></a><span class="k">         DO </span><span class="n">i</span> <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">SIZE</span><span class="p">(</span><span class="n">newArray</span><span class="p">)</span>
+<a name="ln-361"></a>            <span class="n">newArray</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">%</span>  <span class="n">object</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-362"></a>         <span class="k">END DO</span>
+<a name="ln-363"></a><span class="k">         </span>
+<a name="ln-364"></a><span class="k">         DEALLOCATE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span>
+<a name="ln-365"></a>         <span class="n">self</span> <span class="p">%</span> <span class="k">array</span> <span class="o">=&gt;</span> <span class="n">newArray</span>
+<a name="ln-366"></a>
+<a name="ln-367"></a>      <span class="k">END SUBROUTINE </span><span class="n">increaseArraySize</span>
+<a name="ln-368"></a><span class="c">!</span>
+<a name="ln-369"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-370"></a><span class="c">! </span>
+<a name="ln-371"></a><span class="c">!&gt;</span>
+<a name="ln-372"></a><span class="c">!&gt; Set the number of items to be added when the array needs to be re-sized</span>
+<a name="ln-373"></a><span class="c">!&gt;</span>
+<a name="ln-374"></a><span class="c">!&gt; *Usage</span>
+<a name="ln-375"></a><span class="c">!&gt;</span>
+<a name="ln-376"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray) :: array</span>
+<a name="ln-377"></a><span class="c">!&gt;       INTEGER                     :: sze = 42</span>
+<a name="ln-378"></a><span class="c">!&gt;       CALL array % setChunkSize(sze)</span>
+<a name="ln-379"></a><span class="c">!&gt;</span>
+<a name="ln-380"></a>      <span class="k">SUBROUTINE </span><span class="n">setChunkSize</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">chunkSize</span><span class="p">)</span>  
+<a name="ln-381"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-382"></a><span class="k">         CLASS</span><span class="p">(</span> <span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-383"></a>         <span class="kt">INTEGER</span>              <span class="kd">::</span> <span class="n">chunkSize</span>
+<a name="ln-384"></a>         
+<a name="ln-385"></a>         <span class="n">self</span> <span class="p">%</span> <span class="n">chunkSize_</span> <span class="o">=</span> <span class="n">chunkSize</span>
+<a name="ln-386"></a>         
+<a name="ln-387"></a>      <span class="k">END SUBROUTINE </span><span class="n">setChunkSize</span>
+<a name="ln-388"></a><span class="c">!</span>
+<a name="ln-389"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-390"></a><span class="c">! </span>
+<a name="ln-391"></a><span class="c">!&gt;</span>
+<a name="ln-392"></a><span class="c">!&gt; Returns the number of items to be added when the array needs to be re-sized</span>
+<a name="ln-393"></a><span class="c">!&gt;</span>
+<a name="ln-394"></a><span class="c">!&gt; *Usage</span>
+<a name="ln-395"></a><span class="c">!&gt;</span>
+<a name="ln-396"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray) :: array</span>
+<a name="ln-397"></a><span class="c">!&gt;       INTEGER                     :: sze</span>
+<a name="ln-398"></a><span class="c">!&gt;       sze =  array % chunkSize</span>
+<a name="ln-399"></a><span class="c">!&gt;</span>
+<a name="ln-400"></a>      <span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">chunkSize</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>  
+<a name="ln-401"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-402"></a><span class="k">         CLASS</span><span class="p">(</span> <span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-403"></a>         <span class="n">chunkSize</span> <span class="o">=</span> <span class="n">self</span> <span class="p">%</span> <span class="n">chunkSize_</span>
+<a name="ln-404"></a>      <span class="k">END FUNCTION </span><span class="n">chunkSize</span>
+<a name="ln-405"></a><span class="c">!</span>
+<a name="ln-406"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-407"></a><span class="c">! </span>
+<a name="ln-408"></a><span class="c">!&gt;</span>
+<a name="ln-409"></a><span class="c">!&gt; Generic name: count</span>
+<a name="ln-410"></a><span class="c">!&gt;</span>
+<a name="ln-411"></a><span class="c">!&gt; Returns the acutal number of items in the array. </span>
+<a name="ln-412"></a><span class="c">!&gt;</span>
+<a name="ln-413"></a><span class="c">!&gt; *Usage</span>
+<a name="ln-414"></a><span class="c">!&gt;</span>
+<a name="ln-415"></a><span class="c">!&gt;       CLASS(FTMutableObjectArray) :: array</span>
+<a name="ln-416"></a><span class="c">!&gt;       INTEGER                     :: sze</span>
+<a name="ln-417"></a><span class="c">!&gt;       sze =  array % count()</span>
+<a name="ln-418"></a><span class="c">!&gt;</span>
+<a name="ln-419"></a>      <span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">numberOfItems</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>  
+<a name="ln-420"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-421"></a><span class="k">         CLASS</span><span class="p">(</span> <span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-422"></a>         <span class="n">numberOfItems</span> <span class="o">=</span> <span class="n">self</span> <span class="p">%</span> <span class="n">count_</span>
+<a name="ln-423"></a>      <span class="k">END FUNCTION </span><span class="n">numberOfItems</span>
+<a name="ln-424"></a><span class="c">!</span>
+<a name="ln-425"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-426"></a><span class="c">! </span>
+<a name="ln-427"></a>      <span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">allocatedSize</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>  
+<a name="ln-428"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-429"></a><span class="k">         CLASS</span><span class="p">(</span> <span class="n">FTMutableObjectArray</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-430"></a>         <span class="k">IF</span> <span class="p">(</span> <span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span> <span class="p">)</span>     <span class="k">THEN</span>
+<a name="ln-431"></a><span class="k">            </span><span class="n">allocatedSize</span> <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">self</span> <span class="p">%</span> <span class="k">array</span><span class="p">)</span>
+<a name="ln-432"></a>         <span class="k">ELSE</span>
+<a name="ln-433"></a><span class="k">            </span><span class="n">allocatedSize</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="ln-434"></a>         <span class="k">END IF </span>
+<a name="ln-435"></a><span class="k">      END FUNCTION </span><span class="n">allocatedSize</span>
+<a name="ln-436"></a><span class="c">!</span>
+<a name="ln-437"></a><span class="c">!---------------------------------------------------------------------------</span>
+<a name="ln-438"></a><span class="c">!&gt; Generic Name: cast</span>
+<a name="ln-439"></a><span class="c">!&gt; </span>
+<a name="ln-440"></a><span class="c">!&gt; Cast a pointer to the base class to an FTMutableObjectArray pointer </span>
+<a name="ln-441"></a><span class="c">!---------------------------------------------------------------------------</span>
+<a name="ln-442"></a><span class="c">!</span>
+<a name="ln-443"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-444"></a><span class="c">! </span>
+<a name="ln-445"></a>      <span class="k">FUNCTION </span><span class="n">objectArrayFromObject</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">RESULT</span><span class="p">(</span><span class="n">cast</span><span class="p">)</span>
+<a name="ln-446"></a><span class="c">!</span>
+<a name="ln-447"></a><span class="c">!     -----------------------------------------------------</span>
+<a name="ln-448"></a><span class="c">!     Cast the base class FTObject to the FTException class</span>
+<a name="ln-449"></a><span class="c">!     -----------------------------------------------------</span>
+<a name="ln-450"></a><span class="c">!</span>
+<a name="ln-451"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-452"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span>            <span class="p">,</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">obj</span>
+<a name="ln-453"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">),</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">cast</span>
+<a name="ln-454"></a>         
+<a name="ln-455"></a>         <span class="n">cast</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-456"></a>         <span class="k">SELECT TYPE</span> <span class="p">(</span><span class="n">e</span> <span class="o">=&gt;</span> <span class="n">obj</span><span class="p">)</span>
+<a name="ln-457"></a>            <span class="k">TYPE is</span> <span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span>
+<a name="ln-458"></a>               <span class="n">cast</span> <span class="o">=&gt;</span> <span class="n">e</span>
+<a name="ln-459"></a>            <span class="k">CLASS </span><span class="n">DEFAULT</span>
+<a name="ln-460"></a>               
+<a name="ln-461"></a>         <span class="k">END SELECT</span>
+<a name="ln-462"></a><span class="k">         </span>
+<a name="ln-463"></a><span class="k">      END FUNCTION </span><span class="n">objectArrayFromObject</span>
+<a name="ln-464"></a><span class="c">!</span>
+<a name="ln-465"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-466"></a><span class="c">! </span>
+<a name="ln-467"></a>      <span class="k">SUBROUTINE </span><span class="n">castToMutableObjectArray</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="n">cast</span><span class="p">)</span> 
+<a name="ln-468"></a><span class="c">!</span>
+<a name="ln-469"></a><span class="c">!     -----------------------------------------------------</span>
+<a name="ln-470"></a><span class="c">!     Cast the base class FTObject to the FTException class</span>
+<a name="ln-471"></a><span class="c">!     -----------------------------------------------------</span>
+<a name="ln-472"></a><span class="c">!</span>
+<a name="ln-473"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-474"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span>            <span class="p">,</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">obj</span>
+<a name="ln-475"></a>         <span class="k">CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">),</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">cast</span>
+<a name="ln-476"></a>         
+<a name="ln-477"></a>         <span class="n">cast</span> <span class="o">=&gt;</span> <span class="nb">NULL</span><span class="p">()</span>
+<a name="ln-478"></a>         <span class="k">SELECT TYPE</span> <span class="p">(</span><span class="n">e</span> <span class="o">=&gt;</span> <span class="n">obj</span><span class="p">)</span>
+<a name="ln-479"></a>            <span class="k">TYPE is</span> <span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span>
+<a name="ln-480"></a>               <span class="n">cast</span> <span class="o">=&gt;</span> <span class="n">e</span>
+<a name="ln-481"></a>            <span class="k">CLASS </span><span class="n">DEFAULT</span>
+<a name="ln-482"></a>               
+<a name="ln-483"></a>         <span class="k">END SELECT</span>
+<a name="ln-484"></a><span class="k">         </span>
+<a name="ln-485"></a><span class="k">      END SUBROUTINE </span><span class="n">castToMutableObjectArray</span>
+<a name="ln-486"></a><span class="c">!</span>
+<a name="ln-487"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a name="ln-488"></a><span class="c">! </span>
+<a name="ln-489"></a><span class="c">!      -----------------------------------------------------------------</span>
+<a name="ln-490"></a><span class="c">!&gt; Class name returns a string with the name of the type of the object</span>
+<a name="ln-491"></a><span class="c">!&gt;</span>
+<a name="ln-492"></a><span class="c">!&gt;  ### Usage:</span>
+<a name="ln-493"></a><span class="c">!&gt;</span>
+<a name="ln-494"></a><span class="c">!&gt;        PRINT *,  obj % className()</span>
+<a name="ln-495"></a><span class="c">!&gt;        if( obj % className = &quot;FTMutableObjectArray&quot;)</span>
+<a name="ln-496"></a><span class="c">!&gt;</span>
+<a name="ln-497"></a>      <span class="k">FUNCTION </span><span class="n">arrayClassName</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>  <span class="k">RESULT</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<a name="ln-498"></a>         <span class="k">IMPLICIT NONE  </span>
+<a name="ln-499"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTMutableObjectArray</span><span class="p">)</span>                <span class="kd">::</span> <span class="n">self</span>
+<a name="ln-500"></a>         <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="n">CLASS_NAME_CHARACTER_LENGTH</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s</span>
+<a name="ln-501"></a>         
+<a name="ln-502"></a>         <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;FTMutableObjectArray&quot;</span>
+<a name="ln-503"></a> 
+<a name="ln-504"></a>      <span class="k">END FUNCTION </span><span class="n">arrayClassName</span>
+<a name="ln-505"></a>
+<a name="ln-506"></a>      
+<a name="ln-507"></a>      <span class="k">END Module  </span><span class="n">FTMutableObjectArrayClass</span>    
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+  <section class="visible-xs visible-sm hidden-md">
+    <hr>
+    
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles-1">All Source Files</a></h3></div>
+  <div id="allfiles-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../sourcefile/assert.f90.html">Assert.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/calculator.f90.html">Calculator.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/comparisons.f90.html">Comparisons.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/dictionarytests.f90.html">DictionaryTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/exceptiontests.f90.html">ExceptionTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftdataclass.f90.html">FTDataClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftdictionaryclass.f90.html">FTDictionaryClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftexceptionclass.f90.html">FTExceptionClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftlinkedlistclass.f90.html">FTLinkedListClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftmultiindextable.f90.html">FTMultiIndexTable.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html">FTObjectArrayClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftobjectclass.f90.html">FTObjectClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftobjectlibrary.f90.html">FTObjectLibrary.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html">FTOLConstants.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftsparsematrixclass.f90.html">FTSparseMatrixClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftstackclass.f90.html">FTStackClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftvalueclass.f90.html">FTValueClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/ftvaluedictionaryclass.f90.html">FTValueDictionaryClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/hash.f90.html">Hash.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/hashtabletests.f90.html">HashTableTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/linkedlistexample.f90.html">LinkedListExample.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/linkedlisttests.f90.html">LinkedListTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/multiindextabletests.f90.html">MultiIndexTableTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/mutablearraytests.f90.html">MutableArrayTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/sparsematrixtests.f90.html">SparseMatrixTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/stackstests.f90.html">StacksTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/testmain.f90.html">TestMain.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/testsuitemanagerclass.f90.html">TestSuiteManagerClass.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/valueclasstests.f90.html">ValueClassTests.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/valuedictionarytests.f90.html">ValueDictionaryTests.f90</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> FTObjectLibrary was developed by David A. Kopriva</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="A library for reference counted object and container classes">
+    
+    <meta name="author" content="David A. Kopriva" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>StackClassTests &ndash; FTObjectLibrary</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/testobjectsmain.html">Program</a></li>
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>StackClassTests
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title=" 1.2% of total for procedures.">41 statements</a>
+     </li> 
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/StacksTests.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/stackstests.f90.html'>StacksTests.f90</a></li>
+  
+     <li class="active">StackClassTests</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr>
+  
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-0">All Procedures</a></h3></div>
+  <div id="allprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/add.html">add</a>
+      
+      <a class="list-group-item" href="../proc/adddoubleprecisionvalueforkey.html">addDoublePrecisionValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addintegervalueforkey.html">addIntegerValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addlogicalvalueforkey.html">addLogicalValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addobjectforkey.html">addObjectForKey</a>
+      
+      <a class="list-group-item" href="../proc/addobjectsfromlist.html">addObjectsFromList</a>
+      
+      <a class="list-group-item" href="../proc/addobjecttoarray.html">addObjectToArray</a>
+      
+      <a class="list-group-item" href="../proc/addobjecttomultiindextableforkeys.html">addObjectToMultiIndexTableForKeys</a>
+      
+      <a class="list-group-item" href="../proc/addobjecttosparsematrixforkeys.html">addObjectToSparseMatrixForKeys</a>
+      
+      <a class="list-group-item" href="../proc/addquadvalueforkey.html">addQuadValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addrealvalueforkey.html">addRealValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addstringvalueforkey.html">addStringValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/allkeys.html">AllKeys</a>
+      
+      <a class="list-group-item" href="../proc/alllinkedlistobjects.html">allLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../proc/allobjects.html">AllObjects</a>
+      
+      <a class="list-group-item" href="../proc/allocatedsize.html">allocatedSize</a>
+      
+      <a class="list-group-item" href="../proc/arrayclassname.html">arrayClassName</a>
+      
+      <a class="list-group-item" href="../proc/assertwithintolerancetwoquad.html">assertWithinToleranceTwoQuad</a>
+      
+      <a class="list-group-item" href="../proc/b3hs_hash_key_jenkins.html">b3hs_hash_key_jenkins</a>
+      
+      <a class="list-group-item" href="../proc/basictests.html">basicTests</a>
+      
+      <a class="list-group-item" href="../proc/casesensitive.html">caseSensitive</a>
+      
+      <a class="list-group-item" href="../interface/cast.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E2.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E3.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E4.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E5.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E6.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E7.html">cast</a>
+      
+      <a class="list-group-item" href="../proc/castdictionarytovaluedictionary.html">castDictionaryToValueDictionary</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttolinkedlist.html">castObjectToLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttomatrixdata.html">castObjectToMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttomultiindexmatrixdata.html">castObjectToMultiIndexMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttovaluedictionary.html">castObjectToValueDictionary</a>
+      
+      <a class="list-group-item" href="../proc/casttodictionary.html">castToDictionary</a>
+      
+      <a class="list-group-item" href="../proc/casttoexception.html">castToException</a>
+      
+      <a class="list-group-item" href="../proc/casttomutableobjectarray.html">castToMutableObjectArray</a>
+      
+      <a class="list-group-item" href="../proc/casttovalue.html">castToValue</a>
+      
+      <a class="list-group-item" href="../interface/catch.html">catch</a>
+      
+      <a class="list-group-item" href="../proc/chunksize.html">chunkSize</a>
+      
+      <a class="list-group-item" href="../proc/classname.html">className</a>
+      
+      <a class="list-group-item" href="../proc/containskey.html">containsKey</a>
+      
+      <a class="list-group-item" href="../proc/count.html">COUNT</a>
+      
+      <a class="list-group-item" href="../proc/dataclassname.html">dataClassName</a>
+      
+      <a class="list-group-item" href="../proc/dataisoftype.html">dataIsOfType</a>
+      
+      <a class="list-group-item" href="../proc/datatype.html">dataType</a>
+      
+      <a class="list-group-item" href="../proc/demonstratelinkedlist.html">demonstrateLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/destructexception.html">destructException</a>
+      
+      <a class="list-group-item" href="../proc/destructftdictionary.html">destructFTDictionary</a>
+      
+      <a class="list-group-item" href="../proc/destructftexceptions.html">destructFTExceptions</a>
+      
+      <a class="list-group-item" href="../proc/destructftkeyobjectpair.html">destructFTKeyObjectPair</a>
+      
+      <a class="list-group-item" href="../proc/destructftlinkedlist.html">destructFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/destructftlinkedlistrecord.html">destructFTLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../proc/destructftobject.html">destructFTObject</a>
+      
+      <a class="list-group-item" href="../proc/destructiterator.html">destructIterator</a>
+      
+      <a class="list-group-item" href="../proc/destructmatrixdata.html">destructMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/destructmultiindexmatrixdata.html">destructMultiIndexMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/destructmultiindextable.html">destructMultiIndexTable</a>
+      
+      <a class="list-group-item" href="../proc/destructobjectarray.html">destructObjectArray</a>
+      
+      <a class="list-group-item" href="../proc/destructsparsematrix.html">destructSparseMatrix</a>
+      
+      <a class="list-group-item" href="../proc/destructvalue.html">destructValue</a>
+      
+      <a class="list-group-item" href="../proc/detachsharedassertionsmanager.html">detachSharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/dictionaryclassname.html">dictionaryClassName</a>
+      
+      <a class="list-group-item" href="../proc/dictionaryfromobject.html">dictionaryFromObject</a>
+      
+      <a class="list-group-item" href="../proc/doubleprecisionvalue.html">doublePrecisionValue</a>
+      
+      <a class="list-group-item" href="../proc/doubleprecisionvalueforkey.html">doublePrecisionValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/errorcount.html">errorCount</a>
+      
+      <a class="list-group-item" href="../proc/errorobject.html">errorObject</a>
+      
+      <a class="list-group-item" href="../proc/exceptionclassname.html">exceptionClassName</a>
+      
+      <a class="list-group-item" href="../proc/exceptionfromobject.html">exceptionFromObject</a>
+      
+      <a class="list-group-item" href="../proc/exceptionname.html">exceptionName</a>
+      
+      <a class="list-group-item" href="../proc/finalizesharedassertionsmanager.html">finalizeSharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/ftassert.html">FTAssert</a>
+      
+      <a class="list-group-item" href="../interface/ftassertequal.html">FTAssertEqual</a>
+      
+      <a class="list-group-item" href="../proc/ftdictionaryclasstests.html">FTDictionaryClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftdictionarydescription.html">FTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftexceptionclasstests.html">FTExceptionClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftkeyobjectpairdescription.html">FTKeyObjectPairDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistclasstests.html">FTLinkedListClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistcurrentrecord.html">FTLinkedListCurrentRecord</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistdescription.html">FTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistisatend.html">FTLinkedListIsAtEnd</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistobject.html">FTLinkedListObject</a>
+      
+      <a class="list-group-item" href="../proc/ftobjectdescription.html">FTObjectDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftvalueclasstests.html">FTValueClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftvaluedescription.html">FTValueDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftvaluedictionaryclasstests.html">FTValueDictionaryClassTests</a>
+      
+      <a class="list-group-item" href="../proc/hash1.html">Hash1</a>
+      
+      <a class="list-group-item" href="../proc/hash2.html">Hash2</a>
+      
+      <a class="list-group-item" href="../proc/hashtabletests.html">HashTableTests</a>
+      
+      <a class="list-group-item" href="../proc/infodictionary.html">infoDictionary</a>
+      
+      <a class="list-group-item" href="../proc/init.html">init</a>
+      
+      <a class="list-group-item" href="../proc/initassertionfailureexception.html">initAssertionFailureException</a>
+      
+      <a class="list-group-item" href="../proc/initempty.html">initEmpty</a>
+      
+      <a class="list-group-item" href="../proc/initfatalexception.html">initFatalException</a>
+      
+      <a class="list-group-item" href="../proc/initftexception.html">initFTException</a>
+      
+      <a class="list-group-item" href="../proc/initftlinkedlist.html">initFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/initftobject.html">initFTObject</a>
+      
+      <a class="list-group-item" href="../proc/initftstack.html">initFTStack</a>
+      
+      <a class="list-group-item" href="../proc/initializeftexceptions.html">initializeFTExceptions</a>
+      
+      <a class="list-group-item" href="../proc/initializesharedassertionsmanager.html">initializeSharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/initmultiindextablewithsize.html">initMultiIndexTableWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initobjectarraywithsize.html">initObjectArrayWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initsparsematrixwithsize.html">initSparseMatrixWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initwarningexception.html">initWarningException</a>
+      
+      <a class="list-group-item" href="../proc/initwithdataoftype.html">initWithDataOfType</a>
+      
+      <a class="list-group-item" href="../proc/initwithdoubleprecision.html">initWithDoublePrecision</a>
+      
+      <a class="list-group-item" href="../proc/initwithftlinkedlist.html">initWithFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/initwithinteger.html">initWithInteger</a>
+      
+      <a class="list-group-item" href="../proc/initwithlogical.html">initWithLogical</a>
+      
+      <a class="list-group-item" href="../proc/initwithobject.html">initWithObject</a>
+      
+      <a class="list-group-item" href="../proc/initwithobjectandkey.html">initWithObjectAndKey</a>
+      
+      <a class="list-group-item" href="../proc/initwithobjectandkey%7E2.html">initWithObjectAndKey</a>
+      
+      <a class="list-group-item" href="../proc/initwithobjectandkeys.html">initWithObjectAndKeys</a>
+      
+      <a class="list-group-item" href="../proc/initwithquad.html">initWithQuad</a>
+      
+      <a class="list-group-item" href="../proc/initwithreal.html">initWithReal</a>
+      
+      <a class="list-group-item" href="../proc/initwithsize.html">initWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initwithstring.html">initWithString</a>
+      
+      <a class="list-group-item" href="../proc/insertobjectafterobject.html">insertObjectAfterObject</a>
+      
+      <a class="list-group-item" href="../proc/insertobjectafterrecord.html">insertObjectAfterRecord</a>
+      
+      <a class="list-group-item" href="../proc/integervalue.html">integerValue</a>
+      
+      <a class="list-group-item" href="../proc/integervalueforkey.html">integerValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/iscircular.html">isCircular</a>
+      
+      <a class="list-group-item" href="../interface/isequal.html">isEqual</a>
+      
+      <a class="list-group-item" href="../proc/isunreferenced.html">isUnreferenced</a>
+      
+      <a class="list-group-item" href="../proc/key.html">key</a>
+      
+      <a class="list-group-item" href="../proc/keysmatch.html">keysMatch</a>
+      
+      <a class="list-group-item" href="../proc/linkedlistclassname.html">linkedListClassName</a>
+      
+      <a class="list-group-item" href="../proc/linkedlistfromobject.html">linkedListFromObject</a>
+      
+      <a class="list-group-item" href="../proc/linkedlistiteratorclassname.html">linkedListIteratorClassName</a>
+      
+      <a class="list-group-item" href="../proc/llrecordclassname.html">llRecordClassName</a>
+      
+      <a class="list-group-item" href="../proc/logicalvalue.html">logicalValue</a>
+      
+      <a class="list-group-item" href="../proc/logicalvalueforkey.html">logicalValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/makecircular.html">makeCircular</a>
+      
+      <a class="list-group-item" href="../proc/matrixdatacast.html">matrixDataCast</a>
+      
+      <a class="list-group-item" href="../proc/movetonext.html">moveToNext</a>
+      
+      <a class="list-group-item" href="../proc/multiindexmatrixdatacast.html">MultiIndexMatrixDataCast</a>
+      
+      <a class="list-group-item" href="../proc/multiindextablecontainskeys.html">MultiIndexTableContainsKeys</a>
+      
+      <a class="list-group-item" href="../proc/multiindextablefromobject.html">MultiIndexTableFromObject</a>
+      
+      <a class="list-group-item" href="../proc/multiindextablesize.html">MultiIndexTableSize</a>
+      
+      <a class="list-group-item" href="../proc/multiindextabletests.html">MultiIndexTableTests</a>
+      
+      <a class="list-group-item" href="../proc/mutablearrayclasstests.html">MutableArrayClassTests</a>
+      
+      <a class="list-group-item" href="../proc/numberofassertionfailures.html">numberOfAssertionFailures</a>
+      
+      <a class="list-group-item" href="../proc/numberofassertions.html">numberOfAssertions</a>
+      
+      <a class="list-group-item" href="../proc/numberofitems.html">numberOfItems</a>
+      
+      <a class="list-group-item" href="../proc/numberofrecords.html">numberOfRecords</a>
+      
+      <a class="list-group-item" href="../proc/object.html">object</a>
+      
+      <a class="list-group-item" href="../proc/objectarrayfromobject.html">objectArrayFromObject</a>
+      
+      <a class="list-group-item" href="../proc/objectatindex.html">objectAtIndex</a>
+      
+      <a class="list-group-item" href="../proc/objectforkey.html">objectForKey</a>
+      
+      <a class="list-group-item" href="../proc/objectforkeyinlist.html">objectForKeyInList</a>
+      
+      <a class="list-group-item" href="../proc/objectinmultiindextableforkeys.html">objectInMultiIndexTableForKeys</a>
+      
+      <a class="list-group-item" href="../proc/objectinsparsematrixforkeys.html">objectInSparseMatrixForKeys</a>
+      
+      <a class="list-group-item" href="../proc/peek.html">peek</a>
+      
+      <a class="list-group-item" href="../proc/peeklastexception.html">peekLastException</a>
+      
+      <a class="list-group-item" href="../proc/pop.html">pop</a>
+      
+      <a class="list-group-item" href="../proc/poplastexception.html">popLastException</a>
+      
+      <a class="list-group-item" href="../proc/printallexceptions.html">printAllExceptions</a>
+      
+      <a class="list-group-item" href="../proc/printarray.html">printArray</a>
+      
+      <a class="list-group-item" href="../proc/printftdictionarydescription.html">printFTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftexceptiondescription.html">printFTExceptionDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftkeyobjectpairdescription.html">printFTKeyObjectPairDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftlinkedlistdescription.html">printFTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftlinkedrecorddescription.html">printFTLinkedRecordDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftobjectdescription.html">printFTObjectDescription</a>
+      
+      <a class="list-group-item" href="../proc/printmultiindextabledescription.html">printMultiIndexTableDescription</a>
+      
+      <a class="list-group-item" href="../proc/printstackdescription.html">printStackDescription</a>
+      
+      <a class="list-group-item" href="../proc/printvaluedescription.html">printValueDescription</a>
+      
+      <a class="list-group-item" href="../proc/push.html">push</a>
+      
+      <a class="list-group-item" href="../proc/quadvalue.html">quadValue</a>
+      
+      <a class="list-group-item" href="../proc/quadvalueforkey.html">quadValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/realvalue.html">realValue</a>
+      
+      <a class="list-group-item" href="../proc/realvalueforkey.html">realValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/refcount.html">refCount</a>
+      
+      <a class="list-group-item" href="../interface/release%7E7.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E8.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E9.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E3.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E10.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E11.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E4.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E5.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E12.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E6.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E13.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E2.html">release</a>
+      
+      <a class="list-group-item" href="../proc/releaseftdata.html">releaseFTData</a>
+      
+      <a class="list-group-item" href="../proc/releaseftdictionary.html">releaseFTDictionary</a>
+      
+      <a class="list-group-item" href="../proc/releaseftexception.html">releaseFTException</a>
+      
+      <a class="list-group-item" href="../proc/releaseftkeyobjectpair.html">releaseFTKeyObjectPair</a>
+      
+      <a class="list-group-item" href="../proc/releaseftlinkedlist.html">releaseFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/releaseftlinkedlistiterator.html">releaseFTLinkedListIterator</a>
+      
+      <a class="list-group-item" href="../proc/releaseftlinkedlistrecord.html">releaseFTLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../proc/releaseftmultiindextable.html">releaseFTMultiIndexTable</a>
+      
+      <a class="list-group-item" href="../proc/releaseftmutableobjectarray.html">releaseFTMutableObjectArray</a>
+      
+      <a class="list-group-item" href="../proc/releaseftobject.html">releaseFTObject</a>
+      
+      <a class="list-group-item" href="../proc/releaseftsparsematrix.html">releaseFTSparseMatrix</a>
+      
+      <a class="list-group-item" href="../proc/releaseftstack.html">releaseFTStack</a>
+      
+      <a class="list-group-item" href="../proc/releaseftvalue.html">releaseFTValue</a>
+      
+      <a class="list-group-item" href="../proc/releaseftvaluedictionary.html">releaseFTValueDictionary</a>
+      
+      <a class="list-group-item" href="../proc/releasememberdictionary.html">releaseMemberDictionary</a>
+      
+      <a class="list-group-item" href="../proc/releasememberlist.html">releaseMemberList</a>
+      
+      <a class="list-group-item" href="../proc/releasesmmemberlist.html">releaseSMMemberList</a>
+      
+      <a class="list-group-item" href="../proc/removealllinkedlistobjects.html">removeAllLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../proc/removecurrentrecord.html">removeCurrentRecord</a>
+      
+      <a class="list-group-item" href="../proc/removelinkedlistrecord.html">removeLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../proc/removeobject.html">removeObject</a>
+      
+      <a class="list-group-item" href="../proc/removeobject1.html">removeObject1</a>
+      
+      <a class="list-group-item" href="../proc/removeobjectatindex.html">removeObjectAtIndex</a>
+      
+      <a class="list-group-item" href="../proc/replaceobjectatindexwithobject.html">replaceObjectAtIndexWithObject</a>
+      
+      <a class="list-group-item" href="../proc/retainftobject.html">retainFTObject</a>
+      
+      <a class="list-group-item" href="../proc/returnlinkedlist.html">returnLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/reverselinkedlist.html">reverseLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/setcasesensitive.html">setCaseSensitive</a>
+      
+      <a class="list-group-item" href="../proc/setchunksize.html">setChunkSize</a>
+      
+      <a class="list-group-item" href="../proc/setcurrenterror.html">setCurrentError</a>
+      
+      <a class="list-group-item" href="../proc/setinfodictionary.html">setInfoDictionary</a>
+      
+      <a class="list-group-item" href="../proc/setlinkedlist.html">setLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/settostart.html">setToStart</a>
+      
+      <a class="list-group-item" href="../proc/severity.html">severity</a>
+      
+      <a class="list-group-item" href="../proc/sharedassertionsmanager.html">sharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/sortkeysascending.html">sortKeysAscending</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixcontainskeys.html">SparseMatrixContainsKeys</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixfromobject.html">SparseMatrixFromObject</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixsize.html">SparseMatrixSize</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixtests.html">SparseMatrixTests</a>
+      
+      <a class="list-group-item" href="../proc/stackclassname.html">stackClassName</a>
+      
+      <a class="list-group-item" href="../proc/stackclasstests.html">StackClassTests</a>
+      
+      <a class="list-group-item" href="../proc/stackfromobject.html">stackFromObject</a>
+      
+      <a class="list-group-item" href="../proc/storeddata.html">storedData</a>
+      
+      <a class="list-group-item" href="../proc/stringvalue.html">stringValue</a>
+      
+      <a class="list-group-item" href="../proc/stringvalueforkey.html">stringValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/subroutinethatthrowserror.html">subroutineThatThrowsError</a>
+      
+      <a class="list-group-item" href="../proc/testappendinglists.html">testAppendingLists</a>
+      
+      <a class="list-group-item" href="../proc/testdeletingobjects.html">TestDeletingObjects</a>
+      
+      <a class="list-group-item" href="../proc/testexception.html">testException</a>
+      
+      <a class="list-group-item" href="../proc/teststackinit.html">testStackInit</a>
+      
+      <a class="list-group-item" href="../proc/teststackpush.html">testStackPush</a>
+      
+      <a class="list-group-item" href="../proc/throw.html">throw</a>
+      
+      <a class="list-group-item" href="../proc/valueclassname.html">valueClassName</a>
+      
+      <a class="list-group-item" href="../proc/valuedictionaryclassname.html">valueDictionaryClassName</a>
+      
+      <a class="list-group-item" href="../proc/valuedictionaryfromdictionary.html">valueDictionaryFromDictionary</a>
+      
+      <a class="list-group-item" href="../proc/valuedictionaryfromobject.html">valueDictionaryFromObject</a>
+      
+      <a class="list-group-item" href="../proc/valuefromobject.html">valueFromObject</a>
+      
+    </div>
+  </div>
+</div>
+
+
+</div>  
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+subroutine StackClassTests()
+    
+    
+	 
+</h2>
+    
+  
+    <ul class="list-inline">
+      <li><h4>Uses:</h4></li>
+      
+      <li><a href='../module/ftassertions.html'>FTAssertions</a></li>
+      
+      <li><a href='../module/ftstackclass.html'>FTStackClass</a></li>
+      
+      <li><a href='../module/ftvalueclass.html'>FTValueClass</a></li>
+      
+      <li><a href='../module/stackunittestsmodule.html'>StackUnitTestsModule</a></li>
+      
+    </ul>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: proc~~stackclasstests~~UsesGraph Pages: 1 -->
+<svg id="procstackclasstestsUsesGraph" width="641pt" height="230pt"
+ viewBox="0.00 0.00 641.00 230.46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~stackclasstests~~UsesGraph" class="graph" transform="scale(0.918338 0.918338) rotate(0) translate(4 246.954)">
+<title>proc~~stackclasstests~~UsesGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-246.954 694,-246.954 694,4 -4,4"/>
+<!-- proc~stackclasstests -->
+<g id="proc~~stackclasstests~~UsesGraph_node1" class="node"><title>proc~stackclasstests</title>
+<polygon fill="none" stroke="black" points="689.5,-128 598.5,-128 598.5,-104 689.5,-104 689.5,-128"/>
+<text text-anchor="middle" x="644" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50">StackClassTests</text>
+</g>
+<!-- module~ftassertions -->
+<g id="proc~~stackclasstests~~UsesGraph_node2" class="node"><title>module~ftassertions</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node2"><a xlink:href="../module/ftassertions.html" xlink:title="FTAssertions">
+<polygon fill="#337ab7" stroke="#337ab7" points="540,-208 466,-208 466,-184 540,-184 540,-208"/>
+<text text-anchor="middle" x="503" y="-193.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertions</text>
+</a>
+</g>
+</g>
+<!-- module~ftassertions&#45;&gt;proc~stackclasstests -->
+<g id="proc~~stackclasstests~~UsesGraph_edge15" class="edge"><title>module~ftassertions&#45;&gt;proc~stackclasstests</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M525.111,-183.85C548.617,-170.321 586.784,-148.354 613.297,-133.095"/>
+<polygon fill="#000000" stroke="#000000" points="615.225,-136.024 622.146,-128.002 611.733,-129.957 615.225,-136.024"/>
+</g>
+<!-- module~ftvalueclass -->
+<g id="proc~~stackclasstests~~UsesGraph_node3" class="node"><title>module~ftvalueclass</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node3"><a xlink:href="../module/ftvalueclass.html" xlink:title="FTValueClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="392,-148 314,-148 314,-124 392,-124 392,-148"/>
+<text text-anchor="middle" x="353" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftvalueclass&#45;&gt;proc~stackclasstests -->
+<g id="proc~~stackclasstests~~UsesGraph_edge16" class="edge"><title>module~ftvalueclass&#45;&gt;proc~stackclasstests</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M392.079,-133.365C442.252,-129.893 530.837,-123.762 588.207,-119.792"/>
+<polygon fill="#000000" stroke="#000000" points="588.454,-123.283 598.189,-119.101 587.971,-116.3 588.454,-123.283"/>
+</g>
+<!-- module~stackunittestsmodule -->
+<g id="proc~~stackclasstests~~UsesGraph_node4" class="node"><title>module~stackunittestsmodule</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node4"><a xlink:href="../module/stackunittestsmodule.html" xlink:title="StackUnitTestsModule">
+<polygon fill="#337ab7" stroke="#337ab7" points="562,-108 444,-108 444,-84 562,-84 562,-108"/>
+<text text-anchor="middle" x="503" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">StackUnitTestsModule</text>
+</a>
+</g>
+</g>
+<!-- module~stackunittestsmodule&#45;&gt;proc~stackclasstests -->
+<g id="proc~~stackclasstests~~UsesGraph_edge17" class="edge"><title>module~stackunittestsmodule&#45;&gt;proc~stackclasstests</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.143,-104.366C570.805,-105.612 579.709,-106.893 588.298,-108.129"/>
+<polygon fill="#000000" stroke="#000000" points="587.804,-111.594 598.2,-109.554 588.801,-104.665 587.804,-111.594"/>
+</g>
+<!-- module~ftstackclass -->
+<g id="proc~~stackclasstests~~UsesGraph_node5" class="node"><title>module~ftstackclass</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node5"><a xlink:href="../module/ftstackclass.html" xlink:title="FTStackClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="542,-66 464,-66 464,-42 542,-42 542,-66"/>
+<text text-anchor="middle" x="503" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftstackclass&#45;&gt;proc~stackclasstests -->
+<g id="proc~~stackclasstests~~UsesGraph_edge18" class="edge"><title>module~ftstackclass&#45;&gt;proc~stackclasstests</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M539.54,-66.0961C547.024,-68.8579 554.824,-71.8983 562,-75 578.734,-82.233 596.882,-91.2995 611.75,-99.0664"/>
+<polygon fill="#000000" stroke="#000000" points="610.521,-102.376 620.998,-103.95 613.79,-96.1857 610.521,-102.376"/>
+</g>
+<!-- module~comparisonsmodule -->
+<g id="proc~~stackclasstests~~UsesGraph_node6" class="node"><title>module~comparisonsmodule</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node6"><a xlink:href="../module/comparisonsmodule.html" xlink:title="ComparisonsModule">
+<polygon fill="#337ab7" stroke="#337ab7" points="407.5,-228 298.5,-228 298.5,-204 407.5,-204 407.5,-228"/>
+<text text-anchor="middle" x="353" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ComparisonsModule</text>
+</a>
+</g>
+</g>
+<!-- module~comparisonsmodule&#45;&gt;module~ftassertions -->
+<g id="proc~~stackclasstests~~UsesGraph_edge3" class="edge"><title>module~comparisonsmodule&#45;&gt;module~ftassertions</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M407.85,-208.723C423.564,-206.599 440.59,-204.299 455.787,-202.245"/>
+<polygon fill="#000000" stroke="#000000" points="456.536,-205.676 465.977,-200.868 455.598,-198.739 456.536,-205.676"/>
+</g>
+<!-- iso_fortran_env -->
+<g id="proc~~stackclasstests~~UsesGraph_node7" class="node"><title>iso_fortran_env</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node7"><a xlink:href="https://software.intel.com/en-us/node/511041" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="232.5,-188 147.5,-188 147.5,-164 232.5,-164 232.5,-188"/>
+<text text-anchor="middle" x="190" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+</g>
+<!-- iso_fortran_env&#45;&gt;module~ftassertions -->
+<g id="proc~~stackclasstests~~UsesGraph_edge4" class="edge"><title>iso_fortran_env&#45;&gt;module~ftassertions</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.62,-178.677C290.669,-182.41 395.586,-189.157 455.927,-193.037"/>
+<polygon fill="#000000" stroke="#000000" points="455.73,-196.532 465.934,-193.681 456.18,-189.546 455.73,-196.532"/>
+</g>
+<!-- iso_fortran_env&#45;&gt;module~ftvalueclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge9" class="edge"><title>iso_fortran_env&#45;&gt;module~ftvalueclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.881,-165.595C254.713,-160.171 281.512,-153.513 304.158,-147.886"/>
+<polygon fill="#000000" stroke="#000000" points="305.049,-151.271 313.91,-145.463 303.361,-144.478 305.049,-151.271"/>
+</g>
+<!-- iso_fortran_env&#45;&gt;module~comparisonsmodule -->
+<g id="proc~~stackclasstests~~UsesGraph_edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~comparisonsmodule</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.881,-186.405C251.372,-190.999 273.427,-196.479 293.503,-201.467"/>
+<polygon fill="#000000" stroke="#000000" points="292.934,-204.932 303.483,-203.946 294.622,-198.138 292.934,-204.932"/>
+</g>
+<!-- module~ftolconstants -->
+<g id="proc~~stackclasstests~~UsesGraph_node8" class="node"><title>module~ftolconstants</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node8"><a xlink:href="../module/ftolconstants.html" xlink:title="FTOLConstants">
+<polygon fill="#337ab7" stroke="#337ab7" points="233.5,-230 146.5,-230 146.5,-206 233.5,-206 233.5,-230"/>
+<text text-anchor="middle" x="190" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants</text>
+</a>
+</g>
+</g>
+<!-- module~ftolconstants&#45;&gt;module~ftassertions -->
+<g id="proc~~stackclasstests~~UsesGraph_edge5" class="edge"><title>module~ftolconstants&#45;&gt;module~ftassertions</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M233.846,-229.044C277.934,-238.713 348.396,-249.433 408,-237 430.353,-232.337 453.901,-222.056 471.837,-212.957"/>
+<polygon fill="#000000" stroke="#000000" points="473.944,-215.804 481.181,-208.066 470.698,-209.602 473.944,-215.804"/>
+</g>
+<!-- module~ftolconstants&#45;&gt;module~ftvalueclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge6" class="edge"><title>module~ftolconstants&#45;&gt;module~ftvalueclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M233.844,-207.646C243.322,-204.722 253.168,-201.175 262,-197 286.491,-185.422 311.807,-167.654 329.327,-154.276"/>
+<polygon fill="#000000" stroke="#000000" points="331.516,-157.007 337.263,-148.107 327.22,-151.48 331.516,-157.007"/>
+</g>
+<!-- module~ftolconstants&#45;&gt;module~comparisonsmodule -->
+<g id="proc~~stackclasstests~~UsesGraph_edge1" class="edge"><title>module~ftolconstants&#45;&gt;module~comparisonsmodule</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M233.722,-217.469C250.465,-217.261 270.026,-217.018 288.366,-216.79"/>
+<polygon fill="#000000" stroke="#000000" points="288.447,-220.29 298.402,-216.666 288.36,-213.29 288.447,-220.29"/>
+</g>
+<!-- module~ftobjectclass -->
+<g id="proc~~stackclasstests~~UsesGraph_node9" class="node"><title>module~ftobjectclass</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node9"><a xlink:href="../module/ftobjectclass.html" xlink:title="FTObjectClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="82,-66 0,-66 0,-42 82,-42 82,-66"/>
+<text text-anchor="middle" x="41" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectclass&#45;&gt;module~ftvalueclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge7" class="edge"><title>module~ftobjectclass&#45;&gt;module~ftvalueclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M52.1265,-66.0479C65.4854,-80.9806 90.5387,-105.821 118,-117 178.493,-141.624 254.938,-142.866 303.664,-140.35"/>
+<polygon fill="#000000" stroke="#000000" points="304.149,-143.827 313.925,-139.743 303.735,-136.839 304.149,-143.827"/>
+</g>
+<!-- module~ftmutableobjectarrayclass -->
+<g id="proc~~stackclasstests~~UsesGraph_node12" class="node"><title>module~ftmutableobjectarrayclass</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node12"><a xlink:href="../module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="262,-66 118,-66 118,-42 262,-42 262,-66"/>
+<text text-anchor="middle" x="190" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectclass&#45;&gt;module~ftmutableobjectarrayclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge10" class="edge"><title>module~ftobjectclass&#45;&gt;module~ftmutableobjectarrayclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M82.1684,-54C90.1976,-54 98.9002,-54 107.754,-54"/>
+<polygon fill="#000000" stroke="#000000" points="107.788,-57.5001 117.788,-54 107.788,-50.5001 107.788,-57.5001"/>
+</g>
+<!-- module~ftlinkedlistrecordclass -->
+<g id="proc~~stackclasstests~~UsesGraph_node13" class="node"><title>module~ftlinkedlistrecordclass</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node13"><a xlink:href="../module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="256.5,-24 123.5,-24 123.5,-0 256.5,-0 256.5,-24"/>
+<text text-anchor="middle" x="190" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectclass&#45;&gt;module~ftlinkedlistrecordclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge11" class="edge"><title>module~ftobjectclass&#45;&gt;module~ftlinkedlistrecordclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M82.1684,-42.5233C99.0956,-37.687 119.015,-31.9957 137.039,-26.8459"/>
+<polygon fill="#000000" stroke="#000000" points="138.173,-30.1622 146.826,-24.0496 136.25,-23.4315 138.173,-30.1622"/>
+</g>
+<!-- ieee_arithmetic -->
+<g id="proc~~stackclasstests~~UsesGraph_node10" class="node"><title>ieee_arithmetic</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node10"><a xlink:href="https://software.intel.com/en-us/node/511043" xlink:title="ieee_arithmetic">
+<polygon fill="#337ab7" stroke="#337ab7" points="232,-108 148,-108 148,-84 232,-84 232,-108"/>
+<text text-anchor="middle" x="190" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ieee_arithmetic</text>
+</a>
+</g>
+</g>
+<!-- ieee_arithmetic&#45;&gt;module~ftvalueclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge8" class="edge"><title>ieee_arithmetic&#45;&gt;module~ftvalueclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.044,-106.197C253.956,-111.641 281.049,-118.372 303.94,-124.06"/>
+<polygon fill="#000000" stroke="#000000" points="303.247,-127.494 313.796,-126.508 304.935,-120.7 303.247,-127.494"/>
+</g>
+<!-- module~ftlinkedlistclass -->
+<g id="proc~~stackclasstests~~UsesGraph_node11" class="node"><title>module~ftlinkedlistclass</title>
+<g id="a_proc~~stackclasstests~~UsesGraph_node11"><a xlink:href="../module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="402.5,-66 303.5,-66 303.5,-42 402.5,-42 402.5,-66"/>
+<text text-anchor="middle" x="353" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftlinkedlistclass&#45;&gt;module~ftstackclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge14" class="edge"><title>module~ftlinkedlistclass&#45;&gt;module~ftstackclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M402.871,-54C419.171,-54 437.317,-54 453.583,-54"/>
+<polygon fill="#000000" stroke="#000000" points="453.961,-57.5001 463.961,-54 453.961,-50.5001 453.961,-57.5001"/>
+</g>
+<!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge12" class="edge"><title>module~ftmutableobjectarrayclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M262.086,-54C272.464,-54 283.054,-54 293.153,-54"/>
+<polygon fill="#000000" stroke="#000000" points="293.47,-57.5001 303.47,-54 293.469,-50.5001 293.47,-57.5001"/>
+</g>
+<!-- module~ftlinkedlistrecordclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="proc~~stackclasstests~~UsesGraph_edge13" class="edge"><title>module~ftlinkedlistrecordclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M237.136,-24.0355C255.494,-28.8244 276.786,-34.3791 296.016,-39.3955"/>
+<polygon fill="#000000" stroke="#000000" points="295.297,-42.8251 305.857,-41.9627 297.064,-36.0518 295.297,-42.8251"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panprocstackclasstestsUsesGraph = svgPanZoom('#procstackclasstestsUsesGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="486pt" height="32pt"
+ viewBox="0.00 0.00 486.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 482,-28 482,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-24 72,-24 72,-0 138,-0 138,-24"/>
+<text text-anchor="middle" x="105" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="219.25,-24 156.75,-24 156.75,-0 219.25,-0 219.25,-24"/>
+<text text-anchor="middle" x="188" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-24 238,-24 238,-0 292,-0 292,-24"/>
+<text text-anchor="middle" x="265" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-24 310,-24 310,-0 364,-0 364,-24"/>
+<text text-anchor="middle" x="337" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="478,-24 382,-24 382,-0 478,-0 478,-24"/>
+<text text-anchor="middle" x="430" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a parent (sub)module to the submodule which is
+    descended from it. Dashed arrows point from a module being used to the
+    module or program unit using it.
+    </p>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+
+
+    
+
+    <h3>Arguments</h3>
+    
+      <em>None</em>
+    
+    
+    
+     <h3>Calls</h3>
+     
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: proc~~stackclasstests~~CallsGraph Pages: 1 -->
+<svg id="procstackclasstestsCallsGraph" width="641pt" height="309pt"
+ viewBox="0.00 0.00 641.00 309.03" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~stackclasstests~~CallsGraph" class="graph" transform="scale(0.717002 0.717002) rotate(0) translate(4 427)">
+<title>proc~~stackclasstests~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-427 890,-427 890,4 -4,4"/>
+<!-- proc~stackclasstests -->
+<g id="proc~~stackclasstests~~CallsGraph_node1" class="node"><title>proc~stackclasstests</title>
+<polygon fill="none" stroke="black" points="91.5,-299 0.5,-299 0.5,-275 91.5,-275 91.5,-299"/>
+<text text-anchor="middle" x="46" y="-284.6" font-family="Helvetica,sans-Serif" font-size="10.50">StackClassTests</text>
+</g>
+<!-- interface~ftassertequal -->
+<g id="proc~~stackclasstests~~CallsGraph_node2" class="node"><title>interface~ftassertequal</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node2"><a xlink:href="../interface/ftassertequal.html" xlink:title="FTAssertEqual">
+<polygon fill="#a7506f" stroke="#a7506f" points="342,-381 260,-381 260,-357 342,-357 342,-381"/>
+<text text-anchor="middle" x="301" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertEqual</text>
+</a>
+</g>
+</g>
+<!-- proc~stackclasstests&#45;&gt;interface~ftassertequal -->
+<g id="proc~~stackclasstests~~CallsGraph_edge23" class="edge"><title>proc~stackclasstests&#45;&gt;interface~ftassertequal</title>
+<path fill="none" stroke="#000000" d="M58.8855,-299.236C73.6339,-313.577 100.247,-336.803 128,-348 166.976,-363.725 214.637,-368.541 249.896,-369.672"/>
+<polygon fill="#000000" stroke="#000000" points="249.876,-373.172 259.955,-369.905 250.039,-366.174 249.876,-373.172"/>
+</g>
+<!-- proc~teststackinit -->
+<g id="proc~~stackclasstests~~CallsGraph_node3" class="node"><title>proc~teststackinit</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node3"><a xlink:href="../proc/teststackinit.html" xlink:title="testStackInit">
+<polygon fill="#d9534f" stroke="#d9534f" points="203,-339 133,-339 133,-315 203,-315 203,-339"/>
+<text text-anchor="middle" x="168" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">testStackInit</text>
+</a>
+</g>
+</g>
+<!-- proc~stackclasstests&#45;&gt;proc~teststackinit -->
+<g id="proc~~stackclasstests~~CallsGraph_edge24" class="edge"><title>proc~stackclasstests&#45;&gt;proc~teststackinit</title>
+<path fill="none" stroke="#000000" d="M83.004,-299.001C95.547,-303.182 109.765,-307.922 122.89,-312.297"/>
+<polygon fill="#000000" stroke="#000000" points="122.074,-315.714 132.668,-315.556 124.288,-309.073 122.074,-315.714"/>
+</g>
+<!-- proc~ftassert -->
+<g id="proc~~stackclasstests~~CallsGraph_node4" class="node"><title>proc~ftassert</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node4"><a xlink:href="../proc/ftassert.html" xlink:title="FTAssert">
+<polygon fill="#d9534f" stroke="#d9534f" points="328.5,-339 273.5,-339 273.5,-315 328.5,-315 328.5,-339"/>
+<text text-anchor="middle" x="301" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssert</text>
+</a>
+</g>
+</g>
+<!-- proc~stackclasstests&#45;&gt;proc~ftassert -->
+<g id="proc~~stackclasstests~~CallsGraph_edge25" class="edge"><title>proc~stackclasstests&#45;&gt;proc~ftassert</title>
+<path fill="none" stroke="#000000" d="M91.6037,-290.971C124.024,-294.171 168.893,-299.249 208,-306 226.316,-309.162 246.467,-313.646 263.229,-317.659"/>
+<polygon fill="#000000" stroke="#000000" points="262.637,-321.117 273.181,-320.081 264.292,-314.315 262.637,-321.117"/>
+</g>
+<!-- interface~release -->
+<g id="proc~~stackclasstests~~CallsGraph_node5" class="node"><title>interface~release</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node5"><a xlink:href="../interface/release.html" xlink:title="release">
+<polygon fill="#a7506f" stroke="#a7506f" points="328,-45 274,-45 274,-21 328,-21 328,-45"/>
+<text text-anchor="middle" x="301" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">release</text>
+</a>
+</g>
+</g>
+<!-- proc~stackclasstests&#45;&gt;interface~release -->
+<g id="proc~~stackclasstests~~CallsGraph_edge26" class="edge"><title>proc~stackclasstests&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M54.0004,-274.988C76.6374,-237.134 151.768,-118.992 244,-54 250.127,-49.6825 257.251,-46.1301 264.324,-43.2546"/>
+<polygon fill="#000000" stroke="#000000" points="265.666,-46.49 273.836,-39.7449 263.243,-39.9228 265.666,-46.49"/>
+</g>
+<!-- proc~teststackpush -->
+<g id="proc~~stackclasstests~~CallsGraph_node6" class="node"><title>proc~teststackpush</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node6"><a xlink:href="../proc/teststackpush.html" xlink:title="testStackPush">
+<polygon fill="#d9534f" stroke="#d9534f" points="208,-234 128,-234 128,-210 208,-210 208,-234"/>
+<text text-anchor="middle" x="168" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">testStackPush</text>
+</a>
+</g>
+</g>
+<!-- proc~stackclasstests&#45;&gt;proc~teststackpush -->
+<g id="proc~~stackclasstests~~CallsGraph_edge27" class="edge"><title>proc~stackclasstests&#45;&gt;proc~teststackpush</title>
+<path fill="none" stroke="#000000" d="M69.2898,-274.926C88.0653,-264.756 115.126,-250.099 136.01,-238.786"/>
+<polygon fill="#000000" stroke="#000000" points="137.704,-241.849 144.83,-234.009 134.37,-235.694 137.704,-241.849"/>
+</g>
+<!-- proc~assertwithintolerancetwoquad -->
+<g id="proc~~stackclasstests~~CallsGraph_node7" class="node"><title>proc~assertwithintolerancetwoquad</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node7"><a xlink:href="../proc/assertwithintolerancetwoquad.html" xlink:title="assertWithinToleranceTwoQuad">
+<polygon fill="#d9534f" stroke="#d9534f" points="556,-381 394,-381 394,-357 556,-357 556,-381"/>
+<text text-anchor="middle" x="475" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">assertWithinToleranceTwoQuad</text>
+</a>
+</g>
+</g>
+<!-- interface~ftassertequal&#45;&gt;proc~assertwithintolerancetwoquad -->
+<g id="proc~~stackclasstests~~CallsGraph_edge3" class="edge"><title>interface~ftassertequal&#45;&gt;proc~assertwithintolerancetwoquad</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.326,-369C354.831,-369 369.151,-369 383.636,-369"/>
+<polygon fill="#000000" stroke="#000000" points="383.67,-372.5 393.67,-369 383.67,-365.5 383.67,-372.5"/>
+</g>
+<!-- proc~teststackinit&#45;&gt;interface~ftassertequal -->
+<g id="proc~~stackclasstests~~CallsGraph_edge7" class="edge"><title>proc~teststackinit&#45;&gt;interface~ftassertequal</title>
+<path fill="none" stroke="#000000" d="M203.077,-337.925C218.144,-342.756 236.119,-348.519 252.473,-353.762"/>
+<polygon fill="#000000" stroke="#000000" points="251.815,-357.227 262.406,-356.947 253.952,-350.561 251.815,-357.227"/>
+</g>
+<!-- proc~teststackinit&#45;&gt;proc~ftassert -->
+<g id="proc~~stackclasstests~~CallsGraph_edge6" class="edge"><title>proc~teststackinit&#45;&gt;proc~ftassert</title>
+<path fill="none" stroke="#000000" d="M203.077,-327C221.499,-327 244.266,-327 263.105,-327"/>
+<polygon fill="#000000" stroke="#000000" points="263.115,-330.5 273.115,-327 263.115,-323.5 263.115,-330.5"/>
+</g>
+<!-- init -->
+<g id="proc~~stackclasstests~~CallsGraph_node10" class="node"><title>init</title>
+<polygon fill="#777777" stroke="#777777" points="328,-423 274,-423 274,-399 328,-399 328,-423"/>
+<text text-anchor="middle" x="301" y="-408.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</g>
+<!-- proc~teststackinit&#45;&gt;init -->
+<g id="proc~~stackclasstests~~CallsGraph_edge4" class="edge"><title>proc~teststackinit&#45;&gt;init</title>
+<path fill="none" stroke="#000000" d="M180.75,-339.107C194.741,-352.961 219.332,-375.589 244,-390 250.204,-393.625 257.147,-396.824 263.974,-399.564"/>
+<polygon fill="#000000" stroke="#000000" points="263.204,-403.013 273.797,-403.244 265.66,-396.458 263.204,-403.013"/>
+</g>
+<!-- refcount -->
+<g id="proc~~stackclasstests~~CallsGraph_node11" class="node"><title>refcount</title>
+<polygon fill="#777777" stroke="#777777" points="328,-297 274,-297 274,-273 328,-273 328,-297"/>
+<text text-anchor="middle" x="301" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">refcount</text>
+</g>
+<!-- proc~teststackinit&#45;&gt;refcount -->
+<g id="proc~~stackclasstests~~CallsGraph_edge5" class="edge"><title>proc~teststackinit&#45;&gt;refcount</title>
+<path fill="none" stroke="#000000" d="M203.077,-316.075C221.927,-310.031 245.329,-302.528 264.414,-296.409"/>
+<polygon fill="#000000" stroke="#000000" points="265.501,-299.736 273.955,-293.35 263.363,-293.071 265.501,-299.736"/>
+</g>
+<!-- proc~initializesharedassertionsmanager -->
+<g id="proc~~stackclasstests~~CallsGraph_node9" class="node"><title>proc~initializesharedassertionsmanager</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node9"><a xlink:href="../proc/initializesharedassertionsmanager.html" xlink:title="initializeSharedAssertionsManager">
+<polygon fill="#d9534f" stroke="#d9534f" points="766,-339 592,-339 592,-315 766,-315 766,-339"/>
+<text text-anchor="middle" x="679" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">initializeSharedAssertionsManager</text>
+</a>
+</g>
+</g>
+<!-- proc~ftassert&#45;&gt;proc~initializesharedassertionsmanager -->
+<g id="proc~~stackclasstests~~CallsGraph_edge8" class="edge"><title>proc~ftassert&#45;&gt;proc~initializesharedassertionsmanager</title>
+<path fill="none" stroke="#000000" d="M328.74,-327C380.653,-327 497.379,-327 581.619,-327"/>
+<polygon fill="#000000" stroke="#000000" points="581.725,-330.5 591.725,-327 581.725,-323.5 581.725,-330.5"/>
+</g>
+<!-- proc~releaseftvalue -->
+<g id="proc~~stackclasstests~~CallsGraph_node12" class="node"><title>proc~releaseftvalue</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node12"><a xlink:href="../proc/releaseftvalue.html" xlink:title="releaseFTValue">
+<polygon fill="#d9534f" stroke="#d9534f" points="518.5,-45 431.5,-45 431.5,-21 518.5,-21 518.5,-45"/>
+<text text-anchor="middle" x="475" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">releaseFTValue</text>
+</a>
+</g>
+</g>
+<!-- interface~release&#45;&gt;proc~releaseftvalue -->
+<g id="proc~~stackclasstests~~CallsGraph_edge12" class="edge"><title>interface~release&#45;&gt;proc~releaseftvalue</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M328.123,-33C352.693,-33 390.208,-33 421.04,-33"/>
+<polygon fill="#000000" stroke="#000000" points="421.212,-36.5001 431.212,-33 421.212,-29.5001 421.212,-36.5001"/>
+</g>
+<!-- proc~teststackpush&#45;&gt;interface~ftassertequal -->
+<g id="proc~~stackclasstests~~CallsGraph_edge14" class="edge"><title>proc~teststackpush&#45;&gt;interface~ftassertequal</title>
+<path fill="none" stroke="#000000" d="M173.12,-234.246C182.093,-259.14 205.72,-315.997 244,-348 246.203,-349.842 248.584,-351.531 251.078,-353.079"/>
+<polygon fill="#000000" stroke="#000000" points="249.436,-356.169 259.902,-357.813 252.745,-350.001 249.436,-356.169"/>
+</g>
+<!-- proc~teststackpush&#45;&gt;proc~ftassert -->
+<g id="proc~~stackclasstests~~CallsGraph_edge15" class="edge"><title>proc~teststackpush&#45;&gt;proc~ftassert</title>
+<path fill="none" stroke="#000000" d="M178.59,-234.105C195.141,-254.752 228.756,-295.563 244,-306 249.929,-310.059 256.745,-313.459 263.535,-316.258"/>
+<polygon fill="#000000" stroke="#000000" points="262.765,-319.707 273.358,-319.937 265.221,-313.152 262.765,-319.707"/>
+</g>
+<!-- proc~teststackpush&#45;&gt;interface~release -->
+<g id="proc~~stackclasstests~~CallsGraph_edge18" class="edge"><title>proc~teststackpush&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M173.028,-209.902C184.753,-175.308 219.571,-76.9795 244,-54 249.668,-48.6686 256.816,-44.6591 264.092,-41.6543"/>
+<polygon fill="#000000" stroke="#000000" points="265.712,-44.793 273.966,-38.1499 263.371,-38.1962 265.712,-44.793"/>
+</g>
+<!-- proc~teststackpush&#45;&gt;refcount -->
+<g id="proc~~stackclasstests~~CallsGraph_edge17" class="edge"><title>proc~teststackpush&#45;&gt;refcount</title>
+<path fill="none" stroke="#000000" d="M188.624,-234.073C203.51,-242.962 224.644,-255.014 244,-264 250.391,-266.967 257.329,-269.836 264.074,-272.452"/>
+<polygon fill="#000000" stroke="#000000" points="263.141,-275.84 273.733,-276.083 265.605,-269.288 263.141,-275.84"/>
+</g>
+<!-- proc~doubleprecisionvalue -->
+<g id="proc~~stackclasstests~~CallsGraph_node16" class="node"><title>proc~doubleprecisionvalue</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node16"><a xlink:href="../proc/doubleprecisionvalue.html" xlink:title="doublePrecisionValue">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="358,-255 244,-255 244,-231 358,-231 358,-255"/>
+<text text-anchor="middle" x="301" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">doublePrecisionValue</text>
+</a>
+</g>
+</g>
+<!-- proc~teststackpush&#45;&gt;proc~doubleprecisionvalue -->
+<g id="proc~~stackclasstests~~CallsGraph_edge16" class="edge"><title>proc~teststackpush&#45;&gt;proc~doubleprecisionvalue</title>
+<path fill="none" stroke="#000000" d="M208.304,-228.301C216.321,-229.586 224.965,-230.971 233.629,-232.36"/>
+<polygon fill="#000000" stroke="#000000" points="233.345,-235.859 243.773,-233.987 234.453,-228.948 233.345,-235.859"/>
+</g>
+<!-- proc~push -->
+<g id="proc~~stackclasstests~~CallsGraph_node17" class="node"><title>proc~push</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node17"><a xlink:href="../proc/push.html" xlink:title="push">
+<polygon fill="#d9534f" stroke="#d9534f" points="328,-213 274,-213 274,-189 328,-189 328,-213"/>
+<text text-anchor="middle" x="301" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">push</text>
+</a>
+</g>
+</g>
+<!-- proc~teststackpush&#45;&gt;proc~push -->
+<g id="proc~~stackclasstests~~CallsGraph_edge19" class="edge"><title>proc~teststackpush&#45;&gt;proc~push</title>
+<path fill="none" stroke="#000000" d="M208.304,-215.699C225.904,-212.878 246.526,-209.572 263.751,-206.811"/>
+<polygon fill="#000000" stroke="#000000" points="264.659,-210.21 273.979,-205.171 263.551,-203.298 264.659,-210.21"/>
+</g>
+<!-- proc~peek -->
+<g id="proc~~stackclasstests~~CallsGraph_node18" class="node"><title>proc~peek</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node18"><a xlink:href="../proc/peek.html" xlink:title="peek">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="328,-171 274,-171 274,-147 328,-147 328,-171"/>
+<text text-anchor="middle" x="301" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">peek</text>
+</a>
+</g>
+</g>
+<!-- proc~teststackpush&#45;&gt;proc~peek -->
+<g id="proc~~stackclasstests~~CallsGraph_edge20" class="edge"><title>proc~teststackpush&#45;&gt;proc~peek</title>
+<path fill="none" stroke="#000000" d="M188.624,-209.927C203.51,-201.038 224.644,-188.986 244,-180 250.391,-177.033 257.329,-174.164 264.074,-171.548"/>
+<polygon fill="#000000" stroke="#000000" points="265.605,-174.712 273.733,-167.917 263.141,-168.16 265.605,-174.712"/>
+</g>
+<!-- initwithvalue -->
+<g id="proc~~stackclasstests~~CallsGraph_node19" class="node"><title>initwithvalue</title>
+<polygon fill="#777777" stroke="#777777" points="336,-129 266,-129 266,-105 336,-105 336,-129"/>
+<text text-anchor="middle" x="301" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">initwithvalue</text>
+</g>
+<!-- proc~teststackpush&#45;&gt;initwithvalue -->
+<g id="proc~~stackclasstests~~CallsGraph_edge21" class="edge"><title>proc~teststackpush&#45;&gt;initwithvalue</title>
+<path fill="none" stroke="#000000" d="M177.022,-209.743C189.4,-191.704 214.802,-157.991 244,-138 247.917,-135.318 252.221,-132.924 256.649,-130.801"/>
+<polygon fill="#000000" stroke="#000000" points="258.047,-134.01 265.827,-126.818 255.26,-127.589 258.047,-134.01"/>
+</g>
+<!-- proc~valuefromobject -->
+<g id="proc~~stackclasstests~~CallsGraph_node20" class="node"><title>proc~valuefromobject</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node20"><a xlink:href="../proc/valuefromobject.html" xlink:title="valueFromObject">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="347,-87 255,-87 255,-63 347,-63 347,-87"/>
+<text text-anchor="middle" x="301" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">valueFromObject</text>
+</a>
+</g>
+</g>
+<!-- proc~teststackpush&#45;&gt;proc~valuefromobject -->
+<g id="proc~~stackclasstests~~CallsGraph_edge22" class="edge"><title>proc~teststackpush&#45;&gt;proc~valuefromobject</title>
+<path fill="none" stroke="#000000" d="M173.12,-209.754C182.093,-184.86 205.72,-128.003 244,-96 245.715,-94.566 247.538,-93.2247 249.438,-91.9706"/>
+<polygon fill="#000000" stroke="#000000" points="251.202,-94.9939 258.171,-87.0139 247.747,-88.9062 251.202,-94.9939"/>
+</g>
+<!-- interface~isequal -->
+<g id="proc~~stackclasstests~~CallsGraph_node8" class="node"><title>interface~isequal</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node8"><a xlink:href="../interface/isequal.html" xlink:title="isEqual">
+<polygon fill="#a7506f" stroke="#a7506f" points="706,-381 652,-381 652,-357 706,-357 706,-381"/>
+<text text-anchor="middle" x="679" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">isEqual</text>
+</a>
+</g>
+</g>
+<!-- proc~assertwithintolerancetwoquad&#45;&gt;interface~isequal -->
+<g id="proc~~stackclasstests~~CallsGraph_edge1" class="edge"><title>proc~assertwithintolerancetwoquad&#45;&gt;interface~isequal</title>
+<path fill="none" stroke="#000000" d="M556.126,-369C585.546,-369 617.438,-369 641.216,-369"/>
+<polygon fill="#000000" stroke="#000000" points="641.532,-372.5 651.532,-369 641.532,-365.5 641.532,-372.5"/>
+</g>
+<!-- proc~assertwithintolerancetwoquad&#45;&gt;proc~initializesharedassertionsmanager -->
+<g id="proc~~stackclasstests~~CallsGraph_edge2" class="edge"><title>proc~assertwithintolerancetwoquad&#45;&gt;proc~initializesharedassertionsmanager</title>
+<path fill="none" stroke="#000000" d="M533.885,-356.964C557.657,-352.022 585.352,-346.263 610.075,-341.123"/>
+<polygon fill="#000000" stroke="#000000" points="611.028,-344.5 620.106,-339.037 609.603,-337.646 611.028,-344.5"/>
+</g>
+<!-- proc~releaseftobject -->
+<g id="proc~~stackclasstests~~CallsGraph_node13" class="node"><title>proc~releaseftobject</title>
+<g id="a_proc~~stackclasstests~~CallsGraph_node13"><a xlink:href="../proc/releaseftobject.html" xlink:title="releaseFTObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="724,-45 634,-45 634,-21 724,-21 724,-45"/>
+<text text-anchor="middle" x="679" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">releaseFTObject</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftvalue&#45;&gt;proc~releaseftobject -->
+<g id="proc~~stackclasstests~~CallsGraph_edge11" class="edge"><title>proc~releaseftvalue&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M518.839,-33C549.353,-33 590.612,-33 623.476,-33"/>
+<polygon fill="#000000" stroke="#000000" points="623.826,-36.5001 633.826,-33 623.826,-29.5001 623.826,-36.5001"/>
+</g>
+<!-- printdescription -->
+<g id="proc~~stackclasstests~~CallsGraph_node14" class="node"><title>printdescription</title>
+<polygon fill="#777777" stroke="#777777" points="886,-66 802,-66 802,-42 886,-42 886,-66"/>
+<text text-anchor="middle" x="844" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">printdescription</text>
+</g>
+<!-- proc~releaseftobject&#45;&gt;printdescription -->
+<g id="proc~~stackclasstests~~CallsGraph_edge9" class="edge"><title>proc~releaseftobject&#45;&gt;printdescription</title>
+<path fill="none" stroke="#000000" d="M724.11,-38.6829C745.028,-41.3779 770.142,-44.6134 791.887,-47.4149"/>
+<polygon fill="#000000" stroke="#000000" points="791.57,-50.9028 801.935,-48.7094 792.464,-43.9602 791.57,-50.9028"/>
+</g>
+<!-- destruct -->
+<g id="proc~~stackclasstests~~CallsGraph_node15" class="node"><title>destruct</title>
+<polygon fill="#777777" stroke="#777777" points="871,-24 817,-24 817,-0 871,-0 871,-24"/>
+<text text-anchor="middle" x="844" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">destruct</text>
+</g>
+<!-- proc~releaseftobject&#45;&gt;destruct -->
+<g id="proc~~stackclasstests~~CallsGraph_edge10" class="edge"><title>proc~releaseftobject&#45;&gt;destruct</title>
+<path fill="none" stroke="#000000" d="M724.11,-27.3171C750.015,-23.9797 782.353,-19.8134 806.761,-16.6689"/>
+<polygon fill="#000000" stroke="#000000" points="807.223,-20.1383 816.694,-15.3891 806.329,-13.1957 807.223,-20.1383"/>
+</g>
+<!-- initwithobject -->
+<g id="proc~~stackclasstests~~CallsGraph_node21" class="node"><title>initwithobject</title>
+<polygon fill="#777777" stroke="#777777" points="511.5,-213 438.5,-213 438.5,-189 511.5,-189 511.5,-213"/>
+<text text-anchor="middle" x="475" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">initwithobject</text>
+</g>
+<!-- proc~push&#45;&gt;initwithobject -->
+<g id="proc~~stackclasstests~~CallsGraph_edge13" class="edge"><title>proc~push&#45;&gt;initwithobject</title>
+<path fill="none" stroke="#000000" d="M328.123,-201C354.665,-201 396.314,-201 428.326,-201"/>
+<polygon fill="#000000" stroke="#000000" points="428.35,-204.5 438.35,-201 428.35,-197.5 428.35,-204.5"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panprocstackclasstestsCallsGraph = svgPanZoom('#procstackclasstestsCallsGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="553pt" height="32pt"
+ viewBox="0.00 0.00 553.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 549,-28 549,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.25,-24 -0.25,-24 -0.25,-0 62.25,-0 62.25,-24"/>
+<text text-anchor="middle" x="31" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="135,-24 81,-24 81,-0 135,-0 135,-24"/>
+<text text-anchor="middle" x="108" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="207,-24 153,-24 153,-0 207,-0 207,-24"/>
+<text text-anchor="middle" x="180" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="359,-24 225,-24 225,-0 359,-0 359,-24"/>
+<text text-anchor="middle" x="292" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="431,-24 377,-24 377,-0 431,-0 431,-24"/>
+<text text-anchor="middle" x="404" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="545,-24 449,-24 449,-0 545,-0 545,-24"/>
+<text text-anchor="middle" x="497" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+     
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    </div>
+  </div>
+
+  <section class="visible-xs visible-sm hidden-md">
+    <hr>
+    
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-1">All Procedures</a></h3></div>
+  <div id="allprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/add.html">add</a>
+      
+      <a class="list-group-item" href="../proc/adddoubleprecisionvalueforkey.html">addDoublePrecisionValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addintegervalueforkey.html">addIntegerValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addlogicalvalueforkey.html">addLogicalValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addobjectforkey.html">addObjectForKey</a>
+      
+      <a class="list-group-item" href="../proc/addobjectsfromlist.html">addObjectsFromList</a>
+      
+      <a class="list-group-item" href="../proc/addobjecttoarray.html">addObjectToArray</a>
+      
+      <a class="list-group-item" href="../proc/addobjecttomultiindextableforkeys.html">addObjectToMultiIndexTableForKeys</a>
+      
+      <a class="list-group-item" href="../proc/addobjecttosparsematrixforkeys.html">addObjectToSparseMatrixForKeys</a>
+      
+      <a class="list-group-item" href="../proc/addquadvalueforkey.html">addQuadValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addrealvalueforkey.html">addRealValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/addstringvalueforkey.html">addStringValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/allkeys.html">AllKeys</a>
+      
+      <a class="list-group-item" href="../proc/alllinkedlistobjects.html">allLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../proc/allobjects.html">AllObjects</a>
+      
+      <a class="list-group-item" href="../proc/allocatedsize.html">allocatedSize</a>
+      
+      <a class="list-group-item" href="../proc/arrayclassname.html">arrayClassName</a>
+      
+      <a class="list-group-item" href="../proc/assertwithintolerancetwoquad.html">assertWithinToleranceTwoQuad</a>
+      
+      <a class="list-group-item" href="../proc/b3hs_hash_key_jenkins.html">b3hs_hash_key_jenkins</a>
+      
+      <a class="list-group-item" href="../proc/basictests.html">basicTests</a>
+      
+      <a class="list-group-item" href="../proc/casesensitive.html">caseSensitive</a>
+      
+      <a class="list-group-item" href="../interface/cast.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E2.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E3.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E4.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E5.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E6.html">cast</a>
+      
+      <a class="list-group-item" href="../interface/cast%7E7.html">cast</a>
+      
+      <a class="list-group-item" href="../proc/castdictionarytovaluedictionary.html">castDictionaryToValueDictionary</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttolinkedlist.html">castObjectToLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttomatrixdata.html">castObjectToMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttomultiindexmatrixdata.html">castObjectToMultiIndexMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/castobjecttovaluedictionary.html">castObjectToValueDictionary</a>
+      
+      <a class="list-group-item" href="../proc/casttodictionary.html">castToDictionary</a>
+      
+      <a class="list-group-item" href="../proc/casttoexception.html">castToException</a>
+      
+      <a class="list-group-item" href="../proc/casttomutableobjectarray.html">castToMutableObjectArray</a>
+      
+      <a class="list-group-item" href="../proc/casttovalue.html">castToValue</a>
+      
+      <a class="list-group-item" href="../interface/catch.html">catch</a>
+      
+      <a class="list-group-item" href="../proc/chunksize.html">chunkSize</a>
+      
+      <a class="list-group-item" href="../proc/classname.html">className</a>
+      
+      <a class="list-group-item" href="../proc/containskey.html">containsKey</a>
+      
+      <a class="list-group-item" href="../proc/count.html">COUNT</a>
+      
+      <a class="list-group-item" href="../proc/dataclassname.html">dataClassName</a>
+      
+      <a class="list-group-item" href="../proc/dataisoftype.html">dataIsOfType</a>
+      
+      <a class="list-group-item" href="../proc/datatype.html">dataType</a>
+      
+      <a class="list-group-item" href="../proc/demonstratelinkedlist.html">demonstrateLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/destructexception.html">destructException</a>
+      
+      <a class="list-group-item" href="../proc/destructftdictionary.html">destructFTDictionary</a>
+      
+      <a class="list-group-item" href="../proc/destructftexceptions.html">destructFTExceptions</a>
+      
+      <a class="list-group-item" href="../proc/destructftkeyobjectpair.html">destructFTKeyObjectPair</a>
+      
+      <a class="list-group-item" href="../proc/destructftlinkedlist.html">destructFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/destructftlinkedlistrecord.html">destructFTLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../proc/destructftobject.html">destructFTObject</a>
+      
+      <a class="list-group-item" href="../proc/destructiterator.html">destructIterator</a>
+      
+      <a class="list-group-item" href="../proc/destructmatrixdata.html">destructMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/destructmultiindexmatrixdata.html">destructMultiIndexMatrixData</a>
+      
+      <a class="list-group-item" href="../proc/destructmultiindextable.html">destructMultiIndexTable</a>
+      
+      <a class="list-group-item" href="../proc/destructobjectarray.html">destructObjectArray</a>
+      
+      <a class="list-group-item" href="../proc/destructsparsematrix.html">destructSparseMatrix</a>
+      
+      <a class="list-group-item" href="../proc/destructvalue.html">destructValue</a>
+      
+      <a class="list-group-item" href="../proc/detachsharedassertionsmanager.html">detachSharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/dictionaryclassname.html">dictionaryClassName</a>
+      
+      <a class="list-group-item" href="../proc/dictionaryfromobject.html">dictionaryFromObject</a>
+      
+      <a class="list-group-item" href="../proc/doubleprecisionvalue.html">doublePrecisionValue</a>
+      
+      <a class="list-group-item" href="../proc/doubleprecisionvalueforkey.html">doublePrecisionValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/errorcount.html">errorCount</a>
+      
+      <a class="list-group-item" href="../proc/errorobject.html">errorObject</a>
+      
+      <a class="list-group-item" href="../proc/exceptionclassname.html">exceptionClassName</a>
+      
+      <a class="list-group-item" href="../proc/exceptionfromobject.html">exceptionFromObject</a>
+      
+      <a class="list-group-item" href="../proc/exceptionname.html">exceptionName</a>
+      
+      <a class="list-group-item" href="../proc/finalizesharedassertionsmanager.html">finalizeSharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/ftassert.html">FTAssert</a>
+      
+      <a class="list-group-item" href="../interface/ftassertequal.html">FTAssertEqual</a>
+      
+      <a class="list-group-item" href="../proc/ftdictionaryclasstests.html">FTDictionaryClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftdictionarydescription.html">FTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftexceptionclasstests.html">FTExceptionClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftkeyobjectpairdescription.html">FTKeyObjectPairDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistclasstests.html">FTLinkedListClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistcurrentrecord.html">FTLinkedListCurrentRecord</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistdescription.html">FTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistisatend.html">FTLinkedListIsAtEnd</a>
+      
+      <a class="list-group-item" href="../proc/ftlinkedlistobject.html">FTLinkedListObject</a>
+      
+      <a class="list-group-item" href="../proc/ftobjectdescription.html">FTObjectDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftvalueclasstests.html">FTValueClassTests</a>
+      
+      <a class="list-group-item" href="../proc/ftvaluedescription.html">FTValueDescription</a>
+      
+      <a class="list-group-item" href="../proc/ftvaluedictionaryclasstests.html">FTValueDictionaryClassTests</a>
+      
+      <a class="list-group-item" href="../proc/hash1.html">Hash1</a>
+      
+      <a class="list-group-item" href="../proc/hash2.html">Hash2</a>
+      
+      <a class="list-group-item" href="../proc/hashtabletests.html">HashTableTests</a>
+      
+      <a class="list-group-item" href="../proc/infodictionary.html">infoDictionary</a>
+      
+      <a class="list-group-item" href="../proc/init.html">init</a>
+      
+      <a class="list-group-item" href="../proc/initassertionfailureexception.html">initAssertionFailureException</a>
+      
+      <a class="list-group-item" href="../proc/initempty.html">initEmpty</a>
+      
+      <a class="list-group-item" href="../proc/initfatalexception.html">initFatalException</a>
+      
+      <a class="list-group-item" href="../proc/initftexception.html">initFTException</a>
+      
+      <a class="list-group-item" href="../proc/initftlinkedlist.html">initFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/initftobject.html">initFTObject</a>
+      
+      <a class="list-group-item" href="../proc/initftstack.html">initFTStack</a>
+      
+      <a class="list-group-item" href="../proc/initializeftexceptions.html">initializeFTExceptions</a>
+      
+      <a class="list-group-item" href="../proc/initializesharedassertionsmanager.html">initializeSharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/initmultiindextablewithsize.html">initMultiIndexTableWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initobjectarraywithsize.html">initObjectArrayWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initsparsematrixwithsize.html">initSparseMatrixWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initwarningexception.html">initWarningException</a>
+      
+      <a class="list-group-item" href="../proc/initwithdataoftype.html">initWithDataOfType</a>
+      
+      <a class="list-group-item" href="../proc/initwithdoubleprecision.html">initWithDoublePrecision</a>
+      
+      <a class="list-group-item" href="../proc/initwithftlinkedlist.html">initWithFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/initwithinteger.html">initWithInteger</a>
+      
+      <a class="list-group-item" href="../proc/initwithlogical.html">initWithLogical</a>
+      
+      <a class="list-group-item" href="../proc/initwithobject.html">initWithObject</a>
+      
+      <a class="list-group-item" href="../proc/initwithobjectandkey.html">initWithObjectAndKey</a>
+      
+      <a class="list-group-item" href="../proc/initwithobjectandkey%7E2.html">initWithObjectAndKey</a>
+      
+      <a class="list-group-item" href="../proc/initwithobjectandkeys.html">initWithObjectAndKeys</a>
+      
+      <a class="list-group-item" href="../proc/initwithquad.html">initWithQuad</a>
+      
+      <a class="list-group-item" href="../proc/initwithreal.html">initWithReal</a>
+      
+      <a class="list-group-item" href="../proc/initwithsize.html">initWithSize</a>
+      
+      <a class="list-group-item" href="../proc/initwithstring.html">initWithString</a>
+      
+      <a class="list-group-item" href="../proc/insertobjectafterobject.html">insertObjectAfterObject</a>
+      
+      <a class="list-group-item" href="../proc/insertobjectafterrecord.html">insertObjectAfterRecord</a>
+      
+      <a class="list-group-item" href="../proc/integervalue.html">integerValue</a>
+      
+      <a class="list-group-item" href="../proc/integervalueforkey.html">integerValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/iscircular.html">isCircular</a>
+      
+      <a class="list-group-item" href="../interface/isequal.html">isEqual</a>
+      
+      <a class="list-group-item" href="../proc/isunreferenced.html">isUnreferenced</a>
+      
+      <a class="list-group-item" href="../proc/key.html">key</a>
+      
+      <a class="list-group-item" href="../proc/keysmatch.html">keysMatch</a>
+      
+      <a class="list-group-item" href="../proc/linkedlistclassname.html">linkedListClassName</a>
+      
+      <a class="list-group-item" href="../proc/linkedlistfromobject.html">linkedListFromObject</a>
+      
+      <a class="list-group-item" href="../proc/linkedlistiteratorclassname.html">linkedListIteratorClassName</a>
+      
+      <a class="list-group-item" href="../proc/llrecordclassname.html">llRecordClassName</a>
+      
+      <a class="list-group-item" href="../proc/logicalvalue.html">logicalValue</a>
+      
+      <a class="list-group-item" href="../proc/logicalvalueforkey.html">logicalValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/makecircular.html">makeCircular</a>
+      
+      <a class="list-group-item" href="../proc/matrixdatacast.html">matrixDataCast</a>
+      
+      <a class="list-group-item" href="../proc/movetonext.html">moveToNext</a>
+      
+      <a class="list-group-item" href="../proc/multiindexmatrixdatacast.html">MultiIndexMatrixDataCast</a>
+      
+      <a class="list-group-item" href="../proc/multiindextablecontainskeys.html">MultiIndexTableContainsKeys</a>
+      
+      <a class="list-group-item" href="../proc/multiindextablefromobject.html">MultiIndexTableFromObject</a>
+      
+      <a class="list-group-item" href="../proc/multiindextablesize.html">MultiIndexTableSize</a>
+      
+      <a class="list-group-item" href="../proc/multiindextabletests.html">MultiIndexTableTests</a>
+      
+      <a class="list-group-item" href="../proc/mutablearrayclasstests.html">MutableArrayClassTests</a>
+      
+      <a class="list-group-item" href="../proc/numberofassertionfailures.html">numberOfAssertionFailures</a>
+      
+      <a class="list-group-item" href="../proc/numberofassertions.html">numberOfAssertions</a>
+      
+      <a class="list-group-item" href="../proc/numberofitems.html">numberOfItems</a>
+      
+      <a class="list-group-item" href="../proc/numberofrecords.html">numberOfRecords</a>
+      
+      <a class="list-group-item" href="../proc/object.html">object</a>
+      
+      <a class="list-group-item" href="../proc/objectarrayfromobject.html">objectArrayFromObject</a>
+      
+      <a class="list-group-item" href="../proc/objectatindex.html">objectAtIndex</a>
+      
+      <a class="list-group-item" href="../proc/objectforkey.html">objectForKey</a>
+      
+      <a class="list-group-item" href="../proc/objectforkeyinlist.html">objectForKeyInList</a>
+      
+      <a class="list-group-item" href="../proc/objectinmultiindextableforkeys.html">objectInMultiIndexTableForKeys</a>
+      
+      <a class="list-group-item" href="../proc/objectinsparsematrixforkeys.html">objectInSparseMatrixForKeys</a>
+      
+      <a class="list-group-item" href="../proc/peek.html">peek</a>
+      
+      <a class="list-group-item" href="../proc/peeklastexception.html">peekLastException</a>
+      
+      <a class="list-group-item" href="../proc/pop.html">pop</a>
+      
+      <a class="list-group-item" href="../proc/poplastexception.html">popLastException</a>
+      
+      <a class="list-group-item" href="../proc/printallexceptions.html">printAllExceptions</a>
+      
+      <a class="list-group-item" href="../proc/printarray.html">printArray</a>
+      
+      <a class="list-group-item" href="../proc/printftdictionarydescription.html">printFTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftexceptiondescription.html">printFTExceptionDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftkeyobjectpairdescription.html">printFTKeyObjectPairDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftlinkedlistdescription.html">printFTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftlinkedrecorddescription.html">printFTLinkedRecordDescription</a>
+      
+      <a class="list-group-item" href="../proc/printftobjectdescription.html">printFTObjectDescription</a>
+      
+      <a class="list-group-item" href="../proc/printmultiindextabledescription.html">printMultiIndexTableDescription</a>
+      
+      <a class="list-group-item" href="../proc/printstackdescription.html">printStackDescription</a>
+      
+      <a class="list-group-item" href="../proc/printvaluedescription.html">printValueDescription</a>
+      
+      <a class="list-group-item" href="../proc/push.html">push</a>
+      
+      <a class="list-group-item" href="../proc/quadvalue.html">quadValue</a>
+      
+      <a class="list-group-item" href="../proc/quadvalueforkey.html">quadValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/realvalue.html">realValue</a>
+      
+      <a class="list-group-item" href="../proc/realvalueforkey.html">realValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/refcount.html">refCount</a>
+      
+      <a class="list-group-item" href="../interface/release%7E7.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E8.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E9.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E3.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E10.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E11.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E4.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E5.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E12.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E6.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E13.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release.html">release</a>
+      
+      <a class="list-group-item" href="../interface/release%7E2.html">release</a>
+      
+      <a class="list-group-item" href="../proc/releaseftdata.html">releaseFTData</a>
+      
+      <a class="list-group-item" href="../proc/releaseftdictionary.html">releaseFTDictionary</a>
+      
+      <a class="list-group-item" href="../proc/releaseftexception.html">releaseFTException</a>
+      
+      <a class="list-group-item" href="../proc/releaseftkeyobjectpair.html">releaseFTKeyObjectPair</a>
+      
+      <a class="list-group-item" href="../proc/releaseftlinkedlist.html">releaseFTLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/releaseftlinkedlistiterator.html">releaseFTLinkedListIterator</a>
+      
+      <a class="list-group-item" href="../proc/releaseftlinkedlistrecord.html">releaseFTLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../proc/releaseftmultiindextable.html">releaseFTMultiIndexTable</a>
+      
+      <a class="list-group-item" href="../proc/releaseftmutableobjectarray.html">releaseFTMutableObjectArray</a>
+      
+      <a class="list-group-item" href="../proc/releaseftobject.html">releaseFTObject</a>
+      
+      <a class="list-group-item" href="../proc/releaseftsparsematrix.html">releaseFTSparseMatrix</a>
+      
+      <a class="list-group-item" href="../proc/releaseftstack.html">releaseFTStack</a>
+      
+      <a class="list-group-item" href="../proc/releaseftvalue.html">releaseFTValue</a>
+      
+      <a class="list-group-item" href="../proc/releaseftvaluedictionary.html">releaseFTValueDictionary</a>
+      
+      <a class="list-group-item" href="../proc/releasememberdictionary.html">releaseMemberDictionary</a>
+      
+      <a class="list-group-item" href="../proc/releasememberlist.html">releaseMemberList</a>
+      
+      <a class="list-group-item" href="../proc/releasesmmemberlist.html">releaseSMMemberList</a>
+      
+      <a class="list-group-item" href="../proc/removealllinkedlistobjects.html">removeAllLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../proc/removecurrentrecord.html">removeCurrentRecord</a>
+      
+      <a class="list-group-item" href="../proc/removelinkedlistrecord.html">removeLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../proc/removeobject.html">removeObject</a>
+      
+      <a class="list-group-item" href="../proc/removeobject1.html">removeObject1</a>
+      
+      <a class="list-group-item" href="../proc/removeobjectatindex.html">removeObjectAtIndex</a>
+      
+      <a class="list-group-item" href="../proc/replaceobjectatindexwithobject.html">replaceObjectAtIndexWithObject</a>
+      
+      <a class="list-group-item" href="../proc/retainftobject.html">retainFTObject</a>
+      
+      <a class="list-group-item" href="../proc/returnlinkedlist.html">returnLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/reverselinkedlist.html">reverseLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/setcasesensitive.html">setCaseSensitive</a>
+      
+      <a class="list-group-item" href="../proc/setchunksize.html">setChunkSize</a>
+      
+      <a class="list-group-item" href="../proc/setcurrenterror.html">setCurrentError</a>
+      
+      <a class="list-group-item" href="../proc/setinfodictionary.html">setInfoDictionary</a>
+      
+      <a class="list-group-item" href="../proc/setlinkedlist.html">setLinkedList</a>
+      
+      <a class="list-group-item" href="../proc/settostart.html">setToStart</a>
+      
+      <a class="list-group-item" href="../proc/severity.html">severity</a>
+      
+      <a class="list-group-item" href="../proc/sharedassertionsmanager.html">sharedAssertionsManager</a>
+      
+      <a class="list-group-item" href="../proc/sortkeysascending.html">sortKeysAscending</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixcontainskeys.html">SparseMatrixContainsKeys</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixfromobject.html">SparseMatrixFromObject</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixsize.html">SparseMatrixSize</a>
+      
+      <a class="list-group-item" href="../proc/sparsematrixtests.html">SparseMatrixTests</a>
+      
+      <a class="list-group-item" href="../proc/stackclassname.html">stackClassName</a>
+      
+      <a class="list-group-item" href="../proc/stackclasstests.html">StackClassTests</a>
+      
+      <a class="list-group-item" href="../proc/stackfromobject.html">stackFromObject</a>
+      
+      <a class="list-group-item" href="../proc/storeddata.html">storedData</a>
+      
+      <a class="list-group-item" href="../proc/stringvalue.html">stringValue</a>
+      
+      <a class="list-group-item" href="../proc/stringvalueforkey.html">stringValueForKey</a>
+      
+      <a class="list-group-item" href="../proc/subroutinethatthrowserror.html">subroutineThatThrowsError</a>
+      
+      <a class="list-group-item" href="../proc/testappendinglists.html">testAppendingLists</a>
+      
+      <a class="list-group-item" href="../proc/testdeletingobjects.html">TestDeletingObjects</a>
+      
+      <a class="list-group-item" href="../proc/testexception.html">testException</a>
+      
+      <a class="list-group-item" href="../proc/teststackinit.html">testStackInit</a>
+      
+      <a class="list-group-item" href="../proc/teststackpush.html">testStackPush</a>
+      
+      <a class="list-group-item" href="../proc/throw.html">throw</a>
+      
+      <a class="list-group-item" href="../proc/valueclassname.html">valueClassName</a>
+      
+      <a class="list-group-item" href="../proc/valuedictionaryclassname.html">valueDictionaryClassName</a>
+      
+      <a class="list-group-item" href="../proc/valuedictionaryfromdictionary.html">valueDictionaryFromDictionary</a>
+      
+      <a class="list-group-item" href="../proc/valuedictionaryfromobject.html">valueDictionaryFromObject</a>
+      
+      <a class="list-group-item" href="../proc/valuefromobject.html">valueFromObject</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> FTObjectLibrary was developed by David A. Kopriva</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
