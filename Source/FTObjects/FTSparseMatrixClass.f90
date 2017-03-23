@@ -463,9 +463,9 @@
 ! 
       SUBROUTINE releaseSMMemberList(list)  
           IMPLICIT NONE  
-          CLASS(FTLinkedList), POINTER     :: list
+          CLASS(FTLinkedList), POINTER :: list
           CLASS(FTObject)    , POINTER :: obj
-          
+
           obj => list
           CALL releaseFTObject(self = obj)
           IF(.NOT. ASSOCIATED(obj)) list => NULL()

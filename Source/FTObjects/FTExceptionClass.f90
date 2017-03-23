@@ -512,8 +512,8 @@
 !     Global error stack  
 !     --------------------
 !
-      CLASS(FTStack)    , POINTER, PRIVATE :: errorStack    => NULL()
-      CLASS(FTException), POINTER, PRIVATE :: currentError_ => NULL()
+      TYPE(FTStack)    , POINTER, PRIVATE :: errorStack    => NULL()
+      TYPE(FTException), POINTER, PRIVATE :: currentError_ => NULL()
       
       INTERFACE catch
          MODULE PROCEDURE catchAll
@@ -550,6 +550,7 @@
 !>are uncaught exceptions raised and print them.
 !
          IMPLICIT NONE
+         CLASS(FTObject), POINTER :: obj
 !  
 !        --------------------------------------------------
 !        First see if there are any uncaught exceptions and
@@ -574,10 +575,11 @@
 !        Destruct the exceptions
 !        -----------------------
 !
-         CALL release(errorStack)
-         IF ( ASSOCIATED(currentError_) )     THEN
-            CALL release(currentError_)
-         END IF 
+
+          obj => errorStack
+          CALL releaseFTObject(self = obj)
+          IF(.NOT. ASSOCIATED(obj)) errorStack => NULL()
+          CALL releaseCurrentError
         
       END SUBROUTINE destructFTExceptions
 !
@@ -619,10 +621,7 @@
          IF ( errorStack % count() > 0 )     THEN
             catchAll = .true.
          END IF
-         
-         IF ( ASSOCIATED(currentError_) )     THEN
-            CALL release(currentError_)
-         END IF 
+         CALL releaseCurrentError
          
       END FUNCTION catchAll
 !
@@ -726,9 +725,7 @@
 !        the pointer.
 !        --------------------------------------------------------------
 !
-         IF ( ASSOCIATED(POINTER = currentError_) )     THEN
-            CALL release(currentError_)
-         END IF 
+         CALL releaseCurrentError
 !
 !        ------------------------------------
 !        Set the pointer and retain ownership
@@ -813,6 +810,20 @@
          CALL iterator % destruct() !iterator is not a pointer
             
       END SUBROUTINE printAllExceptions
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseCurrentError
+         IMPLICIT NONE
+         CLASS(FTObject), POINTER :: obj
+         
+         IF ( ASSOCIATED(currentError_) )     THEN
+           obj => currentError_
+           CALL releaseFTObject(self = obj)
+           IF(.NOT. ASSOCIATED(obj)) currentError_ => NULL()
+         END IF 
+ 
+      END SUBROUTINE releaseCurrentError
 
       END MODULE SharedExceptionManagerModule    
       

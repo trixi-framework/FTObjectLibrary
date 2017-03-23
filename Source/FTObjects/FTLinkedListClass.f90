@@ -641,7 +641,7 @@
          CLASS(FTObject)    , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
-         
+
          obj => self
          CALL releaseFTObject(self = obj)
          IF ( .NOT. ASSOCIATED(obj) )     THEN
