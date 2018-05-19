@@ -138,7 +138,7 @@
 !> Destructor for the class. This is called automatically when the
 !> reference count reaches zero. Do not call this yourself.
 !>
-      SUBROUTINE destructObjectArray(self)  
+      RECURSIVE SUBROUTINE destructObjectArray(self)  
          IMPLICIT NONE
          CLASS( FTMutableObjectArray) :: self
          CLASS(FTObject), POINTER     :: obj     => NULL()
@@ -153,7 +153,7 @@
          self % array => NULL()
          self % count_ = 0  
 
-      END SUBROUTINE
+      END SUBROUTINE destructObjectArray
 !
 !------------------------------------------------
 !> Public, generic name: release(self)

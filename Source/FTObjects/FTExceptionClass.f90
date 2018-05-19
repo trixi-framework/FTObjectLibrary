@@ -567,8 +567,7 @@
            END IF
            PRINT *,"   ***********************************"
            PRINT *
-           !DEBUG CALL printAllExceptions
-           CALL errorStack % printDescription(iUnit = 6)!DEBUG
+           CALL errorStack % printDescription(iUnit = 6)
          END IF 
 !
 !        -----------------------
