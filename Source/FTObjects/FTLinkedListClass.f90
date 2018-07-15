@@ -987,7 +987,6 @@
       SUBROUTINE destructIterator(self)
           IMPLICIT NONE 
           CLASS(FTLinkedListIterator) :: self
-          CLASS(FTObject), POINTER    :: obj
           
           CALL releaseMemberList(self)
           self % current => NULL()

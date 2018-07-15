@@ -425,7 +425,7 @@
          CLASS(FTValueDictionary), POINTER :: valueDict
          CLASS(FTObject)         , POINTER :: obj
          
-         obj => NULL()
+         valueDict => NULL()
          SELECT TYPE (obj)
             TYPE is (FTValueDictionary)
                valueDict => obj
