@@ -266,6 +266,7 @@
          CLASS(FTStack)                             :: self
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
+         IF(self % refCount() .ge. 0) CONTINUE
          s = "FTStack"
  
       END FUNCTION stackClassName

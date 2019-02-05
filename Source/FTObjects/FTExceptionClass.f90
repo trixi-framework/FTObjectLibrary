@@ -452,6 +452,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTException"
+         IF( self % refCount() >= 0) CONTINUE  !Quiet unused variable warnings
  
       END FUNCTION exceptionClassName
 
@@ -483,6 +484,8 @@
 !>         CALL throw(exception)
 !>###Getting the number of exceptions
 !>         n = errorCount()
+!>###Getting the maximum exception severity
+!>         s = maximumErrorSeverity()
 !>###Catching all exceptions
 !>         IF(catch())     THEN
 !>            Do something with the exceptions
@@ -514,6 +517,7 @@
 !
       TYPE(FTStack)    , POINTER, PRIVATE :: errorStack    => NULL()
       TYPE(FTException), POINTER, PRIVATE :: currentError_ => NULL()
+      INTEGER                   , PRIVATE :: maxErrorLevel
       
       INTERFACE catch
          MODULE PROCEDURE catchAll
@@ -535,11 +539,15 @@
 !>exception is thrown.
 !
          IMPLICIT NONE
+         
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             ALLOCATE(errorStack)
             CALL errorStack % init()
             currentError_ => NULL()
-         END IF 
+         END IF
+         
+         maxErrorLevel = FT_ERROR_NONE
+         
       END SUBROUTINE initializeFTExceptions
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -574,7 +582,6 @@
 !        Destruct the exceptions
 !        -----------------------
 !
-
           obj => errorStack
           CALL releaseFTObject(self = obj)
           IF(.NOT. ASSOCIATED(obj)) errorStack => NULL()
@@ -598,6 +605,8 @@
          
          ptr => exceptionToThrow
          CALL errorStack % push(ptr)
+         
+         maxErrorLevel = MAX(maxErrorLevel, exceptionToThrow % severity())
          
       END SUBROUTINE throw
 !
@@ -641,6 +650,25 @@
 
          errorCount = errorStack % count() 
       END FUNCTION    
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      INTEGER FUNCTION maximumErrorSeverity()
+!
+! -----------------------------------------------
+!>Returns the maxSeverity of exceptions that have 
+!>been thrown.
+! -----------------------------------------------
+!
+         IMPLICIT NONE
+                  
+         IF ( .NOT.ASSOCIATED(errorStack) )     THEN
+            CALL initializeFTExceptions 
+         END IF 
+
+         maximumErrorSeverity = maxErrorLevel
+          
+      END FUNCTION maximumErrorSeverity
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

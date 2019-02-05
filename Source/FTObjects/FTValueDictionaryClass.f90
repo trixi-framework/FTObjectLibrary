@@ -451,6 +451,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTValueDictionary"
+         IF( self % refCount() >= 0) CONTINUE 
  
       END FUNCTION valueDictionaryClassName
  

@@ -499,6 +499,7 @@
          CLASS(FTMutableObjectArray)                :: self
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
+         IF(self % COUNT() .ge. 0) CONTINUE 
          s = "FTMutableObjectArray"
  
       END FUNCTION arrayClassName

@@ -226,6 +226,7 @@
       SUBROUTINE destructFTObject(self)
          IMPLICIT NONE 
          CLASS(FTObject) :: self
+         IF(self % refCount() >= 0)     CONTINUE 
     END SUBROUTINE destructFTObject
 !
 !////////////////////////////////////////////////////////////////////////
@@ -298,6 +299,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTObject"
+         IF(self % refCount() >= 0)     CONTINUE 
  
       END FUNCTION className
 !
@@ -360,6 +362,7 @@
          CLASS(FTObject)    :: self
          CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH) :: FTObjectDescription
          FTObjectDescription = " "
+         IF(self % refCount() >= 0)     CONTINUE 
       END FUNCTION FTObjectDescription
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -379,6 +382,7 @@
          CLASS(FTObject) :: self
          INTEGER         :: iUnit
          WRITE(iUnit,*) "FTObject"
+         IF(self % refCount() >= 0)     CONTINUE 
       END SUBROUTINE printFTObjectDescription
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -400,6 +404,7 @@
          
          ALLOCATE(copy)
          CALL initFTObject(self = copy)
+         IF(self % refCount() >= 0)     CONTINUE 
       END FUNCTION copyFTObject
       
       END MODULE FTObjectClass

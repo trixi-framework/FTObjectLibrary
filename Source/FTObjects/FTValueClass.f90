@@ -751,7 +751,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTValue"
- 
+         IF(self % refCount() >= 0)     CONTINUE 
       END FUNCTION valueClassName
 
       END MODULE FTValueClass   

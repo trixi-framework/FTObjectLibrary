@@ -415,7 +415,6 @@
             IMPLICIT NONE  
             CLASS(FTDictionary)      :: self
             CHARACTER(LEN=*)         :: key
-            CLASS(FTObject), POINTER :: obj
             LOGICAL                  :: r
            
             IF ( ASSOCIATED( self % objectForKey(key)) )     THEN
@@ -661,6 +660,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTDictionary"
+         IF( self % refCount() >= 0)     CONTINUE ! No op To silence unused vsariable warnings
  
       END FUNCTION dictionaryClassName
 
