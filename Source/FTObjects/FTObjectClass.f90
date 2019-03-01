@@ -275,7 +275,7 @@
          
          IF ( self % refCount_ == 0 )     THEN
             CALL self % destruct()
-            DEALLOCATE(self)
+            IF(ASSOCIATED(self)) DEALLOCATE(self)
             self => NULL()
          END IF 
           
