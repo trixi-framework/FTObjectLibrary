@@ -685,6 +685,7 @@
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
+         circular                        = .FALSE.
          IF(self % isCircular_) circular = .TRUE.
          CALL self % makeCircular(.FALSE.)
          
@@ -695,7 +696,7 @@
             listRecord => listRecord % next
          END DO
          
-         IF(circular) CALL self % makeCircular (.TRUE.)
+         CALL self % makeCircular (circular)
          
       END SUBROUTINE printFTLinkedListDescription
 !
@@ -741,9 +742,7 @@
          self % head => self % tail
          self % tail => tmp
          
-         IF ( self % isCircular_ )     THEN
-            CALL self % makeCircular(.TRUE.) 
-         END IF 
+         CALL self % makeCircular(self % isCircular_) 
          
       END SUBROUTINE reverseLinkedList
 !
@@ -766,6 +765,12 @@
          INTEGER                            :: N
          CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL()
          CLASS(FTObject)          , POINTER :: obj        => NULL()
+         LOGICAL                            :: circular
+         
+         IF(.NOT.ASSOCIATED(self % head)) RETURN
+         
+         IF(self % isCircular_) circular = .TRUE.
+         CALL self % makeCircular(.FALSE.)
          
          array => NULL()
          N = self % count()
@@ -781,6 +786,8 @@
             CALL array % addObject(obj)
             listRecord => listRecord % next
          END DO
+         
+         CALL self % makeCircular(circular)
          
       END FUNCTION allLinkedListObjects
 !
