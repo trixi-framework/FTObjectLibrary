@@ -68,7 +68,7 @@
             CALL v % initWithValue(strs(j))
             obj => v
             CALL table % addObjectForKeys(obj = obj,keys = keys(:,j))
-            CALL release(v)
+            CALL release(obj)
          END DO
 !
 !        ---------------------------
@@ -89,7 +89,5 @@
             str = v % stringValue(5)
             CALL FTAssertEqual(expectedValue = strs(j),actualValue = str,msg = "object retrieval")
          END DO
-                  
-         CALL table % destruct()
          
       END SUBROUTINE MultiIndexTableTests

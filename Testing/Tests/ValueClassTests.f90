@@ -42,6 +42,7 @@
          CHARACTER(LEN=:), ALLOCATABLE   :: s
          DOUBLE PRECISION                :: doubleTol = 2*EPSILON(1.0d0)
          REAL                            :: singleTol = 2*EPSILON(1.0e0)
+         CLASS(FTObject), POINTER        :: obj
 !
 !        --------------------------------------------
 !        Create an object storing a real value
@@ -87,7 +88,8 @@
          CALL FTAssertEqual(1,v % refCount(),"Reference counting: Initial object refCount")
          CALL v % retain()
          CALL FTAssertEqual(2,v % refCount(),"Reference counting: Retain count increase")
-         CALL release(v)
+         obj => v
+         CALL release(obj)
          CALL FTAssertEqual(1,v % refCount(),"Reference counting: retain count decrease")
 !
 !        -----------------------------------------------------------------
@@ -107,8 +109,9 @@
 !        Destruction.
 !        ----------------------------------------------------------------
 !
-         CALL release(v)
-         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 1")
+         obj => v
+         CALL release(obj)
+         CALL FTAssert(test = .NOT.ASSOCIATED(obj),msg = "Final release deletes object 1")
 !
 !        --------------------------------------
 !        Now do the same with an integer number
@@ -127,8 +130,9 @@
 !        We are done with this value, so release it
 !        ------------------------------------------
 !
-         CALL release(v)
-         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 2")
+         obj => v
+         CALL release(obj)
+         CALL FTAssert(test = .NOT.ASSOCIATED(obj),msg = "Final release deletes object 2")
 !
 !        -------------------------------
 !        Store a double precision number
@@ -149,8 +153,9 @@
 !        We are done with this value, too, so release it
 !        -----------------------------------------------
 !
-         CALL release(v)
-         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 3")
+         obj => v
+         CALL release(obj)
+         CALL FTAssert(test = .NOT.ASSOCIATED(obj),msg = "Final release deletes object 3")
 !
 !        ---------------------------------------------------
 !        Lastly, save a string and read it as numeric values
@@ -160,21 +165,24 @@
          CALL v % initWithValue("3.14")
          x = v % realValue()
          CALL FTAssertEqual(3.14e0,x,singleTol,"String storage to real")
-         CALL release(v)
-         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 4")
+         obj => v
+         CALL release(obj)
+         CALL FTAssert(test = .NOT.ASSOCIATED(obj),msg = "Final release deletes object 4")
 
          ALLOCATE(v)
          CALL v % initWithValue("3567")
          j = v % integerValue()
          CALL FTAssertEqual(3567,j,"String storage to integer")
-         CALL release(v)
-         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 5")
+         obj => v
+         CALL release(obj)
+         CALL FTAssert(test = .NOT.ASSOCIATED(obj),msg = "Final release deletes object 5")
          
          ALLOCATE(v)
          CALL v % initWithValue("3.141592653589793")
          dd = v % doublePrecisionValue()
          CALL FTAssertEqual(3.141592653589793d0,dd,doubleTol,"String storage to real")
-         CALL release(v)
-         CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 6")
+         obj => v
+         CALL release(obj)
+         CALL FTAssert(test = .NOT.ASSOCIATED(obj),msg = "Final release deletes object 6")
 
       END SUBROUTINE FTValueClassTests   

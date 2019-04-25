@@ -16,6 +16,7 @@
             CLASS(FTException)      , POINTER :: testException
             CLASS(FTValueDictionary), POINTER :: userDictionary
             CLASS(FTDictionary)     , POINTER :: ptr
+            CLASS(FTObject)         , POINTER :: obj
             REAL                              :: r = 3.1416
             
             ALLOCATE(userDictionary)
@@ -28,7 +29,8 @@
             CALL testException % initFTException(FT_ERROR_FATAL, &
                                  exceptionName   = "FTTestException", &
                                  infoDictionary  = ptr)
-            CALL release(userDictionary)
+            obj => userDictionary
+            CALL release(obj)
 
          END FUNCTION testException
       END MODULE ExceptionWrapper 
@@ -42,9 +44,12 @@
          IMPLICIT NONE 
          
          CLASS(FTException) , POINTER :: exception
+         CLASS(FTObject)    , POINTER :: obj
+         
          exception => testException()
          CALL throw(exception)
-         CALL release(exception)
+         obj => exception
+         CALL release(obj)
          
       END SUBROUTINE subroutineThatThrowsError    
 !

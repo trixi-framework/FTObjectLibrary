@@ -24,7 +24,6 @@
 !>
 !> - Destruction 
 !>
-!>            CALL r % destruct()   [non pointers]
 !>            call release(r) [Pointers]
 !>
 !> - Accessors
@@ -129,7 +128,7 @@
 !        Destruction
 !        -----------
 !
-         PROCEDURE :: destruct => destructValue
+         FINAL :: destructValue
 !
 !        -------
 !        Getters
@@ -164,10 +163,6 @@
       INTERFACE cast
          MODULE PROCEDURE castToValue
       END INTERFACE cast
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTValue 
-      END INTERFACE  
 
 !     ----------
 !     Procedures
@@ -340,35 +335,11 @@
 !
       SUBROUTINE destructValue(self) 
          IMPLICIT NONE
-         CLASS(FTValue)  :: self
+         TYPE(FTValue)  :: self
          
-         CALL self % FTObject % destruct()
-         
+         IF(ALLOCATED(self % valueStorage)) DEALLOCATE(self % valueStorage)
       END SUBROUTINE destructValue
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTValue(self)  
-         IMPLICIT NONE
-         CLASS(FTValue) , POINTER :: self
-         CLASS(FTObject), POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTValue
 !@mark -
 !
 !---------------------------------------------------------------

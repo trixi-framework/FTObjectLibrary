@@ -74,7 +74,7 @@
 !        --------
 !
          PROCEDURE, PUBLIC :: initWithSize => initObjectArrayWithSize
-         PROCEDURE, PUBLIC :: destruct     => destructObjectArray
+         FINAL             :: destructObjectArray
          PROCEDURE, PUBLIC :: addObject    => addObjectToArray
          PROCEDURE, PUBLIC :: replaceObjectAtIndexWithObject
          PROCEDURE, PUBLIC :: removeObjectAtIndex
@@ -93,10 +93,6 @@
       INTERFACE cast
          MODULE PROCEDURE castToMutableObjectArray
       END INTERFACE cast
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTMutableObjectArray 
-      END INTERFACE  
 !
 !     ======== 
       CONTAINS  
@@ -140,7 +136,7 @@
 !>
       RECURSIVE SUBROUTINE destructObjectArray(self)  
          IMPLICIT NONE
-         CLASS( FTMutableObjectArray) :: self
+         TYPE( FTMutableObjectArray) :: self
          CLASS(FTObject), POINTER     :: obj     => NULL()
          INTEGER                      :: i
 
@@ -154,30 +150,6 @@
          self % count_ = 0  
 
       END SUBROUTINE destructObjectArray
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      RECURSIVE SUBROUTINE releaseFTMutableObjectArray(self)  
-         IMPLICIT NONE
-         TYPE(FTMutableObjectArray) , POINTER :: self
-         CLASS(FTObject), POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTMutableObjectArray
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

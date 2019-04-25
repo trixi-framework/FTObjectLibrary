@@ -21,7 +21,7 @@
          CLASS(FTValue) , POINTER :: vTest
          CLASS(FTObject), POINTER :: obj
          
-         TYPE(FTSparseMatrix) :: SparseMatrix
+         TYPE(FTSparseMatrix), POINTER :: SparseMatrix
          
          INTEGER :: i, j, N
          INTEGER :: h1, h2
@@ -32,6 +32,7 @@
 !        -------------------------------------
 !
          N = 4
+         ALLOCATE(SparseMatrix)
          CALL SparseMatrix % initWithSize(4)
          CALL FTAssertEqual(N,SparseMatrix % SparseMatrixSize(),"Table size size")
          
@@ -57,15 +58,19 @@
          vTest => valueFromObject(obj)
          CALL FTAssertEqual(42,vTest % integerValue(),"Table entry retrieval")
          
-         CALL SparseMatrix % destruct()
+         obj => SparseMatrix
+         CALL release(obj)
          
          CALL FTAssertEqual(1, v % refCount(),"Table release object refCount")
-         CALL release(v)
+         obj => v
+         CALL release(obj)
+         CALL FTAssertEqual(.FALSE.,ASSOCIATED(obj),"Released object should have been deallocated")
 !
 !        ---------------------------------------------
 !        Now create a hash table with a lot of entries
 !        ---------------------------------------------
 !
+         ALLOCATE(SparseMatrix)
          CALL SparseMatrix % initWithSize(4)  
          DO j = 1,N
             DO i = 1,N
@@ -76,7 +81,7 @@
                CALL v % initWithValue(i+j)
                obj => v
                CALL SparseMatrix % addObjectForKeys(obj,h1,h2)
-               CALL release(v)
+               CALL release(obj)
                 
             END DO   
          END DO
@@ -99,11 +104,14 @@
          END DO
          CALL vTest % retain()
          CALL FTAssertEqual(2  , vTest % refCount(),"Retain refCount")
-
-         CALL SparseMatrix % destruct()
+         
+         obj => SparseMatrix
+         CALL release(obj)
+         
          CALL FTAssertEqual(1, vTest % refCount(),"Table release object refCount")
-         CALL release(v)
-         IF ( ASSOCIATED(v) )     THEN
+         obj => v
+         CALL release(obj)
+         IF ( ASSOCIATED(obj) )     THEN
             CALL FTAssert(.FALSE.,"Release object count") 
          END IF 
          

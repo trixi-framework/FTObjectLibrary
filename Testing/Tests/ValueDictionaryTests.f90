@@ -12,7 +12,8 @@
          USE FTAssertions
          IMPLICIT NONE  
          
-         TYPE(FTValueDictionary)  :: dict
+         TYPE(FTValueDictionary)      :: dict, dict2
+         CLASS(FTDictionary), POINTER :: dictPtr
 !
 !        -----------------------
 !        Example values and keys
@@ -62,26 +63,18 @@
             CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
          END DO       
 !
-!        ------------------------------------------------------------
-!        The dictionary is not a pointer, so we need only
-!        to call destruct for it to release (and here, deallocate) its
-!        objects
-!        ------------------------------------------------------------
-!
-         CALL dict % destruct()
-!
 !        ---------------------
 !        Redo with real values
 !        ---------------------
 !
-         CALL dict % initWithSize(64)
+         CALL dict2 % initWithSize(64)
 !
 !        -----------------------------------------
 !        Add the keys and values to the dictionary
 !        -----------------------------------------
 !
          DO i = 1, 4
-            CALL dict % addValueForKey(realValues(i),keys(i))
+            CALL dict2 % addValueForKey(realValues(i),keys(i))
          END DO
 !
 !        ------------------
@@ -89,7 +82,7 @@
 !        ------------------
 !
          DO i = 1,4
-            x = dict % realValueForKey(keys(i))
+            x = dict2 % realValueForKey(keys(i))
             CALL FTAssertEqual(x,realValues(i),2*EPSILON(x),"Value for key as real ")
          END DO
 !
@@ -97,16 +90,7 @@
 !        Check superclass method
 !        -----------------------
 !
-         CALL FTAssert( dict % containsKey("first")   ,msg = "dictionary contains key")
-         CALL FTAssert(.NOT. dict % containsKey("bob"),msg = "dictionary does not contain key")
-!
-!        ------------------------------------------------------------
-!        The dictionary is not a pointer, so we need only
-!        to call release for it to release (and here, deallocate) its
-!        objects
-!        ------------------------------------------------------------
-!
-         CALL dict % destruct()
-         
+         CALL FTAssert( dict2 % containsKey("first")   ,msg = "dictionary contains key")
+         CALL FTAssert(.NOT. dict2 % containsKey("bob"),msg = "dictionary does not contain key")         
          
       END SUBROUTINE FTValueDictionaryClassTests    

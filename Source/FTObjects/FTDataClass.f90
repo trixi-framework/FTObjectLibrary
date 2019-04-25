@@ -43,12 +43,8 @@
          PROCEDURE, PUBLIC :: storedData
          PROCEDURE, PUBLIC :: storedDataSize
          PROCEDURE, PUBLIC :: className => dataClassName
-         PROCEDURE, PUBLIC :: destruct  => destructData
+         FINAL             :: destructData
       END TYPE FTData
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTData 
-      END INTERFACE  
       
       CONTAINS 
 !
@@ -73,30 +69,13 @@
           
       END SUBROUTINE initWithDataOfType
 !
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTData(self)  
-         IMPLICIT NONE
-         CLASS(FTData)  , POINTER :: self
-         CLASS(FTObject), POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF
-      END SUBROUTINE releaseFTData
-!
 !////////////////////////////////////////////////////////////////////////
 !
       SUBROUTINE destructData(self) 
          IMPLICIT NONE
-         CLASS(FTData)  :: self
+         TYPE(FTData)  :: self
          
          DEALLOCATE( self % dataStorage)
-         CALL self % FTObject % destruct()
          
       END SUBROUTINE destructData
 !@mark -

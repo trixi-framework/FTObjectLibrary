@@ -101,7 +101,7 @@
          PROCEDURE :: initWarningException
          PROCEDURE :: initFatalException
          PROCEDURE :: initAssertionFailureException
-         PROCEDURE :: destruct => destructException
+         FINAL     :: destructException
          PROCEDURE :: setInfoDictionary
          PROCEDURE :: infoDictionary
          PROCEDURE :: exceptionName
@@ -113,10 +113,6 @@
       INTERFACE cast
          MODULE PROCEDURE castToException
       END INTERFACE cast
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTException 
-      END INTERFACE  
 !
 !     ========      
       CONTAINS
@@ -262,35 +258,11 @@
 !
 
          IMPLICIT NONE  
-         CLASS(FTException)       :: self
+         TYPE(FTException)       :: self
 
          CALL releaseMemberDictionary(self)
-         CALL self % FTObject % destruct()
          
       END SUBROUTINE destructException 
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTException(self)  
-         IMPLICIT NONE
-         CLASS(FTException) , POINTER :: self
-         CLASS(FTObject)    , POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTException
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -718,8 +690,6 @@
            CALL iterator % moveToNext()
          END DO
          
-         CALL iterator % destruct()
-         
       END FUNCTION catchErrorWithName
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -833,8 +803,6 @@
             CALL e % printDescription(6)
             CALL iterator % moveToNext()
          END DO
-         
-         CALL iterator % destruct() !iterator is not a pointer
             
       END SUBROUTINE printAllExceptions
 !

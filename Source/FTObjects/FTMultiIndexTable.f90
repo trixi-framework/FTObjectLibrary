@@ -25,7 +25,7 @@
 !        ========
 !
          PROCEDURE :: initWithObjectAndKeys
-         PROCEDURE :: destruct => destructMultiIndexMatrixData
+         FINAL     :: destructMultiIndexMatrixData
          
       END TYPE MultiIndexMatrixData
       
@@ -65,12 +65,10 @@
 ! 
       SUBROUTINE destructMultiIndexMatrixData(self)
          IMPLICIT NONE  
-         CLASS(MultiIndexMatrixData) :: self
+         TYPE(MultiIndexMatrixData) :: self
          
          IF ( ASSOCIATED(self % object) ) CALL releaseFTObject(self % object )
          IF ( ALLOCATED(self % key) )     DEALLOCATE(self % key) 
-         
-         CALL self % FTObject % destruct()
 
       END SUBROUTINE destructMultiIndexMatrixData
 !
@@ -137,7 +135,6 @@
 !>## Destruction
 !>
 !>         CALL release(MultiIndexTable)     ... Pointers
-!>         call MultiIndexTable % destruct() ... non Pointers
 !>
 !>##Adding an object
 !>
@@ -179,7 +176,7 @@
 !        ========
 !
          PROCEDURE :: initWithSize     => initMultiIndexTableWithSize
-         PROCEDURE :: destruct         => destructMultiIndexTable
+         FINAL     :: destructMultiIndexTable
          PROCEDURE :: containsKeys     => MultiIndexTableContainsKeys
          PROCEDURE :: addObjectForKeys => addObjectToMultiIndexTableForKeys
          PROCEDURE :: objectForKeys    => objectInMultiIndexTableForKeys
@@ -187,10 +184,6 @@
          PROCEDURE :: MultiIndexTableSize
          
       END TYPE FTMultiIndexTable
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTMultiIndexTable 
-      END INTERFACE  
 !
 !     ========
       CONTAINS
@@ -233,48 +226,20 @@
 !        Arguments
 !        ---------
 !
-         CLASS(FTMultiIndexTable) :: self
+         TYPE(FTMultiIndexTable) :: self
 !
 !        ---------------
 !        Local variables
 !        ---------------
 !
-         INTEGER :: j
+         INTEGER         :: j
+         TYPE(FTObject) :: obj
          
          IF(ALLOCATED(self % table))   THEN
-            DO j = 1, SIZE(self % table)
-               CALL self % table(j) % destruct()
-            END DO
             DEALLOCATE(self % table)
          END IF
          
-         CALL self % FTObject % destruct()
-         
       END SUBROUTINE destructMultiIndexTable
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTMultiIndexTable(self)  
-         IMPLICIT NONE
-         CLASS(FTMultiIndexTable) , POINTER :: self
-         CLASS(FTObject)          , POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTMultiIndexTable
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

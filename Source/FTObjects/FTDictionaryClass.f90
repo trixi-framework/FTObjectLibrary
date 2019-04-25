@@ -33,7 +33,7 @@
 !           --------
 !          
             PROCEDURE :: initWithObjectAndKey
-            PROCEDURE :: destruct         => destructFTKeyObjectPair
+            FINAL     :: destructFTKeyObjectPair
             PROCEDURE :: description      => FTKeyObjectPairDescription
             PROCEDURE :: printDescription => printFTKeyObjectPairDescription
             
@@ -41,10 +41,6 @@
             PROCEDURE :: object
 
          END TYPE FTKeyObjectPair
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTKeyObjectPair
-      END INTERFACE  
 !
 !        ========       
          CONTAINS  
@@ -65,7 +61,7 @@
             self % keyString   = key
             self % valueObject => v
             
-            CALL self % valueObject % retain
+            CALL self % valueObject % retain()
             
          END SUBROUTINE initWithObjectAndKey
 !
@@ -73,40 +69,12 @@
 ! 
          SUBROUTINE destructFTKeyObjectPair(self)
             IMPLICIT NONE
-            CLASS(FTKeyObjectPair) :: self
+            TYPE(FTKeyObjectPair) :: self
             
             self % keyString = ""
             CALL releaseFTObject(self % valueObject)
-!
-!           ----------------------------------------------------
-!           Call superclass destructor after processing subclass
-!           specific items
-!           ----------------------------------------------------
-!
-            CALL self % FTObject % destruct()
              
          END SUBROUTINE destructFTKeyObjectPair
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTKeyObjectPair(self)  
-         IMPLICIT NONE
-         CLASS(FTKeyObjectPair) , POINTER :: self
-         CLASS(FTObject)        , POINTER :: obj
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTKeyObjectPair
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -192,7 +160,6 @@
 !>###Destruction
 !>   
 !>         CALL release(dict) ! Pointer
-!>         call dict % destruct() ! Stack variable
 !>###Accessing an object
 !>
 !>           TYPE(FTObject) :: obj
@@ -232,7 +199,7 @@
             PROCEDURE :: caseSensitive
             PROCEDURE :: allKeys
             PROCEDURE :: allObjects
-            PROCEDURE :: destruct => destructFTDictionary
+            FINAL     :: destructFTDictionary
             PROCEDURE :: addObjectForKey
             PROCEDURE :: description => FTDictionaryDescription
             PROCEDURE :: printDescription => printFTDictionaryDescription
@@ -245,10 +212,6 @@
          INTERFACE cast
             MODULE PROCEDURE castToDictionary
          END INTERFACE cast
-         
-         INTERFACE release
-            MODULE PROCEDURE releaseFTDictionary 
-         END INTERFACE  
 !
 !        ========         
          CONTAINS  
@@ -296,49 +259,15 @@
 ! 
          SUBROUTINE destructFTDictionary(self)  
             IMPLICIT NONE  
-            CLASS(FTDictionary) :: self
+            TYPE(FTDictionary) :: self
+            TYPE(FTObject)    :: obj
            
             INTEGER :: i
-            
-            DO i = 1, SIZE(self % entries)
-               CALL self % entries(i) % destruct()
-            END DO
 
             DEALLOCATE(self % entries)
             self % entries => NULL()
-!
-!           ----------------------------------------------------
-!           Call superclass destructor after processing subclass
-!           specific items
-!           ----------------------------------------------------
-!
-           CALL self % FTObject % destruct()
             
          END SUBROUTINE destructFTDictionary    
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTDictionary(self)  
-         IMPLICIT NONE
-         TYPE(FTDictionary) , POINTER :: self
-         CLASS(FTObject)    , POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

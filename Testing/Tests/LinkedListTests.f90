@@ -94,7 +94,8 @@
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: Initial object refCount")
          CALL list % retain()
          CALL FTAssertEqual(2,list % refCount(), "Reference counting: Test retain")
-         CALL release(list)
+         objectPtr => list
+         CALL release(objectPtr)
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: test release")
 !
 !        ---------------------------------------------------------------------------------
@@ -124,7 +125,7 @@
 !         
          CALL FTAssertEqual(2,r1 % refCount(),&
          "Reference counting: Stored object should have reference count increased")
-         CALL release(r1)
+         CALL release(objectPtr)
             
          CALL FTAssertEqual(1,objectPtr % refCount(),&
          "Reference counting: Stored object should have reference count decreased")
@@ -150,7 +151,7 @@
          objectPtr => r3
          CALL list % add(objectPtr)
          CALL FTAssertEqual(3,list % COUNT(),"List size after adding third object")
-         CALL release(r3)
+         CALL release(objectPtr)
 !
 !        ---------------------------------------------------------------------------------
 !        Check integrity of stored objects. We iterate
@@ -239,7 +240,8 @@
 !        Otherwise, it is possible to get an undefined pointer.
 !        ------------------------------------------------------
 !
-         CALL release(list)
+         objectPtr => list
+         CALL release(objectPtr)
          CALL FTAssertEqual(1,list % refCount(),"Ref count decrease on release")
 !
 !        -------------------------------------------------------------------
@@ -256,7 +258,8 @@
 !        since it is the last owner.
 !        ------------------------------------------------------------------------------
 !
-         CALL release(iterator)
+         objectPtr => iterator
+         CALL release(objectPtr)
 !
 !        --------------------------------------------------------------------------
 !        At this point, the iterator should not have a linked list associated with 
@@ -305,7 +308,7 @@
             CALL v % initWithValue(j)
             objectPtr => v
             CALL list1 % add(objectPtr)
-            CALL release(v)
+            CALL release(objectPtr)
          END DO
          
          DO j = 6, 10
@@ -313,7 +316,7 @@
             CALL v % initWithValue(j)
             objectPtr => v
             CALL list2 % add(objectPtr)
-            CALL release(v)
+            CALL release(objectPtr)
          END DO
 !
 !        -----------------------------------
@@ -346,8 +349,9 @@
 !        in list1
 !        --------------------------------------------------
 !
-         CALL release(list2)
-         CALL FTAssertEqual(.TRUE., .NOT. ASSOCIATED(list2),"List has only one owner and should deallocate on release")
+         objectPtr => list2
+         CALL release(objectPtr)
+         CALL FTAssertEqual(.TRUE., .NOT. ASSOCIATED(objectPtr),"List has only one owner and should deallocate on release")
 !
 !        --------------------------------------------------
 !        List1 should have its contents plus the other list
@@ -379,8 +383,9 @@
             objectPtr => array % objectAtIndex(j)
             CALL FTAssertEqual(2, objectPtr % refCount(), "Objects owned by one list and one array")
          END DO
-         CALL release(array)
-         CALL FTAssert(test = .NOT. ASSOCIATED(array),msg = "Array unreferenced")
+         objectPtr => array
+         CALL release(objectPtr)
+         CALL FTAssert(test = .NOT. ASSOCIATED(objectPtr),msg = "Array unreferenced")
 !
 !        -------------------------------------------
 !        Now reverse the list and iterate through it
@@ -406,8 +411,10 @@
 !        Clean up
 !        --------
 !
-         CALL release(list1)
-         CALL release(iterator)
+         objectPtr => list1
+         CALL release(objectPtr)
+         objectPtr => iterator
+         CALL release(objectPtr)
 
          
       END SUBROUTINE testAppendingLists
@@ -450,7 +457,7 @@
             CALL v % initWithValue(j)
             obj => v
             CALL list % add(obj)
-            CALL release(v)
+            CALL release(obj)
          END DO
 !
 !        ------------------------------------------------------------
@@ -523,7 +530,9 @@
 !        Clean up
 !        --------
 !
-         CALL release(iterator)
-         CALL release(list)
+         obj => iterator
+         CALL release(obj)
+         obj => list
+         CALL release(obj)
 
       END SUBROUTINE TestDeletingObjects
