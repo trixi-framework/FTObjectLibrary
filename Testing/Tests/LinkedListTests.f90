@@ -260,15 +260,6 @@
 !
          objectPtr => iterator
          CALL release(objectPtr)
-!
-!        --------------------------------------------------------------------------
-!        At this point, the iterator should not have a linked list associated with 
-!        it. Check to make sure.
-!        --------------------------------------------------------------------------
-!
-!         list => iterator % linkedList()
-!         test = ASSOCIATED(list)
-!         CALL FTAssert(.NOT.test,"List pointer nullified")
          
       END SUBROUTINE basicTests
 !
