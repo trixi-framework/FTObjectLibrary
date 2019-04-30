@@ -88,6 +88,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTLinkedListRecord(self)  
+         IMPLICIT NONE
+         TYPE(FTLinkedListRecord), POINTER :: self
+         CLASS(FTObject)         , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedListRecord
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE printFTLinkedRecordDescription(self,iUnit)  
          IMPLICIT NONE  
          CLASS(FTLinkedListRecord) :: self
@@ -577,6 +591,20 @@
           numberOfRecords = self % nRecords
       END FUNCTION numberOfRecords     
 !
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedList(self)  
+         IMPLICIT NONE
+         TYPE(FTLinkedList), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedList
+!
 !////////////////////////////////////////////////////////////////////////
 !
 !< The destructor must only be called from within the destructors of subclasses
@@ -921,6 +949,20 @@
          CALL self % setToStart()
          
       END SUBROUTINE initWithFTLinkedList   
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedListIterator(self)  
+         IMPLICIT NONE
+         TYPE(FTLinkedListIterator), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedListIterator
 !
 !////////////////////////////////////////////////////////////////////////
 !

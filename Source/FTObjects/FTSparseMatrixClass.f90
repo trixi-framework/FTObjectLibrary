@@ -65,6 +65,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTMatrixData(self)  
+         IMPLICIT NONE
+         TYPE(MatrixData), POINTER :: self
+         CLASS(FTObject) , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTMatrixData
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE destructMatrixData(self)
          IMPLICIT NONE  
          TYPE(MatrixData) :: self
@@ -396,6 +410,20 @@
          END DO
          
       END FUNCTION SparseMatrixContainsKeys
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTSparseMatrix(self)  
+         IMPLICIT NONE
+         TYPE(FTSparseMatrix), POINTER :: self
+         CLASS(FTObject)     , POINTER :: obj
+           
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTSparseMatrix
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

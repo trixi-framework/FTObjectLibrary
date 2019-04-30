@@ -249,6 +249,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTException(self)  
+         IMPLICIT NONE
+         TYPE(FTException)  , POINTER :: self
+         CLASS(FTObject)    , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTException
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE destructException(self)
 !
 ! --------------------------------------------------------------

@@ -130,6 +130,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTMutableObjectArray(self)  
+         IMPLICIT NONE
+         TYPE(FTMutableObjectArray), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTMutableObjectArray
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
 !>
 !> Destructor for the class. This is called automatically when the
 !> reference count reaches zero. Do not call this yourself.

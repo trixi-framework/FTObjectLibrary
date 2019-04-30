@@ -82,13 +82,6 @@
 !
          PROCEDURE :: className => valueDictionaryClassName         
       END TYPE FTValueDictionary
-!
-       INTERFACE release
-          MODULE PROCEDURE  releaseFTValueDictionary
-       END INTERFACE  
-!      INTERFACE cast
-!         MODULE PROCEDURE castObjectToValueDictionary
-!      END INTERFACE cast
 !      
       CONTAINS  
 !@mark -

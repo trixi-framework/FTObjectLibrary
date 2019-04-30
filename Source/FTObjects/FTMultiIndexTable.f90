@@ -63,6 +63,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTMultiIndexMatrixData(self)  
+         IMPLICIT NONE
+         TYPE(MultiIndexMatrixData), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTMultiIndexMatrixData
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE destructMultiIndexMatrixData(self)
          IMPLICIT NONE  
          TYPE(MultiIndexMatrixData) :: self
@@ -216,6 +230,20 @@
          END DO
          
       END SUBROUTINE initMultiIndexTableWithSize
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTMultiIndexTable(self)  
+         IMPLICIT NONE
+         TYPE(FTMultiIndexTable), POINTER :: self
+         CLASS(FTObject)        , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTMultiIndexTable
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

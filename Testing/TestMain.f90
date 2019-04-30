@@ -47,11 +47,5 @@
 !     -------------
 !
       CALL testSuite % performTests()
-!
-!     -------
-!     Cleanup
-!     -------
-!
-      CALL testSuite % finalize()
       
       END PROGRAM TestObjectsMain  

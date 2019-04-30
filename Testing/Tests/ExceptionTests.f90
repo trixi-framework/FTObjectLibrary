@@ -29,8 +29,7 @@
             CALL testException % initFTException(FT_ERROR_FATAL, &
                                  exceptionName   = "FTTestException", &
                                  infoDictionary  = ptr)
-            obj => userDictionary
-            CALL release(obj)
+            CALL releaseFTValueDictionary(userDictionary)
 
          END FUNCTION testException
       END MODULE ExceptionWrapper 
@@ -48,8 +47,7 @@
          
          exception => testException()
          CALL throw(exception)
-         obj => exception
-         CALL release(obj)
+         CALL releaseFTException(exception)
          
       END SUBROUTINE subroutineThatThrowsError    
 !

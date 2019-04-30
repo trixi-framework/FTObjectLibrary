@@ -56,7 +56,7 @@
             CHARACTER(LEN=*)            :: key
             CLASS(FTObject) , POINTER   :: v
             
-            CALL self % FTObject % init
+            CALL self % FTObject % init()
             
             self % keyString   = key
             self % valueObject => v
@@ -64,6 +64,20 @@
             CALL self % valueObject % retain()
             
          END SUBROUTINE initWithObjectAndKey
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTKeyObjectPair(self)  
+         IMPLICIT NONE
+         TYPE(FTKeyObjectPair)  , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTKeyObjectPair
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -254,6 +268,20 @@
             END DO    
             
          END SUBROUTINE initWithSize
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTDictionary(self)  
+         IMPLICIT NONE
+         TYPE(FTDictionary)  , POINTER :: self
+         CLASS(FTObject)     , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

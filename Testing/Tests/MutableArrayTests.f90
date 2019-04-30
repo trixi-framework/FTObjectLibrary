@@ -51,7 +51,7 @@
             obj => v
             CALL array % addObject(obj)
             CALL FTAssertEqual( 2, v % refCount(), "Adding object adds ownership" )
-            CALL release(obj)
+            CALL releaseFTValue(v)
          END DO
          CALL FTAssertEqual(10, array % COUNT(), "Number of objects in array is equal to number of objects added")
 !
@@ -80,7 +80,7 @@
          obj => v
          CALL array % replaceObjectAtIndexWithObject(5,obj)
          CALL FTAssertEqual(2,v % refCount(),"Replacement refCount")
-         CALL release(obj)
+         CALL releaseFTValue(v)
 !
 !        ----------------------
 !        Get the replaced value
@@ -99,7 +99,7 @@
          CALL v % initWithValue(11)
          obj => v
          CALL array % addObject(obj)
-         CALL release(obj)
+         CALL releaseFTValue(v)
          CALL FTAssertEqual(11, array % COUNT(), "Number of objects in array is increased")
          CALL FTAssertEqual(20, array % allocatedSize(),"Memory increased by chunk size")
 !
@@ -135,7 +135,6 @@
 !        Release array contents
 !        -------------------------------------------------------------
 !
-         obj => array
-         CALL release(obj)
+         CALL releaseFTMutableObjectArray(array)
          
       END SUBROUTINE MutableArrayClassTests

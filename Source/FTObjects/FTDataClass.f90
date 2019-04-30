@@ -78,6 +78,20 @@
          DEALLOCATE( self % dataStorage)
          
       END SUBROUTINE destructData
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTData(self)  
+         IMPLICIT NONE
+         TYPE(FTData)  , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTData
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 

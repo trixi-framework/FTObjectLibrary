@@ -58,13 +58,11 @@
          vTest => valueFromObject(obj)
          CALL FTAssertEqual(42,vTest % integerValue(),"Table entry retrieval")
          
-         obj => SparseMatrix
-         CALL release(obj)
+         CALL releaseFTSparseMatrix(SparseMatrix)
          
          CALL FTAssertEqual(1, v % refCount(),"Table release object refCount")
-         obj => v
-         CALL release(obj)
-         CALL FTAssertEqual(.FALSE.,ASSOCIATED(obj),"Released object should have been deallocated")
+         CALL releaseFTValue(v)
+         CALL FTAssertEqual(.FALSE.,ASSOCIATED(v),"Released object should have been deallocated")
 !
 !        ---------------------------------------------
 !        Now create a hash table with a lot of entries
@@ -81,7 +79,7 @@
                CALL v % initWithValue(i+j)
                obj => v
                CALL SparseMatrix % addObjectForKeys(obj,h1,h2)
-               CALL release(obj)
+               CALL releaseFTValue(v)
                 
             END DO   
          END DO
@@ -105,13 +103,11 @@
          CALL vTest % retain()
          CALL FTAssertEqual(2  , vTest % refCount(),"Retain refCount")
          
-         obj => SparseMatrix
-         CALL release(obj)
+         CALL releaseFTSparseMatrix(SparseMatrix)
          
          CALL FTAssertEqual(1, vTest % refCount(),"Table release object refCount")
-         obj => v
-         CALL release(obj)
-         IF ( ASSOCIATED(obj) )     THEN
+         CALL releaseFTValue(v)
+         IF ( ASSOCIATED(v) )     THEN
             CALL FTAssert(.FALSE.,"Release object count") 
          END IF 
          

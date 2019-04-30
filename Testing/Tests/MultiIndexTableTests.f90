@@ -68,7 +68,7 @@
             CALL v % initWithValue(strs(j))
             obj => v
             CALL table % addObjectForKeys(obj = obj,keys = keys(:,j))
-            CALL release(obj)
+            CALL releaseFTValue(v)
          END DO
 !
 !        ---------------------------
