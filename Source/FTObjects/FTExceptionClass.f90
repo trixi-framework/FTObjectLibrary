@@ -582,7 +582,7 @@
 !>Throws the exception: exceptionToThrow
 !
          IMPLICIT NONE  
-         CLASS(FTException), POINTER :: exceptionToThrow
+         TYPE (FTException), POINTER :: exceptionToThrow
          CLASS(FTObject)   , POINTER :: ptr => NULL()
          
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN

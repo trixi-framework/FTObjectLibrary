@@ -17,7 +17,7 @@
 !        We will store values in a matrix
 !        --------------------------------
 !
-         CLASS(FTValue) , POINTER :: v
+         TYPE (FTValue) , POINTER :: v
          CLASS(FTValue) , POINTER :: vTest
          CLASS(FTObject), POINTER :: obj
          

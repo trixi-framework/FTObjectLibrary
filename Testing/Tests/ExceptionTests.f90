@@ -14,7 +14,7 @@
             USE FTValueDictionaryClass
             IMPLICIT NONE  
             CLASS(FTException)      , POINTER :: testException
-            CLASS(FTValueDictionary), POINTER :: userDictionary
+            TYPE (FTValueDictionary), POINTER :: userDictionary
             CLASS(FTDictionary)     , POINTER :: ptr
             CLASS(FTObject)         , POINTER :: obj
             REAL                              :: r = 3.1416
@@ -42,7 +42,7 @@
          USE ExceptionWrapper
          IMPLICIT NONE 
          
-         CLASS(FTException) , POINTER :: exception
+         TYPE (FTException) , POINTER :: exception
          CLASS(FTObject)    , POINTER :: obj
          
          exception => testException()

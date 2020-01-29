@@ -15,7 +15,7 @@
          IMPLICIT NONE
          
          INTEGER                  :: e
-         CLASS(FTValue) , POINTER :: v
+         TYPE (FTValue) , POINTER :: v
          CLASS(FTObject), POINTER :: obj
          
          TYPE(FTMultiIndexTable) :: table

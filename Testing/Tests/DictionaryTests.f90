@@ -15,8 +15,8 @@
          
          TYPE(FTDictionary)                               :: dict
          CLASS(FTObject)                        , POINTER :: obj
-         CLASS(FTValue)                         , POINTER :: v
-         CLASS(FTMutableObjectArray)            , POINTER :: storedObjects
+         TYPE (FTValue)                         , POINTER :: v
+         TYPE (FTMutableObjectArray)            , POINTER :: storedObjects
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: storedKeys(:)
 
          

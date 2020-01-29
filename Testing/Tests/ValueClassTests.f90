@@ -30,7 +30,7 @@
 !        container.
 !        -------------------------------------------------------
 !
-         CLASS(FTValue), POINTER :: v
+         TYPE(FTValue), POINTER :: v
 !
 !        -------------------------------------------
 !        Some values to convert into FTValue objects

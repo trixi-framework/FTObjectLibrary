@@ -20,14 +20,14 @@
 !        Declarations
 !        ------------
 !
-         CLASS(FTMutableObjectArray), POINTER :: array
+         TYPE (FTMutableObjectArray), POINTER :: array
          
          INTEGER                    :: i
          INTEGER, DIMENSION(10)     :: values         = [(i,i=1,10)]
          INTEGER, DIMENSION(10)     :: modifiedValues = [1,2,3,4,22,6,7,9,10,11]
 
          CLASS(FTObject), POINTER   :: obj
-         CLASS(FTValue) , POINTER   :: v
+         TYPE (FTValue) , POINTER   :: v
 !
 !        ------------------------------------------------------------
 !        Initialize an empty array with an initial size of 10 objects

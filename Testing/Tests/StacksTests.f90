@@ -18,7 +18,7 @@
          USE FTStackClass
          IMPLICIT NONE  
          
-         CLASS(FTStack) , POINTER :: stack
+         TYPE (FTStack) , POINTER :: stack
 !
          CALL FTAssert(test = ASSOCIATED(stack),msg = "testStackPush: Stack not associated. Abort Test")
          IF( .NOT. ASSOCIATED(stack)) RETURN 
@@ -37,8 +37,8 @@
          USE FTValueClass
          IMPLICIT NONE  
          
-         CLASS(FTStack) , POINTER :: stack
-         CLASS(FTValue) , POINTER :: r1
+         TYPE (FTStack) , POINTER :: stack
+         TYPE (FTValue) , POINTER :: r1
          CLASS(FTObject), POINTER :: objectPtr
          CLASS(FTValue) , POINTER :: rPeek
          
@@ -76,8 +76,8 @@
          USE StackUnitTestsModule
          IMPLICIT NONE  
          
-         CLASS(FTStack) , POINTER :: stack
-         CLASS(FTValue) , POINTER :: r1, r2, r3
+         TYPE (FTStack) , POINTER :: stack
+         TYPE (FTValue) , POINTER :: r1, r2, r3
          CLASS(FTObject), POINTER :: objectPtr
 !
 !        ---------------

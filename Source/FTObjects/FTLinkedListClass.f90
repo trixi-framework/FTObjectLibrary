@@ -595,7 +595,7 @@
 ! 
       SUBROUTINE releaseFTLinkedList(self)  
          IMPLICIT NONE
-         TYPE(FTLinkedList), POINTER :: self
+         CLASS (FTLinkedList), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
           
          IF(.NOT. ASSOCIATED(self)) RETURN

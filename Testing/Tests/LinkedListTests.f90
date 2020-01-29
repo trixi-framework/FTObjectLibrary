@@ -52,7 +52,7 @@
 !        linked list
 !        ------------------------------------------------------
 !
-         CLASS(FTValue), POINTER :: r1, r2, r3 
+         TYPE(FTValue), POINTER :: r1, r2, r3 
 !
 !        ------------------------------------------------------------
 !        We need a pointer of the base class type to pass to the list
@@ -65,8 +65,8 @@
 !        can be a non-pointer, too, like the iterator.
 !        -------------------------------------------------
 !
-         CLASS(FTLinkedList)        , POINTER :: list
-         CLASS(FTLinkedListIterator), POINTER :: iterator
+         CLASS (FTLinkedList)        , POINTER :: list
+         TYPE (FTLinkedListIterator), POINTER :: iterator
          
          INTEGER                      :: i
          REAL                         :: singleTol = 2*EPSILON(1.0e0)
@@ -269,12 +269,12 @@
          USE FTLinkedListIteratorClass
          IMPLICIT NONE
 !         
-         CLASS(FTValue)             , POINTER :: v 
+         TYPE (FTValue)             , POINTER :: v 
          CLASS(FTObject)            , POINTER :: objectPtr
          CLASS(FTLinkedList)        , POINTER :: list1, list2
-         CLASS(FTMutableObjectArray), POINTER :: array
+         TYPE (FTMutableObjectArray), POINTER :: array
          
-         CLASS(FTLinkedListIterator), POINTER :: iterator
+         TYPE (FTLinkedListIterator), POINTER :: iterator
          INTEGER                              :: j, N
          
          ALLOCATE(iterator)
@@ -416,12 +416,12 @@
 !        out removing them
 !        -----------------------------------------------
 !
-         CLASS(FTValue)           , POINTER   :: v 
+         TYPE (FTValue)           , POINTER   :: v 
          CLASS(FTObject)          , POINTER   :: obj
          CLASS(FTLinkedList)      , POINTER   :: list
          CLASS(FTLinkedListRecord), POINTER   :: recordPtr
          
-         CLASS(FTLinkedListIterator), POINTER :: iterator
+         TYPE(FTLinkedListIterator), POINTER :: iterator
          INTEGER                             :: j
 !
 !        ----------------------------------------------
