@@ -143,13 +143,13 @@ added to the dictionary.
                  CALL v % initWithValue(3.14159)
                  obj => v
                  CALL dict % addObjectForKey(obj,``Pi'')
-                 CALL release(v)
+                 CALL releaseFTValue(v)
 	         
                  ALLOCATE(v)
                  CALL v % initWithValue(``Ratio of circumference to diameter'')
                  obj => v
                  CALL dict % addObjectForKey(obj,"definition")
-                 CALL release(v)
+                 CALL releaseFTValue(v)
          END SUBROUTINE constructDictionary
 \end{verbatim}}
  
@@ -159,7 +159,7 @@ added to the dictionary.
  of the procedure. It would be dangerous if we deallocated the two objects that we created and then try to use them later through
 the dictionary. This is where a systematic approach to memory management comes in. When we allocate and initialize an object, we assume ownership of it.
 When we add it to the dictionary, it assumes partial ownership. So instead of deallocating the two value objects, we relinquish ownership
-by way of the release() procedure, leaving only the dictionary to be responsible for deallocating them when it does not need them any more.
+by way of the releaseFTValue() procedure, leaving only the dictionary to be responsible for deallocating them when it does not need them any more.
 
  We use the dictionary as shown in the next snippet of code:
 
@@ -176,7 +176,7 @@ by way of the release() procedure, leaving only the dictionary to be responsible
             v   => valueFromObject(dict % objectForKey(``definition''))
             s   = v % stringValue(FTDICT_KWD_STRING_LENGTH)
             PRINT *, "The num pi = ", pi," is defined as", TRIM(s)
-            CALL  release(dict)
+            CALL  releaseFTDictionary(dict)
 \end{verbatim}}
   
  In this snippet, the values for the two keys ``Pi'' and ``definition'' are retrieved and then used.
@@ -202,12 +202,12 @@ by way of the release() procedure, leaving only the dictionary to be responsible
 \item If you allocate and initialize an object, you own it.
 \item You own an object if you call the retain() subroutine on that object.
 \item You may inherit the ownership of an object by calling a method that creates (allocates and initializes) it.
-\item When you no longer need an object (or are going out of scope) you must release it using the release() subroutine.
+\item When you no longer need an object (or are going out of scope) you must release it using the releaseXXX() subroutine, where XXX refers to the specific name of the extended type.
 \item You must neither relinquish ownership, nor deallocate a pointer object that you do not own.
 \item You generally do not own objects returned as pointers by functions or subroutines.
   \end{itemize}
   
-\emph{Fundamentally, if you call an init() method on an object, you should call a release()  in the same scope.}
+\emph{Fundamentally, if you call an init() method on an object, you should call a releaseXXX()  in the same scope.}
   
  In the example below, the main program creates a linked list to store points in, a ``point'' object (e.g. that stores x,y,z values), and adds
  the point object to the linked list. 
@@ -226,13 +226,13 @@ by way of the release() procedure, leaving only the dictionary to be responsible
          
          obj => pnt
          CALL list % add(obj) !list also owns pnt
-         CALL release(pnt) ! main gives up ownership to pnt
+         CALL releasePoint(pnt) ! main gives up ownership to pnt
          .
          .
          .
          ! we're done with the list, it will deallocate pnt since the list is the last owner.
          ! It will also deallocate itself since main is the last owner.
-         CALL release(list) 
+         CALL releaseFTLinkedList(list) 
 
       END PROGRAM main
 \end{verbatim}}
@@ -257,13 +257,13 @@ FTObject is generally not going to be instantiated by itself, but rather it will
       Should be implemented in subclasses.The base class implementation does nothing but
       increase the reference count of the object.
 
-\item {\bf destruct()}
-
-      Destructor of the object, which releases and deallocates owned objects and memory.
-      Should be implemented in subclasses. The base class implementation does nothing but
-      decrease the reference count of the object. \emph{One does not call the destruct 
-      subroutine on pointers except to call the superclass destruct in a subclasses destructor. For
-      non-pointer (stack variables) variables, you call the destruct rather than the release procedure.}
+%\item {\bf destruct()}
+%
+%      Destructor of the object, which releases and deallocates owned objects and memory.
+%      Should be implemented in subclasses. The base class implementation does nothing but
+%      decrease the reference count of the object. \emph{One does not call the destruct 
+%      subroutine on pointers except to call the superclass destruct in a subclasses destructor. For
+%      non-pointer (stack variables) variables, you call the destruct rather than the release procedure.}
 
 \item {\bf printDescription(iUnit)}
 
@@ -299,7 +299,7 @@ FTObject is generally not going to be instantiated by itself, but rather it will
  In general, subclasses of FTObject implement
 \begin{itemize}
 \item {\bf init()}
-\item {\bf destruct()}
+\item {\bf The destructor (FINAL)}
 \item {\bf printDescription()}
 \item {\bf release(self)}
 \end{itemize}
@@ -382,29 +382,30 @@ The array initializer is
       END SUBROUTINE initPointWithArray
 \end{verbatim}}
 
-{\bf Implementing destruct()}
+{\bf Implementing the destructor}
 
- The destruct() procedure reverses the operations done in the init() procedure. It releases and
- deallocates any pointers that it owns.  Subclasses that override destruct() \emph{must} include 
- a call to the superclass method. For example, if ``Subclass'' EXTENDS(FTObject) then overriding destruct looks like
+ The destructor reverses the operations done in the init() procedure. It releases and
+ deallocates any pointers that it owns.  For example, if ``Subclass'' EXTENDS(FTObject) then overriding destruct looks like
 
 {\color{blue}\begin{verbatim}
       SUBROUTINE destructSubclass(self) 
          IMPLICIT NONE
-         CLASS(Subclass) :: self
-         
+         TYPE(Subclass) :: self
+         .
          Release and deallocate (if necessary) all member objects
-         CALL self % FTObject % destruct()
-         
+         .
       END SUBROUTINE destructSubclass
 \end{verbatim}}
+
+The destructor is to be declared as a FINAL procedure for the type, and hence is not called directly. It is called automatically by Fortran
+when an object is deallocated or goes out of scope.
 
 {\bf Implementing printDescription(iUnit)}
 
  printDescription is a method whose existence is to support debugging. Call printDescription(iUnit)
  on any objects owned by self for a cascading of what is stored in the object.
 
-{\bf Implementing release(self)}
+{\bf Implementing releaseXXX(self)}
 
 The release subroutine will call the base class releaseFTObject which will, in turn, release all objects that it
 owns. If the object itself is no longer referenced, it will deallocate itself. If the subclass is going to be subclassed again, use the CLASS specifier, otherwise, we TYPE to work only on that specific subclass.
@@ -412,7 +413,7 @@ owns. If the object itself is no longer referenced, it will deallocate itself. I
 {\color{blue}\begin{verbatim}
       SUBROUTINE releaseSubclass(self)  
          IMPLICIT NONE
-         CLASS(Subclass) , POINTER :: self
+         TYPE(Subclass) , POINTER :: self
          CLASS(FTObject), POINTER :: obj
          obj => self
          CALL releaseFTObject(self = obj)
@@ -422,14 +423,8 @@ owns. If the object itself is no longer referenced, it will deallocate itself. I
       END SUBROUTINE releaseSubclass
 \end{verbatim}}
 
-For convenience, define an interface to release to be consistent with the library calls:
-
-{\color{blue}\begin{verbatim}
-      INTERFACE release  
-         MODULE PROCEDURE releaseSubclass
-      END INTERFACE
-\end{verbatim}}
-
+It is best to name the release procedures consistently. For instance, all the FTObjectLibrary classes declare their 
+release procedure by using the name of the extended type, for example releaseFTDictionary or releaseFTValueDictionary.
 
 {\bf Converting an object from the base to a subclass}
 
@@ -478,8 +473,7 @@ You saw an example above in the ``valueFromObject(obj)'' function.
 \item Destruction 
 
 {\color{blue}\begin{verbatim}
-            CALL destruct(r)   !For Non-Pointer objects
-            CALL release(r)    !For Pointers
+            CALL releaseFTValue(r)    !For Pointers
 \end{verbatim}}
 
 \item Accessors
@@ -644,8 +638,7 @@ and circular lists where the ends are connected.
          \item Destruction
          
 		{\color{blue}\begin{verbatim}
-		               CALL  release(list) ! If list is a pointer
-		               CALL list % destruct() !If it is not
+		               CALL  releaseFTLinkedList(list) ! If list is a pointer
 		\end{verbatim}}
 \end{itemize}
 
@@ -713,8 +706,7 @@ Or
          \item Destruction
 
 {\color{blue}\begin{verbatim}
-               CALL  release(iterator)    ! If a pointer
-               CALL iterator % destruct() ! If not
+               CALL  releaseFTLibnkedListIterator(iterator)    ! If a pointer
 \end{verbatim}}
 \end{itemize}
 
@@ -739,8 +731,7 @@ Reverse Polish calculator with a stack, for instance.
 	\end{verbatim}}
         \item Destruction
 	{\color{blue}\begin{verbatim}
-           CALL  release(stack)    ! If stack is a pointer
-           call stack % destruct() ! If not
+           CALL  releaseFTStack(stack)    ! If stack is a pointer
 	\end{verbatim}}
         \item Pushing an object onto the stack
 
@@ -750,15 +741,17 @@ Reverse Polish calculator with a stack, for instance.
            CALL stack % push(obj)
 	\end{verbatim}}
         \item Peeking at the top of the stack
-	{\color{blue}\begin{verbatim}
+	{\color{blue}
+	\begin{verbatim}
            obj => stack % peek() ! No change of ownership
            SELECT TYPE(obj)
               TYPE is (*SubclassType*)
-                 É Do something with obj as subclass
+                 Ã‰ Do something with obj as subclass
               CLASS DEFAULT
-                 É Problem with casting
+                 Ã‰ Problem with casting
            END SELECT
-	\end{verbatim}}
+	\end{verbatim}
+	}
         \item Popping the top of the stack
 	{\color{blue}\begin{verbatim}
            obj => stack % pop() ! Ownership transferred to caller.
@@ -793,8 +786,7 @@ given by the ``chunkSize'', which you can choose for yourself. (The default is 1
 	
         \item Destruction
 		{\color{blue}\begin{verbatim}
-           CALL  release(array) !If array is a pointer
-           CALL array  %  destruct() !If not
+           CALL  releaseFTMutableObjectArray(array) !If array is a pointer
 	\end{verbatim}}
 	
         \item Adding an object
@@ -916,8 +908,7 @@ with the number of rows.
 	
         \item Destruction
 		{\color{blue}\begin{verbatim}
-           CALL  release(matrix)      !If matrix is a pointer
-           CALL matrix  %  destruct() !Otherwise
+           CALL  releaseFTSparseMatrix(matrix)      !If matrix is a pointer
 	\end{verbatim}}
 	
         \item Adding an object
@@ -962,8 +953,7 @@ a face of an element match those of another face of another element.
 	
         \item Destruction
 		{\color{blue}\begin{verbatim}
-           CALL  release(table)      !If table is a pointer
-           CALL table  %  destruct() !Otherwise
+           CALL  releaseFTMultiIndexTable(table)      !If table is a pointer
 	\end{verbatim}}
 	
         \item Adding an object
@@ -1015,8 +1005,7 @@ subclass that is designed to store and retrieve FTValue objects.
 	
         \item Destruction
 		{\color{blue}\begin{verbatim}
-           CALL release(dict)       !If dict is a pointer
-           CALL dict  %  destruct() !Otherwise
+           CALL releaseFTDictionary(dict)       !If dict is a pointer
 	\end{verbatim}}
 	
         \item Adding a key-object pair
@@ -1096,6 +1085,93 @@ FTValueDictionary adds methods to store and retrieve FTValue objects.
 	\end{verbatim}}
 
 \end{itemize}
+\section{String Sets}
+A StringSet implements set operations on strings. An FTStringSet is an unordered group of unique (case dependent) strings. It is
+primarily used to find whether or not a given string is a member of a set of strings. The class also includes usual
+set operations of intersection, union and difference. To enumerate over the items in a set, use the strings() procedure
+to return a pointer to an array of the strings in the set, and then loop over that array. 
+
+An empty set can be initialized, to which strings can be added, or a set can be initialized with an array of strings. The
+string length must be FTDICT\_KWD\_STRING\_LENGTH or less.
+
+     {\bf Definition (Subclass of FTObject):}
+	{\color{blue}\begin{verbatim}
+        	TYPE(FTStringSet) :: set
+	\end{verbatim}}
+     {\bf Usage:}
+
+\begin{itemize}
+        \item Initialization
+	{\color{blue}\begin{verbatim}
+      CLASS(FTStringSet)  :: set
+      INTEGER              :: N = 16 ! Should be a power of two.
+      CALL dict % initFTStringSet(FTStringSetSize = N)
+	\end{verbatim}}
+
+	{\color{blue}\begin{verbatim}
+      CLASS(FTStringSet)  :: set
+      CHARACTER(LEN=*)    :: strings(:)
+      CALL dict % initWithStrings(strings)
+	\end{verbatim}}
+	
+        \item Destruction
+		{\color{blue}\begin{verbatim}
+           CALL releaseFTStringSet(set)       !If set is a pointer
+	\end{verbatim}}
+	
+        \item Adding a string
+
+	{\color{blue}\begin{verbatim}
+              CHARACTER(LEN=M)  :: str
+              CALL set % addString(str)
+	\end{verbatim}}
+	
+        \item Testing for inclusion
+
+	{\color{blue}\begin{verbatim}
+           LOGICAL :: test
+           CHARACTER(LEN=M) :: str
+           test = set % containsString(str)
+	\end{verbatim}}
+	
+        \item Finding the union of two sets (Release when through)
+	{\color{blue}\begin{verbatim}
+           unionSet =>  set1 % unionWithSet(set2)
+           ...
+           call ReleaseFTStringSet(unionSet)
+	\end{verbatim}}
+	
+        \item Finding the intersection of two sets (Release when through)
+	{\color{blue}\begin{verbatim}
+           intersectionSet =>  set1 % intersectionWithSet(set2)
+           ...
+           call ReleaseFTStringSet(intersectionSet)
+	\end{verbatim}}
+	
+        \item Finding the difference of two sets (Release when through)
+	{\color{blue}\begin{verbatim}
+           differenceSet =>  set1 % setFromDifference(set2)
+           ...
+           call ReleaseFTStringSet(differenceSet)
+	\end{verbatim}}
+
+        \item Converting a base class pointer to a set
+	{\color{blue}\begin{verbatim}
+           set =>  FTStringSetFromObject(obj)
+	\end{verbatim}}
+		
+        \item Getting all of the strings (The target of the pointer must be deallocated by the caller)
+	{\color{blue}\begin{verbatim}
+           CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: strings(:)
+           strings =>  set % strings()
+           ...
+           deallocate(strings)
+	\end{verbatim}}
+		
+\end{itemize}
+
+
+
 \section{Advanced Classes: Testing and Error Reporting}
 
 The library includes classes for testing and reporting errors. Errors are reported through
@@ -1259,7 +1335,6 @@ An example of running a suite of tests is the following:
 
       CALL testSuite % performTests()
 
-      CALL testSuite % finalize()
 	\end{verbatim}}
 The test subroutines have no arguments. The interface is
 {\color{blue}\begin{verbatim}
@@ -1309,11 +1384,6 @@ where
 	{\color{blue}\begin{verbatim}
          CALL tester % performTests()
 	\end{verbatim}}
-\item Finalizing the test suite
-	{\color{blue}\begin{verbatim}
-         CALL tester % finalize()
-	\end{verbatim}}
-
 \end{itemize}
 
 \subsection{Exceptions}
