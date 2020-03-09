@@ -276,7 +276,7 @@
             RETURN 
          END IF
          
-         IF ( self % refCount_ == 0 )     THEN
+         IF ( self % refCount_ == 0 )     THEN 
             IF(ASSOCIATED(self)) DEALLOCATE(self)
             self => NULL()
          END IF 

@@ -61,7 +61,7 @@
             self % keyString   = key
             self % valueObject => v
             
-            CALL self % valueObject % retain()
+            IF(ASSOCIATED(v))   CALL self % valueObject % retain()
             
          END SUBROUTINE initWithObjectAndKey
 !
@@ -110,8 +110,12 @@
             
             WRITE(iUnit,*) "{"
 
-            WRITE(iUnit,'(6x,A,A3)',ADVANCE = "NO") TRIM(self % keyString)  , " = " 
-            CALL self % valueObject % printDescription(iUnit)
+            IF(ASSOCIATED(self % valueObject))     THEN 
+               WRITE(iUnit,'(6x,A,A3)',ADVANCE = "NO") TRIM(self % keyString)  , " = " 
+               CALL self % valueObject % printDescription(iUnit)
+            ELSE
+               WRITE(iUnit,'(6x,A,A)') TRIM(self % keyString)  , " = NULL" 
+            END IF 
             
             WRITE(iUnit,*) "}"
              
@@ -209,8 +213,8 @@
 !
             PROCEDURE :: initWithSize
             PROCEDURE :: init
-            PROCEDURE :: setCaseSensitive
-            PROCEDURE :: caseSensitive
+!            PROCEDURE :: setCaseSensitive
+!            PROCEDURE :: caseSensitive
             PROCEDURE :: allKeys
             PROCEDURE :: allObjects
             FINAL     :: destructFTDictionary
@@ -299,20 +303,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE setCaseSensitive(self,bool)  
-            IMPLICIT NONE  
-            CLASS(FTDictionary) :: self
-            LOGICAL             :: bool
-            self % isCaseSensitive = bool
-         END SUBROUTINE setCaseSensitive  
+!         SUBROUTINE setCaseSensitive(self,bool)  
+!            IMPLICIT NONE  
+!            CLASS(FTDictionary) :: self
+!            LOGICAL             :: bool
+!            self % isCaseSensitive = bool
+!         END SUBROUTINE setCaseSensitive  
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         LOGICAL FUNCTION caseSensitive(self)  
-            IMPLICIT NONE  
-            CLASS(FTDictionary) :: self
-            caseSensitive = self % isCaseSensitive
-         END FUNCTION caseSensitive      
+!         LOGICAL FUNCTION caseSensitive(self)  
+!            IMPLICIT NONE  
+!            CLASS(FTDictionary) :: self
+!            caseSensitive = self % isCaseSensitive
+!         END FUNCTION caseSensitive      
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -528,10 +532,9 @@
             CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
             CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
 !
-!           --------------------------------------------
-!           Allocate a pointer to the object array to be
-!           returned with refCount = 1
-!           --------------------------------------------
+!           ---------------------------------------
+!           Allocate a pointer array to be returned 
+!           ---------------------------------------
 !
             ALLOCATE(keys(self % COUNT()))
             
