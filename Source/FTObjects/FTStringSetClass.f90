@@ -78,7 +78,7 @@
 !>       CLASS(FTStringSet)  :: FTStringSet
 !>       integer             :: N = 11
 !>       logical             :: cs = .true.
-!>       CALL FTStringSet % initFTStringSet(N,cs)
+!>       CALL FTStringSet % initFTStringSet(N)
 !>
       SUBROUTINE initFTStringSet( self, FTStringSetSize )    
          IMPLICIT NONE  
