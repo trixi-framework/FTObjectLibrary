@@ -101,7 +101,7 @@
          PROCEDURE :: initWarningException
          PROCEDURE :: initFatalException
          PROCEDURE :: initAssertionFailureException
-         PROCEDURE :: destruct => destructException
+         FINAL     :: destructException
          PROCEDURE :: setInfoDictionary
          PROCEDURE :: infoDictionary
          PROCEDURE :: exceptionName
@@ -113,10 +113,6 @@
       INTERFACE cast
          MODULE PROCEDURE castToException
       END INTERFACE cast
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTException 
-      END INTERFACE  
 !
 !     ========      
       CONTAINS
@@ -253,6 +249,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTException(self)  
+         IMPLICIT NONE
+         TYPE(FTException)  , POINTER :: self
+         CLASS(FTObject)    , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTException
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE destructException(self)
 !
 ! --------------------------------------------------------------
@@ -262,35 +272,11 @@
 !
 
          IMPLICIT NONE  
-         CLASS(FTException)       :: self
+         TYPE(FTException)       :: self
 
          CALL releaseMemberDictionary(self)
-         CALL self % FTObject % destruct()
          
       END SUBROUTINE destructException 
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTException(self)  
-         IMPLICIT NONE
-         CLASS(FTException) , POINTER :: self
-         CLASS(FTObject)    , POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTException
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -452,6 +438,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTException"
+         IF( self % refCount() >= 0) CONTINUE  !Quiet unused variable warnings
  
       END FUNCTION exceptionClassName
 
@@ -483,6 +470,8 @@
 !>         CALL throw(exception)
 !>###Getting the number of exceptions
 !>         n = errorCount()
+!>###Getting the maximum exception severity
+!>         s = maximumErrorSeverity()
 !>###Catching all exceptions
 !>         IF(catch())     THEN
 !>            Do something with the exceptions
@@ -512,8 +501,9 @@
 !     Global error stack  
 !     --------------------
 !
-      CLASS(FTStack)    , POINTER, PRIVATE :: errorStack    => NULL()
-      CLASS(FTException), POINTER, PRIVATE :: currentError_ => NULL()
+      TYPE(FTStack)    , POINTER, PRIVATE :: errorStack    => NULL()
+      TYPE(FTException), POINTER, PRIVATE :: currentError_ => NULL()
+      INTEGER                   , PRIVATE :: maxErrorLevel
       
       INTERFACE catch
          MODULE PROCEDURE catchAll
@@ -535,11 +525,15 @@
 !>exception is thrown.
 !
          IMPLICIT NONE
+         
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
             ALLOCATE(errorStack)
             CALL errorStack % init()
             currentError_ => NULL()
-         END IF 
+         END IF
+         
+         maxErrorLevel = FT_ERROR_NONE
+         
       END SUBROUTINE initializeFTExceptions
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -550,6 +544,7 @@
 !>are uncaught exceptions raised and print them.
 !
          IMPLICIT NONE
+         CLASS(FTObject), POINTER :: obj
 !  
 !        --------------------------------------------------
 !        First see if there are any uncaught exceptions and
@@ -566,18 +561,17 @@
            END IF
            PRINT *,"   ***********************************"
            PRINT *
-           !DEBUG CALL printAllExceptions
-           CALL errorStack % printDescription(iUnit = 6)!DEBUG
+           CALL errorStack % printDescription(iUnit = 6)
          END IF 
 !
 !        -----------------------
 !        Destruct the exceptions
 !        -----------------------
 !
-         CALL release(errorStack)
-         IF ( ASSOCIATED(currentError_) )     THEN
-            CALL release(currentError_)
-         END IF 
+          obj => errorStack
+          CALL releaseFTObject(self = obj)
+          IF(.NOT. ASSOCIATED(obj)) errorStack => NULL()
+          CALL releaseCurrentError
         
       END SUBROUTINE destructFTExceptions
 !
@@ -588,7 +582,7 @@
 !>Throws the exception: exceptionToThrow
 !
          IMPLICIT NONE  
-         CLASS(FTException), POINTER :: exceptionToThrow
+         TYPE (FTException), POINTER :: exceptionToThrow
          CLASS(FTObject)   , POINTER :: ptr => NULL()
          
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
@@ -597,6 +591,8 @@
          
          ptr => exceptionToThrow
          CALL errorStack % push(ptr)
+         
+         maxErrorLevel = MAX(maxErrorLevel, exceptionToThrow % severity())
          
       END SUBROUTINE throw
 !
@@ -619,10 +615,7 @@
          IF ( errorStack % count() > 0 )     THEN
             catchAll = .true.
          END IF
-         
-         IF ( ASSOCIATED(currentError_) )     THEN
-            CALL release(currentError_)
-         END IF 
+         CALL releaseCurrentError
          
       END FUNCTION catchAll
 !
@@ -643,6 +636,25 @@
 
          errorCount = errorStack % count() 
       END FUNCTION    
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      INTEGER FUNCTION maximumErrorSeverity()
+!
+! -----------------------------------------------
+!>Returns the maxSeverity of exceptions that have 
+!>been thrown.
+! -----------------------------------------------
+!
+         IMPLICIT NONE
+                  
+         IF ( .NOT.ASSOCIATED(errorStack) )     THEN
+            CALL initializeFTExceptions 
+         END IF 
+
+         maximumErrorSeverity = maxErrorLevel
+          
+      END FUNCTION maximumErrorSeverity
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -692,8 +704,6 @@
            CALL iterator % moveToNext()
          END DO
          
-         CALL iterator % destruct()
-         
       END FUNCTION catchErrorWithName
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -726,9 +736,7 @@
 !        the pointer.
 !        --------------------------------------------------------------
 !
-         IF ( ASSOCIATED(POINTER = currentError_) )     THEN
-            CALL release(currentError_)
-         END IF 
+         CALL releaseCurrentError
 !
 !        ------------------------------------
 !        Set the pointer and retain ownership
@@ -809,10 +817,22 @@
             CALL e % printDescription(6)
             CALL iterator % moveToNext()
          END DO
-         
-         CALL iterator % destruct() !iterator is not a pointer
             
       END SUBROUTINE printAllExceptions
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseCurrentError
+         IMPLICIT NONE
+         CLASS(FTObject), POINTER :: obj
+         
+         IF ( ASSOCIATED(currentError_) )     THEN
+           obj => currentError_
+           CALL releaseFTObject(self = obj)
+           IF(.NOT. ASSOCIATED(obj)) currentError_ => NULL()
+         END IF 
+ 
+      END SUBROUTINE releaseCurrentError
 
       END MODULE SharedExceptionManagerModule    
       

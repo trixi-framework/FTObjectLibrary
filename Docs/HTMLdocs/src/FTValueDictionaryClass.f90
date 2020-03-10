@@ -82,13 +82,6 @@
 !
          PROCEDURE :: className => valueDictionaryClassName         
       END TYPE FTValueDictionary
-!
-       INTERFACE release
-          MODULE PROCEDURE  releaseFTValueDictionary
-       END INTERFACE  
-!      INTERFACE cast
-!         MODULE PROCEDURE castObjectToValueDictionary
-!      END INTERFACE cast
 !      
       CONTAINS  
 !@mark -
@@ -131,7 +124,7 @@
          CALL v % initWithValue(i)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL release(v)
+         CALL release(obj)
       END SUBROUTINE addIntegerValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -148,7 +141,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL release(v)
+         CALL release(obj)
       END SUBROUTINE addRealValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -165,7 +158,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL release(v)
+         CALL release(obj)
       END SUBROUTINE addDoublePrecisionValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -201,7 +194,7 @@
          CALL v % initWithValue(s)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL release(v)
+         CALL release(obj)
       END SUBROUTINE addStringValueForKey
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -218,7 +211,7 @@
          CALL v % initWithValue(l)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL release(v)
+         CALL release(obj)
       END SUBROUTINE addLogicalValueForKey
 !@mark -
 !
@@ -425,7 +418,7 @@
          CLASS(FTValueDictionary), POINTER :: valueDict
          CLASS(FTObject)         , POINTER :: obj
          
-         obj => NULL()
+         valueDict => NULL()
          SELECT TYPE (obj)
             TYPE is (FTValueDictionary)
                valueDict => obj
@@ -451,6 +444,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTValueDictionary"
+         IF( self % refCount() >= 0) CONTINUE 
  
       END FUNCTION valueDictionaryClassName
  

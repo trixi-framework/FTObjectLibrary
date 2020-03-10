@@ -88,7 +88,7 @@
          TYPE(TestCaseRecord), POINTER :: testCasesTail => NULL()
          CONTAINS
          PROCEDURE :: init     => initializeTestSuiteManager
-         PROCEDURE :: finalize => finalizeTestSuiteManager
+         FINAL     :: finalizeTestSuiteManager
          PROCEDURE :: addTestSubroutineWithName
          PROCEDURE :: performTests
          PROCEDURE :: setOutputUnit
@@ -154,7 +154,7 @@
 ! 
       SUBROUTINE finalizeTestSuiteManager(self)
          IMPLICIT NONE
-         CLASS(TestSuiteManager)       :: self
+         TYPE(TestSuiteManager)        :: self
          TYPE(TestCaseRecord), POINTER :: tmp, current
          
          IF ( .NOT.ASSOCIATED(self % testCasesHead) )     THEN

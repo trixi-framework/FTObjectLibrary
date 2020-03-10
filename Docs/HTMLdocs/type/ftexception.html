@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -129,19 +125,23 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title="<p> 6.3% of total for derived types.</p>Including implementation: 124 statements,  5.2% of total for derived types.">17 statements</a>
+    data-placement="bottom" data-html="true"
+    title="<p> 6.1% of total for derived types.</p>Including implementation: 124 statements,  5.1% of total for derived types.">17 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/FTExceptionClass.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></li>
-  
+    
      <li><a href='../module/ftexceptionclass.html'>FTExceptionClass</a></li>
+    
   
      <li class="active">FTException</li>
   </ol>
@@ -161,6 +161,8 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
 
 
 
@@ -176,6 +178,19 @@
 
 
 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-0">Finalization Procedures</a></h3></div>
+  <div id="fins-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/ftexception.html#finalproc-destructexception">destructException</a>
+      
+    </div>
+  </div>
+</div>
 
 
 
@@ -192,8 +207,6 @@
       
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-initassertionfailureexception">initAssertionFailureException</a>
       
-      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-destruct%7E4">destruct</a>
-      
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-setinfodictionary">setInfoDictionary</a>
       
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-infodictionary">infoDictionary</a>
@@ -202,73 +215,19 @@
       
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-severity">severity</a>
       
-      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-printdescription%7E3">printDescription</a>
+      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-printdescription">printDescription</a>
       
-      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-classname%7E3">className</a>
-      
-    </div>
-  </div>
-</div>
-
-
-
-
-  <hr>
-  
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
-  <div id="alltypes-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/assertinfoarray1d.html">assertInfoArray1D</a>
-      
-      <a class="list-group-item" href="../type/assertinfoarray2d.html">assertInfoArray2D</a>
-      
-      <a class="list-group-item" href="../type/calculator.html">Calculator</a>
-      
-      <a class="list-group-item" href="../type/ftassertionsmanager.html">FTAssertionsManager</a>
-      
-      <a class="list-group-item" href="../type/ftdata.html">FTData</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html">FTDictionary</a>
-      
-      <a class="list-group-item" href="../type/ftexception.html">FTException</a>
-      
-      <a class="list-group-item" href="../type/ftkeyobjectpair.html">FTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlist.html">FTLinkedList</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistiterator.html">FTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistrecord.html">FTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../type/ftmultiindextable.html">FTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../type/ftmutableobjectarray.html">FTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../type/ftobject.html">FTObject</a>
-      
-      <a class="list-group-item" href="../type/ftsparsematrix.html">FTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html">FTStack</a>
-      
-      <a class="list-group-item" href="../type/ftvalue.html">FTValue</a>
-      
-      <a class="list-group-item" href="../type/ftvaluedictionary.html">FTValueDictionary</a>
-      
-      <a class="list-group-item" href="../type/matrixdata.html">MatrixData</a>
-      
-      <a class="list-group-item" href="../type/multiindexmatrixdata.html">MultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../type/testsuitemanager.html">TestSuiteManager</a>
+      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-classname">className</a>
       
     </div>
   </div>
 </div>
 
 
-</div>  
+
+
+
+</div>
 
     </div>
     
@@ -278,9 +237,12 @@
     
     
     
+    <br>
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
 
 
 
@@ -300,6 +262,19 @@
 
 
 <div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-1">Finalization Procedures</a></h3></div>
+  <div id="fins-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/ftexception.html#finalproc-destructexception">destructException</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
@@ -312,8 +287,6 @@
       
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-initassertionfailureexception">initAssertionFailureException</a>
       
-      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-destruct%7E4">destruct</a>
-      
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-setinfodictionary">setInfoDictionary</a>
       
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-infodictionary">infoDictionary</a>
@@ -322,13 +295,14 @@
       
       <a class="list-group-item" href="../type/ftexception.html#boundprocedure-severity">severity</a>
       
-      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-printdescription%7E3">printDescription</a>
+      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-printdescription">printDescription</a>
       
-      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-classname%7E3">className</a>
+      <a class="list-group-item" href="../type/ftexception.html#boundprocedure-classname">className</a>
       
     </div>
   </div>
 </div>
+
 
 
 
@@ -341,12 +315,89 @@
     
     
     
+    <section>
+    <h2>Finalization Procedures</h2>
+     
+         
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="finalproc-destructexception"></span><h3>final :: <strong>destructException</strong> 
+    </h3></div>
+  <div class="panel-body">
+    
+
+
+    
+  </div>
+  <ul class="list-group">
+     <li class="list-group-item">
+       
+    
+    <h3>
+public subroutine <a href='../proc/destructexception.html'>destructException</a>(self)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p>The destructor for the class. Do not call this direectly. Call
+the release() procedure instead</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftexception.html'>FTException</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+     </li>
+  </ul>
+</div>
+
+         
+    </section>
+    <br>
+    
     
      
     <section>
     <h2>Type-Bound Procedures</h2>
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initftexception"></span><h3>procedure, public :: <strong>initFTException</strong>  
     
@@ -356,13 +407,14 @@
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/initftexception.html'>initFTException</a>(self, severity, exceptionName, infoDictionary)
     
     
-	 
+   
 </h3>
     
 
@@ -454,6 +506,7 @@ public subroutine <a href='../proc/initftexception.html'>initFTException</a>(sel
     
     
 
+        
       
       </li>
     
@@ -461,7 +514,7 @@ public subroutine <a href='../proc/initftexception.html'>initFTException</a>(sel
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initwarningexception"></span><h3>procedure, public :: <strong>initWarningException</strong>  
     
@@ -471,13 +524,14 @@ public subroutine <a href='../proc/initftexception.html'>initFTException</a>(sel
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/initwarningexception.html'>initWarningException</a>(self, msg)
     
     
-	 
+   
 </h3>
     
 
@@ -542,6 +596,7 @@ example of how to write one's own exception.</p>
     
     
 
+        
       
       </li>
     
@@ -549,7 +604,7 @@ example of how to write one's own exception.</p>
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initfatalexception"></span><h3>procedure, public :: <strong>initFatalException</strong>  
     
@@ -559,13 +614,14 @@ example of how to write one's own exception.</p>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/initfatalexception.html'>initFatalException</a>(self, msg)
     
     
-	 
+   
 </h3>
     
 
@@ -630,6 +686,7 @@ example of how to write one's own exception.</p>
     
     
 
+        
       
       </li>
     
@@ -637,7 +694,7 @@ example of how to write one's own exception.</p>
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initassertionfailureexception"></span><h3>procedure, public :: <strong>initAssertionFailureException</strong>  
     
@@ -647,13 +704,14 @@ example of how to write one's own exception.</p>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/initassertionfailureexception.html'>initAssertionFailureException</a>(self, msg, expectedValueObject, ObservedValueObject, level)
     
     
-	 
+   
 </h3>
     
 
@@ -664,7 +722,7 @@ public subroutine <a href='../proc/initassertionfailureexception.html'>initAsser
 
 
 <p>A convenience initializer for an assertion error 
-that includes the keys:</p>
+that includes the keys:</p><a href="../proc/initassertionfailureexception.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -761,6 +819,7 @@ that includes the keys:</p>
     
     
 
+        
       
       </li>
     
@@ -768,78 +827,7 @@ that includes the keys:</p>
 </div>
 
     
-	   
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destruct%7E4"></span><h3>procedure, public :: <strong>destruct</strong>  => <a href='../proc/destructexception.html'>destructException</a> 
-    
-  </h3></div>
-  
-  <ul class="list-group">
-    
-      <li class="list-group-item">
-      
-         
-    
-    <h3>
-public subroutine <a href='../proc/destructexception.html'>destructException</a>(self)
-    
-    
-	 
-</h3>
-    
-
-
-
-
-
-
-
-<p>The destructor for the class. Do not call this direectly. Call
-the release() procedure instead</p>
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftexception.html'>FTException</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>self</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-      
-      </li>
-    
-  </ul>
-</div>
-
-    
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-setinfodictionary"></span><h3>procedure, public :: <strong>setInfoDictionary</strong>  
     
@@ -849,13 +837,14 @@ the release() procedure instead</p>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/setinfodictionary.html'>setInfoDictionary</a>(self, dict)
     
     
-	 
+   
 </h3>
     
 
@@ -917,6 +906,7 @@ public subroutine <a href='../proc/setinfodictionary.html'>setInfoDictionary</a>
     
     
 
+        
       
       </li>
     
@@ -924,7 +914,7 @@ public subroutine <a href='../proc/setinfodictionary.html'>setInfoDictionary</a>
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-infodictionary"></span><h3>procedure, public :: <strong>infoDictionary</strong>  
     
@@ -934,13 +924,14 @@ public subroutine <a href='../proc/setinfodictionary.html'>setInfoDictionary</a>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/infodictionary.html'>infoDictionary</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -998,6 +989,7 @@ unchanged.</p>
   
     
 
+        
       
       </li>
     
@@ -1005,7 +997,7 @@ unchanged.</p>
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-exceptionname"></span><h3>procedure, public :: <strong>exceptionName</strong>  
     
@@ -1015,13 +1007,14 @@ unchanged.</p>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/exceptionname.html'>exceptionName</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -1078,6 +1071,7 @@ for the exception.</p>
   
     
 
+        
       
       </li>
     
@@ -1085,7 +1079,7 @@ for the exception.</p>
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-severity"></span><h3>procedure, public :: <strong>severity</strong>  
     
@@ -1095,13 +1089,14 @@ for the exception.</p>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/severity.html'>severity</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -1157,6 +1152,7 @@ public function <a href='../proc/severity.html'>severity</a>(self)
   
     
 
+        
       
       </li>
     
@@ -1164,9 +1160,9 @@ public function <a href='../proc/severity.html'>severity</a>(self)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription%7E3"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printftexceptiondescription.html'>printFTExceptionDescription</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printftexceptiondescription.html'>printFTExceptionDescription</a> 
     
   </h3></div>
   
@@ -1174,13 +1170,14 @@ public function <a href='../proc/severity.html'>severity</a>(self)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/printftexceptiondescription.html'>printFTExceptionDescription</a>(self, iUnit)
     
     
-	 
+   
 </h3>
     
 
@@ -1243,6 +1240,7 @@ held in the infoDicitonary.</p>
     
     
 
+        
       
       </li>
     
@@ -1250,9 +1248,9 @@ held in the infoDicitonary.</p>
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname%7E3"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/exceptionclassname.html'>exceptionClassName</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/exceptionclassname.html'>exceptionClassName</a> 
     
   </h3></div>
   
@@ -1260,13 +1258,14 @@ held in the infoDicitonary.</p>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>(self) result(s)
     
     
-	 
+   
 </h3>
     
 
@@ -1276,7 +1275,7 @@ public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>
 
 
 
-<p>Class name returns a string with the name of the type of the object</p>
+<p>Class name returns a string with the name of the type of the object</p><a href="../proc/exceptionclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1322,6 +1321,7 @@ public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>
   
     
 
+        
       
       </li>
     
@@ -1337,70 +1337,14 @@ public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
-  <div id="alltypes-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/assertinfoarray1d.html">assertInfoArray1D</a>
-      
-      <a class="list-group-item" href="../type/assertinfoarray2d.html">assertInfoArray2D</a>
-      
-      <a class="list-group-item" href="../type/calculator.html">Calculator</a>
-      
-      <a class="list-group-item" href="../type/ftassertionsmanager.html">FTAssertionsManager</a>
-      
-      <a class="list-group-item" href="../type/ftdata.html">FTData</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html">FTDictionary</a>
-      
-      <a class="list-group-item" href="../type/ftexception.html">FTException</a>
-      
-      <a class="list-group-item" href="../type/ftkeyobjectpair.html">FTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlist.html">FTLinkedList</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistiterator.html">FTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistrecord.html">FTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../type/ftmultiindextable.html">FTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../type/ftmutableobjectarray.html">FTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../type/ftobject.html">FTObject</a>
-      
-      <a class="list-group-item" href="../type/ftsparsematrix.html">FTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html">FTStack</a>
-      
-      <a class="list-group-item" href="../type/ftvalue.html">FTValue</a>
-      
-      <a class="list-group-item" href="../type/ftvaluedictionary.html">FTValueDictionary</a>
-      
-      <a class="list-group-item" href="../type/matrixdata.html">MatrixData</a>
-      
-      <a class="list-group-item" href="../type/multiindexmatrixdata.html">MultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../type/testsuitemanager.html">TestSuiteManager</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -1431,12 +1375,17 @@ public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

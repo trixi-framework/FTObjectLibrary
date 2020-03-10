@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -129,15 +125,19 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title=" 0.1% of total for source files.">5 statements</a>
+    data-placement="bottom" data-html="true"
+    title=" 0.1% of total for source files.">5 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/FTOLConstants.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
+  
+    
   
      <li class="active">FTOLConstants.f90</li>
   </ol>
@@ -156,6 +156,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 
@@ -187,6 +190,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -195,512 +199,22 @@
 </div>
 
 
-  <hr>
-  
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles-0">All Source Files</a></h3></div>
-  <div id="allfiles-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../sourcefile/assert.f90.html">Assert.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/calculator.f90.html">Calculator.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/comparisons.f90.html">Comparisons.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/dictionarytests.f90.html">DictionaryTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/exceptiontests.f90.html">ExceptionTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdataclass.f90.html">FTDataClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdictionaryclass.f90.html">FTDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftexceptionclass.f90.html">FTExceptionClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftlinkedlistclass.f90.html">FTLinkedListClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftmultiindextable.f90.html">FTMultiIndexTable.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html">FTObjectArrayClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectclass.f90.html">FTObjectClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectlibrary.f90.html">FTObjectLibrary.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html">FTOLConstants.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftsparsematrixclass.f90.html">FTSparseMatrixClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftstackclass.f90.html">FTStackClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvalueclass.f90.html">FTValueClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvaluedictionaryclass.f90.html">FTValueDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hash.f90.html">Hash.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hashtabletests.f90.html">HashTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlistexample.f90.html">LinkedListExample.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlisttests.f90.html">LinkedListTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/multiindextabletests.f90.html">MultiIndexTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/mutablearraytests.f90.html">MutableArrayTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/sparsematrixtests.f90.html">SparseMatrixTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/stackstests.f90.html">StacksTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testmain.f90.html">TestMain.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testsuitemanagerclass.f90.html">TestSuiteManagerClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valueclasstests.f90.html">ValueClassTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valuedictionarytests.f90.html">ValueDictionaryTests.f90</a>
-      
-    </div>
-  </div>
 </div>
-
-
-</div>  
 
     </div>
     <div class="col-md-9" id='text'>
-    
-    
-      
-      <h3>Files Dependent On This One</h3>
-      
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: sourcefile~~ftolconstants.f90~~AfferentGraph Pages: 1 -->
-<svg id="sourcefileftolconstantsf90AfferentGraph" width="641pt" height="447pt"
- viewBox="0.00 0.00 641.00 446.94" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph" class="graph" transform="scale(0.735092 0.735092) rotate(0) translate(4 604)">
-<title>sourcefile~~ftolconstants.f90~~AfferentGraph</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-604 868,-604 868,4 -4,4"/>
-<!-- sourcefile~ftolconstants.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node1" class="node"><title>sourcefile~ftolconstants.f90</title>
-<polygon fill="none" stroke="black" points="104,-397 0,-397 0,-373 104,-373 104,-397"/>
-<text text-anchor="middle" x="52" y="-382.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTOLConstants.f90</text>
-</g>
-<!-- sourcefile~comparisons.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node2" class="node"><title>sourcefile~comparisons.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/comparisons.f90.html" xlink:title="Comparisons.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="232,-417 140,-417 140,-393 232,-393 232,-417"/>
-<text text-anchor="middle" x="186" y="-402.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Comparisons.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftolconstants.f90&#45;&gt;sourcefile~comparisons.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge35" class="edge"><title>sourcefile~ftolconstants.f90&#45;&gt;sourcefile~comparisons.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M104.035,-392.733C112.39,-393.999 121.084,-395.316 129.54,-396.597"/>
-<polygon fill="#000000" stroke="#000000" points="129.287,-400.099 139.699,-398.136 130.336,-393.178 129.287,-400.099"/>
-</g>
-<!-- sourcefile~ftvalueclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node3" class="node"><title>sourcefile~ftvalueclass.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/ftvalueclass.f90.html" xlink:title="FTValueClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-272 268,-272 268,-248 364,-248 364,-272"/>
-<text text-anchor="middle" x="316" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftolconstants.f90&#45;&gt;sourcefile~ftvalueclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge36" class="edge"><title>sourcefile~ftolconstants.f90&#45;&gt;sourcefile~ftvalueclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M104.03,-380.059C128.76,-376.96 158.723,-372.159 185,-365"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187,-365C236.046,-351.638 278.417,-306.624 299.927,-280.069"/>
-<polygon fill="#000000" stroke="#000000" points="302.719,-282.18 306.159,-272.159 297.221,-277.848 302.719,-282.18"/>
-</g>
-<!-- sourcefile~assert.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node4" class="node"><title>sourcefile~assert.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/assert.f90.html" xlink:title="Assert.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="346,-377 286,-377 286,-353 346,-353 346,-377"/>
-<text text-anchor="middle" x="316" y="-362.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Assert.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftolconstants.f90&#45;&gt;sourcefile~assert.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge37" class="edge"><title>sourcefile~ftolconstants.f90&#45;&gt;sourcefile~assert.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187,-365C216.02,-357.094 250.135,-357.548 275.845,-359.732"/>
-<polygon fill="#000000" stroke="#000000" points="275.665,-363.231 285.957,-360.716 276.343,-356.264 275.665,-363.231"/>
-</g>
-<!-- sourcefile~comparisons.f90&#45;&gt;sourcefile~assert.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge1" class="edge"><title>sourcefile~comparisons.f90&#45;&gt;sourcefile~assert.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M225.404,-392.999C241.504,-387.968 260.19,-382.128 276.319,-377.088"/>
-<polygon fill="#000000" stroke="#000000" points="277.484,-380.391 285.985,-374.067 275.396,-373.709 277.484,-380.391"/>
-</g>
-<!-- sourcefile~ftobjectlibrary.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node5" class="node"><title>sourcefile~ftobjectlibrary.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/ftobjectlibrary.f90.html" xlink:title="FTObjectLibrary.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="863.5,-522 758.5,-522 758.5,-498 863.5,-498 863.5,-522"/>
-<text text-anchor="middle" x="811" y="-507.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~comparisons.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge2" class="edge"><title>sourcefile~comparisons.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M202.095,-417.107C235.385,-442.935 318.631,-502.811 400,-524 520.296,-555.325 667.138,-537.429 748.413,-522.867"/>
-<polygon fill="#000000" stroke="#000000" points="749.271,-526.269 758.475,-521.021 748.007,-519.383 749.271,-526.269"/>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge12" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M322.108,-247.964C332.682,-224.816 359.427,-174.646 400,-155 457.602,-127.108 486.763,-126.365 544,-155 553.411,-159.708 740.728,-415.257 795.239,-489.798"/>
-<polygon fill="#000000" stroke="#000000" points="792.481,-491.955 801.208,-497.962 798.131,-487.824 792.481,-491.955"/>
-</g>
-<!-- sourcefile~sparsematrixtests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node6" class="node"><title>sourcefile~sparsematrixtests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/sparsematrixtests.f90.html" xlink:title="SparseMatrixTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="531,-398 413,-398 413,-374 531,-374 531,-398"/>
-<text text-anchor="middle" x="472" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SparseMatrixTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~sparsematrixtests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge9" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~sparsematrixtests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M323.226,-272.061C335.13,-293.924 363.238,-340.133 400,-365 402.527,-366.709 405.196,-368.282 407.958,-369.729"/>
-<polygon fill="#000000" stroke="#000000" points="406.496,-372.909 417.041,-373.936 409.438,-366.557 406.496,-372.909"/>
-</g>
-<!-- sourcefile~dictionarytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node7" class="node"><title>sourcefile~dictionarytests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/dictionarytests.f90.html" xlink:title="DictionaryTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="523,-356 421,-356 421,-332 523,-332 523,-356"/>
-<text text-anchor="middle" x="472" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DictionaryTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~dictionarytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge10" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~dictionarytests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M329.791,-272.1C345.286,-286.162 372.72,-309.197 400,-323 403.806,-324.926 407.819,-326.706 411.921,-328.344"/>
-<polygon fill="#000000" stroke="#000000" points="411.004,-331.737 421.597,-331.915 413.427,-325.169 411.004,-331.737"/>
-</g>
-<!-- sourcefile~ftvaluedictionaryclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node8" class="node"><title>sourcefile~ftvaluedictionaryclass.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/ftvaluedictionaryclass.f90.html" xlink:title="FTValueDictionaryClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="543.5,-108 400.5,-108 400.5,-84 543.5,-84 543.5,-108"/>
-<text text-anchor="middle" x="472" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge11" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M321.131,-247.79C330.741,-221.162 357.097,-157.422 400,-122 404.475,-118.306 409.521,-115.112 414.808,-112.356"/>
-<polygon fill="#000000" stroke="#000000" points="416.295,-115.524 423.874,-108.121 413.332,-109.182 416.295,-115.524"/>
-</g>
-<!-- sourcefile~hashtabletests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node9" class="node"><title>sourcefile~hashtabletests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/hashtabletests.f90.html" xlink:title="HashTableTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="525,-314 419,-314 419,-290 525,-290 525,-314"/>
-<text text-anchor="middle" x="472" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HashTableTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~hashtabletests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge13" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~hashtabletests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361.13,-272.036C378.609,-276.802 398.87,-282.328 417.197,-287.326"/>
-<polygon fill="#000000" stroke="#000000" points="416.295,-290.708 426.863,-289.963 418.137,-283.955 416.295,-290.708"/>
-</g>
-<!-- sourcefile~linkedlisttests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node10" class="node"><title>sourcefile~linkedlisttests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/linkedlisttests.f90.html" xlink:title="LinkedListTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="523.5,-272 420.5,-272 420.5,-248 523.5,-248 523.5,-272"/>
-<text text-anchor="middle" x="472" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LinkedListTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~linkedlisttests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge14" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~linkedlisttests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.042,-260C378.488,-260 394.6,-260 409.846,-260"/>
-<polygon fill="#000000" stroke="#000000" points="410.231,-263.5 420.231,-260 410.231,-256.5 410.231,-263.5"/>
-</g>
-<!-- sourcefile~stackstests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node11" class="node"><title>sourcefile~stackstests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/stackstests.f90.html" xlink:title="StacksTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="515.5,-230 428.5,-230 428.5,-206 515.5,-206 515.5,-230"/>
-<text text-anchor="middle" x="472" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">StacksTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~stackstests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge15" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~stackstests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361.13,-247.964C379.061,-243.074 399.92,-237.386 418.615,-232.287"/>
-<polygon fill="#000000" stroke="#000000" points="419.729,-235.611 428.455,-229.603 417.887,-228.858 419.729,-235.611"/>
-</g>
-<!-- sourcefile~calculator.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node12" class="node"><title>sourcefile~calculator.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node12"><a xlink:href="../sourcefile/calculator.f90.html" xlink:title="Calculator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="510.5,-24 433.5,-24 433.5,-0 510.5,-0 510.5,-24"/>
-<text text-anchor="middle" x="472" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Calculator.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~calculator.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge16" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~calculator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M317.744,-247.852C320.719,-210.152 334.995,-94.0356 400,-33 406.604,-26.799 414.953,-22.4206 423.586,-19.3314"/>
-<polygon fill="#000000" stroke="#000000" points="424.821,-22.6143 433.375,-16.3628 422.79,-15.9155 424.821,-22.6143"/>
-</g>
-<!-- sourcefile~linkedlistexample.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node13" class="node"><title>sourcefile~linkedlistexample.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node13"><a xlink:href="../sourcefile/linkedlistexample.f90.html" xlink:title="LinkedListExample.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="531,-66 413,-66 413,-42 531,-42 531,-66"/>
-<text text-anchor="middle" x="472" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LinkedListExample.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~linkedlistexample.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge17" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~linkedlistexample.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M318.928,-247.532C324.73,-214.316 345.136,-122.957 400,-75 401.524,-73.6676 403.13,-72.4197 404.801,-71.2508"/>
-<polygon fill="#000000" stroke="#000000" points="406.795,-74.1382 413.628,-66.0412 403.237,-68.1099 406.795,-74.1382"/>
-</g>
-<!-- sourcefile~valueclasstests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node14" class="node"><title>sourcefile~valueclasstests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node14"><a xlink:href="../sourcefile/valueclasstests.f90.html" xlink:title="ValueClassTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="526.5,-188 417.5,-188 417.5,-164 526.5,-164 526.5,-188"/>
-<text text-anchor="middle" x="472" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ValueClassTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~valueclasstests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge18" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~valueclasstests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M329.791,-247.9C345.286,-233.838 372.72,-210.803 400,-197 403.806,-195.074 407.819,-193.294 411.921,-191.656"/>
-<polygon fill="#000000" stroke="#000000" points="413.427,-194.831 421.597,-188.085 411.004,-188.263 413.427,-194.831"/>
-</g>
-<!-- sourcefile~mutablearraytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node15" class="node"><title>sourcefile~mutablearraytests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node15"><a xlink:href="../sourcefile/mutablearraytests.f90.html" xlink:title="MutableArrayTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="531,-482 413,-482 413,-458 531,-458 531,-482"/>
-<text text-anchor="middle" x="472" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">MutableArrayTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~mutablearraytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge19" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~mutablearraytests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M324.726,-272.163C334.688,-288.187 352.138,-317.453 364,-344 384.126,-389.041 364.379,-414.869 400,-449 401.308,-450.253 402.687,-451.432 404.126,-452.541"/>
-<polygon fill="#000000" stroke="#000000" points="402.619,-455.732 412.932,-458.159 406.384,-449.83 402.619,-455.732"/>
-</g>
-<!-- sourcefile~multiindextabletests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node16" class="node"><title>sourcefile~multiindextabletests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node16"><a xlink:href="../sourcefile/multiindextabletests.f90.html" xlink:title="MultiIndexTableTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="537,-440 407,-440 407,-416 537,-416 537,-440"/>
-<text text-anchor="middle" x="472" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">MultiIndexTableTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~multiindextabletests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge20" class="edge"><title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~multiindextabletests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M323.931,-272.417C343.607,-307.651 398.495,-405.802 400,-407 401.798,-408.431 403.691,-409.764 405.657,-411.007"/>
-<polygon fill="#000000" stroke="#000000" points="404.216,-414.207 414.676,-415.894 407.551,-408.052 404.216,-414.207"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge26" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M652,-510C681.423,-495.555 717.802,-494.595 748.233,-497.678"/>
-<polygon fill="#000000" stroke="#000000" points="747.966,-501.171 758.307,-498.865 748.785,-494.219 747.966,-501.171"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~sparsematrixtests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge23" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~sparsematrixtests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.329,-368.999C362.38,-371.188 382.987,-373.998 402.806,-376.701"/>
-<polygon fill="#000000" stroke="#000000" points="402.377,-380.175 412.758,-378.058 403.322,-373.239 402.377,-380.175"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~dictionarytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge24" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~dictionarytests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.329,-361.001C364.567,-358.514 388.689,-355.224 410.851,-352.202"/>
-<polygon fill="#000000" stroke="#000000" points="411.433,-355.655 420.868,-350.836 410.487,-348.719 411.433,-355.655"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~hashtabletests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge27" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~hashtabletests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.348,-352.846C354.826,-343.799 378.386,-331.583 400,-323 405.152,-320.954 410.583,-319.001 416.053,-317.169"/>
-<polygon fill="#000000" stroke="#000000" points="417.441,-320.399 425.889,-314.006 415.297,-313.735 417.441,-320.399"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~linkedlisttests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge29" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~linkedlisttests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M325.771,-352.806C339.541,-334.537 367.987,-300.167 400,-281 403.438,-278.942 407.091,-277.073 410.856,-275.379"/>
-<polygon fill="#000000" stroke="#000000" points="412.434,-278.516 420.388,-271.517 409.805,-272.029 412.434,-278.516"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~stackstests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge25" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~stackstests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M323.684,-352.649C339.356,-324.097 378.747,-254.756 400,-239 405.55,-234.885 411.9,-231.573 418.468,-228.907"/>
-<polygon fill="#000000" stroke="#000000" points="419.936,-232.099 428.181,-225.445 417.586,-225.506 419.936,-232.099"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~valueclasstests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge30" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~valueclasstests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M324.259,-352.973C333.862,-336.856 351.082,-307.237 364,-281 381.941,-244.56 369.645,-223.988 400,-197 402.625,-194.666 405.499,-192.591 408.539,-190.746"/>
-<polygon fill="#000000" stroke="#000000" points="410.194,-193.831 417.474,-186.133 406.983,-187.611 410.194,-193.831"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~mutablearraytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge34" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~mutablearraytests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M325.771,-377.194C339.541,-395.463 367.987,-429.833 400,-449 403.014,-450.805 406.193,-452.463 409.469,-453.986"/>
-<polygon fill="#000000" stroke="#000000" points="408.32,-457.299 418.896,-457.929 411.021,-450.842 408.32,-457.299"/>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~multiindextabletests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge31" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~multiindextabletests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.348,-377.154C354.826,-386.201 378.386,-398.417 400,-407 405.152,-409.046 410.583,-410.999 416.053,-412.831"/>
-<polygon fill="#000000" stroke="#000000" points="415.297,-416.265 425.889,-415.994 417.441,-409.601 415.297,-416.265"/>
-</g>
-<!-- sourcefile~valuedictionarytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node17" class="node"><title>sourcefile~valuedictionarytests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node17"><a xlink:href="../sourcefile/valuedictionarytests.f90.html" xlink:title="ValueDictionaryTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="715.5,-188 586.5,-188 586.5,-164 715.5,-164 715.5,-188"/>
-<text text-anchor="middle" x="651" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ValueDictionaryTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~valuedictionarytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge28" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~valuedictionarytests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M473,-510C505.666,-509.97 520.184,-513.358 544,-491 630.568,-409.731 646.455,-255.579 649.357,-198.227"/>
-<polygon fill="#000000" stroke="#000000" points="652.86,-198.236 649.781,-188.098 645.866,-197.943 652.86,-198.236"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M321.525,-377.182C331.558,-402.471 358.148,-460.811 400,-491 426.493,-510.11 438.334,-510.03 471,-510"/>
-</g>
-<!-- sourcefile~exceptiontests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node19" class="node"><title>sourcefile~exceptiontests.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node19"><a xlink:href="../sourcefile/exceptiontests.f90.html" xlink:title="ExceptionTests.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="862,-108 760,-108 760,-84 862,-84 862,-108"/>
-<text text-anchor="middle" x="811" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ExceptionTests.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~exceptiontests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge32" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~exceptiontests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M652,-510C800.778,-436.957 811.044,-193.647 810.562,-118.383"/>
-<polygon fill="#000000" stroke="#000000" points="814.059,-118.117 810.42,-108.166 807.06,-118.214 814.059,-118.117"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M473,-510C551.667,-509.927 579.385,-544.669 650,-510"/>
-</g>
-<!-- sourcefile~testsuitemanagerclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node20" class="node"><title>sourcefile~testsuitemanagerclass.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node20"><a xlink:href="../sourcefile/testsuitemanagerclass.f90.html" xlink:title="TestSuiteManagerClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="722,-600 580,-600 580,-576 722,-576 722,-600"/>
-<text text-anchor="middle" x="651" y="-585.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TestSuiteManagerClass.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~assert.f90&#45;&gt;sourcefile~testsuitemanagerclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge33" class="edge"><title>sourcefile~assert.f90&#45;&gt;sourcefile~testsuitemanagerclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M319.72,-377.132C327.069,-407.005 350.215,-484.545 400,-524 448.243,-562.233 516.714,-577.862 569.803,-584.137"/>
-<polygon fill="#000000" stroke="#000000" points="569.546,-587.629 579.867,-585.237 570.307,-580.671 569.546,-587.629"/>
-</g>
-<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge5" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M530.548,-108.059C601.921,-123.246 715.113,-148.183 722,-155 770.194,-202.698 799.223,-417.895 807.521,-487.912"/>
-<polygon fill="#000000" stroke="#000000" points="804.046,-488.324 808.675,-497.854 810.999,-487.518 804.046,-488.324"/>
-</g>
-<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~valuedictionarytests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge6" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~valuedictionarytests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M512.652,-108.065C523.135,-111.908 534.241,-116.592 544,-122 561.729,-131.825 562.293,-140.134 580,-150 586.768,-153.771 594.192,-157.199 601.595,-160.237"/>
-<polygon fill="#000000" stroke="#000000" points="600.324,-163.498 610.912,-163.875 602.87,-156.977 600.324,-163.498"/>
-</g>
-<!-- sourcefile~ftexceptionclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node18" class="node"><title>sourcefile~ftexceptionclass.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node18"><a xlink:href="../sourcefile/ftexceptionclass.f90.html" xlink:title="FTExceptionClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="708.5,-108 593.5,-108 593.5,-84 708.5,-84 708.5,-108"/>
-<text text-anchor="middle" x="651" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge7" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftexceptionclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M543.718,-96C556.711,-96 570.237,-96 583.113,-96"/>
-<polygon fill="#000000" stroke="#000000" points="583.277,-99.5001 593.277,-96 583.277,-92.5001 583.277,-99.5001"/>
-</g>
-<!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~exceptiontests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge8" class="edge"><title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~exceptiontests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M523.593,-83.9829C541.323,-80.3287 561.441,-76.804 580,-75 642.815,-68.8941 659.321,-67.6248 722,-75 733.943,-76.4053 746.614,-78.8484 758.508,-81.5827"/>
-<polygon fill="#000000" stroke="#000000" points="757.743,-84.9985 768.284,-83.9318 759.379,-78.1922 757.743,-84.9985"/>
-</g>
-<!-- sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge3" class="edge"><title>sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M703.257,-108.093C710.309,-111.61 716.876,-116.148 722,-122 770.902,-177.858 799.727,-413.489 807.711,-487.594"/>
-<polygon fill="#000000" stroke="#000000" points="804.246,-488.106 808.776,-497.683 811.207,-487.371 804.246,-488.106"/>
-</g>
-<!-- sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~exceptiontests.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge4" class="edge"><title>sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~exceptiontests.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M708.595,-96C721.931,-96 736.196,-96 749.689,-96"/>
-<polygon fill="#000000" stroke="#000000" points="749.829,-99.5001 759.829,-96 749.829,-92.5001 749.829,-99.5001"/>
-</g>
-<!-- sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge21" class="edge"><title>sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~ftobjectlibrary.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M688.12,-575.977C699.164,-571.931 711.233,-567.13 722,-562 743.086,-551.952 765.753,-538.49 782.8,-527.781"/>
-<polygon fill="#000000" stroke="#000000" points="785.088,-530.474 791.647,-522.154 781.331,-524.567 785.088,-530.474"/>
-</g>
-<!-- sourcefile~testmain.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node21" class="node"><title>sourcefile~testmain.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node21"><a xlink:href="../sourcefile/testmain.f90.html" xlink:title="TestMain.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="847.5,-600 774.5,-600 774.5,-576 847.5,-576 847.5,-600"/>
-<text text-anchor="middle" x="811" y="-585.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TestMain.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~testmain.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge22" class="edge"><title>sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~testmain.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M722.221,-588C736.398,-588 750.957,-588 764.041,-588"/>
-<polygon fill="#000000" stroke="#000000" points="764.183,-591.5 774.183,-588 764.183,-584.5 764.183,-591.5"/>
-</g>
-</g>
-</svg>
-</div>
-                <script>var pansourcefileftolconstantsf90AfferentGraph = svgPanZoom('#sourcefileftolconstantsf90AfferentGraph', {
-                    zoomEnabled: true,
-                    controlIconsEnabled: true,
-                    fit: true,
-                    center: true,});
-                    </script>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="188pt" height="32pt"
- viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 184,-28 184,4 -4,4"/>
-<!-- Source File -->
-<g id="node1" class="node"><title>Source File</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="66,-24 0,-24 0,-0 66,-0 66,-24"/>
-<text text-anchor="middle" x="33" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node2" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="180,-24 84,-24 84,-0 180,-0 180,-24"/>
-<text text-anchor="middle" x="132" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
-
-    
-    <p>Solid arrows point from a file to a file which depends upon it. A file 
-    is dependent upon another if the latter must be compiled before the former
-    can be.
-    </p>
-    
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
       
       <br>
+    
+      
+      
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 
@@ -732,12 +246,14 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
     <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html#src">FTOLConstants.f90</a>
   </div>
 </div>
+
 
 
     </section>
@@ -768,88 +284,14 @@
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles-1">All Source Files</a></h3></div>
-  <div id="allfiles-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../sourcefile/assert.f90.html">Assert.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/calculator.f90.html">Calculator.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/comparisons.f90.html">Comparisons.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/dictionarytests.f90.html">DictionaryTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/exceptiontests.f90.html">ExceptionTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdataclass.f90.html">FTDataClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdictionaryclass.f90.html">FTDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftexceptionclass.f90.html">FTExceptionClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftlinkedlistclass.f90.html">FTLinkedListClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftmultiindextable.f90.html">FTMultiIndexTable.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html">FTObjectArrayClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectclass.f90.html">FTObjectClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectlibrary.f90.html">FTObjectLibrary.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html">FTOLConstants.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftsparsematrixclass.f90.html">FTSparseMatrixClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftstackclass.f90.html">FTStackClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvalueclass.f90.html">FTValueClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvaluedictionaryclass.f90.html">FTValueDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hash.f90.html">Hash.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hashtabletests.f90.html">HashTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlistexample.f90.html">LinkedListExample.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlisttests.f90.html">LinkedListTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/multiindextabletests.f90.html">MultiIndexTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/mutablearraytests.f90.html">MutableArrayTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/sparsematrixtests.f90.html">SparseMatrixTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/stackstests.f90.html">StacksTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testmain.f90.html">TestMain.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testsuitemanagerclass.f90.html">TestSuiteManagerClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valueclasstests.f90.html">ValueClassTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valuedictionarytests.f90.html">ValueDictionaryTests.f90</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
   
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -880,12 +322,17 @@
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

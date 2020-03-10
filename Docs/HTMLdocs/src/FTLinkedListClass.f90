@@ -35,15 +35,11 @@
 !        ========
 !
          PROCEDURE :: initWithObject
-         PROCEDURE :: destruct         => destructFTLinkedListRecord
+         FINAL     :: destructFTLinkedListRecord
          PROCEDURE :: printDescription => printFTLinkedRecordDescription
          PROCEDURE :: className        => llRecordClassName
          
       END TYPE FTLinkedListRecord
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTLinkedListRecord
-      END INTERFACE  
 !
 !     ----------
 !     Procedures
@@ -82,18 +78,11 @@
 !
       SUBROUTINE destructFTLinkedListRecord(self) 
          IMPLICIT NONE
-         CLASS(FTLinkedListRecord) :: self
+         TYPE(FTLinkedListRecord) :: self
          
          IF ( ASSOCIATED(self % recordObject) ) CALL releaseFTObject(self % recordObject)
          self % next     => NULL()
          self % previous => NULL()
-!
-!        ------------------------------------------
-!        Always call the superclass destructor here
-!        at the end of the subclass destructor.
-!        ------------------------------------------
-!
-         CALL self % FTObject % destruct()
         
       END SUBROUTINE destructFTLinkedListRecord
 !
@@ -101,16 +90,14 @@
 ! 
       SUBROUTINE releaseFTLinkedListRecord(self)  
          IMPLICIT NONE
-         CLASS(FTLinkedListRecord) , POINTER :: self
-         CLASS(FTObject)           , POINTER :: obj
+         TYPE(FTLinkedListRecord), POINTER :: self
+         CLASS(FTObject)         , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
          
          obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTLinkedListRecord
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -216,7 +203,6 @@
 !>##Destruction
 !>   
 !>         CALL release(list) [Pointers]
-!>         CALL list % destruct() [Non Pointers]
 !>!
       Module FTLinkedListClass
 !      
@@ -243,7 +229,7 @@
          PROCEDURE :: remove           => removeObject
          PROCEDURE :: reverse          => reverseLinkedList
          PROCEDURE :: removeRecord     => removeLinkedListRecord
-         PROCEDURE :: destruct         => destructFTLinkedList
+         FINAL     :: destructFTLinkedList
          PROCEDURE :: count            => numberOfRecords
          PROCEDURE :: description      => FTLinkedListDescription
          PROCEDURE :: printDescription => printFTLinkedListDescription
@@ -261,11 +247,6 @@
       INTERFACE cast
          MODULE PROCEDURE castObjectToLinkedList
       END INTERFACE cast
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTLinkedList 
-      END INTERFACE  
-      
 !
 !     ----------
 !     Procedures
@@ -466,7 +447,8 @@
                   self % tail => previous 
                END IF 
                
-               CALL releaseFTLinkedListRecord(current)
+               obj => current
+               CALL release(obj)
                
                self % nRecords = self % nRecords - 1
                EXIT
@@ -527,6 +509,7 @@
 !        ---------------
 !
          CLASS(FTLinkedListRecord), POINTER :: previous => NULL(), next => NULL()
+         CLASS(FTObject)          , POINTER :: obj
 !
 !        ---------------------------------------------------
 !        Turn cirularity off and then back on
@@ -560,7 +543,8 @@
             next % previous => previous 
          END IF 
          
-         CALL releaseFTLinkedListRecord(listRecord)
+         obj => listRecord
+         CALL release(obj)
          
          self % nRecords = self % nRecords - 1
          IF(circ) CALL self % makeCircular(.TRUE.)
@@ -574,6 +558,7 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL(), tmp => NULL()
          LOGICAL                            :: circular
+         CLASS(FTObject)          , POINTER :: obj
 
          IF(.NOT.ASSOCIATED(self % head)) RETURN 
          
@@ -585,7 +570,8 @@
 
             tmp => listRecord % next
 
-            CALL releaseFTLinkedListRecord(listRecord)
+            obj => listRecord
+            CALL release(obj)
 
             IF(.NOT. ASSOCIATED(listRecord)) THEN
                self % nRecords = self % nRecords - 1
@@ -605,6 +591,20 @@
           numberOfRecords = self % nRecords
       END FUNCTION numberOfRecords     
 !
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedList(self)  
+         IMPLICIT NONE
+         CLASS (FTLinkedList), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedList
+!
 !////////////////////////////////////////////////////////////////////////
 !
 !< The destructor must only be called from within the destructors of subclasses
@@ -612,42 +612,11 @@
 !
       SUBROUTINE destructFTLinkedList(self) 
          IMPLICIT NONE
-         CLASS(FTLinkedList)                :: self
+         TYPE(FTLinkedList)                :: self
 
          CALL self % removeAllObjects()
-!
-!        ------------------------------------------
-!        Always call the superclass destructor here
-!        at the end of the subclass destructor.
-!        ------------------------------------------
-!
-         CALL self % FTObject % destruct()
 
       END SUBROUTINE destructFTLinkedList
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTLinkedList(self)  
-         IMPLICIT NONE
-         TYPE (FTLinkedList), POINTER :: self
-         CLASS(FTObject)    , POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTLinkedList
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -685,6 +654,7 @@
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
+         circular                        = .FALSE.
          IF(self % isCircular_) circular = .TRUE.
          CALL self % makeCircular(.FALSE.)
          
@@ -695,7 +665,7 @@
             listRecord => listRecord % next
          END DO
          
-         IF(circular) CALL self % makeCircular (.TRUE.)
+         CALL self % makeCircular (circular)
          
       END SUBROUTINE printFTLinkedListDescription
 !
@@ -741,9 +711,7 @@
          self % head => self % tail
          self % tail => tmp
          
-         IF ( self % isCircular_ )     THEN
-            CALL self % makeCircular(.TRUE.) 
-         END IF 
+         CALL self % makeCircular(self % isCircular_) 
          
       END SUBROUTINE reverseLinkedList
 !
@@ -766,6 +734,12 @@
          INTEGER                            :: N
          CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL()
          CLASS(FTObject)          , POINTER :: obj        => NULL()
+         LOGICAL                            :: circular
+         
+         IF(.NOT.ASSOCIATED(self % head)) RETURN
+         
+         IF(self % isCircular_) circular = .TRUE.
+         CALL self % makeCircular(.FALSE.)
          
          array => NULL()
          N = self % count()
@@ -781,6 +755,8 @@
             CALL array % addObject(obj)
             listRecord => listRecord % next
          END DO
+         
+         CALL self % makeCircular(circular)
          
       END FUNCTION allLinkedListObjects
 !
@@ -889,7 +865,6 @@
 !>
 !>###Destruction
 !>   
-!>         CALL iterator % destruct() [Non Pointers]
 !>         CALL release(iterator) [Pointers]
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -912,7 +887,7 @@
 !
          PROCEDURE :: init           => initEmpty
          PROCEDURE :: initWithFTLinkedList
-         PROCEDURE :: destruct       => destructIterator
+         FINAL     :: destructIterator
          PROCEDURE :: isAtEnd        => FTLinkedListIsAtEnd
          PROCEDURE :: object         => FTLinkedListObject
          PROCEDURE :: currentRecord  => FTLinkedListCurrentRecord
@@ -923,10 +898,6 @@
          PROCEDURE :: moveToNext
          PROCEDURE :: removeCurrentRecord
       END TYPE FTLinkedListIterator
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTLinkedListIterator 
-      END INTERFACE  
 !
 !     ----------
 !     Procedures
@@ -979,6 +950,20 @@
          
       END SUBROUTINE initWithFTLinkedList   
 !
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedListIterator(self)  
+         IMPLICIT NONE
+         TYPE(FTLinkedListIterator), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedListIterator
+!
 !////////////////////////////////////////////////////////////////////////
 !
 !< The destuctor must not be called except at the end of destructors of
@@ -986,18 +971,10 @@
 !
       SUBROUTINE destructIterator(self)
           IMPLICIT NONE 
-          CLASS(FTLinkedListIterator) :: self
-          CLASS(FTObject), POINTER    :: obj
+          TYPE(FTLinkedListIterator) :: self
           
           CALL releaseMemberList(self)
           self % current => NULL()
-!
-!        ------------------------------------------
-!        Always call the superclass destructor here
-!        at the end of the subclass destructor.
-!        ------------------------------------------
-!
-          CALL self % FTObject % destruct()
           
       END SUBROUTINE destructIterator
 !
@@ -1014,30 +991,6 @@
              IF(.NOT. ASSOCIATED(obj)) self % list => NULL()
           END IF 
       END SUBROUTINE releaseMemberList
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTLinkedListIterator(self)  
-         IMPLICIT NONE
-         CLASS(FTLinkedListIterator) , POINTER :: self
-         CLASS(FTObject)             , POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTLinkedListIterator
 !
 !////////////////////////////////////////////////////////////////////////
 !

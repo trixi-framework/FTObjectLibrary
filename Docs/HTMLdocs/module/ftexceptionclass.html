@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -129,17 +125,21 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title=" 4.9% of total for modules and submodules.">186 statements</a>
+    data-placement="bottom" data-html="true"
+    title=" 4.9% of total for modules and submodules.">181 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/FTExceptionClass.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></li>
+    
   
      <li class="active">FTExceptionClass</li>
   </ol>
@@ -159,6 +159,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -191,6 +194,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-0">Interfaces</a></h3></div>
   <div id="inters-0" class="panel-collapse collapse">
@@ -198,11 +202,10 @@
       
       <a class="list-group-item" href="../module/ftexceptionclass.html#interface-cast%7E2">cast</a>
       
-      <a class="list-group-item" href="../module/ftexceptionclass.html#interface-release%7E3">release</a>
-      
     </div>
   </div>
 </div>
+
 
 
 
@@ -216,6 +219,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div class="panel panel-primary">
@@ -238,6 +242,7 @@
 </div>
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
   <div class="list-group">
@@ -251,9 +256,9 @@
       
       <a class="list-group-item" href="../module/ftexceptionclass.html#proc-initassertionfailureexception">initAssertionFailureException</a>
       
-      <a class="list-group-item" href="../module/ftexceptionclass.html#proc-destructexception">destructException</a>
-      
       <a class="list-group-item" href="../module/ftexceptionclass.html#proc-releaseftexception">releaseFTException</a>
+      
+      <a class="list-group-item" href="../module/ftexceptionclass.html#proc-destructexception">destructException</a>
       
       <a class="list-group-item" href="../module/ftexceptionclass.html#proc-setinfodictionary">setInfoDictionary</a>
       
@@ -275,400 +280,12 @@
 
 
 
-  <hr>
-  
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-0">All Modules</a></h3></div>
-  <div id="allmods-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/calculatorclass.html">CalculatorClass</a>
-      
-      <a class="list-group-item" href="../module/comparisonsmodule.html">ComparisonsModule</a>
-      
-      <a class="list-group-item" href="../module/exceptionwrapper.html">ExceptionWrapper</a>
-      
-      <a class="list-group-item" href="../module/ftassertions.html">FTAssertions</a>
-      
-      <a class="list-group-item" href="../module/ftdataclass.html">FTDataClass</a>
-      
-      <a class="list-group-item" href="../module/ftdictionaryclass.html">FTDictionaryClass</a>
-      
-      <a class="list-group-item" href="../module/ftexceptionclass.html">FTExceptionClass</a>
-      
-      <a class="list-group-item" href="../module/ftkeyobjectpairclass.html">FTKeyObjectPairClass</a>
-      
-      <a class="list-group-item" href="../module/ftlinkedlistclass.html">FTLinkedListClass</a>
-      
-      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html">FTLinkedListIteratorClass</a>
-      
-      <a class="list-group-item" href="../module/ftlinkedlistrecordclass.html">FTLinkedListRecordClass</a>
-      
-      <a class="list-group-item" href="../module/ftmultiindextableclass.html">FTMultiIndexTableClass</a>
-      
-      <a class="list-group-item" href="../module/ftmultiindextabledata.html">FTMultiIndexTableData</a>
-      
-      <a class="list-group-item" href="../module/ftmutableobjectarrayclass.html">FTMutableObjectArrayClass</a>
-      
-      <a class="list-group-item" href="../module/ftobjectclass.html">FTObjectClass</a>
-      
-      <a class="list-group-item" href="../module/ftobjectlibrary.html">FTObjectLibrary</a>
-      
-      <a class="list-group-item" href="../module/ftolconstants.html">FTOLConstants</a>
-      
-      <a class="list-group-item" href="../module/ftsparsematrixclass.html">FTSparseMatrixClass</a>
-      
-      <a class="list-group-item" href="../module/ftsparsematrixdata.html">FTSparseMatrixData</a>
-      
-      <a class="list-group-item" href="../module/ftstackclass.html">FTStackClass</a>
-      
-      <a class="list-group-item" href="../module/ftvalueclass.html">FTValueClass</a>
-      
-      <a class="list-group-item" href="../module/ftvaluedictionaryclass.html">FTValueDictionaryClass</a>
-      
-      <a class="list-group-item" href="../module/linkedlistdemonstrationmodule.html">linkedListDemonstrationModule</a>
-      
-      <a class="list-group-item" href="../module/sharedexceptionmanagermodule.html">SharedExceptionManagerModule</a>
-      
-      <a class="list-group-item" href="../module/stackunittestsmodule.html">StackUnitTestsModule</a>
-      
-      <a class="list-group-item" href="../module/testsuitemanagerclass.html">TestSuiteManagerClass</a>
-      
-    </div>
-  </div>
 </div>
-
-
-</div>  
 
     </div>
     
     <div class="col-md-9" id='text'>
-      
-    
-  
-    <ul class="list-inline">
-      <li><h4>Uses:</h4></li>
-      
-      <li><a href='../module/ftstackclass.html'>FTStackClass</a></li>
-      
-      <li><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></li>
-      
-      <li><a href='../module/ftvaluedictionaryclass.html'>FTValueDictionaryClass</a></li>
-      
-      <li><a href='../module/ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></li>
-      
-    </ul>
-    
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: module~~ftexceptionclass~~UsesGraph Pages: 1 -->
-<svg id="moduleftexceptionclassUsesGraph" width="641pt" height="189pt"
- viewBox="0.00 0.00 641.00 188.63" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~ftexceptionclass~~UsesGraph" class="graph" transform="scale(0.625977 0.625977) rotate(0) translate(4 297.338)">
-<title>module~~ftexceptionclass~~UsesGraph</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-297.338 1020,-297.338 1020,4 -4,4"/>
-<!-- module~ftexceptionclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node1" class="node"><title>module~ftexceptionclass</title>
-<polygon fill="none" stroke="black" points="1016,-253.338 918,-253.338 918,-229.338 1016,-229.338 1016,-253.338"/>
-<text text-anchor="middle" x="967" y="-238.938" font-family="Helvetica,sans-Serif" font-size="10.50">FTExceptionClass</text>
-</g>
-<!-- module~ftstackclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node2" class="node"><title>module~ftstackclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node2"><a xlink:href="../module/ftstackclass.html" xlink:title="FTStackClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="858,-293.338 780,-293.338 780,-269.338 858,-269.338 858,-293.338"/>
-<text text-anchor="middle" x="819" y="-278.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftstackclass&#45;&gt;module~ftexceptionclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge19" class="edge"><title>module~ftstackclass&#45;&gt;module~ftexceptionclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M858.36,-270.828C874.827,-266.317 894.355,-260.966 912.228,-256.07"/>
-<polygon fill="#000000" stroke="#000000" points="913.237,-259.422 921.957,-253.404 911.388,-252.671 913.237,-259.422"/>
-</g>
-<!-- module~ftlinkedlistiteratorclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node3" class="node"><title>module~ftlinkedlistiteratorclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node3"><a xlink:href="../module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="586,-253.338 454,-253.338 454,-229.338 586,-229.338 586,-253.338"/>
-<text text-anchor="middle" x="520" y="-238.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftexceptionclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge20" class="edge"><title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftexceptionclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M586.266,-238.825C646.498,-237.102 738.387,-235.983 818,-241.338"/>
-</g>
-<!-- module~ftdictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node4" class="node"><title>module~ftdictionaryclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node4"><a xlink:href="../module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="720,-213.338 622,-213.338 622,-189.338 720,-189.338 720,-213.338"/>
-<text text-anchor="middle" x="671" y="-198.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftdictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge11" class="edge"><title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M565.705,-229.336C581.251,-225.163 598.87,-220.433 615.142,-216.065"/>
-<polygon fill="#000000" stroke="#000000" points="616.319,-219.373 625.069,-213.4 614.504,-212.612 616.319,-219.373"/>
-</g>
-<!-- module~ftdictionaryclass&#45;&gt;module~ftexceptionclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge21" class="edge"><title>module~ftdictionaryclass&#45;&gt;module~ftexceptionclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M702.145,-213.415C731.246,-224.151 776.831,-238.569 818,-241.338"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M820,-241.338C848.801,-243.275 880.87,-243.489 907.6,-243.129"/>
-<polygon fill="#000000" stroke="#000000" points="908.002,-246.623 917.943,-242.958 907.886,-239.624 908.002,-246.623"/>
-</g>
-<!-- module~ftvaluedictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node5" class="node"><title>module~ftvaluedictionaryclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node5"><a xlink:href="../module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="881.5,-193.338 756.5,-193.338 756.5,-169.338 881.5,-169.338 881.5,-193.338"/>
-<text text-anchor="middle" x="819" y="-178.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftdictionaryclass&#45;&gt;module~ftvaluedictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge18" class="edge"><title>module~ftdictionaryclass&#45;&gt;module~ftvaluedictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M720.21,-194.734C728.599,-193.584 737.483,-192.368 746.34,-191.154"/>
-<polygon fill="#000000" stroke="#000000" points="746.869,-194.614 756.302,-189.79 745.919,-187.679 746.869,-194.614"/>
-</g>
-<!-- module~ftvaluedictionaryclass&#45;&gt;module~ftexceptionclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge22" class="edge"><title>module~ftvaluedictionaryclass&#45;&gt;module~ftexceptionclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M849.545,-193.48C871.907,-202.669 902.823,-215.374 927.181,-225.385"/>
-<polygon fill="#000000" stroke="#000000" points="925.919,-228.65 936.499,-229.214 928.58,-222.175 925.919,-228.65"/>
-</g>
-<!-- module~ftlinkedlistclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node6" class="node"><title>module~ftlinkedlistclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node6"><a xlink:href="../module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="407.5,-253.338 308.5,-253.338 308.5,-229.338 407.5,-229.338 407.5,-253.338"/>
-<text text-anchor="middle" x="358" y="-238.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftlinkedlistclass&#45;&gt;module~ftstackclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge5" class="edge"><title>module~ftlinkedlistclass&#45;&gt;module~ftstackclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M406.079,-253.358C421.279,-256.805 438.266,-260.203 454,-262.338 566.28,-277.571 699.57,-280.79 769.549,-281.349"/>
-<polygon fill="#000000" stroke="#000000" points="769.792,-284.85 779.815,-281.415 769.837,-277.85 769.792,-284.85"/>
-</g>
-<!-- module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistiteratorclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge6" class="edge"><title>module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M407.875,-241.338C419.219,-241.338 431.552,-241.338 443.738,-241.338"/>
-<polygon fill="#000000" stroke="#000000" points="443.915,-244.838 453.915,-241.338 443.915,-237.838 443.915,-244.838"/>
-</g>
-<!-- module~ftlinkedlistclass&#45;&gt;module~ftdictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge10" class="edge"><title>module~ftlinkedlistclass&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M384.895,-229.303C416.181,-216.07 470.645,-197.19 519,-201.338"/>
-</g>
-<!-- module~ftmutableobjectarrayclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node7" class="node"><title>module~ftmutableobjectarrayclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node7"><a xlink:href="../module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="262,-212.338 118,-212.338 118,-188.338 262,-188.338 262,-212.338"/>
-<text text-anchor="middle" x="190" y="-197.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftdictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge9" class="edge"><title>module~ftmutableobjectarrayclass&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M262.171,-197.18C328.71,-195.027 430.775,-193.769 519,-201.338"/>
-</g>
-<!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftlinkedlistclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge3" class="edge"><title>module~ftmutableobjectarrayclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M239.908,-212.417C258.313,-216.963 279.426,-222.178 298.61,-226.916"/>
-<polygon fill="#000000" stroke="#000000" points="297.894,-230.344 308.442,-229.344 299.573,-223.549 297.894,-230.344"/>
-</g>
-<!-- module~ftlinkedlistrecordclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node8" class="node"><title>module~ftlinkedlistrecordclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node8"><a xlink:href="../module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="256.5,-254.338 123.5,-254.338 123.5,-230.338 256.5,-230.338 256.5,-254.338"/>
-<text text-anchor="middle" x="190" y="-239.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftlinkedlistrecordclass&#45;&gt;module~ftlinkedlistclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge4" class="edge"><title>module~ftlinkedlistrecordclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M256.608,-241.943C270.329,-241.86 284.714,-241.773 298.17,-241.692"/>
-<polygon fill="#000000" stroke="#000000" points="298.275,-245.192 308.253,-241.631 298.232,-238.192 298.275,-245.192"/>
-</g>
-<!-- module~ftobjectclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node9" class="node"><title>module~ftobjectclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node9"><a xlink:href="../module/ftobjectclass.html" xlink:title="FTObjectClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="82,-212.338 0,-212.338 0,-188.338 82,-188.338 82,-212.338"/>
-<text text-anchor="middle" x="41" y="-197.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftobjectclass&#45;&gt;module~ftmutableobjectarrayclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge1" class="edge"><title>module~ftobjectclass&#45;&gt;module~ftmutableobjectarrayclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M82.1684,-200.338C90.1976,-200.338 98.9002,-200.338 107.754,-200.338"/>
-<polygon fill="#000000" stroke="#000000" points="107.788,-203.838 117.788,-200.338 107.788,-196.838 107.788,-203.838"/>
-</g>
-<!-- module~ftobjectclass&#45;&gt;module~ftlinkedlistrecordclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge2" class="edge"><title>module~ftobjectclass&#45;&gt;module~ftlinkedlistrecordclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M82.1684,-211.814C99.0956,-216.651 119.015,-222.342 137.039,-227.492"/>
-<polygon fill="#000000" stroke="#000000" points="136.25,-230.906 146.826,-230.288 138.173,-224.176 136.25,-230.906"/>
-</g>
-<!-- module~ftkeyobjectpairclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node10" class="node"><title>module~ftkeyobjectpairclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node10"><a xlink:href="../module/ftkeyobjectpairclass.html" xlink:title="FTKeyObjectPairClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="417.5,-89.3378 298.5,-89.3378 298.5,-65.3378 417.5,-65.3378 417.5,-89.3378"/>
-<text text-anchor="middle" x="358" y="-74.9378" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftobjectclass&#45;&gt;module~ftkeyobjectpairclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge7" class="edge"><title>module~ftobjectclass&#45;&gt;module~ftkeyobjectpairclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191,-37.3378C213.573,-28.9472 274.359,-47.3191 315.76,-61.8628"/>
-<polygon fill="#000000" stroke="#000000" points="314.719,-65.2074 325.313,-65.271 317.071,-58.6144 314.719,-65.2074"/>
-</g>
-<!-- module~ftvalueclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_node11" class="node"><title>module~ftvalueclass</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node11"><a xlink:href="../module/ftvalueclass.html" xlink:title="FTValueClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="710,-131.338 632,-131.338 632,-107.338 710,-107.338 710,-131.338"/>
-<text text-anchor="middle" x="671" y="-116.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftobjectclass&#45;&gt;module~ftvalueclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge13" class="edge"><title>module~ftobjectclass&#45;&gt;module~ftvalueclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M47.73,-188.208C64.0962,-155.299 114.704,-64.9535 189,-37.3378"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191,-37.3378C355.746,23.8984 420.645,3.23263 586,-56.3378 611.266,-65.4399 635.27,-84.9295 651.098,-99.8368"/>
-<polygon fill="#000000" stroke="#000000" points="648.986,-102.666 658.592,-107.135 653.87,-97.6513 648.986,-102.666"/>
-</g>
-<!-- module~ftkeyobjectpairclass&#45;&gt;module~ftdictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge8" class="edge"><title>module~ftkeyobjectpairclass&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M521,-201.338C550.824,-203.896 584.13,-204.142 611.676,-203.643"/>
-<polygon fill="#000000" stroke="#000000" points="612.011,-207.136 621.932,-203.418 611.858,-200.138 612.011,-207.136"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M366.569,-89.3851C380.914,-111.226 414.215,-157.402 454,-182.338 479.503,-198.322 489.012,-198.765 519,-201.338"/>
-</g>
-<!-- module~ftvalueclass&#45;&gt;module~ftvaluedictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge16" class="edge"><title>module~ftvalueclass&#45;&gt;module~ftvaluedictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M700.497,-131.439C723.208,-141.083 755.211,-154.674 780.085,-165.237"/>
-<polygon fill="#000000" stroke="#000000" points="779.002,-168.58 789.575,-169.267 781.739,-162.137 779.002,-168.58"/>
-</g>
-<!-- iso_fortran_env -->
-<g id="module~~ftexceptionclass~~UsesGraph_node12" class="node"><title>iso_fortran_env</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node12"><a xlink:href="https://software.intel.com/en-us/node/511041" xlink:title="iso_fortran_env">
-<polygon fill="#337ab7" stroke="#337ab7" points="562.5,-173.338 477.5,-173.338 477.5,-149.338 562.5,-149.338 562.5,-173.338"/>
-<text text-anchor="middle" x="520" y="-158.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
-</a>
-</g>
-</g>
-<!-- iso_fortran_env&#45;&gt;module~ftvaluedictionaryclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge17" class="edge"><title>iso_fortran_env&#45;&gt;module~ftvaluedictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.609,-164.14C610.125,-167.339 688.699,-172.631 746.167,-176.501"/>
-<polygon fill="#000000" stroke="#000000" points="746.066,-180.002 756.279,-177.181 746.536,-173.017 746.066,-180.002"/>
-</g>
-<!-- iso_fortran_env&#45;&gt;module~ftvalueclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge15" class="edge"><title>iso_fortran_env&#45;&gt;module~ftvalueclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.505,-149.638C580.983,-144.43 602.856,-138.264 622.031,-132.859"/>
-<polygon fill="#000000" stroke="#000000" points="623.105,-136.193 631.78,-130.111 621.205,-129.456 623.105,-136.193"/>
-</g>
-<!-- module~ftolconstants -->
-<g id="module~~ftexceptionclass~~UsesGraph_node13" class="node"><title>module~ftolconstants</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node13"><a xlink:href="../module/ftolconstants.html" xlink:title="FTOLConstants">
-<polygon fill="#337ab7" stroke="#337ab7" points="563.5,-131.338 476.5,-131.338 476.5,-107.338 563.5,-107.338 563.5,-131.338"/>
-<text text-anchor="middle" x="520" y="-116.938" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants</text>
-</a>
-</g>
-</g>
-<!-- module~ftolconstants&#45;&gt;module~ftvalueclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge12" class="edge"><title>module~ftolconstants&#45;&gt;module~ftvalueclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M563.697,-119.338C581.837,-119.338 603.073,-119.338 621.775,-119.338"/>
-<polygon fill="#000000" stroke="#000000" points="621.869,-122.838 631.869,-119.338 621.869,-115.838 621.869,-122.838"/>
-</g>
-<!-- ieee_arithmetic -->
-<g id="module~~ftexceptionclass~~UsesGraph_node14" class="node"><title>ieee_arithmetic</title>
-<g id="a_module~~ftexceptionclass~~UsesGraph_node14"><a xlink:href="https://software.intel.com/en-us/node/511043" xlink:title="ieee_arithmetic">
-<polygon fill="#337ab7" stroke="#337ab7" points="562,-89.3378 478,-89.3378 478,-65.3378 562,-65.3378 562,-89.3378"/>
-<text text-anchor="middle" x="520" y="-74.9378" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ieee_arithmetic</text>
-</a>
-</g>
-</g>
-<!-- ieee_arithmetic&#45;&gt;module~ftvalueclass -->
-<g id="module~~ftexceptionclass~~UsesGraph_edge14" class="edge"><title>ieee_arithmetic&#45;&gt;module~ftvalueclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.109,-88.9256C580.668,-94.1568 602.711,-100.37 622.021,-105.813"/>
-<polygon fill="#000000" stroke="#000000" points="621.262,-109.236 631.837,-108.58 623.161,-102.498 621.262,-109.236"/>
-</g>
-</g>
-</svg>
-</div>
-                <script>var panmoduleftexceptionclassUsesGraph = svgPanZoom('#moduleftexceptionclassUsesGraph', {
-                    zoomEnabled: true,
-                    controlIconsEnabled: true,
-                    fit: true,
-                    center: true,});
-                    </script>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="486pt" height="32pt"
- viewBox="0.00 0.00 486.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 482,-28 482,4 -4,4"/>
-<!-- Module -->
-<g id="node1" class="node"><title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
-</g>
-<!-- Submodule -->
-<g id="node2" class="node"><title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-24 72,-24 72,-0 138,-0 138,-24"/>
-<text text-anchor="middle" x="105" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
-</g>
-<!-- Subroutine -->
-<g id="node3" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="219.25,-24 156.75,-24 156.75,-0 219.25,-0 219.25,-24"/>
-<text text-anchor="middle" x="188" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
-</g>
-<!-- Function -->
-<g id="node4" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-24 238,-24 238,-0 292,-0 292,-24"/>
-<text text-anchor="middle" x="265" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Program -->
-<g id="node5" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-24 310,-24 310,-0 364,-0 364,-24"/>
-<text text-anchor="middle" x="337" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node6" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="478,-24 382,-24 382,-0 478,-0 478,-24"/>
-<text text-anchor="middle" x="430" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
-
-    
-    <p>Solid arrows point from a parent (sub)module to the submodule which is
-    descended from it. Dashed arrows point from a module being used to the
-    module or program unit using it.
-    </p>
-    
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-    
-
-    
     <p>An FTException object gives a way to pass generic
 information about an exceptional situation.</p>
 <p>An FTException object gives a way to pass generic
@@ -690,214 +307,89 @@ of the FTException Class.</p>
 <li>FT_ERROR_FATAL   = 2</li>
 </ul>
 <h3>Initialization</h3>
-<div class="codehilite"><pre><span></span>        CALL e  %  initFTException(severity,exceptionName,infoDictionary)
+<div class="codehilite"><pre><span></span><span class="err">        CALL e  %  initFTException(severity,exceptionName,infoDictionary)</span>
 </pre></div>
 
 
 <p>Plus the convenience initializers, which automatically create a FTValueDictionary with a single key called "message":</p>
-<div class="codehilite"><pre><span></span>    CALL e % initWarningException(msg = &quot;message&quot;)
-    CALL e % initFatalException(msg = &quot;message&quot;)
+<div class="codehilite"><pre><span></span><span class="err">    CALL e % initWarningException(msg = &quot;message&quot;)</span>
+<span class="err">    CALL e % initFatalException(msg = &quot;message&quot;)</span>
 </pre></div>
 
 
 <p>Plus an assertion exception</p>
-<div class="codehilite"><pre><span></span>    CALL e % initAssertionFailureException(msg,expectedValueObject,observedValueObject,level)
+<div class="codehilite"><pre><span></span><span class="err">    CALL e % initAssertionFailureException(msg,expectedValueObject,observedValueObject,level)</span>
 </pre></div>
 
 
 <h3>Destruction</h3>
-<div class="codehilite"><pre><span></span>    CALL e  %  release()
+<div class="codehilite"><pre><span></span><span class="err">    CALL e  %  release()</span>
 </pre></div>
 
 
 <h3>Setting the infoDictionary</h3>
-<div class="codehilite"><pre><span></span>    CALL e  %  setInfoDictionary(infoDictionary)
+<div class="codehilite"><pre><span></span><span class="err">    CALL e  %  setInfoDictionary(infoDictionary)</span>
 </pre></div>
 
 
 <h3>Getting the infoDictionary</h3>
-<div class="codehilite"><pre><span></span>    dict =&gt; e % infoDictionary
+<div class="codehilite"><pre><span></span><span class="err">    dict =&gt; e % infoDictionary</span>
 </pre></div>
 
 
 <h3>Getting the name of the exception</h3>
-<div class="codehilite"><pre><span></span>    name = e % exceptionName()
+<div class="codehilite"><pre><span></span><span class="err">    name = e % exceptionName()</span>
 </pre></div>
 
 
 <h3>Getting the severity level of the exception</h3>
-<div class="codehilite"><pre><span></span>    level = e % severity()
+<div class="codehilite"><pre><span></span><span class="err">    level = e % severity()</span>
 </pre></div>
 
 
 <p>Severity levels are FT_ERROR_WARNING or FT_ERROR_FATAL</p>
 <h3>Printing the exception</h3>
-<div class="codehilite"><pre><span></span>    CALL e % printDescription()
+<div class="codehilite"><pre><span></span><span class="err">    CALL e % printDescription()</span>
 </pre></div>
+      <br>
     
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
     
-    <h3>Used By</h3>
+    <li><a href='../module/ftstackclass.html'>FTStackClass</a></li>
     
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: module~~ftexceptionclass~~UsedByGraph Pages: 1 -->
-<svg id="moduleftexceptionclassUsedByGraph" width="486pt" height="154pt"
- viewBox="0.00 0.00 486.00 154.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~ftexceptionclass~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 150)">
-<title>module~~ftexceptionclass~~UsedByGraph</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-150 482,-150 482,4 -4,4"/>
-<!-- module~ftexceptionclass -->
-<g id="module~~ftexceptionclass~~UsedByGraph_node1" class="node"><title>module~ftexceptionclass</title>
-<polygon fill="none" stroke="black" points="98,-84 0,-84 0,-60 98,-60 98,-84"/>
-<text text-anchor="middle" x="49" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTExceptionClass</text>
-</g>
-<!-- module~sharedexceptionmanagermodule -->
-<g id="module~~ftexceptionclass~~UsedByGraph_node2" class="node"><title>module~sharedexceptionmanagermodule</title>
-<g id="a_module~~ftexceptionclass~~UsedByGraph_node2"><a xlink:href="../module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
-<polygon fill="#337ab7" stroke="#337ab7" points="302,-146 134,-146 134,-122 302,-122 302,-146"/>
-<text text-anchor="middle" x="218" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
-</a>
-</g>
-</g>
-<!-- module~ftexceptionclass&#45;&gt;module~sharedexceptionmanagermodule -->
-<g id="module~~ftexceptionclass~~UsedByGraph_edge3" class="edge"><title>module~ftexceptionclass&#45;&gt;module~sharedexceptionmanagermodule</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M71.5656,-84.0632C88.2212,-92.998 112.056,-104.966 134,-113 139.954,-115.18 146.228,-117.216 152.55,-119.096"/>
-<polygon fill="#000000" stroke="#000000" points="151.91,-122.553 162.486,-121.921 153.824,-115.82 151.91,-122.553"/>
-</g>
-<!-- module~ftobjectlibrary -->
-<g id="module~~ftexceptionclass~~UsedByGraph_node3" class="node"><title>module~ftobjectlibrary</title>
-<g id="a_module~~ftexceptionclass~~UsedByGraph_node3"><a xlink:href="../module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
-<polygon fill="#337ab7" stroke="#337ab7" points="262,-104 174,-104 174,-80 262,-80 262,-104"/>
-<text text-anchor="middle" x="218" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
-</a>
-</g>
-</g>
-<!-- module~ftexceptionclass&#45;&gt;module~ftobjectlibrary -->
-<g id="module~~ftexceptionclass~~UsedByGraph_edge4" class="edge"><title>module~ftexceptionclass&#45;&gt;module~ftobjectlibrary</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M98.3033,-77.7848C118.834,-80.2436 142.839,-83.1185 163.869,-85.637"/>
-<polygon fill="#000000" stroke="#000000" points="163.58,-89.1274 173.926,-86.8414 164.413,-82.177 163.58,-89.1274"/>
-</g>
-<!-- proc~subroutinethatthrowserror -->
-<g id="module~~ftexceptionclass~~UsedByGraph_node4" class="node"><title>proc~subroutinethatthrowserror</title>
-<g id="a_module~~ftexceptionclass~~UsedByGraph_node4"><a xlink:href="../proc/subroutinethatthrowserror.html" xlink:title="subroutineThatThrowsError">
-<polygon fill="#d9534f" stroke="#d9534f" points="478,-84 338,-84 338,-60 478,-60 478,-84"/>
-<text text-anchor="middle" x="408" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">subroutineThatThrowsError</text>
-</a>
-</g>
-</g>
-<!-- module~ftexceptionclass&#45;&gt;proc~subroutinethatthrowserror -->
-<g id="module~~ftexceptionclass~~UsedByGraph_edge5" class="edge"><title>module~ftexceptionclass&#45;&gt;proc~subroutinethatthrowserror</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M98.4159,-71.3253C110.069,-71.1901 122.479,-71.0686 134,-71 208.665,-70.5556 227.334,-70.6445 302,-71 310.32,-71.0396 319.011,-71.0969 327.676,-71.1643"/>
-<polygon fill="#000000" stroke="#000000" points="327.784,-74.6652 337.812,-71.2476 327.841,-67.6654 327.784,-74.6652"/>
-</g>
-<!-- proc~testexception -->
-<g id="module~~ftexceptionclass~~UsedByGraph_node5" class="node"><title>proc~testexception</title>
-<g id="a_module~~ftexceptionclass~~UsedByGraph_node5"><a xlink:href="../proc/testexception.html" xlink:title="testException">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="256,-24 180,-24 180,-0 256,-0 256,-24"/>
-<text text-anchor="middle" x="218" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">testException</text>
-</a>
-</g>
-</g>
-<!-- module~ftexceptionclass&#45;&gt;proc~testexception -->
-<g id="module~~ftexceptionclass~~UsedByGraph_edge6" class="edge"><title>module~ftexceptionclass&#45;&gt;proc~testexception</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M78.1639,-59.9352C94.3706,-53.1605 115.191,-44.7402 134,-38 145.55,-33.8612 158.129,-29.7306 169.92,-26.0198"/>
-<polygon fill="#000000" stroke="#000000" points="171.09,-29.3215 179.6,-23.0106 169.012,-22.637 171.09,-29.3215"/>
-</g>
-<!-- module~sharedexceptionmanagermodule&#45;&gt;proc~subroutinethatthrowserror -->
-<g id="module~~ftexceptionclass~~UsedByGraph_edge1" class="edge"><title>module~sharedexceptionmanagermodule&#45;&gt;proc~subroutinethatthrowserror</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.643,-121.994C281.09,-119.269 291.95,-116.22 302,-113 324.742,-105.714 349.662,-96.0579 369.515,-87.9468"/>
-<polygon fill="#000000" stroke="#000000" points="370.914,-91.1561 378.823,-84.1063 368.244,-84.6853 370.914,-91.1561"/>
-</g>
-<!-- proc~ftexceptionclasstests -->
-<g id="module~~ftexceptionclass~~UsedByGraph_node6" class="node"><title>proc~ftexceptionclasstests</title>
-<g id="a_module~~ftexceptionclass~~UsedByGraph_node6"><a xlink:href="../proc/ftexceptionclasstests.html" xlink:title="FTExceptionClassTests">
-<polygon fill="#d9534f" stroke="#d9534f" points="469.5,-146 346.5,-146 346.5,-122 469.5,-122 469.5,-146"/>
-<text text-anchor="middle" x="408" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClassTests</text>
-</a>
-</g>
-</g>
-<!-- module~sharedexceptionmanagermodule&#45;&gt;proc~ftexceptionclasstests -->
-<g id="module~~ftexceptionclass~~UsedByGraph_edge2" class="edge"><title>module~sharedexceptionmanagermodule&#45;&gt;proc~ftexceptionclasstests</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M302.007,-134C313.454,-134 325.122,-134 336.318,-134"/>
-<polygon fill="#000000" stroke="#000000" points="336.448,-137.5 346.448,-134 336.448,-130.5 336.448,-137.5"/>
-</g>
-</g>
-</svg>
-</div>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="486pt" height="32pt"
- viewBox="0.00 0.00 486.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 482,-28 482,4 -4,4"/>
-<!-- Module -->
-<g id="node1" class="node"><title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
-</g>
-<!-- Submodule -->
-<g id="node2" class="node"><title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-24 72,-24 72,-0 138,-0 138,-24"/>
-<text text-anchor="middle" x="105" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
-</g>
-<!-- Subroutine -->
-<g id="node3" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="219.25,-24 156.75,-24 156.75,-0 219.25,-0 219.25,-24"/>
-<text text-anchor="middle" x="188" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
-</g>
-<!-- Function -->
-<g id="node4" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-24 238,-24 238,-0 292,-0 292,-24"/>
-<text text-anchor="middle" x="265" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Program -->
-<g id="node5" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-24 310,-24 310,-0 364,-0 364,-24"/>
-<text text-anchor="middle" x="337" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node6" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="478,-24 382,-24 382,-0 478,-0 478,-24"/>
-<text text-anchor="middle" x="430" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
+    <li><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></li>
+    
+    <li><a href='../module/ftvaluedictionaryclass.html'>FTValueDictionaryClass</a></li>
+    
+    <li><a href='../module/ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
 
     
-    <p>Solid arrows point from a parent (sub)module to the submodule which is
-    descended from it. Dashed arrows point from a module being used to the
-    module or program unit using it.
-    </p>
     
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+
     <br>
-    
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -930,6 +422,7 @@ of the FTException Class.</p>
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-1">Interfaces</a></h3></div>
   <div id="inters-1" class="panel-collapse collapse">
@@ -937,11 +430,10 @@ of the FTException Class.</p>
       
       <a class="list-group-item" href="../module/ftexceptionclass.html#interface-cast%7E2">cast</a>
       
-      <a class="list-group-item" href="../module/ftexceptionclass.html#interface-release%7E3">release</a>
-      
     </div>
   </div>
 </div>
+
 
 
 
@@ -955,6 +447,7 @@ of the FTException Class.</p>
     </div>
   </div>
 </div>
+
 
 
 <div class="panel panel-primary">
@@ -977,6 +470,7 @@ of the FTException Class.</p>
 </div>
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
   <div class="list-group">
@@ -990,9 +484,9 @@ of the FTException Class.</p>
       
       <a class="list-group-item" href="../module/ftexceptionclass.html#proc-initassertionfailureexception">initAssertionFailureException</a>
       
-      <a class="list-group-item" href="../module/ftexceptionclass.html#proc-destructexception">destructException</a>
-      
       <a class="list-group-item" href="../module/ftexceptionclass.html#proc-releaseftexception">releaseFTException</a>
+      
+      <a class="list-group-item" href="../module/ftexceptionclass.html#proc-destructexception">destructException</a>
       
       <a class="list-group-item" href="../module/ftexceptionclass.html#proc-setinfodictionary">setInfoDictionary</a>
       
@@ -1005,6 +499,7 @@ of the FTException Class.</p>
     </div>
   </div>
 </div>
+
 
 
 
@@ -1141,9 +636,9 @@ of the FTException Class.</p>
     
     
     <section>
-	 <h2>Interfaces</h2>
-	 
-	   
+   <h2>Interfaces</h2>
+   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="interface-cast%7E2"></span><h3>public interface <a href='../interface/cast%7E2.html'>cast</a>
     
@@ -1160,7 +655,7 @@ of the FTException Class.</p>
 public subroutine <a href='../proc/casttoexception.html'>castToException</a>(obj, cast)
     
     
-	 
+   
 </h3>
     
 
@@ -1229,79 +724,8 @@ public subroutine <a href='../proc/casttoexception.html'>castToException</a>(obj
 </div>
 
     
-	   
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="interface-release%7E3"></span><h3>public interface <a href='../interface/release%7E3.html'>release</a>
-    
-  </h3></div>
-  
-  <ul class="list-group">
-  
-  
-  
-    <li class="list-group-item">
-    
-    
-    <h3>
-public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</a>(self)
-    
-    
-	 
-</h3>
-    
-
-
-
-
-
-
-
-<p>Public, generic name: release(self)</p>
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftexception.html'>FTException</a>),</td>
-  <td></td>
-  <td></td>
-  
-  <td>POINTER</td><td>::</td>
-  <td><strong>self</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-    </li>
-  
-  
-  </ul>
-</div>
-
-    
     </section>
-	<br>
+  <br>
     
 
     
@@ -1309,8 +733,8 @@ public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</
     
     <section>
      <h2>Derived Types</h2>
-	 
-	   
+   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="type-ftexception"></span><h3>type, public, EXTENDS(FTObject) :: <a href='../type/ftexception.html'>FTException</a>
     
@@ -1319,6 +743,15 @@ public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</
     
      
      
+     
+     <h4>Finalizations Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>final :: <strong>destructException</strong></h3></td><td></td></tr>
+      
+       </tbody>
+       </table>  
           
      
      <h4>Type-Bound Procedures</h4>
@@ -1337,9 +770,6 @@ public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</
        <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-initassertionfailureexception'>initAssertionFailureException</a></strong>  </td>
        <td></td></tr>
       
-       <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-destruct%7E4'>destruct</a></strong>  => destructException </td>
-       <td></td></tr>
-      
        <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-setinfodictionary'>setInfoDictionary</a></strong>  </td>
        <td></td></tr>
       
@@ -1352,10 +782,10 @@ public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</
        <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-severity'>severity</a></strong>  </td>
        <td></td></tr>
       
-       <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-printdescription%7E3'>printDescription</a></strong>  => printFTExceptionDescription </td>
+       <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-printdescription'>printDescription</a></strong>  => printFTExceptionDescription </td>
        <td></td></tr>
       
-       <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-classname%7E3'>className</a></strong>  => exceptionClassName </td>
+       <tr><td>procedure, public :: <strong><a href='../type/ftexception.html#boundprocedure-classname'>className</a></strong>  => exceptionClassName </td>
        <td></td></tr>
       
        </tbody>
@@ -1366,7 +796,7 @@ public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</
 
      
     </section>
-	<br>
+  <br>
     
     
      
@@ -1379,7 +809,7 @@ public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</
 public function <a href='../proc/infodictionary.html'>infoDictionary</a>(self)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1449,7 +879,7 @@ unchanged.</p>
 public function <a href='../proc/exceptionname.html'>exceptionName</a>(self)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1518,7 +948,7 @@ for the exception.</p>
 public function <a href='../proc/severity.html'>severity</a>(self)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1586,7 +1016,7 @@ public function <a href='../proc/severity.html'>severity</a>(self)
 public function <a href='../proc/exceptionfromobject.html'>exceptionFromObject</a>(obj) result(cast)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1646,7 +1076,7 @@ public function <a href='../proc/exceptionfromobject.html'>exceptionFromObject</
 public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>(self) result(s)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1658,7 +1088,7 @@ public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>
 
 
 
-<p>Class name returns a string with the name of the type of the object</p>
+<p>Class name returns a string with the name of the type of the object</p><a href="../proc/exceptionclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1722,7 +1152,7 @@ public function <a href='../proc/exceptionclassname.html'>exceptionClassName</a>
 public subroutine <a href='../proc/initwarningexception.html'>initWarningException</a>(self, msg)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1799,7 +1229,7 @@ example of how to write one's own exception.</p>
 public subroutine <a href='../proc/initfatalexception.html'>initFatalException</a>(self, msg)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1876,7 +1306,7 @@ example of how to write one's own exception.</p>
 public subroutine <a href='../proc/initftexception.html'>initFTException</a>(self, severity, exceptionName, infoDictionary)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1980,7 +1410,7 @@ public subroutine <a href='../proc/initftexception.html'>initFTException</a>(sel
 public subroutine <a href='../proc/initassertionfailureexception.html'>initAssertionFailureException</a>(self, msg, expectedValueObject, ObservedValueObject, level)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1993,7 +1423,7 @@ public subroutine <a href='../proc/initassertionfailureexception.html'>initAsser
 
 
 <p>A convenience initializer for an assertion error 
-that includes the keys:</p>
+that includes the keys:</p><a href="../proc/initassertionfailureexception.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -2096,11 +1526,62 @@ that includes the keys:</p>
     
     
   <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-releaseftexception"></span><h3>
+public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftexception.html'>FTException</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-destructexception"></span><h3>
 public subroutine <a href='../proc/destructexception.html'>destructException</a>(self)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2134,7 +1615,7 @@ the release() procedure instead</p>
   
 <tr>
   
-  <td><span class="anchor" ></span>class(<a href='../type/ftexception.html'>FTException</a>)</td>
+  <td><span class="anchor" ></span>type(<a href='../type/ftexception.html'>FTException</a>)</td>
   <td></td>
   <td></td>
   
@@ -2156,70 +1637,11 @@ the release() procedure instead</p>
     
     
   <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-releaseftexception"></span><h3>
-public subroutine <a href='../proc/releaseftexception.html'>releaseFTException</a>(self)
-    
-    
-	 
-</h3></div>
-  <div class="panel-body">
-       
-    
-
-
-
-
-
-
-
-<p>Public, generic name: release(self)</p>
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftexception.html'>FTException</a>),</td>
-  <td></td>
-  <td></td>
-  
-  <td>POINTER</td><td>::</td>
-  <td><strong>self</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-  </div>
-  </div>
-
-    
-    
-  <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-setinfodictionary"></span><h3>
 public subroutine <a href='../proc/setinfodictionary.html'>setInfoDictionary</a>(self, dict)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2293,7 +1715,7 @@ public subroutine <a href='../proc/setinfodictionary.html'>setInfoDictionary</a>
 public subroutine <a href='../proc/releasememberdictionary.html'>releaseMemberDictionary</a>(self)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2344,7 +1766,7 @@ public subroutine <a href='../proc/releasememberdictionary.html'>releaseMemberDi
 public subroutine <a href='../proc/printftexceptiondescription.html'>printFTExceptionDescription</a>(self, iUnit)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2419,7 +1841,7 @@ held in the infoDicitonary.</p>
 public subroutine <a href='../proc/casttoexception.html'>castToException</a>(obj, cast)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2495,80 +1917,14 @@ public subroutine <a href='../proc/casttoexception.html'>castToException</a>(obj
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-1">All Modules</a></h3></div>
-  <div id="allmods-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/calculatorclass.html">CalculatorClass</a>
-      
-      <a class="list-group-item" href="../module/comparisonsmodule.html">ComparisonsModule</a>
-      
-      <a class="list-group-item" href="../module/exceptionwrapper.html">ExceptionWrapper</a>
-      
-      <a class="list-group-item" href="../module/ftassertions.html">FTAssertions</a>
-      
-      <a class="list-group-item" href="../module/ftdataclass.html">FTDataClass</a>
-      
-      <a class="list-group-item" href="../module/ftdictionaryclass.html">FTDictionaryClass</a>
-      
-      <a class="list-group-item" href="../module/ftexceptionclass.html">FTExceptionClass</a>
-      
-      <a class="list-group-item" href="../module/ftkeyobjectpairclass.html">FTKeyObjectPairClass</a>
-      
-      <a class="list-group-item" href="../module/ftlinkedlistclass.html">FTLinkedListClass</a>
-      
-      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html">FTLinkedListIteratorClass</a>
-      
-      <a class="list-group-item" href="../module/ftlinkedlistrecordclass.html">FTLinkedListRecordClass</a>
-      
-      <a class="list-group-item" href="../module/ftmultiindextableclass.html">FTMultiIndexTableClass</a>
-      
-      <a class="list-group-item" href="../module/ftmultiindextabledata.html">FTMultiIndexTableData</a>
-      
-      <a class="list-group-item" href="../module/ftmutableobjectarrayclass.html">FTMutableObjectArrayClass</a>
-      
-      <a class="list-group-item" href="../module/ftobjectclass.html">FTObjectClass</a>
-      
-      <a class="list-group-item" href="../module/ftobjectlibrary.html">FTObjectLibrary</a>
-      
-      <a class="list-group-item" href="../module/ftolconstants.html">FTOLConstants</a>
-      
-      <a class="list-group-item" href="../module/ftsparsematrixclass.html">FTSparseMatrixClass</a>
-      
-      <a class="list-group-item" href="../module/ftsparsematrixdata.html">FTSparseMatrixData</a>
-      
-      <a class="list-group-item" href="../module/ftstackclass.html">FTStackClass</a>
-      
-      <a class="list-group-item" href="../module/ftvalueclass.html">FTValueClass</a>
-      
-      <a class="list-group-item" href="../module/ftvaluedictionaryclass.html">FTValueDictionaryClass</a>
-      
-      <a class="list-group-item" href="../module/linkedlistdemonstrationmodule.html">linkedListDemonstrationModule</a>
-      
-      <a class="list-group-item" href="../module/sharedexceptionmanagermodule.html">SharedExceptionManagerModule</a>
-      
-      <a class="list-group-item" href="../module/stackunittestsmodule.html">StackUnitTestsModule</a>
-      
-      <a class="list-group-item" href="../module/testsuitemanagerclass.html">TestSuiteManagerClass</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
   
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -2599,12 +1955,17 @@ public subroutine <a href='../proc/casttoexception.html'>castToException</a>(obj
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

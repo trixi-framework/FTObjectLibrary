@@ -33,7 +33,7 @@
 !           --------
 !          
             PROCEDURE :: initWithObjectAndKey
-            PROCEDURE :: destruct         => destructFTKeyObjectPair
+            FINAL     :: destructFTKeyObjectPair
             PROCEDURE :: description      => FTKeyObjectPairDescription
             PROCEDURE :: printDescription => printFTKeyObjectPairDescription
             
@@ -41,10 +41,6 @@
             PROCEDURE :: object
 
          END TYPE FTKeyObjectPair
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTKeyObjectPair
-      END INTERFACE  
 !
 !        ========       
          CONTAINS  
@@ -60,53 +56,39 @@
             CHARACTER(LEN=*)            :: key
             CLASS(FTObject) , POINTER   :: v
             
-            CALL self % FTObject % init
+            CALL self % FTObject % init()
             
             self % keyString   = key
             self % valueObject => v
             
-            CALL self % valueObject % retain
+            IF(ASSOCIATED(v))   CALL self % valueObject % retain()
             
          END SUBROUTINE initWithObjectAndKey
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE destructFTKeyObjectPair(self)
-            IMPLICIT NONE
-            CLASS(FTKeyObjectPair) :: self
-            
-            self % keyString = ""
-            CALL releaseFTObject(self % valueObject)
-!
-!           ----------------------------------------------------
-!           Call superclass destructor after processing subclass
-!           specific items
-!           ----------------------------------------------------
-!
-            CALL self % FTObject % destruct()
-             
-         END SUBROUTINE destructFTKeyObjectPair
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
+      SUBROUTINE releaseFTKeyObjectPair(self)  
+         IMPLICIT NONE
+         TYPE(FTKeyObjectPair)  , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTKeyObjectPair
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTKeyObjectPair(self)  
-         IMPLICIT NONE
-         CLASS(FTKeyObjectPair) , POINTER :: self
-         CLASS(FTObject)        , POINTER :: obj
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTKeyObjectPair
+         SUBROUTINE destructFTKeyObjectPair(self)
+            IMPLICIT NONE
+            TYPE(FTKeyObjectPair) :: self
+            
+            self % keyString = ""
+            CALL releaseFTObject(self % valueObject)
+             
+         END SUBROUTINE destructFTKeyObjectPair
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -128,8 +110,12 @@
             
             WRITE(iUnit,*) "{"
 
-            WRITE(iUnit,'(6x,A,A3)',ADVANCE = "NO") TRIM(self % keyString)  , " = " 
-            CALL self % valueObject % printDescription(iUnit)
+            IF(ASSOCIATED(self % valueObject))     THEN 
+               WRITE(iUnit,'(6x,A,A3)',ADVANCE = "NO") TRIM(self % keyString)  , " = " 
+               CALL self % valueObject % printDescription(iUnit)
+            ELSE
+               WRITE(iUnit,'(6x,A,A)') TRIM(self % keyString)  , " = NULL" 
+            END IF 
             
             WRITE(iUnit,*) "}"
              
@@ -192,7 +178,6 @@
 !>###Destruction
 !>   
 !>         CALL release(dict) ! Pointer
-!>         call dict % destruct() ! Stack variable
 !>###Accessing an object
 !>
 !>           TYPE(FTObject) :: obj
@@ -228,11 +213,11 @@
 !
             PROCEDURE :: initWithSize
             PROCEDURE :: init
-            PROCEDURE :: setCaseSensitive
-            PROCEDURE :: caseSensitive
+!            PROCEDURE :: setCaseSensitive
+!            PROCEDURE :: caseSensitive
             PROCEDURE :: allKeys
             PROCEDURE :: allObjects
-            PROCEDURE :: destruct => destructFTDictionary
+            FINAL     :: destructFTDictionary
             PROCEDURE :: addObjectForKey
             PROCEDURE :: description => FTDictionaryDescription
             PROCEDURE :: printDescription => printFTDictionaryDescription
@@ -245,10 +230,6 @@
          INTERFACE cast
             MODULE PROCEDURE castToDictionary
          END INTERFACE cast
-         
-         INTERFACE release
-            MODULE PROCEDURE releaseFTDictionary 
-         END INTERFACE  
 !
 !        ========         
          CONTAINS  
@@ -294,68 +275,48 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE destructFTDictionary(self)  
-            IMPLICIT NONE  
-            CLASS(FTDictionary) :: self
-           
-            INTEGER :: i
-            
-            DO i = 1, SIZE(self % entries)
-               CALL self % entries(i) % destruct()
-            END DO
-
-            DEALLOCATE(self % entries)
-            self % entries => NULL()
-!
-!           ----------------------------------------------------
-!           Call superclass destructor after processing subclass
-!           specific items
-!           ----------------------------------------------------
-!
-           CALL self % FTObject % destruct()
-            
-         END SUBROUTINE destructFTDictionary    
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
       SUBROUTINE releaseFTDictionary(self)  
          IMPLICIT NONE
-         TYPE(FTDictionary) , POINTER :: self
-         CLASS(FTObject)    , POINTER :: obj
+         TYPE(FTDictionary)  , POINTER :: self
+         CLASS(FTObject)     , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
          
          obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTDictionary
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE setCaseSensitive(self,bool)  
+         SUBROUTINE destructFTDictionary(self)  
             IMPLICIT NONE  
-            CLASS(FTDictionary) :: self
-            LOGICAL             :: bool
-            self % isCaseSensitive = bool
-         END SUBROUTINE setCaseSensitive  
+            TYPE(FTDictionary) :: self
+            TYPE(FTObject)    :: obj
+           
+            INTEGER :: i
+
+            DEALLOCATE(self % entries)
+            self % entries => NULL()
+            
+         END SUBROUTINE destructFTDictionary    
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         LOGICAL FUNCTION caseSensitive(self)  
-            IMPLICIT NONE  
-            CLASS(FTDictionary) :: self
-            caseSensitive = self % isCaseSensitive
-         END FUNCTION caseSensitive      
+!         SUBROUTINE setCaseSensitive(self,bool)  
+!            IMPLICIT NONE  
+!            CLASS(FTDictionary) :: self
+!            LOGICAL             :: bool
+!            self % isCaseSensitive = bool
+!         END SUBROUTINE setCaseSensitive  
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!         LOGICAL FUNCTION caseSensitive(self)  
+!            IMPLICIT NONE  
+!            CLASS(FTDictionary) :: self
+!            caseSensitive = self % isCaseSensitive
+!         END FUNCTION caseSensitive      
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -415,7 +376,6 @@
             IMPLICIT NONE  
             CLASS(FTDictionary)      :: self
             CHARACTER(LEN=*)         :: key
-            CLASS(FTObject), POINTER :: obj
             LOGICAL                  :: r
            
             IF ( ASSOCIATED( self % objectForKey(key)) )     THEN
@@ -572,10 +532,9 @@
             CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
             CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
 !
-!           --------------------------------------------
-!           Allocate a pointer to the object array to be
-!           returned with refCount = 1
-!           --------------------------------------------
+!           ---------------------------------------
+!           Allocate a pointer array to be returned 
+!           ---------------------------------------
 !
             ALLOCATE(keys(self % COUNT()))
             
@@ -661,6 +620,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTDictionary"
+         IF( self % refCount() >= 0)     CONTINUE ! No op To silence unused vsariable warnings
  
       END FUNCTION dictionaryClassName
 

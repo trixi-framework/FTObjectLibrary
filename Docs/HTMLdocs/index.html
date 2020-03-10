@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="./favicon.png">
@@ -17,6 +17,9 @@
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/local.css" rel="stylesheet">
     
+    <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="./tipuesearch/tipuesearch_content.js"></script>
-    <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="./tipuesearch/tipuesearch_set.js"></script>
-    <script src="./tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="./lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="./lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="./lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="./lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="./program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="./program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -155,7 +151,6 @@
 <p>Container classes let you store any subclass of the base class FTObject in them. This makes it easy to store, for instance, a linked list of linked lists, or an array of dictionaries.</p>
 <p>Included in the library are the following standard container classes:</p>
 <ul>
-<li>FTLinkedList implements a doubly and optionally circular linked list container class.</li>
 <li>FTStack is a subclass of FTLinkedList that adds the usual push, pop, and peek routines.</li>
 <li>FTSparseMatrix associates a double index (i,j) to an FTObject. Basically this is a two dimensional sparse matrix of pointers to FTObjects.</li>
 <li>FTMultiIndexTable associates an integer array keys(:) to an FTObject. Basically this is an m--dimensional sparse matrix of pointers to FTObjects.</li>
@@ -163,6 +158,7 @@
 <li>FTValueDictionary is a subclass of FTDictionary that has additional methods to store and retrieve
 values.</li>
 <li>FTMutableObjectArray is a mutable one-dimensional array class that can store any FTObject</li>
+<li>FTStringSet is different as it encapsulates set operations like set membership, union, intersection, difference, but only for strings. Although other objects cannot be added to string sets, StringSets can be added to other containers</li>
 </ul>
 <p>The library also contains classes for testing (FTAssertions, TestSuiteManagerClass) and for reporting errors through the FTException class.</p>
         </div>
@@ -209,19 +205,7 @@ The Florida State University</p>
                   
                 
                   
-                    <li><a href='./sourcefile/calculator.f90.html'>Calculator.f90</a></li>
-                  
-                
-                  
                     <li><a href='./sourcefile/comparisons.f90.html'>Comparisons.f90</a></li>
-                  
-                
-                  
-                    <li><a href='./sourcefile/dictionarytests.f90.html'>DictionaryTests.f90</a></li>
-                  
-                
-                  
-                    <li><a href='./sourcefile/exceptiontests.f90.html'>ExceptionTests.f90</a></li>
                   
                 
                   
@@ -245,31 +229,19 @@ The Florida State University</p>
                   
                 
                   
+                    <li><a href='./sourcefile/ftobjectarrayclass.f90.html'>FTObjectArrayClass.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/ftobjectlibrary.f90.html'>FTObjectLibrary.f90</a></li>
+                  
+                
+                  
                     <li><a href="./lists/files.html"><em>All source files&hellip;</em></a></li>
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
                   
                 
                   
@@ -294,15 +266,7 @@ The Florida State University</p>
               <ul>
                 
                   
-                    <li><a href='./module/calculatorclass.html'>CalculatorClass</a></li>
-                  
-                
-                  
                     <li><a href='./module/comparisonsmodule.html'>ComparisonsModule</a></li>
-                  
-                
-                  
-                    <li><a href='./module/exceptionwrapper.html'>ExceptionWrapper</a></li>
                   
                 
                   
@@ -334,13 +298,15 @@ The Florida State University</p>
                   
                 
                   
+                    <li><a href='./module/ftlinkedlistrecordclass.html'>FTLinkedListRecordClass</a></li>
+                  
+                
+                  
+                    <li><a href='./module/ftmultiindextableclass.html'>FTMultiIndexTableClass</a></li>
+                  
+                
+                  
                     <li><a href="./lists/modules.html"><em>All modules&hellip;</em></a></li>
-                  
-                
-                  
-                
-                  
-                
                   
                 
                   
@@ -865,26 +831,6 @@ The Florida State University</p>
                 
                   
                 
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
               </ul>
           </div>
           
@@ -899,10 +845,6 @@ The Florida State University</p>
                 
                   
                     <li><a href='./type/assertinfoarray2d.html'>assertInfoArray2D</a></li>
-                  
-                
-                  
-                    <li><a href='./type/calculator.html'>Calculator</a></li>
                   
                 
                   
@@ -931,6 +873,10 @@ The Florida State University</p>
                 
                   
                     <li><a href='./type/ftlinkedlistiterator.html'>FTLinkedListIterator</a></li>
+                  
+                
+                  
+                    <li><a href='./type/ftlinkedlistrecord.html'>FTLinkedListRecord</a></li>
                   
                 
                   
@@ -967,7 +913,8 @@ The Florida State University</p>
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -998,12 +945,17 @@ The Florida State University</p>
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="./tipuesearch/tipuesearch_content.js"></script>
+    <script src="./tipuesearch/tipuesearch_set.js"></script>
+    <script src="./tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

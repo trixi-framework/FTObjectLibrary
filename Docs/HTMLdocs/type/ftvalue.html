@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -129,19 +125,23 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title="<p> 8.9% of total for derived types.</p>Including implementation: 389 statements, 16.3% of total for derived types.">24 statements</a>
+    data-placement="bottom" data-html="true"
+    title="<p> 8.7% of total for derived types.</p>Including implementation: 390 statements, 16.2% of total for derived types.">24 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/FTValueClass.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/ftvalueclass.f90.html'>FTValueClass.f90</a></li>
-  
+    
      <li><a href='../module/ftvalueclass.html'>FTValueClass</a></li>
+    
   
      <li class="active">FTValue</li>
   </ol>
@@ -161,6 +161,8 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
 
 
 
@@ -176,6 +178,19 @@
 
 
 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-0">Finalization Procedures</a></h3></div>
+  <div id="fins-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/ftvalue.html#finalproc-destructvalue">destructValue</a>
+      
+    </div>
+  </div>
+</div>
 
 
 
@@ -188,8 +203,6 @@
       
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-initwithvalue%7E2">initWithValue</a>
       
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-destruct%7E14">destruct</a>
-      
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-realvalue">realValue</a>
       
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-doubleprecisionvalue">doublePrecisionValue</a>
@@ -202,75 +215,21 @@
       
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-integervalue">integerValue</a>
       
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-description%7E5">description</a>
+      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-description">description</a>
       
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-printdescription%7E10">printDescription</a>
+      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-printdescription%7E3">printDescription</a>
       
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-classname%7E10">className</a>
-      
-    </div>
-  </div>
-</div>
-
-
-
-
-  <hr>
-  
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
-  <div id="alltypes-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/assertinfoarray1d.html">assertInfoArray1D</a>
-      
-      <a class="list-group-item" href="../type/assertinfoarray2d.html">assertInfoArray2D</a>
-      
-      <a class="list-group-item" href="../type/calculator.html">Calculator</a>
-      
-      <a class="list-group-item" href="../type/ftassertionsmanager.html">FTAssertionsManager</a>
-      
-      <a class="list-group-item" href="../type/ftdata.html">FTData</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html">FTDictionary</a>
-      
-      <a class="list-group-item" href="../type/ftexception.html">FTException</a>
-      
-      <a class="list-group-item" href="../type/ftkeyobjectpair.html">FTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlist.html">FTLinkedList</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistiterator.html">FTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistrecord.html">FTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../type/ftmultiindextable.html">FTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../type/ftmutableobjectarray.html">FTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../type/ftobject.html">FTObject</a>
-      
-      <a class="list-group-item" href="../type/ftsparsematrix.html">FTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html">FTStack</a>
-      
-      <a class="list-group-item" href="../type/ftvalue.html">FTValue</a>
-      
-      <a class="list-group-item" href="../type/ftvaluedictionary.html">FTValueDictionary</a>
-      
-      <a class="list-group-item" href="../type/matrixdata.html">MatrixData</a>
-      
-      <a class="list-group-item" href="../type/multiindexmatrixdata.html">MultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../type/testsuitemanager.html">TestSuiteManager</a>
+      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-classname%7E3">className</a>
       
     </div>
   </div>
 </div>
 
 
-</div>  
+
+
+
+</div>
 
     </div>
     
@@ -280,9 +239,12 @@
     
     
     
+    <br>
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
 
 
 
@@ -302,6 +264,19 @@
 
 
 <div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-1">Finalization Procedures</a></h3></div>
+  <div id="fins-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/ftvalue.html#finalproc-destructvalue">destructValue</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
@@ -309,8 +284,6 @@
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-initwithvalue">initWithValue</a>
       
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-initwithvalue%7E2">initWithValue</a>
-      
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-destruct%7E14">destruct</a>
       
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-realvalue">realValue</a>
       
@@ -324,15 +297,16 @@
       
       <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-integervalue">integerValue</a>
       
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-description%7E5">description</a>
+      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-description">description</a>
       
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-printdescription%7E10">printDescription</a>
+      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-printdescription%7E3">printDescription</a>
       
-      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-classname%7E10">className</a>
+      <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-classname%7E3">className</a>
       
     </div>
   </div>
 </div>
+
 
 
 
@@ -345,12 +319,88 @@
     
     
     
+    <section>
+    <h2>Finalization Procedures</h2>
+     
+         
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="finalproc-destructvalue"></span><h3>final :: <strong>destructValue</strong> 
+    </h3></div>
+  <div class="panel-body">
+    
+
+
+    
+  </div>
+  <ul class="list-group">
+     <li class="list-group-item">
+       
+    
+    <h3>
+public subroutine <a href='../proc/destructvalue.html'>destructValue</a>(self)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p>Public, generic name: destruct()</p><a href="../proc/destructvalue.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftvalue.html'>FTValue</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+     </li>
+  </ul>
+</div>
+
+         
+    </section>
+    <br>
+    
     
      
     <section>
     <h2>Type-Bound Procedures</h2>
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initwithvalue"></span><h3>generic, public :: <strong>initWithValue</strong>  => initWithReal, initWithDoublePrecision, initWithString, initWithLogical, initWithInteger 
     
@@ -367,7 +417,7 @@
 public subroutine <a href='../proc/initwithreal.html'>initWithReal</a>(self, v)
     
     
-	 
+   
 </h3>
     
 
@@ -377,7 +427,7 @@ public subroutine <a href='../proc/initwithreal.html'>initWithReal</a>(self, v)
 
 
 
-<p>Public, generic name: initwithValue()</p>
+<p>Public, generic name: initwithValue()</p><a href="../proc/initwithreal.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -442,7 +492,7 @@ public subroutine <a href='../proc/initwithreal.html'>initWithReal</a>(self, v)
 public subroutine <a href='../proc/initwithdoubleprecision.html'>initWithDoublePrecision</a>(self, v)
     
     
-	 
+   
 </h3>
     
 
@@ -452,7 +502,7 @@ public subroutine <a href='../proc/initwithdoubleprecision.html'>initWithDoubleP
 
 
 
-<p>Public, generic name: initwithValue()</p>
+<p>Public, generic name: initwithValue()</p><a href="../proc/initwithdoubleprecision.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -517,7 +567,7 @@ public subroutine <a href='../proc/initwithdoubleprecision.html'>initWithDoubleP
 public subroutine <a href='../proc/initwithstring.html'>initWithString</a>(self, v)
     
     
-	 
+   
 </h3>
     
 
@@ -527,7 +577,7 @@ public subroutine <a href='../proc/initwithstring.html'>initWithString</a>(self,
 
 
 
-<p>Public, generic name: initwithValue()</p>
+<p>Public, generic name: initwithValue()</p><a href="../proc/initwithstring.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -592,7 +642,7 @@ public subroutine <a href='../proc/initwithstring.html'>initWithString</a>(self,
 public subroutine <a href='../proc/initwithlogical.html'>initWithLogical</a>(self, v)
     
     
-	 
+   
 </h3>
     
 
@@ -602,7 +652,7 @@ public subroutine <a href='../proc/initwithlogical.html'>initWithLogical</a>(sel
 
 
 
-<p>Public, generic name: initwithValue()</p>
+<p>Public, generic name: initwithValue()</p><a href="../proc/initwithlogical.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -667,7 +717,7 @@ public subroutine <a href='../proc/initwithlogical.html'>initWithLogical</a>(sel
 public subroutine <a href='../proc/initwithinteger.html'>initWithInteger</a>(self, v)
     
     
-	 
+   
 </h3>
     
 
@@ -677,7 +727,7 @@ public subroutine <a href='../proc/initwithinteger.html'>initWithInteger</a>(sel
 
 
 
-<p>Public, generic name: initwithValue()</p>
+<p>Public, generic name: initwithValue()</p><a href="../proc/initwithinteger.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -737,7 +787,7 @@ public subroutine <a href='../proc/initwithinteger.html'>initWithInteger</a>(sel
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initwithvalue%7E2"></span><h3>generic, public :: <strong>initWithValue</strong>  => initWithQuad 
     
@@ -754,7 +804,7 @@ public subroutine <a href='../proc/initwithinteger.html'>initWithInteger</a>(sel
 public subroutine <a href='../proc/initwithquad.html'>initWithQuad</a>(self, v)
     
     
-	 
+   
 </h3>
     
 
@@ -764,7 +814,7 @@ public subroutine <a href='../proc/initwithquad.html'>initWithQuad</a>(self, v)
 
 
 
-<p>Public, generic name: initwithValue()</p>
+<p>Public, generic name: initwithValue()</p><a href="../proc/initwithquad.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -824,77 +874,7 @@ public subroutine <a href='../proc/initwithquad.html'>initWithQuad</a>(self, v)
 </div>
 
     
-	   
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destruct%7E14"></span><h3>procedure, public :: <strong>destruct</strong>  => <a href='../proc/destructvalue.html'>destructValue</a> 
-    
-  </h3></div>
-  
-  <ul class="list-group">
-    
-      <li class="list-group-item">
-      
-         
-    
-    <h3>
-public subroutine <a href='../proc/destructvalue.html'>destructValue</a>(self)
-    
-    
-	 
-</h3>
-    
-
-
-
-
-
-
-
-<p>Public, generic name: destruct()</p>
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftvalue.html'>FTValue</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>self</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-      
-      </li>
-    
-  </ul>
-</div>
-
-    
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-realvalue"></span><h3>procedure, public :: <strong>realValue</strong>  
     
@@ -904,13 +884,14 @@ public subroutine <a href='../proc/destructvalue.html'>destructValue</a>(self)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/realvalue.html'>realValue</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -967,6 +948,7 @@ public function <a href='../proc/realvalue.html'>realValue</a>(self)
   
     
 
+        
       
       </li>
     
@@ -974,7 +956,7 @@ public function <a href='../proc/realvalue.html'>realValue</a>(self)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-doubleprecisionvalue"></span><h3>procedure, public :: <strong>doublePrecisionValue</strong>  
     
@@ -984,13 +966,14 @@ public function <a href='../proc/realvalue.html'>realValue</a>(self)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/doubleprecisionvalue.html'>doublePrecisionValue</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -1047,6 +1030,7 @@ public function <a href='../proc/doubleprecisionvalue.html'>doublePrecisionValue
   
     
 
+        
       
       </li>
     
@@ -1054,7 +1038,7 @@ public function <a href='../proc/doubleprecisionvalue.html'>doublePrecisionValue
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-quadvalue"></span><h3>procedure, public :: <strong>quadValue</strong>  
     
@@ -1064,13 +1048,14 @@ public function <a href='../proc/doubleprecisionvalue.html'>doublePrecisionValue
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/quadvalue.html'>quadValue</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -1127,6 +1112,7 @@ public function <a href='../proc/quadvalue.html'>quadValue</a>(self)
   
     
 
+        
       
       </li>
     
@@ -1134,7 +1120,7 @@ public function <a href='../proc/quadvalue.html'>quadValue</a>(self)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-stringvalue"></span><h3>procedure, public :: <strong>stringValue</strong>  
     
@@ -1144,13 +1130,14 @@ public function <a href='../proc/quadvalue.html'>quadValue</a>(self)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/stringvalue.html'>stringValue</a>(self, requestedLength) result(s)
     
     
-	 
+   
 </h3>
     
 
@@ -1223,6 +1210,7 @@ public function <a href='../proc/stringvalue.html'>stringValue</a>(self, request
   
     
 
+        
       
       </li>
     
@@ -1230,7 +1218,7 @@ public function <a href='../proc/stringvalue.html'>stringValue</a>(self, request
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-logicalvalue"></span><h3>procedure, public :: <strong>logicalValue</strong>  
     
@@ -1240,13 +1228,14 @@ public function <a href='../proc/stringvalue.html'>stringValue</a>(self, request
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/logicalvalue.html'>logicalValue</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -1303,6 +1292,7 @@ public function <a href='../proc/logicalvalue.html'>logicalValue</a>(self)
   
     
 
+        
       
       </li>
     
@@ -1310,7 +1300,7 @@ public function <a href='../proc/logicalvalue.html'>logicalValue</a>(self)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-integervalue"></span><h3>procedure, public :: <strong>integerValue</strong>  
     
@@ -1320,13 +1310,14 @@ public function <a href='../proc/logicalvalue.html'>logicalValue</a>(self)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/integervalue.html'>integerValue</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -1383,6 +1374,7 @@ public function <a href='../proc/integervalue.html'>integerValue</a>(self)
   
     
 
+        
       
       </li>
     
@@ -1390,9 +1382,9 @@ public function <a href='../proc/integervalue.html'>integerValue</a>(self)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-description%7E5"></span><h3>procedure, public :: <strong>description</strong>  => <a href='../proc/ftvaluedescription.html'>FTValueDescription</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-description"></span><h3>procedure, public :: <strong>description</strong>  => <a href='../proc/ftvaluedescription.html'>FTValueDescription</a> 
     
   </h3></div>
   
@@ -1400,13 +1392,14 @@ public function <a href='../proc/integervalue.html'>integerValue</a>(self)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/ftvaluedescription.html'>FTValueDescription</a>(self)
     
     
-	 
+   
 </h3>
     
 
@@ -1463,6 +1456,7 @@ public function <a href='../proc/ftvaluedescription.html'>FTValueDescription</a>
   
     
 
+        
       
       </li>
     
@@ -1470,9 +1464,9 @@ public function <a href='../proc/ftvaluedescription.html'>FTValueDescription</a>
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription%7E10"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printvaluedescription.html'>printValueDescription</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription%7E3"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printvaluedescription.html'>printValueDescription</a> 
     
   </h3></div>
   
@@ -1480,13 +1474,14 @@ public function <a href='../proc/ftvaluedescription.html'>FTValueDescription</a>
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/printvaluedescription.html'>printValueDescription</a>(self, iUnit)
     
     
-	 
+   
 </h3>
     
 
@@ -1549,6 +1544,7 @@ public subroutine <a href='../proc/printvaluedescription.html'>printValueDescrip
     
     
 
+        
       
       </li>
     
@@ -1556,9 +1552,9 @@ public subroutine <a href='../proc/printvaluedescription.html'>printValueDescrip
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname%7E10"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/valueclassname.html'>valueClassName</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname%7E3"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/valueclassname.html'>valueClassName</a> 
     
   </h3></div>
   
@@ -1566,13 +1562,14 @@ public subroutine <a href='../proc/printvaluedescription.html'>printValueDescrip
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/valueclassname.html'>valueClassName</a>(self) result(s)
     
     
-	 
+   
 </h3>
     
 
@@ -1582,7 +1579,7 @@ public function <a href='../proc/valueclassname.html'>valueClassName</a>(self) r
 
 
 
-<p>Class name returns a string with the name of the type of the object</p>
+<p>Class name returns a string with the name of the type of the object</p><a href="../proc/valueclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1628,6 +1625,7 @@ public function <a href='../proc/valueclassname.html'>valueClassName</a>(self) r
   
     
 
+        
       
       </li>
     
@@ -1643,70 +1641,14 @@ public function <a href='../proc/valueclassname.html'>valueClassName</a>(self) r
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
-  <div id="alltypes-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/assertinfoarray1d.html">assertInfoArray1D</a>
-      
-      <a class="list-group-item" href="../type/assertinfoarray2d.html">assertInfoArray2D</a>
-      
-      <a class="list-group-item" href="../type/calculator.html">Calculator</a>
-      
-      <a class="list-group-item" href="../type/ftassertionsmanager.html">FTAssertionsManager</a>
-      
-      <a class="list-group-item" href="../type/ftdata.html">FTData</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html">FTDictionary</a>
-      
-      <a class="list-group-item" href="../type/ftexception.html">FTException</a>
-      
-      <a class="list-group-item" href="../type/ftkeyobjectpair.html">FTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlist.html">FTLinkedList</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistiterator.html">FTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistrecord.html">FTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../type/ftmultiindextable.html">FTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../type/ftmutableobjectarray.html">FTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../type/ftobject.html">FTObject</a>
-      
-      <a class="list-group-item" href="../type/ftsparsematrix.html">FTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html">FTStack</a>
-      
-      <a class="list-group-item" href="../type/ftvalue.html">FTValue</a>
-      
-      <a class="list-group-item" href="../type/ftvaluedictionary.html">FTValueDictionary</a>
-      
-      <a class="list-group-item" href="../type/matrixdata.html">MatrixData</a>
-      
-      <a class="list-group-item" href="../type/multiindexmatrixdata.html">MultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../type/testsuitemanager.html">TestSuiteManager</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -1737,12 +1679,17 @@ public function <a href='../proc/valueclassname.html'>valueClassName</a>(self) r
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

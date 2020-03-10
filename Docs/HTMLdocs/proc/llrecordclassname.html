@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -129,19 +125,23 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title=" 0.2% of total for procedures.">6 statements</a>
+    data-placement="bottom" data-html="true"
+    title=" 0.2% of total for procedures.">6 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/FTLinkedListClass.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></li>
-  
+    
      <li><a href='../module/ftlinkedlistrecordclass.html'>FTLinkedListRecordClass</a></li>
+    
   
      <li class="active">llRecordClassName</li>
   </ol>
@@ -161,6 +161,8 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
 
 
 
@@ -182,508 +184,10 @@
 
 
 
-  <hr>
-  
+<em>None</em>
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-0">All Procedures</a></h3></div>
-  <div id="allprocs-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/add.html">add</a>
-      
-      <a class="list-group-item" href="../proc/adddoubleprecisionvalueforkey.html">addDoublePrecisionValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addintegervalueforkey.html">addIntegerValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addlogicalvalueforkey.html">addLogicalValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addobjectforkey.html">addObjectForKey</a>
-      
-      <a class="list-group-item" href="../proc/addobjectsfromlist.html">addObjectsFromList</a>
-      
-      <a class="list-group-item" href="../proc/addobjecttoarray.html">addObjectToArray</a>
-      
-      <a class="list-group-item" href="../proc/addobjecttomultiindextableforkeys.html">addObjectToMultiIndexTableForKeys</a>
-      
-      <a class="list-group-item" href="../proc/addobjecttosparsematrixforkeys.html">addObjectToSparseMatrixForKeys</a>
-      
-      <a class="list-group-item" href="../proc/addquadvalueforkey.html">addQuadValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addrealvalueforkey.html">addRealValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addstringvalueforkey.html">addStringValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/allkeys.html">AllKeys</a>
-      
-      <a class="list-group-item" href="../proc/alllinkedlistobjects.html">allLinkedListObjects</a>
-      
-      <a class="list-group-item" href="../proc/allobjects.html">AllObjects</a>
-      
-      <a class="list-group-item" href="../proc/allocatedsize.html">allocatedSize</a>
-      
-      <a class="list-group-item" href="../proc/arrayclassname.html">arrayClassName</a>
-      
-      <a class="list-group-item" href="../proc/assertwithintolerancetwoquad.html">assertWithinToleranceTwoQuad</a>
-      
-      <a class="list-group-item" href="../proc/b3hs_hash_key_jenkins.html">b3hs_hash_key_jenkins</a>
-      
-      <a class="list-group-item" href="../proc/basictests.html">basicTests</a>
-      
-      <a class="list-group-item" href="../proc/casesensitive.html">caseSensitive</a>
-      
-      <a class="list-group-item" href="../interface/cast.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E2.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E3.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E4.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E5.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E6.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E7.html">cast</a>
-      
-      <a class="list-group-item" href="../proc/castdictionarytovaluedictionary.html">castDictionaryToValueDictionary</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttolinkedlist.html">castObjectToLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttomatrixdata.html">castObjectToMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttomultiindexmatrixdata.html">castObjectToMultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttovaluedictionary.html">castObjectToValueDictionary</a>
-      
-      <a class="list-group-item" href="../proc/casttodictionary.html">castToDictionary</a>
-      
-      <a class="list-group-item" href="../proc/casttoexception.html">castToException</a>
-      
-      <a class="list-group-item" href="../proc/casttomutableobjectarray.html">castToMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../proc/casttovalue.html">castToValue</a>
-      
-      <a class="list-group-item" href="../interface/catch.html">catch</a>
-      
-      <a class="list-group-item" href="../proc/chunksize.html">chunkSize</a>
-      
-      <a class="list-group-item" href="../proc/classname.html">className</a>
-      
-      <a class="list-group-item" href="../proc/containskey.html">containsKey</a>
-      
-      <a class="list-group-item" href="../proc/count.html">COUNT</a>
-      
-      <a class="list-group-item" href="../proc/dataclassname.html">dataClassName</a>
-      
-      <a class="list-group-item" href="../proc/dataisoftype.html">dataIsOfType</a>
-      
-      <a class="list-group-item" href="../proc/datatype.html">dataType</a>
-      
-      <a class="list-group-item" href="../proc/demonstratelinkedlist.html">demonstrateLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/destructexception.html">destructException</a>
-      
-      <a class="list-group-item" href="../proc/destructftdictionary.html">destructFTDictionary</a>
-      
-      <a class="list-group-item" href="../proc/destructftexceptions.html">destructFTExceptions</a>
-      
-      <a class="list-group-item" href="../proc/destructftkeyobjectpair.html">destructFTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../proc/destructftlinkedlist.html">destructFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/destructftlinkedlistrecord.html">destructFTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../proc/destructftobject.html">destructFTObject</a>
-      
-      <a class="list-group-item" href="../proc/destructiterator.html">destructIterator</a>
-      
-      <a class="list-group-item" href="../proc/destructmatrixdata.html">destructMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/destructmultiindexmatrixdata.html">destructMultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/destructmultiindextable.html">destructMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../proc/destructobjectarray.html">destructObjectArray</a>
-      
-      <a class="list-group-item" href="../proc/destructsparsematrix.html">destructSparseMatrix</a>
-      
-      <a class="list-group-item" href="../proc/destructvalue.html">destructValue</a>
-      
-      <a class="list-group-item" href="../proc/detachsharedassertionsmanager.html">detachSharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/dictionaryclassname.html">dictionaryClassName</a>
-      
-      <a class="list-group-item" href="../proc/dictionaryfromobject.html">dictionaryFromObject</a>
-      
-      <a class="list-group-item" href="../proc/doubleprecisionvalue.html">doublePrecisionValue</a>
-      
-      <a class="list-group-item" href="../proc/doubleprecisionvalueforkey.html">doublePrecisionValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/errorcount.html">errorCount</a>
-      
-      <a class="list-group-item" href="../proc/errorobject.html">errorObject</a>
-      
-      <a class="list-group-item" href="../proc/exceptionclassname.html">exceptionClassName</a>
-      
-      <a class="list-group-item" href="../proc/exceptionfromobject.html">exceptionFromObject</a>
-      
-      <a class="list-group-item" href="../proc/exceptionname.html">exceptionName</a>
-      
-      <a class="list-group-item" href="../proc/finalizesharedassertionsmanager.html">finalizeSharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/ftassert.html">FTAssert</a>
-      
-      <a class="list-group-item" href="../interface/ftassertequal.html">FTAssertEqual</a>
-      
-      <a class="list-group-item" href="../proc/ftdictionaryclasstests.html">FTDictionaryClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftdictionarydescription.html">FTDictionaryDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftexceptionclasstests.html">FTExceptionClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftkeyobjectpairdescription.html">FTKeyObjectPairDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistclasstests.html">FTLinkedListClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistcurrentrecord.html">FTLinkedListCurrentRecord</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistdescription.html">FTLinkedListDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistisatend.html">FTLinkedListIsAtEnd</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistobject.html">FTLinkedListObject</a>
-      
-      <a class="list-group-item" href="../proc/ftobjectdescription.html">FTObjectDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftvalueclasstests.html">FTValueClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftvaluedescription.html">FTValueDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftvaluedictionaryclasstests.html">FTValueDictionaryClassTests</a>
-      
-      <a class="list-group-item" href="../proc/hash1.html">Hash1</a>
-      
-      <a class="list-group-item" href="../proc/hash2.html">Hash2</a>
-      
-      <a class="list-group-item" href="../proc/hashtabletests.html">HashTableTests</a>
-      
-      <a class="list-group-item" href="../proc/infodictionary.html">infoDictionary</a>
-      
-      <a class="list-group-item" href="../proc/init.html">init</a>
-      
-      <a class="list-group-item" href="../proc/initassertionfailureexception.html">initAssertionFailureException</a>
-      
-      <a class="list-group-item" href="../proc/initempty.html">initEmpty</a>
-      
-      <a class="list-group-item" href="../proc/initfatalexception.html">initFatalException</a>
-      
-      <a class="list-group-item" href="../proc/initftexception.html">initFTException</a>
-      
-      <a class="list-group-item" href="../proc/initftlinkedlist.html">initFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/initftobject.html">initFTObject</a>
-      
-      <a class="list-group-item" href="../proc/initftstack.html">initFTStack</a>
-      
-      <a class="list-group-item" href="../proc/initializeftexceptions.html">initializeFTExceptions</a>
-      
-      <a class="list-group-item" href="../proc/initializesharedassertionsmanager.html">initializeSharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/initmultiindextablewithsize.html">initMultiIndexTableWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initobjectarraywithsize.html">initObjectArrayWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initsparsematrixwithsize.html">initSparseMatrixWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initwarningexception.html">initWarningException</a>
-      
-      <a class="list-group-item" href="../proc/initwithdataoftype.html">initWithDataOfType</a>
-      
-      <a class="list-group-item" href="../proc/initwithdoubleprecision.html">initWithDoublePrecision</a>
-      
-      <a class="list-group-item" href="../proc/initwithftlinkedlist.html">initWithFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/initwithinteger.html">initWithInteger</a>
-      
-      <a class="list-group-item" href="../proc/initwithlogical.html">initWithLogical</a>
-      
-      <a class="list-group-item" href="../proc/initwithobject.html">initWithObject</a>
-      
-      <a class="list-group-item" href="../proc/initwithobjectandkey.html">initWithObjectAndKey</a>
-      
-      <a class="list-group-item" href="../proc/initwithobjectandkey%7E2.html">initWithObjectAndKey</a>
-      
-      <a class="list-group-item" href="../proc/initwithobjectandkeys.html">initWithObjectAndKeys</a>
-      
-      <a class="list-group-item" href="../proc/initwithquad.html">initWithQuad</a>
-      
-      <a class="list-group-item" href="../proc/initwithreal.html">initWithReal</a>
-      
-      <a class="list-group-item" href="../proc/initwithsize.html">initWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initwithstring.html">initWithString</a>
-      
-      <a class="list-group-item" href="../proc/insertobjectafterobject.html">insertObjectAfterObject</a>
-      
-      <a class="list-group-item" href="../proc/insertobjectafterrecord.html">insertObjectAfterRecord</a>
-      
-      <a class="list-group-item" href="../proc/integervalue.html">integerValue</a>
-      
-      <a class="list-group-item" href="../proc/integervalueforkey.html">integerValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/iscircular.html">isCircular</a>
-      
-      <a class="list-group-item" href="../interface/isequal.html">isEqual</a>
-      
-      <a class="list-group-item" href="../proc/isunreferenced.html">isUnreferenced</a>
-      
-      <a class="list-group-item" href="../proc/key.html">key</a>
-      
-      <a class="list-group-item" href="../proc/keysmatch.html">keysMatch</a>
-      
-      <a class="list-group-item" href="../proc/linkedlistclassname.html">linkedListClassName</a>
-      
-      <a class="list-group-item" href="../proc/linkedlistfromobject.html">linkedListFromObject</a>
-      
-      <a class="list-group-item" href="../proc/linkedlistiteratorclassname.html">linkedListIteratorClassName</a>
-      
-      <a class="list-group-item" href="../proc/llrecordclassname.html">llRecordClassName</a>
-      
-      <a class="list-group-item" href="../proc/logicalvalue.html">logicalValue</a>
-      
-      <a class="list-group-item" href="../proc/logicalvalueforkey.html">logicalValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/makecircular.html">makeCircular</a>
-      
-      <a class="list-group-item" href="../proc/matrixdatacast.html">matrixDataCast</a>
-      
-      <a class="list-group-item" href="../proc/movetonext.html">moveToNext</a>
-      
-      <a class="list-group-item" href="../proc/multiindexmatrixdatacast.html">MultiIndexMatrixDataCast</a>
-      
-      <a class="list-group-item" href="../proc/multiindextablecontainskeys.html">MultiIndexTableContainsKeys</a>
-      
-      <a class="list-group-item" href="../proc/multiindextablefromobject.html">MultiIndexTableFromObject</a>
-      
-      <a class="list-group-item" href="../proc/multiindextablesize.html">MultiIndexTableSize</a>
-      
-      <a class="list-group-item" href="../proc/multiindextabletests.html">MultiIndexTableTests</a>
-      
-      <a class="list-group-item" href="../proc/mutablearrayclasstests.html">MutableArrayClassTests</a>
-      
-      <a class="list-group-item" href="../proc/numberofassertionfailures.html">numberOfAssertionFailures</a>
-      
-      <a class="list-group-item" href="../proc/numberofassertions.html">numberOfAssertions</a>
-      
-      <a class="list-group-item" href="../proc/numberofitems.html">numberOfItems</a>
-      
-      <a class="list-group-item" href="../proc/numberofrecords.html">numberOfRecords</a>
-      
-      <a class="list-group-item" href="../proc/object.html">object</a>
-      
-      <a class="list-group-item" href="../proc/objectarrayfromobject.html">objectArrayFromObject</a>
-      
-      <a class="list-group-item" href="../proc/objectatindex.html">objectAtIndex</a>
-      
-      <a class="list-group-item" href="../proc/objectforkey.html">objectForKey</a>
-      
-      <a class="list-group-item" href="../proc/objectforkeyinlist.html">objectForKeyInList</a>
-      
-      <a class="list-group-item" href="../proc/objectinmultiindextableforkeys.html">objectInMultiIndexTableForKeys</a>
-      
-      <a class="list-group-item" href="../proc/objectinsparsematrixforkeys.html">objectInSparseMatrixForKeys</a>
-      
-      <a class="list-group-item" href="../proc/peek.html">peek</a>
-      
-      <a class="list-group-item" href="../proc/peeklastexception.html">peekLastException</a>
-      
-      <a class="list-group-item" href="../proc/pop.html">pop</a>
-      
-      <a class="list-group-item" href="../proc/poplastexception.html">popLastException</a>
-      
-      <a class="list-group-item" href="../proc/printallexceptions.html">printAllExceptions</a>
-      
-      <a class="list-group-item" href="../proc/printarray.html">printArray</a>
-      
-      <a class="list-group-item" href="../proc/printftdictionarydescription.html">printFTDictionaryDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftexceptiondescription.html">printFTExceptionDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftkeyobjectpairdescription.html">printFTKeyObjectPairDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftlinkedlistdescription.html">printFTLinkedListDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftlinkedrecorddescription.html">printFTLinkedRecordDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftobjectdescription.html">printFTObjectDescription</a>
-      
-      <a class="list-group-item" href="../proc/printmultiindextabledescription.html">printMultiIndexTableDescription</a>
-      
-      <a class="list-group-item" href="../proc/printstackdescription.html">printStackDescription</a>
-      
-      <a class="list-group-item" href="../proc/printvaluedescription.html">printValueDescription</a>
-      
-      <a class="list-group-item" href="../proc/push.html">push</a>
-      
-      <a class="list-group-item" href="../proc/quadvalue.html">quadValue</a>
-      
-      <a class="list-group-item" href="../proc/quadvalueforkey.html">quadValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/realvalue.html">realValue</a>
-      
-      <a class="list-group-item" href="../proc/realvalueforkey.html">realValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/refcount.html">refCount</a>
-      
-      <a class="list-group-item" href="../interface/release%7E7.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E8.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E9.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E3.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E10.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E11.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E4.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E5.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E12.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E6.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E13.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E2.html">release</a>
-      
-      <a class="list-group-item" href="../proc/releaseftdata.html">releaseFTData</a>
-      
-      <a class="list-group-item" href="../proc/releaseftdictionary.html">releaseFTDictionary</a>
-      
-      <a class="list-group-item" href="../proc/releaseftexception.html">releaseFTException</a>
-      
-      <a class="list-group-item" href="../proc/releaseftkeyobjectpair.html">releaseFTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../proc/releaseftlinkedlist.html">releaseFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/releaseftlinkedlistiterator.html">releaseFTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../proc/releaseftlinkedlistrecord.html">releaseFTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../proc/releaseftmultiindextable.html">releaseFTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../proc/releaseftmutableobjectarray.html">releaseFTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../proc/releaseftobject.html">releaseFTObject</a>
-      
-      <a class="list-group-item" href="../proc/releaseftsparsematrix.html">releaseFTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../proc/releaseftstack.html">releaseFTStack</a>
-      
-      <a class="list-group-item" href="../proc/releaseftvalue.html">releaseFTValue</a>
-      
-      <a class="list-group-item" href="../proc/releaseftvaluedictionary.html">releaseFTValueDictionary</a>
-      
-      <a class="list-group-item" href="../proc/releasememberdictionary.html">releaseMemberDictionary</a>
-      
-      <a class="list-group-item" href="../proc/releasememberlist.html">releaseMemberList</a>
-      
-      <a class="list-group-item" href="../proc/releasesmmemberlist.html">releaseSMMemberList</a>
-      
-      <a class="list-group-item" href="../proc/removealllinkedlistobjects.html">removeAllLinkedListObjects</a>
-      
-      <a class="list-group-item" href="../proc/removecurrentrecord.html">removeCurrentRecord</a>
-      
-      <a class="list-group-item" href="../proc/removelinkedlistrecord.html">removeLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../proc/removeobject.html">removeObject</a>
-      
-      <a class="list-group-item" href="../proc/removeobject1.html">removeObject1</a>
-      
-      <a class="list-group-item" href="../proc/removeobjectatindex.html">removeObjectAtIndex</a>
-      
-      <a class="list-group-item" href="../proc/replaceobjectatindexwithobject.html">replaceObjectAtIndexWithObject</a>
-      
-      <a class="list-group-item" href="../proc/retainftobject.html">retainFTObject</a>
-      
-      <a class="list-group-item" href="../proc/returnlinkedlist.html">returnLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/reverselinkedlist.html">reverseLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/setcasesensitive.html">setCaseSensitive</a>
-      
-      <a class="list-group-item" href="../proc/setchunksize.html">setChunkSize</a>
-      
-      <a class="list-group-item" href="../proc/setcurrenterror.html">setCurrentError</a>
-      
-      <a class="list-group-item" href="../proc/setinfodictionary.html">setInfoDictionary</a>
-      
-      <a class="list-group-item" href="../proc/setlinkedlist.html">setLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/settostart.html">setToStart</a>
-      
-      <a class="list-group-item" href="../proc/severity.html">severity</a>
-      
-      <a class="list-group-item" href="../proc/sharedassertionsmanager.html">sharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/sortkeysascending.html">sortKeysAscending</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixcontainskeys.html">SparseMatrixContainsKeys</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixfromobject.html">SparseMatrixFromObject</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixsize.html">SparseMatrixSize</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixtests.html">SparseMatrixTests</a>
-      
-      <a class="list-group-item" href="../proc/stackclassname.html">stackClassName</a>
-      
-      <a class="list-group-item" href="../proc/stackclasstests.html">StackClassTests</a>
-      
-      <a class="list-group-item" href="../proc/stackfromobject.html">stackFromObject</a>
-      
-      <a class="list-group-item" href="../proc/storeddata.html">storedData</a>
-      
-      <a class="list-group-item" href="../proc/stringvalue.html">stringValue</a>
-      
-      <a class="list-group-item" href="../proc/stringvalueforkey.html">stringValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/subroutinethatthrowserror.html">subroutineThatThrowsError</a>
-      
-      <a class="list-group-item" href="../proc/testappendinglists.html">testAppendingLists</a>
-      
-      <a class="list-group-item" href="../proc/testdeletingobjects.html">TestDeletingObjects</a>
-      
-      <a class="list-group-item" href="../proc/testexception.html">testException</a>
-      
-      <a class="list-group-item" href="../proc/teststackinit.html">testStackInit</a>
-      
-      <a class="list-group-item" href="../proc/teststackpush.html">testStackPush</a>
-      
-      <a class="list-group-item" href="../proc/throw.html">throw</a>
-      
-      <a class="list-group-item" href="../proc/valueclassname.html">valueClassName</a>
-      
-      <a class="list-group-item" href="../proc/valuedictionaryclassname.html">valueDictionaryClassName</a>
-      
-      <a class="list-group-item" href="../proc/valuedictionaryfromdictionary.html">valueDictionaryFromDictionary</a>
-      
-      <a class="list-group-item" href="../proc/valuedictionaryfromobject.html">valueDictionaryFromObject</a>
-      
-      <a class="list-group-item" href="../proc/valuefromobject.html">valueFromObject</a>
-      
-    </div>
-  </div>
+
 </div>
-
-
-</div>  
 
     </div>
     
@@ -692,7 +196,7 @@
 public function llRecordClassName(self) result(s)
     
     
-	 
+   
 </h2>
     
   
@@ -701,8 +205,8 @@ public function llRecordClassName(self) result(s)
     
     <p>Class name returns a string with the name of the type of the object</p>
 <p>### Usage:</p>
-<div class="codehilite"><pre><span></span>    PRINT *,  obj % className()
-    if( obj % className = &quot;FTLinkedListRecord&quot;)
+<div class="codehilite"><pre><span></span><span class="err">    PRINT *,  obj % className()</span>
+<span class="err">    if( obj % className = &quot;FTLinkedListRecord&quot;)</span>
 </pre></div>
     
 
@@ -724,7 +228,7 @@ public function llRecordClassName(self) result(s)
   
 <tr>
   
-  <td><span class="anchor" id="variable-self%7E42"></span>class(<a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a>)</td>
+  <td><span class="anchor" id="variable-self%7E63"></span>class(<a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a>)</td>
   <td></td>
   <td></td>
   
@@ -743,8 +247,9 @@ public function llRecordClassName(self) result(s)
     
     
     
-	 <h3>Return Value <small><span class="anchor" id="variable-s%7E4"></span>character(len=CLASS_NAME_CHARACTER_LENGTH)
+   <h3>Return Value <small><span class="anchor" id="variable-s%7E7"></span>character(len=CLASS_NAME_CHARACTER_LENGTH)
   </small></h3>
+    
     
     
     
@@ -753,6 +258,8 @@ public function llRecordClassName(self) result(s)
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
 
 
 
@@ -772,6 +279,9 @@ public function llRecordClassName(self) result(s)
 
 
 
+
+
+<em>None</em>
 
 
     </section>
@@ -799,516 +309,14 @@ public function llRecordClassName(self) result(s)
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-1">All Procedures</a></h3></div>
-  <div id="allprocs-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/add.html">add</a>
-      
-      <a class="list-group-item" href="../proc/adddoubleprecisionvalueforkey.html">addDoublePrecisionValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addintegervalueforkey.html">addIntegerValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addlogicalvalueforkey.html">addLogicalValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addobjectforkey.html">addObjectForKey</a>
-      
-      <a class="list-group-item" href="../proc/addobjectsfromlist.html">addObjectsFromList</a>
-      
-      <a class="list-group-item" href="../proc/addobjecttoarray.html">addObjectToArray</a>
-      
-      <a class="list-group-item" href="../proc/addobjecttomultiindextableforkeys.html">addObjectToMultiIndexTableForKeys</a>
-      
-      <a class="list-group-item" href="../proc/addobjecttosparsematrixforkeys.html">addObjectToSparseMatrixForKeys</a>
-      
-      <a class="list-group-item" href="../proc/addquadvalueforkey.html">addQuadValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addrealvalueforkey.html">addRealValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/addstringvalueforkey.html">addStringValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/allkeys.html">AllKeys</a>
-      
-      <a class="list-group-item" href="../proc/alllinkedlistobjects.html">allLinkedListObjects</a>
-      
-      <a class="list-group-item" href="../proc/allobjects.html">AllObjects</a>
-      
-      <a class="list-group-item" href="../proc/allocatedsize.html">allocatedSize</a>
-      
-      <a class="list-group-item" href="../proc/arrayclassname.html">arrayClassName</a>
-      
-      <a class="list-group-item" href="../proc/assertwithintolerancetwoquad.html">assertWithinToleranceTwoQuad</a>
-      
-      <a class="list-group-item" href="../proc/b3hs_hash_key_jenkins.html">b3hs_hash_key_jenkins</a>
-      
-      <a class="list-group-item" href="../proc/basictests.html">basicTests</a>
-      
-      <a class="list-group-item" href="../proc/casesensitive.html">caseSensitive</a>
-      
-      <a class="list-group-item" href="../interface/cast.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E2.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E3.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E4.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E5.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E6.html">cast</a>
-      
-      <a class="list-group-item" href="../interface/cast%7E7.html">cast</a>
-      
-      <a class="list-group-item" href="../proc/castdictionarytovaluedictionary.html">castDictionaryToValueDictionary</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttolinkedlist.html">castObjectToLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttomatrixdata.html">castObjectToMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttomultiindexmatrixdata.html">castObjectToMultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/castobjecttovaluedictionary.html">castObjectToValueDictionary</a>
-      
-      <a class="list-group-item" href="../proc/casttodictionary.html">castToDictionary</a>
-      
-      <a class="list-group-item" href="../proc/casttoexception.html">castToException</a>
-      
-      <a class="list-group-item" href="../proc/casttomutableobjectarray.html">castToMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../proc/casttovalue.html">castToValue</a>
-      
-      <a class="list-group-item" href="../interface/catch.html">catch</a>
-      
-      <a class="list-group-item" href="../proc/chunksize.html">chunkSize</a>
-      
-      <a class="list-group-item" href="../proc/classname.html">className</a>
-      
-      <a class="list-group-item" href="../proc/containskey.html">containsKey</a>
-      
-      <a class="list-group-item" href="../proc/count.html">COUNT</a>
-      
-      <a class="list-group-item" href="../proc/dataclassname.html">dataClassName</a>
-      
-      <a class="list-group-item" href="../proc/dataisoftype.html">dataIsOfType</a>
-      
-      <a class="list-group-item" href="../proc/datatype.html">dataType</a>
-      
-      <a class="list-group-item" href="../proc/demonstratelinkedlist.html">demonstrateLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/destructexception.html">destructException</a>
-      
-      <a class="list-group-item" href="../proc/destructftdictionary.html">destructFTDictionary</a>
-      
-      <a class="list-group-item" href="../proc/destructftexceptions.html">destructFTExceptions</a>
-      
-      <a class="list-group-item" href="../proc/destructftkeyobjectpair.html">destructFTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../proc/destructftlinkedlist.html">destructFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/destructftlinkedlistrecord.html">destructFTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../proc/destructftobject.html">destructFTObject</a>
-      
-      <a class="list-group-item" href="../proc/destructiterator.html">destructIterator</a>
-      
-      <a class="list-group-item" href="../proc/destructmatrixdata.html">destructMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/destructmultiindexmatrixdata.html">destructMultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../proc/destructmultiindextable.html">destructMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../proc/destructobjectarray.html">destructObjectArray</a>
-      
-      <a class="list-group-item" href="../proc/destructsparsematrix.html">destructSparseMatrix</a>
-      
-      <a class="list-group-item" href="../proc/destructvalue.html">destructValue</a>
-      
-      <a class="list-group-item" href="../proc/detachsharedassertionsmanager.html">detachSharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/dictionaryclassname.html">dictionaryClassName</a>
-      
-      <a class="list-group-item" href="../proc/dictionaryfromobject.html">dictionaryFromObject</a>
-      
-      <a class="list-group-item" href="../proc/doubleprecisionvalue.html">doublePrecisionValue</a>
-      
-      <a class="list-group-item" href="../proc/doubleprecisionvalueforkey.html">doublePrecisionValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/errorcount.html">errorCount</a>
-      
-      <a class="list-group-item" href="../proc/errorobject.html">errorObject</a>
-      
-      <a class="list-group-item" href="../proc/exceptionclassname.html">exceptionClassName</a>
-      
-      <a class="list-group-item" href="../proc/exceptionfromobject.html">exceptionFromObject</a>
-      
-      <a class="list-group-item" href="../proc/exceptionname.html">exceptionName</a>
-      
-      <a class="list-group-item" href="../proc/finalizesharedassertionsmanager.html">finalizeSharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/ftassert.html">FTAssert</a>
-      
-      <a class="list-group-item" href="../interface/ftassertequal.html">FTAssertEqual</a>
-      
-      <a class="list-group-item" href="../proc/ftdictionaryclasstests.html">FTDictionaryClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftdictionarydescription.html">FTDictionaryDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftexceptionclasstests.html">FTExceptionClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftkeyobjectpairdescription.html">FTKeyObjectPairDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistclasstests.html">FTLinkedListClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistcurrentrecord.html">FTLinkedListCurrentRecord</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistdescription.html">FTLinkedListDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistisatend.html">FTLinkedListIsAtEnd</a>
-      
-      <a class="list-group-item" href="../proc/ftlinkedlistobject.html">FTLinkedListObject</a>
-      
-      <a class="list-group-item" href="../proc/ftobjectdescription.html">FTObjectDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftvalueclasstests.html">FTValueClassTests</a>
-      
-      <a class="list-group-item" href="../proc/ftvaluedescription.html">FTValueDescription</a>
-      
-      <a class="list-group-item" href="../proc/ftvaluedictionaryclasstests.html">FTValueDictionaryClassTests</a>
-      
-      <a class="list-group-item" href="../proc/hash1.html">Hash1</a>
-      
-      <a class="list-group-item" href="../proc/hash2.html">Hash2</a>
-      
-      <a class="list-group-item" href="../proc/hashtabletests.html">HashTableTests</a>
-      
-      <a class="list-group-item" href="../proc/infodictionary.html">infoDictionary</a>
-      
-      <a class="list-group-item" href="../proc/init.html">init</a>
-      
-      <a class="list-group-item" href="../proc/initassertionfailureexception.html">initAssertionFailureException</a>
-      
-      <a class="list-group-item" href="../proc/initempty.html">initEmpty</a>
-      
-      <a class="list-group-item" href="../proc/initfatalexception.html">initFatalException</a>
-      
-      <a class="list-group-item" href="../proc/initftexception.html">initFTException</a>
-      
-      <a class="list-group-item" href="../proc/initftlinkedlist.html">initFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/initftobject.html">initFTObject</a>
-      
-      <a class="list-group-item" href="../proc/initftstack.html">initFTStack</a>
-      
-      <a class="list-group-item" href="../proc/initializeftexceptions.html">initializeFTExceptions</a>
-      
-      <a class="list-group-item" href="../proc/initializesharedassertionsmanager.html">initializeSharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/initmultiindextablewithsize.html">initMultiIndexTableWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initobjectarraywithsize.html">initObjectArrayWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initsparsematrixwithsize.html">initSparseMatrixWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initwarningexception.html">initWarningException</a>
-      
-      <a class="list-group-item" href="../proc/initwithdataoftype.html">initWithDataOfType</a>
-      
-      <a class="list-group-item" href="../proc/initwithdoubleprecision.html">initWithDoublePrecision</a>
-      
-      <a class="list-group-item" href="../proc/initwithftlinkedlist.html">initWithFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/initwithinteger.html">initWithInteger</a>
-      
-      <a class="list-group-item" href="../proc/initwithlogical.html">initWithLogical</a>
-      
-      <a class="list-group-item" href="../proc/initwithobject.html">initWithObject</a>
-      
-      <a class="list-group-item" href="../proc/initwithobjectandkey.html">initWithObjectAndKey</a>
-      
-      <a class="list-group-item" href="../proc/initwithobjectandkey%7E2.html">initWithObjectAndKey</a>
-      
-      <a class="list-group-item" href="../proc/initwithobjectandkeys.html">initWithObjectAndKeys</a>
-      
-      <a class="list-group-item" href="../proc/initwithquad.html">initWithQuad</a>
-      
-      <a class="list-group-item" href="../proc/initwithreal.html">initWithReal</a>
-      
-      <a class="list-group-item" href="../proc/initwithsize.html">initWithSize</a>
-      
-      <a class="list-group-item" href="../proc/initwithstring.html">initWithString</a>
-      
-      <a class="list-group-item" href="../proc/insertobjectafterobject.html">insertObjectAfterObject</a>
-      
-      <a class="list-group-item" href="../proc/insertobjectafterrecord.html">insertObjectAfterRecord</a>
-      
-      <a class="list-group-item" href="../proc/integervalue.html">integerValue</a>
-      
-      <a class="list-group-item" href="../proc/integervalueforkey.html">integerValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/iscircular.html">isCircular</a>
-      
-      <a class="list-group-item" href="../interface/isequal.html">isEqual</a>
-      
-      <a class="list-group-item" href="../proc/isunreferenced.html">isUnreferenced</a>
-      
-      <a class="list-group-item" href="../proc/key.html">key</a>
-      
-      <a class="list-group-item" href="../proc/keysmatch.html">keysMatch</a>
-      
-      <a class="list-group-item" href="../proc/linkedlistclassname.html">linkedListClassName</a>
-      
-      <a class="list-group-item" href="../proc/linkedlistfromobject.html">linkedListFromObject</a>
-      
-      <a class="list-group-item" href="../proc/linkedlistiteratorclassname.html">linkedListIteratorClassName</a>
-      
-      <a class="list-group-item" href="../proc/llrecordclassname.html">llRecordClassName</a>
-      
-      <a class="list-group-item" href="../proc/logicalvalue.html">logicalValue</a>
-      
-      <a class="list-group-item" href="../proc/logicalvalueforkey.html">logicalValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/makecircular.html">makeCircular</a>
-      
-      <a class="list-group-item" href="../proc/matrixdatacast.html">matrixDataCast</a>
-      
-      <a class="list-group-item" href="../proc/movetonext.html">moveToNext</a>
-      
-      <a class="list-group-item" href="../proc/multiindexmatrixdatacast.html">MultiIndexMatrixDataCast</a>
-      
-      <a class="list-group-item" href="../proc/multiindextablecontainskeys.html">MultiIndexTableContainsKeys</a>
-      
-      <a class="list-group-item" href="../proc/multiindextablefromobject.html">MultiIndexTableFromObject</a>
-      
-      <a class="list-group-item" href="../proc/multiindextablesize.html">MultiIndexTableSize</a>
-      
-      <a class="list-group-item" href="../proc/multiindextabletests.html">MultiIndexTableTests</a>
-      
-      <a class="list-group-item" href="../proc/mutablearrayclasstests.html">MutableArrayClassTests</a>
-      
-      <a class="list-group-item" href="../proc/numberofassertionfailures.html">numberOfAssertionFailures</a>
-      
-      <a class="list-group-item" href="../proc/numberofassertions.html">numberOfAssertions</a>
-      
-      <a class="list-group-item" href="../proc/numberofitems.html">numberOfItems</a>
-      
-      <a class="list-group-item" href="../proc/numberofrecords.html">numberOfRecords</a>
-      
-      <a class="list-group-item" href="../proc/object.html">object</a>
-      
-      <a class="list-group-item" href="../proc/objectarrayfromobject.html">objectArrayFromObject</a>
-      
-      <a class="list-group-item" href="../proc/objectatindex.html">objectAtIndex</a>
-      
-      <a class="list-group-item" href="../proc/objectforkey.html">objectForKey</a>
-      
-      <a class="list-group-item" href="../proc/objectforkeyinlist.html">objectForKeyInList</a>
-      
-      <a class="list-group-item" href="../proc/objectinmultiindextableforkeys.html">objectInMultiIndexTableForKeys</a>
-      
-      <a class="list-group-item" href="../proc/objectinsparsematrixforkeys.html">objectInSparseMatrixForKeys</a>
-      
-      <a class="list-group-item" href="../proc/peek.html">peek</a>
-      
-      <a class="list-group-item" href="../proc/peeklastexception.html">peekLastException</a>
-      
-      <a class="list-group-item" href="../proc/pop.html">pop</a>
-      
-      <a class="list-group-item" href="../proc/poplastexception.html">popLastException</a>
-      
-      <a class="list-group-item" href="../proc/printallexceptions.html">printAllExceptions</a>
-      
-      <a class="list-group-item" href="../proc/printarray.html">printArray</a>
-      
-      <a class="list-group-item" href="../proc/printftdictionarydescription.html">printFTDictionaryDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftexceptiondescription.html">printFTExceptionDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftkeyobjectpairdescription.html">printFTKeyObjectPairDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftlinkedlistdescription.html">printFTLinkedListDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftlinkedrecorddescription.html">printFTLinkedRecordDescription</a>
-      
-      <a class="list-group-item" href="../proc/printftobjectdescription.html">printFTObjectDescription</a>
-      
-      <a class="list-group-item" href="../proc/printmultiindextabledescription.html">printMultiIndexTableDescription</a>
-      
-      <a class="list-group-item" href="../proc/printstackdescription.html">printStackDescription</a>
-      
-      <a class="list-group-item" href="../proc/printvaluedescription.html">printValueDescription</a>
-      
-      <a class="list-group-item" href="../proc/push.html">push</a>
-      
-      <a class="list-group-item" href="../proc/quadvalue.html">quadValue</a>
-      
-      <a class="list-group-item" href="../proc/quadvalueforkey.html">quadValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/realvalue.html">realValue</a>
-      
-      <a class="list-group-item" href="../proc/realvalueforkey.html">realValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/refcount.html">refCount</a>
-      
-      <a class="list-group-item" href="../interface/release%7E7.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E8.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E9.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E3.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E10.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E11.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E4.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E5.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E12.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E6.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E13.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release.html">release</a>
-      
-      <a class="list-group-item" href="../interface/release%7E2.html">release</a>
-      
-      <a class="list-group-item" href="../proc/releaseftdata.html">releaseFTData</a>
-      
-      <a class="list-group-item" href="../proc/releaseftdictionary.html">releaseFTDictionary</a>
-      
-      <a class="list-group-item" href="../proc/releaseftexception.html">releaseFTException</a>
-      
-      <a class="list-group-item" href="../proc/releaseftkeyobjectpair.html">releaseFTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../proc/releaseftlinkedlist.html">releaseFTLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/releaseftlinkedlistiterator.html">releaseFTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../proc/releaseftlinkedlistrecord.html">releaseFTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../proc/releaseftmultiindextable.html">releaseFTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../proc/releaseftmutableobjectarray.html">releaseFTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../proc/releaseftobject.html">releaseFTObject</a>
-      
-      <a class="list-group-item" href="../proc/releaseftsparsematrix.html">releaseFTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../proc/releaseftstack.html">releaseFTStack</a>
-      
-      <a class="list-group-item" href="../proc/releaseftvalue.html">releaseFTValue</a>
-      
-      <a class="list-group-item" href="../proc/releaseftvaluedictionary.html">releaseFTValueDictionary</a>
-      
-      <a class="list-group-item" href="../proc/releasememberdictionary.html">releaseMemberDictionary</a>
-      
-      <a class="list-group-item" href="../proc/releasememberlist.html">releaseMemberList</a>
-      
-      <a class="list-group-item" href="../proc/releasesmmemberlist.html">releaseSMMemberList</a>
-      
-      <a class="list-group-item" href="../proc/removealllinkedlistobjects.html">removeAllLinkedListObjects</a>
-      
-      <a class="list-group-item" href="../proc/removecurrentrecord.html">removeCurrentRecord</a>
-      
-      <a class="list-group-item" href="../proc/removelinkedlistrecord.html">removeLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../proc/removeobject.html">removeObject</a>
-      
-      <a class="list-group-item" href="../proc/removeobject1.html">removeObject1</a>
-      
-      <a class="list-group-item" href="../proc/removeobjectatindex.html">removeObjectAtIndex</a>
-      
-      <a class="list-group-item" href="../proc/replaceobjectatindexwithobject.html">replaceObjectAtIndexWithObject</a>
-      
-      <a class="list-group-item" href="../proc/retainftobject.html">retainFTObject</a>
-      
-      <a class="list-group-item" href="../proc/returnlinkedlist.html">returnLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/reverselinkedlist.html">reverseLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/setcasesensitive.html">setCaseSensitive</a>
-      
-      <a class="list-group-item" href="../proc/setchunksize.html">setChunkSize</a>
-      
-      <a class="list-group-item" href="../proc/setcurrenterror.html">setCurrentError</a>
-      
-      <a class="list-group-item" href="../proc/setinfodictionary.html">setInfoDictionary</a>
-      
-      <a class="list-group-item" href="../proc/setlinkedlist.html">setLinkedList</a>
-      
-      <a class="list-group-item" href="../proc/settostart.html">setToStart</a>
-      
-      <a class="list-group-item" href="../proc/severity.html">severity</a>
-      
-      <a class="list-group-item" href="../proc/sharedassertionsmanager.html">sharedAssertionsManager</a>
-      
-      <a class="list-group-item" href="../proc/sortkeysascending.html">sortKeysAscending</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixcontainskeys.html">SparseMatrixContainsKeys</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixfromobject.html">SparseMatrixFromObject</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixsize.html">SparseMatrixSize</a>
-      
-      <a class="list-group-item" href="../proc/sparsematrixtests.html">SparseMatrixTests</a>
-      
-      <a class="list-group-item" href="../proc/stackclassname.html">stackClassName</a>
-      
-      <a class="list-group-item" href="../proc/stackclasstests.html">StackClassTests</a>
-      
-      <a class="list-group-item" href="../proc/stackfromobject.html">stackFromObject</a>
-      
-      <a class="list-group-item" href="../proc/storeddata.html">storedData</a>
-      
-      <a class="list-group-item" href="../proc/stringvalue.html">stringValue</a>
-      
-      <a class="list-group-item" href="../proc/stringvalueforkey.html">stringValueForKey</a>
-      
-      <a class="list-group-item" href="../proc/subroutinethatthrowserror.html">subroutineThatThrowsError</a>
-      
-      <a class="list-group-item" href="../proc/testappendinglists.html">testAppendingLists</a>
-      
-      <a class="list-group-item" href="../proc/testdeletingobjects.html">TestDeletingObjects</a>
-      
-      <a class="list-group-item" href="../proc/testexception.html">testException</a>
-      
-      <a class="list-group-item" href="../proc/teststackinit.html">testStackInit</a>
-      
-      <a class="list-group-item" href="../proc/teststackpush.html">testStackPush</a>
-      
-      <a class="list-group-item" href="../proc/throw.html">throw</a>
-      
-      <a class="list-group-item" href="../proc/valueclassname.html">valueClassName</a>
-      
-      <a class="list-group-item" href="../proc/valuedictionaryclassname.html">valueDictionaryClassName</a>
-      
-      <a class="list-group-item" href="../proc/valuedictionaryfromdictionary.html">valueDictionaryFromDictionary</a>
-      
-      <a class="list-group-item" href="../proc/valuedictionaryfromobject.html">valueDictionaryFromObject</a>
-      
-      <a class="list-group-item" href="../proc/valuefromobject.html">valueFromObject</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -1339,12 +347,17 @@ public function llRecordClassName(self) result(s)
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

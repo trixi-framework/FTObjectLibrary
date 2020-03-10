@@ -74,7 +74,7 @@
 !        --------
 !
          PROCEDURE, PUBLIC :: initWithSize => initObjectArrayWithSize
-         PROCEDURE, PUBLIC :: destruct     => destructObjectArray
+         FINAL             :: destructObjectArray
          PROCEDURE, PUBLIC :: addObject    => addObjectToArray
          PROCEDURE, PUBLIC :: replaceObjectAtIndexWithObject
          PROCEDURE, PUBLIC :: removeObjectAtIndex
@@ -93,10 +93,6 @@
       INTERFACE cast
          MODULE PROCEDURE castToMutableObjectArray
       END INTERFACE cast
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTMutableObjectArray 
-      END INTERFACE  
 !
 !     ======== 
       CONTAINS  
@@ -134,13 +130,27 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTMutableObjectArray(self)  
+         IMPLICIT NONE
+         TYPE(FTMutableObjectArray), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTMutableObjectArray
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
 !>
 !> Destructor for the class. This is called automatically when the
 !> reference count reaches zero. Do not call this yourself.
 !>
-      SUBROUTINE destructObjectArray(self)  
+      RECURSIVE SUBROUTINE destructObjectArray(self)  
          IMPLICIT NONE
-         CLASS( FTMutableObjectArray) :: self
+         TYPE( FTMutableObjectArray) :: self
          CLASS(FTObject), POINTER     :: obj     => NULL()
          INTEGER                      :: i
 
@@ -153,31 +163,7 @@
          self % array => NULL()
          self % count_ = 0  
 
-      END SUBROUTINE
-!
-!------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of an object. If its reference count is zero, then 
-!> it is deallocated.
-!------------------------------------------------
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTMutableObjectArray(self)  
-         IMPLICIT NONE
-         TYPE(FTMutableObjectArray) , POINTER :: self
-         CLASS(FTObject), POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
-      END SUBROUTINE releaseFTMutableObjectArray
+      END SUBROUTINE destructObjectArray
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -499,6 +485,7 @@
          CLASS(FTMutableObjectArray)                :: self
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
+         IF(self % COUNT() .ge. 0) CONTINUE 
          s = "FTMutableObjectArray"
  
       END FUNCTION arrayClassName

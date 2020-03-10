@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -129,19 +125,23 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title="<p> 7.4% of total for derived types.</p>Including implementation: 186 statements,  7.8% of total for derived types.">20 statements</a>
+    data-placement="bottom" data-html="true"
+    title="<p> 6.5% of total for derived types.</p>Including implementation: 170 statements,  7.1% of total for derived types.">18 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/FTDictionaryClass.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></li>
-  
+    
      <li><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></li>
+    
   
      <li class="active">FTDictionary</li>
   </ol>
@@ -161,6 +161,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -195,101 +198,54 @@
 
 
 <div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-0">Finalization Procedures</a></h3></div>
+  <div id="fins-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/ftdictionary.html#finalproc-destructftdictionary">destructFTDictionary</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-initwithsize">initWithSize</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-initwithsize%7E4">initWithSize</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-init%7E2">init</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-setcasesensitive">setCaseSensitive</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-casesensitive">caseSensitive</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-init%7E5">init</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-allkeys">allKeys</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-allobjects">allObjects</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-destruct%7E3">destruct</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-allobjects%7E2">allObjects</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-addobjectforkey">addObjectForKey</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-description%7E2">description</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-description%7E5">description</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-printdescription%7E2">printDescription</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-printdescription%7E11">printDescription</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-objectforkey">objectForKey</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-containskey">containsKey</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-classname%7E2">className</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-classname%7E12">className</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-count">COUNT</a>
-      
-    </div>
-  </div>
-</div>
-
-
-
-
-  <hr>
-  
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
-  <div id="alltypes-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/assertinfoarray1d.html">assertInfoArray1D</a>
-      
-      <a class="list-group-item" href="../type/assertinfoarray2d.html">assertInfoArray2D</a>
-      
-      <a class="list-group-item" href="../type/calculator.html">Calculator</a>
-      
-      <a class="list-group-item" href="../type/ftassertionsmanager.html">FTAssertionsManager</a>
-      
-      <a class="list-group-item" href="../type/ftdata.html">FTData</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html">FTDictionary</a>
-      
-      <a class="list-group-item" href="../type/ftexception.html">FTException</a>
-      
-      <a class="list-group-item" href="../type/ftkeyobjectpair.html">FTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlist.html">FTLinkedList</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistiterator.html">FTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistrecord.html">FTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../type/ftmultiindextable.html">FTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../type/ftmutableobjectarray.html">FTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../type/ftobject.html">FTObject</a>
-      
-      <a class="list-group-item" href="../type/ftsparsematrix.html">FTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html">FTStack</a>
-      
-      <a class="list-group-item" href="../type/ftvalue.html">FTValue</a>
-      
-      <a class="list-group-item" href="../type/ftvaluedictionary.html">FTValueDictionary</a>
-      
-      <a class="list-group-item" href="../type/matrixdata.html">MatrixData</a>
-      
-      <a class="list-group-item" href="../type/multiindexmatrixdata.html">MultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../type/testsuitemanager.html">TestSuiteManager</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-count%7E2">COUNT</a>
       
     </div>
   </div>
 </div>
 
 
-</div>  
+
+
+
+</div>
 
     </div>
     
@@ -297,91 +253,15 @@
       <h2>type, public, EXTENDS(FTObject) :: FTDictionary</h2>
     
     
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: type~~ftdictionary~~InheritsGraph Pages: 1 -->
-<svg id="typeftdictionaryInheritsGraph" width="220pt" height="32pt"
- viewBox="0.00 0.00 220.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="type~~ftdictionary~~InheritsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>type~~ftdictionary~~InheritsGraph</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 216,-28 216,4 -4,4"/>
-<!-- type~ftdictionary -->
-<g id="type~~ftdictionary~~InheritsGraph_node1" class="node"><title>type~ftdictionary</title>
-<polygon fill="none" stroke="black" points="212,-24 140,-24 140,-0 212,-0 212,-24"/>
-<text text-anchor="middle" x="176" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTDictionary</text>
-</g>
-<!-- FTLinkedList -->
-<g id="type~~ftdictionary~~InheritsGraph_node2" class="node"><title>FTLinkedList</title>
-<polygon fill="#5cb85c" stroke="#5cb85c" points="73.5,-24 0.5,-24 0.5,-0 73.5,-0 73.5,-24"/>
-<text text-anchor="middle" x="37" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedList</text>
-</g>
-<!-- FTLinkedList&#45;&gt;type~ftdictionary -->
-<g id="type~~ftdictionary~~InheritsGraph_edge1" class="edge"><title>FTLinkedList&#45;&gt;type~ftdictionary</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M73.6375,-12C90.6832,-12 111.287,-12 129.455,-12"/>
-<polygon fill="#000000" stroke="#000000" points="129.541,-15.5001 139.541,-12 129.541,-8.5001 129.541,-15.5001"/>
-<text text-anchor="middle" x="107" y="-14.4" font-family="Helvetica,sans-Serif" font-size="9.50">entries</text>
-</g>
-</g>
-</svg>
-</div>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="176pt" height="32pt"
- viewBox="0.00 0.00 176.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 172,-28 172,4 -4,4"/>
-<!-- Type -->
-<g id="node1" class="node"><title>Type</title>
-<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node2" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="168,-24 72,-24 72,-0 168,-0 168,-24"/>
-<text text-anchor="middle" x="120" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
-
-    
-    <p>Solid arrows point from one derived type to another which extends
-    (inherits from) it. Dashed arrows point from a derived type to another
-    type containing it as a components, with a label listing the name(s) of
-    said component(s).
-    </p>
-    
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-    <br><br>
     
     
-    
-    
+    <br>
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -416,41 +296,49 @@
 
 
 <div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-1">Finalization Procedures</a></h3></div>
+  <div id="fins-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/ftdictionary.html#finalproc-destructftdictionary">destructFTDictionary</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-initwithsize">initWithSize</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-initwithsize%7E4">initWithSize</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-init%7E2">init</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-setcasesensitive">setCaseSensitive</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-casesensitive">caseSensitive</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-init%7E5">init</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-allkeys">allKeys</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-allobjects">allObjects</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-destruct%7E3">destruct</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-allobjects%7E2">allObjects</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-addobjectforkey">addObjectForKey</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-description%7E2">description</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-description%7E5">description</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-printdescription%7E2">printDescription</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-printdescription%7E11">printDescription</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-objectforkey">objectForKey</a>
       
       <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-containskey">containsKey</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-classname%7E2">className</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-classname%7E12">className</a>
       
-      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-count">COUNT</a>
+      <a class="list-group-item" href="../type/ftdictionary.html#boundprocedure-count%7E2">COUNT</a>
       
     </div>
   </div>
 </div>
+
 
 
 
@@ -523,14 +411,82 @@
     
     
     
+    <section>
+    <h2>Finalization Procedures</h2>
+     
+         
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="finalproc-destructftdictionary"></span><h3>final :: <strong>destructFTDictionary</strong> 
+    </h3></div>
+  <div class="panel-body">
+    
+
+
+    
+  </div>
+  <ul class="list-group">
+     <li class="list-group-item">
+       
+    
+    <h3>
+public subroutine <a href='../proc/destructftdictionary.html'>destructFTDictionary</a>(self)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+     </li>
+  </ul>
+</div>
+
+         
+    </section>
+    <br>
+    
     
      
     <section>
     <h2>Type-Bound Procedures</h2>
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initwithsize"></span><h3>procedure, public :: <strong>initWithSize</strong>  
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initwithsize%7E4"></span><h3>procedure, public :: <strong>initWithSize</strong>  
     
   </h3></div>
   
@@ -538,13 +494,14 @@
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/initwithsize.html'>initWithSize</a>(self, sze)
     
     
-	 
+   
 </h3>
     
     
@@ -598,6 +555,7 @@ public subroutine <a href='../proc/initwithsize.html'>initWithSize</a>(self, sze
     
     
 
+        
       
       </li>
     
@@ -605,9 +563,9 @@ public subroutine <a href='../proc/initwithsize.html'>initWithSize</a>(self, sze
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-init%7E2"></span><h3>procedure, public :: <strong>init</strong>  
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-init%7E5"></span><h3>procedure, public :: <strong>init</strong>  
     
   </h3></div>
   
@@ -615,13 +573,14 @@ public subroutine <a href='../proc/initwithsize.html'>initWithSize</a>(self, sze
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/init.html'>init</a>(self)
     
     
-	 
+   
 </h3>
     
     
@@ -660,6 +619,7 @@ public subroutine <a href='../proc/init.html'>init</a>(self)
     
     
 
+        
       
       </li>
     
@@ -667,155 +627,7 @@ public subroutine <a href='../proc/init.html'>init</a>(self)
 </div>
 
     
-	   
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-setcasesensitive"></span><h3>procedure, public :: <strong>setCaseSensitive</strong>  
-    
-  </h3></div>
-  
-  <ul class="list-group">
-    
-      <li class="list-group-item">
-      
-         
-    
-    <h3>
-public subroutine <a href='../proc/setcasesensitive.html'>setCaseSensitive</a>(self, bool)
-    
-    
-	 
-</h3>
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>self</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>logical</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>bool</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-      
-      </li>
-    
-  </ul>
-</div>
-
-    
-	   
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-casesensitive"></span><h3>procedure, public :: <strong>caseSensitive</strong>  
-    
-  </h3></div>
-  
-  <ul class="list-group">
-    
-      <li class="list-group-item">
-      
-         
-    
-    <h3>
-public function <a href='../proc/casesensitive.html'>caseSensitive</a>(self)
-    
-    
-	 
-</h3>
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>self</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-  
-  
-  
-  
-     <h4>Return Value <small>logical
-  </small></h4>
-  
-    
-
-      
-      </li>
-    
-  </ul>
-</div>
-
-    
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-allkeys"></span><h3>procedure, public :: <strong>allKeys</strong>  => <a href='../proc/allkeys.html'>AllKeys</a> 
     
@@ -825,13 +637,14 @@ public function <a href='../proc/casesensitive.html'>caseSensitive</a>(self)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/allkeys.html'>AllKeys</a>(self) result(keys)
     
     
-	 
+   
 </h3>
     
     
@@ -879,6 +692,7 @@ public function <a href='../proc/allkeys.html'>AllKeys</a>(self) result(keys)
   
     
 
+        
       
       </li>
     
@@ -886,9 +700,9 @@ public function <a href='../proc/allkeys.html'>AllKeys</a>(self) result(keys)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-allobjects"></span><h3>procedure, public :: <strong>allObjects</strong>  => <a href='../proc/allobjects.html'>AllObjects</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-allobjects%7E2"></span><h3>procedure, public :: <strong>allObjects</strong>  => <a href='../proc/allobjects.html'>AllObjects</a> 
     
   </h3></div>
   
@@ -896,13 +710,14 @@ public function <a href='../proc/allkeys.html'>AllKeys</a>(self) result(keys)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/allobjects.html'>AllObjects</a>(self) result(objectArray)
     
     
-	 
+   
 </h3>
     
     
@@ -950,6 +765,7 @@ public function <a href='../proc/allobjects.html'>AllObjects</a>(self) result(ob
   
     
 
+        
       
       </li>
     
@@ -957,69 +773,7 @@ public function <a href='../proc/allobjects.html'>AllObjects</a>(self) result(ob
 </div>
 
     
-	   
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destruct%7E3"></span><h3>procedure, public :: <strong>destruct</strong>  => <a href='../proc/destructftdictionary.html'>destructFTDictionary</a> 
-    
-  </h3></div>
-  
-  <ul class="list-group">
-    
-      <li class="list-group-item">
-      
-         
-    
-    <h3>
-public subroutine <a href='../proc/destructftdictionary.html'>destructFTDictionary</a>(self)
-    
-    
-	 
-</h3>
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>self</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-      
-      </li>
-    
-  </ul>
-</div>
-
-    
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-addobjectforkey"></span><h3>procedure, public :: <strong>addObjectForKey</strong>  
     
@@ -1029,13 +783,14 @@ public subroutine <a href='../proc/destructftdictionary.html'>destructFTDictiona
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/addobjectforkey.html'>addObjectForKey</a>(self, object, key)
     
     
-	 
+   
 </h3>
     
     
@@ -1104,6 +859,7 @@ public subroutine <a href='../proc/addobjectforkey.html'>addObjectForKey</a>(sel
     
     
 
+        
       
       </li>
     
@@ -1111,9 +867,9 @@ public subroutine <a href='../proc/addobjectforkey.html'>addObjectForKey</a>(sel
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-description%7E2"></span><h3>procedure, public :: <strong>description</strong>  => <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescription</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-description%7E5"></span><h3>procedure, public :: <strong>description</strong>  => <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescription</a> 
     
   </h3></div>
   
@@ -1121,13 +877,14 @@ public subroutine <a href='../proc/addobjectforkey.html'>addObjectForKey</a>(sel
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescription</a>(self)
     
     
-	 
+   
 </h3>
     
     
@@ -1175,6 +932,7 @@ public function <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescr
   
     
 
+        
       
       </li>
     
@@ -1182,9 +940,9 @@ public function <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescr
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription%7E2"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printftdictionarydescription.html'>printFTDictionaryDescription</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription%7E11"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printftdictionarydescription.html'>printFTDictionaryDescription</a> 
     
   </h3></div>
   
@@ -1192,13 +950,14 @@ public function <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescr
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public subroutine <a href='../proc/printftdictionarydescription.html'>printFTDictionaryDescription</a>(self, iUnit)
     
     
-	 
+   
 </h3>
     
     
@@ -1252,6 +1011,7 @@ public subroutine <a href='../proc/printftdictionarydescription.html'>printFTDic
     
     
 
+        
       
       </li>
     
@@ -1259,7 +1019,7 @@ public subroutine <a href='../proc/printftdictionarydescription.html'>printFTDic
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-objectforkey"></span><h3>procedure, public :: <strong>objectForKey</strong>  
     
@@ -1269,13 +1029,14 @@ public subroutine <a href='../proc/printftdictionarydescription.html'>printFTDic
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/objectforkey.html'>objectForKey</a>(self, key)
     
     
-	 
+   
 </h3>
     
     
@@ -1338,6 +1099,7 @@ public function <a href='../proc/objectforkey.html'>objectForKey</a>(self, key)
   
     
 
+        
       
       </li>
     
@@ -1345,7 +1107,7 @@ public function <a href='../proc/objectforkey.html'>objectForKey</a>(self, key)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-containskey"></span><h3>procedure, public :: <strong>containsKey</strong>  
     
@@ -1355,13 +1117,14 @@ public function <a href='../proc/objectforkey.html'>objectForKey</a>(self, key)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/containskey.html'>containsKey</a>(self, key) result(r)
     
     
-	 
+   
 </h3>
     
     
@@ -1424,6 +1187,7 @@ public function <a href='../proc/containskey.html'>containsKey</a>(self, key) re
   
     
 
+        
       
       </li>
     
@@ -1431,9 +1195,9 @@ public function <a href='../proc/containskey.html'>containsKey</a>(self, key) re
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname%7E2"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/dictionaryclassname.html'>dictionaryClassName</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname%7E12"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/dictionaryclassname.html'>dictionaryClassName</a> 
     
   </h3></div>
   
@@ -1441,13 +1205,14 @@ public function <a href='../proc/containskey.html'>containsKey</a>(self, key) re
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/dictionaryclassname.html'>dictionaryClassName</a>(self) result(s)
     
     
-	 
+   
 </h3>
     
 
@@ -1457,7 +1222,7 @@ public function <a href='../proc/dictionaryclassname.html'>dictionaryClassName</
 
 
 
-<p>Class name returns a string with the name of the type of the object</p>
+<p>Class name returns a string with the name of the type of the object</p><a href="../proc/dictionaryclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1503,6 +1268,7 @@ public function <a href='../proc/dictionaryclassname.html'>dictionaryClassName</
   
     
 
+        
       
       </li>
     
@@ -1510,9 +1276,9 @@ public function <a href='../proc/dictionaryclassname.html'>dictionaryClassName</
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-count"></span><h3>procedure, public :: <strong>COUNT</strong>  
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-count%7E2"></span><h3>procedure, public :: <strong>COUNT</strong>  
     
   </h3></div>
   
@@ -1520,13 +1286,14 @@ public function <a href='../proc/dictionaryclassname.html'>dictionaryClassName</
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 public function <a href='../proc/count.html'>COUNT</a>(self)
     
     
-	 
+   
 </h3>
     
     
@@ -1574,6 +1341,7 @@ public function <a href='../proc/count.html'>COUNT</a>(self)
   
     
 
+        
       
       </li>
     
@@ -1589,70 +1357,14 @@ public function <a href='../proc/count.html'>COUNT</a>(self)
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
-  <div id="alltypes-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/assertinfoarray1d.html">assertInfoArray1D</a>
-      
-      <a class="list-group-item" href="../type/assertinfoarray2d.html">assertInfoArray2D</a>
-      
-      <a class="list-group-item" href="../type/calculator.html">Calculator</a>
-      
-      <a class="list-group-item" href="../type/ftassertionsmanager.html">FTAssertionsManager</a>
-      
-      <a class="list-group-item" href="../type/ftdata.html">FTData</a>
-      
-      <a class="list-group-item" href="../type/ftdictionary.html">FTDictionary</a>
-      
-      <a class="list-group-item" href="../type/ftexception.html">FTException</a>
-      
-      <a class="list-group-item" href="../type/ftkeyobjectpair.html">FTKeyObjectPair</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlist.html">FTLinkedList</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistiterator.html">FTLinkedListIterator</a>
-      
-      <a class="list-group-item" href="../type/ftlinkedlistrecord.html">FTLinkedListRecord</a>
-      
-      <a class="list-group-item" href="../type/ftmultiindextable.html">FTMultiIndexTable</a>
-      
-      <a class="list-group-item" href="../type/ftmutableobjectarray.html">FTMutableObjectArray</a>
-      
-      <a class="list-group-item" href="../type/ftobject.html">FTObject</a>
-      
-      <a class="list-group-item" href="../type/ftsparsematrix.html">FTSparseMatrix</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html">FTStack</a>
-      
-      <a class="list-group-item" href="../type/ftvalue.html">FTValue</a>
-      
-      <a class="list-group-item" href="../type/ftvaluedictionary.html">FTValueDictionary</a>
-      
-      <a class="list-group-item" href="../type/matrixdata.html">MatrixData</a>
-      
-      <a class="list-group-item" href="../type/multiindexmatrixdata.html">MultiIndexMatrixData</a>
-      
-      <a class="list-group-item" href="../type/testsuitemanager.html">TestSuiteManager</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -1683,12 +1395,17 @@ public function <a href='../proc/count.html'>COUNT</a>(self)
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

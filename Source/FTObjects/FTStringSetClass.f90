@@ -3,7 +3,9 @@
 !
 !      FTStringSet.f90
 !
-!>FTStringSet is a ...
+!>FTStringSet is a class for an unordered collection of strings. Use a FTStringSet
+!>to store strings as an alternative to arrays when the order is not important, but
+!>testing for membership is.
 !>
 !>##Definition
 !>           TYPE(FTStringSet) :: varName
@@ -19,8 +21,29 @@
 !>       CALL FTStringSet % initWithStrings(strings)
 !>
 !>#Destruction
-!>           CALL FTStringSet  %  destuct() [Non Pointers]
-!>           call release(FTStringSet) [Pointers]
+!>      CALL FTStringSet  %  destuct() [Non Pointers]
+!>      CALL release(FTStringSet) [Pointers]
+!>#Adding Strings
+!>         CALL set % addString(str)
+!>#Testing membership:
+!>      if(set % containsString(str))     THEN
+!>#Getting an array of members
+!>      CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) ,DIMENSION(:), POINTER :: s
+!>      s => set % strings
+!>      ... do something ...
+!>      DEALLOCATE(s)
+!>#Set operations, union, intersection, difference
+!>      newSet => set1 % unionWithSet(set2)
+!>      ... do something ...
+!>      call releaseFTStringSet(newSet)
+!>
+!>      newSet => set1 % intersectionWithSet(set2)
+!>      ... do something ...
+!>      call releaseFTStringSet(newSet)
+!>
+!>      newSet => set1 % setFromDifference(set2)
+!>      ... do something ...
+!>      call releaseFTStringSet(newSet)
 !
 !
 !////////////////////////////////////////////////////////////////////////
@@ -51,7 +74,7 @@
 !         PROCEDURE, PUBLIC :: isCaseSensitive 
          PROCEDURE, PUBLIC :: setFromDifference
          PROCEDURE, PUBLIC :: isEmpty
-         PROCEDURE, PUBLIC :: count => setCount
+         PROCEDURE, PUBLIC :: count => stringCount
          
          PROCEDURE, PUBLIC :: printDescription => printFTStringSet
          PROCEDURE, PUBLIC :: className        => FTStringSetClassName
@@ -74,7 +97,6 @@
 !> the FTStringSet remains empty.
 !>
 !> *Usage
-!>
 !>       CLASS(FTStringSet)  :: FTStringSet
 !>       integer             :: N = 11
 !>       logical             :: cs = .true.
@@ -97,7 +119,6 @@
 !>
 !>  initializer. Initializes the amount of storage from the strings passed
 !> *Usage
-!>
 !>       CLASS(FTStringSet)  :: FTStringSet
 !>       CHARACTER(LEN=*)    :: strings(:)
 !>       CALL FTStringSet % initWithStrings(strings)
@@ -134,7 +155,7 @@
 ! 
 !>
 !> Destructor for the class. This is called automatically when the
-!> reference count reaches zero. Do not call this yourself.
+!> reference count reaches zero. Do not call this yourself on pointers
 !>
       SUBROUTINE destructFTStringSet(self)  
          IMPLICIT NONE
@@ -166,19 +187,18 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      INTEGER FUNCTION setCount(self)  
+      INTEGER FUNCTION stringCount(self)  
          IMPLICIT NONE  
          CLASS(FTStringSet) :: self
-         setCount = self % dict % COUNT()
-      END FUNCTION setCount
+         stringCount = self % dict % COUNT()
+      END FUNCTION stringCount
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
 !      -----------------------------------------------------------------
 !> AddString adds a string to the set if it is not already present
 !>
-!>  ### Usage:
-!>
+!>### Usage:
 !>        CALL set % addString(str)
 !>
       SUBROUTINE AddString(self,str)  
@@ -201,8 +221,7 @@
 !> containsString returns .TRUE. if the set contains the string, .FALSE. 
 !> otherwise.
 !>
-!>  ### Usage:
-!>
+!>### Usage:
 !>        if(set % containsString(str))
 !>
       LOGICAL FUNCTION containsString(self,str)
@@ -220,12 +239,12 @@
 !> strings returns a pointer to an array of strings that are in the set.
 !> Deallocate this array when done with it. 
 !>
-!>  ### Usage:
+!>### Usage:
 !>
-!>   CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) ,DIMENSION(:), POINTER :: s
-!>   s => set % strings
-!>   ... do something ...
-!>   DEALLOCATE(s)
+!>      CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) ,DIMENSION(:), POINTER :: s
+!>      s => set % strings
+!>      ... do something ...
+!>      DEALLOCATE(s)
 !>
       FUNCTION strings(self)  RESULT(s)
           IMPLICIT NONE  
@@ -241,12 +260,11 @@
 !> unionWithSet returns a pointer to a new set that is the union of two sets.
 !> the new set has reference count of 1. Release when done.
 !>
-!>  ### Usage:
+!>### Usage:
 !>
-!>   CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) ,DIMENSION(:), POINTER :: s
-!>   newSet => set1 % unionWithSet(set2)
-!>   ... do something ...
-!>   call releaseFTStringSet(newSet)
+!>      newSet => set1 % unionWithSet(set2)
+!>      ... do something ...
+!>      call releaseFTStringSet(newSet)
 !
       FUNCTION unionWithSet(self,set)  RESULT(newSet)
          IMPLICIT NONE  
@@ -273,12 +291,11 @@
 !> intersectionWithSet returns a pointer to a new set that is the intersection of two sets.
 !> the new set has reference count of 1. Release when done.
 !>
-!>  ### Usage:
+!>### Usage:
 !>
-!>   CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) ,DIMENSION(:), POINTER :: s
-!>   newSet => set1 % intersectionWithSet(set2)
-!>   ... do something ...
-!>   call releaseFTStringSet(newSet)
+!>      newSet => set1 % intersectionWithSet(set2)
+!>      ... do something ...
+!>      call releaseFTStringSet(newSet)
 !
       FUNCTION intersectionWithSet(self, set)  RESULT(newSet)
          IMPLICIT NONE  
@@ -306,15 +323,14 @@
 !//////////////////////////////////////////////////////////////////////// 
 ! 
 !> setFromDifference returns a pointer to a new set that is the difference of two sets.
-!> A - B = {x: x \in A and x\not \in B}
+!> $$A - B = \{x: x \in A \;\rm{ and }\; x\notin B\}$$
 !> the new set has reference count of 1. Release when done.
 !>
-!>  ### Usage:
+!>### Usage:
 !>
-!>   CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) ,DIMENSION(:), POINTER :: s
-!>   newSet => set1 % setFromDifference(set2)
-!>   ... do something ...
-!>   call releaseFTStringSet(newSet)
+!>      newSet => set1 % setFromDifference(set2)
+!>      ... do something ...
+!>      call releaseFTStringSet(newSet)
 !
       FUNCTION setFromDifference(self, set)  RESULT(newSet)
          IMPLICIT NONE  
@@ -428,7 +444,7 @@
 !      -----------------------------------------------------------------
 !> Class name returns a string with the name of the type of the object
 !>
-!>  ### Usage:
+!>### Usage:
 !>
 !>        PRINT *,  obj % className()
 !>        if( obj % className = "FTStringSet")

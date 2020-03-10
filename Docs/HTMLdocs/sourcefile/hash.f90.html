@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="A library for reference counted object and container classes">
+   
+   <meta name="description" content="A library for reference counted object and container classes">
     
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/testobjectsmain.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/testobjectsmain.html">Program</a></li>
 
           </ul>
         
@@ -129,15 +125,19 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title=" 1.7% of total for source files.">78 statements</a>
+    data-placement="bottom" data-html="true"
+    title=" 2.1% of total for source files.">78 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/Hash.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
+  
+    
   
      <li class="active">Hash.f90</li>
   </ol>
@@ -156,6 +156,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 
@@ -187,6 +190,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -195,90 +199,22 @@
 </div>
 
 
-  <hr>
-  
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles-0">All Source Files</a></h3></div>
-  <div id="allfiles-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../sourcefile/assert.f90.html">Assert.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/calculator.f90.html">Calculator.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/comparisons.f90.html">Comparisons.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/dictionarytests.f90.html">DictionaryTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/exceptiontests.f90.html">ExceptionTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdataclass.f90.html">FTDataClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdictionaryclass.f90.html">FTDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftexceptionclass.f90.html">FTExceptionClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftlinkedlistclass.f90.html">FTLinkedListClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftmultiindextable.f90.html">FTMultiIndexTable.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html">FTObjectArrayClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectclass.f90.html">FTObjectClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectlibrary.f90.html">FTObjectLibrary.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html">FTOLConstants.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftsparsematrixclass.f90.html">FTSparseMatrixClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftstackclass.f90.html">FTStackClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvalueclass.f90.html">FTValueClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvaluedictionaryclass.f90.html">FTValueDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hash.f90.html">Hash.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hashtabletests.f90.html">HashTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlistexample.f90.html">LinkedListExample.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlisttests.f90.html">LinkedListTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/multiindextabletests.f90.html">MultiIndexTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/mutablearraytests.f90.html">MutableArrayTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/sparsematrixtests.f90.html">SparseMatrixTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/stackstests.f90.html">StacksTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testmain.f90.html">TestMain.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testsuitemanagerclass.f90.html">TestSuiteManagerClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valueclasstests.f90.html">ValueClassTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valuedictionarytests.f90.html">ValueDictionaryTests.f90</a>
-      
-    </div>
-  </div>
 </div>
-
-
-</div>  
 
     </div>
     <div class="col-md-9" id='text'>
-    
+      
+      <br>
     
       
       
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 
@@ -310,12 +246,14 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
     <a class="list-group-item" href="../sourcefile/hash.f90.html#src">Hash.f90</a>
   </div>
 </div>
+
 
 
     </section>
@@ -480,88 +418,14 @@
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles-1">All Source Files</a></h3></div>
-  <div id="allfiles-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../sourcefile/assert.f90.html">Assert.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/calculator.f90.html">Calculator.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/comparisons.f90.html">Comparisons.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/dictionarytests.f90.html">DictionaryTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/exceptiontests.f90.html">ExceptionTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdataclass.f90.html">FTDataClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftdictionaryclass.f90.html">FTDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftexceptionclass.f90.html">FTExceptionClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftlinkedlistclass.f90.html">FTLinkedListClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftmultiindextable.f90.html">FTMultiIndexTable.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectarrayclass.f90.html">FTObjectArrayClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectclass.f90.html">FTObjectClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftobjectlibrary.f90.html">FTObjectLibrary.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html">FTOLConstants.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftsparsematrixclass.f90.html">FTSparseMatrixClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftstackclass.f90.html">FTStackClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvalueclass.f90.html">FTValueClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/ftvaluedictionaryclass.f90.html">FTValueDictionaryClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hash.f90.html">Hash.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/hashtabletests.f90.html">HashTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlistexample.f90.html">LinkedListExample.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/linkedlisttests.f90.html">LinkedListTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/multiindextabletests.f90.html">MultiIndexTableTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/mutablearraytests.f90.html">MutableArrayTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/sparsematrixtests.f90.html">SparseMatrixTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/stackstests.f90.html">StacksTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testmain.f90.html">TestMain.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/testsuitemanagerclass.f90.html">TestSuiteManagerClass.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valueclasstests.f90.html">ValueClassTests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/valuedictionarytests.f90.html">ValueDictionaryTests.f90</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
   
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -592,12 +456,17 @@
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

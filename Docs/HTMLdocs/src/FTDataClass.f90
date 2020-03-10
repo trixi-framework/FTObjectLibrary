@@ -32,7 +32,8 @@
       TYPE, EXTENDS(FTObject) :: FTData
          PRIVATE 
          CHARACTER(LEN=DATA_CLASS_TYPE_LENGTH) :: dataType
-         CHARACTER(LEN=1), ALLOCATABLE         :: dataStorage(:) 
+         CHARACTER(LEN=1), POINTER             :: dataStorage(:) 
+         INTEGER                               :: dataSize
 !
 !        ========         
          CONTAINS 
@@ -40,18 +41,16 @@
 !         
          PROCEDURE, PUBLIC :: initWithDataOfType
          PROCEDURE, PUBLIC :: storedData
+         PROCEDURE, PUBLIC :: storedDataSize
          PROCEDURE, PUBLIC :: className => dataClassName
+         FINAL             :: destructData
       END TYPE FTData
-      
-      INTERFACE release
-         MODULE PROCEDURE releaseFTData 
-      END INTERFACE  
       
       CONTAINS 
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE initWithDataOfType(self,genericData,dataType)  
+      SUBROUTINE initWithDataOfType(self, genericData, dataType)  
          IMPLICIT NONE  
          CLASS(FTData)    :: self
          CHARACTER(LEN=*) :: dataType
@@ -66,23 +65,32 @@
           
           self % dataStorage = genericData
           self % dataType    = dataType
+          self % dataSize    = dataSize
           
       END SUBROUTINE initWithDataOfType
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      SUBROUTINE destructData(self) 
+         IMPLICIT NONE
+         TYPE(FTData)  :: self
+         
+         DEALLOCATE( self % dataStorage)
+         
+      END SUBROUTINE destructData
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
       SUBROUTINE releaseFTData(self)  
          IMPLICIT NONE
-         CLASS(FTData)  , POINTER :: self
+         TYPE(FTData)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
-         
+        
          obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTData
 !@mark -
 !
@@ -90,10 +98,18 @@
 ! 
       FUNCTION storedData(self)  RESULT(d)
          IMPLICIT NONE  
-         CLASS(FTData)    :: self
-         CHARACTER(LEN=1) :: d(SIZE(self%dataStorage))
-         d = self % dataStorage
+         CLASS(FTData)             :: self
+         CHARACTER(LEN=1), POINTER :: d(:)
+         d => self % dataStorage
       END FUNCTION storedData
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      INTEGER FUNCTION storedDataSize(self)
+         IMPLICIT NONE  
+         CLASS(FTData)    :: self
+         storedDataSize = self % dataSize
+      END FUNCTION storedDataSize
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -103,6 +119,28 @@
          CHARACTER(LEN=DATA_CLASS_TYPE_LENGTH) :: t
          t = self % dataType
       END FUNCTION dataType
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      FUNCTION dataFromObject(obj) RESULT(cast)
+!
+!     -----------------------------------------------------
+!     Cast the base class FTObject to the FTException class
+!     -----------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTObject) , POINTER :: obj
+         CLASS(FTData)   , POINTER :: cast
+         
+         cast => NULL()
+         SELECT TYPE (e => obj)
+            TYPE is (FTData)
+               cast => e
+            CLASS DEFAULT
+               
+         END SELECT
+         
+      END FUNCTION dataFromObject
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -120,6 +158,7 @@
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
          s = "FTData"
+         IF( self % refCount() >= 0 ) CONTINUE 
  
       END FUNCTION dataClassName
 !

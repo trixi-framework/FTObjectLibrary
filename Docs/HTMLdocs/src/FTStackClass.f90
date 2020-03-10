@@ -19,7 +19,6 @@
 !>
 !>##Destruction
 !>      CALL release(stack) [Pointers]
-!>      CALL stack % destruct() [Non pointers]
 !>
 !>##Pushing an object onto the stack
 !>
@@ -66,10 +65,6 @@
          PROCEDURE :: pop
          PROCEDURE :: peek
       END TYPE FTStack
-      
-      INTERFACE release
-         MODULE PROCEDURE  releaseFTStack
-      END INTERFACE  
 !
 !     ----------
 !     Procedures
@@ -106,28 +101,18 @@
          
       END SUBROUTINE initFTStack
 !
-!------------------------------------------------------
-!> Public, generic name: release(self)
-!>
-!> Call release(self) on an object to release control
-!> of a pointer object. If its reference count is zero, 
-!> then it is deallocated.
-!------------------------------------------------------
-!
 !//////////////////////////////////////////////////////////////////////// 
 ! 
       SUBROUTINE releaseFTStack(self)  
          IMPLICIT NONE
          TYPE(FTStack)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
-         
+            
          IF(.NOT. ASSOCIATED(self)) RETURN
-         
+       
          obj => self
-         CALL releaseFTObject(self = obj)
-         IF ( .NOT. ASSOCIATED(obj) )     THEN
-            self => NULL() 
-         END IF      
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTStack
 !
 !     -----------------------------------
@@ -198,7 +183,7 @@
 !
          IMPLICIT NONE  
          CLASS(FTStack)                     :: self
-         CLASS(FTObject)          , POINTER :: p
+         CLASS(FTObject)          , POINTER :: p, obj
          CLASS(FTLinkedListRecord), POINTER :: tmp => NULL()
          
          IF ( .NOT. ASSOCIATED(self % head) )     THEN
@@ -213,7 +198,8 @@
          tmp => self % head
          self % head => self % head % next
          
-         CALL release(tmp)
+         obj => tmp
+         CALL release(obj)
          self % nRecords = self % nRecords - 1
 
       END SUBROUTINE pop
@@ -266,6 +252,7 @@
          CLASS(FTStack)                             :: self
          CHARACTER(LEN=CLASS_NAME_CHARACTER_LENGTH) :: s
          
+         IF(self % refCount() .ge. 0) CONTINUE
          s = "FTStack"
  
       END FUNCTION stackClassName
