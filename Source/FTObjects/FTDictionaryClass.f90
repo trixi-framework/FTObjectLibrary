@@ -292,9 +292,6 @@
          SUBROUTINE destructFTDictionary(self)  
             IMPLICIT NONE  
             TYPE(FTDictionary) :: self
-            TYPE(FTObject)    :: obj
-           
-            INTEGER :: i
 
             DEALLOCATE(self % entries)
             self % entries => NULL()

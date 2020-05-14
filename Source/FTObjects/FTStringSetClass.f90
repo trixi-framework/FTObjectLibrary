@@ -138,7 +138,6 @@
 !        ---------------
 !
          INTEGER                  :: stringCount, i, dictSize
-         CLASS(FTObject), POINTER :: obj
          
          stringCount = SIZE(strings)
          dictSize    = 2**EXPONENT(REAL(stringCount)) ! Makes it a factor of two
@@ -399,7 +398,6 @@
 !        ---------------
 !
          INTEGER                                          :: i
-         CLASS(FTObject), POINTER                         :: obj => NULL()
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
          
          keys => self % dict % allKeys()

@@ -259,10 +259,7 @@
 !        ---------------
 !        Local variables
 !        ---------------
-!
-         INTEGER         :: j
-         TYPE(FTObject) :: obj
-         
+!         
          IF(ALLOCATED(self % table))   THEN
             DEALLOCATE(self % table)
          END IF
