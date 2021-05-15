@@ -736,6 +736,7 @@
          CLASS(FTObject)          , POINTER :: obj        => NULL()
          LOGICAL                            :: circular
          
+         array => NULL()
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
          IF(self % isCircular_) circular = .TRUE.

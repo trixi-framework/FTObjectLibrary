@@ -25,6 +25,10 @@
       EXTERNAL :: SparseMatrixTests
       EXTERNAL :: MultiIndexTableTests
       EXTERNAL :: FTStringSetTests
+      EXTERNAL :: OptionalDataTest
+      
+      CHARACTER(LEN=1), POINTER :: optData(:) 
+      
 !      CALL setvbuf3f(6,2,0) !PGIFortran only
 !
 !     -----
@@ -43,6 +47,12 @@
       CALL testSuite % addTestSubroutineWithName(SparseMatrixTests,"SparseMatrixClass Tests")
       CALL testSuite % addTestSubroutineWithName(MultiIndexTableTests,"MultiIndexTable Tests" )
       CALL testSuite % addTestSubroutineWithName(FTStringSetTests,"String set Tests" )
+      
+      ALLOCATE(optData(2))
+      optData(1) = "a"
+      optdata(2) = "b"
+      CALL testSuite % addTestSubroutineWithName(OptionalDataTest,"Optional Data Tests", optData)
+      
 !
 !     -------------
 !     Run the tests

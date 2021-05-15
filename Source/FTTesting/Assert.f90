@@ -257,7 +257,6 @@
         INTEGER                                 :: iUnit
         TYPE(FTAssertionFailureRecord), POINTER :: current
         
-        WRITE(iUnit,*)
         WRITE(iUnit,*) "   -------------------------------------------------------------"
         WRITE(iUnit,*) "   Summary of failed tests for test suite: ",TRIM(title)
         WRITE(iUnit,'(3x,i3,A,i5,A)')  self % numberOfAssertionFailures()," failures out of ", &
@@ -272,9 +271,7 @@
                                            "], Got [",TRIM(current % actual),"]"
             current => current % next
          END DO
-         
-         WRITE(iUnit,*)
-         
+                  
      END SUBROUTINE summarizeAssertions    
 
 !@mark -

@@ -32,6 +32,7 @@
 !>
 !>         ABSTRACT INTERFACE
 !>            SUBROUTINE testSuiteSubroutine()
+!>               CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
 !>            END SUBROUTINE testSuiteSubroutine
 !>         END INTERFACE
 !>   
@@ -45,6 +46,17 @@
 !> - SubroutineName = a subroutine with the interface as above, and 
 !> - description = a CHARACTER(LEN=128) character string that names the test
 !>   
+!> Alternately optional data acan be added to the call
+!>
+!>   CALL testSuite % addTestSubroutineWithName(SubroutineName, description, optData)
+!>
+!> where OptData is 
+!>
+!>     CHARACTER(LEN=1), POINTER :: optData(:)
+!>
+!> The optional data can contain anything if it is encoded using the TRANSFER function. This is a standard
+!> trick in fortran.
+!>
 !>##Setting the output location ###
 !>   Set the unit to which the output is written by
 !>
@@ -69,7 +81,8 @@
       PRIVATE 
             
       ABSTRACT INTERFACE
-         SUBROUTINE testSuiteFunction()
+         SUBROUTINE testSuiteFunction(optData)
+            CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
          END SUBROUTINE testSuiteFunction
       END INTERFACE
 
@@ -78,6 +91,7 @@
          CHARACTER(LEN=128)                            :: testName
          TYPE(FTAssertionsManager)   , POINTER         :: assertionsManager
          PROCEDURE(testSuiteFunction), POINTER, NOPASS :: TestSubroutine
+         CHARACTER(LEN=1), POINTER                     :: optData(:) 
          TYPE(TestCaseRecord), POINTER                 :: next
       END TYPE TestCaseRecord
       
@@ -121,21 +135,29 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE addTestSubroutineWithName(self,testSubroutine ,testName)
+      SUBROUTINE addTestSubroutineWithName(self,testSubroutine ,testName, optData)
          IMPLICIT NONE
-         CLASS(TestSuiteManager)       :: self
-         EXTERNAL                      :: testSubroutine
-         CHARACTER(LEN=*)              :: testName
-         TYPE(TestCaseRecord), POINTER :: newTestCase
+         CLASS(TestSuiteManager)             :: self
+         EXTERNAL                            :: testSubroutine
+         CHARACTER(LEN=*)                    :: testName
+         CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
+         TYPE(TestCaseRecord), POINTER       :: newTestCase
          
          INTERFACE
-            SUBROUTINE testSubroutine()
+            SUBROUTINE testSubroutine(optData)
+               CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
             END SUBROUTINE  testSubroutine
          END INTERFACE
          
          ALLOCATE(newTestCase)
          newTestCase % testName     = TRIM(ADJUSTL(testName))
          newTestCase % TestSubroutine => testSubroutine
+         IF ( PRESENT(optData) )     THEN
+            newTestCase % optData => optData 
+         ELSE 
+            newTestCase % optData => NULL() 
+         END IF 
+          
          newTestCase % next         => NULL()
          newTestCase % passed       = .TRUE.
          self % numberOfTests       = self % numberOfTests + 1
@@ -167,6 +189,7 @@
             
             IF(ASSOCIATED(current % assertionsManager)) THEN
                DEALLOCATE(current % assertionsManager)
+               DEALLOCATE(current % optData)
             END IF 
             
             DEALLOCATE(current)
@@ -215,7 +238,11 @@
             sharedManager               => sharedAssertionsManager()
             current % assertionsManager => sharedManager
             
-            CALL current % TestSubroutine
+            IF ( ASSOCIATED(current % optData) )     THEN
+               CALL current % TestSubroutine(current % optData)
+            ELSE 
+               CALL current % TestSubroutine
+            END IF 
             
             IF ( sharedManager % numberOfAssertionFailures() /= 0 )     THEN
                numberOfFailedTests = numberOfFailedTests + 1 
