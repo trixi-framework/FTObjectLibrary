@@ -76,9 +76,7 @@
             IMPLICIT NONE  
             CLASS(Calculator) :: self
             
-            CALL release(self % stack)
-            
-            CALL self % FTObject % destruct()
+            CALL releaseFTStack(self % stack)
             
          END SUBROUTINE destructCalculator
 !
@@ -87,7 +85,8 @@
       SUBROUTINE releaseCalculator(self)  
          IMPLICIT NONE
          CLASS(Calculator) , POINTER :: self
-         CLASS(FTObject)     , POINTER :: obj
+         CLASS(FTObject)   , POINTER :: obj
+         IF(.NOT. ASSOCIATED(self)) RETURN
          obj => self
          CALL releaseFTObject(self = obj)
          IF ( .NOT. ASSOCIATED(obj) )     THEN
@@ -153,7 +152,7 @@
             v   => valueFromObject(obj)
             r   = v % doublePrecisionValue()
             
-            CALL release(v)
+            CALL releaseFTValue(v)
             
          END FUNCTION popValue
 !
@@ -171,7 +170,7 @@
            
             obj => vValue
             CALL self % stack % push(obj)
-            CALL release(vValue)
+            CALL releaseFTValue(vValue)
             
          END SUBROUTINE enterValue
 !

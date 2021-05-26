@@ -42,7 +42,7 @@
             ALLOCATE(v); CALL v % initWithValue(values(j))
             obj => v
             CALL list % add(obj)
-            CALL release(v)
+            CALL releaseFTValue(v)
          END DO  
          PRINT *, "There are ", list % COUNT(), " records in the list"
 !
@@ -94,8 +94,8 @@
 !        Clean up
 !        --------
 !
-         CALL release(iterator)
-         CALL release(list)
+         CALL releaseFTLinkedListIterator(iterator)
+         CALL releaseFTLinkedList(list)
                   
       END SUBROUTINE demonstrateLinkedList
    END MODULE linkedListDemonstrationModule
