@@ -12,6 +12,8 @@ project_bitbucket: https://bitbucket.org/dgsemteam/ftobjectlibrary
 source: false
 predocmark:>
 
+# Overview
+
  FTObjectLibrary provides a collection of reference counted Fortran 2003 classes to 
  facilitate writing generic object oriented Fortran programs. Reference counting
  is implemented to assist with memory management so that the lifespans of objects
@@ -50,3 +52,10 @@ values.
 
  The library also contains classes for testing (FTAssertions, TestSuiteManagerClass) and for reporting errors through the FTException class.
 
+# Documentation
+
+Documentation can be found in the linked pages, and in the user's guide FTObjectLibrary.pdf found in the Docs directory.
+
+# Examples
+
+Examples can be found in the Examples directory and in the Testing directory. The examples include a simple reverse Polish caclulator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.
