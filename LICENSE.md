@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2010-present David A. Kopriva and other contributors: AUTHORS.md
+Copyright (c) 2010-present David A. Kopriva and other contributors: [AUTHORS.md](AUTHORS.md)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy  
 of this software and associated documentation files (the "Software"), to deal  
@@ -22,4 +22,5 @@ SOFTWARE.
 
 FTObjectLibrary contains code that, to the best of our knowledge, has been released as
 public domain software:
+
 * `b3hs_hash_key_jenkins`: originally by Rich Townsend, https://groups.google.com/forum/#!topic/comp.lang.fortran/RWoHZFt39ng, 2005
