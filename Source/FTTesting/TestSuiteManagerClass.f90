@@ -100,7 +100,8 @@
 !>##Finalizing the test suite ###
 !>   When done, call
 !>
-!>         CALL testSuite % finalize()
+!>         CALL finalizeSharedAssertionsManager
+
 !
 !////////////////////////////////////////////////////////////////////////
 !
