@@ -54,8 +54,30 @@ values.
 
 # Documentation
 
-Documentation can be found in the linked pages, and in the user's guide FTObjectLibrary.pdf found in the Docs directory.
+Documentation can be found in the linked pages, and in the user's guide *FTObjectLibrary.pdf* found in the Docs directory.
 
 # Examples
 
 Examples can be found in the Examples directory and in the Testing directory. The examples include a simple reverse Polish caclulator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.
+
+# Building the Library
+
+The library (.a) can be built with either CMake or default make.
+
+### CMake
+To install the FTObjectLibrary with CMake,
+```
+mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=/path/to/install ../
+make
+make install
+```
+
+### make
+
+cd to the directory "makeLibrary" and type
+```
+make -f FTObjectLibrary.mak
+```
+
+That will create the necessary files in that directory, which can be moved to somewhere else as desired.
