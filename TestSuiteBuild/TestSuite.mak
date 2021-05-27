@@ -4,7 +4,7 @@ F90 = /usr/local/bin/gfortran
 FTOLibPath = ../Source
 FTTestsPath = ../Testing
 
-FFLAGS = -cpp
+FFLAGS = -cpp -O
 ##########################
 # Object Files for build #
 ##########################
@@ -25,14 +25,17 @@ FTObjectLibrary.o \
 FTOLConstants.o \
 FTSparseMatrixClass.o \
 FTStackClass.o \
+FTStringSetClass.o \
 FTValueClass.o \
 FTValueDictionaryClass.o \
 Hash.o \
 LinkedListTests.o \
 MultiIndexTableTests.o \
 MutableArrayTests.o \
+OptionalDataTests.o \
 SparseMatrixTests.o \
 StacksTests.o \
+StringSetTests.o \
 TestMain.o \
 TestSuiteManagerClass.o \
 ValueClassTests.o \
@@ -130,6 +133,11 @@ FTStackClass.o : $(FTOLibPath)/FTObjects/FTStackClass.f90 \
 FTLinkedListClass.o
 	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTStackClass.f90
 
+FTStringSetClass.o : $(FTOLibPath)/FTObjects/FTStringSetClass.f90 \
+FTObjectClass.o \
+FTDictionaryClass.o
+	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTStringSetClass.f90
+
 FTValueClass.o : $(FTOLibPath)/FTObjects/FTValueClass.f90 \
 FTOLConstants.o \
 FTObjectClass.o
@@ -163,6 +171,10 @@ Assert.o \
 FTValueClass.o
 	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/MutableArrayTests.f90
 
+OptionalDataTests.o : $(FTTestsPath)/Tests/OptionalDataTests.f90 \
+Assert.o
+	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/OptionalDataTests.f90
+
 SparseMatrixTests.o : $(FTTestsPath)/Tests/SparseMatrixTests.f90 \
 FTSparseMatrixClass.o \
 Assert.o \
@@ -175,9 +187,14 @@ Assert.o \
 FTStackClass.o
 	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/StacksTests.f90
 
-TestMain.o : /Users/kopriva/Documents/Research/FortranCode/FTObjectLibrary/Testing/TestMain.f90 \
+StringSetTests.o : $(FTTestsPath)/Tests/StringSetTests.f90 \
+FTStringSetClass.o \
+Assert.o
+	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/StringSetTests.f90
+
+TestMain.o : $(FTTestsPath)/TestMain.f90 \
 TestSuiteManagerClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ /Users/kopriva/Documents/Research/FortranCode/FTObjectLibrary/Testing/TestMain.f90
+	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/TestMain.f90
 
 TestSuiteManagerClass.o : $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90 \
 Assert.o
