@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+  workflow_dispatch:
+
+jobs:
+  test:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    name: ${{ matrix.os }} - ${{ github.event_name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            compiler: gfortran-10
+            shell: bash
+          - os: macos-latest
+            compiler: gfortran-10
+            shell: bash
+          - os: windows-latest
+            compiler: gfortran
+            shell: msys2 {0}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      # - name: Add msbuild to PATH
+      #   if: ${{ matrix.os == 'windows-latest' }}
+      #   uses: microsoft/setup-msbuild@v1.0.2
+      - name: Verify regular build
+        run: |
+          cd makeLibrary
+          make -f FTObjectLibrary.mak -j 2 F90=${{ matrix.compiler }}
+      - name: Build test suite
+        run: |
+          cd TestSuiteBuild 
+          make -f TestSuite.mak -j 2 F90=${{ matrix.compiler }}
+      - name: Run tests
+        run: |
+          cd TestSuiteBuild 
+          ./runSuite
