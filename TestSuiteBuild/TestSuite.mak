@@ -210,3 +210,12 @@ Assert.o \
 FTValueDictionaryClass.o
 	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/ValueDictionaryTests.f90
 
+###########
+# cleanup #
+###########
+clean:
+	rm -f *.mod
+	rm -f *.o
+	rm -f runSuite*
+
+.PHONY: clean

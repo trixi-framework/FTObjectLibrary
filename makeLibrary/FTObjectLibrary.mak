@@ -130,3 +130,12 @@ TestSuiteManagerClass.o : $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90 \
 Assert.o
 	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90
 
+###########
+# cleanup #
+###########
+clean:
+	rm -f *.mod
+	rm -f *.o
+	rm -f libFTObjectLibrary*
+
+.PHONY: clean
