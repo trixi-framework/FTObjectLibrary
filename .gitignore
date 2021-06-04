@@ -22,3 +22,9 @@ Docs/FTObjectLibrary.out
 Docs/FTObjectLibrary.pdf
 Docs/FTObjectLibrary.synctex.gz
 Docs/FTObjectLibrary.toc
+
+# build files
+*.o
+*.mod
+runSuite
+libFTObjectLibrary.a
