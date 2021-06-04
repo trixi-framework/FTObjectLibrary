@@ -87,6 +87,15 @@
 !     Run the tests
 !     -------------
 !
-      CALL testSuite % performTests()
+      CALL testSuite % performTests(numberOfFailedTests)
+
+!
+!     ---------------------------------------
+!     Exit with error in case of failed tests
+!     ---------------------------------------
+!
+      IF (numberOfFailedTests .gt. 0) THEN
+        ERROR STOP 'At least one test has failed'
+      END IF
       
       END PROGRAM TestObjectsMain  
