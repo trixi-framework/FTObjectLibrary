@@ -9,6 +9,9 @@ counting is implemented to assist with memory management so that the lifespans
 of objects are properly maintained and are so that objects are deleted only
 when no other references are made to them.
 
+**NOTE: This repository is in an experimental stage and may undergo breaking
+changes at any time.**
+
 
 FTObjectLibrary tries, as much as the maturity of Fortran compilers allow, to
 use the new F2003/2008 features to make generic programming possible. The LCD
