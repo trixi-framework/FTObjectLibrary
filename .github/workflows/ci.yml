@@ -51,3 +51,20 @@ jobs:
         run: |
           cd TestSuiteBuild 
           ./runSuite
+      - name: Run tests for coverage
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
+          sudo apt install -y lcov
+          cd TestSuiteBuild
+          F90=${{ matrix.compiler }} ./createcoverage
+      - uses: codecov/codecov-action@v1
+        with:
+          files: ./TestSuiteBuild/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+      - name: Coveralls
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./TestSuiteBuild/lcov.info

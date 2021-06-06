@@ -42,7 +42,7 @@ ValueClassTests.o \
 ValueDictionaryTests.o \
 
 runSuite : $(OBJS)
-	 ${F90}  -o $@ $(OBJS)
+	 ${F90}  -o $@ $(OBJS) $(LDFLAGS)
 
 #######################################
 # Object dependencies and compilation #
@@ -217,5 +217,8 @@ clean:
 	rm -f *.mod
 	rm -f *.o
 	rm -f runSuite*
+	rm -f *.gcda
+	rm -f *.gcno
+	rm -f lcov.info
 
 .PHONY: clean
