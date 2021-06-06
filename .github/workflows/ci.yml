@@ -54,7 +54,7 @@ jobs:
       - name: Run tests for coverage
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
-          sudo apt install -y lcov
+          sudo apt-get install -y lcov
           cd TestSuiteBuild
           F90=${{ matrix.compiler }} ./createcoverage
       - uses: codecov/codecov-action@v1
