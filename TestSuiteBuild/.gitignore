@@ -1,0 +1,6 @@
+# gcov files
+*.gcda
+*.gcno
+
+# lcov report
+lcov.info

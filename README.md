@@ -1,6 +1,8 @@
 # FTObjectLibrary
 
 [![Build Status](https://github.com/trixi-framework/FTObjectLibrary/workflows/CI/badge.svg)](https://github.com/trixi-framework/FTObjectLibrary/actions?query=workflow%3ACI)
+[![Coveralls](https://coveralls.io/repos/github/trixi-framework/FTObjectLibrary/badge.svg?branch=master)](https://coveralls.io/github/trixi-framework/FTObjectLibrary?branch=master)
+[![Codecov](https://codecov.io/gh/trixi-framework/FTObjectLibrary/branch/master/graph/badge.svg)](https://codecov.io/gh/trixi-framework/FTObjectLibrary)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
 FTObjectLibrary provides a collection of reference counted Fortran 2003 classes
