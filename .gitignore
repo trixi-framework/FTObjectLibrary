@@ -28,3 +28,6 @@ Docs/FTObjectLibrary.toc
 *.mod
 runSuite
 libFTObjectLibrary.a
+
+# auto-built documentation
+public/
