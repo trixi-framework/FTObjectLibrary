@@ -1,14 +1,13 @@
 project: FTObjectLibrary
-project_dir: ./Source 
+src_dir: ../Source
 output_dir: ./HTMLdocs
-summary: A library for reference counted object and container classes
+summary: A Fortran library for reference counted object and container classes.
 author: David A. Kopriva
-author_description: Department of Mathematics
-          The Florida State University
+author_description: Department of Mathematics, The Florida State University
 email: kopriva@math.fsu.edu
-website: www.math.fsu.edu/~kopriva
+website: https://www.math.fsu.edu/~kopriva
 graph: true 
-project_bitbucket: https://bitbucket.org/dgsemteam/ftobjectlibrary
+project_github: https://github.com/trixi-framework/FTObjectLibrary
 source: false
 predocmark:>
 

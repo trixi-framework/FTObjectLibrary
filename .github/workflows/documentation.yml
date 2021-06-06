@@ -1,0 +1,35 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - 'master'
+    tags: '*'
+    paths-ignore:
+      - '.github/workflows/ci.yml'
+  pull_request:
+    paths-ignore:
+      - '.github/workflows/ci.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # see also https://github.com/actions/setup-python
+      - name: Install dependencies
+        run: |
+          sudo apt-get install graphviz
+          sudo pip install ford
+      - name: Build
+        run: ford Docs/FTObjectLibraryProject.md
+      - name: Deploy
+        if: github.ref == 'refs/heads/master' # Only run on master
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.FORD_DOCUMENTATION_KEY }}
+          publish_dir: ./Docs/HTMLdocs
