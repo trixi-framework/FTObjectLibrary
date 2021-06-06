@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="A Fortran library for reference counted object and container classes.">
+    
+    <meta name="author" content="David A. Kopriva" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>FTDictionaryClass &ndash; FTObjectLibrary</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>FTDictionaryClass 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 6.2% of total for modules and submodules.">232 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/FTDictionaryClass.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></li>
+    
+  
+     <li class="active">FTDictionaryClass</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-0">Interfaces</a></h3></div>
+  <div id="inters-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#interface-cast~5">cast</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#type-ftdictionary">FTDictionary</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
+  <div id="funcs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-count">COUNT</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-objectforkey">objectForKey</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-containskey">containsKey</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-objectforkeyinlist">objectForKeyInList</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-ftdictionarydescription">FTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-allobjects">AllObjects</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-allkeys">AllKeys</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-dictionaryfromobject">dictionaryFromObject</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-dictionaryclassname">dictionaryClassName</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-init">init</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-initwithsize">initWithSize</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-releaseftdictionary">releaseFTDictionary</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-destructftdictionary">destructFTDictionary</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-addobjectforkey">addObjectForKey</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-printftdictionarydescription">printFTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-casttodictionary">castToDictionary</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <p>A dictionary is a special case of a hash table that stores key-value pairs. </p>
+<p>It is an
+example of what is called an ``associative container''. In the implementation of FTObjectLibrary,
+the value can be any subclass of FTObject and the key is a character variable. The library
+includes the base dictionary that can store and retrieve any subclass of FTObject. It also includes a
+subclass that is designed to store and retrieve FTValue objects.</p>
+<p>FTDictionary (Inherits from FTObject)</p>
+<h3>Initialization</h3>
+<div class="codehilite"><pre><span></span>     CLASS(FTDictionary), POINTER :: dict
+     ALLOCATE(dict)
+     CALL dict % initWithSize(N) ! N = size of dictionary. Should be power of two
+</pre></div>
+
+<h3>Adding entries</h3>
+<div class="codehilite"><pre><span></span>     CLASS(FTDictionary), POINTER :: dict
+     CLASS(FTObject)    , POINTER :: obj
+     CHARACTER(LEN=N)             :: key
+     obj =&gt; r                            ! r is subclass of FTObject
+     CALL dict % addObjectForKey(obj,key)
+</pre></div>
+
+<h3>Accessing entries</h3>
+<div class="codehilite"><pre><span></span>     obj =&gt; dict % objectForKey(key)
+     CALL cast(obj,v) ! v is the type of object to be extracted
+</pre></div>
+
+<h3>Destruction</h3>
+<div class="codehilite"><pre><span></span>     CALL release(dict) ! Pointer
+</pre></div>
+
+<h3>Accessing an object</h3>
+<div class="codehilite"><pre><span></span>       TYPE(FTObject) :: obj
+       obj =&gt; dict % objectForKey(key)
+</pre></div>
+
+<h3>Converting a base class pointer to a dictionary</h3>
+<div class="codehilite"><pre><span></span>       dict =&gt;  dictionaryFromObject(obj)
+</pre></div>
+
+<h3>Getting all of the keys</h3>
+<div class="codehilite"><pre><span></span>       CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
+       keys =&gt;  dict % allKeys()
+</pre></div>
+
+<p>(The target of the pointer must be deallocated by the caller)</p>
+<h3>Getting all of the objects</h3>
+<div class="codehilite"><pre><span></span>       CLASS(FTMutableObjectArray), POINTER :: objectArray
+       objectArray =&gt;  dict % allObjects() ! The array is owned by the caller.
+</pre></div>
+
+<p>(The target of the pointer must be released by the caller)</p>
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/ftkeyobjectpairclass.html'>FTKeyObjectPairClass</a></li>
+    
+    <li><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></li>
+    
+    <li><a href='../module/ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></li>
+    
+    <li><a href='../module/ftmutableobjectarrayclass.html'>FTMutableObjectArrayClass</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~ftdictionaryclass~~UsesGraph Pages: 1 -->
+<svg id="moduleftdictionaryclassUsesGraph" width="641pt" height="104pt"
+ viewBox="0.00 0.00 641.00 103.72" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ftdictionaryclass~~UsesGraph" class="graph" transform="scale(1.22 1.22) rotate(0) translate(4 122.37)">
+<title>module~~ftdictionaryclass~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-122.37 777,-122.37 777,4 -4,4"/>
+<!-- module~ftdictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_node1" class="node">
+<title>module~ftdictionaryclass</title>
+<polygon fill="none" stroke="black" points="773,-104 665,-104 665,-80 773,-80 773,-104"/>
+<text text-anchor="middle" x="719" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTDictionaryClass</text>
+</g>
+<!-- module~ftlinkedlistclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_node2" class="node">
+<title>module~ftlinkedlistclass</title>
+<g id="a_module~~ftdictionaryclass~~UsesGraph_node2"><a xlink:href=".././module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="436.5,-105 330.5,-105 330.5,-81 436.5,-81 436.5,-105"/>
+<text text-anchor="middle" x="383.5" y="-90.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftdictionaryclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge1" class="edge">
+<title>module~ftdictionaryclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M675.8,-104.07C661.12,-107.7 644.45,-111.2 629,-113 564.55,-120.5 547.56,-119.49 483,-113 470.26,-111.72 456.73,-109.53 443.91,-107.06"/>
+<polygon fill="#000000" stroke="#000000" points="444.3,-103.57 433.81,-105.03 442.92,-110.43 444.3,-103.57"/>
+</g>
+<!-- module~ftmutableobjectarrayclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_node3" class="node">
+<title>module~ftmutableobjectarrayclass</title>
+<g id="a_module~~ftdictionaryclass~~UsesGraph_node3"><a xlink:href=".././module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="284,-64 124,-64 124,-40 284,-40 284,-64"/>
+<text text-anchor="middle" x="204" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftdictionaryclass&#45;&gt;module~ftmutableobjectarrayclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge2" class="edge">
+<title>module~ftdictionaryclass&#45;&gt;module~ftmutableobjectarrayclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-52C467.5,-36.26 365.7,-38.51 294.52,-43.33"/>
+<polygon fill="#000000" stroke="#000000" points="293.98,-39.86 284.25,-44.06 294.47,-46.84 293.98,-39.86"/>
+</g>
+<!-- module~ftlinkedlistiteratorclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_node4" class="node">
+<title>module~ftlinkedlistiteratorclass</title>
+<g id="a_module~~ftdictionaryclass~~UsesGraph_node4"><a xlink:href=".././module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="629,-104 483,-104 483,-80 629,-80 629,-104"/>
+<text text-anchor="middle" x="556" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge3" class="edge">
+<title>module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M664.84,-92C656.61,-92 647.95,-92 639.26,-92"/>
+<polygon fill="#000000" stroke="#000000" points="639.07,-88.5 629.07,-92 639.07,-95.5 639.07,-88.5"/>
+</g>
+<!-- module~ftkeyobjectpairclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_node5" class="node">
+<title>module~ftkeyobjectpairclass</title>
+<g id="a_module~~ftdictionaryclass~~UsesGraph_node5"><a xlink:href=".././module/ftkeyobjectpairclass.html" xlink:title="FTKeyObjectPairClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="447,-24 320,-24 320,0 447,0 447,-24"/>
+<text text-anchor="middle" x="383.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftdictionaryclass&#45;&gt;module~ftkeyobjectpairclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge4" class="edge">
+<title>module~ftdictionaryclass&#45;&gt;module~ftkeyobjectpairclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M675.95,-79.95C643.66,-71.08 597.82,-59.34 557,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-52C516.36,-45.05 473.31,-34.93 440.14,-26.61"/>
+<polygon fill="#000000" stroke="#000000" points="440.73,-23.15 430.18,-24.09 439.02,-29.94 440.73,-23.15"/>
+</g>
+<!-- module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge5" class="edge">
+<title>module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M330.2,-80.92C310.43,-76.35 287.74,-71.11 267.15,-66.35"/>
+<polygon fill="#000000" stroke="#000000" points="267.76,-62.9 257.23,-64.06 266.18,-69.72 267.76,-62.9"/>
+</g>
+<!-- module~ftlinkedlistrecordclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_node7" class="node">
+<title>module~ftlinkedlistrecordclass</title>
+<g id="a_module~~ftdictionaryclass~~UsesGraph_node7"><a xlink:href=".././module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="276,-106 132,-106 132,-82 276,-82 276,-106"/>
+<text text-anchor="middle" x="204" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge6" class="edge">
+<title>module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M330.2,-93.29C316.49,-93.37 301.38,-93.46 286.54,-93.54"/>
+<polygon fill="#000000" stroke="#000000" points="286.31,-90.04 276.32,-93.6 286.34,-97.04 286.31,-90.04"/>
+</g>
+<!-- module~ftobjectclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_node6" class="node">
+<title>module~ftobjectclass</title>
+<g id="a_module~~ftdictionaryclass~~UsesGraph_node6"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="88,-64 0,-64 0,-40 88,-40 88,-64"/>
+<text text-anchor="middle" x="44" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge7" class="edge">
+<title>module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M123.54,-52C115,-52 106.47,-52 98.35,-52"/>
+<polygon fill="#000000" stroke="#000000" points="98.3,-48.5 88.3,-52 98.3,-55.5 98.3,-48.5"/>
+</g>
+<!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge8" class="edge">
+<title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M482.69,-92.42C470.76,-92.49 458.48,-92.57 446.82,-92.63"/>
+<polygon fill="#000000" stroke="#000000" points="446.73,-89.13 436.75,-92.69 446.77,-96.13 446.73,-89.13"/>
+</g>
+<!-- module~ftkeyobjectpairclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge9" class="edge">
+<title>module~ftkeyobjectpairclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M319.95,-13.34C267.36,-15.24 190.34,-19.84 124,-31 114.34,-32.62 104.15,-34.9 94.41,-37.36"/>
+<polygon fill="#000000" stroke="#000000" points="93.25,-34.04 84.47,-39.96 95.03,-40.81 93.25,-34.04"/>
+</g>
+<!-- module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftdictionaryclass~~UsesGraph_edge10" class="edge">
+<title>module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M157.72,-81.96C139.09,-77.01 117.37,-71.24 98,-66.09"/>
+<polygon fill="#000000" stroke="#000000" points="98.67,-62.65 88.11,-63.46 96.87,-69.41 98.67,-62.65"/>
+</g>
+</g>
+</svg>
+</div><script>var panmoduleftdictionaryclassUsesGraph = svgPanZoom('#moduleftdictionaryclassUsesGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
+    
+
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Used by</h3>
+      </div>
+      <ul class="list-group">
+  
+  
+  <li class="list-group-item">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~ftdictionaryclass~~UsedByGraph Pages: 1 -->
+<svg id="moduleftdictionaryclassUsedByGraph" width="641pt" height="149pt"
+ viewBox="0.00 0.00 641.00 148.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ftdictionaryclass~~UsedByGraph" class="graph" transform="scale(1.02 1.02) rotate(0) translate(4 148)">
+<title>module~~ftdictionaryclass~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-148 652,-148 652,4 -4,4"/>
+<!-- module~ftdictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_node1" class="node">
+<title>module~ftdictionaryclass</title>
+<polygon fill="none" stroke="black" points="108,-84 0,-84 0,-60 108,-60 108,-84"/>
+<text text-anchor="middle" x="54" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTDictionaryClass</text>
+</g>
+<!-- module~ftexceptionclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_node2" class="node">
+<title>module~ftexceptionclass</title>
+<g id="a_module~~ftdictionaryclass~~UsedByGraph_node2"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="423,-103 317,-103 317,-79 423,-79 423,-103"/>
+<text text-anchor="middle" x="370" y="-88.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge1" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M325.01,-78.98C311.05,-75.71 295.48,-72.62 281,-71 226.26,-64.86 163.6,-65.75 118.16,-67.81"/>
+<polygon fill="#000000" stroke="#000000" points="117.97,-64.32 108.16,-68.3 118.31,-71.31 117.97,-64.32"/>
+</g>
+<!-- module~ftvaluedictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_node3" class="node">
+<title>module~ftvaluedictionaryclass</title>
+<g id="a_module~~ftdictionaryclass~~UsedByGraph_node3"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="281,-104 144,-104 144,-80 281,-80 281,-104"/>
+<text text-anchor="middle" x="212.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge7" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M316.79,-91.34C308.54,-91.39 299.87,-91.44 291.19,-91.5"/>
+<polygon fill="#000000" stroke="#000000" points="291.02,-88 281.04,-91.57 291.06,-95 291.02,-88"/>
+</g>
+<!-- module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge2" class="edge">
+<title>module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M143.77,-83.34C135.31,-82.26 126.69,-81.16 118.3,-80.09"/>
+<polygon fill="#000000" stroke="#000000" points="118.58,-76.6 108.22,-78.8 117.69,-83.54 118.58,-76.6"/>
+</g>
+<!-- module~ftstringsetclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_node4" class="node">
+<title>module~ftstringsetclass</title>
+<g id="a_module~~ftdictionaryclass~~UsedByGraph_node4"><a xlink:href=".././module/ftstringsetclass.html" xlink:title="FTStringSetClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="263.5,-24 161.5,-24 161.5,0 263.5,0 263.5,-24"/>
+<text text-anchor="middle" x="212.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftstringsetclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge3" class="edge">
+<title>module~ftstringsetclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M179.83,-24.14C155.67,-33.4 122.21,-46.23 96.01,-56.28"/>
+<polygon fill="#000000" stroke="#000000" points="94.44,-53.13 86.36,-59.98 96.95,-59.67 94.44,-53.13"/>
+</g>
+<!-- module~ftobjectlibrary -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_node5" class="node">
+<title>module~ftobjectlibrary</title>
+<g id="a_module~~ftdictionaryclass~~UsedByGraph_node5"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<polygon fill="#337ab7" stroke="#337ab7" points="602,-144 505,-144 505,-120 602,-120 602,-144"/>
+<text text-anchor="middle" x="553.5" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge4" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M369,-132C268.84,-125.67 241.04,-138.6 144,-113 123.51,-107.59 101.89,-97.74 85.09,-89.05"/>
+<polygon fill="#000000" stroke="#000000" points="86.27,-85.72 75.8,-84.11 82.99,-91.9 86.27,-85.72"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftexceptionclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge6" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftexceptionclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M504.93,-121.34C490.2,-118.03 473.93,-114.37 459,-111 450.56,-109.09 441.67,-107.08 432.91,-105.09"/>
+<polygon fill="#000000" stroke="#000000" points="433.64,-101.67 423.11,-102.87 432.09,-108.49 433.64,-101.67"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge8" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M504.68,-133.64C468.05,-134.51 416.28,-134.86 371,-132"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M369,-132C329.59,-129.51 286.18,-117.52 255.26,-107.32"/>
+<polygon fill="#000000" stroke="#000000" points="256.28,-103.97 245.68,-104.08 254.04,-110.6 256.28,-103.97"/>
+</g>
+<!-- module~sharedexceptionmanagermodule -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_node6" class="node">
+<title>module~sharedexceptionmanagermodule</title>
+<g id="a_module~~ftdictionaryclass~~UsedByGraph_node6"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
+<polygon fill="#337ab7" stroke="#337ab7" points="648,-102 459,-102 459,-78 648,-78 648,-102"/>
+<text text-anchor="middle" x="553.5" y="-87.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
+</a>
+</g>
+</g>
+<!-- module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass -->
+<g id="module~~ftdictionaryclass~~UsedByGraph_edge5" class="edge">
+<title>module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.83,-90.52C450.17,-90.56 441.55,-90.61 433.28,-90.66"/>
+<polygon fill="#000000" stroke="#000000" points="433,-87.16 423.02,-90.71 433.04,-94.16 433,-87.16"/>
+</g>
+</g>
+</svg>
+</div><script>var panmoduleftdictionaryclassUsedByGraph = svgPanZoom('#moduleftdictionaryclassUsedByGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+  </li>
+  
+      </ul>
+    </div>
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-1">Interfaces</a></h3></div>
+  <div id="inters-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#interface-cast~5">cast</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#type-ftdictionary">FTDictionary</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
+  <div id="funcs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-count">COUNT</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-objectforkey">objectForKey</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-containskey">containsKey</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-objectforkeyinlist">objectForKeyInList</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-ftdictionarydescription">FTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-allobjects">AllObjects</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-allkeys">AllKeys</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-dictionaryfromobject">dictionaryFromObject</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-dictionaryclassname">dictionaryClassName</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-init">init</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-initwithsize">initWithSize</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-releaseftdictionary">releaseFTDictionary</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-destructftdictionary">destructFTDictionary</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-addobjectforkey">addObjectForKey</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-printftdictionarydescription">printFTDictionaryDescription</a>
+      
+      <a class="list-group-item" href="../module/ftdictionaryclass.html#proc-casttodictionary">castToDictionary</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+    <section>
+   <h2>Interfaces</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-cast~5"></span><h3>public interface <a href='../interface/cast~5.html'>cast</a>
+    
+  </h3></div>
+  
+  <ul class="list-group">
+  
+  
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+public subroutine <a href='../proc/casttodictionary.html'>castToDictionary</a>(obj, cast)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>cast</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+    </li>
+  
+  
+  </ul>
+</div>
+
+    
+    </section>
+  <br>
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-ftdictionary"></span><h3>type, public, EXTENDS(FTObject) :: <a href='../type/ftdictionary.html'>FTDictionary</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-numberofentries"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>numberOfEntries</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iscasesensitive"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>isCaseSensitive</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-entries"></span>type(FTLinkedList),</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(:), POINTER</td><td>::</td>
+  <td><strong>entries</strong></td><td>=> </td><td>NULL()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+     
+     <h4>Finalizations Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>final :: <strong>destructFTDictionary</strong></h3></td><td></td></tr>
+      
+       </tbody>
+       </table>  
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-initwithsize~2'>initWithSize</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-init~5'>init</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-allkeys'>allKeys</a></strong>  => AllKeys </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-allobjects~2'>allObjects</a></strong>  => AllObjects </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-addobjectforkey'>addObjectForKey</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-description~5'>description</a></strong>  => FTDictionaryDescription </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-printdescription~9'>printDescription</a></strong>  => printFTDictionaryDescription </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-objectforkey'>objectForKey</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-containskey'>containsKey</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-classname~11'>className</a></strong>  => dictionaryClassName </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftdictionary.html#boundprocedure-count~2'>COUNT</a></strong>  </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+    </section>
+  <br>
+    
+    
+     
+    <section>
+    <h2>Functions</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-count"></span><h3>
+public function <a href='../proc/count.html'>COUNT</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>integer
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-objectforkey"></span><h3>
+public function <a href='../proc/objectforkey.html'>objectForKey</a>(self, key)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>key</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(FTObject),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-containskey"></span><h3>
+public function <a href='../proc/containskey.html'>containsKey</a>(self, key) result(r)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>key</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-objectforkeyinlist"></span><h3>
+public function <a href='../proc/objectforkeyinlist.html'>objectForKeyInList</a>(key, list)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>key</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTLinkedList)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>list</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(FTObject),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ftdictionarydescription"></span><h3>
+public function <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescription</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>character(len=DESCRIPTION_CHARACTER_LENGTH)
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-allobjects"></span><h3>
+public function <a href='../proc/allobjects.html'>AllObjects</a>(self) result(objectArray)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(FTMutableObjectArray),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-allkeys"></span><h3>
+public function <a href='../proc/allkeys.html'>AllKeys</a>(self) result(keys)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>character(len=FTDICT_KWD_STRING_LENGTH),
+  POINTER, (:)</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-dictionaryfromobject"></span><h3>
+public function <a href='../proc/dictionaryfromobject.html'>dictionaryFromObject</a>(obj) result(cast)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/ftdictionary.html'>FTDictionary</a>),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-dictionaryclassname"></span><h3>
+public function <a href='../proc/dictionaryclassname.html'>dictionaryClassName</a>(self) result(s)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+
+
+<p>Class name returns a string with the name of the type of the object</p><a href="../proc/dictionaryclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>character(len=CLASS_NAME_CHARACTER_LENGTH)
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    </section>
+    <br>
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-init"></span><h3>
+public subroutine <a href='../proc/init.html'>init</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-initwithsize"></span><h3>
+public subroutine <a href='../proc/initwithsize.html'>initWithSize</a>(self, sze)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>sze</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-releaseftdictionary"></span><h3>
+public subroutine <a href='../proc/releaseftdictionary.html'>releaseFTDictionary</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftdictionary.html'>FTDictionary</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-destructftdictionary"></span><h3>
+public subroutine <a href='../proc/destructftdictionary.html'>destructFTDictionary</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-addobjectforkey"></span><h3>
+public subroutine <a href='../proc/addobjectforkey.html'>addObjectForKey</a>(self, object, key)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>object</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>key</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-printftdictionarydescription"></span><h3>
+public subroutine <a href='../proc/printftdictionarydescription.html'>printFTDictionaryDescription</a>(self, iUnit)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>iUnit</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-casttodictionary"></span><h3>
+public subroutine <a href='../proc/casttodictionary.html'>castToDictionary</a>(obj, cast)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>cast</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> FTObjectLibrary was developed by David A. Kopriva</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="A Fortran library for reference counted object and container classes.">
+    
+    <meta name="author" content="David A. Kopriva" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>FTLinkedListClass &ndash; FTObjectLibrary</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>FTLinkedListClass 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 9.5% of total for modules and submodules.">355 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/FTLinkedListClass.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></li>
+    
+  
+     <li class="active">FTLinkedListClass</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-0">Interfaces</a></h3></div>
+  <div id="inters-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#interface-cast~3">cast</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#type-ftlinkedlist">FTLinkedList</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
+  <div id="funcs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-iscircular">isCircular</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-numberofrecords">numberOfRecords</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-ftlinkedlistdescription">FTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-alllinkedlistobjects">allLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-linkedlistclassname">linkedListClassName</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-linkedlistfromobject">linkedListFromObject</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-initftlinkedlist">initFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-add">add</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-addobjectsfromlist">addObjectsFromList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-insertobjectafterrecord">insertObjectAfterRecord</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-insertobjectafterobject">insertObjectAfterObject</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-makecircular">makeCircular</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removeobject1">removeObject1</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removeobject">removeObject</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removelinkedlistrecord">removeLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removealllinkedlistobjects">removeAllLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-releaseftlinkedlist">releaseFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-destructftlinkedlist">destructFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-printftlinkedlistdescription">printFTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-reverselinkedlist">reverseLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-castobjecttolinkedlist">castObjectToLinkedList</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <p>FTLinkedList is a container class that stores objects in a linked list.</p>
+<p>Inherits from FTObjectClass</p>
+<h2>Definition (Subclass of FTObject):</h2>
+<div class="codehilite"><pre><span></span>     TYPE(FTLinkedList) :: list
+</pre></div>
+
+<h1>Usage:</h1>
+<h2>Initialization</h2>
+<div class="codehilite"><pre><span></span>     CLASS(FTLinkedList), POINTER :: list
+     ALLOCATE(list)
+     CALL list % init
+</pre></div>
+
+<h2>Adding objects</h2>
+<div class="codehilite"><pre><span></span>     CLASS(FTLinkedList), POINTER :: list, listToAdd
+     CLASS(FTObject)    , POINTER :: objectPtr
+
+     objectPtr =&gt; r                ! r is subclass of FTObject
+     CALL list % Add(objectPtr)    ! Pointer is retained by list
+     CALL release(r)               ! If caller relinquishes ownership
+
+     CALL list % addObjectsFromList(listToAdd)
+</pre></div>
+
+<h2>Inserting objects</h2>
+<div class="codehilite"><pre><span></span>     CLASS(FTLinkedList)      , POINTER :: list
+     CLASS(FTObject)          , POINTER :: objectPtr, obj
+     CLASS(FTLinkedListRecord), POINTER :: record
+
+     objectPtr =&gt; r                                        ! r is subclass of FTObject
+     CALL list % insertObjectAfterRecord(objectPtr,record) ! Pointer is retained by list
+     CALL release(r)                                       ! If caller reliquishes ownership
+
+     objectPtr =&gt; r                                     ! r is subclass of FTObject
+     CALL list % insertObjectAfterObject(objectPtr,obj) ! Pointer is retained by list
+     CALL release(r)                                    ! If caller reliquishes ownership
+</pre></div>
+
+<h2>Removing objects</h2>
+<div class="codehilite"><pre><span></span>     CLASS(FTLinkedList), POINTER :: list
+     CLASS(FTObject)    , POINTER :: objectPtr
+     objectPtr =&gt; r                 ! r is subclass of FTObject
+     CALL list % remove(objectPtr)
+</pre></div>
+
+<h2>Getting all objects as an object array</h2>
+<div class="codehilite"><pre><span></span>     CLASS(FTLinkedList)        , POINTER :: list
+     CLASS(FTMutableObjectArray), POINTER :: array
+     array =&gt; list % allObjects() ! Array has refCount = 1
+</pre></div>
+
+<h2>Counting the number of objects in the list</h2>
+<div class="codehilite"><pre><span></span>     n = list % count()
+</pre></div>
+
+<h2>Destruction</h2>
+<div class="codehilite"><pre><span></span>     CALL release(list) [Pointers]
+</pre></div>
+
+<p>!</p>
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/ftlinkedlistrecordclass.html'>FTLinkedListRecordClass</a></li>
+    
+    <li><a href='../module/ftmutableobjectarrayclass.html'>FTMutableObjectArrayClass</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~ftlinkedlistclass~~UsesGraph Pages: 1 -->
+<svg id="moduleftlinkedlistclassUsesGraph" width="434pt" height="74pt"
+ viewBox="0.00 0.00 434.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ftlinkedlistclass~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>module~~ftlinkedlistclass~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 430,-70 430,4 -4,4"/>
+<!-- module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_node1" class="node">
+<title>module~ftlinkedlistclass</title>
+<polygon fill="none" stroke="black" points="426,-45 320,-45 320,-21 426,-21 426,-45"/>
+<text text-anchor="middle" x="373" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTLinkedListClass</text>
+</g>
+<!-- module~ftmutableobjectarrayclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_node2" class="node">
+<title>module~ftmutableobjectarrayclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsesGraph_node2"><a xlink:href=".././module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="284,-66 124,-66 124,-42 284,-42 284,-66"/>
+<text text-anchor="middle" x="204" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_edge1" class="edge">
+<title>module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M319.62,-39.59C311.51,-40.61 302.94,-41.68 294.28,-42.77"/>
+<polygon fill="#000000" stroke="#000000" points="293.59,-39.33 284.11,-44.05 294.47,-46.28 293.59,-39.33"/>
+</g>
+<!-- module~ftlinkedlistrecordclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_node3" class="node">
+<title>module~ftlinkedlistrecordclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsesGraph_node3"><a xlink:href=".././module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="276,-24 132,-24 132,0 276,0 276,-24"/>
+<text text-anchor="middle" x="204" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_edge2" class="edge">
+<title>module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M319.62,-26.41C308.96,-25.07 297.52,-23.63 286.14,-22.2"/>
+<polygon fill="#000000" stroke="#000000" points="286.53,-18.72 276.17,-20.95 285.66,-25.67 286.53,-18.72"/>
+</g>
+<!-- module~ftobjectclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_node4" class="node">
+<title>module~ftobjectclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsesGraph_node4"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="88,-45 0,-45 0,-21 88,-21 88,-45"/>
+<text text-anchor="middle" x="44" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_edge3" class="edge">
+<title>module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M123.54,-43.44C115,-42.3 106.47,-41.17 98.35,-40.09"/>
+<polygon fill="#000000" stroke="#000000" points="98.68,-36.6 88.3,-38.76 97.75,-43.54 98.68,-36.6"/>
+</g>
+<!-- module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftlinkedlistclass~~UsesGraph_edge4" class="edge">
+<title>module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M131.86,-21.46C120.56,-22.96 109.05,-24.49 98.25,-25.92"/>
+<polygon fill="#000000" stroke="#000000" points="97.61,-22.48 88.16,-27.26 98.53,-29.42 97.61,-22.48"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
+    
+
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Used by</h3>
+      </div>
+      <ul class="list-group">
+  
+  
+  <li class="list-group-item">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~ftlinkedlistclass~~UsedByGraph Pages: 1 -->
+<svg id="moduleftlinkedlistclassUsedByGraph" width="641pt" height="145pt"
+ viewBox="0.00 0.00 641.00 144.64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ftlinkedlistclass~~UsedByGraph" class="graph" transform="scale(1.55 1.55) rotate(0) translate(4 220.52)">
+<title>module~~ftlinkedlistclass~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-220.52 991,-220.52 991,4 -4,4"/>
+<!-- module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node1" class="node">
+<title>module~ftlinkedlistclass</title>
+<polygon fill="none" stroke="black" points="106,-163 0,-163 0,-139 106,-139 106,-163"/>
+<text text-anchor="middle" x="53" y="-148.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTLinkedListClass</text>
+</g>
+<!-- module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node2" class="node">
+<title>module~ftdictionaryclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node2"><a xlink:href=".././module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="439.5,-142 331.5,-142 331.5,-118 439.5,-118 439.5,-142"/>
+<text text-anchor="middle" x="385.5" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftdictionaryclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge1" class="edge">
+<title>module~ftdictionaryclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.84,-142.01C334.93,-144.52 329.15,-147.49 324,-151 303.68,-164.84 308.83,-179.94 288,-193 259.96,-210.58 249.03,-214.08 216,-212"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214,-212C165.6,-208.95 113.92,-185.02 82.79,-168.06"/>
+<polygon fill="#000000" stroke="#000000" points="84.25,-164.86 73.81,-163.05 80.84,-170.98 84.25,-164.86"/>
+</g>
+<!-- module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node7" class="node">
+<title>module~ftlinkedlistiteratorclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node7"><a xlink:href=".././module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="288,-142 142,-142 142,-118 288,-118 288,-142"/>
+<text text-anchor="middle" x="215" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge17" class="edge">
+<title>module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M331.19,-130C320.7,-130 309.48,-130 298.3,-130"/>
+<polygon fill="#000000" stroke="#000000" points="298.07,-126.5 288.07,-130 298.07,-133.5 298.07,-126.5"/>
+</g>
+<!-- module~ftstackclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node3" class="node">
+<title>module~ftstackclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node3"><a xlink:href=".././module/ftstackclass.html" xlink:title="FTStackClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="592.5,-24 510.5,-24 510.5,0 592.5,0 592.5,-24"/>
+<text text-anchor="middle" x="551.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftstackclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge6" class="edge">
+<title>module~ftstackclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M510.26,-18.62C436.06,-31.48 273.29,-62.67 142,-109 122.52,-115.87 101.61,-125.74 85.06,-134.18"/>
+<polygon fill="#000000" stroke="#000000" points="83.13,-131.24 75.87,-138.96 86.36,-137.45 83.13,-131.24"/>
+</g>
+<!-- module~ftsparsematrixclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node4" class="node">
+<title>module~ftsparsematrixclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node4"><a xlink:href=".././module/ftsparsematrixclass.html" xlink:title="FTSparseMatrixClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="447,-184 324,-184 324,-160 447,-160 447,-184"/>
+<text text-anchor="middle" x="385.5" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge2" class="edge">
+<title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M356.33,-184.06C323.22,-196.96 266.41,-215.18 216,-212"/>
+</g>
+<!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge16" class="edge">
+<title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.21,-159.96C316.83,-155.13 294.31,-149.52 274.04,-144.47"/>
+<polygon fill="#000000" stroke="#000000" points="274.84,-141.06 264.29,-142.04 273.15,-147.85 274.84,-141.06"/>
+</g>
+<!-- module~ftmultiindextableclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node5" class="node">
+<title>module~ftmultiindextableclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node5"><a xlink:href=".././module/ftmultiindextableclass.html" xlink:title="FTMultiIndexTableClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="282.5,-184 147.5,-184 147.5,-160 282.5,-160 282.5,-184"/>
+<text text-anchor="middle" x="215" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftmultiindextableclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge4" class="edge">
+<title>module~ftmultiindextableclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M147.07,-163.22C136.8,-161.87 126.22,-160.48 116.06,-159.15"/>
+<polygon fill="#000000" stroke="#000000" points="116.43,-155.66 106.06,-157.83 115.52,-162.6 116.43,-155.66"/>
+</g>
+<!-- module~ftobjectlibrary -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node6" class="node">
+<title>module~ftobjectlibrary</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node6"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<polygon fill="#337ab7" stroke="#337ab7" points="941,-85 844,-85 844,-61 941,-61 941,-85"/>
+<text text-anchor="middle" x="892.5" y="-70.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge5" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M550.5,-212C401.83,-212.63 364.37,-221.36 216,-212"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge10" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M708,-172C638.1,-186.39 623.86,-211.7 552.5,-212"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M550.5,-212C519.33,-212.13 509.27,-209.77 483,-193 462.28,-179.77 467.32,-164.84 447,-151 444.59,-149.36 442.03,-147.83 439.39,-146.41"/>
+<polygon fill="#000000" stroke="#000000" points="440.69,-143.15 430.16,-142.01 437.68,-149.47 440.69,-143.15"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftstackclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge12" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftstackclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M843.57,-65.18C828.68,-61.98 812.4,-57.66 798,-52 780.76,-45.22 779.64,-36.64 762,-31 709.45,-14.21 645.98,-10.62 602.77,-10.5"/>
+<polygon fill="#000000" stroke="#000000" points="602.5,-7 592.51,-10.53 602.52,-14 602.5,-7"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftsparsematrixclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge13" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftsparsematrixclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M550.5,-212C507.21,-212.18 459.27,-198.84 426.47,-187.51"/>
+<polygon fill="#000000" stroke="#000000" points="427.39,-184.13 416.79,-184.08 425.05,-190.72 427.39,-184.13"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge14" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M876.72,-85.14C847.27,-108.34 778.2,-157.96 710,-172"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M708,-172C660.89,-181.7 665.16,-125.55 620,-109 522.24,-73.17 489.08,-72.16 386.5,-90"/>
+</g>
+<!-- module~ftexceptionclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node8" class="node">
+<title>module~ftexceptionclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node8"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="762,-64 656,-64 656,-40 762,-40 762,-64"/>
+<text text-anchor="middle" x="709" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftexceptionclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge19" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftexceptionclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M843.81,-67.48C821.95,-64.95 795.74,-61.92 772.33,-59.21"/>
+<polygon fill="#000000" stroke="#000000" points="772.49,-55.71 762.15,-58.03 771.68,-62.66 772.49,-55.71"/>
+</g>
+<!-- module~ftvaluedictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node9" class="node">
+<title>module~ftvaluedictionaryclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node9"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="620,-184 483,-184 483,-160 620,-160 620,-184"/>
+<text text-anchor="middle" x="551.5" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge21" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M708,-172C683.02,-177.14 655.29,-178.49 630.26,-178.14"/>
+<polygon fill="#000000" stroke="#000000" points="630.15,-174.64 620.07,-177.91 629.99,-181.64 630.15,-174.64"/>
+</g>
+<!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge3" class="edge">
+<title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M141.96,-139.46C133.35,-140.59 124.61,-141.73 116.16,-142.84"/>
+<polygon fill="#000000" stroke="#000000" points="115.47,-139.4 106.01,-144.17 116.39,-146.34 115.47,-139.4"/>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge7" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M550.5,-52C499.75,-60.61 493.67,-82.27 447,-104 440.02,-107.25 432.52,-110.59 425.26,-113.75"/>
+<polygon fill="#000000" stroke="#000000" points="423.38,-110.75 415.58,-117.92 426.15,-117.18 423.38,-110.75"/>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftstackclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge11" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftstackclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M661.34,-40C642.77,-35.22 621.35,-29.71 602.46,-24.85"/>
+<polygon fill="#000000" stroke="#000000" points="603.1,-21.4 592.55,-22.3 601.36,-28.18 603.1,-21.4"/>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge15" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M655.8,-47.66C625.44,-46.22 586.57,-46.22 552.5,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M550.5,-52C476.73,-64.52 460.21,-77.18 386.5,-90"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M384.5,-90C345.84,-96.72 302.81,-106.99 269.91,-115.43"/>
+<polygon fill="#000000" stroke="#000000" points="268.84,-112.09 260.04,-117.99 270.6,-118.87 268.84,-112.09"/>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge20" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M700.36,-64.28C686.76,-85.16 656.33,-127.57 620,-151 617.27,-152.76 614.38,-154.39 611.39,-155.88"/>
+<polygon fill="#000000" stroke="#000000" points="609.91,-152.71 602.21,-159.98 612.77,-159.1 609.91,-152.71"/>
+</g>
+<!-- module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge8" class="edge">
+<title>module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M503.5,-159.96C484.72,-155.15 462.92,-149.57 443.26,-144.54"/>
+<polygon fill="#000000" stroke="#000000" points="444.06,-141.13 433.5,-142.04 442.32,-147.91 444.06,-141.13"/>
+</g>
+<!-- module~ftstringsetclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node10" class="node">
+<title>module~ftstringsetclass</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node10"><a xlink:href=".././module/ftstringsetclass.html" xlink:title="FTStringSetClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="602.5,-142 500.5,-142 500.5,-118 602.5,-118 602.5,-142"/>
+<text text-anchor="middle" x="551.5" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftstringsetclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge9" class="edge">
+<title>module~ftstringsetclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M500.4,-130C484.49,-130 466.68,-130 449.95,-130"/>
+<polygon fill="#000000" stroke="#000000" points="449.7,-126.5 439.7,-130 449.7,-133.5 449.7,-126.5"/>
+</g>
+<!-- module~sharedexceptionmanagermodule -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_node11" class="node">
+<title>module~sharedexceptionmanagermodule</title>
+<g id="a_module~~ftlinkedlistclass~~UsedByGraph_node11"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
+<polygon fill="#337ab7" stroke="#337ab7" points="987,-43 798,-43 798,-19 987,-19 987,-43"/>
+<text text-anchor="middle" x="892.5" y="-28.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
+</a>
+</g>
+</g>
+<!-- module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass -->
+<g id="module~~ftlinkedlistclass~~UsedByGraph_edge18" class="edge">
+<title>module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M797.83,-41.84C789.08,-42.85 780.36,-43.86 772.01,-44.83"/>
+<polygon fill="#000000" stroke="#000000" points="771.55,-41.35 762.02,-45.98 772.36,-48.31 771.55,-41.35"/>
+</g>
+</g>
+</svg>
+</div><script>var panmoduleftlinkedlistclassUsedByGraph = svgPanZoom('#moduleftlinkedlistclassUsedByGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+  </li>
+  
+      </ul>
+    </div>
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-1">Interfaces</a></h3></div>
+  <div id="inters-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#interface-cast~3">cast</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#type-ftlinkedlist">FTLinkedList</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
+  <div id="funcs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-iscircular">isCircular</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-numberofrecords">numberOfRecords</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-ftlinkedlistdescription">FTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-alllinkedlistobjects">allLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-linkedlistclassname">linkedListClassName</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-linkedlistfromobject">linkedListFromObject</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-initftlinkedlist">initFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-add">add</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-addobjectsfromlist">addObjectsFromList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-insertobjectafterrecord">insertObjectAfterRecord</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-insertobjectafterobject">insertObjectAfterObject</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-makecircular">makeCircular</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removeobject1">removeObject1</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removeobject">removeObject</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removelinkedlistrecord">removeLinkedListRecord</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-removealllinkedlistobjects">removeAllLinkedListObjects</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-releaseftlinkedlist">releaseFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-destructftlinkedlist">destructFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-printftlinkedlistdescription">printFTLinkedListDescription</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-reverselinkedlist">reverseLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistclass.html#proc-castobjecttolinkedlist">castObjectToLinkedList</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+    <section>
+   <h2>Interfaces</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-cast~3"></span><h3>public interface <a href='../interface/cast~3.html'>cast</a>
+    
+  </h3></div>
+  
+  <ul class="list-group">
+  
+  
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+public subroutine <a href='../proc/castobjecttolinkedlist.html'>castObjectToLinkedList</a>(obj, cast)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>cast</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+    </li>
+  
+  
+  </ul>
+</div>
+
+    
+    </section>
+  <br>
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-ftlinkedlist"></span><h3>type, public, EXTENDS(FTObject) :: <a href='../type/ftlinkedlist.html'>FTLinkedList</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-head"></span>class(FTLinkedListRecord),</td>
+  
+  <td>public,</td>
+  <td>POINTER</td><td>::</td>
+  <td><strong>head</strong></td><td>=> </td><td>NULL()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tail"></span>class(FTLinkedListRecord),</td>
+  
+  <td>public,</td>
+  <td>POINTER</td><td>::</td>
+  <td><strong>tail</strong></td><td>=> </td><td>NULL()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nrecords"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>nRecords</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iscircular_"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>isCircular_</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+     
+     <h4>Finalizations Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>final :: <strong>destructFTLinkedList</strong></h3></td><td></td></tr>
+      
+       </tbody>
+       </table>  
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-init~3'>init</a></strong>  => initFTLinkedList </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-add'>add</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-remove'>remove</a></strong>  => removeObject </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-reverse'>reverse</a></strong>  => reverseLinkedList </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-removerecord'>removeRecord</a></strong>  => removeLinkedListRecord </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-count'>count</a></strong>  => numberOfRecords </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-description~3'>description</a></strong>  => FTLinkedListDescription </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-printdescription~6'>printDescription</a></strong>  => printFTLinkedListDescription </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-classname~8'>className</a></strong>  => linkedListClassName </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-allobjects'>allObjects</a></strong>  => allLinkedListObjects </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-removeallobjects'>removeAllObjects</a></strong>  => removeAllLinkedListObjects </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-addobjectsfromlist'>addObjectsFromList</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-makecircular'>makeCircular</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-iscircular'>isCircular</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-insertobjectafterrecord'>insertObjectAfterRecord</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlist.html#boundprocedure-insertobjectafterobject'>insertObjectAfterObject</a></strong>  </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+    </section>
+  <br>
+    
+    
+     
+    <section>
+    <h2>Functions</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-iscircular"></span><h3>
+public function <a href='../proc/iscircular.html'>isCircular</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-numberofrecords"></span><h3>
+public function <a href='../proc/numberofrecords.html'>numberOfRecords</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>integer
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ftlinkedlistdescription"></span><h3>
+public function <a href='../proc/ftlinkedlistdescription.html'>FTLinkedListDescription</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>character(len=DESCRIPTION_CHARACTER_LENGTH)
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-alllinkedlistobjects"></span><h3>
+public function <a href='../proc/alllinkedlistobjects.html'>allLinkedListObjects</a>(self) result(array)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(FTMutableObjectArray),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-linkedlistclassname"></span><h3>
+public function <a href='../proc/linkedlistclassname.html'>linkedListClassName</a>(self) result(s)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+
+
+<p>Class name returns a string with the name of the type of the object</p><a href="../proc/linkedlistclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>character(len=CLASS_NAME_CHARACTER_LENGTH)
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-linkedlistfromobject"></span><h3>
+public function <a href='../proc/linkedlistfromobject.html'>linkedListFromObject</a>(obj) result(cast)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    </section>
+    <br>
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-initftlinkedlist"></span><h3>
+public subroutine <a href='../proc/initftlinkedlist.html'>initFTLinkedList</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-add"></span><h3>
+public subroutine <a href='../proc/add.html'>add</a>(self, obj)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-addobjectsfromlist"></span><h3>
+public subroutine <a href='../proc/addobjectsfromlist.html'>addObjectsFromList</a>(self, list)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>list</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-insertobjectafterrecord"></span><h3>
+public subroutine <a href='../proc/insertobjectafterrecord.html'>insertObjectAfterRecord</a>(self, obj, after)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTLinkedListRecord),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>after</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-insertobjectafterobject"></span><h3>
+public subroutine <a href='../proc/insertobjectafterobject.html'>insertObjectAfterObject</a>(self, obj, after)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>after</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-makecircular"></span><h3>
+public subroutine <a href='../proc/makecircular.html'>makeCircular</a>(self, circular)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>circular</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-removeobject1"></span><h3>
+public subroutine <a href='../proc/removeobject1.html'>removeObject1</a>(self, obj)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-removeobject"></span><h3>
+public subroutine <a href='../proc/removeobject.html'>removeObject</a>(self, obj)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-removelinkedlistrecord"></span><h3>
+public subroutine <a href='../proc/removelinkedlistrecord.html'>removeLinkedListRecord</a>(self, listRecord)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTLinkedListRecord),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>listRecord</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-removealllinkedlistobjects"></span><h3>
+public subroutine <a href='../proc/removealllinkedlistobjects.html'>removeAllLinkedListObjects</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-releaseftlinkedlist"></span><h3>
+public subroutine <a href='../proc/releaseftlinkedlist.html'>releaseFTLinkedList</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-destructftlinkedlist"></span><h3>
+public subroutine <a href='../proc/destructftlinkedlist.html'>destructFTLinkedList</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+
+
+<p>It is automatically called by release().</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-printftlinkedlistdescription"></span><h3>
+public subroutine <a href='../proc/printftlinkedlistdescription.html'>printFTLinkedListDescription</a>(self, iUnit)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>iUnit</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-reverselinkedlist"></span><h3>
+public subroutine <a href='../proc/reverselinkedlist.html'>reverseLinkedList</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-castobjecttolinkedlist"></span><h3>
+public subroutine <a href='../proc/castobjecttolinkedlist.html'>castObjectToLinkedList</a>(obj, cast)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTObject),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>obj</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>cast</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> FTObjectLibrary was developed by David A. Kopriva</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

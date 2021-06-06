@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="A Fortran library for reference counted object and container classes.">
+    
+    <meta name="author" content="David A. Kopriva" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>FTLinkedListIteratorClass &ndash; FTObjectLibrary</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>FTLinkedListIteratorClass 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 3.9% of total for modules and submodules.">147 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/FTLinkedListClass.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></li>
+    
+  
+     <li class="active">FTLinkedListIteratorClass</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#type-ftlinkedlistiterator">FTLinkedListIterator</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
+  <div id="funcs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-ftlinkedlistisatend">FTLinkedListIsAtEnd</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-returnlinkedlist">returnLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-ftlinkedlistobject">FTLinkedListObject</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-ftlinkedlistcurrentrecord">FTLinkedListCurrentRecord</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-linkedlistiteratorclassname">linkedListIteratorClassName</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-initempty">initEmpty</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-initwithftlinkedlist">initWithFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-releaseftlinkedlistiterator">releaseFTLinkedListIterator</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-destructiterator">destructIterator</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-releasememberlist">releaseMemberList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-settostart">setToStart</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-movetonext">moveToNext</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-setlinkedlist">setLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-removecurrentrecord">removeCurrentRecord</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <p>An object for stepping through a linked list.</p>
+<h3>Definition (Subclass of FTObject):</h3>
+<p>TYPE(FTLinkedListIterator) :: list</p>
+<h3>Initialization</h3>
+<div class="codehilite"><pre><span></span>     CLASS(FTLinkedList)        , POINTER :: list
+     CLASS(FTLinkedListIterator), POINTER :: iterator
+     ALLOCATE(iterator)
+     CALL iterator % initWithFTLinkedList(list)
+</pre></div>
+
+<h3>Accessors</h3>
+<div class="codehilite"><pre><span></span>     ptr =&gt; iterator % list()
+     ptr =&gt; iterator % object()
+     ptr =&gt; iterator % currentRecord()
+</pre></div>
+
+<h3>Iterating</h3>
+<div class="codehilite"><pre><span></span>     CLASS(FTObject), POINTER :: objectPtr
+     CALL iterator % setToStart
+     DO WHILE (.NOT.iterator % isAtEnd())
+        objectPtr =&gt; iterator % object()        ! if the object is wanted
+        recordPtr =&gt; iterator % currentRecord() ! if the record is wanted
+
+         Do something with object or record
+
+        CALL iterator % moveToNext() ! DON&#39;T FORGET THIS!!
+     END DO
+</pre></div>
+
+<h3>Destruction</h3>
+<div class="codehilite"><pre><span></span>     CALL release(iterator) [Pointers]
+</pre></div>
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~ftlinkedlistiteratorclass~~UsesGraph Pages: 1 -->
+<svg id="moduleftlinkedlistiteratorclassUsesGraph" width="616pt" height="74pt"
+ viewBox="0.00 0.00 616.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>module~~ftlinkedlistiteratorclass~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 612,-70 612,4 -4,4"/>
+<!-- module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node1" class="node">
+<title>module~ftlinkedlistiteratorclass</title>
+<polygon fill="none" stroke="black" points="608,-45 462,-45 462,-21 608,-21 608,-45"/>
+<text text-anchor="middle" x="535" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTLinkedListIteratorClass</text>
+</g>
+<!-- module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node2" class="node">
+<title>module~ftlinkedlistclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node2"><a xlink:href=".././module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="426,-45 320,-45 320,-21 426,-21 426,-45"/>
+<text text-anchor="middle" x="373" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_edge1" class="edge">
+<title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M461.96,-33C453.35,-33 444.61,-33 436.16,-33"/>
+<polygon fill="#000000" stroke="#000000" points="436.01,-29.5 426.01,-33 436.01,-36.5 436.01,-29.5"/>
+</g>
+<!-- module~ftmutableobjectarrayclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node3" class="node">
+<title>module~ftmutableobjectarrayclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node3"><a xlink:href=".././module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="284,-66 124,-66 124,-42 284,-42 284,-66"/>
+<text text-anchor="middle" x="204" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_edge2" class="edge">
+<title>module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M319.62,-39.59C311.51,-40.61 302.94,-41.68 294.28,-42.77"/>
+<polygon fill="#000000" stroke="#000000" points="293.59,-39.33 284.11,-44.05 294.47,-46.28 293.59,-39.33"/>
+</g>
+<!-- module~ftlinkedlistrecordclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node4" class="node">
+<title>module~ftlinkedlistrecordclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node4"><a xlink:href=".././module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="276,-24 132,-24 132,0 276,0 276,-24"/>
+<text text-anchor="middle" x="204" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_edge3" class="edge">
+<title>module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M319.62,-26.41C308.96,-25.07 297.52,-23.63 286.14,-22.2"/>
+<polygon fill="#000000" stroke="#000000" points="286.53,-18.72 276.17,-20.95 285.66,-25.67 286.53,-18.72"/>
+</g>
+<!-- module~ftobjectclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node5" class="node">
+<title>module~ftobjectclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node5"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="88,-45 0,-45 0,-21 88,-21 88,-45"/>
+<text text-anchor="middle" x="44" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_edge4" class="edge">
+<title>module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M123.54,-43.44C115,-42.3 106.47,-41.17 98.35,-40.09"/>
+<polygon fill="#000000" stroke="#000000" points="98.68,-36.6 88.3,-38.76 97.75,-43.54 98.68,-36.6"/>
+</g>
+<!-- module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsesGraph_edge5" class="edge">
+<title>module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M131.86,-21.46C120.56,-22.96 109.05,-24.49 98.25,-25.92"/>
+<polygon fill="#000000" stroke="#000000" points="97.61,-22.48 88.16,-27.26 98.53,-29.42 97.61,-22.48"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
+    
+
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Used by</h3>
+      </div>
+      <ul class="list-group">
+  
+  
+  <li class="list-group-item">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~ftlinkedlistiteratorclass~~UsedByGraph Pages: 1 -->
+<svg id="moduleftlinkedlistiteratorclassUsedByGraph" width="641pt" height="166pt"
+ viewBox="0.00 0.00 641.00 166.11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph" class="graph" transform="scale(1.33 1.33) rotate(0) translate(4 217.05)">
+<title>module~~ftlinkedlistiteratorclass~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-217.05 849,-217.05 849,4 -4,4"/>
+<!-- module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node1" class="node">
+<title>module~ftlinkedlistiteratorclass</title>
+<polygon fill="none" stroke="black" points="146,-66 0,-66 0,-42 146,-42 146,-66"/>
+<text text-anchor="middle" x="73" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTLinkedListIteratorClass</text>
+</g>
+<!-- module~ftexceptionclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node2" class="node">
+<title>module~ftexceptionclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node2"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="620,-146 514,-146 514,-122 620,-122 620,-146"/>
+<text text-anchor="middle" x="567" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge2" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408.5,-176C335.69,-172.66 312.52,-202.19 244.5,-176"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M242.5,-176C181.81,-152.63 123.13,-101.78 93.66,-73.66"/>
+<polygon fill="#000000" stroke="#000000" points="95.76,-70.83 86.14,-66.38 90.89,-75.85 95.76,-70.83"/>
+</g>
+<!-- module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node5" class="node">
+<title>module~ftdictionaryclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node5"><a xlink:href=".././module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="297.5,-66 189.5,-66 189.5,-42 297.5,-42 297.5,-66"/>
+<text text-anchor="middle" x="243.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge8" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M540.69,-146C510.36,-159.17 457.71,-178.16 410.5,-176"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408.5,-176C377.37,-174.57 367.63,-173.19 341,-157 305.72,-135.56 275.08,-97.73 258.26,-74.37"/>
+<polygon fill="#000000" stroke="#000000" points="261.12,-72.35 252.5,-66.19 255.39,-76.38 261.12,-72.35"/>
+</g>
+<!-- module~ftvaluedictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node6" class="node">
+<title>module~ftvaluedictionaryclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node6"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="478,-106 341,-106 341,-82 478,-82 478,-106"/>
+<text text-anchor="middle" x="409.5" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge12" class="edge">
+<title>module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.34,-122C502.97,-117.79 484.39,-113.01 467.27,-108.6"/>
+<polygon fill="#000000" stroke="#000000" points="467.95,-105.16 457.39,-106.06 466.2,-111.94 467.95,-105.16"/>
+</g>
+<!-- module~ftobjectlibrary -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node3" class="node">
+<title>module~ftobjectlibrary</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node3"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<polygon fill="#337ab7" stroke="#337ab7" points="799,-125 702,-125 702,-101 799,-101 799,-125"/>
+<text text-anchor="middle" x="750.5" y="-110.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge1" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M701.57,-120.82C686.68,-124.02 670.4,-128.34 656,-134 638.76,-140.78 637.17,-148.05 620,-155 465.08,-217.75 400.49,-236.06 244.5,-176"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftexceptionclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge6" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftexceptionclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M701.81,-118.52C679.95,-121.05 653.74,-124.08 630.33,-126.79"/>
+<polygon fill="#000000" stroke="#000000" points="629.68,-123.34 620.15,-127.97 630.49,-130.29 629.68,-123.34"/>
+</g>
+<!-- module~ftsparsematrixclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node4" class="node">
+<title>module~ftsparsematrixclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node4"><a xlink:href=".././module/ftsparsematrixclass.html" xlink:title="FTSparseMatrixClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="305,-24 182,-24 182,0 305,0 305,-24"/>
+<text text-anchor="middle" x="243.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftsparsematrixclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge7" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftsparsematrixclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M724.42,-100.89C690.08,-85.25 626.07,-59.38 568,-54"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M566,-54C497.18,-47.62 479.47,-58.35 410.5,-54"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408.5,-54C386.46,-52.61 333.79,-38.38 294.04,-26.87"/>
+<polygon fill="#000000" stroke="#000000" points="294.82,-23.45 284.24,-24.01 292.86,-30.17 294.82,-23.45"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge11" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408.5,-54C375.31,-51.91 338.27,-51.73 307.8,-52.15"/>
+<polygon fill="#000000" stroke="#000000" points="307.67,-48.65 297.73,-52.31 307.79,-55.65 307.67,-48.65"/>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge13" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M566,-54C544.79,-52.03 493.48,-66.67 455.57,-78.79"/>
+<polygon fill="#000000" stroke="#000000" points="454.19,-75.56 445.76,-81.97 456.35,-82.22 454.19,-75.56"/>
+</g>
+<!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge3" class="edge">
+<title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M194.21,-24.04C174.83,-28.87 152.31,-34.48 132.04,-39.53"/>
+<polygon fill="#000000" stroke="#000000" points="131.15,-36.15 122.29,-41.96 132.84,-42.94 131.15,-36.15"/>
+</g>
+<!-- module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge4" class="edge">
+<title>module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M189.19,-54C178.7,-54 167.48,-54 156.3,-54"/>
+<polygon fill="#000000" stroke="#000000" points="156.07,-50.5 146.07,-54 156.07,-57.5 156.07,-50.5"/>
+</g>
+<!-- module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge9" class="edge">
+<title>module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M359.29,-82C341.86,-77.75 322.06,-72.92 303.87,-68.48"/>
+<polygon fill="#000000" stroke="#000000" points="304.5,-65.03 293.95,-66.06 302.84,-71.83 304.5,-65.03"/>
+</g>
+<!-- module~sharedexceptionmanagermodule -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node7" class="node">
+<title>module~sharedexceptionmanagermodule</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node7"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
+<polygon fill="#337ab7" stroke="#337ab7" points="845,-167 656,-167 656,-143 845,-143 845,-167"/>
+<text text-anchor="middle" x="750.5" y="-152.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
+</a>
+</g>
+</g>
+<!-- module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge5" class="edge">
+<title>module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M655.83,-144.16C647.08,-143.15 638.36,-142.14 630.01,-141.17"/>
+<polygon fill="#000000" stroke="#000000" points="630.36,-137.69 620.02,-140.02 629.55,-144.65 630.36,-137.69"/>
+</g>
+<!-- module~ftstringsetclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node8" class="node">
+<title>module~ftstringsetclass</title>
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node8"><a xlink:href=".././module/ftstringsetclass.html" xlink:title="FTStringSetClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="460.5,-148 358.5,-148 358.5,-124 460.5,-124 460.5,-148"/>
+<text text-anchor="middle" x="409.5" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftstringsetclass&#45;&gt;module~ftdictionaryclass -->
+<g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_edge10" class="edge">
+<title>module~ftstringsetclass&#45;&gt;module~ftdictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M363.94,-123.96C356.16,-121.34 348.24,-118.34 341,-115 315.21,-103.09 288.06,-85.4 269.15,-72.13"/>
+<polygon fill="#000000" stroke="#000000" points="271,-69.15 260.82,-66.2 266.93,-74.85 271,-69.15"/>
+</g>
+</g>
+</svg>
+</div><script>var panmoduleftlinkedlistiteratorclassUsedByGraph = svgPanZoom('#moduleftlinkedlistiteratorclassUsedByGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+  </li>
+  
+      </ul>
+    </div>
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#type-ftlinkedlistiterator">FTLinkedListIterator</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
+  <div id="funcs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-ftlinkedlistisatend">FTLinkedListIsAtEnd</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-returnlinkedlist">returnLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-ftlinkedlistobject">FTLinkedListObject</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-ftlinkedlistcurrentrecord">FTLinkedListCurrentRecord</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-linkedlistiteratorclassname">linkedListIteratorClassName</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-initempty">initEmpty</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-initwithftlinkedlist">initWithFTLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-releaseftlinkedlistiterator">releaseFTLinkedListIterator</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-destructiterator">destructIterator</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-releasememberlist">releaseMemberList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-settostart">setToStart</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-movetonext">moveToNext</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-setlinkedlist">setLinkedList</a>
+      
+      <a class="list-group-item" href="../module/ftlinkedlistiteratorclass.html#proc-removecurrentrecord">removeCurrentRecord</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-ftlinkedlistiterator"></span><h3>type, public, EXTENDS(FTObject) :: <a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-list"></span>class(FTLinkedList),</td>
+  
+  <td>public,</td>
+  <td>POINTER</td><td>::</td>
+  <td><strong>list</strong></td><td>=> </td><td>NULL()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-current"></span>class(FTLinkedListRecord),</td>
+  
+  <td>public,</td>
+  <td>POINTER</td><td>::</td>
+  <td><strong>current</strong></td><td>=> </td><td>NULL()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+     
+     <h4>Finalizations Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>final :: <strong>destructIterator</strong></h3></td><td></td></tr>
+      
+       </tbody>
+       </table>  
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-init~4'>init</a></strong>  => initEmpty </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-initwithftlinkedlist'>initWithFTLinkedList</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-isatend'>isAtEnd</a></strong>  => FTLinkedListIsAtEnd </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-object'>object</a></strong>  => FTLinkedListObject </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-currentrecord'>currentRecord</a></strong>  => FTLinkedListCurrentRecord </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-linkedlist'>linkedList</a></strong>  => returnLinkedList </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-classname~9'>className</a></strong>  => linkedListIteratorClassName </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-setlinkedlist'>setLinkedList</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-settostart'>setToStart</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-movetonext'>moveToNext</a></strong>  </td>
+       <td></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-removecurrentrecord'>removeCurrentRecord</a></strong>  </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+    </section>
+  <br>
+    
+    
+     
+    <section>
+    <h2>Functions</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ftlinkedlistisatend"></span><h3>
+public function <a href='../proc/ftlinkedlistisatend.html'>FTLinkedListIsAtEnd</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-returnlinkedlist"></span><h3>
+public function <a href='../proc/returnlinkedlist.html'>returnLinkedList</a>(self) result(o)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(FTLinkedList),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ftlinkedlistobject"></span><h3>
+public function <a href='../proc/ftlinkedlistobject.html'>FTLinkedListObject</a>(self) result(o)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(FTObject),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ftlinkedlistcurrentrecord"></span><h3>
+public function <a href='../proc/ftlinkedlistcurrentrecord.html'>FTLinkedListCurrentRecord</a>(self) result(o)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(FTLinkedListRecord),
+  POINTER</small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-linkedlistiteratorclassname"></span><h3>
+public function <a href='../proc/linkedlistiteratorclassname.html'>linkedListIteratorClassName</a>(self) result(s)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+
+
+<p>Class name returns a string with the name of the type of the object</p><a href="../proc/linkedlistiteratorclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>character(len=CLASS_NAME_CHARACTER_LENGTH)
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    </section>
+    <br>
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-initempty"></span><h3>
+public subroutine <a href='../proc/initempty.html'>initEmpty</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-initwithftlinkedlist"></span><h3>
+public subroutine <a href='../proc/initwithftlinkedlist.html'>initWithFTLinkedList</a>(self, list)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTLinkedList),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>list</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-releaseftlinkedlistiterator"></span><h3>
+public subroutine <a href='../proc/releaseftlinkedlistiterator.html'>releaseFTLinkedListIterator</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-destructiterator"></span><h3>
+public subroutine <a href='../proc/destructiterator.html'>destructIterator</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-releasememberlist"></span><h3>
+public subroutine <a href='../proc/releasememberlist.html'>releaseMemberList</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-settostart"></span><h3>
+public subroutine <a href='../proc/settostart.html'>setToStart</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-movetonext"></span><h3>
+public subroutine <a href='../proc/movetonext.html'>moveToNext</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-setlinkedlist"></span><h3>
+public subroutine <a href='../proc/setlinkedlist.html'>setLinkedList</a>(self, list)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(FTLinkedList),</td>
+  <td></td>
+  <td></td>
+  
+  <td>POINTER</td><td>::</td>
+  <td><strong>list</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-removecurrentrecord"></span><h3>
+public subroutine <a href='../proc/removecurrentrecord.html'>removeCurrentRecord</a>(self)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> FTObjectLibrary was developed by David A. Kopriva</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
