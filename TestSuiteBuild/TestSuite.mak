@@ -5,6 +5,11 @@ FTOLibPath = ../Source
 FTTestsPath = ../Testing
 
 FFLAGS = -cpp -O
+FFLAGS += -std=f2008 # Enforce Fortran 2008 standard
+FFLAGS += -pedantic # Be very pendatic
+FFLAGS += -Werror # All warnings should be treated as errors
+FFLAGS += -fimplicit-none # For implicit none everywhere to detect errors
+
 ##########################
 # Object Files for build #
 ##########################
