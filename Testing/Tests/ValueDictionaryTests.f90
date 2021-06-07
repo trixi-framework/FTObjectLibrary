@@ -42,7 +42,6 @@
          IMPLICIT NONE  
          
          TYPE(FTValueDictionary)      :: dict, dict2
-         CLASS(FTDictionary), POINTER :: dictPtr
 !
 !        -----------------------
 !        Example values and keys

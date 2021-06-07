@@ -65,13 +65,12 @@
 !        Some values to convert into FTValue objects
 !        -------------------------------------------
 !
-         REAL                            :: r = 3.14, x
-         REAL(KIND=KIND(1.0d0))          :: d, dd
-         INTEGER                         :: i = 666, j
-         CHARACTER(LEN=:), ALLOCATABLE   :: s
-         DOUBLE PRECISION                :: doubleTol = 2*EPSILON(1.0d0)
-         REAL                            :: singleTol = 2*EPSILON(1.0e0)
-         CLASS(FTObject), POINTER        :: obj
+         REAL                                          :: r = 3.14, x
+         REAL(KIND=KIND(1.0d0))                        :: d, dd
+         INTEGER                                       :: i = 666, j
+         DOUBLE PRECISION                              :: doubleTol = 2*EPSILON(1.0d0)
+         REAL                                          :: singleTol = 2*EPSILON(1.0e0)
+         CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH)   :: s
 !
 !        --------------------------------------------
 !        Create an object storing a real value

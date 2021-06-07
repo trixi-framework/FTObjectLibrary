@@ -106,7 +106,7 @@
          IMPLICIT NONE  
          
          TYPE (FTStack) , POINTER :: stack
-         TYPE (FTValue) , POINTER :: r1, r2, r3
+         TYPE (FTValue) , POINTER :: r2, r3
          CLASS(FTObject), POINTER :: objectPtr
 !
 !        ---------------
