@@ -292,7 +292,7 @@ with two keys (i,j) as a hash table. The size, N = the range of i.</p>
 </pre></div>
 
 <h2>Destruction</h2>
-<div class="codehilite"><pre><span></span>     CALL release(SparseMatrix)
+<div class="codehilite"><pre><span></span>     CALL releaseFTSparseMatrix(SparseMatrix) [Pointers]
 </pre></div>
 
 <h2>Adding an object</h2>
@@ -351,123 +351,123 @@ with two keys (i,j) as a hash table. The size, N = the range of i.</p>
 <!-- module~ftsparsematrixclass -->
 <g id="module~~ftsparsematrixclass~~UsesGraph_node1" class="node">
 <title>module~ftsparsematrixclass</title>
-<polygon fill="none" stroke="black" points="782,-104 659,-104 659,-80 782,-80 782,-104"/>
-<text text-anchor="middle" x="720.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTSparseMatrixClass</text>
-</g>
-<!-- module~ftlinkedlistclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_node2" class="node">
-<title>module~ftlinkedlistclass</title>
-<g id="a_module~~ftsparsematrixclass~~UsesGraph_node2"><a xlink:href=".././module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="433.5,-124 327.5,-124 327.5,-100 433.5,-100 433.5,-124"/>
-<text text-anchor="middle" x="380.5" y="-109.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_edge1" class="edge">
-<title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M673.69,-104.07C657.76,-107.7 639.71,-111.2 623,-113 562.48,-119.51 492.94,-118.31 444.07,-116.06"/>
-<polygon fill="#000000" stroke="#000000" points="444.12,-112.56 433.96,-115.56 443.78,-119.55 444.12,-112.56"/>
-</g>
-<!-- module~ftobjectclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_node3" class="node">
-<title>module~ftobjectclass</title>
-<g id="a_module~~ftsparsematrixclass~~UsesGraph_node3"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="88,-104 0,-104 0,-80 88,-80 88,-104"/>
-<text text-anchor="middle" x="44" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftsparsematrixclass&#45;&gt;module~ftobjectclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_edge2" class="edge">
-<title>module~ftsparsematrixclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549,-52C473.71,-38.77 280.22,-38.4 205,-52"/>
+<polygon fill="none" stroke="black" points="782,-66 659,-66 659,-42 782,-42 782,-66"/>
+<text text-anchor="middle" x="720.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTSparseMatrixClass</text>
 </g>
 <!-- module~ftsparsematrixdata -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_node4" class="node">
+<g id="module~~ftsparsematrixclass~~UsesGraph_node2" class="node">
 <title>module~ftsparsematrixdata</title>
-<g id="a_module~~ftsparsematrixclass~~UsesGraph_node4"><a xlink:href=".././module/ftsparsematrixdata.html" xlink:title="FTSparseMatrixData">
-<polygon fill="#337ab7" stroke="#337ab7" points="441,-24 320,-24 320,0 441,0 441,-24"/>
-<text text-anchor="middle" x="380.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData</text>
+<g id="a_module~~ftsparsematrixclass~~UsesGraph_node2"><a xlink:href=".././module/ftsparsematrixdata.html" xlink:title="FTSparseMatrixData">
+<polygon fill="#337ab7" stroke="#337ab7" points="441,-146 320,-146 320,-122 441,-122 441,-146"/>
+<text text-anchor="middle" x="380.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData</text>
 </a>
 </g>
 </g>
 <!-- module~ftsparsematrixclass&#45;&gt;module~ftsparsematrixdata -->
 <g id="module~~ftsparsematrixclass~~UsesGraph_edge3" class="edge">
 <title>module~ftsparsematrixclass&#45;&gt;module~ftsparsematrixdata</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M675.1,-79.94C641.29,-71.13 593.49,-59.47 551,-52"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549,-52C510.71,-45.27 468.09,-35.06 435.43,-26.63"/>
-<polygon fill="#000000" stroke="#000000" points="436.19,-23.21 425.63,-24.08 434.43,-29.99 436.19,-23.21"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549,-94C510.71,-100.73 468.09,-110.94 435.43,-119.37"/>
+<polygon fill="#000000" stroke="#000000" points="434.43,-116.01 425.63,-121.92 436.19,-122.79 434.43,-116.01"/>
+</g>
+<!-- module~ftobjectclass -->
+<g id="module~~ftsparsematrixclass~~UsesGraph_node3" class="node">
+<title>module~ftobjectclass</title>
+<g id="a_module~~ftsparsematrixclass~~UsesGraph_node3"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="88,-66 0,-66 0,-42 88,-42 88,-66"/>
+<text text-anchor="middle" x="44" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftsparsematrixclass&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftsparsematrixclass~~UsesGraph_edge2" class="edge">
+<title>module~ftsparsematrixclass&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M675.1,-66.06C641.29,-74.87 593.49,-86.53 551,-94"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549,-94C473.71,-107.23 280.22,-107.6 205,-94"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203,-94C167.44,-87.11 127.93,-77.1 97.31,-68.83"/>
+<polygon fill="#000000" stroke="#000000" points="97.86,-65.35 87.29,-66.09 96.02,-72.1 97.86,-65.35"/>
 </g>
 <!-- module~ftlinkedlistiteratorclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_node5" class="node">
+<g id="module~~ftsparsematrixclass~~UsesGraph_node4" class="node">
 <title>module~ftlinkedlistiteratorclass</title>
-<g id="a_module~~ftsparsematrixclass~~UsesGraph_node5"><a xlink:href=".././module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="623,-104 477,-104 477,-80 623,-80 623,-104"/>
-<text text-anchor="middle" x="550" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
+<g id="a_module~~ftsparsematrixclass~~UsesGraph_node4"><a xlink:href=".././module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="623,-66 477,-66 477,-42 623,-42 623,-66"/>
+<text text-anchor="middle" x="550" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_edge4" class="edge">
+<g id="module~~ftsparsematrixclass~~UsesGraph_edge1" class="edge">
 <title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M658.67,-92C650.4,-92 641.81,-92 633.24,-92"/>
-<polygon fill="#000000" stroke="#000000" points="633.22,-88.5 623.22,-92 633.22,-95.5 633.22,-88.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M658.67,-54C650.4,-54 641.81,-54 633.24,-54"/>
+<polygon fill="#000000" stroke="#000000" points="633.22,-50.5 623.22,-54 633.22,-57.5 633.22,-50.5"/>
+</g>
+<!-- module~ftlinkedlistclass -->
+<g id="module~~ftsparsematrixclass~~UsesGraph_node5" class="node">
+<title>module~ftlinkedlistclass</title>
+<g id="a_module~~ftsparsematrixclass~~UsesGraph_node5"><a xlink:href=".././module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
+<polygon fill="#337ab7" stroke="#337ab7" points="433.5,-46 327.5,-46 327.5,-22 433.5,-22 433.5,-46"/>
+<text text-anchor="middle" x="380.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
+</a>
+</g>
+</g>
+<!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftsparsematrixclass~~UsesGraph_edge4" class="edge">
+<title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M673.69,-41.93C657.76,-38.3 639.71,-34.8 623,-33 562.48,-26.49 492.94,-27.69 444.07,-29.94"/>
+<polygon fill="#000000" stroke="#000000" points="443.78,-26.45 433.96,-30.44 444.12,-33.44 443.78,-26.45"/>
+</g>
+<!-- module~ftsparsematrixdata&#45;&gt;module~ftobjectclass -->
+<g id="module~~ftsparsematrixclass~~UsesGraph_edge5" class="edge">
+<title>module~ftsparsematrixdata&#45;&gt;module~ftobjectclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.34,-121.94C297.37,-113.3 248.43,-101.85 205,-94"/>
+</g>
+<!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass -->
+<g id="module~~ftsparsematrixclass~~UsesGraph_edge6" class="edge">
+<title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M476.99,-45.4C465.97,-44.09 454.68,-42.74 443.89,-41.45"/>
+<polygon fill="#000000" stroke="#000000" points="444.07,-37.95 433.72,-40.24 443.24,-44.9 444.07,-37.95"/>
 </g>
 <!-- module~ftlinkedlistrecordclass -->
 <g id="module~~ftsparsematrixclass~~UsesGraph_node6" class="node">
 <title>module~ftlinkedlistrecordclass</title>
 <g id="a_module~~ftsparsematrixclass~~UsesGraph_node6"><a xlink:href=".././module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="276,-146 132,-146 132,-122 276,-122 276,-146"/>
-<text text-anchor="middle" x="204" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="276,-66 132,-66 132,-42 276,-42 276,-66"/>
+<text text-anchor="middle" x="204" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_edge5" class="edge">
+<g id="module~~ftsparsematrixclass~~UsesGraph_edge7" class="edge">
 <title>module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M327.14,-118.6C314.22,-120.23 300.07,-122.01 286.13,-123.77"/>
-<polygon fill="#000000" stroke="#000000" points="285.52,-120.32 276.04,-125.04 286.4,-127.27 285.52,-120.32"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M327.14,-40C314.22,-41.48 300.07,-43.1 286.13,-44.7"/>
+<polygon fill="#000000" stroke="#000000" points="285.58,-41.24 276.04,-45.86 286.37,-48.2 285.58,-41.24"/>
 </g>
 <!-- module~ftmutableobjectarrayclass -->
 <g id="module~~ftsparsematrixclass~~UsesGraph_node7" class="node">
 <title>module~ftmutableobjectarrayclass</title>
 <g id="a_module~~ftsparsematrixclass~~UsesGraph_node7"><a xlink:href=".././module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="284,-104 124,-104 124,-80 284,-80 284,-104"/>
-<text text-anchor="middle" x="204" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="284,-24 124,-24 124,0 284,0 284,-24"/>
+<text text-anchor="middle" x="204" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_edge6" class="edge">
-<title>module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M327.14,-106C316.66,-104.8 305.38,-103.5 294.05,-102.21"/>
-<polygon fill="#000000" stroke="#000000" points="294.44,-98.73 284.1,-101.07 293.64,-105.68 294.44,-98.73"/>
-</g>
-<!-- module~ftsparsematrixdata&#45;&gt;module~ftobjectclass -->
-<g id="module~~ftsparsematrixclass~~UsesGraph_edge7" class="edge">
-<title>module~ftsparsematrixdata&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.34,-24.06C297.37,-32.7 248.43,-44.15 205,-52"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203,-52C166.69,-58.57 126.38,-68.82 95.57,-77.3"/>
-<polygon fill="#000000" stroke="#000000" points="94.61,-73.94 85.91,-79.99 96.48,-80.68 94.61,-73.94"/>
-</g>
-<!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass -->
 <g id="module~~ftsparsematrixclass~~UsesGraph_edge8" class="edge">
-<title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M476.99,-100.6C465.97,-101.91 454.68,-103.26 443.89,-104.55"/>
-<polygon fill="#000000" stroke="#000000" points="443.24,-101.1 433.72,-105.76 444.07,-108.05 443.24,-101.1"/>
+<title>module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M327.14,-27.4C316.66,-26.08 305.38,-24.65 294.05,-23.23"/>
+<polygon fill="#000000" stroke="#000000" points="294.46,-19.75 284.1,-21.97 293.59,-26.7 294.46,-19.75"/>
 </g>
 <!-- module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~ftsparsematrixclass~~UsesGraph_edge9" class="edge">
 <title>module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M157.72,-121.96C139.09,-117.01 117.37,-111.24 98,-106.09"/>
-<polygon fill="#000000" stroke="#000000" points="98.67,-102.65 88.11,-103.46 96.87,-109.41 98.67,-102.65"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M131.86,-54C120.56,-54 109.05,-54 98.25,-54"/>
+<polygon fill="#000000" stroke="#000000" points="98.16,-50.5 88.16,-54 98.16,-57.5 98.16,-50.5"/>
 </g>
 <!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~ftsparsematrixclass~~UsesGraph_edge10" class="edge">
 <title>module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M123.54,-92C115,-92 106.47,-92 98.35,-92"/>
-<polygon fill="#000000" stroke="#000000" points="98.3,-88.5 88.3,-92 98.3,-95.5 98.3,-88.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M157.72,-24.04C139.09,-28.99 117.37,-34.76 98,-39.91"/>
+<polygon fill="#000000" stroke="#000000" points="96.87,-36.59 88.11,-42.54 98.67,-43.35 96.87,-36.59"/>
 </g>
 </g>
 </svg>

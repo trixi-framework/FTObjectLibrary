@@ -58,6 +58,8 @@
 !>            valueDict => valueDictionaryFromDictionary(dict)
 !>#Converting an FTObject to an FTValueDictionary
 !>            valueDict => valueDictionaryFromObject(obj)
+!>#Destruction
+!>      call releaseFTValueDictionary(dict) [Pointers]
 !
 !////////////////////////////////////////////////////////////////////////
 !
