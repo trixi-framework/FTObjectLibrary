@@ -53,7 +53,7 @@
 !>
 !> - Destruction 
 !>
-!>            call release(r) [Pointers]
+!>            call releaseFTValue(r) [Pointers]
 !>
 !> - Accessors
 !>

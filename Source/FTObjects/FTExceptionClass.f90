@@ -73,7 +73,7 @@
 !>
 !>### Destruction
 !>
-!>        CALL e  %  release()
+!>        CALL releaseFTException(e) [pointers]
 !>
 !>###Setting the infoDictionary
 !>

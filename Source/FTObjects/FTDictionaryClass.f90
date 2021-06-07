@@ -206,7 +206,7 @@
 !>
 !>###Destruction
 !>   
-!>         CALL release(dict) ! Pointer
+!>         CALL releaseFTDictionary(dict) [Pointer]
 !>###Accessing an object
 !>
 !>           TYPE(FTObject) :: obj

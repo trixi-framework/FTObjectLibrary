@@ -231,7 +231,7 @@
 !>
 !>##Destruction
 !>   
-!>         CALL release(list) [Pointers]
+!>         CALL releaseFTLinkedList(list) [Pointers]
 !>!
       Module FTLinkedListClass
 !      
@@ -895,7 +895,7 @@
 !>
 !>###Destruction
 !>   
-!>         CALL release(iterator) [Pointers]
+!>         CALL releaseFTLinkedListIterator(iterator) [Pointers]
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

@@ -57,7 +57,7 @@
 !>      CALL array % initWithSize(N)
 !>#Destruction
 !>           CALL array  %  destuct() [Non Pointers]
-!>           call release(array) [Pointers]
+!>           call releaseFTMutableObjectArray(array) [Pointers]
 !>#Adding an Object
 !>           TYPE(FTObject) :: obj
 !>           obj => r1

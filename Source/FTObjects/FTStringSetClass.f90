@@ -51,7 +51,7 @@
 !>
 !>#Destruction
 !>      CALL FTStringSet  %  destuct() [Non Pointers]
-!>      CALL release(FTStringSet) [Pointers]
+!>      CALL releaseFTStringSet(stringSet) [Pointers]
 !>#Adding Strings
 !>         CALL set % addString(str)
 !>#Testing membership:
