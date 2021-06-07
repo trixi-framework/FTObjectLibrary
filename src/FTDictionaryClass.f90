@@ -242,8 +242,6 @@
 !
             PROCEDURE :: initWithSize
             PROCEDURE :: init
-!            PROCEDURE :: setCaseSensitive
-!            PROCEDURE :: caseSensitive
             PROCEDURE :: allKeys
             PROCEDURE :: allObjects
             FINAL     :: destructFTDictionary
@@ -326,23 +324,6 @@
             self % entries => NULL()
             
          END SUBROUTINE destructFTDictionary    
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-!         SUBROUTINE setCaseSensitive(self,bool)  
-!            IMPLICIT NONE  
-!            CLASS(FTDictionary) :: self
-!            LOGICAL             :: bool
-!            self % isCaseSensitive = bool
-!         END SUBROUTINE setCaseSensitive  
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-!         LOGICAL FUNCTION caseSensitive(self)  
-!            IMPLICIT NONE  
-!            CLASS(FTDictionary) :: self
-!            caseSensitive = self % isCaseSensitive
-!         END FUNCTION caseSensitive      
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
