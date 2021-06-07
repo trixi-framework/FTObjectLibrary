@@ -76,7 +76,7 @@ make install
 
 cd to the directory "makeLibrary" and type
 ```
-make -f FTObjectLibrary.mak
+make
 ```
 
 That will create the necessary files in that directory, which can be moved to somewhere else as desired.

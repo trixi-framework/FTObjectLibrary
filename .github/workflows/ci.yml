@@ -26,13 +26,10 @@ jobs:
         include:
           - os: ubuntu-latest
             compiler: gfortran-10
-            shell: bash
           - os: macos-latest
             compiler: gfortran-10
-            shell: bash
           - os: windows-latest
             compiler: gfortran
-            shell: msys2 {0}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -42,11 +39,11 @@ jobs:
       - name: Verify regular build
         run: |
           cd makeLibrary
-          make -f FTObjectLibrary.mak -j 2 F90=${{ matrix.compiler }}
+          make -j 2 F90=${{ matrix.compiler }}
       - name: Build test suite
         run: |
           cd TestSuiteBuild 
-          make -f TestSuite.mak -j 2 F90=${{ matrix.compiler }}
+          make -j 2 F90=${{ matrix.compiler }}
       - name: Run tests
         run: |
           cd TestSuiteBuild 
