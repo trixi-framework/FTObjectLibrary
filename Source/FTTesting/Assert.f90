@@ -213,6 +213,7 @@
 !        ------------------------------
 !
          current => self % failureListHead
+         tmp => current % next
          DO WHILE (ASSOCIATED(tmp))
             tmp => current % next
             DEALLOCATE(current)

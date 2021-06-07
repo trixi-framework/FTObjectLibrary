@@ -45,7 +45,6 @@
             CLASS(FTException)      , POINTER :: testException
             TYPE (FTValueDictionary), POINTER :: userDictionary
             CLASS(FTDictionary)     , POINTER :: ptr
-            CLASS(FTObject)         , POINTER :: obj
             REAL                              :: r = 3.1416
             
             ALLOCATE(userDictionary)
@@ -72,7 +71,6 @@
          IMPLICIT NONE 
          
          TYPE (FTException) , POINTER :: exception
-         CLASS(FTObject)    , POINTER :: obj
          
          exception => testException()
          CALL throw(exception)

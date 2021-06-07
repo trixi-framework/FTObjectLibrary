@@ -214,6 +214,7 @@
          END IF 
          
          current => self % testCasesHead
+         tmp => current % next
          DO WHILE (ASSOCIATED(tmp))
             tmp => current % next
             
