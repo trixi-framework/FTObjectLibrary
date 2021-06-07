@@ -218,7 +218,7 @@
 !>
 !>##Destruction
 !>
-!>         CALL release(SparseMatrix)
+!>         CALL releaseFTSparseMatrix(SparseMatrix) [Pointers]
 !>
 !>##Adding an object
 !>

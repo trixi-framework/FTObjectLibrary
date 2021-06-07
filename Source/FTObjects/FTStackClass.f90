@@ -47,7 +47,7 @@
 !>      CALL stack  %  init()
 !>
 !>##Destruction
-!>      CALL release(stack) [Pointers]
+!>      CALL releaseFTStack(stack) [Pointers]
 !>
 !>##Pushing an object onto the stack
 !>

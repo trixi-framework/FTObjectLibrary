@@ -177,7 +177,7 @@
 !>
 !>## Destruction
 !>
-!>         CALL release(MultiIndexTable)     ... Pointers
+!>         CALL releaseFTMultiIndexTable(MultiIndexTable)     [Pointers]
 !>
 !>##Adding an object
 !>
