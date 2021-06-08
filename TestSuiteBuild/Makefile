@@ -9,6 +9,13 @@ FFLAGS += -std=f2008 # Enforce Fortran 2008 standard
 FFLAGS += -pedantic # Be very pendatic
 FFLAGS += -Werror # All warnings should be treated as errors
 FFLAGS += -fimplicit-none # For implicit none everywhere to detect errors
+FFLAGS += -Wall -Wextra # Enable many useful warnings
+FFLAGS += -Wcharacter-truncation -Wimplicit-interface -Wimplicit-procedure # Even more warnings
+FFLAGS += -Wno-compare-reals # Must be allowed since it is used *properly* in several places
+FFLAGS += -Wno-unused-dummy-argument # Must be allowed for some OOP style functions
+FFLAGS += -Wno-intrinsic-shadow # Must be allowed for COUNT
+FFLAGS += -Wno-implicit-interface # Must be allowed for b3hs_hash_key_jenkins
+FFLAGS += -Wno-implicit-procedure # Must be allowed for testAppendingLists
 
 ##########################
 # Object Files for build #
