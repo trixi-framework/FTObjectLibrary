@@ -15,6 +15,7 @@ FFLAGS += -Wno-compare-reals # Must be allowed since it is used *properly* in se
 FFLAGS += -Wno-unused-dummy-argument # Must be allowed for some OOP style functions
 FFLAGS += -Wno-intrinsic-shadow # Must be allowed for COUNT
 FFLAGS += -Wno-implicit-interface # Must be allowed for b3hs_hash_key_jenkins
+FFLAGS += -Wno-implicit-procedure # Must be allowed for testAppendingLists
 
 ##########################
 # Object Files for build #
