@@ -207,24 +207,24 @@
       SUBROUTINE finalizeTestSuiteManager(self)
          IMPLICIT NONE
          TYPE(TestSuiteManager)        :: self
-         TYPE(TestCaseRecord), POINTER :: tmp, current
+         TYPE(TestCaseRecord), POINTER :: next, current
          
          IF ( .NOT.ASSOCIATED(self % testCasesHead) )     THEN
            RETURN 
          END IF 
          
          current => self % testCasesHead
-         tmp => current % next
-         DO WHILE (ASSOCIATED(tmp))
-            tmp => current % next
+         DO WHILE (ASSOCIATED(current))
+            next => current % next
             
             IF(ASSOCIATED(current % assertionsManager)) THEN
                DEALLOCATE(current % assertionsManager)
+            END IF 
+            IF(ASSOCIATED(current % optData)) THEN
                DEALLOCATE(current % optData)
             END IF 
-            
             DEALLOCATE(current)
-            current => tmp
+            current => next
          END DO
 
          self % testCasesHead => NULL()
