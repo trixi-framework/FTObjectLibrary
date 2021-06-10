@@ -63,6 +63,7 @@ FTObjectClass.o
 FTDictionaryClass.o : $(FTOLibPath)/FTObjects/FTDictionaryClass.f90 \
 FTObjectArrayClass.o \
 FTLinkedListClass.o \
+Hash.o \
 FTObjectClass.o \
 FTLinkedListClass.o
 	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTDictionaryClass.f90
