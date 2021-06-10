@@ -39,6 +39,8 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+MODULE HashModule
+CONTAINS 
 function b3hs_hash_key_jenkins (key, range) result (code)
   INTEGER, PARAMETER       :: KIND_I32 = SELECTED_INT_KIND(10)
   character(*), intent(in) :: key
@@ -178,3 +180,5 @@ contains
   end subroutine b3hs_hash_key_jenkins_mix_
 
 end function b3hs_hash_key_jenkins
+END MODULE HashModule
+

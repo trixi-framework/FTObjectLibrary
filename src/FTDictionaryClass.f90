@@ -225,6 +225,7 @@
 !>(The target of the pointer must be released by the caller)
 !>
       Module FTDictionaryClass
+         USE HashModule
          USE FTKeyObjectPairClass
          USE FTLinkedListClass
          USE FTLinkedListIteratorClass
@@ -344,8 +345,6 @@
             CLASS(FTObject)       , POINTER     :: ptr => NULL()
             INTEGER                             :: h
             
-            INTEGER, EXTERNAL                   :: b3hs_hash_key_jenkins
-            
             h = b3hs_hash_key_jenkins(key,SIZE(self % entries))
             
             ALLOCATE(pair)
@@ -364,8 +363,6 @@
             CHARACTER(LEN=*)                     :: key
             CLASS(FTObject)       , POINTER      :: objectForKey
             INTEGER                              :: h
-            
-            INTEGER, EXTERNAL                    :: b3hs_hash_key_jenkins
            
             objectForKey => NULL()
             IF(self % COUNT() == 0)     RETURN 
