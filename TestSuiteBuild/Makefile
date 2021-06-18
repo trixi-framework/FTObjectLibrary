@@ -1,6 +1,6 @@
 # Modify these for a given installation
 #
-FC = /usr/local/bin/gfortran
+FC = gfortran
 FTOLibPath = ../Source
 FTTestsPath = ../Testing
 

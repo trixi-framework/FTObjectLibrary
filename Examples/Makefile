@@ -1,4 +1,4 @@
-FC = /usr/local/bin/gfortran
+FC = gfortran
 
 FFLAGS = -cpp
 FFLAGS += -std=f2008 # Enforce Fortran 2008 standard
