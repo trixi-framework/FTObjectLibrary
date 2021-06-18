@@ -1,6 +1,6 @@
 # Modify these for a given installation
 #
-F90 = /usr/local/bin/gfortran
+FC = /usr/local/bin/gfortran
 FTOLibPath = ../Source
 
 FFLAGS = -cpp -O
@@ -50,15 +50,15 @@ libFTObjectLibrary.a : $(OBJS)
 Assert.o : $(FTOLibPath)/FTTesting/Assert.f90 \
 Comparisons.o \
 FTOLConstants.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/Assert.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/Assert.f90
 
 Comparisons.o : $(FTOLibPath)/FTTesting/Comparisons.f90 \
 FTOLConstants.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/Comparisons.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/Comparisons.f90
 
 FTDataClass.o : $(FTOLibPath)/FTObjects/FTDataClass.f90 \
 FTObjectClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTDataClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTDataClass.f90
 
 FTDictionaryClass.o : $(FTOLibPath)/FTObjects/FTDictionaryClass.f90 \
 FTObjectArrayClass.o \
@@ -66,31 +66,31 @@ FTLinkedListClass.o \
 Hash.o \
 FTObjectClass.o \
 FTLinkedListClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTDictionaryClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTDictionaryClass.f90
 
 FTExceptionClass.o : $(FTOLibPath)/FTObjects/FTExceptionClass.f90 \
 FTDictionaryClass.o \
 FTValueDictionaryClass.o \
 FTStackClass.o \
 FTLinkedListClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTExceptionClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTExceptionClass.f90
 
 FTLinkedListClass.o : $(FTOLibPath)/FTObjects/FTLinkedListClass.f90 \
 FTObjectArrayClass.o \
 FTObjectClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTLinkedListClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTLinkedListClass.f90
 
 FTMultiIndexTable.o : $(FTOLibPath)/FTObjects/FTMultiIndexTable.f90 \
 FTObjectClass.o \
 FTLinkedListClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTMultiIndexTable.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTMultiIndexTable.f90
 
 FTObjectArrayClass.o : $(FTOLibPath)/FTObjects/FTObjectArrayClass.f90 \
 FTObjectClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTObjectArrayClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTObjectArrayClass.f90
 
 FTObjectClass.o : $(FTOLibPath)/FTObjects/FTObjectClass.f90
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTObjectClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTObjectClass.f90
 
 FTObjectLibrary.o : $(FTOLibPath)/FTObjectLibrary.f90 \
 FTValueDictionaryClass.o \
@@ -106,42 +106,42 @@ FTDictionaryClass.o \
 FTLinkedListClass.o \
 FTValueClass.o \
 Comparisons.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjectLibrary.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjectLibrary.f90
 
 FTOLConstants.o : $(FTOLibPath)/Foundation/FTOLConstants.f90
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/Foundation/FTOLConstants.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/Foundation/FTOLConstants.f90
 
 FTSparseMatrixClass.o : $(FTOLibPath)/FTObjects/FTSparseMatrixClass.f90 \
 FTLinkedListClass.o \
 FTObjectClass.o \
 FTLinkedListClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTSparseMatrixClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTSparseMatrixClass.f90
 
 FTStackClass.o : $(FTOLibPath)/FTObjects/FTStackClass.f90 \
 FTLinkedListClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTStackClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTStackClass.f90
 
 FTStringSetClass.o : $(FTOLibPath)/FTObjects/FTStringSetClass.f90 \
 FTObjectClass.o \
 FTDictionaryClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTStringSetClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTStringSetClass.f90
 
 FTValueClass.o : $(FTOLibPath)/FTObjects/FTValueClass.f90 \
 FTOLConstants.o \
 FTObjectClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTValueClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTValueClass.f90
 
 FTValueDictionaryClass.o : $(FTOLibPath)/FTObjects/FTValueDictionaryClass.f90 \
 FTValueClass.o \
 FTDictionaryClass.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTValueDictionaryClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/FTValueDictionaryClass.f90
 
 Hash.o : $(FTOLibPath)/FTObjects/Hash.f90
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/Hash.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTObjects/Hash.f90
 
 TestSuiteManagerClass.o : $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90 \
 Assert.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90
 
 ###########
 # cleanup #
