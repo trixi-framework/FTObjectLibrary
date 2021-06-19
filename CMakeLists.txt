@@ -3,6 +3,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0.2)
 # You can override the compiler with cmake -DFTOBJ_COMPILER=
 #set(FTOBJ_AR "/usr/bin/gcc-ar" CACHE STRING "Static archive command")
 #set(FTOBJ_RANLIB "/usr/bin/gcc-ranlib" CACHE STRING "ranlib used to create Static archive")
+INCLUDE(CMakePackageConfigHelpers)
+
 SET(FC "/usr/bin/gfortran" CACHE STRING "Fortran Compiler")
 SET(FFLAGS "-cpp" CACHE STRING "Fortran compiler flags")
 
@@ -25,5 +27,12 @@ IF(NOT CMAKE_Fortran_COMPILER_SUPPORTS_F90)
 ENDIF(NOT CMAKE_Fortran_COMPILER_SUPPORTS_F90)
 
 ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/Source)
+
+configure_package_config_file(ftobjectlibraryConfig.cmake.in
+	                      ${CMAKE_CURRENT_BINARY_DIR}/ftobjectlibraryConfig.cmake 
+			      INSTALL_DESTINATION ${CMAKE_INSTALL_PREFIX}
+			      PATH_VARS CMAKE_INSTALL_PREFIX)
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/ftobjectlibraryConfig.cmake
+        DESTINATION ${CMAKE_INSTALL_PREFIX})	
 
 message("-- FTOBJ -------------  cmake DONE --------------------")

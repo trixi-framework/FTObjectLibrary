@@ -1,0 +1,3 @@
+
+set_and_check(FTOBJECTLIBRARY_INCLUDE_DIRS "@CMAKE_INSTALL_PREFIX@/include")
+set_and_check(FTOBJECTLIBRARY_LIBRARY "@CMAKE_INSTALL_PREFIX@/lib/libftobject.a")
