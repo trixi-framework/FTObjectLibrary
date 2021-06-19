@@ -39,11 +39,11 @@ jobs:
       - name: Verify regular build
         run: |
           cd makeLibrary
-          make -j 2 F90=${{ matrix.compiler }}
+          make -j 2 FC=${{ matrix.compiler }}
       - name: Build test suite
         run: |
           cd TestSuiteBuild 
-          make -j 2 F90=${{ matrix.compiler }}
+          make -j 2 FC=${{ matrix.compiler }}
       - name: Run tests
         run: |
           cd TestSuiteBuild 
@@ -53,7 +53,7 @@ jobs:
         run: |
           sudo apt-get install -y lcov
           cd TestSuiteBuild
-          F90=${{ matrix.compiler }} ./createcoverage
+          FC=${{ matrix.compiler }} ./createcoverage
       - uses: codecov/codecov-action@v1
         if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
