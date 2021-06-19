@@ -28,11 +28,11 @@ ENDIF(NOT CMAKE_Fortran_COMPILER_SUPPORTS_F90)
 
 ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/Source)
 
-configure_package_config_file(ftobjectlibraryConfig.cmake.in
-	                      ${CMAKE_CURRENT_BINARY_DIR}/ftobjectlibraryConfig.cmake 
+configure_package_config_file(ftobjectlibrary-config.cmake.in
+	                      ${CMAKE_CURRENT_BINARY_DIR}/ftobjectlibrary-config.cmake 
 			      INSTALL_DESTINATION ${CMAKE_INSTALL_PREFIX}
 			      PATH_VARS CMAKE_INSTALL_PREFIX)
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/ftobjectlibraryConfig.cmake
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/ftobjectlibrary-config.cmake
         DESTINATION ${CMAKE_INSTALL_PREFIX})	
 
 message("-- FTOBJ -------------  cmake DONE --------------------")
