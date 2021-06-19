@@ -131,16 +131,16 @@
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/FTSparseMatrixClass.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/FTDictionaryClass.f90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/ftsparsematrixclass.f90.html'>FTSparseMatrixClass.f90</a></li>
+     <li><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></li>
     
-     <li><a href='../module/ftsparsematrixdata.html'>FTSparseMatrixData</a></li>
+     <li><a href='../module/ftkeyobjectpairclass.html'>FTKeyObjectPairClass</a></li>
     
   
      <li class="active">initWithObjectAndKey</li>
@@ -193,7 +193,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine initWithObjectAndKey(self, object, key)
+public subroutine initWithObjectAndKey(self, v, key)
     
     
    
@@ -222,7 +222,7 @@ public subroutine initWithObjectAndKey(self, object, key)
   
 <tr>
   
-  <td><span class="anchor" id="variable-self~165"></span>class(<a href='../type/matrixdata.html'>MatrixData</a>)</td>
+  <td><span class="anchor" id="variable-self~74"></span>class(<a href='../type/ftkeyobjectpair.html'>FTKeyObjectPair</a>)</td>
   <td></td>
   <td></td>
   
@@ -237,12 +237,12 @@ public subroutine initWithObjectAndKey(self, object, key)
   
 <tr>
   
-  <td><span class="anchor" id="variable-object~8"></span>class(FTObject),</td>
+  <td><span class="anchor" id="variable-v"></span>class(FTObject),</td>
   <td></td>
   <td></td>
   
   <td>POINTER</td><td>::</td>
-  <td><strong>object</strong></td><td></td>
+  <td><strong>v</strong></td><td></td>
   
 </tr>
 
@@ -252,7 +252,7 @@ public subroutine initWithObjectAndKey(self, object, key)
   
 <tr>
   
-  <td><span class="anchor" id="variable-key~23"></span>integer</td>
+  <td><span class="anchor" id="variable-key~8"></span>character(len=*)</td>
   <td></td>
   <td></td>
   
