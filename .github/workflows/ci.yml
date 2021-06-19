@@ -36,6 +36,11 @@ jobs:
       # - name: Add msbuild to PATH
       #   if: ${{ matrix.os == 'windows-latest' }}
       #   uses: microsoft/setup-msbuild@v1.0.2
+      - name: Verify CMake build
+        run: |
+          mkdir build && cd build
+          cmake ../
+          make
       - name: Verify regular build
         run: |
           cd makeLibrary
