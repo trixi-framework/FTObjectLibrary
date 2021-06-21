@@ -39,7 +39,7 @@ jobs:
       - name: Verify CMake build
         run: |
           mkdir build && cd build
-          cmake ../
+          FC=${{ matrix.compiler }} cmake ../
           make
       - name: Verify regular build
         run: |
