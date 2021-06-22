@@ -39,8 +39,10 @@ jobs:
       - name: Verify CMake build
         run: |
           mkdir build && cd build
-          FC=${{ matrix.compiler }} cmake ../
+          cmake ../
           make
+        env:
+          FC: ${{ matrix.compiler }}
       - name: Verify regular build
         run: |
           cd makeLibrary
