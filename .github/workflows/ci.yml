@@ -26,10 +26,13 @@ jobs:
         include:
           - os: ubuntu-latest
             compiler: gfortran-10
+            cmake_generator: Unix Makefiles
           - os: macos-latest
             compiler: gfortran-10
+            cmake_generator: Unix Makefiles
           - os: windows-latest
             compiler: gfortran
+            cmake_generator: MinGW Makefiles
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -39,7 +42,7 @@ jobs:
       - name: Verify CMake build
         run: |
           mkdir build && cd build
-          cmake -DCMAKE_Fortran_COMPILER=${{ matrix.compiler }} ../
+          cmake -G "${{ matrix.cmake_generator }}" ../
           make
         env:
           FC: ${{ matrix.compiler }}
