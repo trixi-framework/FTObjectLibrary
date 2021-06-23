@@ -39,7 +39,7 @@ jobs:
       - name: Verify CMake build
         run: |
           mkdir build && cd build
-          cmake ../
+          cmake -DCMAKE_Fortran_COMPILER=${{ matrix.compiler }} ../
           make
         env:
           FC: ${{ matrix.compiler }}
