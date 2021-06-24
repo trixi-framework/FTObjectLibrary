@@ -59,6 +59,20 @@ Examples can be found in the Examples directory and in the Testing directory. Th
 
 The library (.a) can be built with either CMake or default make.
 
+### Spack
+You can install FTObjectLibrary using the [Spack package manager](https://spack.io). 
+To install the FTObjectLibrary with Spack,
+```
+git clone https://github.com/spack/spack.git ~/spack
+source ~/spack/share/spack/setup-env.sh
+spack install ftobjectlibrary@main
+```
+Once installed, FTObjectLibrary can be added to your environment using
+```
+spack load ftobjectlibrary
+```
+
+
 ### CMake
 To install the FTObjectLibrary with CMake,
 ```
@@ -76,6 +90,51 @@ make
 ```
 
 That will create the necessary files in that directory, which can be moved to somewhere else as desired.
+
+### Updating Spack Packages
+When new releases of FTObjectLibrary are made, you can contribute the new release to the spack packages.
+Before making an update to the Spack package, you should familiarize yourself with [the Spack packaging guide](https://spack.readthedocs.io/en/latest/packaging_guide.html)
+
+
+To add a new FTObjectLibrary release to Spack,
+1. Fork the Spack repository on Github to your personal account or the trixi-framework organization account.
+
+2. Install and initialize spack on your local system from your fork
+```
+git clone https://github.com/YOUR GITHUB ACCOUNT/spack.git ~/spack
+source ~/spack/share/spack/setup-env.sh
+```
+
+3. Open the FTObjectLibrary package for editing
+```
+spack edit ftobjectlibrary
+```
+
+4. Add a new `version` metadata item to the ftobjectlibrary package. The first argument is the version name as it will appear in the spack package manager. Use the `tag` argument to specify the name of the tag as it appears in the FTObjectLibrary repository. As an example, a new version line for `v1.0.1` is shown below.
+```
+    version('v1.0.1', tag='v1.0.1')
+```
+
+5. (Optional) If you would like to be noted as a maintainer, add your github handle to the maintainers list. Maintainers will be notified if Spack users experience issues installing FTObjectLibrary and when modifications are being made to the FTObjectLibrary package in Spack.
+```
+    maintainers = ['schoonovernumerics','your-github-handle']
+```
+
+6. When you are finished editing, save the package file. You can verify the new version is registered in your local repository by obtaining a `spec` for FTObjectLibrary at the new version you've added.
+```
+spack spec ftobjectlibrary@v1.0.1
+```
+
+7. Test to make sure the installation works
+```
+spack install ftobjectlibrary@v1.0.1
+```
+
+8. Run the `spack style` command to ensure that you are meeting Spack's style requirements.
+
+9. When ready, commit your changes and push them to your Github repository.
+
+10. Open a Pull Request with `github.com/spack/spack` to merge your changes with the `spack/spack/develop` branch.
 
 ## Authors
 FTObjectLibrary was initiated by
