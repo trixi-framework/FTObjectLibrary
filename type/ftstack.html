@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="A Fortran library for reference counted object and container classes.">
-    
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,49 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+          </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -99,50 +70,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>FTStack
     <small>Derived Type</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title="<p> 3.2% of total for derived types.</p>Including implementation: 74 statements,  3.1% of total for derived types.">9 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/FTStackClass.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/ftstackclass.f90.html'>FTStackClass.f90</a></li>
-    
      <li><a href='../module/ftstackclass.html'>FTStackClass</a></li>
-    
-  
      <li class="active">FTStack</li>
   </ol>
 </div>
@@ -158,114 +108,121 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-0" class="panel-collapse collapse">
     <div class="list-group">
-      
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-init~3">init</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-printdescription~3">printDescription</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-classname~2">className</a>
-      
+      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-printdescription~6">printDescription</a>
+      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-classname~5">className</a>
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-push">push</a>
-      
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-pop">pop</a>
-      
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-peek">peek</a>
-      
     </div>
   </div>
 </div>
-
-
-
-
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, public, EXTENDS(FTLinkedList) :: FTStack</h2>
+      <h2>type, public, extends(FTLinkedList) :: FTStack</h2>
     
+<br>    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Inherits</h3>
+      </div>
+      <div class="panel-body">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: type~~ftstack~~InheritsGraph Pages: 1 -->
+<svg id="typeftstackInheritsGraph" width="178pt" height="32pt"
+ viewBox="0.00 0.00 178.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~ftstack~~InheritsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>type~~ftstack~~InheritsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 174,-28 174,4 -4,4"/>
+<!-- type~ftstack -->
+<g id="type~~ftstack~~InheritsGraph_node1" class="node">
+<title>type~ftstack</title>
+<polygon fill="none" stroke="black" points="170,-24 115,-24 115,0 170,0 170,-24"/>
+<text text-anchor="middle" x="142.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTStack</text>
+</g>
+<!-- FTLinkedList -->
+<g id="type~~ftstack~~InheritsGraph_node2" class="node">
+<title>FTLinkedList</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="79,-24 0,-24 0,0 79,0 79,-24"/>
+<text text-anchor="middle" x="39.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedList</text>
+</g>
+<!-- type~ftstack&#45;&gt;FTLinkedList -->
+<g id="type~~ftstack~~InheritsGraph_edge1" class="edge">
+<title>type~ftstack&#45;&gt;FTLinkedList</title>
+<path fill="none" stroke="#000000" d="M114.96,-12C107.07,-12 98.15,-12 89.3,-12"/>
+<polygon fill="#000000" stroke="#000000" points="89.02,-8.5 79.02,-12 89.02,-15.5 89.02,-8.5"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="186pt" height="32pt"
+ viewBox="0.00 0.00 185.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 181.5,-28 181.5,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="177.5,-24 72.5,-24 72.5,0 177.5,0 177.5,-24"/>
+<text text-anchor="middle" x="125" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
     
-    
-    
+    <p>Solid arrows point from a derived type to the parent type which it
+    extends. Dashed arrows point from a derived type to the other
+    types it contains as a components, with a label listing the name(s) of
+    said component(s).
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
-      
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-init~3">init</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-printdescription~3">printDescription</a>
-      
-      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-classname~2">className</a>
-      
+      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-printdescription~6">printDescription</a>
+      <a class="list-group-item" href="../type/ftstack.html#boundprocedure-classname~5">className</a>
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-push">push</a>
-      
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-pop">pop</a>
-      
       <a class="list-group-item" href="../type/ftstack.html#boundprocedure-peek">peek</a>
-      
     </div>
   </div>
 </div>
-
-
-
-
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
@@ -273,500 +230,185 @@
     
     
     
-    
-    
-    
-     
+ 
     <section>
     <h2>Type-Bound Procedures</h2>
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-init~3"></span><h3>procedure, public :: <strong>init</strong>  => <a href='../proc/initftstack.html'>initFTStack</a> 
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-init~3"></span><h3>procedure, public :: <strong>init</strong>  => <a href='../proc/initftstack.html'>initFTStack</a>   </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-public subroutine <a href='../proc/initftstack.html'>initFTStack</a>(self)
-    
-    
-   
-</h3>
-    
-
-
-
-
-
-
-
+          <h3>public subroutine <a href='../proc/initftstack.html'>initFTStack</a>(self)</h3>
 <p>Public, generic name: init()</p><a href="../proc/initftstack.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/ftstack.html'>FTStack</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>self</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription~3"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printstackdescription.html'>printStackDescription</a> 
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-printdescription~6"></span><h3>procedure, public :: <strong>printDescription</strong>  => <a href='../proc/printstackdescription.html'>printStackDescription</a>   </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-public subroutine <a href='../proc/printstackdescription.html'>printStackDescription</a>(self, iUnit)
-    
-    
-   
-</h3>
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+          <h3>public subroutine <a href='../proc/printstackdescription.html'>printStackDescription</a>(self, iUnit)</h3>    
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/ftstack.html'>FTStack</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>self</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>iUnit</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname~2"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/stackclassname.html'>stackClassName</a> 
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-classname~5"></span><h3>procedure, public :: <strong>className</strong>  => <a href='../proc/stackclassname.html'>stackClassName</a>   </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-public function <a href='../proc/stackclassname.html'>stackClassName</a>(self) result(s)
-    
-    
-   
-</h3>
-    
-
-
-
-
-
-
-
+          <h3>public function <a href='../proc/stackclassname.html'>stackClassName</a>(self) result(s)</h3>
 <p>Class name returns a string with the name of the type of the object</p><a href="../proc/stackclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/ftstack.html'>FTStack</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>self</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
+<h4>Return Value <small>character(len=CLASS_NAME_CHARACTER_LENGTH)</small></h4>  
 
-  
-  
-  
-  
-     <h4>Return Value <small>character(len=CLASS_NAME_CHARACTER_LENGTH)
-  </small></h4>
-  
-    
-
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-push"></span><h3>procedure, public :: <strong>push</strong>  
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-push"></span><h3>procedure, public :: <strong>push</strong>    </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-public subroutine <a href='../proc/push.html'>push</a>(self, obj)
-    
-    
-   
-</h3>
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+          <h3>public subroutine <a href='../proc/push.html'>push</a>(self, obj)</h3>    
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/ftstack.html'>FTStack</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>self</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(FTObject),</td>
-  <td></td>
-  <td></td>
-  
-  <td>POINTER</td><td>::</td>
+<td></td>
+  <td></td>  <td>POINTER</td><td>::</td>
   <td><strong>obj</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-pop"></span><h3>procedure, public :: <strong>pop</strong>  
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-pop"></span><h3>procedure, public :: <strong>pop</strong>    </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-public subroutine <a href='../proc/pop.html'>pop</a>(self, p)
-    
-    
-   
-</h3>
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+          <h3>public subroutine <a href='../proc/pop.html'>pop</a>(self, p)</h3>    
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/ftstack.html'>FTStack</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>self</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(FTObject),</td>
-  <td></td>
-  <td></td>
-  
-  <td>POINTER</td><td>::</td>
+<td></td>
+  <td></td>  <td>POINTER</td><td>::</td>
   <td><strong>p</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-peek"></span><h3>procedure, public :: <strong>peek</strong>  
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-peek"></span><h3>procedure, public :: <strong>peek</strong>    </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-public function <a href='../proc/peek.html'>peek</a>(self)
-    
-    
-   
-</h3>
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+          <h3>public function <a href='../proc/peek.html'>peek</a>(self)</h3>    
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/ftstack.html'>FTStack</a>)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>self</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
+<h4>Return Value <small>class(FTObject),POINTER</small></h4>  
 
-  
-  
-  
-  
-     <h4>Return Value <small>class(FTObject),
-  POINTER</small></h4>
-  
-    
-
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
     </section>
-    
-    
     
     
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> FTObjectLibrary was developed by David A. Kopriva</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -792,14 +434,11 @@ public function <a href='../proc/peek.html'>peek</a>(self)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

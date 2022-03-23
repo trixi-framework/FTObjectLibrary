@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="A Fortran library for reference counted object and container classes.">
-    
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,49 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+          </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -99,50 +70,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>cast
    <small>Interface</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title="<p> 0.1% of total for procedures.</p>Including implementation: 14 statements,  0.5% of total for procedures.">3 statements</a>
      </li> 
-     
-     
-     
-    <li><i class="fa fa-code"></i><a href="../src/FTObjectArrayClass.f90"> Source File</a></li>
-     
-     
+    <li><i class="fa fa-code"></i><a href="../src/FTDictionaryClass.f90"> Source File</a></li>
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
-     <li><a href='../sourcefile/ftobjectarrayclass.f90.html'>FTObjectArrayClass.f90</a></li>
-    
-     <li><a href='../module/ftmutableobjectarrayclass.html'>FTMutableObjectArrayClass</a></li>
-    
-  
+     <li><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></li>
+     <li><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></li>
      <li class="active">cast</li>
   </ol>
 </div>
@@ -158,44 +108,17 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-      
-<div id="sidebar">
-  
-<h3>Contents</h3>
+      <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#modprocs-0">Module Procedures</a></h3></div>
   <div id="modprocs-0" class="panel-collapse collapse">
     <div class="list-group">
-      
-      <a class="list-group-item" href="../interface/cast.html#moduleprocedure-casttomutableobjectarray">castToMutableObjectArray</a>
-      
+      <a class="list-group-item" href="../interface/cast.html#moduleprocedure-casttodictionary">castToDictionary</a>
     </div>
   </div>
 </div>
-
-
-
 
 </div>
 
@@ -204,7 +127,6 @@
     <div class="col-md-9" id='text'>
       <h2>public interface cast</h2>
    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -216,31 +138,31 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: interface~~cast~~CallsGraph Pages: 1 -->
-<svg id="interfacecastCallsGraph" width="250pt" height="32pt"
- viewBox="0.00 0.00 250.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="interfacecastCallsGraph" width="198pt" height="32pt"
+ viewBox="0.00 0.00 198.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="interface~~cast~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
 <title>interface~~cast~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 246,-28 246,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 194,-28 194,4 -4,4"/>
 <!-- interface~cast -->
 <g id="interface~~cast~~CallsGraph_node1" class="node">
 <title>interface~cast</title>
 <polygon fill="none" stroke="black" points="54,-24 0,-24 0,0 54,0 54,-24"/>
 <text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">cast</text>
 </g>
-<!-- proc~casttomutableobjectarray -->
+<!-- proc~casttodictionary -->
 <g id="interface~~cast~~CallsGraph_node2" class="node">
-<title>proc~casttomutableobjectarray</title>
-<g id="a_interface~~cast~~CallsGraph_node2"><a xlink:href=".././proc/casttomutableobjectarray.html" xlink:title="castToMutableObjectArray">
-<polygon fill="#d9534f" stroke="#d9534f" points="242,-24 90,-24 90,0 242,0 242,-24"/>
-<text text-anchor="middle" x="166" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">castToMutableObjectArray</text>
+<title>proc~casttodictionary</title>
+<g id="a_interface~~cast~~CallsGraph_node2"><a xlink:href=".././proc/casttodictionary.html" xlink:title="castToDictionary">
+<polygon fill="#d9534f" stroke="#d9534f" points="190,-24 90,-24 90,0 190,0 190,-24"/>
+<text text-anchor="middle" x="140" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">castToDictionary</text>
 </a>
 </g>
 </g>
-<!-- interface~cast&#45;&gt;proc~casttomutableobjectarray -->
+<!-- interface~cast&#45;&gt;proc~casttodictionary -->
 <g id="interface~~cast~~CallsGraph_edge1" class="edge">
-<title>interface~cast&#45;&gt;proc~casttomutableobjectarray</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.09,-12C61.73,-12 70.53,-12 79.76,-12"/>
-<polygon fill="#000000" stroke="#000000" points="79.92,-15.5 89.92,-12 79.92,-8.5 79.92,-15.5"/>
+<title>interface~cast&#45;&gt;proc~casttodictionary</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.02,-12C61.75,-12 70.56,-12 79.5,-12"/>
+<polygon fill="#000000" stroke="#000000" points="79.6,-15.5 89.6,-12 79.6,-8.5 79.6,-15.5"/>
 </g>
 </g>
 </svg>
@@ -305,145 +227,69 @@
     </div></div></div></div>
       </div>
     </div>
-     
-     
-    <br>
-
+<br>
      <section class="visible-xs visible-sm hidden-md">
-       
-<h3>Contents</h3>
+       <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#modprocs-1">Module Procedures</a></h3></div>
   <div id="modprocs-1" class="panel-collapse collapse">
     <div class="list-group">
-      
-      <a class="list-group-item" href="../interface/cast.html#moduleprocedure-casttomutableobjectarray">castToMutableObjectArray</a>
-      
+      <a class="list-group-item" href="../interface/cast.html#moduleprocedure-casttodictionary">castToDictionary</a>
     </div>
   </div>
 </div>
 
-
-
-
      </section>
      <br class="visible-xs visible-sm hidden-md">
      
-  
 
-  
 
-  
    <h2>Module Procedures</h2>
-   
-    
-  <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-casttomutableobjectarray"></span><h3>
-public subroutine <a href='../proc/casttomutableobjectarray.html'>castToMutableObjectArray</a>(obj, cast)
-    
-    
-   
-</h3></div>
+      <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-casttodictionary"></span><h3>public subroutine <a href='../proc/casttodictionary.html'>castToDictionary</a>(obj, cast)</h3></div>
   <div class="panel-body">
-       
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+           
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(FTObject),</td>
-  <td></td>
-  <td></td>
-  
-  <td>POINTER</td><td>::</td>
+<td></td>
+  <td></td>  <td>POINTER</td><td>::</td>
   <td><strong>obj</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>),</td>
-  <td></td>
-  <td></td>
-  
-  <td>POINTER</td><td>::</td>
+  <td><span class="anchor" ></span>class(<a href='../type/ftdictionary.html'>FTDictionary</a>),</td>
+<td></td>
+  <td></td>  <td>POINTER</td><td>::</td>
   <td><strong>cast</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
   </div>
   </div>
 
-   
-     
 
  </div>
 </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> FTObjectLibrary was developed by David A. Kopriva</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -469,14 +315,11 @@ public subroutine <a href='../proc/casttomutableobjectarray.html'>castToMutableO
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>
