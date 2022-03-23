@@ -238,6 +238,7 @@
          IF(self % dict % containsKey(key = str))     RETURN 
          
          ALLOCATE(obj)
+         CALL obj % init()
          CALL self % dict % addObjectForKey(object = obj,key = str)
          CALL release(obj)
          
