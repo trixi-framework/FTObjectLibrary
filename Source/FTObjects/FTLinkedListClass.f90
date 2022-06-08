@@ -131,7 +131,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE printFTLinkedRecordDescription(self,iUnit)  
+      RECURSIVE SUBROUTINE printFTLinkedRecordDescription(self,iUnit)  
          IMPLICIT NONE  
          CLASS(FTLinkedListRecord) :: self
          INTEGER                   :: iUnit
@@ -673,13 +673,12 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE printFTLinkedListDescription(self,iUnit)  
+      RECURSIVE SUBROUTINE printFTLinkedListDescription(self,iUnit)  
          IMPLICIT NONE  
          CLASS(FTLinkedList)                 :: self
          INTEGER                             :: iUnit
          CLASS(FTLinkedListRecord), POINTER  :: listRecord => NULL()
          LOGICAL                             :: circular
-         
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
@@ -689,8 +688,9 @@
          
          listRecord => self % head
 
-         DO WHILE (ASSOCIATED(listRecord))
+         DO WHILE (ASSOCIATED(listRecord)) 
             CALL listRecord % printDescription(iUnit)
+            IF(.NOT. ASSOCIATED(listRecord)) EXIT !TODO Don't understand why this is necessary. Why is record being unassociated?
             listRecord => listRecord % next
          END DO
          
@@ -768,6 +768,7 @@
          array => NULL()
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
+         circular                        = .FALSE.
          IF(self % isCircular_) circular = .TRUE.
          CALL self % makeCircular(.FALSE.)
          
