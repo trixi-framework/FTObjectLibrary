@@ -132,7 +132,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE printFTKeyObjectPairDescription(self,iUnit)  
+         RECURSIVE SUBROUTINE printFTKeyObjectPairDescription(self,iUnit)  
             IMPLICIT NONE  
             CLASS(FTKeyObjectPair) :: self
             INTEGER                :: iUnit
@@ -351,6 +351,7 @@
             CALL pair % initWithObjectAndKey(object,key)
             ptr => pair
             CALL self % entries(h) % add(ptr)
+            CALL release(self = ptr )
             self % numberOfEntries = self % numberOfEntries + 1
             
          END SUBROUTINE addObjectForKey
@@ -449,7 +450,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE printFTDictionaryDescription(self,iUnit)  
+         RECURSIVE SUBROUTINE printFTDictionaryDescription(self,iUnit)  
             IMPLICIT NONE  
             CLASS(FTDictionary) :: self
             INTEGER             :: iUnit
