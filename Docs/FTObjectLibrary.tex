@@ -368,7 +368,7 @@ reasonable value.
          CLASS(Subclass) :: self
          
          call self % initPointWithXYZ(0.0,0.0,0.0)
-      END SUBROUTINE initPointWithXYZ
+      END SUBROUTINE initPoint
 \end{verbatim}}
 
 The array initializer is
@@ -706,7 +706,7 @@ Or
          \item Destruction
 
 {\color{blue}\begin{verbatim}
-               CALL  releaseFTLibnkedListIterator(iterator)    ! If a pointer
+               CALL  releaseFTLinkedListIterator(iterator)    ! If a pointer
 \end{verbatim}}
 \end{itemize}
 
