@@ -1,7 +1,7 @@
 FC = gfortran
 
 FFLAGS = -cpp
-FFLAGS += -std=f2008 # Enforce Fortran 2008 standard
+FFLAGS += -std=f2018 # Enforce Fortran 2018 standard
 FFLAGS += -pedantic # Be very pendatic
 FFLAGS += -Werror # All warnings should be treated as errors
 FFLAGS += -fimplicit-none # For implicit none everywhere to detect errors
