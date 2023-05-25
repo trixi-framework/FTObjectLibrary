@@ -27,13 +27,19 @@ jobs:
           - os: ubuntu-latest
             compiler: gfortran-10
             cmake_generator: Unix Makefiles
+            shell: bash
           - os: macos-latest
             compiler: gfortran-11
             cmake_generator: Unix Makefiles
+            shell: bash
           - os: windows-latest
             compiler: gfortran
-            shell: 'msys2 {0}'
             cmake_generator: MinGW Makefiles
+            shell: 'msys2 {0}'
+    # Set default shell as suggested here: https://github.community/t/setting-default-shell-or-other-step-metadata-conditionally-in-workflows/154055
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
