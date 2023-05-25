@@ -28,7 +28,7 @@ jobs:
             compiler: gfortran-10
             cmake_generator: Unix Makefiles
           - os: macos-latest
-            compiler: gfortran-10
+            compiler: gfortran-11
             cmake_generator: Unix Makefiles
           - os: windows-latest
             compiler: gfortran
@@ -52,11 +52,11 @@ jobs:
           make -j 2 FC=${{ matrix.compiler }}
       - name: Build test suite
         run: |
-          cd TestSuiteBuild 
+          cd TestSuiteBuild
           make -j 2 FC=${{ matrix.compiler }}
       - name: Run tests
         run: |
-          cd TestSuiteBuild 
+          cd TestSuiteBuild
           ./runSuite
       - name: Run tests for coverage
         if: ${{ matrix.os == 'ubuntu-latest' }}
