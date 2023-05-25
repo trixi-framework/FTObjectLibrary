@@ -4,7 +4,7 @@ FC = gfortran
 FTOLibPath = ../Source
 FTTestsPath = ../Testing
 
-FFLAGS = -cpp -O0 -g2
+FFLAGS = -cpp -O
 FFLAGS += -std=f2018 # Enforce Fortran 2018 standard
 FFLAGS += -pedantic # Be very pendatic
 FFLAGS += -Werror # All warnings should be treated as errors
