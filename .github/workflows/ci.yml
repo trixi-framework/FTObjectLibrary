@@ -32,6 +32,7 @@ jobs:
             cmake_generator: Unix Makefiles
           - os: windows-latest
             compiler: gfortran
+            shell: 'msys2 {0}'
             cmake_generator: MinGW Makefiles
     steps:
       - name: Checkout repository
