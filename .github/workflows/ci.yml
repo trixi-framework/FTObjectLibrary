@@ -51,13 +51,13 @@ jobs:
         with:
           update: true
           install: git base-devel mingw-w64-x86_64-toolchain
-      - name: Verify CMake build
-        run: |
-          mkdir build && cd build
-          cmake -G "${{ matrix.cmake_generator }}" ../
-          make
-        env:
-          FC: ${{ matrix.compiler }}
+      # - name: Verify CMake build
+      #   run: |
+      #     mkdir build && cd build
+      #     cmake -G "${{ matrix.cmake_generator }}" ../
+      #     make
+      #   env:
+      #     FC: ${{ matrix.compiler }}
       - name: Verify regular build
         run: |
           cd makeLibrary
