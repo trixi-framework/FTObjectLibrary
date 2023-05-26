@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0.2)
 #set(FTOBJ_AR "/usr/bin/gcc-ar" CACHE STRING "Static archive command")
 #set(FTOBJ_RANLIB "/usr/bin/gcc-ranlib" CACHE STRING "ranlib used to create Static archive")
 INCLUDE(CMakePackageConfigHelpers)
-SET(FFLAGS "-cpp -O -std=f2008 -pedantic -Werror -fimplicit-none -Wall -Wextra -Wcharacter-truncation -Wimplicit-interface -Wimplicit-procedure -Wno-compare-reals -Wno-unused-dummy-argument -Wno-intrinsic-shadow -Wno-implicit-interface -Wno-implicit-procedure" CACHE STRING "Fortran compiler flags")
+SET(FFLAGS "-cpp -O -std=f2018 -pedantic -Werror -fimplicit-none -Wall -Wextra -Wcharacter-truncation -Wimplicit-interface -Wimplicit-procedure -Wno-compare-reals -Wno-unused-dummy-argument -Wno-intrinsic-shadow -Wno-implicit-interface -Wno-implicit-procedure" CACHE STRING "Fortran compiler flags")
 
 MESSAGE("-- FTOBJ -------------  cmake START -------------------")
 MESSAGE("-- FFLAGS:               ${FFLAGS}")

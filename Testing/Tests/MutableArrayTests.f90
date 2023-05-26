@@ -2,27 +2,27 @@
 !
 ! Copyright (c) 2010-present David A. Kopriva and other contributors: AUTHORS.md
 !
-! Permission is hereby granted, free of charge, to any person obtaining a copy  
-! of this software and associated documentation files (the "Software"), to deal  
-! in the Software without restriction, including without limitation the rights  
-! to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
-! copies of the Software, and to permit persons to whom the Software is  
+! Permission is hereby granted, free of charge, to any person obtaining a copy
+! of this software and associated documentation files (the "Software"), to deal
+! in the Software without restriction, including without limitation the rights
+! to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+! copies of the Software, and to permit persons to whom the Software is
 ! furnished to do so, subject to the following conditions:
 !
-! The above copyright notice and this permission notice shall be included in all  
+! The above copyright notice and this permission notice shall be included in all
 ! copies or substantial portions of the Software.
 !
-! THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
-! IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
-! FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
-! AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
-! LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  
-! OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  
+! THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+! IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+! FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+! AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+! LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+! OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ! SOFTWARE.
 !
 ! FTObjectLibrary contains code that, to the best of our knowledge, has been released as
 ! public domain software:
-! * `b3hs_hash_key_jenkins`: originally by Rich Townsend, 
+! * `b3hs_hash_key_jenkins`: originally by Rich Townsend,
 ! https://groups.google.com/forum/#!topic/comp.lang.fortran/RWoHZFt39ng, 2005
 !
 ! --- End License
@@ -31,8 +31,8 @@
 !////////////////////////////////////////////////////////////////////////
 !
 !      MutableArrayTests.f90
-!      Created: June 12, 2013 10:46 AM 
-!      By: David Kopriva  
+!      Created: June 12, 2013 10:46 AM
+!      By: David Kopriva
 !
 !      This subroutine tests and shows how to use the FTMutableObjectArray
 !      class.
@@ -42,7 +42,7 @@
       SUBROUTINE MutableArrayClassTests
          USE FTAssertions
          USE FTMutableObjectArrayClass
-         USE FTValueClass  
+         USE FTValueClass
          IMPLICIT NONE
 !
 !        ------------
@@ -50,7 +50,7 @@
 !        ------------
 !
          TYPE (FTMutableObjectArray), POINTER :: array
-         
+
          INTEGER                    :: i
          INTEGER, DIMENSION(10)     :: values         = [(i,i=1,10)]
          INTEGER, DIMENSION(10)     :: modifiedValues = [1,2,3,4,22,6,7,9,10,11]
@@ -84,18 +84,25 @@
          END DO
          CALL FTAssertEqual(10, array % COUNT(), "Number of objects in array is equal to number of objects added")
 !
+!        ---------------------------------------
+!        Exercise output routine to a dummy file
+!        ---------------------------------------
+!
+         OPEN(UNIT = 7, STATUS = 'SCRATCH')
+         CALL array % printDescription(7) ! To print the array, if desired.
+         CLOSE(7)
+!
 !        -----------------------------
 !        Check the values in the array
 !        -----------------------------
 !
-!         CALL array % printDescription(6) ! To print the array, if desired.
          DO i = 1, 10
             obj => array % objectAtIndex(i)   ! Get the object
             v   => valueFromObject(obj)       ! Convert it to a value.
             CALL FTAssert(test = ASSOCIATED(v),msg = "Object not found at index")
             IF ( ASSOCIATED(v) )     THEN
                CALL FTAssertEqual(values(i),v % integerValue(),"Object values")
-            END IF 
+            END IF
          END DO
 !
 !        ---------------------------------------------------
@@ -145,10 +152,10 @@
          CALL FTAssertEqual(1, obj % refcount(), "Refcount after removal")
          CALL releaseFTObject(obj)
          IF ( .NOT. ASSOCIATED(obj) )     THEN
-            CALL FTAssert(.true., "Object properly deallocated") 
+            CALL FTAssert(.true., "Object properly deallocated")
          ELSE
-            CALL FTAssert(.FALSE., "Object properly deallocated") 
-         END IF 
+            CALL FTAssert(.FALSE., "Object properly deallocated")
+         END IF
 !
 !        -----------------------------------
 !        Check the values in the array again
@@ -165,5 +172,5 @@
 !        -------------------------------------------------------------
 !
          CALL releaseFTMutableObjectArray(array)
-         
+
       END SUBROUTINE MutableArrayClassTests
