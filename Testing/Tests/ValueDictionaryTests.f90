@@ -41,7 +41,10 @@
          USE FTAssertions
          IMPLICIT NONE  
          
-         TYPE(FTValueDictionary)      :: dict, dict2
+         TYPE(FTValueDictionary)           :: dict, dict2
+         CLASS(FTValueDictionary), POINTER :: dict3, valDict
+         CLASS(FTDictionary)     , POINTER :: plainDict
+         CLASS(FTObject)         , POINTER :: obj
 !
 !        -----------------------
 !        Example values and keys
@@ -50,9 +53,12 @@
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys         = ["first ","second","third ","fourth"]
          INTEGER                                , DIMENSION(4) :: intValues    = [1,2,3,4]
          REAL                                   , DIMENSION(4) :: realValues   = [1.1, 2.1, 3.1, 4.1]
+         DOUBLE PRECISION                       , DIMENSION(4) :: dbleValues   = [1.1d0, 2.1d0, 3.1d0, 4.1d0]
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: stringValues = ['1', '2', '3', '4']
          INTEGER                                               :: i, s
-         REAL                                                  :: x
+         REAL                                                  :: x,r
+         DOUBLE PRECISION                                      :: xd
+         LOGICAL                                               :: lgcal
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH)               :: sValue
 !
 !        -------------------------------------------------------
@@ -64,6 +70,14 @@
 !        -------------------------------------------------------
 !
          CALL dict % initWithSize(64)
+!
+!        ----------------------------------
+!        Make sure it is a value dictionary
+!        ----------------------------------
+!
+         CALL FTAssertEqual(expectedValue = dict % className(), &
+                            actualValue   = "FTValueDictionary",  &
+                            msg           = "Class name for FTValuedictionary")
 !
 !        -----------------------------------------
 !        Add the keys and values to the dictionary
@@ -89,7 +103,16 @@
          DO i = 1,4
             sValue = dict % stringValueForKey(keys(i),8)
             CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
-         END DO       
+         END DO
+!
+!        ------------------------
+!        Get them out as logicals
+!        ------------------------
+!
+         DO i = 1,4
+            lgcal = dict % logicalValueForKey(key = keys(i))
+            CALL FTAssertEqual(lgcal,.TRUE.,"Value for key as logical ")
+         END DO
 !
 !        ---------------------
 !        Redo with real values
@@ -114,11 +137,85 @@
             CALL FTAssertEqual(x,realValues(i),2*EPSILON(x),"Value for key as real ")
          END DO
 !
+!        -------------------------------------
+!        Get them back out as double precision
+!        -------------------------------------
+!
+         DO i = 1,4
+            xd = dict2 % doublePrecisionValueForKey(keys(i))
+            CALL FTAssertEqual(xd,dbleValues(i),DBLE(2*EPSILON(x)),"Value for key as double ")
+         END DO
+!
+!        -----------------------------
+!        Add a logical and get  it out
+!        -----------------------------
+!
+         lgcal = .FALSE.
+         CALL dict2 % addValueForKey(lgcal,"logical")
+         CALL FTAssert(test = .NOT.dict2 % logicalValueForKey("logical"), &
+                                                         msg = "Add and get logical")
+!
+!        ---------------------------
+!        Add a double and get it out
+!        ---------------------------
+!
+         xd = 3.1d0
+         CALL dict2 % addValueForKey(xd,"double")
+         CALL FTAssertEqual(expectedValue = xd, &
+                            actualValue   = dict2 % doublePrecisionValueForKey("double"), &
+                            tol           = 2*EPSILON(xd))
+!
+!        ----------------------------------
+!        Getting something that's not there
+!        ----------------------------------
+!
+         r = dict2 % realValueForKey("bologna")
+         CALL FTAssertEqual(expectedValue = HUGE(r), &
+                            actualValue   = r,       &
+                            tol           = 2*EPSILON(r))
+         xd = dict2 % doublePrecisionValueForKey("bologna")
+         CALL FTAssertEqual(expectedValue = HUGE(xd), &
+                            actualValue   = xd,       &
+                            tol           = 2*EPSILON(xd))
+         i = dict2 % integerValueForKey("bologna")
+         CALL FTAssertEqual(expectedValue = HUGE(i), &
+                            actualValue   = i)
+         lgcal = dict2 % logicalValueForKey("bologna")
+         CALL FTAssert(.NOT. lgcal,msg = "Retrieve nonexistent logical")
+         sValue = dict2 % stringValueForKey("bologna",8)
+         CALL FTAssertEqual(expectedValue = "", &
+                            actualValue   = sValue)
+!
 !        -----------------------
 !        Check superclass method
 !        -----------------------
 !
          CALL FTAssert( dict2 % containsKey("first")   ,msg = "dictionary contains key")
-         CALL FTAssert(.NOT. dict2 % containsKey("bob"),msg = "dictionary does not contain key")         
+         CALL FTAssert(.NOT. dict2 % containsKey("bob"),msg = "dictionary does not contain key")
+!
+!        --------------------------
+!        Some pointer casting tests
+!        --------------------------
+!
+         ALLOCATE(dict3)
+         CALL dict3 % init()
+         CALL dict3 % addValueForKey("dict3","name")
+         
+         obj => dict3
+         valDict => valueDictionaryFromObject(obj)
+         CALL FTAssert(ASSOCIATED(valDict),msg = "Cast object to dictionary")
+         
+         CALL castObjectToValueDictionary(obj,valDict)
+         CALL FTAssert(ASSOCIATED(valDict),msg = "Cast object to dictionary by alternate")
+         
+         plainDict => dict3
+         CALL FTAssert(ASSOCIATED(plainDict),msg = "Cast object to dictionary")
+         valDict => valueDictionaryFromDictionary(plainDict)
+         CALL FTAssert(ASSOCIATED(valDict),msg = "Cast dictionary to valuedictionary")
+         CALL FTAssert(valDict  % containsKey(key = "name"),msg = "Test integrity of casting")
+         
+         CALL releaseFTValueDictionary(dict3)
+         CALL FTAssert(.NOT.ASSOCIATED(dict3),msg = "Release dictionary should deallocate")
+         
          
       END SUBROUTINE FTValueDictionaryClassTests    
