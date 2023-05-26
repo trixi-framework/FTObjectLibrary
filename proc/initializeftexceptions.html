@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="A Fortran library for reference counted object and container classes.">
+      <meta name="description" content="A Fortran library for reference counted object and container classes.">
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
 
@@ -14,16 +14,16 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="../js/jquery-2.1.3.min.js"></script>
+         <script src="../js/svg-pan-zoom.min.js"></script>
 
   </head>
 
@@ -45,31 +45,39 @@
           <ul class="nav navbar-nav">
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-       
-            </ul>
-        
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="../lists/files.html">Source Files</a></li>
+                  <li><a href="../lists/modules.html">Modules</a></li>
+                  <li><a href="../lists/procedures.html">Procedures</a></li>
+                  <li><a href="../lists/types.html">Derived Types</a></li>
+              </ul>
             </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="../lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/types.html">Derived Types</a>
+              </li>
           </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
-        </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
+            <form action="../search.html" class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              </div>
+              <!--
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  -->
+            </form>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -78,51 +86,78 @@
   <div class="row">
     <h1>initializeFTExceptions
       <small>Subroutine</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 0.3% of total for procedures.">9 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/FTExceptionClass.f90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></li>
-     <li><a href='../module/sharedexceptionmanagermodule.html'>SharedExceptionManagerModule</a></li>
-     <li class="active">initializeFTExceptions</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 0.3% of total for procedures.">9 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/FTExceptionClass.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></li>
+              <li><a href='../module/sharedexceptionmanagermodule.html'>SharedExceptionManagerModule</a></li>
+          <li class="active">initializeFTExceptions</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<em>None</em>
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-</div>
+    <em>None</em>
+
+  </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public subroutine initializeFTExceptions()</h2>
+    <h2>public  subroutine initializeFTExceptions()  
+</h2>
     
 
     <p>Called at start of execution. Will be called automatically if an 
 exception is thrown.</p>
+
 
     <h3>Arguments</h3>
     <em>None</em>
@@ -139,112 +174,126 @@ exception is thrown.</p>
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~initializeftexceptions~~CalledByGraph Pages: 1 -->
-<svg id="procinitializeftexceptionsCalledByGraph" width="307pt" height="242pt"
- viewBox="0.00 0.00 307.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~initializeftexceptions~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
+<svg id="procinitializeftexceptionsCalledByGraph" width="641pt" height="230pt"
+ viewBox="0.00 0.00 641.00 229.81" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~initializeftexceptions~~CalledByGraph" class="graph" transform="scale(1.05 1.05) rotate(0) translate(4 238)">
 <title>proc~~initializeftexceptions~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 303,-238 303,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 671,-238 671,4 -4,4"/>
 <!-- proc~initializeftexceptions -->
 <g id="proc~~initializeftexceptions~~CalledByGraph_node1" class="node">
 <title>proc~initializeftexceptions</title>
-<polygon fill="none" stroke="black" points="299,-129 172,-129 172,-105 299,-105 299,-129"/>
-<text text-anchor="middle" x="235.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">initializeFTExceptions</text>
-</g>
-<!-- proc~throw -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_node2" class="node">
-<title>proc~throw</title>
-<g id="a_proc~~initializeftexceptions~~CalledByGraph_node2"><a xlink:href=".././proc/throw.html" xlink:title="throw">
-<polygon fill="#d9534f" stroke="#d9534f" points="95,-234 41,-234 41,-210 95,-210 95,-234"/>
-<text text-anchor="middle" x="68" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">throw</text>
-</a>
-</g>
-</g>
-<!-- proc~throw&#45;&gt;proc~initializeftexceptions -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_edge1" class="edge">
-<title>proc~throw&#45;&gt;proc~initializeftexceptions</title>
-<path fill="none" stroke="#000000" d="M95.12,-216.42C107.93,-213.05 123.3,-208.02 136,-201 167.32,-183.69 197.79,-155.41 216.35,-136.51"/>
-<polygon fill="#000000" stroke="#000000" points="219.13,-138.67 223.54,-129.04 214.08,-133.81 219.13,-138.67"/>
-</g>
-<!-- proc~maximumerrorseverity -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_node3" class="node">
-<title>proc~maximumerrorseverity</title>
-<g id="a_proc~~initializeftexceptions~~CalledByGraph_node3"><a xlink:href=".././proc/maximumerrorseverity.html" xlink:title="maximumErrorSeverity">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="136,-192 0,-192 0,-168 136,-168 136,-192"/>
-<text text-anchor="middle" x="68" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">maximumErrorSeverity</text>
-</a>
-</g>
-</g>
-<!-- proc~maximumerrorseverity&#45;&gt;proc~initializeftexceptions -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_edge2" class="edge">
-<title>proc~maximumerrorseverity&#45;&gt;proc~initializeftexceptions</title>
-<path fill="none" stroke="#000000" d="M109.61,-167.98C118.37,-165.19 127.54,-162.12 136,-159 157.09,-151.22 180.23,-141.42 198.78,-133.24"/>
-<polygon fill="#000000" stroke="#000000" points="200.31,-136.39 208.03,-129.13 197.47,-130 200.31,-136.39"/>
-</g>
-<!-- proc~peeklastexception -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_node4" class="node">
-<title>proc~peeklastexception</title>
-<g id="a_proc~~initializeftexceptions~~CalledByGraph_node4"><a xlink:href=".././proc/peeklastexception.html" xlink:title="peekLastException">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="124.5,-150 11.5,-150 11.5,-126 124.5,-126 124.5,-150"/>
-<text text-anchor="middle" x="68" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">peekLastException</text>
-</a>
-</g>
-</g>
-<!-- proc~peeklastexception&#45;&gt;proc~initializeftexceptions -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_edge3" class="edge">
-<title>proc~peeklastexception&#45;&gt;proc~initializeftexceptions</title>
-<path fill="none" stroke="#000000" d="M124.57,-130.95C136.57,-129.43 149.44,-127.79 161.98,-126.2"/>
-<polygon fill="#000000" stroke="#000000" points="162.47,-129.67 171.95,-124.94 161.59,-122.72 162.47,-129.67"/>
+<polygon fill="none" stroke="black" points="667,-129 356,-129 356,-105 667,-105 667,-129"/>
+<text text-anchor="middle" x="511.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">SharedExceptionManagerModule::initializeFTExceptions</text>
 </g>
 <!-- proc~errorcount -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_node5" class="node">
+<g id="proc~~initializeftexceptions~~CalledByGraph_node2" class="node">
 <title>proc~errorcount</title>
-<g id="a_proc~~initializeftexceptions~~CalledByGraph_node5"><a xlink:href=".././proc/errorcount.html" xlink:title="errorCount">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="103,-108 33,-108 33,-84 103,-84 103,-108"/>
-<text text-anchor="middle" x="68" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">errorCount</text>
+<g id="a_proc~~initializeftexceptions~~CalledByGraph_node2"><a xlink:href=".././proc/errorcount.html" xlink:title="SharedExceptionManagerModule::errorCount">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="287,-234 33,-234 33,-210 287,-210 287,-234"/>
+<text text-anchor="middle" x="160" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::errorCount</text>
 </a>
 </g>
 </g>
 <!-- proc~errorcount&#45;&gt;proc~initializeftexceptions -->
-<g id="proc~~initializeftexceptions~~CalledByGraph_edge4" class="edge">
+<g id="proc~~initializeftexceptions~~CalledByGraph_edge1" class="edge">
 <title>proc~errorcount&#45;&gt;proc~initializeftexceptions</title>
-<path fill="none" stroke="#000000" d="M103.29,-100.35C120.22,-102.5 141.33,-105.18 161.63,-107.75"/>
-<polygon fill="#000000" stroke="#000000" points="161.46,-111.26 171.82,-109.05 162.34,-104.32 161.46,-111.26"/>
+<path fill="none" stroke="#000000" d="M280.69,-209.93C294.07,-207.48 307.4,-204.53 320,-201 378.63,-184.57 442.58,-153.39 479.47,-133.99"/>
+<polygon fill="#000000" stroke="#000000" points="481.5,-136.87 488.68,-129.09 478.21,-130.69 481.5,-136.87"/>
+</g>
+<!-- proc~errorobject -->
+<g id="proc~~initializeftexceptions~~CalledByGraph_node3" class="node">
+<title>proc~errorobject</title>
+<g id="a_proc~~initializeftexceptions~~CalledByGraph_node3"><a xlink:href=".././proc/errorobject.html" xlink:title="SharedExceptionManagerModule::errorObject">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="288.5,-192 31.5,-192 31.5,-168 288.5,-168 288.5,-192"/>
+<text text-anchor="middle" x="160" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::errorObject</text>
+</a>
+</g>
+</g>
+<!-- proc~errorobject&#45;&gt;proc~initializeftexceptions -->
+<g id="proc~~initializeftexceptions~~CalledByGraph_edge2" class="edge">
+<title>proc~errorobject&#45;&gt;proc~initializeftexceptions</title>
+<path fill="none" stroke="#000000" d="M262.13,-167.97C281.39,-165.3 301.35,-162.28 320,-159 364.4,-151.19 414.13,-140.15 451.64,-131.34"/>
+<polygon fill="#000000" stroke="#000000" points="452.46,-134.75 461.39,-129.04 450.86,-127.93 452.46,-134.75"/>
+</g>
+<!-- proc~maximumerrorseverity -->
+<g id="proc~~initializeftexceptions~~CalledByGraph_node4" class="node">
+<title>proc~maximumerrorseverity</title>
+<g id="a_proc~~initializeftexceptions~~CalledByGraph_node4"><a xlink:href=".././proc/maximumerrorseverity.html" xlink:title="SharedExceptionManagerModule::maximumErrorSeverity">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="320,-150 0,-150 0,-126 320,-126 320,-150"/>
+<text text-anchor="middle" x="160" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::maximumErrorSeverity</text>
+</a>
+</g>
+</g>
+<!-- proc~maximumerrorseverity&#45;&gt;proc~initializeftexceptions -->
+<g id="proc~~initializeftexceptions~~CalledByGraph_edge3" class="edge">
+<title>proc~maximumerrorseverity&#45;&gt;proc~initializeftexceptions</title>
+<path fill="none" stroke="#000000" d="M320.15,-128.44C328.7,-127.92 337.3,-127.41 345.86,-126.89"/>
+<polygon fill="#000000" stroke="#000000" points="346.13,-130.38 355.9,-126.29 345.71,-123.4 346.13,-130.38"/>
+</g>
+<!-- proc~peeklastexception -->
+<g id="proc~~initializeftexceptions~~CalledByGraph_node5" class="node">
+<title>proc~peeklastexception</title>
+<g id="a_proc~~initializeftexceptions~~CalledByGraph_node5"><a xlink:href=".././proc/peeklastexception.html" xlink:title="SharedExceptionManagerModule::peekLastException">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="308.5,-108 11.5,-108 11.5,-84 308.5,-84 308.5,-108"/>
+<text text-anchor="middle" x="160" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::peekLastException</text>
+</a>
+</g>
+</g>
+<!-- proc~peeklastexception&#45;&gt;proc~initializeftexceptions -->
+<g id="proc~~initializeftexceptions~~CalledByGraph_edge4" class="edge">
+<title>proc~peeklastexception&#45;&gt;proc~initializeftexceptions</title>
+<path fill="none" stroke="#000000" d="M308.71,-104.88C320.87,-105.61 333.2,-106.35 345.47,-107.08"/>
+<polygon fill="#000000" stroke="#000000" points="345.56,-110.6 355.75,-107.7 345.98,-103.61 345.56,-110.6"/>
 </g>
 <!-- proc~poplastexception -->
 <g id="proc~~initializeftexceptions~~CalledByGraph_node6" class="node">
 <title>proc~poplastexception</title>
-<g id="a_proc~~initializeftexceptions~~CalledByGraph_node6"><a xlink:href=".././proc/poplastexception.html" xlink:title="popLastException">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="121.5,-66 14.5,-66 14.5,-42 121.5,-42 121.5,-66"/>
-<text text-anchor="middle" x="68" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">popLastException</text>
+<g id="a_proc~~initializeftexceptions~~CalledByGraph_node6"><a xlink:href=".././proc/poplastexception.html" xlink:title="SharedExceptionManagerModule::popLastException">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="305.5,-66 14.5,-66 14.5,-42 305.5,-42 305.5,-66"/>
+<text text-anchor="middle" x="160" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::popLastException</text>
 </a>
 </g>
 </g>
 <!-- proc~poplastexception&#45;&gt;proc~initializeftexceptions -->
 <g id="proc~~initializeftexceptions~~CalledByGraph_edge5" class="edge">
 <title>proc~poplastexception&#45;&gt;proc~initializeftexceptions</title>
-<path fill="none" stroke="#000000" d="M109.61,-66.02C118.37,-68.81 127.54,-71.88 136,-75 157.09,-82.78 180.23,-92.58 198.78,-100.76"/>
-<polygon fill="#000000" stroke="#000000" points="197.47,-104 208.03,-104.87 200.31,-97.61 197.47,-104"/>
+<path fill="none" stroke="#000000" d="M262.13,-66.03C281.39,-68.7 301.35,-71.72 320,-75 364.4,-82.81 414.13,-93.85 451.64,-102.66"/>
+<polygon fill="#000000" stroke="#000000" points="450.86,-106.07 461.39,-104.96 452.46,-99.25 450.86,-106.07"/>
 </g>
-<!-- proc~errorobject -->
+<!-- proc~throw -->
 <g id="proc~~initializeftexceptions~~CalledByGraph_node7" class="node">
-<title>proc~errorobject</title>
-<g id="a_proc~~initializeftexceptions~~CalledByGraph_node7"><a xlink:href=".././proc/errorobject.html" xlink:title="errorObject">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="104.5,-24 31.5,-24 31.5,0 104.5,0 104.5,-24"/>
-<text text-anchor="middle" x="68" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">errorObject</text>
+<title>proc~throw</title>
+<g id="a_proc~~initializeftexceptions~~CalledByGraph_node7"><a xlink:href=".././proc/throw.html" xlink:title="SharedExceptionManagerModule::throw">
+<polygon fill="#d9534f" stroke="#d9534f" points="273,-24 47,-24 47,0 273,0 273,-24"/>
+<text text-anchor="middle" x="160" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::throw</text>
 </a>
 </g>
 </g>
-<!-- proc~errorobject&#45;&gt;proc~initializeftexceptions -->
+<!-- proc~throw&#45;&gt;proc~initializeftexceptions -->
 <g id="proc~~initializeftexceptions~~CalledByGraph_edge6" class="edge">
-<title>proc~errorobject&#45;&gt;proc~initializeftexceptions</title>
-<path fill="none" stroke="#000000" d="M104.52,-20.24C115.02,-23.43 126.29,-27.63 136,-33 167.32,-50.31 197.79,-78.59 216.35,-97.49"/>
-<polygon fill="#000000" stroke="#000000" points="214.08,-100.19 223.54,-104.96 219.13,-95.33 214.08,-100.19"/>
+<title>proc~throw&#45;&gt;proc~initializeftexceptions</title>
+<path fill="none" stroke="#000000" d="M273.01,-22.72C288.93,-25.42 304.99,-28.79 320,-33 378.63,-49.43 442.58,-80.61 479.47,-100.01"/>
+<polygon fill="#000000" stroke="#000000" points="478.21,-103.31 488.68,-104.91 481.5,-97.13 478.21,-103.31"/>
 </g>
 </g>
 </svg>
-</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>                <script>
+                  var panprocinitializeftexceptionsCalledByGraph = svgPanZoom('#procinitializeftexceptionsCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -294,21 +343,42 @@ exception is thrown.</p>
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a procedure to one which it calls. Dashed 
-    arrows point from an interface to procedures which implement that interface.
-    This could include the module procedures in a generic interface or the
-    implementation in a submodule of an interface in a parent module.
-    </p>
-    </div></div></div></div>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<em>None</em>
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+    <em>None</em>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
@@ -326,50 +396,50 @@ exception is thrown.</p>
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2022 
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
     <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
 
-    <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>

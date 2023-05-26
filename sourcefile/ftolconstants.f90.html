@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="A Fortran library for reference counted object and container classes.">
+      <meta name="description" content="A Fortran library for reference counted object and container classes.">
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
 
@@ -14,16 +14,16 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="../js/jquery-2.1.3.min.js"></script>
+         <script src="../js/svg-pan-zoom.min.js"></script>
 
   </head>
 
@@ -45,31 +45,39 @@
           <ul class="nav navbar-nav">
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-       
-            </ul>
-        
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="../lists/files.html">Source Files</a></li>
+                  <li><a href="../lists/modules.html">Modules</a></li>
+                  <li><a href="../lists/procedures.html">Procedures</a></li>
+                  <li><a href="../lists/types.html">Derived Types</a></li>
+              </ul>
             </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="../lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/types.html">Derived Types</a>
+              </li>
           </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
-        </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
+            <form action="../search.html" class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              </div>
+              <!--
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  -->
+            </form>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -77,53 +85,82 @@
     <div class="container">
   <div class="row">
     <h1>FTOLConstants.f90
-    <small>Source File</small>
+      <small>Source File</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 0.1% of total for source files.">5 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/FTOLConstants.f90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li class="active">FTOLConstants.f90</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 0.1% of total for source files.">5 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/FTOLConstants.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+          <li class="active">FTOLConstants.f90</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
-  <div id="mods-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/ftolconstants.html">FTOLConstants</a>
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#mods-0">Modules</a>
+        </h3>
+      </div>
+      <div id="mods-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/ftolconstants.html">FTOLConstants</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html#src">FTOLConstants.f90</a>
-  </div>
-</div>
 
-</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html#src">FTOLConstants.f90</a>
+      </div>
+    </div>
+
+
+  </div>
 
     </div>
     <div class="col-md-9" id='text'>
@@ -140,165 +177,179 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: sourcefile~~ftolconstants.f90~~AfferentGraph Pages: 1 -->
-<svg id="sourcefileftolconstantsf90AfferentGraph" width="641pt" height="123pt"
- viewBox="0.00 0.00 641.00 122.56" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph" class="graph" transform="scale(1.24 1.24) rotate(0) translate(4 148)">
+<svg id="sourcefileftolconstantsf90AfferentGraph" width="641pt" height="105pt"
+ viewBox="0.00 0.00 641.00 105.42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph" class="graph" transform="scale(1.24 1.24) rotate(0) translate(4 126.75)">
 <title>sourcefile~~ftolconstants.f90~~AfferentGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-148 791,-148 791,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-126.75 791,-126.75 791,4 -4,4"/>
 <!-- sourcefile~ftolconstants.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node1" class="node">
 <title>sourcefile~ftolconstants.f90</title>
-<polygon fill="none" stroke="black" points="112,-104 0,-104 0,-80 112,-80 112,-104"/>
-<text text-anchor="middle" x="56" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTOLConstants.f90</text>
-</g>
-<!-- sourcefile~comparisons.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node2" class="node">
-<title>sourcefile~comparisons.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/comparisons.f90.html" xlink:title="Comparisons.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="251,-144 148,-144 148,-120 251,-120 251,-144"/>
-<text text-anchor="middle" x="199.5" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Comparisons.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~comparisons.f90&#45;&gt;sourcefile~ftolconstants.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge1" class="edge">
-<title>sourcefile~comparisons.f90&#45;&gt;sourcefile~ftolconstants.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M156.05,-120C141.49,-115.88 125.02,-111.23 109.74,-106.91"/>
-<polygon fill="#000000" stroke="#000000" points="110.49,-103.48 99.91,-104.13 108.58,-110.22 110.49,-103.48"/>
+<polygon fill="none" stroke="black" points="112,-66 0,-66 0,-42 112,-42 112,-66"/>
+<text text-anchor="middle" x="56" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTOLConstants.f90</text>
 </g>
 <!-- sourcefile~assert.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node3" class="node">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node2" class="node">
 <title>sourcefile~assert.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/assert.f90.html" xlink:title="Assert.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="398.5,-104 332.5,-104 332.5,-80 398.5,-80 398.5,-104"/>
-<text text-anchor="middle" x="365.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Assert.f90</text>
+<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/assert.f90.html" xlink:title="Assert.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="398.5,-106 332.5,-106 332.5,-82 398.5,-82 398.5,-106"/>
+<text text-anchor="middle" x="365.5" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Assert.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~assert.f90&#45;&gt;sourcefile~ftolconstants.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge2" class="edge">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge1" class="edge">
 <title>sourcefile~assert.f90&#45;&gt;sourcefile~ftolconstants.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.46,-92C282.96,-92 186.88,-92 122.31,-92"/>
-<polygon fill="#000000" stroke="#000000" points="122.23,-88.5 112.23,-92 122.23,-95.5 122.23,-88.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.42,-92.58C290,-90.39 213.03,-85.31 148,-75 136.73,-73.21 124.78,-70.82 113.37,-68.29"/>
+<polygon fill="#000000" stroke="#000000" points="114.05,-64.86 103.52,-66.05 112.49,-71.68 114.05,-64.86"/>
+</g>
+<!-- sourcefile~comparisons.f90 -->
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~comparisons.f90</title>
+<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/comparisons.f90.html" xlink:title="Comparisons.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="251,-66 148,-66 148,-42 251,-42 251,-66"/>
+<text text-anchor="middle" x="199.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Comparisons.f90</text>
+</a>
+</g>
 </g>
 <!-- sourcefile~assert.f90&#45;&gt;sourcefile~comparisons.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge5" class="edge">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge6" class="edge">
 <title>sourcefile~assert.f90&#45;&gt;sourcefile~comparisons.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.49,-99.81C311.84,-104.84 284.36,-111.55 259.82,-117.53"/>
-<polygon fill="#000000" stroke="#000000" points="258.75,-114.19 249.87,-119.96 260.41,-120.99 258.75,-114.19"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.49,-86.19C311.84,-81.16 284.36,-74.45 259.82,-68.47"/>
+<polygon fill="#000000" stroke="#000000" points="260.41,-65.01 249.87,-66.04 258.75,-71.81 260.41,-65.01"/>
+</g>
+<!-- sourcefile~comparisons.f90&#45;&gt;sourcefile~ftolconstants.f90 -->
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~comparisons.f90&#45;&gt;sourcefile~ftolconstants.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M147.81,-54C139.49,-54 130.77,-54 122.15,-54"/>
+<polygon fill="#000000" stroke="#000000" points="122.12,-50.5 112.12,-54 122.12,-57.5 122.12,-50.5"/>
 </g>
 <!-- sourcefile~ftvalueclass.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node4" class="node">
 <title>sourcefile~ftvalueclass.f90</title>
 <g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/ftvalueclass.f90.html" xlink:title="FTValueClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="251,-64 148,-64 148,-40 251,-40 251,-64"/>
-<text text-anchor="middle" x="199.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="251,-24 148,-24 148,0 251,0 251,-24"/>
+<text text-anchor="middle" x="199.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~ftolconstants.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge3" class="edge">
 <title>sourcefile~ftvalueclass.f90&#45;&gt;sourcefile~ftolconstants.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M156.05,-64C141.49,-68.12 125.02,-72.77 109.74,-77.09"/>
-<polygon fill="#000000" stroke="#000000" points="108.58,-73.78 99.91,-79.87 110.49,-80.52 108.58,-73.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M157.95,-24.04C142.26,-28.69 124.13,-34.07 107.6,-38.98"/>
+<polygon fill="#000000" stroke="#000000" points="106.14,-35.76 97.55,-41.96 108.14,-42.47 106.14,-35.76"/>
 </g>
 <!-- sourcefile~ftobjectlibrary.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node5" class="node">
 <title>sourcefile~ftobjectlibrary.f90</title>
 <g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/ftobjectlibrary.f90.html" xlink:title="FTObjectLibrary.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="787,-84 671,-84 671,-60 787,-60 787,-84"/>
-<text text-anchor="middle" x="729" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="787,-86 671,-86 671,-62 787,-62 787,-86"/>
+<text text-anchor="middle" x="729" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary.f90</text>
 </a>
 </g>
 </g>
-<!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~comparisons.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge4" class="edge">
-<title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~comparisons.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M556.5,-132C453.38,-144.06 332.3,-140.29 261.23,-136.27"/>
-<polygon fill="#000000" stroke="#000000" points="261.31,-132.77 251.12,-135.68 260.9,-139.76 261.31,-132.77"/>
-</g>
 <!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~assert.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge6" class="edge">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge4" class="edge">
 <title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~assert.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M704.67,-84.05C672.72,-99.65 613.07,-125.62 558.5,-132"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M556.5,-132C528.43,-135.28 455.6,-117.1 408.7,-104.17"/>
-<polygon fill="#000000" stroke="#000000" points="409.4,-100.73 398.83,-101.41 407.52,-107.47 409.4,-100.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M707.42,-86.06C689.11,-96.05 661.24,-109.47 635,-115 556.13,-131.61 461.72,-116.33 408.47,-104.57"/>
+<polygon fill="#000000" stroke="#000000" points="409.23,-101.16 398.71,-102.35 407.68,-107.98 409.23,-101.16"/>
+</g>
+<!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~comparisons.f90 -->
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~comparisons.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.5,-54C330.42,-51.85 292.27,-51.72 261.35,-52.18"/>
+<polygon fill="#000000" stroke="#000000" points="261.1,-48.68 251.16,-52.36 261.22,-55.68 261.1,-48.68"/>
 </g>
 <!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~ftvalueclass.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge8" class="edge">
 <title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~ftvalueclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M556.5,-52C453.3,-40.61 332.25,-44.17 261.21,-47.96"/>
-<polygon fill="#000000" stroke="#000000" points="260.89,-44.47 251.1,-48.52 261.28,-51.46 260.89,-44.47"/>
-</g>
-<!-- sourcefile~testsuitemanagerclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node6" class="node">
-<title>sourcefile~testsuitemanagerclass.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/testsuitemanagerclass.f90.html" xlink:title="TestSuiteManagerClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="635,-104 480,-104 480,-80 635,-80 635,-104"/>
-<text text-anchor="middle" x="557.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TestSuiteManagerClass.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~testsuitemanagerclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge10" class="edge">
-<title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~testsuitemanagerclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M670.62,-78.77C662.4,-79.74 653.8,-80.75 645.18,-81.77"/>
-<polygon fill="#000000" stroke="#000000" points="644.58,-78.32 635.06,-82.97 645.4,-85.27 644.58,-78.32"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M556.5,-54C472.57,-44.73 450.78,-59.31 366.5,-54"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.5,-54C321.97,-51.32 275,-38.2 242.27,-27.33"/>
+<polygon fill="#000000" stroke="#000000" points="243.19,-23.94 232.59,-24.04 240.93,-30.57 243.19,-23.94"/>
 </g>
 <!-- sourcefile~ftvaluedictionaryclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node7" class="node">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node6" class="node">
 <title>sourcefile~ftvaluedictionaryclass.f90</title>
-<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/ftvaluedictionaryclass.f90.html" xlink:title="FTValueDictionaryClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="444,-24 287,-24 287,0 444,0 444,-24"/>
-<text text-anchor="middle" x="365.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass.f90</text>
+<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/ftvaluedictionaryclass.f90.html" xlink:title="FTValueDictionaryClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="444,-26 287,-26 287,-2 444,-2 444,-26"/>
+<text text-anchor="middle" x="365.5" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge12" class="edge">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge11" class="edge">
 <title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M670.75,-65.03C637.91,-61.08 595.9,-56.13 558.5,-52"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M556.5,-52C510.36,-46.91 458.89,-35.72 421.17,-26.47"/>
-<polygon fill="#000000" stroke="#000000" points="421.95,-23.06 411.4,-24.04 420.26,-29.85 421.95,-23.06"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M670.75,-67.03C637.91,-63.08 595.9,-58.13 558.5,-54"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M556.5,-54C510.36,-48.91 458.89,-37.72 421.17,-28.47"/>
+<polygon fill="#000000" stroke="#000000" points="421.95,-25.06 411.4,-26.04 420.26,-31.85 421.95,-25.06"/>
+</g>
+<!-- sourcefile~testsuitemanagerclass.f90 -->
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~testsuitemanagerclass.f90</title>
+<g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/testsuitemanagerclass.f90.html" xlink:title="TestSuiteManagerClass.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="635,-106 480,-106 480,-82 635,-82 635,-106"/>
+<text text-anchor="middle" x="557.5" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TestSuiteManagerClass.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~testsuitemanagerclass.f90 -->
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~testsuitemanagerclass.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M670.62,-80.77C662.4,-81.74 653.8,-82.75 645.18,-83.77"/>
+<polygon fill="#000000" stroke="#000000" points="644.58,-80.32 635.06,-84.97 645.4,-87.27 644.58,-80.32"/>
 </g>
 <!-- sourcefile~ftexceptionclass.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_node8" class="node">
 <title>sourcefile~ftexceptionclass.f90</title>
 <g id="a_sourcefile~~ftolconstants.f90~~AfferentGraph_node8"><a xlink:href=".././sourcefile/ftexceptionclass.f90.html" xlink:title="FTExceptionClass.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="620.5,-24 494.5,-24 494.5,0 620.5,0 620.5,-24"/>
-<text text-anchor="middle" x="557.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="620.5,-26 494.5,-26 494.5,-2 620.5,-2 620.5,-26"/>
+<text text-anchor="middle" x="557.5" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~ftexceptionclass.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge13" class="edge">
 <title>sourcefile~ftobjectlibrary.f90&#45;&gt;sourcefile~ftexceptionclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M695.36,-59.86C677.55,-53.29 655.1,-45.09 635,-38 624.98,-34.46 614.18,-30.74 603.95,-27.26"/>
-<polygon fill="#000000" stroke="#000000" points="604.96,-23.9 594.36,-24 602.71,-30.53 604.96,-23.9"/>
-</g>
-<!-- sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~assert.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge7" class="edge">
-<title>sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~assert.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M479.77,-92C455.63,-92 429.85,-92 408.99,-92"/>
-<polygon fill="#000000" stroke="#000000" points="408.88,-88.5 398.88,-92 408.88,-95.5 408.88,-88.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M695.36,-61.86C677.55,-55.29 655.1,-47.09 635,-40 624.98,-36.46 614.18,-32.74 603.95,-29.26"/>
+<polygon fill="#000000" stroke="#000000" points="604.96,-25.9 594.36,-26 602.71,-32.53 604.96,-25.9"/>
 </g>
 <!-- sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftvalueclass.f90 -->
 <g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge9" class="edge">
 <title>sourcefile~ftvaluedictionaryclass.f90&#45;&gt;sourcefile~ftvalueclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M315.29,-24C297.86,-28.25 278.06,-33.08 259.87,-37.52"/>
-<polygon fill="#000000" stroke="#000000" points="258.84,-34.17 249.95,-39.94 260.5,-40.97 258.84,-34.17"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M286.82,-13.05C278.32,-12.95 269.76,-12.84 261.51,-12.74"/>
+<polygon fill="#000000" stroke="#000000" points="261.28,-9.24 251.24,-12.62 261.19,-16.24 261.28,-9.24"/>
+</g>
+<!-- sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~assert.f90 -->
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~testsuitemanagerclass.f90&#45;&gt;sourcefile~assert.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M479.77,-94C455.63,-94 429.85,-94 408.99,-94"/>
+<polygon fill="#000000" stroke="#000000" points="408.88,-90.5 398.88,-94 408.88,-97.5 408.88,-90.5"/>
 </g>
 <!-- sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90 -->
-<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge11" class="edge">
+<g id="sourcefile~~ftolconstants.f90~~AfferentGraph_edge10" class="edge">
 <title>sourcefile~ftexceptionclass.f90&#45;&gt;sourcefile~ftvaluedictionaryclass.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M494.29,-12C481.52,-12 467.86,-12 454.39,-12"/>
-<polygon fill="#000000" stroke="#000000" points="454.14,-8.5 444.14,-12 454.14,-15.5 454.14,-8.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M494.29,-14C481.52,-14 467.86,-14 454.39,-14"/>
+<polygon fill="#000000" stroke="#000000" points="454.14,-10.5 444.14,-14 454.14,-17.5 454.14,-10.5"/>
 </g>
 </g>
 </svg>
-</div><script>var pansourcefileftolconstantsf90AfferentGraph = svgPanZoom('#sourcefileftolconstantsf90AfferentGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>                <script>
+                  var pansourcefileftolconstantsf90AfferentGraph = svgPanZoom('#sourcefileftolconstantsf90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -324,134 +375,159 @@
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a file to a file which it depends on. A file
-    is dependent upon another if the latter must be compiled before the former
-    can be.
-    </p>
-    </div></div></div></div>
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 <br>
     <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
-  <div id="mods-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/ftolconstants.html">FTOLConstants</a>
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#mods-1">Modules</a>
+        </h3>
+      </div>
+      <div id="mods-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/ftolconstants.html">FTOLConstants</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html#src">FTOLConstants.f90</a>
-  </div>
-</div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/ftolconstants.f90.html#src">FTOLConstants.f90</a>
+      </div>
+    </div>
+
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
     <section>
       <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="c">! MIT License</span>
-<a name="ln-2"></a><span class="c">!</span>
-<a name="ln-3"></a><span class="c">! Copyright (c) 2010-present David A. Kopriva and other contributors: AUTHORS.md</span>
-<a name="ln-4"></a><span class="c">!</span>
-<a name="ln-5"></a><span class="c">! Permission is hereby granted, free of charge, to any person obtaining a copy  </span>
-<a name="ln-6"></a><span class="c">! of this software and associated documentation files (the &quot;Software&quot;), to deal  </span>
-<a name="ln-7"></a><span class="c">! in the Software without restriction, including without limitation the rights  </span>
-<a name="ln-8"></a><span class="c">! to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  </span>
-<a name="ln-9"></a><span class="c">! copies of the Software, and to permit persons to whom the Software is  </span>
-<a name="ln-10"></a><span class="c">! furnished to do so, subject to the following conditions:</span>
-<a name="ln-11"></a><span class="c">!</span>
-<a name="ln-12"></a><span class="c">! The above copyright notice and this permission notice shall be included in all  </span>
-<a name="ln-13"></a><span class="c">! copies or substantial portions of the Software.</span>
-<a name="ln-14"></a><span class="c">!</span>
-<a name="ln-15"></a><span class="c">! THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  </span>
-<a name="ln-16"></a><span class="c">! IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  </span>
-<a name="ln-17"></a><span class="c">! FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  </span>
-<a name="ln-18"></a><span class="c">! AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  </span>
-<a name="ln-19"></a><span class="c">! LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  </span>
-<a name="ln-20"></a><span class="c">! OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  </span>
-<a name="ln-21"></a><span class="c">! SOFTWARE.</span>
-<a name="ln-22"></a><span class="c">!</span>
-<a name="ln-23"></a><span class="c">! FTObjectLibrary contains code that, to the best of our knowledge, has been released as</span>
-<a name="ln-24"></a><span class="c">! public domain software:</span>
-<a name="ln-25"></a><span class="c">! * `b3hs_hash_key_jenkins`: originally by Rich Townsend, </span>
-<a name="ln-26"></a><span class="c">! https://groups.google.com/forum/#!topic/comp.lang.fortran/RWoHZFt39ng, 2005</span>
-<a name="ln-27"></a><span class="c">!</span>
-<a name="ln-28"></a><span class="c">! --- End License</span>
-<a name="ln-29"></a>
-<a name="ln-30"></a><span class="c">!</span>
-<a name="ln-31"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
-<a name="ln-32"></a><span class="c">!</span>
-<a name="ln-33"></a><span class="c">!      Constants.f90</span>
-<a name="ln-34"></a><span class="c">!      Created: June 12, 2013 2:54 PM </span>
-<a name="ln-35"></a><span class="c">!      By: David Kopriva  </span>
-<a name="ln-36"></a><span class="c">!</span>
-<a name="ln-37"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
-<a name="ln-38"></a><span class="c">!</span>
-<a name="ln-39"></a><span class="c">!&gt; Defines constants to be used by the library</span>
-<a name="ln-40"></a><span class="c">!</span>
-<a name="ln-41"></a>
-<a name="ln-42"></a>      <span class="k">Module </span><span class="n">FTOLConstants</span> 
-<a name="ln-43"></a>         <span class="k">IMPLICIT NONE</span>
-<a name="ln-44"></a><span class="k">         </span><span class="kt">INTEGER</span><span class="p">,</span> <span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">FT_ORDERED_ASCENDING</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">FT_ORDERED_DESCENDING</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">FT_ORDERED_SAME</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="ln-45"></a>         <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">QUAD_DIGITS</span> <span class="o">=</span> <span class="mi">30</span>
-<a name="ln-46"></a>      <span class="k">END Module </span><span class="n">FTOLConstants</span>
+    <div class="hl"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! MIT License</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">!</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2010-present David A. Kopriva and other contributors: AUTHORS.md</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">!</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Permission is hereby granted, free of charge, to any person obtaining a copy  </span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! of this software and associated documentation files (the &quot;Software&quot;), to deal  </span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! in the Software without restriction, including without limitation the rights  </span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  </span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! copies of the Software, and to permit persons to whom the Software is  </span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! furnished to do so, subject to the following conditions:</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">!</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! The above copyright notice and this permission notice shall be included in all  </span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! copies or substantial portions of the Software.</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">!</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  </span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  </span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  </span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  </span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  </span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  </span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! SOFTWARE.</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">!</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! FTObjectLibrary contains code that, to the best of our knowledge, has been released as</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! public domain software:</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">! * `b3hs_hash_key_jenkins`: originally by Rich Townsend, </span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">! https://groups.google.com/forum/#!topic/comp.lang.fortran/RWoHZFt39ng, 2005</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">!</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="c">! --- End License</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="c">!</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="c">!</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="c">!      Constants.f90</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="c">!      Created: June 12, 2013 2:54 PM </span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="c">!      By: David Kopriva  </span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="c">!</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="c">!</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="c">!&gt; Defines constants to be used by the library</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="c">!</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">      </span><span class="k">Module </span><span class="n">FTOLConstants</span><span class="w"> </span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="k">         </span><span class="kt">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="k">PARAMETER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">FT_ORDERED_ASCENDING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">FT_ORDERED_DESCENDING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">FT_ORDERED_SAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">         </span><span class="kt">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="k">PARAMETER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">QUAD_DIGITS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"></span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">      </span><span class="k">END Module </span><span class="n">FTOLConstants</span><span class="w"></span>
 </pre></div>
 
     </section>
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2022 
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
     <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
 
-    <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>
