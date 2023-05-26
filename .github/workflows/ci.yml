@@ -34,7 +34,7 @@ jobs:
             shell: bash
           - os: windows-latest
             compiler: gfortran
-            cmake_generator: MSYS Makefiles
+            cmake_generator: MinGW Makefiles
             shell: 'msys2 {0}'
     # Set default shell as suggested here: https://github.community/t/setting-default-shell-or-other-step-metadata-conditionally-in-workflows/154055
     defaults:
@@ -51,13 +51,13 @@ jobs:
         with:
           update: true
           install: git base-devel mingw-w64-x86_64-toolchain
-      # - name: Verify CMake build
-      #   run: |
-      #     mkdir build && cd build
-      #     cmake -G "${{ matrix.cmake_generator }}" ../
-      #     make
-      #   env:
-      #     FC: ${{ matrix.compiler }}
+      - name: Verify CMake build
+        run: |
+          mkdir build && cd build
+          cmake -G "${{ matrix.cmake_generator }}" ../
+          make
+        env:
+          FC: ${{ matrix.compiler }}
       - name: Verify regular build
         run: |
           cd makeLibrary
