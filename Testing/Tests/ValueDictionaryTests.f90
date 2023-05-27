@@ -205,13 +205,20 @@
          valDict => valueDictionaryFromObject(obj)
          CALL FTAssert(ASSOCIATED(valDict),msg = "Cast object to dictionary")
          
+         valDict => NULL()
          CALL castObjectToValueDictionary(obj,valDict)
          CALL FTAssert(ASSOCIATED(valDict),msg = "Cast object to dictionary by alternate")
          
+         valDict   => NULL()
          plainDict => dict3
-         CALL FTAssert(ASSOCIATED(plainDict),msg = "Cast object to dictionary")
+         CALL FTAssert(ASSOCIATED(plainDict),msg = "Point dictionary to value dictionary")
+         
          valDict => valueDictionaryFromDictionary(plainDict)
          CALL FTAssert(ASSOCIATED(valDict),msg = "Cast dictionary to valuedictionary")
+         CALL FTAssert(valDict  % containsKey(key = "name"),msg = "Test integrity of casting")
+
+         CALL castDictionaryToValueDictionary(plainDict,valDict)
+         CALL FTAssert(ASSOCIATED(valDict),msg = "Cast dictionary to valuedictionary as subroutine call ")
          CALL FTAssert(valDict  % containsKey(key = "name"),msg = "Test integrity of casting")
          
          CALL releaseFTValueDictionary(dict3)
