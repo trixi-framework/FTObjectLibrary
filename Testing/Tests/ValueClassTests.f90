@@ -73,7 +73,11 @@
          DOUBLE PRECISION                              :: doubleTol = 2*EPSILON(1.0d0), y
          REAL                                          :: singleTol = 2*EPSILON(1.0e0)
          CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH)   :: s
-         LOGICAL                                       :: logicVal
+         LOGICAL                                       :: logicVal, lArray(2) = [.false., .true.]
+         INTEGER                                       :: logicalToInt(2)     = [0,1]
+         REAL                                          :: logicalToReal(2)    = [0.0, 1.0]
+         DOUBLE PRECISION                              :: logicalToDbl(2)     = [0.0d0, 1.0d0]
+         CHARACTER(LEN = 7)                            :: logicalToStr(2)     = [".false.", ".true. "]
 !
 !        --------------------------------------------
 !        Create an object storing a real value
@@ -223,23 +227,29 @@
          CALL FTAssert(v % logicalValue(),msg = ".true. converted to logical")
          CALL releaseFTValue(v)
          
+         DO j = 1,2 
          ALLOCATE(v)
-         CALL v % initWithValue(.FALSE.)
-         CALL FTAssert(.NOT. v % logicalValue(),msg = "false set logical")
-         CALL FTAssertEqual(expectedValue = 0, &
-                            actualValue = v % integerValue(), &
-                            msg = "Integer value from logical false")
-         CALL FTAssertEqual(expectedValue = 0, &
-                            actualValue = v % integerValue(), &
-                            msg = "Integer value from logical false")
-         CALL FTAssertEqual(expectedValue = "FALSE",                    &
-                            actualValue = v % stringValue(requestedLength = 5), &
-                            msg = "String value from logical false")
-         CALL FTAssertEqual(expectedValue = 0.0,                    &
-                            actualValue = v % realValue(), &
-                            tol         = 2.0*EPSILON(x),             &
-                            msg = "Double value from logical false")
-         CALL releaseFTValue(v)
+            CALL v % initWithValue(lArray(j))
+            CALL FTAssertEqual(expectedValue = lArray(j), &
+                               actualValue   = v % logicalValue(), &
+                               msg           = "matching logical input.")
+!            CALL FTAssert(.NOT. v % logicalValue(),msg = "false set logical")
+            CALL FTAssertEqual(expectedValue = logicalToInt(j), &
+                               actualValue = v % integerValue(), &
+                               msg = "Integer value from logical:"// logicalToStr(j))
+            CALL FTAssertEqual(expectedValue = logicalToStr(j),                    &
+                               actualValue = v % stringValue(requestedLength = 7), &
+                               msg = "String value from logical:"// logicalToStr(j))
+            CALL FTAssertEqual(expectedValue = logicalToReal(j),                    &
+                               actualValue = v % realValue(),                       &
+                               tol         = 2.0*EPSILON(x),                        &
+                               msg = "Real value from logical "// logicalToStr(j))
+            CALL FTAssertEqual(expectedValue = logicalToDbl(j),                    &
+                               actualValue = v % doublePrecisionValue(),           &
+                               tol         = 2.0*EPSILON(d),                        &
+                               msg = "Double value from logical "// logicalToStr(j))
+            CALL releaseFTValue(v)
+         END DO
 !
 !        -----------------------
 !        Test casting of objects
