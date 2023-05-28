@@ -59,7 +59,9 @@
 !        container.
 !        -------------------------------------------------------
 !
-         TYPE(FTValue), POINTER :: v
+         TYPE(FTValue)  , POINTER :: v
+         CLASS(FTObject), POINTER :: obj
+         CLASS(FTValue) , POINTER :: vFromObj
 !
 !        -------------------------------------------
 !        Some values to convert into FTValue objects
@@ -68,9 +70,10 @@
          REAL                                          :: r = 3.14, x
          REAL(KIND=KIND(1.0d0))                        :: d, dd
          INTEGER                                       :: i = 666, j
-         DOUBLE PRECISION                              :: doubleTol = 2*EPSILON(1.0d0)
+         DOUBLE PRECISION                              :: doubleTol = 2*EPSILON(1.0d0), y
          REAL                                          :: singleTol = 2*EPSILON(1.0e0)
          CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH)   :: s
+         LOGICAL                                       :: logicVal
 !
 !        --------------------------------------------
 !        Create an object storing a real value
@@ -80,6 +83,14 @@
 !
          ALLOCATE(v)
          CALL v % initWithValue(r)
+
+!        -----------------------
+!        Make sure it is a value
+!        -----------------------
+!
+         CALL FTAssertEqual(expectedValue = v % className(), &
+                            actualValue   = "FTValue",  &
+                            msg           = "Class name for FTValue")
 !
 !        ----------------------------------------------------------------------------------
 !        Description returns a string that represents an object. Here it is just 
@@ -181,14 +192,15 @@
          CALL releaseFTValue(v)
          CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 3")
 !
-!        ---------------------------------------------------
-!        Lastly, save a string and read it as numeric values
-!        ---------------------------------------------------
+!        -------------------------------------------------------
+!        Save a string and read it as numeric and logical values
+!        -------------------------------------------------------
 !
          ALLOCATE(v)
          CALL v % initWithValue("3.14")
          x = v % realValue()
          CALL FTAssertEqual(3.14e0,x,singleTol,"String storage to real")
+         CALL FTAssert(.NOT. v % logicalValue(),msg = "String not logical should be false")
          CALL releaseFTValue(v)
          CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 4")
 
@@ -205,5 +217,59 @@
          CALL FTAssertEqual(3.141592653589793d0,dd,doubleTol,"String storage to real")
          CALL releaseFTValue(v)
          CALL FTAssert(test = .NOT.ASSOCIATED(v),msg = "Final release deletes object 6")
+         
+         ALLOCATE(v)
+         CALL v % initWithValue(".true.")
+         CALL FTAssert(v % logicalValue(),msg = ".true. converted to logical")
+         CALL releaseFTValue(v)
+         
+         ALLOCATE(v)
+         CALL v % initWithValue(.FALSE.)
+         CALL FTAssert(.NOT. v % logicalValue(),msg = "false set logical")
+         CALL FTAssertEqual(expectedValue = 0, &
+                            actualValue = v % integerValue(), &
+                            msg = "Integer value from logical false")
+         CALL FTAssertEqual(expectedValue = 0.0d0,                    &
+                            actualValue = v % doublePrecisionValue(), &
+                            tol         = 2.0*EPSILON(d),             &
+                            msg = "Double value from logical false")
+         CALL FTAssertEqual(expectedValue = 0.0,                    &
+                            actualValue = v % realValue(), &
+                            tol         = 2.0*EPSILON(x),             &
+                            msg = "Double value from logical false")
+         CALL releaseFTValue(v)
+!
+!        -----------------------
+!        Test casting of objects
+!        -----------------------
+!
+         ALLOCATE(v)
+         CALL v % initWithValue("stringValue")
+         obj => v
+         
+         CALL castToValue(obj, vFromObj)
+         CALL FTAssert(ASSOCIATED(vFromObj),msg = "Cast value from object as subroutine")
+         CALL FTAssertEqual(expectedValue = "stringValue", &
+                            actualValue   = vFromObj % stringValue(requestedLength = 11), &
+                            msg = "Check that cast is correct")
+!
+!        ---------------
+!        Test bad values
+!        ---------------
+!
+         x = v % realValue()
+         CALL FTAssert(test = IEEE_IS_NAN(x),msg = "Real value from non number string is NAN")
+ 
+         y = v % doublePrecisionValue()
+         CALL FTAssert(test = IEEE_IS_NAN(y),msg = "double value from non number string is NAN")
+        
+         i = v % integerValue()
+         CALL FTAssertEqual(expectedValue = HUGE(1), &
+                            actualValue   = I,         &
+                            msg           = "Non-integer string conversion")
 
+         logicVal = v % logicalValue()
+         CALL FTAssert(.NOT. logicVal,msg = "Logic value of non logical string is false.")
+         CALL releaseFTValue(v)
+         
       END SUBROUTINE FTValueClassTests   
