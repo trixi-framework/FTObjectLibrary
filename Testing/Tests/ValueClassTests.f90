@@ -229,10 +229,12 @@
          CALL FTAssertEqual(expectedValue = 0, &
                             actualValue = v % integerValue(), &
                             msg = "Integer value from logical false")
-         CALL FTAssertEqual(expectedValue = 0.0d0,                    &
-                            actualValue = v % doublePrecisionValue(), &
-                            tol         = 2.0*EPSILON(d),             &
-                            msg = "Double value from logical false")
+         CALL FTAssertEqual(expectedValue = 0, &
+                            actualValue = v % integerValue(), &
+                            msg = "Integer value from logical false")
+         CALL FTAssertEqual(expectedValue = "FALSE",                    &
+                            actualValue = v % stringValue(requestedLength = 5), &
+                            msg = "String value from logical false")
          CALL FTAssertEqual(expectedValue = 0.0,                    &
                             actualValue = v % realValue(), &
                             tol         = 2.0*EPSILON(x),             &
