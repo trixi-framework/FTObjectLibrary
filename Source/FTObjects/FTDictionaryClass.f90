@@ -438,8 +438,7 @@
                s = self % entries(i) % description()
                IF ( LEN_TRIM(s) > 0 )     THEN
                   FTDictionaryDescription =  TRIM(FTDictionaryDescription) // &
-                                             TRIM(self % entries(i) % description()) // &
-                                             CHAR(13)
+                                             TRIM(s) // NEW_LINE('a')
                END IF 
             END DO
             

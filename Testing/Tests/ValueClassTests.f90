@@ -228,12 +228,11 @@
          CALL releaseFTValue(v)
          
          DO j = 1,2 
-         ALLOCATE(v)
+            ALLOCATE(v)
             CALL v % initWithValue(lArray(j))
             CALL FTAssertEqual(expectedValue = lArray(j), &
                                actualValue   = v % logicalValue(), &
                                msg           = "matching logical input.")
-!            CALL FTAssert(.NOT. v % logicalValue(),msg = "false set logical")
             CALL FTAssertEqual(expectedValue = logicalToInt(j), &
                                actualValue = v % integerValue(), &
                                msg = "Integer value from logical:"// logicalToStr(j))
