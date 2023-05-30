@@ -47,6 +47,7 @@
          TYPE (FTValue)                         , POINTER :: v
          TYPE (FTMutableObjectArray)            , POINTER :: storedObjects
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: storedKeys(:)
+         TYPE(FTKeyObjectPair)                  , POINTER :: kvPair
 
          
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys   = ["first ","second","third ","fourth"]
@@ -168,5 +169,23 @@
          CALL releaseFTMutableObjectArray(storedObjects)
          CALL releaseFTDictionary(dict)
          CALL FTAssert(.NOT.ASSOCIATED(dict),"Released dictionary should have been deallocated")
+!
+!        -------------------------
+!        Key-Value Pair operations
+!        -------------------------
+!
+         ALLOCATE(kvPair)
+         ALLOCATE(v)
+         CALL v % initWithValue(1024)
+         obj => v
+         CALL kvPair % initWithObjectAndKey(obj,"magna")
+         CALL releaseFTValue(v)
+         CALL FTAssertEqual(expectedValue = "magna",actualValue = kvPair % key())
+         obj => kvPair % object()
+         v => valueFromObject(obj)
+         CALL FTAssertEqual(expectedValue = 1,actualValue = v % refCount())
+         CALL FTAssertEqual(expectedValue = 1024,actualValue = v % integerValue())
+         CALL releaseFTKeyObjectPair(kvPair)
+         CALL FTAssert(.NOT.ASSOCIATED(kvPair),msg = "Final deletion of key-object pair")
          
       END SUBROUTINE FTDictionaryClassTests    
