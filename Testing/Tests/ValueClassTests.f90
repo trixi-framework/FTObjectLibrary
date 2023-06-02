@@ -160,6 +160,7 @@
 !
          ALLOCATE(v)
          CALL v % initWithValue(i)
+         CALL FTAssert(.NOT. v % isUnreferenced(),msg = "Referenced object should return false for isUnreferenced")
          
          CALL FTAssertEqual(666.0,v % realValue(),singleTol,"Integer storage to real")
          CALL FTAssertEqual(666,v % integerValue(),"Integer storage to integer")
