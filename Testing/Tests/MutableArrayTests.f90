@@ -49,7 +49,8 @@
 !        Declarations
 !        ------------
 !
-         TYPE (FTMutableObjectArray), POINTER :: array
+         TYPE (FTMutableObjectArray) , POINTER :: array
+         CLASS (FTMutableObjectArray), POINTER :: arrayPtr
 
          INTEGER                    :: i
          INTEGER, DIMENSION(10)     :: values         = [(i,i=1,10)]
@@ -65,6 +66,19 @@
          ALLOCATE(array)
          CALL array % initwithsize(10)
          CALL FTAssertEqual(0,array % COUNT(),"Initial array count")
+         CALL array % setChunkSize(chunkSize = 15)
+         CALL FTAssertEqual(expectedValue = 15, &
+                            actualValue   = array % chunkSize(), &
+                            msg           = "Chunk size set to 15")
+         CALL array % setChunkSize(chunkSize = 10) !Set back to default for later tests
+!
+!        --------------
+!        Check its type
+!        --------------
+!
+         CALL FTAssertEqual(expectedValue = "FTMutableObjectArray",&
+                            actualValue   = array % className(),   &
+                            msg = "Test class name on mutable object array")
 !
 !        --------------------------------------------------------
 !        Add objects to the array
@@ -166,6 +180,31 @@
             v   => valueFromObject(obj)
             CALL FTAssertEqual(modifiedValues(i),v % integerValue(),"Object values after deletion")
          END DO
+!
+!        -------
+!        Casting
+!        -------
+!
+         obj      => array
+         arrayPtr => objectArrayFromObject(obj)
+         CALL FTAssert(ASSOCIATED(arrayPtr),msg = "association by casting with function call")
+         IF ( ASSOCIATED(arrayPtr) )     THEN
+            CALL FTAssertEqual(expectedValue = array % COUNT(),    &
+                               actualValue   = arrayPtr % COUNT(), &
+                               msg           = "Cast by function pointer")
+         ELSE 
+            CALL FTAssert(.FALSE.,msg = "casting of array pointer failed") 
+         END IF 
+         arrayPtr => NULL()
+         CALL castToMutableObjectArray(obj,arrayPtr)
+         CALL FTAssert(ASSOCIATED(arrayPtr),msg = "association by casting with subroutine call")
+         IF ( ASSOCIATED(arrayPtr) )     THEN
+            CALL FTAssertEqual(expectedValue = array % COUNT(),    &
+                               actualValue   = arrayPtr % COUNT(), &
+                               msg           = "Cast by subroutine call")
+         ELSE 
+            CALL FTAssert(.FALSE.,msg = "casting of array pointer failed") 
+         END IF 
 !
 !        -------------------------------------------------------------
 !        Release array contents
