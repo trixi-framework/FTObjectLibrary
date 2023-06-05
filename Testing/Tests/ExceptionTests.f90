@@ -158,7 +158,8 @@
          CALL cast(obj,ePtr)
          CALL FTAssert(ASSOCIATED(ePtr),msg = "Test casting of exception")
          ePtr => NULL()
-         obj  => NULL()
+         ePtr => exceptionFromObject(obj)
+         CALL FTAssert(ASSOCIATED(ePtr),msg = "Test casting of exception by function")
          
          CALL throw(e)
          CALL releaseFTException(e)
