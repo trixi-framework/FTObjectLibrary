@@ -208,7 +208,7 @@
          IF ( x == 0.0e0 )     THEN
             test = ABS(x-y) <= tol
          ELSE
-            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+            test = ABS(x-y) <= tol + tol*MAX(ABS(x),ABS(y))
          END IF 
          
          IF ( test )     THEN
@@ -233,7 +233,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > tol + tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -254,7 +254,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoRealArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b)> tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b)> tol + tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoRealArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -272,7 +272,7 @@
          IF ( x == 0.0d0 )     THEN
             test = ABS(x-y) <= tol
          ELSE
-            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+            test = ABS(x-y) <= tol + tol*MAX(ABS(x),ABS(y))
          END IF 
          
          IF ( test )     THEN
@@ -297,7 +297,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoDoubleArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > tol + tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoDoubleArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -318,7 +318,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoDoubleArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > tol + tol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoDoubleArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -337,7 +337,7 @@
          IF ( x == 0.0d0 )     THEN
             test = ABS(x-y) <= tol
          ELSE
-            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+            test = ABS(x-y) <= tol + tol*MAX(ABS(x),ABS(y))
          END IF 
          
          IF ( test )     THEN
