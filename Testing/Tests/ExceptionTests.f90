@@ -86,27 +86,128 @@
          USE FTAssertions
          IMPLICIT NONE
          
-         CLASS(FTException)      , POINTER       :: e
+         CLASS(FTException)      , POINTER       :: e, ePtr
          CLASS(FTDictionary)     , POINTER       :: d
          CLASS(FTValueDictionary), POINTER       :: userDictionary
+         CLASS(FTValue)          , POINTER       :: vGood, vBad
+         CLASS(FTObject)         , POINTER       :: obj
          REAL                                    :: r
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: msg
          REAL                                    :: singleTol = 2*EPSILON(1.0e0)
+!
+!        -------------
+!        Initial State
+!        -------------
+!
+         CALL FTAssert(.NOT. catch(),msg = "Uninitiated error stack has no exceptions")
+         CALL FTAssert(.NOT. catch("FTTestException"),msg = "Uninitiated error stack has no exceptions")
+!
+!        ------------------
+!        Testing Exceptions
+!        ------------------
+!
+         ALLOCATE(e)
+         CALL e % initWarningException(msg = "Warning: Danger Will Robinson (Designed Uncaught)")
+         CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
+                            actualValue    = e % severity(),  &
+                            msg = "Warning error level match")
+         CALL throw(e)
+         CALL releaseFTException(e)
+         
+         ALLOCATE(e)
+         CALL e % initFatalException(msg = "I'm Sorry, I can't do that Dave  (Designed Uncaught)")
+         CALL FTAssertEqual(expectedValue = FT_ERROR_FATAL, &
+                            actualValue    = e % severity(),  &
+                            msg = "Fatal error level match")
+         CALL throw(e)
+         CALL releaseFTException(e)
 
-         CALL initializeFTExceptions
+         ALLOCATE(e)
+         ALLOCATE(vGood, vBad)
+         CALL vGood % initWithValue(777)
+         CALL vBad  % initWithValue(555)
+         
+         CALL e % initAssertionFailureException(msg                 = "TAF:Designed to fail!", &
+                                                expectedValueObject = vGood, &
+                                                ObservedValueObject = vBad,  &
+                                                level               = FT_ERROR_WARNING)
+         CALL releaseFTValue(vBad)
+         CALL releaseFTValue(vGood)
+         
+         CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
+                            actualValue    = e % severity(),  &
+                            msg = "Assertion error level match")
+                            
+         d => e % infoDictionary()
+         userDictionary => valueDictionaryFromDictionary(d)
+         CALL FTAssert(ASSOCIATED(userDictionary), &
+                       msg = "Conversion of dictionary to valueDictionary")
+         
+         CALL FTAssertEqual(expectedValue = "TAF:Designed to fail!", &
+                            actualValue = userDictionary % stringValueForKey(key = "message",requestedLength = 21),&
+                            msg = "Message set for assertion failure")
+         
+         CALL FTAssertEqual(expectedValue = 777, &
+                            actualValue = userDictionary % integerValueForKey("expectedValue"),&
+                            msg = "Expected value set for assertion failure")
+         
+         CALL FTAssertEqual(expectedValue = 555, &
+                            actualValue = userDictionary % integerValueForKey("observedValue"),&
+                            msg = "Observed value set for assertion failure")
+         obj => e
+         CALL cast(obj,ePtr)
+         CALL FTAssert(ASSOCIATED(ePtr),msg = "Test casting of exception")
+         ePtr => NULL()
+         obj  => NULL()
+         
+         CALL throw(e)
+         CALL releaseFTException(e)
+!
+!        -----------------------------
+!        Testing the exception manager
+!        -----------------------------
+!         
+         CALL initializeFTExceptions ! This call is redundant, because it is called by catch.
+         
+         CALL FTAssert(.NOT. catch("FTTestException"),msg = "Uninitiated error stack has no exceptions")
          CALL subroutineThatThrowsError
+         
+         CALL FTAssertEqual(expectedValue = 4, &
+                            actualValue   = errorCount(), &
+                            msg           = "Number of errors")
+         CALL FTAssertEqual(expectedValue = FT_ERROR_FATAL, &
+                            actualValue   = maximumErrorSeverity(), &
+                            msg           = "Error severity")
+         
+         e => peekLastException()
+         CALL FTAssert(ASSOCIATED(e),msg = "Peek at exception should be associated")
          
          IF ( catch("FTTestException") )     THEN
             e              => errorObject()
             d              => e % infoDictionary()
             userDictionary => valueDictionaryFromDictionary(dict = d)
             
+            CALL FTAssertEqual(expectedValue = "FTException", &
+                               actualValue = e % className(), &
+                               msg = "Class name for FTException")
+                               
             msg = userDictionary % stringValueForKey("message",FTDICT_KWD_STRING_LENGTH)
             CALL FTAssertEqual("An error has occurred",msg,"String for key: message")
 
             r   = userDictionary % realValueForKey("value")
             CALL FTAssertEqual(3.1416,r,singleTol,"Value for key: value")
+            
          END IF 
+!
+!        -------------
+!        Throw and pop
+!        -------------
+!
+         e => popLastException() ! Will be the assert exception thrown
+         CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
+                            actualValue    = e % severity(),  &
+                            msg = "Popped error level match")
+         CALL releaseFTException(e)
          
          CALL destructFTExceptions
          

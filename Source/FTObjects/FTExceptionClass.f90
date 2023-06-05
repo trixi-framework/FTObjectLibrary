@@ -590,7 +590,7 @@
            END IF
            PRINT *,"   ***********************************"
            PRINT *
-           CALL errorStack % printDescription(iUnit = 6)
+           CALL printAllExceptions
          END IF 
 !
 !        -----------------------
