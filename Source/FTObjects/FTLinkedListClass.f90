@@ -446,51 +446,6 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE removeObject1(self,obj)
-         IMPLICIT NONE 
-         CLASS(FTLinkedList)                :: self
-         CLASS(FTObject)          , POINTER :: obj
-         
-         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), previous => NULL()
-                  
-         IF ( .NOT.ASSOCIATED(self % head) )     RETURN
-         
-         current  => self % head
-         previous => NULL()
-!
-!        -------------------------------------------------------------
-!        Find the object in the list by a linear search and remove it.
-!        It will be deallocated if necessary.
-!        -------------------------------------------------------------
-!
-         DO WHILE (ASSOCIATED(current))
-            IF ( ASSOCIATED(current % recordObject,obj) )     THEN
-            
-               IF ( ASSOCIATED(previous) )     THEN
-                  previous % next => current % next
-               ELSE
-                  self % head => current % next
-               END IF 
-               
-               IF ( ASSOCIATED(current,self % tail) )     THEN
-                  self % tail => previous 
-               END IF 
-               
-               obj => current
-               CALL release(obj)
-               
-               self % nRecords = self % nRecords - 1
-               EXIT
-            END IF 
-            
-            previous => current
-            current  => current % next
-         END DO
-         
-      END SUBROUTINE removeObject1 
-!
-!////////////////////////////////////////////////////////////////////////
-!
       SUBROUTINE removeObject(self,obj)
          IMPLICIT NONE 
          CLASS(FTLinkedList)                :: self
