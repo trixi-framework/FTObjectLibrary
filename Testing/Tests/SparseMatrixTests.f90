@@ -50,11 +50,39 @@
          CLASS(FTValue) , POINTER :: vTest
          CLASS(FTObject), POINTER :: obj
          
-         TYPE(FTSparseMatrix), POINTER :: SparseMatrix
+         TYPE(FTSparseMatrix), POINTER :: SparseMatrix, matPtr
+         TYPE(MatrixData)    , POINTER :: matDat, matDatPtr
          
          INTEGER :: i, j, N
          INTEGER :: h1, h2
          LOGICAL :: t
+!
+!        ----------------
+!        MatrixData tests
+!        ----------------
+!
+         ALLOCATE(v)
+         CALL v % initWithValue(27)
+         obj => v
+         
+         ALLOCATE(matDat)
+         CALL matDat % initWithObjectAndKey(obj,7)
+         CALL releaseFTValue(v)
+         
+         CALL FTAssertEqual(expectedValue = 7,actualValue = matDat % key)
+         
+         obj => matDat % object
+         v   => valueFromObject(obj)
+         CALL FTAssertEqual(expectedValue = 27, &
+                            actualValue   = v % integerValue(), &
+                            msg           = "Extraction of matrix data")
+         
+         obj       => matDat
+         matDatPtr => matrixDataCast(obj)
+         CALL FTAssert(ASSOCIATED(matDat,matDatPtr),msg = "Eqivalence of matrix data cast")
+         
+         CALL releaseFTMatrixData(matDat)
+         CALL FTAssert(.NOT.ASSOCIATED(matDat),msg = "Destruction of matrixData")
 !
 !        -------------------------------------
 !        initialize a table with four elements
@@ -131,6 +159,14 @@
          END DO
          CALL vTest % retain()
          CALL FTAssertEqual(2  , vTest % refCount(),"Retain refCount")
+!
+!        -------
+!        Casting
+!        -------
+!
+         obj => SparseMatrix
+         matPtr => SparseMatrixFromObject(obj)
+         CALL FTAssert(ASSOCIATED(matPtr,SparseMatrix),msg = "Casting of sparse matrix")
          
          CALL releaseFTSparseMatrix(SparseMatrix)
          

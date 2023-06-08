@@ -124,7 +124,7 @@
          IMPLICIT NONE  
 !
 !        -----------------------------------------------------
-!        Cast the base class FTObject to the FTException class
+!        Cast the base class FTObject to the MatrixData class
 !        -----------------------------------------------------
 !
          CLASS(FTObject)  , POINTER :: obj
@@ -146,7 +146,7 @@
          IMPLICIT NONE  
 !
 !        -----------------------------------------------------
-!        Cast the base class FTObject to the FTException class
+!        Cast the base class FTObject to the MatrixData class
 !        -----------------------------------------------------
 !
          CLASS(FTObject)  , POINTER :: obj
@@ -511,9 +511,9 @@
 ! 
       FUNCTION SparseMatrixFromObject(obj) RESULT(cast)
 !
-!     -----------------------------------------------------
-!     Cast the base class FTObject to the FTException class
-!     -----------------------------------------------------
+!     --------------------------------------------------------
+!     Cast the base class FTObject to the FTSparseMatrix class
+!     --------------------------------------------------------
 !
          IMPLICIT NONE  
          CLASS(FTObject)   , POINTER :: obj
