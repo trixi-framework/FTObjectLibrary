@@ -210,7 +210,7 @@
          IF(.NOT. PRESENT(absTol))     THEN
             aTol = 0.0
          ELSE
-            atol = absTol
+            aTol = absTol
          END IF
          
          IF ( x == 0.0e0 )     THEN
@@ -243,13 +243,13 @@
          IF(.NOT. PRESENT(absTol))     THEN
             aTol = 0.0
          ELSE
-            atol = absTol
+            aTol = absTol
          END IF
          
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) > atol + relTol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > aTol + relTol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -269,7 +269,7 @@
          IF(.NOT. PRESENT(absTol))     THEN
             aTol = 0.0
          ELSE
-            atol = absTol
+            aTol = absTol
          END IF
          
          isWithinToleranceTwoRealArrays2D = .true.
@@ -298,13 +298,13 @@
          IF(.NOT. PRESENT(absTol))     THEN
             aTol = 0.0d0
          ELSE
-            atol = absTol
+            aTol = absTol
          END IF
          
          IF ( x == 0.0d0 )     THEN
             test = ABS(x-y) <= relTol
          ELSE
-            test = ABS(x-y) <= atol + relTol*MAX(ABS(x),ABS(y))
+            test = ABS(x-y) <= aTol + relTol*MAX(ABS(x),ABS(y))
          END IF 
          
          IF ( test )     THEN
@@ -328,7 +328,7 @@
          IF(.NOT. PRESENT(absTol))     THEN
             aTol = 0.0d0
          ELSE
-            atol = absTol
+            aTol = absTol
          END IF
          
          isWithinToleranceTwoDoubleArrays1D = .true.
