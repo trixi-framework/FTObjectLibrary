@@ -161,8 +161,8 @@
          objectPtr => stack % peek()
          SELECT TYPE(objectPtr)
             TYPE is (FTValue)
-               CALL FTAssertEqual(17,objectPtr % integerValue(),&
-               "StackClassTests: Interger value stored at top of stack")
+               CALL FTAssertEqual(17,objectPtr%integerValue(),&
+               "StackClassTests: Integer value stored at top of stack")
             CLASS DEFAULT
                PRINT *, "uncaught cast in stack object"
          END SELECT

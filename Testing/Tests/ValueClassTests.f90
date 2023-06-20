@@ -99,7 +99,7 @@
 !        ----------------------------------------------------------------------------------
 !        Description returns a string that represents an object. Here it is just 
 !        the number represented as a string, but for more complex objects like linked lists
-!        it could be abitrarily complicated
+!        it could be arbitrarily complicated
 !        ----------------------------------------------------------------------------------
 !
          s = v % description()
