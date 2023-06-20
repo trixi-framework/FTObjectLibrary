@@ -57,7 +57,7 @@ Documentation can be found in the linked pages, and in the user's guide *FTObjec
 
 # Examples
 
-Examples can be found in the Examples directory and in the Testing directory. The examples include a simple reverse Polish caclulator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.
+Examples can be found in the Examples directory and in the Testing directory. The examples include a simple reverse Polish calculator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.
 
 # Building the Library
 

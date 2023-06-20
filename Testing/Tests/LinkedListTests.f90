@@ -379,7 +379,7 @@
          DO WHILE (.NOT.iterator % isAtEnd())
          
             v         => valueFromObject(iterator % object())
-            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly after release of added list")
             CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
             objectPtr => iterator % object()
@@ -413,7 +413,7 @@
          DO WHILE (.NOT.iterator % isAtEnd())
          
             v => valueFromObject(iterator % object())
-            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly after release of added list")
             CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
             objectPtr => iterator % object()

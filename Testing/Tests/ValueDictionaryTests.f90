@@ -30,7 +30,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-!      FTValueDicitonaryTests.f90
+!      FTValueDictionaryTests.f90
 !      Created: February 6, 2013 9:41 AM 
 !      By: David Kopriva  
 !
