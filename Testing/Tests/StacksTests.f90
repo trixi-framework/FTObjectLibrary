@@ -88,8 +88,8 @@
          rPeek     => valueFromObject(objectPtr)
          CALL FTAssertEqual(expectedValue = 3.14d0 , &
                             actualValue   = rPeek % doublePrecisionValue()  , &
-                            tol           = 1.0d-12, &
-                            msg = "testStackPush: Value of stored object")
+                            relTol        = 1.0d-12, &
+                            msg           = "testStackPush: Value of stored object")
          
       END SUBROUTINE testStackPush
       

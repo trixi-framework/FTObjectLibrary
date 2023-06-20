@@ -196,7 +196,7 @@
             CALL FTAssertEqual("An error has occurred",msg,"String for key: message")
 
             r   = userDictionary % realValueForKey("value")
-            CALL FTAssertEqual(3.1416,r,singleTol,"Value for key: value")
+            CALL FTAssertEqual(3.1416,r,singleTol,msg = "Value for key: value")
             
          END IF 
 !

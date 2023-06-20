@@ -134,7 +134,7 @@
 !
          DO i = 1,4
             x = dict2 % realValueForKey(keys(i))
-            CALL FTAssertEqual(x,realValues(i),2*EPSILON(x),"Value for key as real ")
+            CALL FTAssertEqual(x,realValues(i),2*EPSILON(x),msg="Value for key as real ")
          END DO
 !
 !        -------------------------------------
@@ -143,7 +143,7 @@
 !
          DO i = 1,4
             xd = dict2 % doublePrecisionValueForKey(keys(i))
-            CALL FTAssertEqual(xd,dbleValues(i),DBLE(2*EPSILON(x)),"Value for key as double ")
+            CALL FTAssertEqual(xd,dbleValues(i),DBLE(2*EPSILON(x)),msg="Value for key as double ")
          END DO
 !
 !        -----------------------------
@@ -163,7 +163,7 @@
          CALL dict2 % addValueForKey(xd,"double")
          CALL FTAssertEqual(expectedValue = xd, &
                             actualValue   = dict2 % doublePrecisionValueForKey("double"), &
-                            tol           = 2*EPSILON(xd))
+                            relTol        = 2*EPSILON(xd))
 !
 !        ----------------------------------
 !        Getting something that's not there
@@ -172,11 +172,11 @@
          r = dict2 % realValueForKey("bologna")
          CALL FTAssertEqual(expectedValue = HUGE(r), &
                             actualValue   = r,       &
-                            tol           = 2*EPSILON(r))
+                            relTol        = 2*EPSILON(r))
          xd = dict2 % doublePrecisionValueForKey("bologna")
          CALL FTAssertEqual(expectedValue = HUGE(xd), &
                             actualValue   = xd,       &
-                            tol           = 2*EPSILON(xd))
+                            relTol        = 2*EPSILON(xd))
          i = dict2 % integerValueForKey("bologna")
          CALL FTAssertEqual(expectedValue = HUGE(i), &
                             actualValue   = i)

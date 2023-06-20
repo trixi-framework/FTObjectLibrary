@@ -393,9 +393,10 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoReal(expectedValue,actualValue,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoReal(expectedValue,actualValue,relTol,absTol,msg)  
          IMPLICIT NONE  
-         REAL, INTENT(in)           :: expectedValue,actualValue,tol
+         REAL, INTENT(in)           :: expectedValue,actualValue,relTol
+         REAL, INTENT(IN), OPTIONAL :: absTol
          CHARACTER(LEN=*), OPTIONAL :: msg
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expectedS,actualS
@@ -405,7 +406,7 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
             WRITE(expectedS,*) expectedValue
             WRITE(actualS,*) actualValue
             IF ( PRESENT(msg) )     THEN
@@ -419,10 +420,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,relTol,absTol,msg)  
          IMPLICIT NONE  
          REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-         REAL, INTENT(IN)               :: tol
+         REAL, INTENT(IN)               :: relTol
+         REAL, INTENT(IN), OPTIONAL     :: absTol
          CHARACTER(LEN=*), OPTIONAL     :: msg
          INTEGER                        :: k
          
@@ -433,7 +435,7 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
             DO k = 1, SIZE(expectedValue)
                WRITE(expected,*) expectedValue(k)
                WRITE(actual,*)   actualValue(k)
@@ -449,17 +451,18 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
+      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,relTol, absTol)  
          IMPLICIT NONE  
          REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-         REAL, INTENT(IN)                 :: tol
+         REAL, INTENT(IN)                 :: relTol
+         REAL, INTENT(IN), OPTIONAL       :: absTol
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
             CALL initializeSharedAssertionsManager
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
              PRINT *, "assertWithinToleranceTwoRealArrays2D not implemented"
          END IF 
          
@@ -468,10 +471,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,relTol, absTol, msg)  
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
-         CHARACTER(LEN=*), OPTIONAL   :: msg
+         DOUBLE PRECISION, INTENT(in)             :: expectedValue,actualValue,relTol
+         CHARACTER(LEN=*), OPTIONAL               :: msg
+         DOUBLE PRECISION, INTENT(IN), OPTIONAL   :: absTol
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
          
@@ -480,7 +484,7 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+         IF ( .NOT.isEqual(expectedValue, actualValue, relTol, absTol) )     THEN
             WRITE(expected,*) expectedValue
             WRITE(actual,*) actualValue
             IF ( PRESENT(msg) )     THEN
@@ -495,10 +499,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,relTol, absTol, msg)  
          IMPLICIT NONE  
          DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-         DOUBLE PRECISION, INTENT(IN)               :: tol
+         DOUBLE PRECISION, INTENT(IN)               :: relTol
+         DOUBLE PRECISION, INTENT(IN), OPTIONAL     :: absTol
          CHARACTER(LEN=*), OPTIONAL                 :: msg
          INTEGER                                    :: code
          INTEGER                                    :: k
@@ -510,7 +515,7 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,tol,code) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol, code) )     THEN
             IF ( PRESENT(msg) )     THEN
                eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
             ELSE 
@@ -528,20 +533,21 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol)  
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,relTol,absTol)  
          IMPLICIT NONE  
          DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-         DOUBLE PRECISION, INTENT(IN)                 :: tol
-         INTEGER                         :: code
+         DOUBLE PRECISION, INTENT(IN)                 :: relTol
+         DOUBLE PRECISION, INTENT(IN), OPTIONAL       :: absTol
+         INTEGER                                      :: code
          
          IF(.NOT.ASSOCIATED(sharedManager)) THEN
             CALL initializeSharedAssertionsManager
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,tol,code) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol, code) )     THEN
              PRINT *, "assertWithinToleranceTwoDoubleArrays2D not implemented"
-        END IF 
+         END IF 
          
       END SUBROUTINE assertWithinToleranceTwoDoubleArrays2D
 !@mark -
@@ -549,10 +555,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoQuad(expectedValue,actualValue,tol,msg)  
+      SUBROUTINE assertWithinToleranceTwoQuad(expectedValue,actualValue,relTol, absTol, msg)  
          IMPLICIT NONE  
-         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in) :: expectedValue,actualValue,tol
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in) :: expectedValue,actualValue,relTol
          CHARACTER(LEN=*)  , OPTIONAL   :: msg
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in), OPTIONAL :: absTol
 
          CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expectedS,actualS
          
@@ -561,7 +568,7 @@
          END IF 
          
          sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,tol) )     THEN
+         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
             WRITE(expectedS,*) expectedValue
             WRITE(actualS,*) actualValue
             IF ( PRESENT(msg) )     THEN

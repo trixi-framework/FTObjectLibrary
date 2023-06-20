@@ -227,7 +227,7 @@
                      CASE(2)
                         CALL FTAssertEqual("r2 is a string",v % stringValue(14),"Second item is string value")
                      CASE(3)
-                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,"Third item in list is real value")
+                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,msg="Third item in list is real value")
                   END SELECT
                CLASS DEFAULT
                   CALL FTAssert(.false.,"Unknown type stored in linked list")
@@ -258,7 +258,7 @@
                      CASE(1)  
                         CALL FTAssertEqual(1,v % integerValue(),"First item in list doesn't have proper value")
                      CASE(3)
-                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,"third item in list doesn't have proper value")
+                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,msg="third item in list doesn't have proper value")
                   END SELECT
                CLASS DEFAULT
                   CALL FTAssert(.false.,"Known type stored in linked list")
