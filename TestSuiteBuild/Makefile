@@ -6,7 +6,7 @@ FTTestsPath = ../Testing
 
 FFLAGS = -cpp -O
 FFLAGS += -std=f2018 # Enforce Fortran 2018 standard
-FFLAGS += -pedantic # Be very pendatic
+FFLAGS += -pedantic # Be very pedantic
 FFLAGS += -Werror # All warnings should be treated as errors
 FFLAGS += -fimplicit-none # For implicit none everywhere to detect errors
 FFLAGS += -Wall -Wextra # Enable many useful warnings
