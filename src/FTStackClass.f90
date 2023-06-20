@@ -126,7 +126,7 @@
 !        Then initialize ivars of subclass 
 !        ---------------------------------
 !
-         !None to intialize
+         !None to initialize
          
       END SUBROUTINE initFTStack
 !

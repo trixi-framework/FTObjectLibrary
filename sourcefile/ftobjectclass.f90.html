@@ -639,7 +639,7 @@ can be.
 <a id="ln-58" name="ln-58" href="#ln-58"></a><span class="c">!&gt;- destruct()</span>
 <a id="ln-59" name="ln-59" href="#ln-59"></a><span class="c">!&gt;</span>
 <a id="ln-60" name="ln-60" href="#ln-60"></a><span class="c">!&gt;     Destructor of the object, which releases and deallocates owned objects and memory.</span>
-<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="c">!&gt;     Should be overrided in subclasses. The base class implementation does nothing but</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="c">!&gt;     Should be overridden in subclasses. The base class implementation does nothing but</span>
 <a id="ln-62" name="ln-62" href="#ln-62"></a><span class="c">!&gt;     decrease the reference count of the object.</span>
 <a id="ln-63" name="ln-63" href="#ln-63"></a><span class="c">!&gt;</span>
 <a id="ln-64" name="ln-64" href="#ln-64"></a><span class="c">!&gt;- printDescription(iUnit)</span>
@@ -965,7 +965,7 @@ can be.
 <a id="ln-384" name="ln-384" href="#ln-384"></a><span class="c">!&gt;   Returns a character string of length DESCRIPTION_CHARACTER_LENGTH that</span>
 <a id="ln-385" name="ln-385" href="#ln-385"></a><span class="c">!&gt;    represents the object. the base class implementation returns an empty</span>
 <a id="ln-386" name="ln-386" href="#ln-386"></a><span class="c">!&gt;    string. Note that if the description is too long, the expected string</span>
-<a id="ln-387" name="ln-387" href="#ln-387"></a><span class="c">!&gt;    will be trunctated. In general, one wants to use printDescription.</span>
+<a id="ln-387" name="ln-387" href="#ln-387"></a><span class="c">!&gt;    will be truncated. In general, one wants to use printDescription.</span>
 <a id="ln-388" name="ln-388" href="#ln-388"></a><span class="c">!&lt;</span>
 <a id="ln-389" name="ln-389" href="#ln-389"></a><span class="c">!     ----------------------------------------------------------------------</span>
 <a id="ln-390" name="ln-390" href="#ln-390"></a><span class="c">!</span>
@@ -1000,14 +1000,14 @@ can be.
 <a id="ln-419" name="ln-419" href="#ln-419"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-420" name="ln-420" href="#ln-420"></a><span class="c">! </span>
 <a id="ln-421" name="ln-421" href="#ln-421"></a><span class="c">!</span>
-<a id="ln-422" name="ln-422" href="#ln-422"></a><span class="c">!     --------------------------------------------------------------------</span>
-<a id="ln-423" name="ln-423" href="#ln-423"></a><span class="c">!&gt;   Base class implemetation of the assignment function. Call this from</span>
+<a id="ln-422" name="ln-422" href="#ln-422"></a><span class="c">!     -------------------------------------------------------------------</span>
+<a id="ln-423" name="ln-423" href="#ln-423"></a><span class="c">!&gt;   Base class implementation of the assignment function. Call this from</span>
 <a id="ln-424" name="ln-424" href="#ln-424"></a><span class="c">!&gt;    within any subclasses copy assignment function. All FTObject&#39;s </span>
 <a id="ln-425" name="ln-425" href="#ln-425"></a><span class="c">!&gt;    implementation does is set</span>
-<a id="ln-426" name="ln-426" href="#ln-426"></a><span class="c">!&gt;    the reference count to one, implying no additional ownwership to the </span>
+<a id="ln-426" name="ln-426" href="#ln-426"></a><span class="c">!&gt;    the reference count to one, implying no additional ownership to the </span>
 <a id="ln-427" name="ln-427" href="#ln-427"></a><span class="c">!&gt;    caller that is creating the copy.</span>
 <a id="ln-428" name="ln-428" href="#ln-428"></a><span class="c">!&lt;</span>
-<a id="ln-429" name="ln-429" href="#ln-429"></a><span class="c">!     --------------------------------------------------------------------</span>
+<a id="ln-429" name="ln-429" href="#ln-429"></a><span class="c">!     -------------------------------------------------------------------</span>
 <a id="ln-430" name="ln-430" href="#ln-430"></a><span class="c">!</span>
 <a id="ln-431" name="ln-431" href="#ln-431"></a><span class="w">      </span><span class="k">FUNCTION </span><span class="n">copyFTObject</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="k">RESULT</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span><span class="w"></span>
 <a id="ln-432" name="ln-432" href="#ln-432"></a><span class="w">         </span><span class="k">IMPLICIT NONE  </span>
