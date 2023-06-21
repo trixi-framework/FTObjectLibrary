@@ -56,6 +56,7 @@
       EXTERNAL :: MultiIndexTableTests
       EXTERNAL :: FTStringSetTests
       EXTERNAL :: OptionalDataTest
+      EXTERNAL :: ComparisonTests
       
       CHARACTER(LEN=1), POINTER :: optData(:) 
       
@@ -82,6 +83,7 @@
       CALL testSuite % addTestSubroutineWithName(SparseMatrixTests,"SparseMatrixClass Tests")
       CALL testSuite % addTestSubroutineWithName(MultiIndexTableTests,"MultiIndexTable Tests" )
       CALL testSuite % addTestSubroutineWithName(FTStringSetTests,"String set Tests" )
+      CALL testSuite % addTestSubroutineWithName(ComparisonTests,"Comparisons Tests" )
       
       ALLOCATE(optData(2))
       optData(1) = "a"

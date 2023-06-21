@@ -85,6 +85,7 @@
       END TYPE assertInfoArray2D
       
       PUBLIC :: isEqual,assertInfoArray1D,assertInfoArray2D
+      PUBLIC :: isTrue, isFalse
 !
 !     ========
       CONTAINS
@@ -234,7 +235,7 @@
          REAL, INTENT(IN), DIMENSION(:) :: a, b
          REAL, INTENT(IN)               :: relTol
          REAL, INTENT(IN)    , OPTIONAL :: absTol
-         INTEGER, INTENT(OUT), OPTIONAL :: code
+         INTEGER, INTENT(INOUT), OPTIONAL :: code
          REAL                           :: aTol
          
          isWithinToleranceTwoRealArrays1D = .true.
@@ -361,7 +362,7 @@
          END IF
          
          isWithinToleranceTwoDoubleArrays2D = .true.
-         code = ASSERT_SUCCESS
+         IF(PRESENT(code)) code = ASSERT_SUCCESS
          
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoDoubleArrays2D = .false.
