@@ -37,6 +37,7 @@
 !////////////////////////////////////////////////////////////////////////
 !
       PROGRAM TestObjectsMain 
+      USE FTAssertions
       USE TestSuiteManagerClass
       IMPLICIT NONE
       
@@ -65,6 +66,11 @@
 !     -----
 !
       CALL testSuite % init()
+      CALL testSuite % setOutputUnit(11)
+      CALL FTAssertEqual(expectedValue = 11,                     &
+                         actualValue = testSuite % outputUnit(), &
+                         msg = "Setting output unit for test suite")
+      CALL testSuite % setOutputUnit(6)
       
       CALL testSuite % addTestSubroutineWithName(FTValueClassTests,"FTValueClass Tests")
       CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,"FTDictionaryClass Tests")
@@ -81,14 +87,18 @@
       optData(1) = "a"
       optdata(2) = "b"
       CALL testSuite % addTestSubroutineWithName(OptionalDataTest,"Optional Data Tests", optData)
-      
 !
 !     -------------
 !     Run the tests
 !     -------------
 !
       CALL testSuite % performTests(numberOfFailedTests)
-
+!
+!     --------
+!     Clean up
+!     --------
+!
+      CALL finalizeTestSuiteManager(testSuite)
 !
 !     ---------------------------------------
 !     Exit with error in case of failed tests

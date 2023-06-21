@@ -206,7 +206,8 @@ Assert.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/StringSetTests.f90
 
 TestMain.o : $(FTTestsPath)/TestMain.f90 \
-TestSuiteManagerClass.o
+TestSuiteManagerClass.o \
+Assert.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/TestMain.f90
 
 TestSuiteManagerClass.o : $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90 \
