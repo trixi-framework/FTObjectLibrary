@@ -47,7 +47,11 @@
          TYPE (FTValue) , POINTER :: v
          CLASS(FTObject), POINTER :: obj
          
-         TYPE(FTMultiIndexTable) :: table
+         TYPE(FTMultiIndexTable), POINTER :: table, tablePtr
+         INTEGER, DIMENSION(1)   :: unsorted1 = [3]
+         INTEGER, DIMENSION(1)   :: sorted1   = [3]
+         INTEGER, DIMENSION(2)   :: unsorted2 = [5,3]
+         INTEGER, DIMENSION(2)   :: sorted2   = [3,5]
          INTEGER, DIMENSION(3)   :: unsorted3 = [5,3,1]
          INTEGER, DIMENSION(3)   :: sorted3   = [1,3,5]
          INTEGER, DIMENSION(4)   :: unsorted4 = [7,5,3,1]
@@ -65,6 +69,14 @@
 !        Test sorting procedure
 !        ----------------------
 !
+         CALL sortKeysAscending(keys = unsorted1)
+         e = MAXVAL(ABS(unsorted1 - sorted1))
+         CALL FTAssertEqual(expectedValue = 0,actualValue = e,msg = "Sort of length one array")
+         
+         CALL sortKeysAscending(keys = unsorted2)
+         e = MAXVAL(ABS(unsorted2 - sorted2))
+         CALL FTAssertEqual(expectedValue = 0,actualValue = e,msg = "Sort of length two array")
+         
          CALL sortKeysAscending(keys = unsorted3)
          e = MAXVAL(ABS(unsorted3 - sorted3))
          CALL FTAssertEqual(expectedValue = 0,actualValue = e,msg = "Sort of length three array")
@@ -86,7 +98,11 @@
          keys(:,3) = [3,6,8,9]
          keys(:,4) = [4,6,7,2]
          
+         ALLOCATE(table)
          CALL table % initWithSize(N = 10) ! Says first item of the multiIndex array is at most 10
+         CALL FTAssertEqual(expectedValue = 10,                            &
+                            actualValue   = table % MultiIndexTableSize(), &
+                            msg           = "Size of table")
 !
 !        -----------------------
 !        Add values to the table
@@ -118,5 +134,20 @@
             str = v % stringValue(5)
             CALL FTAssertEqual(expectedValue = strs(j),actualValue = str,msg = "object retrieval")
          END DO
+!
+!        -------
+!        Casting
+!        -------
+!
+         obj => table
+         tablePtr => MultiIndexTableFromObject(obj)
+         CALL FTAssert(ASSOCIATED(table,tablePtr),msg = "Casting of object to table")
+!
+!        --------
+!        CloseOut
+!        --------
+!
+         CALL releaseFTMultiIndexTable(table)
+         CALL FTAssert(.NOT. ASSOCIATED(table),msg = "Final release of table")
          
       END SUBROUTINE MultiIndexTableTests
