@@ -29,11 +29,13 @@
       CALL RealComparisonTests
       CALL DoubleComparisonTests
 !
-!     -------------
-!     A string test
-!     -------------
+!     ----------------
+!     Individual tests
+!     ----------------
 !
       CALL FTAssert(.NOT.isEqual("bob", "fred"), msg = "String inequality test")
+      CALL FTAssert(.NOT.isEqual(3,4),msg = "Integer inequality test")
+      CALL FTAssert(.NOT.isEqual(3.0,4.0,1.0e-4,1.0e-5),msg = "Integer inequality test")
       
    END SUBROUTINE ComparisonTests
 !
