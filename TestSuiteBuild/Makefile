@@ -25,6 +25,7 @@ OBJS = \
 Assert.o \
 Comparisons.o \
 ComparisonTests.o \
+DataTests.o \
 DictionaryTests.o \
 ExceptionTests.o \
 FTDataClass.o \
@@ -73,6 +74,11 @@ ComparisonTests.o : $(FTTestsPath)/Tests/ComparisonTests.f90 \
 Comparisons.o \
 Assert.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/ComparisonTests.f90
+
+DataTests.o : $(FTTestsPath)/Tests/DataTests.f90 \
+FTDataClass.o \
+Assert.o
+	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/DataTests.f90
 
 DictionaryTests.o : $(FTTestsPath)/Tests/DictionaryTests.f90 \
 FTValueClass.o \
