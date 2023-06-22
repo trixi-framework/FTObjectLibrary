@@ -98,12 +98,6 @@
 !
       CALL testSuite % performTests(numberOfFailedTests)
 !
-!     --------
-!     Clean up
-!     --------
-!
-      CALL finalizeTestSuiteManager(testSuite)
-!
 !     ---------------------------------------
 !     Exit with error in case of failed tests
 !     ---------------------------------------
@@ -111,5 +105,18 @@
       IF (numberOfFailedTests .gt. 0) THEN
         ERROR STOP 'At least one test has failed'
       END IF
-      
+!
+!     ---------------------------------------------------------------
+!     Test failures: At this point everything has worked. 
+!     Now test assertion failures and only fail if the failures fail.
+!     ---------------------------------------------------------------
+!
+      CALL AssertionFailureTests
+!
+!     --------
+!     Clean up
+!     --------
+!
+      CALL finalizeTestSuiteManager(testSuite)
+
       END PROGRAM TestObjectsMain  

@@ -105,14 +105,14 @@
       
       INTERFACE FTAssertEqual
          MODULE PROCEDURE assertEqualTwoIntegers
-         MODULE PROCEDURE assertEqualTwoIntegerArrays1D
-         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
+!         MODULE PROCEDURE assertEqualTwoIntegerArrays1D !These are to be fully implemented in the future
+!         MODULE PROCEDURE assertEqualTwoIntegerArrays2D
          MODULE PROCEDURE assertWithinToleranceTwoReal
-         MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
-         MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
+!         MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
+!         MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
          MODULE PROCEDURE assertWithinToleranceTwoDouble
-         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays1D
-         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
+!         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays1D
+!         MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
 #ifdef _has_Quad
          MODULE PROCEDURE assertWithinToleranceTwoQuad
 #endif
@@ -126,7 +126,7 @@
 #endif
       PUBLIC :: initializeSharedAssertionsManager, finalizeSharedAssertionsManager
       PUBLIC :: FTAssert, sharedAssertionsManager, numberOfAssertionFailures, numberOfAssertions
-      PUBLIC :: detachSharedAssertionsManager
+      PUBLIC :: detachSharedAssertionsManager, SelfTestAssertion
 !
 !     -------
 !     Private
@@ -142,7 +142,7 @@
 !     Shared Assertions manager
 !     -------------------------
 !
-      TYPE(FTAssertionsManager), POINTER, PRIVATE  :: sharedManager
+      TYPE(FTAssertionsManager)     , POINTER, PRIVATE :: sharedManager
 !
 !     ========      
       CONTAINS
@@ -357,38 +357,48 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
-         IMPLICIT NONE  
-         INTEGER, INTENT(in)    , DIMENSION(:)     :: expectedValue,actualValue
-         
-         IF(.NOT.ASSOCIATED(sharedManager)) THEN
-            CALL initializeSharedAssertionsManager
-         END IF 
-         
-         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
-             
-             PRINT *, "assertEqualTwoIntegerArrays1D not implemented"
-         END IF 
-         
-      END SUBROUTINE assertEqualTwoIntegerArrays1D
+!      SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
+!
+!TODO: Array assertions are not implemented because a good way to report
+!      where the errors occur needs to be devised. Arrays could get big
+!      and there can be a lot of errors to report.
+!
+!         IMPLICIT NONE  
+!         INTEGER, INTENT(in)    , DIMENSION(:)     :: expectedValue,actualValue
+!         
+!         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+!            CALL initializeSharedAssertionsManager
+!         END IF 
+!         
+!         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
+!         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
+!             
+!             PRINT *, "assertEqualTwoIntegerArrays1D not implemented"
+!         END IF 
+!         
+!      END SUBROUTINE assertEqualTwoIntegerArrays1D
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
-         IMPLICIT NONE  
-         INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
-         
-         IF(.NOT.ASSOCIATED(sharedManager)) THEN
-            CALL initializeSharedAssertionsManager
-         END IF 
-         
-         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
-             PRINT *, "assertEqualTwoIntegerArrays2D not implemented"
-         END IF 
-         
-      END SUBROUTINE assertEqualTwoIntegerArrays2D
+!      SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
+!
+!TODO: Array assertions are not implemented because a good way to report
+!      where the errors occur needs to be devised. Arrays could get big
+!      and there can be a lot of errors to report.
+!
+!         IMPLICIT NONE  
+!         INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
+!         
+!         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+!            CALL initializeSharedAssertionsManager
+!         END IF 
+!         
+!         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
+!         IF ( .NOT.isEqual(expectedValue,actualValue) )     THEN
+!             PRINT *, "assertEqualTwoIntegerArrays2D not implemented"
+!         END IF 
+!         
+!      END SUBROUTINE assertEqualTwoIntegerArrays2D
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -420,53 +430,63 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,relTol,absTol,msg)  
-         IMPLICIT NONE  
-         REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-         REAL, INTENT(IN)               :: relTol
-         REAL, INTENT(IN), OPTIONAL     :: absTol
-         CHARACTER(LEN=*), OPTIONAL     :: msg
-         INTEGER                        :: k
-         
-         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
-         
-         IF(.NOT.ASSOCIATED(sharedManager)) THEN
-            CALL initializeSharedAssertionsManager
-         END IF 
-         
-         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
-            DO k = 1, SIZE(expectedValue)
-               WRITE(expected,*) expectedValue(k)
-               WRITE(actual,*)   actualValue(k)
-               IF ( PRESENT(msg) )     THEN
-                  CALL addAssertionFailureForParameters(msg,expected,actual,"Real Array equality failed: ")
-               ELSE 
-                  CALL addAssertionFailureForParameters("",expected,actual,"Real Array equality failed: ")
-               END IF 
-            END DO  
-         END IF 
-         
-      END SUBROUTINE assertWithinToleranceTwoRealArrays1D
+!      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,relTol,absTol,msg)  
+!
+!TODO: Array assertions are not implemented because a good way to report
+!      where the errors occur needs to be devised. Arrays could get big
+!      and there can be a lot of errors to report.
+!
+!         IMPLICIT NONE  
+!         REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+!         REAL, INTENT(IN)               :: relTol
+!         REAL, INTENT(IN), OPTIONAL     :: absTol
+!         CHARACTER(LEN=*), OPTIONAL     :: msg
+!         INTEGER                        :: k
+!         
+!         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual
+!         
+!         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+!            CALL initializeSharedAssertionsManager
+!         END IF 
+!         
+!         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
+!         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
+!            DO k = 1, SIZE(expectedValue)
+!               WRITE(expected,*) expectedValue(k)
+!               WRITE(actual,*)   actualValue(k)
+!               IF ( PRESENT(msg) )     THEN
+!                  CALL addAssertionFailureForParameters(msg,expected,actual,"Real Array equality failed: ")
+!               ELSE 
+!                  CALL addAssertionFailureForParameters("",expected,actual,"Real Array equality failed: ")
+!               END IF 
+!            END DO  
+!         END IF 
+!         
+!      END SUBROUTINE assertWithinToleranceTwoRealArrays1D
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,relTol, absTol)  
-         IMPLICIT NONE  
-         REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-         REAL, INTENT(IN)                 :: relTol
-         REAL, INTENT(IN), OPTIONAL       :: absTol
-         
-         IF(.NOT.ASSOCIATED(sharedManager)) THEN
-            CALL initializeSharedAssertionsManager
-         END IF 
-         
-         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
-             PRINT *, "assertWithinToleranceTwoRealArrays2D not implemented"
-         END IF 
-         
-      END SUBROUTINE assertWithinToleranceTwoRealArrays2D
+!      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,relTol, absTol)  
+!
+!TODO: Array assertions are not implemented because a good way to report
+!      where the errors occur needs to be devised. Arrays could get big
+!      and there can be a lot of errors to report.
+!
+!         IMPLICIT NONE  
+!         REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+!         REAL, INTENT(IN)                 :: relTol
+!         REAL, INTENT(IN), OPTIONAL       :: absTol
+!         
+!         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+!            CALL initializeSharedAssertionsManager
+!         END IF 
+!         
+!         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
+!         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol) )     THEN
+!             PRINT *, "assertWithinToleranceTwoRealArrays2D not implemented"
+!         END IF 
+!         
+!      END SUBROUTINE assertWithinToleranceTwoRealArrays2D
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -499,57 +519,67 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,relTol, absTol, msg)  
-         IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-         DOUBLE PRECISION, INTENT(IN)               :: relTol
-         DOUBLE PRECISION, INTENT(IN), OPTIONAL     :: absTol
-         CHARACTER(LEN=*), OPTIONAL                 :: msg
-         INTEGER                                    :: code
-         INTEGER                                    :: k
-         
-         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual,eMsg
-         
-         IF(.NOT.ASSOCIATED(sharedManager)) THEN
-            CALL initializeSharedAssertionsManager
-         END IF 
-         
-         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol, code) )     THEN
-            IF ( PRESENT(msg) )     THEN
-               eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
-            ELSE 
-               eMsg = "---" // TRIM(compareCodeStrings(code))
-            END IF 
-            
-            DO k = 1, SIZE(expectedValue)
-               WRITE(expected,*) expectedValue(k)
-               WRITE(actual,*)   actualValue(k)
-               CALL addAssertionFailureForParameters(eMsg,expected,actual,"Double Precision 1D Array equality failed: ")
-            END DO  
-         END IF 
-         
-      END SUBROUTINE assertWithinToleranceTwoDoubleArrays1D
+!      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,relTol, absTol, msg)  
+!
+!TODO: Array assertions are not implemented because a good way to report
+!      where the errors occur needs to be devised. Arrays could get big
+!      and there can be a lot of errors to report.
+!
+!         IMPLICIT NONE  
+!         DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+!         DOUBLE PRECISION, INTENT(IN)               :: relTol
+!         DOUBLE PRECISION, INTENT(IN), OPTIONAL     :: absTol
+!         CHARACTER(LEN=*), OPTIONAL                 :: msg
+!         INTEGER                                    :: code
+!         INTEGER                                    :: k
+!         
+!         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected,actual,eMsg
+!         
+!         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+!            CALL initializeSharedAssertionsManager
+!         END IF 
+!         
+!         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
+!         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol, code) )     THEN
+!            IF ( PRESENT(msg) )     THEN
+!               eMsg = TRIM(msg) // "---" // TRIM(compareCodeStrings(code))
+!            ELSE 
+!               eMsg = "---" // TRIM(compareCodeStrings(code))
+!            END IF 
+!            
+!            DO k = 1, SIZE(expectedValue)
+!               WRITE(expected,*) expectedValue(k)
+!               WRITE(actual,*)   actualValue(k)
+!               CALL addAssertionFailureForParameters(eMsg,expected,actual,"Double Precision 1D Array equality failed: ")
+!            END DO  
+!         END IF 
+!         
+!      END SUBROUTINE assertWithinToleranceTwoDoubleArrays1D
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,relTol,absTol)  
-         IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-         DOUBLE PRECISION, INTENT(IN)                 :: relTol
-         DOUBLE PRECISION, INTENT(IN), OPTIONAL       :: absTol
-         INTEGER                                      :: code
-         
-         IF(.NOT.ASSOCIATED(sharedManager)) THEN
-            CALL initializeSharedAssertionsManager
-         END IF 
-         
-         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
-         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol, code) )     THEN
-             PRINT *, "assertWithinToleranceTwoDoubleArrays2D not implemented"
-         END IF 
-         
-      END SUBROUTINE assertWithinToleranceTwoDoubleArrays2D
+!      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,relTol,absTol)  
+!
+!TODO: Array assertions are not implemented because a good way to report
+!      where the errors occur needs to be devised. Arrays could get big
+!      and there can be a lot of errors to report.
+!
+!         IMPLICIT NONE  
+!         DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+!         DOUBLE PRECISION, INTENT(IN)                 :: relTol
+!         DOUBLE PRECISION, INTENT(IN), OPTIONAL       :: absTol
+!         INTEGER                                      :: code
+!         
+!         IF(.NOT.ASSOCIATED(sharedManager)) THEN
+!            CALL initializeSharedAssertionsManager
+!         END IF 
+!         
+!         sharedManager % numberOfTests_ = sharedManager % numberOfTests_ + 1
+!         IF ( .NOT.isEqual(expectedValue,actualValue,relTol, absTol, code) )     THEN
+!             PRINT *, "assertWithinToleranceTwoDoubleArrays2D not implemented"
+!         END IF 
+!         
+!      END SUBROUTINE assertWithinToleranceTwoDoubleArrays2D
 !@mark -
 #ifdef _has_Quad
 !
@@ -630,5 +660,79 @@
          END IF 
          
       END SUBROUTINE assertEqualTwoLogicals    
-       
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+!
+!----------------------------------------------------------------------------
+! The routines that follow exist to be able to test the assertions themselves
+!----------------------------------------------------------------------------
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      INTEGER FUNCTION SelfTestAssertion(assertionNumber, assertionType, expected, actual, msg)
+!
+!     -------------------------------
+!     Returns (sums if necessary)
+!        0    if everything is OK
+!        1    if assertionType is incorrect
+!        10   if expected is incorrect
+!        100  if actual is incorrect
+!        1000 if msg is incorrect
+!        -1   No assertions posted
+!        -2   Item number not found
+!     -------------------------------
+!
+         IMPLICIT NONE
+!
+!        ---------
+!        Arguments
+!        ---------
+!
+         INTEGER          :: assertionNumber       ! Which item to look for in the list
+         CHARACTER(LEN=*) :: msg, expected, actual ! What should be in the assertion record
+         CHARACTER(LEN=*) :: assertionType         ! The expected assertion type.
+!
+!        ---------------
+!        Local Variables
+!        ---------------
+!
+         TYPE(FTAssertionFailureRecord), POINTER :: current
+         INTEGER                                 :: iCount
+        
+         SelfTestAssertion = 0
+                  
+         current => sharedManager % failureListHead
+         IF(.NOT. ASSOCIATED(current))     THEN
+            SelfTestAssertion = -1
+            RETURN
+         END IF
+         
+         icount  = 0
+         DO WHILE (ASSOCIATED(current))
+            iCount = iCount + 1
+            IF ( iCount == assertionNumber )     THEN
+               IF ( current % assertionType /= assertionType )     THEN
+                  SelfTestAssertion = SelfTestAssertion + 1 
+               END IF 
+               IF ( current % expected /= expected )     THEN
+                  SelfTestAssertion = SelfTestAssertion + 10 
+               END IF
+               IF ( current % actual /= actual )     THEN
+                  SelfTestAssertion = SelfTestAssertion + 100
+               END IF
+               IF ( TRIM(current % msg) /= msg )     THEN
+                  SelfTestAssertion = SelfTestAssertion + 1000 
+               END IF
+
+               RETURN
+            ELSE 
+               current => current % next
+            END IF 
+         END DO
+         
+         SelfTestAssertion = -2
+        
+      END FUNCTION SelfTestAssertion
+      
       END Module FTAssertions    

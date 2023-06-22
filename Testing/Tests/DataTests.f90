@@ -78,6 +78,7 @@
                          actualValue   = dat % storedDataType(), &
                          msg           = "Data type check")
       CALL FTAssert(dat % dataIsOfType("String"),msg = "Data type inquiry")
+      CALL FTAssert(.NOT.dat % dataIsOfType("Elephant"),msg = "Data type failure inquiry")
 !
 !     ------------------
 !     Accessing the data

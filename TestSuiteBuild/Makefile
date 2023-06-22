@@ -23,6 +23,7 @@ FFLAGS += -Wno-implicit-procedure # Must be allowed for testAppendingLists
 
 OBJS = \
 Assert.o \
+AssertionFailureTests.o \
 Comparisons.o \
 ComparisonTests.o \
 DataTests.o \
@@ -65,6 +66,10 @@ Assert.o : $(FTOLibPath)/FTTesting/Assert.f90 \
 Comparisons.o \
 FTOLConstants.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/Assert.f90
+
+AssertionFailureTests.o : $(FTTestsPath)/Tests/AssertionFailureTests.f90 \
+Assert.o
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/AssertionFailureTests.f90
 
 Comparisons.o : $(FTOLibPath)/FTTesting/Comparisons.f90 \
 FTOLConstants.o
