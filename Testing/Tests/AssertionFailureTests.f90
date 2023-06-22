@@ -10,7 +10,7 @@
    SUBROUTINE AssertionFailureTests
 !
 !  ------------------------------------------------------------------
-!  Bypass the ususal testing framework and make assertions that
+!  Bypass the usual testing framework and make assertions that
 !  fail. Then check the list of failures to make sure they are right.
 !  Do an error stop only if any tests fail to fail.
 !  ------------------------------------------------------------------
