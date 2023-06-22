@@ -22,8 +22,6 @@
       INTEGER                            :: numberUnexpectedFailures
       
       CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected, actual
-      REAL                                      :: expectedR, actualR
-      DOUBLE PRECISION                          :: expectedD, actualD
 !
 !     -----
 !     Setup
