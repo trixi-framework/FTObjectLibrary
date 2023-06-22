@@ -14,7 +14,7 @@
       CONTAINS 
 !     ========
 !
-! TODO: It might make sense to create a numver of functions like those below
+! TODO: It might make sense to create a number of functions like those below
 !       as part of the FTDataClass for converting common things to FTData.
 !
 !//////////////////////////////////////////////////////////////////////// 
