@@ -147,6 +147,7 @@
 !     Finish up
 !     ---------
 !
+      CALL finalizeSharedAssertionsManager
       IF ( numberUnexpectedFailures > 0 )     THEN
          ERROR STOP "Failure in Assertions testing"
       END IF 
