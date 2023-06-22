@@ -78,7 +78,7 @@ Assert.o
 DataTests.o : $(FTTestsPath)/Tests/DataTests.f90 \
 FTDataClass.o \
 Assert.o
-	$(F90) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/DataTests.f90
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/DataTests.f90
 
 DictionaryTests.o : $(FTTestsPath)/Tests/DictionaryTests.f90 \
 FTValueClass.o \
