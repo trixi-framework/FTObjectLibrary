@@ -116,8 +116,8 @@
          ALLOCATE(stack)
          CALL testStackInit(stack)
          CALL FTAssertEqual(expectedValue = "FTStack", &
-                            actualValue = stack % className(), &
-                            msg = "Check class name")
+                            actualValue   = stack % className(), &
+                            msg           = "Check class name")
          CALL stack % pop(objectPtr)
          CALL FTAssert(.NOT. ASSOCIATED(objectPtr),msg = "Empty stack pop")
          objectPtr => stack % peek()
