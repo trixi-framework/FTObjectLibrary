@@ -203,7 +203,7 @@
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoReal(x, y, relTol, absTol)
          IMPLICIT NONE  
-         REAL, INTENT(in)           :: x,y,relTol
+         REAL, INTENT(IN)           :: x,y,relTol
          REAL, INTENT(IN), OPTIONAL :: absTol
          LOGICAL                    :: test
          REAL                       :: aTol
