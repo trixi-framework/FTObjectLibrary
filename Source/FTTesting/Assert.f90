@@ -493,7 +493,7 @@
 ! 
       SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,relTol, absTol, msg)  
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(in)             :: expectedValue,actualValue,relTol
+         DOUBLE PRECISION, INTENT(IN)             :: expectedValue,actualValue,relTol
          CHARACTER(LEN=*), OPTIONAL               :: msg
          DOUBLE PRECISION, INTENT(IN), OPTIONAL   :: absTol
 
