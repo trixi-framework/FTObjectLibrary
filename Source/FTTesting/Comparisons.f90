@@ -380,7 +380,7 @@
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoQuad(x,y,relTol, absTol)  
          IMPLICIT NONE  
-         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in)           :: x,y,relTol
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(IN)           :: x,y,relTol
          REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(IN), OPTIONAL :: absTol
          LOGICAL                                                          :: test
          DOUBLE PRECISION                                                 :: aTol
