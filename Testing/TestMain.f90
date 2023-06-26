@@ -119,4 +119,4 @@
 !
       CALL finalizeTestSuiteManager(testSuite)
 
-      END PROGRAM TestObjectsMain  
+   END PROGRAM TestObjectsMain  
