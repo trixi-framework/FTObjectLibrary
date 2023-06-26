@@ -36,7 +36,7 @@
 !!
 !////////////////////////////////////////////////////////////////////////
 !
-      PROGRAM TestObjectsMain 
+   PROGRAM TestObjectsMain 
       USE FTAssertions
       USE TestSuiteManagerClass
       IMPLICIT NONE
