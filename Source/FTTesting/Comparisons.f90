@@ -203,7 +203,7 @@
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoReal(x, y, relTol, absTol)
          IMPLICIT NONE  
-         REAL, INTENT(in)           :: x,y,relTol
+         REAL, INTENT(IN)           :: x,y,relTol
          REAL, INTENT(IN), OPTIONAL :: absTol
          LOGICAL                    :: test
          REAL                       :: aTol
@@ -291,7 +291,7 @@
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoDouble(x, y, relTol, absTol)
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(in)             :: x,y,relTol
+         DOUBLE PRECISION, INTENT(IN)             :: x,y,relTol
          DOUBLE PRECISION, INTENT(IN), OPTIONAL   :: absTol
          LOGICAL                                  :: test
          DOUBLE PRECISION                         :: aTol
@@ -380,7 +380,7 @@
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoQuad(x,y,relTol, absTol)  
          IMPLICIT NONE  
-         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in)           :: x,y,relTol
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(IN)           :: x,y,relTol
          REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(IN), OPTIONAL :: absTol
          LOGICAL                                                          :: test
          DOUBLE PRECISION                                                 :: aTol

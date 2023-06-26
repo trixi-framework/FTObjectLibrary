@@ -36,7 +36,7 @@
 !!
 !////////////////////////////////////////////////////////////////////////
 !
-      PROGRAM TestObjectsMain 
+   PROGRAM TestObjectsMain 
       USE FTAssertions
       USE TestSuiteManagerClass
       IMPLICIT NONE
@@ -119,4 +119,4 @@
 !
       CALL finalizeTestSuiteManager(testSuite)
 
-      END PROGRAM TestObjectsMain  
+   END PROGRAM TestObjectsMain  

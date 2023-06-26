@@ -109,16 +109,16 @@
          ALLOCATE(e)
          CALL e % initWarningException(msg = "Warning: Danger Will Robinson (Designed Uncaught)")
          CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
-                            actualValue    = e % severity(),  &
-                            msg = "Warning error level match")
+                            actualValue   = e % severity(),  &
+                            msg           = "Warning error level match")
          CALL throw(e)
          CALL releaseFTException(e)
          
          ALLOCATE(e)
          CALL e % initFatalException(msg = "I'm Sorry, I can't do that Dave  (Designed Uncaught)")
          CALL FTAssertEqual(expectedValue = FT_ERROR_FATAL, &
-                            actualValue    = e % severity(),  &
-                            msg = "Fatal error level match")
+                            actualValue   = e % severity(),  &
+                            msg           = "Fatal error level match")
          CALL throw(e)
          CALL releaseFTException(e)
 

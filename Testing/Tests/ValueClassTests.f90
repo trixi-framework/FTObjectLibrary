@@ -278,7 +278,7 @@
          CALL FTAssert(ASSOCIATED(vFromObj),msg = "Cast value from object as subroutine")
          CALL FTAssertEqual(expectedValue = "stringValue", &
                             actualValue   = vFromObj % stringValue(requestedLength = 11), &
-                            msg = "Check that cast is correct")
+                            msg           = "Check that cast is correct")
 !
 !        ---------------
 !        Test bad values
