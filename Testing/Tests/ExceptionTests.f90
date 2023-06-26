@@ -109,8 +109,8 @@
          ALLOCATE(e)
          CALL e % initWarningException(msg = "Warning: Danger Will Robinson (Designed Uncaught)")
          CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
-                            actualValue    = e % severity(),  &
-                            msg = "Warning error level match")
+                            actualValue   = e % severity(),  &
+                            msg           = "Warning error level match")
          CALL throw(e)
          CALL releaseFTException(e)
          
