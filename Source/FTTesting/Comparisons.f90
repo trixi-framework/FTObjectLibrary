@@ -232,11 +232,11 @@
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoRealArrays1D(a,b,relTol, absTol, code)  
          IMPLICIT NONE  
-         REAL, INTENT(IN), DIMENSION(:) :: a, b
-         REAL, INTENT(IN)               :: relTol
-         REAL, INTENT(IN)    , OPTIONAL :: absTol
+         REAL, INTENT(IN), DIMENSION(:)   :: a, b
+         REAL, INTENT(IN)                 :: relTol
+         REAL, INTENT(IN)      , OPTIONAL :: absTol
          INTEGER, INTENT(INOUT), OPTIONAL :: code
-         REAL                           :: aTol
+         REAL                             :: aTol
          
          isWithinToleranceTwoRealArrays1D = .true.
          IF(PRESENT(code)) code = ASSERT_SUCCESS
