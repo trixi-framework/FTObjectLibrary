@@ -291,7 +291,7 @@
 ! 
       LOGICAL FUNCTION isWithinToleranceTwoDouble(x, y, relTol, absTol)
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(in)             :: x,y,relTol
+         DOUBLE PRECISION, INTENT(IN)             :: x,y,relTol
          DOUBLE PRECISION, INTENT(IN), OPTIONAL   :: absTol
          LOGICAL                                  :: test
          DOUBLE PRECISION                         :: aTol
