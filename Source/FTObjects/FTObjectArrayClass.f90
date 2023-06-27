@@ -481,9 +481,9 @@
 ! 
       SUBROUTINE castToMutableObjectArray(obj,cast) 
 !
-!     -----------------------------------------------------
-!     Cast the base class FTObject to the FTException class
-!     -----------------------------------------------------
+!     --------------------------------------------------------------
+!     Cast the base class FTObject to the FTMutableObjectArray class
+!     --------------------------------------------------------------
 !
          IMPLICIT NONE  
          CLASS(FTObject)            , POINTER :: obj

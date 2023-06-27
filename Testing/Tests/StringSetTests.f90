@@ -44,17 +44,19 @@
       USE FTAssertions
       IMPLICIT NONE 
       
-      TYPE(FTStringSet)          :: set1, set2
-      TYPE(FTStringSet), POINTER :: unionSet, intersectionSet, differenceSet
-      CHARACTER(LEN=5)           :: s1(5) = ['one  ','two  ','three','four ','five ']
-      CHARACTER(LEN=5)           :: s2(5) = ['one  ','two  ','six  ','seven','eight']
-      CHARACTER(LEN=5)           :: s3(6) = ['one  ','two  ','three','four ','five ','six  ']
-      CHARACTER(LEN=5)           :: unionStrings(8) = ['one  ','two  ','three','four ','five ','six  ','seven','eight']
-      CHARACTER(LEN=5)           :: intersectionStrings(2) = ['one  ','two  ']
-      CHARACTER(LEN=5)           :: differenceStrings1(3) = ['three','four ','five ']
-      CHARACTER(LEN=5)           :: differenceStrings2(3) = ['six  ','seven','eight']
-      INTEGER                    :: i
-      LOGICAL                    :: test
+      TYPE(FTStringSet)           :: set1, set2
+      TYPE(FTStringSet) , POINTER :: intersectionSet, differenceSet, setPtr
+      CLASS(FTStringSet), POINTER :: unionSet
+      CHARACTER(LEN=5)            :: s1(5) = ['one  ','two  ','three','four ','five ']
+      CHARACTER(LEN=5)            :: s2(5) = ['one  ','two  ','six  ','seven','eight']
+      CHARACTER(LEN=5)            :: s3(6) = ['one  ','two  ','three','four ','five ','six  ']
+      CHARACTER(LEN=5)            :: unionStrings(8) = ['one  ','two  ','three','four ','five ','six  ','seven','eight']
+      CHARACTER(LEN=5)            :: intersectionStrings(2) = ['one  ','two  ']
+      CHARACTER(LEN=5)            :: differenceStrings1(3) = ['three','four ','five ']
+      CHARACTER(LEN=5)            :: differenceStrings2(3) = ['six  ','seven','eight']
+      INTEGER                     :: i
+      LOGICAL                     :: test
+      CLASS(FTObject), POINTER    :: obj
 
       CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) ,DIMENSION(:), POINTER :: keys
 !
@@ -64,9 +66,12 @@
 !
       CALL set1 % initWithStrings(strings = s1)
       CALL FTAssertEqual(expectedValue = SIZE(s1),     &
-                         actualValue =  set1 % COUNT(), &
-                         msg = "First set count")
+                         actualValue   =  set1 % COUNT(), &
+                         msg           = "First set count")
       CALL FTAssert(test = .NOT.set1 % isEmpty(),msg = 'Test non empty test for empty')
+      CALL FTAssertEqual(expectedValue = "FTStringSet",      &
+                         actualValue   = set1 % className(), &
+                         msg           = "Class name should be string set")
 !
 !     -------------------------------------------
 !     Test size of string array returned from set
@@ -129,11 +134,22 @@
 !
       unionSet => set1 % unionWithSet(set = set2)
       CALL FTAssertEqual(expectedValue = SIZE(unionStrings),&
-                         actualValue =  unionSet % COUNT(), &
-                         msg = "union set count")
+                         actualValue   = unionSet % COUNT(), &
+                         msg           = "union set count")
       DO i = 1, SIZE(unionStrings) 
          CALL FTAssert(test = unionSet % containsString(str = unionStrings(i)),msg = "unionSet contains string of original array")
       END DO 
+!
+!     ------------------------
+!     Test casting of pointers
+!     ------------------------
+!
+      obj => unionSet
+      setPtr => FTStringSetFromObject(obj)
+      CALL FTAssertEqual(expectedValue = SIZE(unionStrings),&
+                         actualValue   = unionSet % COUNT(), &
+                         msg           = "union set count")
+      
       CALL releaseFTStringSet(self = unionSet)
       CALL FTAssert(test = .NOT.ASSOCIATED(unionSet),msg = 'Release of pointer to set')
 !

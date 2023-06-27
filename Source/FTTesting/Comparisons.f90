@@ -85,6 +85,7 @@
       END TYPE assertInfoArray2D
       
       PUBLIC :: isEqual,assertInfoArray1D,assertInfoArray2D
+      PUBLIC :: isTrue, isFalse
 !
 !     ========
       CONTAINS
@@ -200,15 +201,23 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoReal(x,y,tol)  
+      LOGICAL FUNCTION isWithinToleranceTwoReal(x, y, relTol, absTol)
          IMPLICIT NONE  
-         REAL, INTENT(in)  :: x,y,tol
-         LOGICAL           :: test
+         REAL, INTENT(IN)           :: x,y,relTol
+         REAL, INTENT(IN), OPTIONAL :: absTol
+         LOGICAL                    :: test
+         REAL                       :: aTol
+         
+         IF(.NOT. PRESENT(absTol))     THEN
+            aTol = 0.0
+         ELSE
+            aTol = absTol
+         END IF
          
          IF ( x == 0.0e0 )     THEN
-            test = ABS(x-y) <= tol
+            test = ABS(x-y) <= relTol
          ELSE
-            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+            test = ABS(x-y) <= aTol + relTol*MAX(ABS(x),ABS(y))
          END IF 
          
          IF ( test )     THEN
@@ -221,19 +230,27 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoRealArrays1D(a,b,tol,code)  
+      LOGICAL FUNCTION isWithinToleranceTwoRealArrays1D(a,b,relTol, absTol, code)  
          IMPLICIT NONE  
-         REAL, INTENT(IN), DIMENSION(:) :: a, b
-         REAL, INTENT(IN)               :: tol
-         INTEGER, INTENT(OUT), OPTIONAL :: code
+         REAL, INTENT(IN), DIMENSION(:)   :: a, b
+         REAL, INTENT(IN)                 :: relTol
+         REAL, INTENT(IN)      , OPTIONAL :: absTol
+         INTEGER, INTENT(INOUT), OPTIONAL :: code
+         REAL                             :: aTol
          
          isWithinToleranceTwoRealArrays1D = .true.
          IF(PRESENT(code)) code = ASSERT_SUCCESS
          
+         IF(.NOT. PRESENT(absTol))     THEN
+            aTol = 0.0
+         ELSE
+            aTol = absTol
+         END IF
+         
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > aTol + relTol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoRealArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -242,11 +259,19 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoRealArrays2D(a,b,tol,code)  
+      LOGICAL FUNCTION isWithinToleranceTwoRealArrays2D(a, b, relTol, absTol, code)  
          IMPLICIT NONE  
          REAL, INTENT(IN), DIMENSION(:,:) :: a, b
-         REAL, INTENT(IN)                 :: tol
+         REAL, INTENT(IN)                 :: relTol
+         REAL, INTENT(IN)    , OPTIONAL   :: absTol
          INTEGER, INTENT(OUT), OPTIONAL   :: code
+         REAL                             :: aTol
+         
+         IF(.NOT. PRESENT(absTol))     THEN
+            aTol = 0.0
+         ELSE
+            aTol = absTol
+         END IF
          
          isWithinToleranceTwoRealArrays2D = .true.
          IF(PRESENT(code)) code = ASSERT_SUCCESS
@@ -254,7 +279,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoRealArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b)> tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b)> aTol + relTol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoRealArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -264,15 +289,23 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoDouble(x,y,tol)  
+      LOGICAL FUNCTION isWithinToleranceTwoDouble(x, y, relTol, absTol)
          IMPLICIT NONE  
-         DOUBLE PRECISION, INTENT(in) :: x,y,tol
-         LOGICAL                      :: test
+         DOUBLE PRECISION, INTENT(IN)             :: x,y,relTol
+         DOUBLE PRECISION, INTENT(IN), OPTIONAL   :: absTol
+         LOGICAL                                  :: test
+         DOUBLE PRECISION                         :: aTol
+         
+         IF(.NOT. PRESENT(absTol))     THEN
+            aTol = 0.0d0
+         ELSE
+            aTol = absTol
+         END IF
          
          IF ( x == 0.0d0 )     THEN
-            test = ABS(x-y) <= tol
+            test = ABS(x-y) <= relTol
          ELSE
-            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+            test = ABS(x-y) <= aTol + relTol*MAX(ABS(x),ABS(y))
          END IF 
          
          IF ( test )     THEN
@@ -285,11 +318,19 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoDoubleArrays1D(a,b,tol,code)
+      LOGICAL FUNCTION isWithinToleranceTwoDoubleArrays1D(a, b, relTol, absTol, code)
          IMPLICIT NONE  
          DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: a, b
-         DOUBLE PRECISION, INTENT(IN)               :: tol
+         DOUBLE PRECISION, INTENT(IN)               :: relTol
+         DOUBLE PRECISION, INTENT(IN), OPTIONAL     :: absTol
          INTEGER, INTENT(OUT), OPTIONAL             :: code
+         DOUBLE PRECISION                           :: aTol
+         
+         IF(.NOT. PRESENT(absTol))     THEN
+            aTol = 0.0d0
+         ELSE
+            aTol = absTol
+         END IF
          
          isWithinToleranceTwoDoubleArrays1D = .true.
          IF(PRESENT(code)) code = ASSERT_SUCCESS
@@ -297,7 +338,7 @@
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoDoubleArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > aTol + relTol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoDoubleArrays1D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -306,19 +347,27 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoDoubleArrays2D(a,b,tol,code)  
+      LOGICAL FUNCTION isWithinToleranceTwoDoubleArrays2D(a,b,relTol,absTol,code)  
          IMPLICIT NONE  
          DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: a, b
-         DOUBLE PRECISION, INTENT(IN)                 :: tol
+         DOUBLE PRECISION, INTENT(IN)                 :: relTol
+         DOUBLE PRECISION, INTENT(IN), OPTIONAL       :: absTol
          INTEGER, INTENT(OUT), OPTIONAL               :: code
+         DOUBLE PRECISION                             :: aTol
+         
+         IF(.NOT. PRESENT(absTol))     THEN
+            aTol = 0.0d0
+         ELSE
+            aTol = absTol
+         END IF
          
          isWithinToleranceTwoDoubleArrays2D = .true.
-         code = ASSERT_SUCCESS
+         IF(PRESENT(code)) code = ASSERT_SUCCESS
          
          IF ( SIZE(a) /= SIZE(b) )     THEN
             isWithinToleranceTwoDoubleArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_SIZE_DIFFERS
-         ELSE IF(ANY(ABS(a-b) > tol*MAX(ABS(a),ABS(b))))     THEN
+         ELSE IF(ANY(ABS(a-b) > aTol + relTol*MAX(ABS(a),ABS(b))))     THEN
             isWithinToleranceTwoDoubleArrays2D = .false.
             IF(PRESENT(code)) code = ASSERT_VALUES_DIFFER
          END IF 
@@ -329,15 +378,23 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      LOGICAL FUNCTION isWithinToleranceTwoQuad(x,y,tol)  
+      LOGICAL FUNCTION isWithinToleranceTwoQuad(x,y,relTol, absTol)  
          IMPLICIT NONE  
-         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(in)  :: x,y,tol
-         LOGICAL                         :: test
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(IN)           :: x,y,relTol
+         REAL(KIND=SELECTED_REAL_KIND(QUAD_DIGITS)), INTENT(IN), OPTIONAL :: absTol
+         LOGICAL                                                          :: test
+         DOUBLE PRECISION                                                 :: aTol
+         
+         IF(.NOT. PRESENT(absTol))     THEN
+            aTol = 0.0d0
+         ELSE
+            aTol = absTol
+         END IF
          
          IF ( x == 0.0d0 )     THEN
-            test = ABS(x-y) <= tol
+            test = ABS(x-y) <= relTol
          ELSE
-            test = ABS(x-y) <= tol*MAX(ABS(x),ABS(y))
+            test = ABS(x-y) <= aTol + relTol*MAX(ABS(x),ABS(y))
          END IF 
          
          IF ( test )     THEN

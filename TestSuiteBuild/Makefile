@@ -23,7 +23,10 @@ FFLAGS += -Wno-implicit-procedure # Must be allowed for testAppendingLists
 
 OBJS = \
 Assert.o \
+AssertionFailureTests.o \
 Comparisons.o \
+ComparisonTests.o \
+DataTests.o \
 DictionaryTests.o \
 ExceptionTests.o \
 FTDataClass.o \
@@ -64,9 +67,23 @@ Comparisons.o \
 FTOLConstants.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/Assert.f90
 
+AssertionFailureTests.o : $(FTTestsPath)/Tests/AssertionFailureTests.f90 \
+Assert.o
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/AssertionFailureTests.f90
+
 Comparisons.o : $(FTOLibPath)/FTTesting/Comparisons.f90 \
 FTOLConstants.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTOLibPath)/FTTesting/Comparisons.f90
+
+ComparisonTests.o : $(FTTestsPath)/Tests/ComparisonTests.f90 \
+Comparisons.o \
+Assert.o
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/ComparisonTests.f90
+
+DataTests.o : $(FTTestsPath)/Tests/DataTests.f90 \
+FTDataClass.o \
+Assert.o
+	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/DataTests.f90
 
 DictionaryTests.o : $(FTTestsPath)/Tests/DictionaryTests.f90 \
 FTValueClass.o \
@@ -206,7 +223,8 @@ Assert.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/Tests/StringSetTests.f90
 
 TestMain.o : $(FTTestsPath)/TestMain.f90 \
-TestSuiteManagerClass.o
+TestSuiteManagerClass.o \
+Assert.o
 	$(FC) -c $(FFLAGS) $(INCLUDES) -o $@ $(FTTestsPath)/TestMain.f90
 
 TestSuiteManagerClass.o : $(FTOLibPath)/FTTesting/TestSuiteManagerClass.f90 \
