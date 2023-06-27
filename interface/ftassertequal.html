@@ -96,7 +96,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p> 0.5% of total for procedures.</p>Including implementation: 220 statements,  8.2% of total for procedures.">14 statements</a>
+               title="<p> 0.3% of total for procedures.</p>Including implementation: 122 statements,  4.5% of total for procedures.">8 statements</a>
           </li>
 
             <li id="source-file">
@@ -151,14 +151,8 @@
       <div id="modprocs-0" class="panel-collapse collapse">
         <div class="list-group">
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwointegers">assertEqualTwoIntegers</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwointegerarrays1d">assertEqualTwoIntegerArrays1D</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwointegerarrays2d">assertEqualTwoIntegerArrays2D</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetworeal">assertWithinToleranceTwoReal</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetworealarrays1d">assertWithinToleranceTwoRealArrays1D</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetworealarrays2d">assertWithinToleranceTwoRealArrays2D</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwodouble">assertWithinToleranceTwoDouble</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwodoublearrays1d">assertWithinToleranceTwoDoubleArrays1D</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwodoublearrays2d">assertWithinToleranceTwoDoubleArrays2D</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwoquad">assertWithinToleranceTwoQuad</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwologicals">assertEqualTwoLogicals</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequalstring">assertEqualString</a>
@@ -351,14 +345,8 @@ implementation in a submodule of an interface in a parent module.
       <div id="modprocs-1" class="panel-collapse collapse">
         <div class="list-group">
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwointegers">assertEqualTwoIntegers</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwointegerarrays1d">assertEqualTwoIntegerArrays1D</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwointegerarrays2d">assertEqualTwoIntegerArrays2D</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetworeal">assertWithinToleranceTwoReal</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetworealarrays1d">assertWithinToleranceTwoRealArrays1D</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetworealarrays2d">assertWithinToleranceTwoRealArrays2D</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwodouble">assertWithinToleranceTwoDouble</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwodoublearrays1d">assertWithinToleranceTwoDoubleArrays1D</a>
-            <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwodoublearrays2d">assertWithinToleranceTwoDoubleArrays2D</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertwithintolerancetwoquad">assertWithinToleranceTwoQuad</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequaltwologicals">assertEqualTwoLogicals</a>
             <a class="list-group-item" href="../interface/ftassertequal.html#moduleprocedure-assertequalstring">assertEqualString</a>
@@ -444,115 +432,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertequaltwointegerarrays1d"></span><h3>private  subroutine assertEqualTwoIntegerArrays1D(expectedValue, actualValue)  
-</h3></div>
-    <div class="panel-body">
-        
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertequaltwointegerarrays2d"></span><h3>private  subroutine assertEqualTwoIntegerArrays2D(expectedValue, actualValue)  
-</h3></div>
-    <div class="panel-body">
-        
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetworeal"></span><h3>private  subroutine assertWithinToleranceTwoReal(expectedValue, actualValue, tol, msg)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetworeal"></span><h3>private  subroutine assertWithinToleranceTwoReal(expectedValue, actualValue, relTol, absTol, msg)  
 </h3></div>
     <div class="panel-body">
         
@@ -608,7 +488,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -636,7 +531,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetworealarrays1d"></span><h3>private  subroutine assertWithinToleranceTwoRealArrays1D(expectedValue, actualValue, tol, msg)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwodouble"></span><h3>private  subroutine assertWithinToleranceTwoDouble(expectedValue, actualValue, relTol, absTol, msg)  
 </h3></div>
     <div class="panel-body">
         
@@ -655,11 +550,11 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" ></span>
-              real,
+              double precision,
             </td>
-<td>intent(in),</td>
+<td>intent(in)</td>
               <td></td>            <td>
-              DIMENSION(:)
+              
             </td>
             <td>::</td>
             <td><strong>expectedValue</strong></td>
@@ -670,11 +565,11 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" ></span>
-              real,
+              double precision,
             </td>
-<td>intent(in),</td>
+<td>intent(in)</td>
               <td></td>            <td>
-              DIMENSION(:)
+              
             </td>
             <td>::</td>
             <td><strong>actualValue</strong></td>
@@ -685,14 +580,29 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" ></span>
-              real,
+              double precision,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -720,313 +630,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetworealarrays2d"></span><h3>private  subroutine assertWithinToleranceTwoRealArrays2D(expectedValue, actualValue, tol)  
-</h3></div>
-    <div class="panel-body">
-        
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              real,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              real,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              real,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwodouble"></span><h3>private  subroutine assertWithinToleranceTwoDouble(expectedValue, actualValue, tol, msg)  
-</h3></div>
-    <div class="panel-body">
-        
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td></td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>msg</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwodoublearrays1d"></span><h3>private  subroutine assertWithinToleranceTwoDoubleArrays1D(expectedValue, actualValue, tol, msg)  
-</h3></div>
-    <div class="panel-body">
-        
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td></td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>msg</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwodoublearrays2d"></span><h3>private  subroutine assertWithinToleranceTwoDoubleArrays2D(expectedValue, actualValue, tol)  
-</h3></div>
-    <div class="panel-body">
-        
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span><h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, tol, msg)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span><h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, relTol, absTol, msg)  
 </h3></div>
     <div class="panel-body">
           
@@ -1083,7 +687,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
 
             </td>

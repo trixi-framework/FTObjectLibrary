@@ -96,7 +96,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 0.7% of total for procedures.">19 statements</a>
+               title=" 0.7% of total for procedures.">20 statements</a>
           </li>
 
             <li id="source-file">
@@ -150,7 +150,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public  subroutine assertWithinToleranceTwoQuad(expectedValue, actualValue, tol, msg)  
+    <h2>public  subroutine assertWithinToleranceTwoQuad(expectedValue, actualValue, relTol, absTol, msg)  
 </h2>
     
 
@@ -199,7 +199,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tol~8"></span>
+              <span class="anchor" id="variable-reltol~8"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in)</td>
@@ -207,14 +207,29 @@
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
             <td>
                 
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~5"></span>
+              <span class="anchor" id="variable-abstol~8"></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-msg~6"></span>
               character(len=*),
             </td>
 <td></td>

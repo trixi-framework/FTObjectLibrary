@@ -96,7 +96,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 9.4% of total for modules and submodules.">359 statements</a>
+               title=" 7.9% of total for modules and submodules.">297 statements</a>
           </li>
 
             <li id="source-file">
@@ -181,6 +181,7 @@
             <a class="list-group-item" href="../module/ftassertions.html#proc-sharedassertionsmanager">sharedAssertionsManager</a>
             <a class="list-group-item" href="../module/ftassertions.html#proc-numberofassertions">numberOfAssertions</a>
             <a class="list-group-item" href="../module/ftassertions.html#proc-numberofassertionfailures">numberOfAssertionFailures</a>
+            <a class="list-group-item" href="../module/ftassertions.html#proc-selftestassertion">SelfTestAssertion</a>
         </div>
       </div>
     </div>
@@ -250,8 +251,8 @@
       <ul class="list-group">
           <li class="list-group-item">
             <ul class="list-inline">
-                <li><a href='<a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a>'>iso_fortran_env</a></li>
                 <li><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></li>
+                <li><a href='<a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a>'>iso_fortran_env</a></li>
                 <li><a href='../module/ftolconstants.html'>FTOLConstants</a></li>
             </ul>
           </li>
@@ -600,6 +601,7 @@ modules which it uses.
             <a class="list-group-item" href="../module/ftassertions.html#proc-sharedassertionsmanager">sharedAssertionsManager</a>
             <a class="list-group-item" href="../module/ftassertions.html#proc-numberofassertions">numberOfAssertions</a>
             <a class="list-group-item" href="../module/ftassertions.html#proc-numberofassertionfailures">numberOfAssertionFailures</a>
+            <a class="list-group-item" href="../module/ftassertions.html#proc-selftestassertion">SelfTestAssertion</a>
         </div>
       </div>
     </div>
@@ -748,113 +750,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  subroutine assertEqualTwoIntegerArrays1D(expectedValue, actualValue)  
-
-    </h3>
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private  subroutine assertEqualTwoIntegerArrays2D(expectedValue, actualValue)  
-
-    </h3>
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private  subroutine assertWithinToleranceTwoReal(expectedValue, actualValue, tol, msg)  
+    private  subroutine assertWithinToleranceTwoReal(expectedValue, actualValue, relTol, absTol, msg)  
 
     </h3>
   
@@ -910,7 +806,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -937,7 +848,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  subroutine assertWithinToleranceTwoRealArrays1D(expectedValue, actualValue, tol, msg)  
+    private  subroutine assertWithinToleranceTwoDouble(expectedValue, actualValue, relTol, absTol, msg)  
 
     </h3>
   
@@ -956,11 +867,11 @@ parameter
         <tr>
             <td>
               <span class="anchor" ></span>
-              real,
+              double precision,
             </td>
-<td>intent(in),</td>
+<td>intent(in)</td>
               <td></td>            <td>
-              DIMENSION(:)
+              
             </td>
             <td>::</td>
             <td><strong>expectedValue</strong></td>
@@ -971,11 +882,11 @@ parameter
         <tr>
             <td>
               <span class="anchor" ></span>
-              real,
+              double precision,
             </td>
-<td>intent(in),</td>
+<td>intent(in)</td>
               <td></td>            <td>
-              DIMENSION(:)
+              
             </td>
             <td>::</td>
             <td><strong>actualValue</strong></td>
@@ -986,14 +897,29 @@ parameter
         <tr>
             <td>
               <span class="anchor" ></span>
-              real,
+              double precision,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -1020,309 +946,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  subroutine assertWithinToleranceTwoRealArrays2D(expectedValue, actualValue, tol)  
-
-    </h3>
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              real,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              real,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              real,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private  subroutine assertWithinToleranceTwoDouble(expectedValue, actualValue, tol, msg)  
-
-    </h3>
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td></td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>msg</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private  subroutine assertWithinToleranceTwoDoubleArrays1D(expectedValue, actualValue, tol, msg)  
-
-    </h3>
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td></td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>msg</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private  subroutine assertWithinToleranceTwoDoubleArrays2D(expectedValue, actualValue, tol)  
-
-    </h3>
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td></td>            <td>
-              DIMENSION(:,:)
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, tol, msg)  
+    public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, relTol, absTol, msg)  
 
     </h3>
     
@@ -1379,7 +1003,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
 
             </td>
@@ -1725,6 +1364,111 @@ parameter
     </div>
   </div>
 
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-selftestassertion"></span><h3>public  function <a href='../proc/selftestassertion.html'>SelfTestAssertion</a>(assertionNumber, assertionType, expected, actual, msg)  
+</h3></div>
+    <div class="panel-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>assertionNumber</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>assertionType</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>expected</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>actual</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>msg</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>integer</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
         </section>
         <br>
 
@@ -1825,7 +1569,7 @@ parameter
   </div>
 
               <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span><h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, tol, msg)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span><h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, relTol, absTol, msg)  
 </h3></div>
     <div class="panel-body">
           
@@ -1882,7 +1626,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
 
             </td>

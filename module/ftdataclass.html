@@ -96,7 +96,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 2.4% of total for modules and submodules.">91 statements</a>
+               title=" 2.5% of total for modules and submodules.">93 statements</a>
           </li>
 
             <li id="source-file">
@@ -168,7 +168,7 @@
         <div class="list-group">
             <a class="list-group-item" href="../module/ftdataclass.html#proc-storeddata">storedData</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-storeddatasize">storedDataSize</a>
-            <a class="list-group-item" href="../module/ftdataclass.html#proc-datatype">dataType</a>
+            <a class="list-group-item" href="../module/ftdataclass.html#proc-storeddatatype">storedDataType</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-datafromobject">dataFromObject</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-dataclassname">dataClassName</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-dataisoftype">dataIsOfType</a>
@@ -379,7 +379,7 @@ modules which it uses.
         <div class="list-group">
             <a class="list-group-item" href="../module/ftdataclass.html#proc-storeddata">storedData</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-storeddatasize">storedDataSize</a>
-            <a class="list-group-item" href="../module/ftdataclass.html#proc-datatype">dataType</a>
+            <a class="list-group-item" href="../module/ftdataclass.html#proc-storeddatatype">storedDataType</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-datafromobject">dataFromObject</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-dataclassname">dataClassName</a>
             <a class="list-group-item" href="../module/ftdataclass.html#proc-dataisoftype">dataIsOfType</a>
@@ -575,6 +575,22 @@ parameter
                 <td>
                     procedure
                     ,                  public
+                  :: <strong><a href='../type/ftdata.html#boundprocedure-storeddatatype'>storedDataType</a></strong>
+<small>Function</small>                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
+                  :: <strong><a href='../type/ftdata.html#boundprocedure-dataisoftype'>dataIsOfType</a></strong>
+<small>Function</small>                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
                   :: <strong><a href='../type/ftdata.html#boundprocedure-classname~3'>className</a></strong>
  =>
                     <a href='../proc/dataclassname.html'>dataClassName</a>
@@ -682,7 +698,7 @@ parameter
   </div>
 
               <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-datatype"></span><h3>public  function <a href='../proc/datatype.html'>dataType</a>(self) result(t)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-storeddatatype"></span><h3>public  function <a href='../proc/storeddatatype.html'>storedDataType</a>(self) result(t)  
 </h3></div>
     <div class="panel-body">
           
@@ -852,7 +868,7 @@ parameter
         <tr>
             <td>
               <span class="anchor" ></span>
-              character(len=DATA_CLASS_TYPE_LENGTH)
+              character(len=*)
             </td>
 <td></td>
               <td></td>            <td>

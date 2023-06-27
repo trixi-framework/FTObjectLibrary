@@ -96,7 +96,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p> 0.5% of total for procedures.</p>Including implementation: 187 statements,  7.0% of total for procedures.">13 statements</a>
+               title="<p> 0.5% of total for procedures.</p>Including implementation: 236 statements,  8.7% of total for procedures.">13 statements</a>
           </li>
 
             <li id="source-file">
@@ -565,7 +565,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetworeal"></span><h3>private  function isWithinToleranceTwoReal(x, y, tol)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetworeal"></span><h3>private  function isWithinToleranceTwoReal(x, y, relTol, absTol)  
 </h3></div>
     <div class="panel-body">
         
@@ -621,7 +621,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -639,7 +654,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetworealarrays1d"></span><h3>private  function isWithinToleranceTwoRealArrays1D(a, b, tol, code)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetworealarrays1d"></span><h3>private  function isWithinToleranceTwoRealArrays1D(a, b, relTol, absTol, code)  
 </h3></div>
     <div class="panel-body">
         
@@ -695,7 +710,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -705,7 +735,7 @@ implementation in a submodule of an interface in a parent module.
               <span class="anchor" ></span>
               integer,
             </td>
-<td>intent(out),</td>
+<td>intent(inout),</td>
               <td>optional</td>            <td>
               
             </td>
@@ -728,7 +758,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetworealarrays2d"></span><h3>private  function isWithinToleranceTwoRealArrays2D(a, b, tol, code)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetworealarrays2d"></span><h3>private  function isWithinToleranceTwoRealArrays2D(a, b, relTol, absTol, code)  
 </h3></div>
     <div class="panel-body">
         
@@ -784,7 +814,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -817,7 +862,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwodouble"></span><h3>private  function isWithinToleranceTwoDouble(x, y, tol)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwodouble"></span><h3>private  function isWithinToleranceTwoDouble(x, y, relTol, absTol)  
 </h3></div>
     <div class="panel-body">
         
@@ -873,7 +918,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -891,7 +951,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwodoublearrays1d"></span><h3>private  function isWithinToleranceTwoDoubleArrays1D(a, b, tol, code)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwodoublearrays1d"></span><h3>private  function isWithinToleranceTwoDoubleArrays1D(a, b, relTol, absTol, code)  
 </h3></div>
     <div class="panel-body">
         
@@ -947,7 +1007,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -980,7 +1055,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwodoublearrays2d"></span><h3>private  function isWithinToleranceTwoDoubleArrays2D(a, b, tol, code)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwodoublearrays2d"></span><h3>private  function isWithinToleranceTwoDoubleArrays2D(a, b, relTol, absTol, code)  
 </h3></div>
     <div class="panel-body">
         
@@ -1036,7 +1111,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -1128,7 +1218,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwoquad"></span><h3>private  function isWithinToleranceTwoQuad(x, y, tol)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-iswithintolerancetwoquad"></span><h3>private  function isWithinToleranceTwoQuad(x, y, relTol, absTol)  
 </h3></div>
     <div class="panel-body">
         
@@ -1184,7 +1274,22 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>

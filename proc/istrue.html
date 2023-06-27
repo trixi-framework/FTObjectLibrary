@@ -8,7 +8,7 @@
     <meta name="author" content="David A. Kopriva" >
     <link rel="icon" href="../favicon.png">
 
-    <title>dataType &ndash; FTObjectLibrary</title>
+    <title>isTrue &ndash; FTObjectLibrary</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -84,7 +84,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>dataType
+    <h1>isTrue
       <small>Function</small>
       
     </h1>
@@ -96,18 +96,18 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 0.2% of total for procedures.">6 statements</a>
+               title=" 0.3% of total for procedures.">9 statements</a>
           </li>
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/FTDataClass.f90"> Source File</a>
+              <a href="../src/Comparisons.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/ftdataclass.f90.html'>FTDataClass.f90</a></li>
-              <li><a href='../module/ftdataclass.html'>FTDataClass</a></li>
-          <li class="active">dataType</li>
+              <li><a href='../sourcefile/comparisons.f90.html'>Comparisons.f90</a></li>
+              <li><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></li>
+          <li class="active">isTrue</li>
         </ol>
       </div>
     </div>
@@ -150,7 +150,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public  function dataType(self) result(t)  
+    <h2>public  function isTrue(condition)  
 </h2>
     
 
@@ -169,15 +169,15 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~167"></span>
-              class(<a href='../type/ftdata.html'>FTData</a>)
+              <span class="anchor" id="variable-condition"></span>
+              logical
             </td>
 <td></td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>self</strong></td>
+            <td><strong>condition</strong></td>
             <td>
                 
             </td>
@@ -187,8 +187,8 @@
 
       <h3>Return Value
         <small>
-          <span class="anchor" id="variable-t"></span>
-          character(len=DATA_CLASS_TYPE_LENGTH)
+          <span class="anchor" id="variable-istrue"></span>
+          logical
         </small>
       </h3>
       

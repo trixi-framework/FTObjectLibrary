@@ -96,7 +96,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 6.0% of total for modules and submodules.">229 statements</a>
+               title=" 7.4% of total for modules and submodules.">279 statements</a>
           </li>
 
             <li id="source-file">
@@ -174,7 +174,20 @@
       </div>
     </div>
 
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-0">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/comparisonsmodule.html#proc-istrue">isTrue</a>
+            <a class="list-group-item" href="../module/comparisonsmodule.html#proc-isfalse">isFalse</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -198,8 +211,8 @@ Procedures defined here are USEd by the FTAssertions Module.</p>
       <ul class="list-group">
           <li class="list-group-item">
             <ul class="list-inline">
-                <li><a href='<a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a>'>iso_fortran_env</a></li>
                 <li><a href='../module/ftolconstants.html'>FTOLConstants</a></li>
+                <li><a href='<a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a>'>iso_fortran_env</a></li>
             </ul>
           </li>
           <li class="list-group-item">
@@ -535,7 +548,20 @@ modules which it uses.
       </div>
     </div>
 
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-1">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/comparisonsmodule.html#proc-istrue">isTrue</a>
+            <a class="list-group-item" href="../module/comparisonsmodule.html#proc-isfalse">isFalse</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -851,7 +877,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  function isWithinToleranceTwoReal(x, y, tol)  
+    private  function isWithinToleranceTwoReal(x, y, relTol, absTol)  
 
     </h3>
   
@@ -907,7 +933,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -924,7 +965,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  function isWithinToleranceTwoRealArrays1D(a, b, tol, code)  
+    private  function isWithinToleranceTwoRealArrays1D(a, b, relTol, absTol, code)  
 
     </h3>
   
@@ -980,7 +1021,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -990,7 +1046,7 @@ parameter
               <span class="anchor" ></span>
               integer,
             </td>
-<td>intent(out),</td>
+<td>intent(inout),</td>
               <td>optional</td>            <td>
               
             </td>
@@ -1012,7 +1068,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  function isWithinToleranceTwoRealArrays2D(a, b, tol, code)  
+    private  function isWithinToleranceTwoRealArrays2D(a, b, relTol, absTol, code)  
 
     </h3>
   
@@ -1068,7 +1124,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -1100,7 +1171,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  function isWithinToleranceTwoDouble(x, y, tol)  
+    private  function isWithinToleranceTwoDouble(x, y, relTol, absTol)  
 
     </h3>
   
@@ -1156,7 +1227,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -1173,7 +1259,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  function isWithinToleranceTwoDoubleArrays1D(a, b, tol, code)  
+    private  function isWithinToleranceTwoDoubleArrays1D(a, b, relTol, absTol, code)  
 
     </h3>
   
@@ -1229,7 +1315,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -1261,7 +1362,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  function isWithinToleranceTwoDoubleArrays2D(a, b, tol, code)  
+    private  function isWithinToleranceTwoDoubleArrays2D(a, b, relTol, absTol, code)  
 
     </h3>
   
@@ -1317,7 +1418,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              double precision,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -1407,7 +1523,7 @@ parameter
           </li>
           <li class="list-group-item">
                 <h3>
-    private  function isWithinToleranceTwoQuad(x, y, tol)  
+    private  function isWithinToleranceTwoQuad(x, y, relTol, absTol)  
 
     </h3>
   
@@ -1463,7 +1579,22 @@ parameter
               
             </td>
             <td>::</td>
-            <td><strong>tol</strong></td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -1656,6 +1787,100 @@ parameter
         </section>
         <br>
 
+        <section>
+          <h2>Functions</h2>
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-istrue"></span><h3>public  function <a href='../proc/istrue.html'>isTrue</a>(condition)  
+</h3></div>
+    <div class="panel-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>condition</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-isfalse"></span><h3>public  function <a href='../proc/isfalse.html'>isFalse</a>(condition)  
+</h3></div>
+    <div class="panel-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>condition</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
 
 
 

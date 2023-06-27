@@ -96,7 +96,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p> 4.3% of total for derived types.</p>Including implementation: 94 statements,  2.7% of total for derived types.">12 statements</a>
+               title="<p> 5.0% of total for derived types.</p>Including implementation: 113 statements,  3.3% of total for derived types.">14 statements</a>
           </li>
 
             <li id="source-file">
@@ -171,6 +171,8 @@
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-initwithdataoftype">initWithDataOfType</a>
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-storeddata">storedData</a>
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-storeddatasize">storedDataSize</a>
+            <a class="list-group-item" href="../type/ftdata.html#boundprocedure-storeddatatype">storedDataType</a>
+            <a class="list-group-item" href="../type/ftdata.html#boundprocedure-dataisoftype">dataIsOfType</a>
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-classname~3">className</a>
         </div>
       </div>
@@ -325,6 +327,8 @@ said component(s).
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-initwithdataoftype">initWithDataOfType</a>
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-storeddata">storedData</a>
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-storeddatasize">storedDataSize</a>
+            <a class="list-group-item" href="../type/ftdata.html#boundprocedure-storeddatatype">storedDataType</a>
+            <a class="list-group-item" href="../type/ftdata.html#boundprocedure-dataisoftype">dataIsOfType</a>
             <a class="list-group-item" href="../type/ftdata.html#boundprocedure-classname~3">className</a>
         </div>
       </div>
@@ -938,6 +942,121 @@ nothing but set the reference count to one.</p>
     <h4>
     Return Value
     <small>integer</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-storeddatatype"></span><h3>procedure, public :: <strong>storedDataType</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    public  function <a href='../proc/storeddatatype.html'>storedDataType</a>(self) result(t)  
+</h3>
+    
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/ftdata.html'>FTData</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=DATA_CLASS_TYPE_LENGTH)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-dataisoftype"></span><h3>procedure, public :: <strong>dataIsOfType</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    public  function <a href='../proc/dataisoftype.html'>dataIsOfType</a>(self, dataType) result(t)  
+</h3>
+    
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/ftdata.html'>FTData</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dataType</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
     </h4>
     
 

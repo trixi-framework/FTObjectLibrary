@@ -136,7 +136,10 @@
          PROCEDURE :: addTestSubroutineWithName
          PROCEDURE :: performTests
          PROCEDURE :: setOutputUnit
+         PROCEDURE :: outputUnit
       END TYPE TestSuiteManager
+      
+      PUBLIC :: finalizeTestSuiteManager
 !
 !     ========      
       CONTAINS
@@ -161,7 +164,15 @@
          CLASS(TestSuiteManager) :: self
          INTEGER                 :: iUnit
          self % stdOut = iUnit
-      END SUBROUTINE setOutputUnit    
+      END SUBROUTINE setOutputUnit
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      INTEGER FUNCTION outputUnit(self)  
+         IMPLICIT NONE  
+         CLASS(TestSuiteManager) :: self
+         outputUnit = self % stdOut
+      END FUNCTION outputUnit
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
