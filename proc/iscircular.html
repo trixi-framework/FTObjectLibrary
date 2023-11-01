@@ -10,77 +10,52 @@
 
     <title>isCircular &ndash; FTObjectLibrary</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -88,33 +63,37 @@
       <small>Function</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 0.2% of total for procedures.">5 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.2% of total for procedures.">5 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/FTLinkedListClass.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></li>
-              <li><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></li>
-          <li class="active">isCircular</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></li>
+            <li class="breadcrumb-item active" aria-current="page">isCircular</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -124,6 +103,7 @@
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
       <div id="sidebar">
       <h3>Contents</h3>
+  
   
   
   
@@ -162,16 +142,16 @@
         <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~29"></span>
+              <span class="anchor" id="variable-self~52"></span>
               class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>)
             </td>
 <td></td>
@@ -195,32 +175,204 @@
       </h3>
       
     <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~iscircular~~CalledByGraph Pages: 1 -->
+<svg id="prociscircularCalledByGraph" width="641pt" height="97pt"
+ viewBox="0.00 0.00 641.00 97.10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~iscircular~~CalledByGraph" class="graph" transform="scale(1.63 1.63) rotate(0) translate(4 154)">
+<title>proc~~iscircular~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 1039,-154 1039,4 -4,4"/>
+<!-- proc~iscircular -->
+<g id="proc~~iscircular~~CalledByGraph_node1" class="node">
+<title>proc~iscircular</title>
+<polygon fill="none" stroke="black" points="1035,-108 796,-108 796,-84 1035,-84 1035,-108"/>
+<text text-anchor="middle" x="915.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTLinkedListClass::FTLinkedList%isCircular</text>
+</g>
+<!-- proc~addobjectsfromlist -->
+<g id="proc~~iscircular~~CalledByGraph_node2" class="node">
+<title>proc~addobjectsfromlist</title>
+<g id="a_proc~~iscircular~~CalledByGraph_node2"><a xlink:href=".././proc/addobjectsfromlist.html" xlink:title="FTLinkedListClass::FTLinkedList%addObjectsFromList">
+<polygon fill="#d9534f" stroke="#d9534f" points="738.5,-150 444.5,-150 444.5,-126 738.5,-126 738.5,-150"/>
+<text text-anchor="middle" x="591.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%addObjectsFromList</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjectsfromlist&#45;&gt;proc~iscircular -->
+<g id="proc~~iscircular~~CalledByGraph_edge1" class="edge">
+<title>proc~addobjectsfromlist&#45;&gt;proc~iscircular</title>
+<path fill="none" stroke="#000000" d="M689.95,-125.96C712.93,-123.07 737.33,-119.96 760,-117 778.43,-114.59 798.09,-111.97 816.99,-109.41"/>
+<polygon fill="#000000" stroke="#000000" points="817.65,-112.85 827.09,-108.04 816.71,-105.92 817.65,-112.85"/>
+</g>
+<!-- proc~removealllinkedlistobjects -->
+<g id="proc~~iscircular~~CalledByGraph_node3" class="node">
+<title>proc~removealllinkedlistobjects</title>
+<g id="a_proc~~iscircular~~CalledByGraph_node3"><a xlink:href=".././proc/removealllinkedlistobjects.html" xlink:title="FTLinkedListClass::FTLinkedList%removeAllLinkedListObjects">
+<polygon fill="#d9534f" stroke="#d9534f" points="760,-108 423,-108 423,-84 760,-84 760,-108"/>
+<text text-anchor="middle" x="591.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeAllLinkedListObjects</text>
+</a>
+</g>
+</g>
+<!-- proc~removealllinkedlistobjects&#45;&gt;proc~iscircular -->
+<g id="proc~~iscircular~~CalledByGraph_edge2" class="edge">
+<title>proc~removealllinkedlistobjects&#45;&gt;proc~iscircular</title>
+<path fill="none" stroke="#000000" d="M760.1,-96C768.68,-96 777.24,-96 785.68,-96"/>
+<polygon fill="#000000" stroke="#000000" points="785.9,-99.5 795.9,-96 785.9,-92.5 785.9,-99.5"/>
+</g>
+<!-- proc~removelinkedlistrecord -->
+<g id="proc~~iscircular~~CalledByGraph_node4" class="node">
+<title>proc~removelinkedlistrecord</title>
+<g id="a_proc~~iscircular~~CalledByGraph_node4"><a xlink:href=".././proc/removelinkedlistrecord.html" xlink:title="FTLinkedListClass::FTLinkedList%removeLinkedListRecord">
+<polygon fill="#d9534f" stroke="#d9534f" points="752,-66 431,-66 431,-42 752,-42 752,-66"/>
+<text text-anchor="middle" x="591.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeLinkedListRecord</text>
+</a>
+</g>
+</g>
+<!-- proc~removelinkedlistrecord&#45;&gt;proc~iscircular -->
+<g id="proc~~iscircular~~CalledByGraph_edge3" class="edge">
+<title>proc~removelinkedlistrecord&#45;&gt;proc~iscircular</title>
+<path fill="none" stroke="#000000" d="M689.95,-66.04C712.93,-68.93 737.33,-72.04 760,-75 778.43,-77.41 798.09,-80.03 816.99,-82.59"/>
+<polygon fill="#000000" stroke="#000000" points="816.71,-86.08 827.09,-83.96 817.65,-79.15 816.71,-86.08"/>
+</g>
+<!-- proc~destructftlinkedlist -->
+<g id="proc~~iscircular~~CalledByGraph_node5" class="node">
+<title>proc~destructftlinkedlist</title>
+<g id="a_proc~~iscircular~~CalledByGraph_node5"><a xlink:href=".././proc/destructftlinkedlist.html" xlink:title="FTLinkedListClass::destructFTLinkedList">
+<polygon fill="#d9534f" stroke="#d9534f" points="305,-108 82,-108 82,-84 305,-84 305,-108"/>
+<text text-anchor="middle" x="193.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::destructFTLinkedList</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftlinkedlist&#45;&gt;proc~removealllinkedlistobjects -->
+<g id="proc~~iscircular~~CalledByGraph_edge4" class="edge">
+<title>proc~destructftlinkedlist&#45;&gt;proc~removealllinkedlistobjects</title>
+<path fill="none" stroke="#000000" d="M305.07,-96C338.43,-96 375.94,-96 412.52,-96"/>
+<polygon fill="#000000" stroke="#000000" points="412.81,-99.5 422.81,-96 412.81,-92.5 412.81,-99.5"/>
+</g>
+<!-- proc~removecurrentrecord -->
+<g id="proc~~iscircular~~CalledByGraph_node6" class="node">
+<title>proc~removecurrentrecord</title>
+<g id="a_proc~~iscircular~~CalledByGraph_node6"><a xlink:href=".././proc/removecurrentrecord.html" xlink:title="FTLinkedListIteratorClass::FTLinkedListIterator%removeCurrentRecord">
+<polygon fill="#d9534f" stroke="#d9534f" points="387,-66 0,-66 0,-42 387,-42 387,-66"/>
+<text text-anchor="middle" x="193.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::FTLinkedListIterator%removeCurrentRecord</text>
+</a>
+</g>
+</g>
+<!-- proc~removecurrentrecord&#45;&gt;proc~removelinkedlistrecord -->
+<g id="proc~~iscircular~~CalledByGraph_edge5" class="edge">
+<title>proc~removecurrentrecord&#45;&gt;proc~removelinkedlistrecord</title>
+<path fill="none" stroke="#000000" d="M387.28,-54C398.42,-54 409.59,-54 420.64,-54"/>
+<polygon fill="#000000" stroke="#000000" points="420.74,-57.5 430.74,-54 420.74,-50.5 420.74,-57.5"/>
+</g>
+<!-- proc~removeobject -->
+<g id="proc~~iscircular~~CalledByGraph_node7" class="node">
+<title>proc~removeobject</title>
+<g id="a_proc~~iscircular~~CalledByGraph_node7"><a xlink:href=".././proc/removeobject.html" xlink:title="FTLinkedListClass::FTLinkedList%removeObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="326,-24 61,-24 61,0 326,0 326,-24"/>
+<text text-anchor="middle" x="193.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeObject</text>
+</a>
+</g>
+</g>
+<!-- proc~removeobject&#45;&gt;proc~removelinkedlistrecord -->
+<g id="proc~~iscircular~~CalledByGraph_edge6" class="edge">
+<title>proc~removeobject&#45;&gt;proc~removelinkedlistrecord</title>
+<path fill="none" stroke="#000000" d="M307.71,-24.01C357.54,-29.29 416.19,-35.51 467.12,-40.91"/>
+<polygon fill="#000000" stroke="#000000" points="466.89,-44.41 477.2,-41.98 467.63,-37.45 466.89,-44.41"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprociscircularCalledByGraph = svgPanZoom('#prociscircularCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
 
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
 
 
     
@@ -228,6 +380,7 @@
 
     
     
+
 
 
     
@@ -239,12 +392,12 @@
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
             </p>
@@ -254,17 +407,12 @@
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

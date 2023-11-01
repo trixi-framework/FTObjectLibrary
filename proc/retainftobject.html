@@ -10,77 +10,52 @@
 
     <title>retainFTObject &ndash; FTObjectLibrary</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -88,33 +63,37 @@
       <small>Subroutine</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 0.2% of total for procedures.">5 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.2% of total for procedures.">5 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/FTObjectClass.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></li>
-              <li><a href='../module/ftobjectclass.html'>FTObjectClass</a></li>
-          <li class="active">retainFTObject</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ftobjectclass.html'>FTObjectClass</a></li>
+            <li class="breadcrumb-item active" aria-current="page">retainFTObject</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -124,6 +103,7 @@
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
       <div id="sidebar">
       <h3>Contents</h3>
+  
   
   
   
@@ -166,11 +146,11 @@
         <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -192,32 +172,819 @@
   </table>
 
     <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~retainftobject~~CalledByGraph Pages: 1 -->
+<svg id="procretainftobjectCalledByGraph" width="641pt" height="134pt"
+ viewBox="0.00 0.00 641.00 133.85" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~retainftobject~~CalledByGraph" class="graph" transform="scale(4.42 4.42) rotate(0) translate(4 588)">
+<title>proc~~retainftobject~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-588 2831,-588 2831,4 -4,4"/>
+<!-- proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_node1" class="node">
+<title>proc~retainftobject</title>
+<polygon fill="none" stroke="black" points="2827,-253 2597,-253 2597,-229 2827,-229 2827,-253"/>
+<text text-anchor="middle" x="2712" y="-238.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTObjectClass::FTObject%retainFTObject</text>
+</g>
+<!-- proc~addobjecttoarray -->
+<g id="proc~~retainftobject~~CalledByGraph_node2" class="node">
+<title>proc~addobjecttoarray</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node2"><a xlink:href=".././proc/addobjecttoarray.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%addObjectToArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="2522.5,-478 2131.5,-478 2131.5,-454 2522.5,-454 2522.5,-478"/>
+<text text-anchor="middle" x="2327" y="-463.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%addObjectToArray</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjecttoarray&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge1" class="edge">
+<title>proc~addobjecttoarray&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2492.46,-453.95C2516.47,-447.87 2540.11,-439.21 2561,-427 2630,-386.66 2680.11,-301.68 2700.67,-262.11"/>
+<polygon fill="#000000" stroke="#000000" points="2703.85,-263.58 2705.26,-253.08 2697.61,-260.41 2703.85,-263.58"/>
+</g>
+<!-- proc~initwithobject -->
+<g id="proc~~retainftobject~~CalledByGraph_node3" class="node">
+<title>proc~initwithobject</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node3"><a xlink:href=".././proc/initwithobject.html" xlink:title="FTLinkedListRecordClass::FTLinkedListRecord%initWithObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="2497,-358 2157,-358 2157,-334 2497,-334 2497,-358"/>
+<text text-anchor="middle" x="2327" y="-343.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass::FTLinkedListRecord%initWithObject</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithobject&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge2" class="edge">
+<title>proc~initwithobject&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2497.01,-339.24C2518.82,-335.91 2540.63,-331.31 2561,-325 2608.6,-310.27 2657.9,-279.03 2686.45,-259.08"/>
+<polygon fill="#000000" stroke="#000000" points="2688.83,-261.68 2694.96,-253.03 2684.78,-255.97 2688.83,-261.68"/>
+</g>
+<!-- proc~initwithobjectandkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node4" class="node">
+<title>proc~initwithobjectandkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node4"><a xlink:href=".././proc/initwithobjectandkey.html" xlink:title="FTKeyObjectPairClass::FTKeyObjectPair%initWithObjectAndKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="2499.5,-418 2154.5,-418 2154.5,-394 2499.5,-394 2499.5,-418"/>
+<text text-anchor="middle" x="2327" y="-403.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass::FTKeyObjectPair%initWithObjectAndKey</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithobjectandkey&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge3" class="edge">
+<title>proc~initwithobjectandkey&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2472.98,-393.99C2502.98,-388.16 2533.72,-379.59 2561,-367 2616.65,-341.32 2668.28,-289.36 2693.98,-260.84"/>
+<polygon fill="#000000" stroke="#000000" points="2696.8,-262.94 2700.81,-253.13 2691.56,-258.29 2696.8,-262.94"/>
+</g>
+<!-- proc~initwithobjectandkeys -->
+<g id="proc~~retainftobject~~CalledByGraph_node5" class="node">
+<title>proc~initwithobjectandkeys</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node5"><a xlink:href=".././proc/initwithobjectandkeys.html" xlink:title="FTMultiIndexTableData::MultiIndexMatrixData%initWithObjectAndKeys">
+<polygon fill="#d9534f" stroke="#d9534f" points="2518,-316 2136,-316 2136,-292 2518,-292 2518,-316"/>
+<text text-anchor="middle" x="2327" y="-301.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData::MultiIndexMatrixData%initWithObjectAndKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithobjectandkeys&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge4" class="edge">
+<title>proc~initwithobjectandkeys&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2500.89,-291.98C2521.23,-289.52 2541.62,-286.55 2561,-283 2596.61,-276.47 2635.99,-265.28 2665.47,-256.1"/>
+<polygon fill="#000000" stroke="#000000" points="2666.58,-259.42 2675.06,-253.07 2664.47,-252.74 2666.58,-259.42"/>
+</g>
+<!-- proc~initwithobjectandkey~2 -->
+<g id="proc~~retainftobject~~CalledByGraph_node6" class="node">
+<title>proc~initwithobjectandkey~2</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node6"><a xlink:href=".././proc/initwithobjectandkey~2.html" xlink:title="FTSparseMatrixData::MatrixData%initWithObjectAndKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="2482.5,-232 2171.5,-232 2171.5,-208 2482.5,-208 2482.5,-232"/>
+<text text-anchor="middle" x="2327" y="-217.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData::MatrixData%initWithObjectAndKey</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithobjectandkey~2&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge5" class="edge">
+<title>proc~initwithobjectandkey~2&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2482.68,-228.48C2517.3,-230.38 2553.58,-232.37 2586.78,-234.19"/>
+<polygon fill="#000000" stroke="#000000" points="2586.8,-237.7 2596.98,-234.75 2587.19,-230.71 2586.8,-237.7"/>
+</g>
+<!-- proc~pop -->
+<g id="proc~~retainftobject~~CalledByGraph_node7" class="node">
+<title>proc~pop</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node7"><a xlink:href=".././proc/pop.html" xlink:title="FTStackClass::FTStack%pop">
+<polygon fill="#d9534f" stroke="#d9534f" points="2408,-274 2246,-274 2246,-250 2408,-250 2408,-274"/>
+<text text-anchor="middle" x="2327" y="-259.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass::FTStack%pop</text>
+</a>
+</g>
+</g>
+<!-- proc~pop&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge6" class="edge">
+<title>proc~pop&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2408.29,-257.6C2459.92,-254.77 2528.06,-251.03 2586.61,-247.82"/>
+<polygon fill="#000000" stroke="#000000" points="2586.88,-251.31 2596.67,-247.27 2586.5,-244.32 2586.88,-251.31"/>
+</g>
+<!-- proc~replaceobjectatindexwithobject -->
+<g id="proc~~retainftobject~~CalledByGraph_node8" class="node">
+<title>proc~replaceobjectatindexwithobject</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node8"><a xlink:href=".././proc/replaceobjectatindexwithobject.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%replaceObjectAtIndexWithObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="2561,-190 2093,-190 2093,-166 2561,-166 2561,-190"/>
+<text text-anchor="middle" x="2327" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%replaceObjectAtIndexWithObject</text>
+</a>
+</g>
+</g>
+<!-- proc~replaceobjectatindexwithobject&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge7" class="edge">
+<title>proc~replaceobjectatindexwithobject&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2500.89,-190.02C2521.23,-192.48 2541.62,-195.45 2561,-199 2596.61,-205.53 2635.99,-216.72 2665.47,-225.9"/>
+<polygon fill="#000000" stroke="#000000" points="2664.47,-229.26 2675.06,-228.93 2666.58,-222.58 2664.47,-229.26"/>
+</g>
+<!-- proc~setcurrenterror -->
+<g id="proc~~retainftobject~~CalledByGraph_node9" class="node">
+<title>proc~setcurrenterror</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node9"><a xlink:href=".././proc/setcurrenterror.html" xlink:title="SharedExceptionManagerModule::setCurrentError">
+<polygon fill="#d9534f" stroke="#d9534f" points="2466,-148 2188,-148 2188,-124 2466,-124 2466,-148"/>
+<text text-anchor="middle" x="2327" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::setCurrentError</text>
+</a>
+</g>
+</g>
+<!-- proc~setcurrenterror&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge8" class="edge">
+<title>proc~setcurrenterror&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2466.01,-138.82C2497.71,-142.1 2530.93,-147.69 2561,-157 2608.6,-171.73 2657.9,-202.97 2686.45,-222.92"/>
+<polygon fill="#000000" stroke="#000000" points="2684.78,-226.03 2694.96,-228.97 2688.83,-220.32 2684.78,-226.03"/>
+</g>
+<!-- proc~setinfodictionary -->
+<g id="proc~~retainftobject~~CalledByGraph_node10" class="node">
+<title>proc~setinfodictionary</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node10"><a xlink:href=".././proc/setinfodictionary.html" xlink:title="FTExceptionClass::FTException%setInfoDictionary">
+<polygon fill="#d9534f" stroke="#d9534f" points="2466.5,-106 2187.5,-106 2187.5,-82 2466.5,-82 2466.5,-106"/>
+<text text-anchor="middle" x="2327" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%setInfoDictionary</text>
+</a>
+</g>
+</g>
+<!-- proc~setinfodictionary&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge9" class="edge">
+<title>proc~setinfodictionary&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2466.56,-92.66C2498.48,-96.08 2531.66,-102.79 2561,-115 2617.87,-138.66 2669.35,-191.91 2694.61,-221.04"/>
+<polygon fill="#000000" stroke="#000000" points="2692.15,-223.56 2701.3,-228.91 2697.48,-219.02 2692.15,-223.56"/>
+</g>
+<!-- proc~setlinkedlist -->
+<g id="proc~~retainftobject~~CalledByGraph_node11" class="node">
+<title>proc~setlinkedlist</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node11"><a xlink:href=".././proc/setlinkedlist.html" xlink:title="FTLinkedListIteratorClass::FTLinkedListIterator%setLinkedList">
+<polygon fill="#d9534f" stroke="#d9534f" points="2496,-64 2158,-64 2158,-40 2496,-40 2496,-64"/>
+<text text-anchor="middle" x="2327" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::FTLinkedListIterator%setLinkedList</text>
+</a>
+</g>
+</g>
+<!-- proc~setlinkedlist&#45;&gt;proc~retainftobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge10" class="edge">
+<title>proc~setlinkedlist&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M2496.14,-51.89C2518.7,-56.21 2540.95,-62.92 2561,-73 2627.38,-106.38 2677.86,-182.77 2699.47,-219.92"/>
+<polygon fill="#000000" stroke="#000000" points="2696.58,-221.92 2704.57,-228.89 2702.67,-218.46 2696.58,-221.92"/>
+</g>
+<!-- proc~add -->
+<g id="proc~~retainftobject~~CalledByGraph_node12" class="node">
+<title>proc~add</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node12"><a xlink:href=".././proc/add.html" xlink:title="FTLinkedListClass::FTLinkedList%add">
+<polygon fill="#d9534f" stroke="#d9534f" points="1974,-314 1764,-314 1764,-290 1974,-290 1974,-314"/>
+<text text-anchor="middle" x="1869" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%add</text>
+</a>
+</g>
+</g>
+<!-- proc~add&#45;&gt;proc~initwithobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge13" class="edge">
+<title>proc~add&#45;&gt;proc~initwithobject</title>
+<path fill="none" stroke="#000000" d="M1974.06,-313.01C2011.55,-316.91 2054.16,-321.25 2093,-325 2120.94,-327.7 2150.77,-330.47 2179.44,-333.08"/>
+<polygon fill="#000000" stroke="#000000" points="2179.25,-336.58 2189.52,-334 2179.88,-329.61 2179.25,-336.58"/>
+</g>
+<!-- proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node13" class="node">
+<title>proc~addobjectforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node13"><a xlink:href=".././proc/addobjectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%addObjectForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1568.5,-440 1285.5,-440 1285.5,-416 1568.5,-416 1568.5,-440"/>
+<text text-anchor="middle" x="1427" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%addObjectForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjectforkey&#45;&gt;proc~initwithobjectandkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge16" class="edge">
+<title>proc~addobjectforkey&#45;&gt;proc~initwithobjectandkey</title>
+<path fill="none" stroke="#000000" d="M1568.81,-424.55C1724.04,-420.75 1974.25,-414.62 2144.19,-410.45"/>
+<polygon fill="#000000" stroke="#000000" points="2144.34,-413.95 2154.25,-410.21 2144.17,-406.95 2144.34,-413.95"/>
+</g>
+<!-- proc~addobjectforkey&#45;&gt;proc~add -->
+<g id="proc~~retainftobject~~CalledByGraph_edge24" class="edge">
+<title>proc~addobjectforkey&#45;&gt;proc~add</title>
+<path fill="none" stroke="#000000" d="M1568.78,-436.02C1596.02,-431.84 1622.92,-423.14 1645,-407 1677.79,-383.03 1648.39,-347.22 1681,-323 1701.84,-307.52 1727.75,-299.63 1753.59,-296.1"/>
+<polygon fill="#000000" stroke="#000000" points="1754.33,-299.54 1763.86,-294.92 1753.53,-292.59 1754.33,-299.54"/>
+</g>
+<!-- proc~addobjecttomultiindextableforkeys -->
+<g id="proc~~retainftobject~~CalledByGraph_node14" class="node">
+<title>proc~addobjecttomultiindextableforkeys</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node14"><a xlink:href=".././proc/addobjecttomultiindextableforkeys.html" xlink:title="FTMultiIndexTableClass::FTMultiIndexTable%addObjectToMultiIndexTableForKeys">
+<polygon fill="#d9534f" stroke="#d9534f" points="1645,-272 1209,-272 1209,-248 1645,-248 1645,-272"/>
+<text text-anchor="middle" x="1427" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass::FTMultiIndexTable%addObjectToMultiIndexTableForKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjecttomultiindextableforkeys&#45;&gt;proc~initwithobjectandkeys -->
+<g id="proc~~retainftobject~~CalledByGraph_edge17" class="edge">
+<title>proc~addobjecttomultiindextableforkeys&#45;&gt;proc~initwithobjectandkeys</title>
+<path fill="none" stroke="#000000" d="M1645,-264.47C1766.28,-267.66 1920.12,-272.87 2057,-281 2100.64,-283.59 2148.19,-287.35 2191.01,-291.08"/>
+<polygon fill="#000000" stroke="#000000" points="2190.94,-294.58 2201.21,-291.97 2191.55,-287.61 2190.94,-294.58"/>
+</g>
+<!-- proc~addobjecttomultiindextableforkeys&#45;&gt;proc~add -->
+<g id="proc~~retainftobject~~CalledByGraph_edge26" class="edge">
+<title>proc~addobjecttomultiindextableforkeys&#45;&gt;proc~add</title>
+<path fill="none" stroke="#000000" d="M1553.79,-272.01C1616.7,-278.01 1692.29,-285.23 1753.56,-291.08"/>
+<polygon fill="#000000" stroke="#000000" points="1753.36,-294.57 1763.65,-292.04 1754.03,-287.61 1753.36,-294.57"/>
+</g>
+<!-- proc~addobjecttosparsematrixforkeys -->
+<g id="proc~~retainftobject~~CalledByGraph_node15" class="node">
+<title>proc~addobjecttosparsematrixforkeys</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node15"><a xlink:href=".././proc/addobjecttosparsematrixforkeys.html" xlink:title="FTSparseMatrixClass::FTSparseMatrix%addObjectToSparseMatrixForKeys">
+<polygon fill="#d9534f" stroke="#d9534f" points="1627,-194 1227,-194 1227,-170 1627,-170 1627,-194"/>
+<text text-anchor="middle" x="1427" y="-179.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::FTSparseMatrix%addObjectToSparseMatrixForKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjecttosparsematrixforkeys&#45;&gt;proc~initwithobjectandkey~2 -->
+<g id="proc~~retainftobject~~CalledByGraph_edge18" class="edge">
+<title>proc~addobjecttosparsematrixforkeys&#45;&gt;proc~initwithobjectandkey~2</title>
+<path fill="none" stroke="#000000" d="M1627.09,-185.96C1750.86,-188.93 1913.24,-193.75 2057,-201 2090.73,-202.7 2126.8,-204.95 2161.23,-207.31"/>
+<polygon fill="#000000" stroke="#000000" points="2161.15,-210.81 2171.37,-208.01 2161.63,-203.83 2161.15,-210.81"/>
+</g>
+<!-- proc~addobjecttosparsematrixforkeys&#45;&gt;proc~add -->
+<g id="proc~~retainftobject~~CalledByGraph_edge27" class="edge">
+<title>proc~addobjecttosparsematrixforkeys&#45;&gt;proc~add</title>
+<path fill="none" stroke="#000000" d="M1475.05,-194.09C1519.05,-205.46 1586.56,-223.07 1645,-239 1703.82,-255.03 1771.14,-274.16 1816.29,-287.1"/>
+<polygon fill="#000000" stroke="#000000" points="1815.56,-290.53 1826.14,-289.93 1817.49,-283.8 1815.56,-290.53"/>
+</g>
+<!-- proc~sparsematrixcontainskeys -->
+<g id="proc~~retainftobject~~CalledByGraph_node24" class="node">
+<title>proc~sparsematrixcontainskeys</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node24"><a xlink:href=".././proc/sparsematrixcontainskeys.html" xlink:title="FTSparseMatrixClass::FTSparseMatrix%SparseMatrixContainsKeys">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="2050.5,-152 1687.5,-152 1687.5,-128 2050.5,-128 2050.5,-152"/>
+<text text-anchor="middle" x="1869" y="-137.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::FTSparseMatrix%SparseMatrixContainsKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjecttosparsematrixforkeys&#45;&gt;proc~sparsematrixcontainskeys -->
+<g id="proc~~retainftobject~~CalledByGraph_edge43" class="edge">
+<title>proc~addobjecttosparsematrixforkeys&#45;&gt;proc~sparsematrixcontainskeys</title>
+<path fill="none" stroke="#000000" d="M1553.79,-169.99C1609.5,-164.68 1675.14,-158.41 1731.98,-152.98"/>
+<polygon fill="#000000" stroke="#000000" points="1732.49,-156.45 1742.12,-152.02 1731.83,-149.48 1732.49,-156.45"/>
+</g>
+<!-- proc~alllinkedlistobjects -->
+<g id="proc~~retainftobject~~CalledByGraph_node16" class="node">
+<title>proc~alllinkedlistobjects</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node16"><a xlink:href=".././proc/alllinkedlistobjects.html" xlink:title="FTLinkedListClass::FTLinkedList%allLinkedListObjects">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="2016.5,-478 1721.5,-478 1721.5,-454 2016.5,-454 2016.5,-478"/>
+<text text-anchor="middle" x="1869" y="-463.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%allLinkedListObjects</text>
+</a>
+</g>
+</g>
+<!-- proc~alllinkedlistobjects&#45;&gt;proc~addobjecttoarray -->
+<g id="proc~~retainftobject~~CalledByGraph_edge11" class="edge">
+<title>proc~alllinkedlistobjects&#45;&gt;proc~addobjecttoarray</title>
+<path fill="none" stroke="#000000" d="M2016.79,-466C2049.97,-466 2085.78,-466 2120.86,-466"/>
+<polygon fill="#000000" stroke="#000000" points="2121.23,-469.5 2131.23,-466 2121.23,-462.5 2121.23,-469.5"/>
+</g>
+<!-- proc~allobjects -->
+<g id="proc~~retainftobject~~CalledByGraph_node17" class="node">
+<title>proc~allobjects</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node17"><a xlink:href=".././proc/allobjects.html" xlink:title="FTDictionaryClass::FTDictionary%AllObjects">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1992,-520 1746,-520 1746,-496 1992,-496 1992,-520"/>
+<text text-anchor="middle" x="1869" y="-505.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%AllObjects</text>
+</a>
+</g>
+</g>
+<!-- proc~allobjects&#45;&gt;proc~addobjecttoarray -->
+<g id="proc~~retainftobject~~CalledByGraph_edge12" class="edge">
+<title>proc~allobjects&#45;&gt;proc~addobjecttoarray</title>
+<path fill="none" stroke="#000000" d="M1992.2,-496.74C2051.68,-491.27 2123.5,-484.65 2185.25,-478.96"/>
+<polygon fill="#000000" stroke="#000000" points="2185.83,-482.42 2195.47,-478.02 2185.19,-475.45 2185.83,-482.42"/>
+</g>
+<!-- proc~initftexception -->
+<g id="proc~~retainftobject~~CalledByGraph_node18" class="node">
+<title>proc~initftexception</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node18"><a xlink:href=".././proc/initftexception.html" xlink:title="FTExceptionClass::FTException%initFTException">
+<polygon fill="#d9534f" stroke="#d9534f" points="681.5,-234 411.5,-234 411.5,-210 681.5,-210 681.5,-234"/>
+<text text-anchor="middle" x="546.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initFTException</text>
+</a>
+</g>
+</g>
+<!-- proc~initftexception&#45;&gt;proc~setinfodictionary -->
+<g id="proc~~retainftobject~~CalledByGraph_edge20" class="edge">
+<title>proc~initftexception&#45;&gt;proc~setinfodictionary</title>
+<path fill="none" stroke="#000000" d="M657.96,-209.97C860.51,-188.37 1305.09,-142.99 1681,-119 1851.03,-108.15 2046.61,-101.37 2177.41,-97.65"/>
+<polygon fill="#000000" stroke="#000000" points="2177.6,-101.15 2187.5,-97.37 2177.4,-94.15 2177.6,-101.15"/>
+</g>
+<!-- proc~initwithftlinkedlist -->
+<g id="proc~~retainftobject~~CalledByGraph_node19" class="node">
+<title>proc~initwithftlinkedlist</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node19"><a xlink:href=".././proc/initwithftlinkedlist.html" xlink:title="FTLinkedListIteratorClass::FTLinkedListIterator%initWithFTLinkedList">
+<polygon fill="#d9534f" stroke="#d9534f" points="2057,-66 1681,-66 1681,-42 2057,-42 2057,-66"/>
+<text text-anchor="middle" x="1869" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::FTLinkedListIterator%initWithFTLinkedList</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithftlinkedlist&#45;&gt;proc~setlinkedlist -->
+<g id="proc~~retainftobject~~CalledByGraph_edge21" class="edge">
+<title>proc~initwithftlinkedlist&#45;&gt;proc~setlinkedlist</title>
+<path fill="none" stroke="#000000" d="M2057.12,-53.18C2087.04,-53.05 2117.94,-52.91 2147.65,-52.78"/>
+<polygon fill="#000000" stroke="#000000" points="2147.69,-56.28 2157.68,-52.74 2147.66,-49.28 2147.69,-56.28"/>
+</g>
+<!-- proc~insertobjectafterrecord -->
+<g id="proc~~retainftobject~~CalledByGraph_node20" class="node">
+<title>proc~insertobjectafterrecord</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node20"><a xlink:href=".././proc/insertobjectafterrecord.html" xlink:title="FTLinkedListClass::FTLinkedList%insertObjectAfterRecord">
+<polygon fill="#d9534f" stroke="#d9534f" points="2027.5,-356 1710.5,-356 1710.5,-332 2027.5,-332 2027.5,-356"/>
+<text text-anchor="middle" x="1869" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%insertObjectAfterRecord</text>
+</a>
+</g>
+</g>
+<!-- proc~insertobjectafterrecord&#45;&gt;proc~initwithobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge14" class="edge">
+<title>proc~insertobjectafterrecord&#45;&gt;proc~initwithobject</title>
+<path fill="none" stroke="#000000" d="M2027.57,-344.69C2065.93,-344.86 2107.25,-345.04 2146.54,-345.21"/>
+<polygon fill="#000000" stroke="#000000" points="2146.74,-348.71 2156.76,-345.26 2146.77,-341.71 2146.74,-348.71"/>
+</g>
+<!-- proc~objectinsparsematrixforkeys -->
+<g id="proc~~retainftobject~~CalledByGraph_node21" class="node">
+<title>proc~objectinsparsematrixforkeys</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node21"><a xlink:href=".././proc/objectinsparsematrixforkeys.html" xlink:title="FTSparseMatrixClass::FTSparseMatrix%objectInSparseMatrixForKeys">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="2057,-24 1681,-24 1681,0 2057,0 2057,-24"/>
+<text text-anchor="middle" x="1869" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::FTSparseMatrix%objectInSparseMatrixForKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~objectinsparsematrixforkeys&#45;&gt;proc~setlinkedlist -->
+<g id="proc~~retainftobject~~CalledByGraph_edge22" class="edge">
+<title>proc~objectinsparsematrixforkeys&#45;&gt;proc~setlinkedlist</title>
+<path fill="none" stroke="#000000" d="M2006.82,-24C2061.02,-28.76 2123.47,-34.23 2178.67,-39.08"/>
+<polygon fill="#000000" stroke="#000000" points="2178.62,-42.59 2188.89,-39.97 2179.23,-35.61 2178.62,-42.59"/>
+</g>
+<!-- proc~poplastexception -->
+<g id="proc~~retainftobject~~CalledByGraph_node22" class="node">
+<title>proc~poplastexception</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node22"><a xlink:href=".././proc/poplastexception.html" xlink:title="SharedExceptionManagerModule::popLastException">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="2014.5,-234 1723.5,-234 1723.5,-210 2014.5,-210 2014.5,-234"/>
+<text text-anchor="middle" x="1869" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::popLastException</text>
+</a>
+</g>
+</g>
+<!-- proc~poplastexception&#45;&gt;proc~pop -->
+<g id="proc~~retainftobject~~CalledByGraph_edge19" class="edge">
+<title>proc~poplastexception&#45;&gt;proc~pop</title>
+<path fill="none" stroke="#000000" d="M2006.82,-234C2080.9,-240.5 2170.36,-248.35 2235.7,-254.08"/>
+<polygon fill="#000000" stroke="#000000" points="2235.7,-257.59 2245.97,-254.98 2236.31,-250.62 2235.7,-257.59"/>
+</g>
+<!-- proc~push -->
+<g id="proc~~retainftobject~~CalledByGraph_node23" class="node">
+<title>proc~push</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node23"><a xlink:href=".././proc/push.html" xlink:title="FTStackClass::FTStack%push">
+<polygon fill="#d9534f" stroke="#d9534f" points="1952.5,-398 1785.5,-398 1785.5,-374 1952.5,-374 1952.5,-398"/>
+<text text-anchor="middle" x="1869" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass::FTStack%push</text>
+</a>
+</g>
+</g>
+<!-- proc~push&#45;&gt;proc~initwithobject -->
+<g id="proc~~retainftobject~~CalledByGraph_edge15" class="edge">
+<title>proc~push&#45;&gt;proc~initwithobject</title>
+<path fill="none" stroke="#000000" d="M1952.58,-378.76C2015.58,-373.23 2104.01,-365.47 2179,-358.89"/>
+<polygon fill="#000000" stroke="#000000" points="2179.36,-362.38 2189.02,-358.02 2178.75,-355.4 2179.36,-362.38"/>
+</g>
+<!-- proc~sparsematrixcontainskeys&#45;&gt;proc~setlinkedlist -->
+<g id="proc~~retainftobject~~CalledByGraph_edge23" class="edge">
+<title>proc~sparsematrixcontainskeys&#45;&gt;proc~setlinkedlist</title>
+<path fill="none" stroke="#000000" d="M1902.72,-127.89C1945.74,-112.5 2023.94,-86.34 2093,-73 2110.66,-69.59 2129.19,-66.73 2147.75,-64.33"/>
+<polygon fill="#000000" stroke="#000000" points="2148.26,-67.79 2157.75,-63.08 2147.4,-60.85 2148.26,-67.79"/>
+</g>
+<!-- proc~adddoubleprecisionvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node25" class="node">
+<title>proc~adddoubleprecisionvalueforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node25"><a xlink:href=".././proc/adddoubleprecisionvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addDoublePrecisionValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1173,-482 751,-482 751,-458 1173,-458 1173,-482"/>
+<text text-anchor="middle" x="962" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addDoublePrecisionValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~adddoubleprecisionvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge29" class="edge">
+<title>proc~adddoubleprecisionvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1095.37,-457.99C1154.11,-452.66 1223.34,-446.38 1283.24,-440.95"/>
+<polygon fill="#000000" stroke="#000000" points="1283.89,-444.41 1293.53,-440.02 1283.26,-437.43 1283.89,-444.41"/>
+</g>
+<!-- proc~addintegervalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node26" class="node">
+<title>proc~addintegervalueforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node26"><a xlink:href=".././proc/addintegervalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addIntegerValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1149.5,-440 774.5,-440 774.5,-416 1149.5,-416 1149.5,-440"/>
+<text text-anchor="middle" x="962" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addIntegerValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addintegervalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge30" class="edge">
+<title>proc~addintegervalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1149.65,-428C1191.44,-428 1235.25,-428 1275.36,-428"/>
+<polygon fill="#000000" stroke="#000000" points="1275.48,-431.5 1285.48,-428 1275.48,-424.5 1275.48,-431.5"/>
+</g>
+<!-- proc~addlogicalvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node27" class="node">
+<title>proc~addlogicalvalueforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node27"><a xlink:href=".././proc/addlogicalvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addLogicalValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1149.5,-398 774.5,-398 774.5,-374 1149.5,-374 1149.5,-398"/>
+<text text-anchor="middle" x="962" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addLogicalValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addlogicalvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge31" class="edge">
+<title>proc~addlogicalvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1095.37,-398.01C1154.11,-403.34 1223.34,-409.62 1283.24,-415.05"/>
+<polygon fill="#000000" stroke="#000000" points="1283.26,-418.57 1293.53,-415.98 1283.89,-411.59 1283.26,-418.57"/>
+</g>
+<!-- proc~addobjectsfromlist -->
+<g id="proc~~retainftobject~~CalledByGraph_node28" class="node">
+<title>proc~addobjectsfromlist</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node28"><a xlink:href=".././proc/addobjectsfromlist.html" xlink:title="FTLinkedListClass::FTLinkedList%addObjectsFromList">
+<polygon fill="#d9534f" stroke="#d9534f" points="1574,-314 1280,-314 1280,-290 1574,-290 1574,-314"/>
+<text text-anchor="middle" x="1427" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%addObjectsFromList</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjectsfromlist&#45;&gt;proc~add -->
+<g id="proc~~retainftobject~~CalledByGraph_edge25" class="edge">
+<title>proc~addobjectsfromlist&#45;&gt;proc~add</title>
+<path fill="none" stroke="#000000" d="M1574.21,-302C1632.59,-302 1698.82,-302 1753.6,-302"/>
+<polygon fill="#000000" stroke="#000000" points="1753.69,-305.5 1763.69,-302 1753.69,-298.5 1753.69,-305.5"/>
+</g>
+<!-- proc~addquadvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node29" class="node">
+<title>proc~addquadvalueforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node29"><a xlink:href=".././proc/addquadvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addQuadValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1144.5,-276 779.5,-276 779.5,-252 1144.5,-252 1144.5,-276"/>
+<text text-anchor="middle" x="962" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addQuadValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addquadvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge32" class="edge">
+<title>proc~addquadvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1144.73,-267.58C1154.86,-272.14 1164.39,-277.87 1173,-285 1216.54,-321.06 1165.4,-371.01 1209,-407 1246.18,-437.69 1300.07,-443.04 1344.85,-440.67"/>
+<polygon fill="#000000" stroke="#000000" points="1345.1,-444.16 1354.85,-440.01 1344.64,-437.18 1345.1,-444.16"/>
+</g>
+<!-- proc~addrealvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node30" class="node">
+<title>proc~addrealvalueforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node30"><a xlink:href=".././proc/addrealvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addRealValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1142,-318 782,-318 782,-294 1142,-294 1142,-318"/>
+<text text-anchor="middle" x="962" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addRealValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addrealvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge33" class="edge">
+<title>proc~addrealvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1142.05,-315.12C1153.01,-319.59 1163.45,-325.14 1173,-332 1203.02,-353.58 1178.69,-385.82 1209,-407 1228.63,-420.72 1251.82,-428.94 1275.6,-433.54"/>
+<polygon fill="#000000" stroke="#000000" points="1275.01,-436.99 1285.46,-435.24 1276.2,-430.09 1275.01,-436.99"/>
+</g>
+<!-- proc~addstring -->
+<g id="proc~~retainftobject~~CalledByGraph_node31" class="node">
+<title>proc~addstring</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node31"><a xlink:href=".././proc/addstring.html" xlink:title="FTStringSetClass::FTStringSet%AddString">
+<polygon fill="#d9534f" stroke="#d9534f" points="1078,-524 846,-524 846,-500 1078,-500 1078,-524"/>
+<text text-anchor="middle" x="962" y="-509.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%AddString</text>
+</a>
+</g>
+</g>
+<!-- proc~addstring&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge34" class="edge">
+<title>proc~addstring&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1078.12,-503.51C1109.05,-500.41 1142.4,-496.31 1173,-491 1244.08,-478.66 1324.71,-457.27 1375.46,-442.88"/>
+<polygon fill="#000000" stroke="#000000" points="1376.54,-446.21 1385.2,-440.1 1374.62,-439.48 1376.54,-446.21"/>
+</g>
+<!-- proc~addstringvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node32" class="node">
+<title>proc~addstringvalueforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node32"><a xlink:href=".././proc/addstringvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addStringValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1146,-566 778,-566 778,-542 1146,-542 1146,-566"/>
+<text text-anchor="middle" x="962" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addStringValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addstringvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge35" class="edge">
+<title>proc~addstringvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1129.15,-541.97C1144.07,-539.51 1158.88,-536.55 1173,-533 1256.06,-512.1 1347.46,-468.64 1394.37,-444.71"/>
+<polygon fill="#000000" stroke="#000000" points="1396.12,-447.74 1403.41,-440.05 1392.92,-441.52 1396.12,-447.74"/>
+</g>
+<!-- proc~initassertionfailureexception -->
+<g id="proc~~retainftobject~~CalledByGraph_node33" class="node">
+<title>proc~initassertionfailureexception</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node33"><a xlink:href=".././proc/initassertionfailureexception.html" xlink:title="FTExceptionClass::FTException%initAssertionFailureException">
+<polygon fill="#d9534f" stroke="#d9534f" points="342,-318 0,-318 0,-294 342,-294 342,-318"/>
+<text text-anchor="middle" x="171" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initAssertionFailureException</text>
+</a>
+</g>
+</g>
+<!-- proc~initassertionfailureexception&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge36" class="edge">
+<title>proc~initassertionfailureexception&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M342.18,-312.57C618.19,-323.72 1136.51,-346.9 1173,-365 1195.02,-375.93 1187.19,-395.66 1209,-407 1229.42,-417.62 1252.39,-424.37 1275.54,-428.5"/>
+<polygon fill="#000000" stroke="#000000" points="1275.03,-431.97 1285.46,-430.12 1276.15,-425.06 1275.03,-431.97"/>
+</g>
+<!-- proc~initassertionfailureexception&#45;&gt;proc~initftexception -->
+<g id="proc~~retainftobject~~CalledByGraph_edge37" class="edge">
+<title>proc~initassertionfailureexception&#45;&gt;proc~initftexception</title>
+<path fill="none" stroke="#000000" d="M321.88,-293.99C328.83,-291.42 335.58,-288.45 342,-285 363.66,-273.37 356.35,-254.65 378,-243 385.51,-238.96 393.48,-235.57 401.71,-232.72"/>
+<polygon fill="#000000" stroke="#000000" points="402.99,-235.99 411.47,-229.64 400.88,-229.32 402.99,-235.99"/>
+</g>
+<!-- none~addvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_node39" class="node">
+<title>none~addvalueforkey</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node39"><a xlink:href=".././type/ftvaluedictionary.html#boundprocedure-addvalueforkey" xlink:title="FTValueDictionaryClass::FTValueDictionary%addValueForKey">
+<polygon fill="#a7506f" stroke="#a7506f" points="715,-276 378,-276 378,-252 715,-252 715,-276"/>
+<text text-anchor="middle" x="546.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~initassertionfailureexception&#45;&gt;none~addvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge50" class="edge">
+<title>proc~initassertionfailureexception&#45;&gt;none~addvalueforkey</title>
+<path fill="none" stroke="#000000" d="M279.03,-293.96C325.82,-288.7 380.83,-282.52 428.68,-277.14"/>
+<polygon fill="#000000" stroke="#000000" points="429.23,-280.6 438.78,-276 428.45,-273.64 429.23,-280.6"/>
+</g>
+<!-- proc~initfatalexception -->
+<g id="proc~~retainftobject~~CalledByGraph_node34" class="node">
+<title>proc~initfatalexception</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node34"><a xlink:href=".././proc/initfatalexception.html" xlink:title="FTExceptionClass::FTException%initFatalException">
+<polygon fill="#d9534f" stroke="#d9534f" points="312.5,-234 29.5,-234 29.5,-210 312.5,-210 312.5,-234"/>
+<text text-anchor="middle" x="171" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initFatalException</text>
+</a>
+</g>
+</g>
+<!-- proc~initfatalexception&#45;&gt;proc~initftexception -->
+<g id="proc~~retainftobject~~CalledByGraph_edge38" class="edge">
+<title>proc~initfatalexception&#45;&gt;proc~initftexception</title>
+<path fill="none" stroke="#000000" d="M312.67,-222C341.62,-222 372.15,-222 401.22,-222"/>
+<polygon fill="#000000" stroke="#000000" points="401.44,-225.5 411.44,-222 401.44,-218.5 401.44,-225.5"/>
+</g>
+<!-- proc~initfatalexception&#45;&gt;none~addvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge51" class="edge">
+<title>proc~initfatalexception&#45;&gt;none~addvalueforkey</title>
+<path fill="none" stroke="#000000" d="M279.03,-234.04C325.82,-239.3 380.83,-245.48 428.68,-250.86"/>
+<polygon fill="#000000" stroke="#000000" points="428.45,-254.36 438.78,-252 429.23,-247.4 428.45,-254.36"/>
+</g>
+<!-- proc~initwarningexception -->
+<g id="proc~~retainftobject~~CalledByGraph_node35" class="node">
+<title>proc~initwarningexception</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node35"><a xlink:href=".././proc/initwarningexception.html" xlink:title="FTExceptionClass::FTException%initWarningException">
+<polygon fill="#d9534f" stroke="#d9534f" points="321.5,-276 20.5,-276 20.5,-252 321.5,-252 321.5,-276"/>
+<text text-anchor="middle" x="171" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initWarningException</text>
+</a>
+</g>
+</g>
+<!-- proc~initwarningexception&#45;&gt;proc~initftexception -->
+<g id="proc~~retainftobject~~CalledByGraph_edge39" class="edge">
+<title>proc~initwarningexception&#45;&gt;proc~initftexception</title>
+<path fill="none" stroke="#000000" d="M279.03,-251.96C325.82,-246.7 380.83,-240.52 428.68,-235.14"/>
+<polygon fill="#000000" stroke="#000000" points="429.23,-238.6 438.78,-234 428.45,-231.64 429.23,-238.6"/>
+</g>
+<!-- proc~initwarningexception&#45;&gt;none~addvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge52" class="edge">
+<title>proc~initwarningexception&#45;&gt;none~addvalueforkey</title>
+<path fill="none" stroke="#000000" d="M321.76,-264C336.91,-264 352.4,-264 367.81,-264"/>
+<polygon fill="#000000" stroke="#000000" points="367.92,-267.5 377.92,-264 367.92,-260.5 367.92,-267.5"/>
+</g>
+<!-- proc~insertobjectafterobject -->
+<g id="proc~~retainftobject~~CalledByGraph_node36" class="node">
+<title>proc~insertobjectafterobject</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node36"><a xlink:href=".././proc/insertobjectafterobject.html" xlink:title="FTLinkedListClass::FTLinkedList%insertObjectAfterObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="1584,-356 1270,-356 1270,-332 1584,-332 1584,-356"/>
+<text text-anchor="middle" x="1427" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%insertObjectAfterObject</text>
+</a>
+</g>
+</g>
+<!-- proc~insertobjectafterobject&#45;&gt;proc~add -->
+<g id="proc~~retainftobject~~CalledByGraph_edge28" class="edge">
+<title>proc~insertobjectafterobject&#45;&gt;proc~add</title>
+<path fill="none" stroke="#000000" d="M1553.79,-331.99C1616.7,-325.99 1692.29,-318.77 1753.56,-312.92"/>
+<polygon fill="#000000" stroke="#000000" points="1754.03,-316.39 1763.65,-311.96 1753.36,-309.43 1754.03,-316.39"/>
+</g>
+<!-- proc~insertobjectafterobject&#45;&gt;proc~insertobjectafterrecord -->
+<g id="proc~~retainftobject~~CalledByGraph_edge41" class="edge">
+<title>proc~insertobjectafterobject&#45;&gt;proc~insertobjectafterrecord</title>
+<path fill="none" stroke="#000000" d="M1584.06,-344C1621.71,-344 1662.11,-344 1700.27,-344"/>
+<polygon fill="#000000" stroke="#000000" points="1700.44,-347.5 1710.44,-344 1700.44,-340.5 1700.44,-347.5"/>
+</g>
+<!-- proc~printallexceptions -->
+<g id="proc~~retainftobject~~CalledByGraph_node37" class="node">
+<title>proc~printallexceptions</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node37"><a xlink:href=".././proc/printallexceptions.html" xlink:title="SharedExceptionManagerModule::printAllExceptions">
+<polygon fill="#d9534f" stroke="#d9534f" points="1573,-66 1281,-66 1281,-42 1573,-42 1573,-66"/>
+<text text-anchor="middle" x="1427" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::printAllExceptions</text>
+</a>
+</g>
+</g>
+<!-- proc~printallexceptions&#45;&gt;proc~initwithftlinkedlist -->
+<g id="proc~~retainftobject~~CalledByGraph_edge40" class="edge">
+<title>proc~printallexceptions&#45;&gt;proc~initwithftlinkedlist</title>
+<path fill="none" stroke="#000000" d="M1573.29,-54C1604.48,-54 1637.95,-54 1670.73,-54"/>
+<polygon fill="#000000" stroke="#000000" points="1670.88,-57.5 1680.88,-54 1670.88,-50.5 1670.88,-57.5"/>
+</g>
+<!-- proc~throw -->
+<g id="proc~~retainftobject~~CalledByGraph_node38" class="node">
+<title>proc~throw</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node38"><a xlink:href=".././proc/throw.html" xlink:title="SharedExceptionManagerModule::throw">
+<polygon fill="#d9534f" stroke="#d9534f" points="1540,-398 1314,-398 1314,-374 1540,-374 1540,-398"/>
+<text text-anchor="middle" x="1427" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::throw</text>
+</a>
+</g>
+</g>
+<!-- proc~throw&#45;&gt;proc~push -->
+<g id="proc~~retainftobject~~CalledByGraph_edge42" class="edge">
+<title>proc~throw&#45;&gt;proc~push</title>
+<path fill="none" stroke="#000000" d="M1540.17,-386C1612.82,-386 1706.32,-386 1774.86,-386"/>
+<polygon fill="#000000" stroke="#000000" points="1775.22,-389.5 1785.22,-386 1775.22,-382.5 1775.22,-389.5"/>
+</g>
+<!-- none~addvalueforkey&#45;&gt;proc~addquadvalueforkey -->
+<g id="proc~~retainftobject~~CalledByGraph_edge44" class="edge">
+<title>none~addvalueforkey&#45;&gt;proc~addquadvalueforkey</title>
+<path fill="none" stroke="#000000" d="M715.09,-264C732.94,-264 751.19,-264 769.29,-264"/>
+<polygon fill="#000000" stroke="#000000" points="769.33,-267.5 779.33,-264 769.33,-260.5 769.33,-267.5"/>
+</g>
+<!-- proc~destructftexceptions -->
+<g id="proc~~retainftobject~~CalledByGraph_node40" class="node">
+<title>proc~destructftexceptions</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node40"><a xlink:href=".././proc/destructftexceptions.html" xlink:title="SharedExceptionManagerModule::destructFTExceptions">
+<polygon fill="#d9534f" stroke="#d9534f" points="1117,-66 807,-66 807,-42 1117,-42 1117,-66"/>
+<text text-anchor="middle" x="962" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::destructFTExceptions</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftexceptions&#45;&gt;proc~printallexceptions -->
+<g id="proc~~retainftobject~~CalledByGraph_edge49" class="edge">
+<title>proc~destructftexceptions&#45;&gt;proc~printallexceptions</title>
+<path fill="none" stroke="#000000" d="M1117.17,-54C1166.52,-54 1221.16,-54 1270.59,-54"/>
+<polygon fill="#000000" stroke="#000000" points="1270.73,-57.5 1280.73,-54 1270.73,-50.5 1270.73,-57.5"/>
+</g>
+<!-- proc~initwithstrings -->
+<g id="proc~~retainftobject~~CalledByGraph_node41" class="node">
+<title>proc~initwithstrings</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node41"><a xlink:href=".././proc/initwithstrings.html" xlink:title="FTStringSetClass::FTStringSet%initWithStrings">
+<polygon fill="#d9534f" stroke="#d9534f" points="675.5,-504 417.5,-504 417.5,-480 675.5,-480 675.5,-504"/>
+<text text-anchor="middle" x="546.5" y="-489.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%initWithStrings</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithstrings&#45;&gt;proc~addstring -->
+<g id="proc~~retainftobject~~CalledByGraph_edge45" class="edge">
+<title>proc~initwithstrings&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M675.5,-498.19C726.53,-500.66 785.09,-503.49 835.84,-505.95"/>
+<polygon fill="#000000" stroke="#000000" points="835.72,-509.44 845.88,-506.43 836.06,-502.45 835.72,-509.44"/>
+</g>
+<!-- proc~intersectionwithset -->
+<g id="proc~~retainftobject~~CalledByGraph_node42" class="node">
+<title>proc~intersectionwithset</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node42"><a xlink:href=".././proc/intersectionwithset.html" xlink:title="FTStringSetClass::FTStringSet%intersectionWithSet">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="689,-462 404,-462 404,-438 689,-438 689,-462"/>
+<text text-anchor="middle" x="546.5" y="-447.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%intersectionWithSet</text>
+</a>
+</g>
+</g>
+<!-- proc~intersectionwithset&#45;&gt;proc~addstring -->
+<g id="proc~~retainftobject~~CalledByGraph_edge46" class="edge">
+<title>proc~intersectionwithset&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M681.1,-462.03C692.69,-464.49 704.14,-467.45 715,-471 732.4,-476.69 733.53,-485.53 751,-491 777.9,-499.42 807.6,-504.68 835.98,-507.91"/>
+<polygon fill="#000000" stroke="#000000" points="835.64,-511.39 845.96,-508.97 836.38,-504.43 835.64,-511.39"/>
+</g>
+<!-- proc~setfromdifference -->
+<g id="proc~~retainftobject~~CalledByGraph_node43" class="node">
+<title>proc~setfromdifference</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node43"><a xlink:href=".././proc/setfromdifference.html" xlink:title="FTStringSetClass::FTStringSet%setFromDifference">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="685.5,-584 407.5,-584 407.5,-560 685.5,-560 685.5,-584"/>
+<text text-anchor="middle" x="546.5" y="-569.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%setFromDifference</text>
+</a>
+</g>
+</g>
+<!-- proc~setfromdifference&#45;&gt;proc~addstring -->
+<g id="proc~~retainftobject~~CalledByGraph_edge47" class="edge">
+<title>proc~setfromdifference&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M646.01,-559.94C668.84,-556.26 692.9,-551.65 715,-546 731.48,-541.79 734.41,-536.76 751,-533 778.05,-526.86 807.47,-522.52 835.48,-519.44"/>
+<polygon fill="#000000" stroke="#000000" points="836.16,-522.89 845.73,-518.37 835.42,-515.93 836.16,-522.89"/>
+</g>
+<!-- proc~unionwithset -->
+<g id="proc~~retainftobject~~CalledByGraph_node44" class="node">
+<title>proc~unionwithset</title>
+<g id="a_proc~~retainftobject~~CalledByGraph_node44"><a xlink:href=".././proc/unionwithset.html" xlink:title="FTStringSetClass::FTStringSet%unionWithSet">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="297,-524 45,-524 45,-500 297,-500 297,-524"/>
+<text text-anchor="middle" x="171" y="-509.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%unionWithSet</text>
+</a>
+</g>
+</g>
+<!-- proc~unionwithset&#45;&gt;proc~addstring -->
+<g id="proc~~retainftobject~~CalledByGraph_edge48" class="edge">
+<title>proc~unionwithset&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M297,-512.7C323.73,-512.83 351.8,-512.94 378,-513 527.78,-513.36 565.22,-513.3 715,-513 754.21,-512.92 796.92,-512.77 835.6,-512.61"/>
+<polygon fill="#000000" stroke="#000000" points="835.88,-516.11 845.86,-512.56 835.85,-509.11 835.88,-516.11"/>
+</g>
+<!-- proc~unionwithset&#45;&gt;proc~initwithstrings -->
+<g id="proc~~retainftobject~~CalledByGraph_edge53" class="edge">
+<title>proc~unionwithset&#45;&gt;proc~initwithstrings</title>
+<path fill="none" stroke="#000000" d="M297.15,-505.3C332.51,-503.4 371.2,-501.33 407.28,-499.4"/>
+<polygon fill="#000000" stroke="#000000" points="407.59,-502.89 417.39,-498.86 407.21,-495.9 407.59,-502.89"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocretainftobjectCalledByGraph = svgPanZoom('#procretainftobjectCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
 
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
 
 
     
@@ -225,6 +992,7 @@
 
     
     
+
 
 
     
@@ -236,12 +1004,12 @@
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
             </p>
@@ -251,17 +1019,12 @@
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

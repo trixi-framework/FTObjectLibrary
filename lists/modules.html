@@ -11,77 +11,52 @@
     <title>All Modules &ndash; FTObjectLibrary
 </title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -130,26 +105,24 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
  to easily add fundamental (Real, integer,…) values to a dictionary.</p><a href="../module/ftvaluedictionaryclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
 <!--active-->			   <tr class=""><td><a href='../module/hashmodule.html'>HashModule</a></td><td><a href='../sourcefile/hash.f90.html'>Hash.f90</a></td><td></td></tr>
 <!---->			   <tr class="active"><td><a href='../module/sharedexceptionmanagermodule.html'>SharedExceptionManagerModule</a></td><td><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></td><td><p>All exceptions are posted to the SharedExceptionManagerModule. </p><a href="../module/sharedexceptionmanagermodule.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/testsuitemanagerclass.html'>TestSuiteManagerClass</a></td><td><a href='../sourcefile/testsuitemanagerclass.f90.html'>TestSuiteManagerClass.f90</a></td><td><p>The TestSuiteManager class defines methods to easily
- put together and run a suite of unit tests. </p><a href="../module/testsuitemanagerclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			 </tbody></table>
+<!--active-->			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: module~~graph~~ModuleGraph Pages: 1 -->
-<svg id="modulegraphModuleGraph" width="855pt" height="337pt"
- viewBox="0.00 0.00 855.00 336.55" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~graph~~ModuleGraph" class="graph" transform="scale(1.6 1.6) rotate(0) translate(4 533.3)">
+<svg id="modulegraphModuleGraph" width="855pt" height="395pt"
+ viewBox="0.00 0.00 855.00 394.62" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~graph~~ModuleGraph" class="graph" transform="scale(1.6 1.6) rotate(0) translate(4 626)">
 <title>module~~graph~~ModuleGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-533.3 1361,-533.3 1361,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-626 1361,-626 1361,4 -4,4"/>
 <!-- module~comparisonsmodule -->
 <g id="module~~graph~~ModuleGraph_node1" class="node">
 <title>module~comparisonsmodule</title>
 <g id="a_module~~graph~~ModuleGraph_node1"><a xlink:href=".././module/comparisonsmodule.html" xlink:title="ComparisonsModule">
-<polygon fill="#337ab7" stroke="#337ab7" points="787,-489.3 666,-489.3 666,-465.3 787,-465.3 787,-489.3"/>
-<text text-anchor="middle" x="726.5" y="-474.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ComparisonsModule</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="787,-502 666,-502 666,-478 787,-478 787,-502"/>
+<text text-anchor="middle" x="726.5" y="-487.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ComparisonsModule</text>
 </a>
 </g>
 </g>
@@ -157,63 +130,61 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <g id="module~~graph~~ModuleGraph_node15" class="node">
 <title>module~ftolconstants</title>
 <g id="a_module~~graph~~ModuleGraph_node15"><a xlink:href=".././module/ftolconstants.html" xlink:title="FTOLConstants">
-<polygon fill="#337ab7" stroke="#337ab7" points="602,-529.3 510,-529.3 510,-505.3 602,-505.3 602,-529.3"/>
-<text text-anchor="middle" x="556" y="-514.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="602,-542 510,-542 510,-518 602,-518 602,-542"/>
+<text text-anchor="middle" x="556" y="-527.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants</text>
 </a>
 </g>
 </g>
 <!-- module~comparisonsmodule&#45;&gt;module~ftolconstants -->
 <g id="module~~graph~~ModuleGraph_edge2" class="edge">
 <title>module~comparisonsmodule&#45;&gt;module~ftolconstants</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.94,-489.3C655.03,-494.03 632.12,-499.47 611.81,-504.29"/>
-<polygon fill="#000000" stroke="#000000" points="611,-500.88 602.08,-506.6 612.62,-507.69 611,-500.88"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.94,-502C655.03,-506.73 632.12,-512.17 611.81,-516.99"/>
+<polygon fill="#000000" stroke="#000000" points="611,-513.58 602.08,-519.3 612.62,-520.39 611,-513.58"/>
 </g>
 <!-- iso_fortran_env -->
 <g id="module~~graph~~ModuleGraph_node26" class="node">
 <title>iso_fortran_env</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="603,-487.3 509,-487.3 509,-463.3 603,-463.3 603,-487.3"/>
-<text text-anchor="middle" x="556" y="-472.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="603,-500 509,-500 509,-476 603,-476 603,-500"/>
+<text text-anchor="middle" x="556" y="-485.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
 </g>
 <!-- module~comparisonsmodule&#45;&gt;iso_fortran_env -->
 <g id="module~~graph~~ModuleGraph_edge1" class="edge">
 <title>module~comparisonsmodule&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M665.62,-476.59C648.62,-476.39 630.17,-476.17 613.39,-475.97"/>
-<polygon fill="#000000" stroke="#000000" points="613.22,-472.47 603.18,-475.85 613.14,-479.46 613.22,-472.47"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M665.62,-489.29C648.62,-489.09 630.17,-488.87 613.39,-488.67"/>
+<polygon fill="#000000" stroke="#000000" points="613.22,-485.17 603.18,-488.55 613.14,-492.17 613.22,-485.17"/>
 </g>
 <!-- module~ftassertions -->
 <g id="module~~graph~~ModuleGraph_node2" class="node">
 <title>module~ftassertions</title>
 <g id="a_module~~graph~~ModuleGraph_node2"><a xlink:href=".././module/ftassertions.html" xlink:title="FTAssertions">
-<polygon fill="#337ab7" stroke="#337ab7" points="932,-489.3 853,-489.3 853,-465.3 932,-465.3 932,-489.3"/>
-<text text-anchor="middle" x="892.5" y="-474.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertions</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="932,-462 853,-462 853,-438 932,-438 932,-462"/>
+<text text-anchor="middle" x="892.5" y="-447.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertions</text>
 </a>
 </g>
 </g>
 <!-- module~ftassertions&#45;&gt;module~comparisonsmodule -->
 <g id="module~~graph~~ModuleGraph_edge4" class="edge">
 <title>module~ftassertions&#45;&gt;module~comparisonsmodule</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M852.63,-477.3C836.09,-477.3 816.28,-477.3 797.35,-477.3"/>
-<polygon fill="#000000" stroke="#000000" points="797.26,-473.8 787.26,-477.3 797.26,-480.8 797.26,-473.8"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M852.63,-459.48C833,-464.27 808.76,-470.18 786.86,-475.52"/>
+<polygon fill="#000000" stroke="#000000" points="785.87,-472.16 776.98,-477.93 787.53,-478.96 785.87,-472.16"/>
 </g>
 <!-- module~ftassertions&#45;&gt;module~ftolconstants -->
 <g id="module~~graph~~ModuleGraph_edge5" class="edge">
 <title>module~ftassertions&#45;&gt;module~ftolconstants</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.5,-517.3C687.81,-519.45 645.31,-519.43 612.42,-518.88"/>
-<polygon fill="#000000" stroke="#000000" points="612.16,-515.38 602.1,-518.69 612.03,-522.38 612.16,-515.38"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M876.09,-462.14C856.75,-476.62 822,-500.21 788,-511 730.11,-529.37 660.19,-532.68 612.55,-532.31"/>
+<polygon fill="#000000" stroke="#000000" points="612.48,-528.81 602.43,-532.17 612.38,-535.81 612.48,-528.81"/>
 </g>
 <!-- module~ftassertions&#45;&gt;iso_fortran_env -->
 <g id="module~~graph~~ModuleGraph_edge3" class="edge">
 <title>module~ftassertions&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M857.81,-489.34C825.04,-500.14 773.58,-514.67 727.5,-517.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.5,-517.3C713.83,-517.96 654.44,-502.4 609.44,-490.03"/>
-<polygon fill="#000000" stroke="#000000" points="610.36,-486.66 599.79,-487.37 608.5,-493.41 610.36,-486.66"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M852.83,-445.13C819.24,-442.04 769.52,-440.26 727.5,-450"/>
 </g>
 <!-- module~ftdataclass -->
 <g id="module~~graph~~ModuleGraph_node3" class="node">
 <title>module~ftdataclass</title>
 <g id="a_module~~graph~~ModuleGraph_node3"><a xlink:href=".././module/ftdataclass.html" xlink:title="FTDataClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="243.5,-487.3 164.5,-487.3 164.5,-463.3 243.5,-463.3 243.5,-487.3"/>
-<text text-anchor="middle" x="204" y="-472.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDataClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="243.5,-622 164.5,-622 164.5,-598 243.5,-598 243.5,-622"/>
+<text text-anchor="middle" x="204" y="-607.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDataClass</text>
 </a>
 </g>
 </g>
@@ -221,23 +192,23 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <g id="module~~graph~~ModuleGraph_node13" class="node">
 <title>module~ftobjectclass</title>
 <g id="a_module~~graph~~ModuleGraph_node13"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="88,-365.3 0,-365.3 0,-341.3 88,-341.3 88,-365.3"/>
-<text text-anchor="middle" x="44" y="-350.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="88,-300 0,-300 0,-276 88,-276 88,-300"/>
+<text text-anchor="middle" x="44" y="-285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftdataclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge6" class="edge">
 <title>module~ftdataclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M164.42,-467.3C150.87,-463.32 136.04,-457.53 124,-449.3 94.98,-429.44 70.91,-395.99 57.23,-374.28"/>
-<polygon fill="#000000" stroke="#000000" points="60.07,-372.2 51.86,-365.49 54.09,-375.85 60.07,-372.2"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M164.24,-605.14C149.86,-601.5 134.51,-595.13 124,-584 49.67,-505.3 43.6,-364.65 44.23,-310.29"/>
+<polygon fill="#000000" stroke="#000000" points="47.73,-310.13 44.44,-300.06 40.73,-309.98 47.73,-310.13"/>
 </g>
 <!-- module~ftdictionaryclass -->
 <g id="module~~graph~~ModuleGraph_node4" class="node">
 <title>module~ftdictionaryclass</title>
 <g id="a_module~~graph~~ModuleGraph_node4"><a xlink:href=".././module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="780.5,-289.3 672.5,-289.3 672.5,-265.3 780.5,-265.3 780.5,-289.3"/>
-<text text-anchor="middle" x="726.5" y="-274.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="780.5,-222 672.5,-222 672.5,-198 780.5,-198 780.5,-222"/>
+<text text-anchor="middle" x="726.5" y="-207.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
 </a>
 </g>
 </g>
@@ -245,472 +216,462 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <g id="module~~graph~~ModuleGraph_node6" class="node">
 <title>module~ftkeyobjectpairclass</title>
 <g id="a_module~~graph~~ModuleGraph_node6"><a xlink:href=".././module/ftkeyobjectpairclass.html" xlink:title="FTKeyObjectPairClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="447,-325.3 320,-325.3 320,-301.3 447,-301.3 447,-325.3"/>
-<text text-anchor="middle" x="383.5" y="-310.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="447,-260 320,-260 320,-236 447,-236 447,-260"/>
+<text text-anchor="middle" x="383.5" y="-245.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftdictionaryclass&#45;&gt;module~ftkeyobjectpairclass -->
 <g id="module~~graph~~ModuleGraph_edge7" class="edge">
 <title>module~ftdictionaryclass&#45;&gt;module~ftkeyobjectpairclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M672.3,-287.62C658.26,-290.08 643.09,-292.51 629,-294.3 571.53,-301.58 506.07,-306.49 457.36,-309.49"/>
-<polygon fill="#000000" stroke="#000000" points="457,-306 447.23,-310.1 457.42,-312.99 457,-306"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M676.66,-222.07C661.47,-225.43 644.62,-228.77 629,-231 571.58,-239.2 506,-243.49 457.21,-245.7"/>
+<polygon fill="#000000" stroke="#000000" points="456.91,-242.21 447.07,-246.15 457.21,-249.21 456.91,-242.21"/>
 </g>
 <!-- module~ftlinkedlistclass -->
 <g id="module~~graph~~ModuleGraph_node7" class="node">
 <title>module~ftlinkedlistclass</title>
 <g id="a_module~~graph~~ModuleGraph_node7"><a xlink:href=".././module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="436.5,-205.3 330.5,-205.3 330.5,-181.3 436.5,-181.3 436.5,-205.3"/>
-<text text-anchor="middle" x="383.5" y="-190.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="436.5,-142 330.5,-142 330.5,-118 436.5,-118 436.5,-142"/>
+<text text-anchor="middle" x="383.5" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftdictionaryclass&#45;&gt;module~ftlinkedlistclass -->
 <g id="module~~graph~~ModuleGraph_edge8" class="edge">
 <title>module~ftdictionaryclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M686.03,-265.28C652.11,-255.37 601.73,-241.62 557,-233.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-233.3C516.53,-226.14 473.66,-216.07 440.52,-207.83"/>
-<polygon fill="#000000" stroke="#000000" points="441.12,-204.37 430.57,-205.33 439.42,-211.16 441.12,-204.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M684,-197.97C650.14,-188.68 600.89,-176.37 557,-170"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-170C514.92,-164.18 470.38,-153.59 436.88,-144.76"/>
+<polygon fill="#000000" stroke="#000000" points="437.42,-141.28 426.85,-142.09 435.61,-148.05 437.42,-141.28"/>
 </g>
 <!-- module~ftlinkedlistiteratorclass -->
 <g id="module~~graph~~ModuleGraph_node8" class="node">
 <title>module~ftlinkedlistiteratorclass</title>
 <g id="a_module~~graph~~ModuleGraph_node8"><a xlink:href=".././module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="629,-205.3 483,-205.3 483,-181.3 629,-181.3 629,-205.3"/>
-<text text-anchor="middle" x="556" y="-190.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="629,-142 483,-142 483,-118 629,-118 629,-142"/>
+<text text-anchor="middle" x="556" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass -->
 <g id="module~~graph~~ModuleGraph_edge9" class="edge">
 <title>module~ftdictionaryclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M692.19,-265.24C683.07,-261.35 673.39,-256.63 665,-251.3 646.93,-239.81 647.4,-230.24 629,-219.3 622.64,-215.51 615.64,-212.15 608.58,-209.19"/>
-<polygon fill="#000000" stroke="#000000" points="609.55,-205.82 598.97,-205.42 607,-212.33 609.55,-205.82"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M706.03,-197.86C686.88,-186.22 656.59,-168.6 629,-156 620.92,-152.31 612.15,-148.77 603.6,-145.56"/>
+<polygon fill="#000000" stroke="#000000" points="604.69,-142.23 594.09,-142.09 602.28,-148.81 604.69,-142.23"/>
 </g>
 <!-- module~ftmutableobjectarrayclass -->
 <g id="module~~graph~~ModuleGraph_node12" class="node">
 <title>module~ftmutableobjectarrayclass</title>
 <g id="a_module~~graph~~ModuleGraph_node12"><a xlink:href=".././module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="284,-246.3 124,-246.3 124,-222.3 284,-222.3 284,-246.3"/>
-<text text-anchor="middle" x="204" y="-231.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="284,-202 124,-202 124,-178 284,-178 284,-202"/>
+<text text-anchor="middle" x="204" y="-187.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftdictionaryclass&#45;&gt;module~ftmutableobjectarrayclass -->
 <g id="module~~graph~~ModuleGraph_edge10" class="edge">
 <title>module~ftdictionaryclass&#45;&gt;module~ftmutableobjectarrayclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-233.3C467.6,-217.03 365.78,-219.69 294.57,-224.95"/>
-<polygon fill="#000000" stroke="#000000" points="294,-221.48 284.3,-225.74 294.54,-228.46 294,-221.48"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-170C479.49,-159.04 459.8,-202.32 384.5,-190"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.5,-190C354.06,-185.35 322.71,-184.09 294.38,-184.38"/>
+<polygon fill="#000000" stroke="#000000" points="294.02,-180.88 284.08,-184.55 294.14,-187.88 294.02,-180.88"/>
 </g>
 <!-- module~hashmodule -->
 <g id="module~~graph~~ModuleGraph_node22" class="node">
 <title>module~hashmodule</title>
 <g id="a_module~~graph~~ModuleGraph_node22"><a xlink:href=".././module/hashmodule.html" xlink:title="HashModule">
-<polygon fill="#337ab7" stroke="#337ab7" points="595.5,-285.3 516.5,-285.3 516.5,-261.3 595.5,-261.3 595.5,-285.3"/>
-<text text-anchor="middle" x="556" y="-270.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HashModule</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="595.5,-222 516.5,-222 516.5,-198 595.5,-198 595.5,-222"/>
+<text text-anchor="middle" x="556" y="-207.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HashModule</text>
 </a>
 </g>
 </g>
 <!-- module~ftdictionaryclass&#45;&gt;module~hashmodule -->
 <g id="module~~graph~~ModuleGraph_edge11" class="edge">
 <title>module~ftdictionaryclass&#45;&gt;module~hashmodule</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M672.19,-276.03C650.91,-275.53 626.57,-274.95 605.76,-274.46"/>
-<polygon fill="#000000" stroke="#000000" points="605.63,-270.95 595.55,-274.21 605.47,-277.95 605.63,-270.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M672.19,-210C650.91,-210 626.57,-210 605.76,-210"/>
+<polygon fill="#000000" stroke="#000000" points="605.55,-206.5 595.55,-210 605.55,-213.5 605.55,-206.5"/>
 </g>
 <!-- module~ftexceptionclass -->
 <g id="module~~graph~~ModuleGraph_node5" class="node">
 <title>module~ftexceptionclass</title>
 <g id="a_module~~graph~~ModuleGraph_node5"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="1117.5,-269.3 1011.5,-269.3 1011.5,-245.3 1117.5,-245.3 1117.5,-269.3"/>
-<text text-anchor="middle" x="1064.5" y="-254.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="1117.5,-123 1011.5,-123 1011.5,-99 1117.5,-99 1117.5,-123"/>
+<text text-anchor="middle" x="1064.5" y="-108.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftexceptionclass&#45;&gt;module~ftdictionaryclass -->
 <g id="module~~graph~~ModuleGraph_edge12" class="edge">
 <title>module~ftexceptionclass&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-237.3C848.34,-237.39 800.57,-250.61 767.77,-261.83"/>
-<polygon fill="#000000" stroke="#000000" points="766.37,-258.61 758.09,-265.23 768.69,-265.21 766.37,-258.61"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1027.08,-123.06C1017.06,-126.96 1006.38,-131.67 997,-137 979.38,-147.02 978.78,-155.26 961,-165 933.08,-180.3 924.53,-181.88 893.5,-189"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-189C858.7,-196.53 821.54,-201.56 790.9,-204.81"/>
+<polygon fill="#000000" stroke="#000000" points="790.37,-201.35 780.77,-205.85 791.08,-208.31 790.37,-201.35"/>
 </g>
 <!-- module~ftexceptionclass&#45;&gt;module~ftlinkedlistiteratorclass -->
 <g id="module~~graph~~ModuleGraph_edge13" class="edge">
 <title>module~ftexceptionclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1011.23,-247.89C977.7,-242.66 933.17,-237.22 893.5,-237.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-237.3C818.61,-237.45 799.13,-250.79 727.5,-237.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.5,-237.3C685.11,-229.69 640.1,-217.75 606.77,-208.23"/>
-<polygon fill="#000000" stroke="#000000" points="607.4,-204.77 596.82,-205.36 605.46,-211.5 607.4,-204.77"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1028.21,-123.08C994.2,-133.83 941.02,-148.25 893.5,-151"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-151C805.44,-155.99 706.97,-148.17 639.27,-140.7"/>
+<polygon fill="#000000" stroke="#000000" points="639.42,-137.19 629.09,-139.55 638.64,-144.15 639.42,-137.19"/>
 </g>
 <!-- module~ftstackclass -->
 <g id="module~~graph~~ModuleGraph_node18" class="node">
 <title>module~ftstackclass</title>
 <g id="a_module~~graph~~ModuleGraph_node18"><a xlink:href=".././module/ftstackclass.html" xlink:title="FTStackClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="933.5,-167.3 851.5,-167.3 851.5,-143.3 933.5,-143.3 933.5,-167.3"/>
-<text text-anchor="middle" x="892.5" y="-152.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="933.5,-104 851.5,-104 851.5,-80 933.5,-80 933.5,-104"/>
+<text text-anchor="middle" x="892.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftexceptionclass&#45;&gt;module~ftstackclass -->
 <g id="module~~graph~~ModuleGraph_edge14" class="edge">
 <title>module~ftexceptionclass&#45;&gt;module~ftstackclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1043.33,-245.2C1013.3,-227.18 956.68,-193.2 922.29,-172.57"/>
-<polygon fill="#000000" stroke="#000000" points="924.02,-169.53 913.64,-167.38 920.42,-175.53 924.02,-169.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1011.11,-105.14C989.64,-102.75 964.91,-99.98 943.68,-97.61"/>
+<polygon fill="#000000" stroke="#000000" points="943.9,-94.11 933.57,-96.48 943.12,-101.07 943.9,-94.11"/>
 </g>
 <!-- module~ftvaluedictionaryclass -->
 <g id="module~~graph~~ModuleGraph_node21" class="node">
 <title>module~ftvaluedictionaryclass</title>
 <g id="a_module~~graph~~ModuleGraph_node21"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="961,-409.3 824,-409.3 824,-385.3 961,-385.3 961,-409.3"/>
-<text text-anchor="middle" x="892.5" y="-394.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="961,-382 824,-382 824,-358 961,-358 961,-382"/>
+<text text-anchor="middle" x="892.5" y="-367.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass -->
 <g id="module~~graph~~ModuleGraph_edge15" class="edge">
 <title>module~ftexceptionclass&#45;&gt;module~ftvaluedictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1048.71,-269.48C1018.95,-293.99 951.64,-349.42 916.24,-378.57"/>
-<polygon fill="#000000" stroke="#000000" points="913.87,-375.99 908.38,-385.05 918.32,-381.39 913.87,-375.99"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1015.9,-123.06C1008.81,-126.59 1002.16,-131.14 997,-137 953.67,-186.17 989.22,-220.85 961,-280 948.35,-306.51 927.27,-332.93 912.03,-350.22"/>
+<polygon fill="#000000" stroke="#000000" points="909.17,-348.16 905.08,-357.94 914.37,-352.85 909.17,-348.16"/>
 </g>
 <!-- module~ftkeyobjectpairclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge16" class="edge">
 <title>module~ftkeyobjectpairclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M345.61,-325.38C310.06,-336.13 254.52,-350.55 205,-353.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203,-353.3C168.18,-355.23 128.98,-355.24 98.34,-354.77"/>
-<polygon fill="#000000" stroke="#000000" points="98.35,-351.27 88.29,-354.59 98.23,-358.27 98.35,-351.27"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.3,-260.07C314.02,-271.81 256.33,-287.9 205,-288"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203,-288C168.13,-288.06 128.93,-288.07 98.3,-288.05"/>
+<polygon fill="#000000" stroke="#000000" points="98.26,-284.55 88.25,-288.04 98.25,-291.55 98.26,-284.55"/>
 </g>
 <!-- module~ftlinkedlistrecordclass -->
 <g id="module~~graph~~ModuleGraph_node9" class="node">
 <title>module~ftlinkedlistrecordclass</title>
 <g id="a_module~~graph~~ModuleGraph_node9"><a xlink:href=".././module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="276,-204.3 132,-204.3 132,-180.3 276,-180.3 276,-204.3"/>
-<text text-anchor="middle" x="204" y="-189.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="276,-151 132,-151 132,-127 276,-127 276,-151"/>
+<text text-anchor="middle" x="204" y="-136.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass -->
 <g id="module~~graph~~ModuleGraph_edge17" class="edge">
 <title>module~ftlinkedlistclass&#45;&gt;module~ftlinkedlistrecordclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M330.2,-193C316.49,-192.93 301.38,-192.84 286.54,-192.76"/>
-<polygon fill="#000000" stroke="#000000" points="286.34,-189.26 276.32,-192.7 286.31,-196.26 286.34,-189.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M330.2,-132.65C316.49,-133.35 301.38,-134.11 286.54,-134.87"/>
+<polygon fill="#000000" stroke="#000000" points="286.13,-131.38 276.32,-135.38 286.49,-138.37 286.13,-131.38"/>
 </g>
 <!-- module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass -->
 <g id="module~~graph~~ModuleGraph_edge18" class="edge">
 <title>module~ftlinkedlistclass&#45;&gt;module~ftmutableobjectarrayclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M330.2,-205.38C310.43,-209.94 287.74,-215.19 267.15,-219.94"/>
-<polygon fill="#000000" stroke="#000000" points="266.18,-216.57 257.23,-222.23 267.76,-223.39 266.18,-216.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.58,-142.14C318.82,-151.53 280.22,-164.57 250.34,-174.68"/>
+<polygon fill="#000000" stroke="#000000" points="248.92,-171.46 240.56,-177.98 251.16,-178.09 248.92,-171.46"/>
 </g>
 <!-- module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass -->
 <g id="module~~graph~~ModuleGraph_edge19" class="edge">
 <title>module~ftlinkedlistiteratorclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M482.69,-193.3C470.76,-193.3 458.48,-193.3 446.82,-193.3"/>
-<polygon fill="#000000" stroke="#000000" points="446.75,-189.8 436.75,-193.3 446.75,-196.8 446.75,-189.8"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M482.69,-130C470.76,-130 458.48,-130 446.82,-130"/>
+<polygon fill="#000000" stroke="#000000" points="446.75,-126.5 436.75,-130 446.75,-133.5 446.75,-126.5"/>
 </g>
 <!-- module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge20" class="edge">
 <title>module~ftlinkedlistrecordclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M139.17,-204.32C133.76,-206.78 128.6,-209.74 124,-213.3 84.51,-243.85 61.63,-300.07 51.43,-331.17"/>
-<polygon fill="#000000" stroke="#000000" points="47.99,-330.45 48.35,-341.03 54.67,-332.53 47.99,-330.45"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M156.98,-151.02C145.45,-155.44 133.63,-161.31 124,-169 90.67,-195.62 66.46,-240.2 54.16,-266.58"/>
+<polygon fill="#000000" stroke="#000000" points="50.96,-265.17 50.04,-275.72 57.34,-268.05 50.96,-265.17"/>
 </g>
 <!-- module~ftmultiindextableclass -->
 <g id="module~~graph~~ModuleGraph_node10" class="node">
 <title>module~ftmultiindextableclass</title>
 <g id="a_module~~graph~~ModuleGraph_node10"><a xlink:href=".././module/ftmultiindextableclass.html" xlink:title="FTMultiIndexTableClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="623.5,-407.3 488.5,-407.3 488.5,-383.3 623.5,-383.3 623.5,-407.3"/>
-<text text-anchor="middle" x="556" y="-392.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="623.5,-420 488.5,-420 488.5,-396 623.5,-396 623.5,-420"/>
+<text text-anchor="middle" x="556" y="-405.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftmultiindextableclass&#45;&gt;module~ftlinkedlistclass -->
 <g id="module~~graph~~ModuleGraph_edge21" class="edge">
 <title>module~ftmultiindextableclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M496.44,-383.19C491.59,-380.75 487.01,-377.82 483,-374.3 453.09,-348.04 465.68,-327.45 447,-292.3 432.1,-264.25 412.1,-233.56 398.78,-213.9"/>
-<polygon fill="#000000" stroke="#000000" points="401.54,-211.73 393.01,-205.45 395.76,-215.68 401.54,-211.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M493.78,-395.88C489.78,-393.43 486.12,-390.5 483,-387 419.7,-315.98 496.94,-256.97 447,-176 439.91,-164.51 428.8,-154.97 417.89,-147.61"/>
+<polygon fill="#000000" stroke="#000000" points="419.6,-144.54 409.27,-142.18 415.87,-150.47 419.6,-144.54"/>
 </g>
 <!-- module~ftmultiindextabledata -->
 <g id="module~~graph~~ModuleGraph_node11" class="node">
 <title>module~ftmultiindextabledata</title>
 <g id="a_module~~graph~~ModuleGraph_node11"><a xlink:href=".././module/ftmultiindextabledata.html" xlink:title="FTMultiIndexTableData">
-<polygon fill="#337ab7" stroke="#337ab7" points="270.5,-405.3 137.5,-405.3 137.5,-381.3 270.5,-381.3 270.5,-405.3"/>
-<text text-anchor="middle" x="204" y="-390.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="270.5,-340 137.5,-340 137.5,-316 270.5,-316 270.5,-340"/>
+<text text-anchor="middle" x="204" y="-325.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData</text>
 </a>
 </g>
 </g>
 <!-- module~ftmultiindextableclass&#45;&gt;module~ftmultiindextabledata -->
 <g id="module~~graph~~ModuleGraph_edge22" class="edge">
 <title>module~ftmultiindextableclass&#45;&gt;module~ftmultiindextabledata</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.5,-353.3C358.3,-351.75 299.28,-366.45 255.91,-378.46"/>
-<polygon fill="#000000" stroke="#000000" points="254.77,-375.14 246.08,-381.21 256.66,-381.89 254.77,-375.14"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.5,-326C349.95,-316.93 312.73,-315.99 280.8,-317.89"/>
+<polygon fill="#000000" stroke="#000000" points="280.37,-314.41 270.64,-318.6 280.85,-321.39 280.37,-314.41"/>
 </g>
 <!-- module~ftmultiindextableclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge23" class="edge">
 <title>module~ftmultiindextableclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M513.27,-383.22C471.26,-371.38 409.22,-354.88 384.5,-353.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.5,-353.3C303.77,-348.26 283.77,-348.92 205,-353.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M506.71,-395.88C498.66,-393.31 490.49,-390.34 483,-387 435.96,-366.04 434.1,-339.83 384.5,-326"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.5,-326C304.79,-304.34 285.68,-287.85 205,-288"/>
 </g>
 <!-- module~ftmultiindextabledata&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge24" class="edge">
 <title>module~ftmultiindextabledata&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M155.59,-381.3C137.41,-376.69 116.55,-371.41 97.89,-366.69"/>
-<polygon fill="#000000" stroke="#000000" points="98.62,-363.26 88.06,-364.2 96.9,-370.05 98.62,-363.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M155.59,-316C137.41,-311.4 116.55,-306.11 97.89,-301.39"/>
+<polygon fill="#000000" stroke="#000000" points="98.62,-297.96 88.06,-298.9 96.9,-304.75 98.62,-297.96"/>
 </g>
 <!-- module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge25" class="edge">
 <title>module~ftmutableobjectarrayclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M186.98,-246.36C159.18,-267.3 101.86,-310.47 69.19,-335.08"/>
-<polygon fill="#000000" stroke="#000000" points="66.94,-332.39 61.06,-341.2 71.16,-337.98 66.94,-332.39"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M183.63,-202.02C156.03,-219.14 105.21,-250.65 73.37,-270.4"/>
+<polygon fill="#000000" stroke="#000000" points="71.19,-267.64 64.53,-275.88 74.88,-273.59 71.19,-267.64"/>
 </g>
 <!-- module~ftobjectlibrary -->
 <g id="module~~graph~~ModuleGraph_node14" class="node">
 <title>module~ftobjectlibrary</title>
 <g id="a_module~~graph~~ModuleGraph_node14"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
-<polygon fill="#337ab7" stroke="#337ab7" points="1311,-350.3 1214,-350.3 1214,-326.3 1311,-326.3 1311,-350.3"/>
-<text text-anchor="middle" x="1262.5" y="-335.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="1311,-164 1214,-164 1214,-140 1311,-140 1311,-164"/>
+<text text-anchor="middle" x="1262.5" y="-149.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
 </a>
 </g>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~comparisonsmodule -->
-<g id="module~~graph~~ModuleGraph_edge26" class="edge">
+<g id="module~~graph~~ModuleGraph_edge27" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~comparisonsmodule</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-437.3C858.55,-446.58 821.53,-455.72 791.01,-462.91"/>
-<polygon fill="#000000" stroke="#000000" points="789.87,-459.59 780.93,-465.28 791.46,-466.4 789.87,-459.59"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-410C973.49,-460.38 993.28,-541.87 893.5,-568"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-568C836.02,-582.53 776.58,-537.03 746.82,-509.47"/>
+<polygon fill="#000000" stroke="#000000" points="748.89,-506.61 739.24,-502.24 744.06,-511.68 748.89,-506.61"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftassertions -->
-<g id="module~~graph~~ModuleGraph_edge27" class="edge">
+<g id="module~~graph~~ModuleGraph_edge28" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftassertions</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-357.3C1002.29,-365.91 1013.06,-417.97 961,-451.3 955.1,-455.07 948.57,-458.44 941.96,-461.39"/>
-<polygon fill="#000000" stroke="#000000" points="940.17,-458.35 932.29,-465.42 942.87,-464.81 940.17,-458.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-410C1025.78,-430.74 977.61,-440.78 942.18,-445.61"/>
+<polygon fill="#000000" stroke="#000000" points="941.56,-442.16 932.08,-446.89 942.44,-449.1 941.56,-442.16"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass -->
-<g id="module~~graph~~ModuleGraph_edge28" class="edge">
+<g id="module~~graph~~ModuleGraph_edge29" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-277.3C859.15,-268.08 821.73,-267.37 790.81,-269.28"/>
-<polygon fill="#000000" stroke="#000000" points="790.31,-265.8 780.59,-270.02 790.82,-272.79 790.31,-265.8"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-151C986.19,-155.06 968.96,-171.69 893.5,-189"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftexceptionclass -->
-<g id="module~~graph~~ModuleGraph_edge29" class="edge">
+<g id="module~~graph~~ModuleGraph_edge30" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftexceptionclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1232.16,-326.17C1198.14,-312.11 1141.94,-288.89 1104.33,-273.35"/>
-<polygon fill="#000000" stroke="#000000" points="1105.3,-269.96 1094.72,-269.37 1102.63,-276.43 1105.3,-269.96"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1213.8,-142.02C1187.87,-136.6 1155.48,-129.82 1127.6,-123.99"/>
+<polygon fill="#000000" stroke="#000000" points="1128.05,-120.51 1117.55,-121.89 1126.62,-127.36 1128.05,-120.51"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftlinkedlistclass -->
-<g id="module~~graph~~ModuleGraph_edge30" class="edge">
+<g id="module~~graph~~ModuleGraph_edge31" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-175.3C1046.29,-167.98 746.17,-196.43 727.5,-195.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1213.68,-147.2C1198.32,-144.14 1181.74,-139.15 1168,-131 1147.15,-118.62 1150.78,-105.34 1132,-90 1105.63,-68.47 1099.02,-57.96 1065.5,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-52C989.11,-38.77 968.92,-56.53 893.5,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-52C844.65,-49.19 834.7,-35.69 788,-31 653.09,-17.45 608.16,14.16 483,-38 446.96,-53.02 416.06,-87.54 398.9,-109.76"/>
+<polygon fill="#000000" stroke="#000000" points="396.01,-107.79 392.82,-117.89 401.62,-111.98 396.01,-107.79"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftlinkedlistiteratorclass -->
-<g id="module~~graph~~ModuleGraph_edge31" class="edge">
+<g id="module~~graph~~ModuleGraph_edge32" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftlinkedlistiteratorclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1213.84,-341.76C1174.06,-344.93 1115.94,-350.2 1065.5,-357.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-357.3C1011,-364.69 1009.71,-317.22 961,-296.3 932.36,-284 923.47,-285.84 893.5,-277.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-277.3C819.35,-256.74 801.23,-251.19 727.5,-237.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1213.94,-150.23C1174.22,-149.12 1116.13,-148.34 1065.5,-151"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-151C988.05,-154.96 968.97,-147.31 893.5,-151"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftmutableobjectarrayclass -->
-<g id="module~~graph~~ModuleGraph_edge32" class="edge">
+<g id="module~~graph~~ModuleGraph_edge33" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftmutableobjectarrayclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-115.3C767.17,-86.48 430.44,-108.33 320,-172.3 299.02,-184.45 304.61,-200.52 284,-213.3 281.17,-215.06 278.19,-216.67 275.11,-218.15"/>
-<polygon fill="#000000" stroke="#000000" points="273.47,-215.04 265.65,-222.19 276.22,-221.48 273.47,-215.04"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1256.53,-164.28C1238.48,-207.12 1171.77,-350.52 1065.5,-410"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-410C1017.24,-435.89 1010.04,-369.13 961,-349 758.56,-265.92 690.84,-299.47 483,-231 437.96,-216.16 431.3,-197.66 384.5,-190"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftobjectclass -->
-<g id="module~~graph~~ModuleGraph_edge33" class="edge">
+<g id="module~~graph~~ModuleGraph_edge34" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-357.3C915.62,-378.11 871.24,-316.82 727.5,-357.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-568C673.52,-625.08 609.66,-578.94 384.5,-570"/>
 </g>
 <!-- module~ftsparsematrixclass -->
 <g id="module~~graph~~ModuleGraph_node16" class="node">
 <title>module~ftsparsematrixclass</title>
 <g id="a_module~~graph~~ModuleGraph_node16"><a xlink:href=".././module/ftsparsematrixclass.html" xlink:title="FTSparseMatrixClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="788,-87.3 665,-87.3 665,-63.3 788,-63.3 788,-87.3"/>
-<text text-anchor="middle" x="726.5" y="-72.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="788,-64 665,-64 665,-40 788,-40 788,-64"/>
+<text text-anchor="middle" x="726.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftsparsematrixclass -->
-<g id="module~~graph~~ModuleGraph_edge34" class="edge">
+<g id="module~~graph~~ModuleGraph_edge35" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftsparsematrixclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1238.69,-326.17C1218.93,-315.09 1190.11,-297.55 1168,-278.3 1149.46,-262.15 1149.09,-253.97 1132,-236.3 1104.12,-207.47 1102.41,-191 1065.5,-175.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-175.3C989.77,-143.93 971.55,-133.39 893.5,-115.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-115.3C856.21,-107.12 816.76,-97.51 785.39,-89.76"/>
-<polygon fill="#000000" stroke="#000000" points="786.06,-86.32 775.51,-87.31 784.38,-93.12 786.06,-86.32"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-52C860.99,-50.17 827.23,-49.87 798.32,-50.15"/>
+<polygon fill="#000000" stroke="#000000" points="798.26,-46.65 788.3,-50.27 798.34,-53.65 798.26,-46.65"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftstackclass -->
-<g id="module~~graph~~ModuleGraph_edge35" class="edge">
+<g id="module~~graph~~ModuleGraph_edge36" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftstackclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-175.3C1025.58,-159.17 978.87,-154.64 944.01,-153.88"/>
-<polygon fill="#000000" stroke="#000000" points="943.64,-150.38 933.6,-153.76 943.55,-157.38 943.64,-150.38"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-52C1040.01,-47.82 981.15,-63.9 939.29,-76.91"/>
+<polygon fill="#000000" stroke="#000000" points="938.06,-73.62 929.57,-79.96 940.16,-80.3 938.06,-73.62"/>
 </g>
 <!-- module~ftvalueclass -->
 <g id="module~~graph~~ModuleGraph_node20" class="node">
 <title>module~ftvalueclass</title>
 <g id="a_module~~graph~~ModuleGraph_node20"><a xlink:href=".././module/ftvalueclass.html" xlink:title="FTValueClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="767.5,-447.3 685.5,-447.3 685.5,-423.3 767.5,-423.3 767.5,-447.3"/>
-<text text-anchor="middle" x="726.5" y="-432.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="767.5,-422 685.5,-422 685.5,-398 767.5,-398 767.5,-422"/>
+<text text-anchor="middle" x="726.5" y="-407.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftvalueclass -->
-<g id="module~~graph~~ModuleGraph_edge36" class="edge">
+<g id="module~~graph~~ModuleGraph_edge37" class="edge">
 <title>module~ftobjectlibrary&#45;&gt;module~ftvalueclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-357.3C1011,-364.69 1009.71,-397.38 961,-418.3 932.36,-430.6 923.5,-428.85 893.5,-437.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.5,-437.3C854.53,-447.72 810.98,-446.6 778.06,-443.21"/>
-<polygon fill="#000000" stroke="#000000" points="778.09,-439.69 767.76,-442.04 777.3,-446.65 778.09,-439.69"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-410C1015.83,-436.21 859.25,-424.23 777.78,-415.79"/>
+<polygon fill="#000000" stroke="#000000" points="778.06,-412.3 767.75,-414.73 777.33,-419.26 778.06,-412.3"/>
 </g>
 <!-- module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass -->
-<g id="module~~graph~~ModuleGraph_edge37" class="edge">
-<title>module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-357.3C1023.23,-362.96 978.49,-373.67 945.02,-382.59"/>
-<polygon fill="#000000" stroke="#000000" points="943.76,-379.3 935.01,-385.29 945.58,-386.06 943.76,-379.3"/>
-</g>
-<!-- module~testsuitemanagerclass -->
-<g id="module~~graph~~ModuleGraph_node24" class="node">
-<title>module~testsuitemanagerclass</title>
-<g id="a_module~~graph~~ModuleGraph_node24"><a xlink:href=".././module/testsuitemanagerclass.html" xlink:title="TestSuiteManagerClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="1132,-449.3 997,-449.3 997,-425.3 1132,-425.3 1132,-449.3"/>
-<text text-anchor="middle" x="1064.5" y="-434.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TestSuiteManagerClass</text>
-</a>
-</g>
-</g>
-<!-- module~ftobjectlibrary&#45;&gt;module~testsuitemanagerclass -->
 <g id="module~~graph~~ModuleGraph_edge38" class="edge">
-<title>module~ftobjectlibrary&#45;&gt;module~testsuitemanagerclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1237.47,-350.44C1202.55,-368.08 1137.67,-400.85 1098.36,-420.7"/>
-<polygon fill="#000000" stroke="#000000" points="1096.77,-417.58 1089.42,-425.21 1099.93,-423.83 1096.77,-417.58"/>
+<title>module~ftobjectlibrary&#45;&gt;module~ftvaluedictionaryclass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1063.5,-410C1041.38,-422.16 976.1,-401.58 933.17,-385.7"/>
+<polygon fill="#000000" stroke="#000000" points="934.17,-382.34 923.58,-382.09 931.71,-388.89 934.17,-382.34"/>
+</g>
+<!-- TestSuiteManagerClass -->
+<g id="module~~graph~~ModuleGraph_node24" class="node">
+<title>TestSuiteManagerClass</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="1132,-203 997,-203 997,-179 1132,-179 1132,-203"/>
+<text text-anchor="middle" x="1064.5" y="-188.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TestSuiteManagerClass</text>
+</g>
+<!-- module~ftobjectlibrary&#45;&gt;TestSuiteManagerClass -->
+<g id="module~~graph~~ModuleGraph_edge26" class="edge">
+<title>module~ftobjectlibrary&#45;&gt;TestSuiteManagerClass</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1213.8,-161.49C1190.5,-166.13 1161.98,-171.8 1136.2,-176.93"/>
+<polygon fill="#000000" stroke="#000000" points="1135.22,-173.56 1126.1,-178.94 1136.59,-180.42 1135.22,-173.56"/>
 </g>
 <!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass -->
 <g id="module~~graph~~ModuleGraph_edge39" class="edge">
 <title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M707.86,-87.38C678.29,-106.69 616.13,-143.36 557,-153.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-153.3C515.74,-159.9 472.03,-170.21 438.69,-178.71"/>
-<polygon fill="#000000" stroke="#000000" points="437.51,-175.4 428.7,-181.29 439.26,-182.18 437.51,-175.4"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-52C498.21,-54.08 439.58,-89.6 408.03,-111.98"/>
+<polygon fill="#000000" stroke="#000000" points="405.91,-109.2 399.88,-117.91 410.02,-114.86 405.91,-109.2"/>
 </g>
 <!-- module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass -->
 <g id="module~~graph~~ModuleGraph_edge40" class="edge">
 <title>module~ftsparsematrixclass&#45;&gt;module~ftlinkedlistiteratorclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M715.75,-87.4C699.6,-106.76 665.42,-144.77 629,-167.3 622.78,-171.14 615.92,-174.54 608.96,-177.49"/>
-<polygon fill="#000000" stroke="#000000" points="607.48,-174.32 599.48,-181.26 610.07,-180.82 607.48,-174.32"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M699.54,-64.02C670.85,-77.3 624.45,-98.78 592.43,-113.6"/>
+<polygon fill="#000000" stroke="#000000" points="590.59,-110.59 582.99,-117.97 593.53,-116.95 590.59,-110.59"/>
 </g>
 <!-- module~ftsparsematrixclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge41" class="edge">
 <title>module~ftsparsematrixclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M690.54,-63.2C656.82,-52.44 604.13,-38.01 557,-35.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-35.3C399.7,-26.36 341.75,38.85 205,-35.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203,-35.3C92.43,-100.3 57.23,-269.68 47.92,-330.85"/>
-<polygon fill="#000000" stroke="#000000" points="44.42,-330.57 46.47,-340.96 51.35,-331.56 44.42,-330.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-52C477.27,-54.85 271.59,-11.81 205,-52"/>
 </g>
 <!-- module~ftsparsematrixdata -->
 <g id="module~~graph~~ModuleGraph_node17" class="node">
 <title>module~ftsparsematrixdata</title>
 <g id="a_module~~graph~~ModuleGraph_node17"><a xlink:href=".././module/ftsparsematrixdata.html" xlink:title="FTSparseMatrixData">
-<polygon fill="#337ab7" stroke="#337ab7" points="444,-87.3 323,-87.3 323,-63.3 444,-63.3 444,-87.3"/>
-<text text-anchor="middle" x="383.5" y="-72.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="444,-24 323,-24 323,0 444,0 444,-24"/>
+<text text-anchor="middle" x="383.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData</text>
 </a>
 </g>
 </g>
 <!-- module~ftsparsematrixclass&#45;&gt;module~ftsparsematrixdata -->
 <g id="module~~graph~~ModuleGraph_edge42" class="edge">
 <title>module~ftsparsematrixclass&#45;&gt;module~ftsparsematrixdata</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-35.3C508.72,-32.63 457.1,-47.33 422.91,-59.65"/>
-<polygon fill="#000000" stroke="#000000" points="421.47,-56.45 413.31,-63.21 423.91,-63.01 421.47,-56.45"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M664.65,-50.93C632.61,-50.63 592.67,-50.69 557,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-52C509.09,-53.68 457.99,-39.45 423.81,-27.5"/>
+<polygon fill="#000000" stroke="#000000" points="424.8,-24.13 414.2,-24.04 422.43,-30.72 424.8,-24.13"/>
 </g>
 <!-- module~ftsparsematrixdata&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge43" class="edge">
 <title>module~ftsparsematrixdata&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.46,-63.23C307.59,-47.03 229.99,-21.75 205,-35.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M322.62,-15.95C286.43,-20.57 240.56,-30.54 205,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203,-52C163.83,-75.64 151.87,-81.71 124,-118 87.69,-165.28 62.89,-231.94 51.73,-266.03"/>
+<polygon fill="#000000" stroke="#000000" points="48.29,-265.3 48.58,-275.9 54.95,-267.43 48.29,-265.3"/>
 </g>
 <!-- module~ftstackclass&#45;&gt;module~ftlinkedlistclass -->
 <g id="module~~graph~~ModuleGraph_edge44" class="edge">
 <title>module~ftstackclass&#45;&gt;module~ftlinkedlistclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M853.58,-167.31C813.16,-179.62 751.71,-196.77 727.5,-195.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.5,-195.3C648.46,-190.61 633.11,-140.51 557,-153.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M851.3,-91.44C777.85,-90.9 617.15,-92.03 483,-109 469.94,-110.65 456.04,-113.15 442.92,-115.85"/>
+<polygon fill="#000000" stroke="#000000" points="442.12,-112.44 433.07,-117.95 443.58,-119.29 442.12,-112.44"/>
 </g>
 <!-- module~ftstringsetclass -->
 <g id="module~~graph~~ModuleGraph_node19" class="node">
 <title>module~ftstringsetclass</title>
 <g id="a_module~~graph~~ModuleGraph_node19"><a xlink:href=".././module/ftstringsetclass.html" xlink:title="FTStringSetClass">
-<polygon fill="#337ab7" stroke="#337ab7" points="943.5,-329.3 841.5,-329.3 841.5,-305.3 943.5,-305.3 943.5,-329.3"/>
-<text text-anchor="middle" x="892.5" y="-314.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="943.5,-271 841.5,-271 841.5,-247 943.5,-247 943.5,-271"/>
+<text text-anchor="middle" x="892.5" y="-256.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
 </a>
 </g>
 </g>
 <!-- module~ftstringsetclass&#45;&gt;module~ftdictionaryclass -->
 <g id="module~~graph~~ModuleGraph_edge45" class="edge">
 <title>module~ftstringsetclass&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M842.29,-305.3C824.86,-301.04 805.06,-296.21 786.87,-291.78"/>
-<polygon fill="#000000" stroke="#000000" points="787.5,-288.33 776.95,-289.36 785.84,-295.13 787.5,-288.33"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M850.96,-246.89C828.8,-240.27 801.16,-232.01 777.65,-224.98"/>
+<polygon fill="#000000" stroke="#000000" points="778.44,-221.57 767.86,-222.06 776.44,-228.27 778.44,-221.57"/>
 </g>
 <!-- module~ftstringsetclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge46" class="edge">
 <title>module~ftstringsetclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M841.38,-328.56C808.79,-336.12 765.44,-346.61 727.5,-357.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.5,-357.3C696.8,-365.38 690.09,-370.19 665,-386.3 647.48,-397.55 647.51,-406.75 629,-416.3 599.59,-431.47 589.89,-431.58 557,-435.3"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555,-435.3C459.71,-446.06 213.98,-447.46 124,-414.3 100.4,-405.6 78.17,-387.16 63.34,-372.82"/>
-<polygon fill="#000000" stroke="#000000" points="65.44,-369.97 55.9,-365.36 60.49,-374.91 65.44,-369.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M841.15,-262.52C727.67,-270.15 443.28,-287.56 205,-288"/>
 </g>
 <!-- module~ftvalueclass&#45;&gt;module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_edge49" class="edge">
 <title>module~ftvalueclass&#45;&gt;module~ftobjectclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M685.18,-432.77C650.96,-431.22 600.6,-430.37 557,-435.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M685.46,-418.11C621.21,-431.31 500.51,-456.99 483,-467 428.01,-498.43 446.93,-559.29 384.5,-570"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.5,-570C220.75,-597.76 92.71,-380.13 55.78,-309.59"/>
+<polygon fill="#000000" stroke="#000000" points="58.69,-307.59 51,-300.29 52.46,-310.79 58.69,-307.59"/>
 </g>
 <!-- module~ftvalueclass&#45;&gt;module~ftolconstants -->
 <g id="module~~graph~~ModuleGraph_edge50" class="edge">
 <title>module~ftvalueclass&#45;&gt;module~ftolconstants</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M685.41,-446C678.31,-448.78 671.21,-452.18 665,-456.3 645.07,-469.53 649.25,-483.58 629,-496.3 623.65,-499.66 617.73,-502.5 611.66,-504.9"/>
-<polygon fill="#000000" stroke="#000000" points="610.31,-501.67 602.06,-508.32 612.65,-508.27 610.31,-501.67"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M712.28,-422.42C699.85,-434.2 680.86,-452.5 665,-469 648.43,-486.25 649.25,-496.28 629,-509 623.65,-512.36 617.73,-515.21 611.66,-517.61"/>
+<polygon fill="#000000" stroke="#000000" points="610.31,-514.37 602.06,-521.02 612.65,-520.97 610.31,-514.37"/>
 </g>
 <!-- ieee_arithmetic -->
 <g id="module~~graph~~ModuleGraph_node25" class="node">
 <title>ieee_arithmetic</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="604,-365.3 508,-365.3 508,-341.3 604,-341.3 604,-365.3"/>
-<text text-anchor="middle" x="556" y="-350.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ieee_arithmetic</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="604,-378 508,-378 508,-354 604,-354 604,-378"/>
+<text text-anchor="middle" x="556" y="-363.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ieee_arithmetic</text>
 </g>
 <!-- module~ftvalueclass&#45;&gt;ieee_arithmetic -->
 <g id="module~~graph~~ModuleGraph_edge47" class="edge">
 <title>module~ftvalueclass&#45;&gt;ieee_arithmetic</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M709.56,-423.24C691.04,-409.72 659.17,-387.91 629,-374.3 624.1,-372.09 618.92,-370.05 613.66,-368.18"/>
-<polygon fill="#000000" stroke="#000000" points="614.76,-364.85 604.17,-364.99 612.53,-371.49 614.76,-364.85"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M685.14,-399.46C663.5,-393.81 636.5,-386.76 612.88,-380.59"/>
+<polygon fill="#000000" stroke="#000000" points="613.54,-377.15 602.98,-378.01 611.77,-383.92 613.54,-377.15"/>
 </g>
 <!-- module~ftvalueclass&#45;&gt;iso_fortran_env -->
 <g id="module~~graph~~ModuleGraph_edge48" class="edge">
 <title>module~ftvalueclass&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M685.14,-444.88C663.59,-450 636.72,-456.37 613.16,-461.97"/>
-<polygon fill="#000000" stroke="#000000" points="612.21,-458.59 603.29,-464.31 613.82,-465.41 612.21,-458.59"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M693.78,-422.09C684.31,-426.1 674.05,-430.87 665,-436 647.83,-445.73 646.45,-452.78 629,-462 621.82,-465.8 613.96,-469.26 606.15,-472.34"/>
+<polygon fill="#000000" stroke="#000000" points="604.84,-469.09 596.71,-475.89 607.31,-475.64 604.84,-469.09"/>
 </g>
 <!-- module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass -->
 <g id="module~~graph~~ModuleGraph_edge52" class="edge">
 <title>module~ftvaluedictionaryclass&#45;&gt;module~ftdictionaryclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M874.87,-385.13C846.02,-364.02 786.52,-320.48 752.61,-295.67"/>
-<polygon fill="#000000" stroke="#000000" points="754.31,-292.58 744.17,-289.5 750.18,-298.23 754.31,-292.58"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M879.17,-357.97C851.04,-330.52 781.87,-263.04 747.52,-229.53"/>
+<polygon fill="#000000" stroke="#000000" points="749.57,-226.64 739.97,-222.17 744.68,-231.65 749.57,-226.64"/>
 </g>
 <!-- module~ftvaluedictionaryclass&#45;&gt;module~ftvalueclass -->
 <g id="module~~graph~~ModuleGraph_edge53" class="edge">
 <title>module~ftvaluedictionaryclass&#45;&gt;module~ftvalueclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839.61,-409.32C819.79,-413.91 797.25,-419.14 777.6,-423.69"/>
-<polygon fill="#000000" stroke="#000000" points="776.57,-420.34 767.62,-426 778.15,-427.15 776.57,-420.34"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M842.29,-382C821.78,-387 797.99,-392.81 777.4,-397.83"/>
+<polygon fill="#000000" stroke="#000000" points="776.47,-394.45 767.58,-400.22 778.13,-401.25 776.47,-394.45"/>
 </g>
 <!-- module~ftvaluedictionaryclass&#45;&gt;iso_fortran_env -->
 <g id="module~~graph~~ModuleGraph_edge51" class="edge">
 <title>module~ftvaluedictionaryclass&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M823.88,-390.59C777.23,-388.73 714.89,-391.83 665,-414.3 644.65,-423.46 647.92,-437.46 629,-449.3 622.88,-453.13 616.12,-456.5 609.26,-459.44"/>
-<polygon fill="#000000" stroke="#000000" points="607.88,-456.22 599.9,-463.18 610.48,-462.72 607.88,-456.22"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M873.85,-382.1C853.76,-395.46 819.64,-416.93 788,-431 762.25,-442.45 754.96,-443.63 727.5,-450"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.5,-450C688.04,-458.69 645.83,-468.21 613.03,-475.54"/>
+<polygon fill="#000000" stroke="#000000" points="612.16,-472.15 603.16,-477.75 613.69,-478.98 612.16,-472.15"/>
 </g>
 <!-- module~sharedexceptionmanagermodule -->
 <g id="module~~graph~~ModuleGraph_node23" class="node">
 <title>module~sharedexceptionmanagermodule</title>
 <g id="a_module~~graph~~ModuleGraph_node23"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
-<polygon fill="#337ab7" stroke="#337ab7" points="1357,-269.3 1168,-269.3 1168,-245.3 1357,-245.3 1357,-269.3"/>
-<text text-anchor="middle" x="1262.5" y="-254.9" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="1357,-122 1168,-122 1168,-98 1357,-98 1357,-122"/>
+<text text-anchor="middle" x="1262.5" y="-107.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
 </a>
 </g>
 </g>
 <!-- module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass -->
 <g id="module~~graph~~ModuleGraph_edge54" class="edge">
 <title>module~sharedexceptionmanagermodule&#45;&gt;module~ftexceptionclass</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1167.81,-257.3C1154.21,-257.3 1140.51,-257.3 1127.75,-257.3"/>
-<polygon fill="#000000" stroke="#000000" points="1127.73,-253.8 1117.73,-257.3 1127.73,-260.8 1127.73,-253.8"/>
-</g>
-<!-- module~testsuitemanagerclass&#45;&gt;module~ftassertions -->
-<g id="module~~graph~~ModuleGraph_edge55" class="edge">
-<title>module~testsuitemanagerclass&#45;&gt;module~ftassertions</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1012.49,-449.3C990.1,-454.57 963.95,-460.72 941.87,-465.92"/>
-<polygon fill="#000000" stroke="#000000" points="940.97,-462.53 932.04,-468.23 942.57,-469.35 940.97,-462.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1167.81,-110.48C1154.21,-110.55 1140.51,-110.62 1127.75,-110.68"/>
+<polygon fill="#000000" stroke="#000000" points="1127.72,-107.18 1117.73,-110.73 1127.75,-114.18 1127.72,-107.18"/>
 </g>
 </g>
 </svg>
@@ -718,8 +679,8 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
                   var panmodulegraphModuleGraph = svgPanZoom('#modulegraphModuleGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#ModuleGraph-help-text">Help</a></div>
+          <div class="modal fade" id="ModuleGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -794,12 +755,12 @@ modules which it uses.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
             </p>
@@ -809,17 +770,12 @@ modules which it uses.
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

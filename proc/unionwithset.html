@@ -10,77 +10,52 @@
 
     <title>unionWithSet &ndash; FTObjectLibrary</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -88,33 +63,37 @@
       <small>Function</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 0.6% of total for procedures.">16 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.6% of total for procedures.">16 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/FTStringSetClass.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/ftstringsetclass.f90.html'>FTStringSetClass.f90</a></li>
-              <li><a href='../module/ftstringsetclass.html'>FTStringSetClass</a></li>
-          <li class="active">unionWithSet</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ftstringsetclass.f90.html'>FTStringSetClass.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ftstringsetclass.html'>FTStringSetClass</a></li>
+            <li class="breadcrumb-item active" aria-current="page">unionWithSet</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -124,6 +103,7 @@
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
       <div id="sidebar">
       <h3>Contents</h3>
+  
   
   
   
@@ -157,9 +137,9 @@
     <p>unionWithSet returns a pointer to a new set that is the union of two sets.
  the new set has reference count of 1. Release when done.</p>
 <h3>Usage:</h3>
-<div class="codehilite"><pre><span></span><code>  <span class="nv">newSet</span> <span class="o">=&gt;</span> <span class="nv">set1</span> <span class="o">%</span> <span class="nv">unionWithSet</span><span class="ss">(</span><span class="nv">set2</span><span class="ss">)</span>
-  ... <span class="k">do</span> <span class="nv">something</span> ...
-  <span class="k">call</span> <span class="nl">releaseFTStringSet</span><span class="ss">(</span><span class="nv">newSet</span><span class="ss">)</span>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">newSet</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nv">set1</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nv">unionWithSet</span><span class="ss">(</span><span class="nv">set2</span><span class="ss">)</span>
+<span class="w">  </span>...<span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nv">something</span><span class="w"> </span>...
+<span class="w">  </span><span class="k">call</span><span class="w"> </span><span class="nl">releaseFTStringSet</span><span class="ss">(</span><span class="nv">newSet</span><span class="ss">)</span>
 </code></pre></div>
 
     <h3>Type Bound</h3>
@@ -169,16 +149,16 @@
         <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~117"></span>
+              <span class="anchor" id="variable-self~127"></span>
               class(<a href='../type/ftstringset.html'>FTStringSet</a>)
             </td>
 <td></td>
@@ -217,32 +197,459 @@
       </h3>
       
     <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~unionwithset~~CallsGraph Pages: 1 -->
+<svg id="procunionwithsetCallsGraph" width="641pt" height="84pt"
+ viewBox="0.00 0.00 641.00 83.67" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~unionwithset~~CallsGraph" class="graph" transform="scale(3.71 3.71) rotate(0) translate(4 306)">
+<title>proc~~unionwithset~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-306 2371,-306 2371,4 -4,4"/>
+<!-- proc~unionwithset -->
+<g id="proc~~unionwithset~~CallsGraph_node1" class="node">
+<title>proc~unionwithset</title>
+<polygon fill="none" stroke="black" points="252,-121 0,-121 0,-97 252,-97 252,-121"/>
+<text text-anchor="middle" x="126" y="-106.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTStringSetClass::FTStringSet%unionWithSet</text>
+</g>
+<!-- proc~addstring -->
+<g id="proc~~unionwithset~~CallsGraph_node2" class="node">
+<title>proc~addstring</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node2"><a xlink:href=".././proc/addstring.html" xlink:title="FTStringSetClass::FTStringSet%AddString">
+<polygon fill="#d9534f" stroke="#d9534f" points="814,-175 582,-175 582,-151 814,-151 814,-175"/>
+<text text-anchor="middle" x="698" y="-160.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%AddString</text>
+</a>
+</g>
+</g>
+<!-- proc~unionwithset&#45;&gt;proc~addstring -->
+<g id="proc~~unionwithset~~CallsGraph_edge1" class="edge">
+<title>proc~unionwithset&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M212.97,-121.01C237.21,-124.18 263.61,-127.43 288,-130 382.94,-140.02 490.57,-148.59 571.58,-154.49"/>
+<polygon fill="#000000" stroke="#000000" points="571.6,-158 581.83,-155.23 572.11,-151.01 571.6,-158"/>
+</g>
+<!-- proc~initwithstrings -->
+<g id="proc~~unionwithset~~CallsGraph_node3" class="node">
+<title>proc~initwithstrings</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node3"><a xlink:href=".././proc/initwithstrings.html" xlink:title="FTStringSetClass::FTStringSet%initWithStrings">
+<polygon fill="#d9534f" stroke="#d9534f" points="546,-121 288,-121 288,-97 546,-97 546,-121"/>
+<text text-anchor="middle" x="417" y="-106.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%initWithStrings</text>
+</a>
+</g>
+</g>
+<!-- proc~unionwithset&#45;&gt;proc~initwithstrings -->
+<g id="proc~~unionwithset~~CallsGraph_edge2" class="edge">
+<title>proc~unionwithset&#45;&gt;proc~initwithstrings</title>
+<path fill="none" stroke="#000000" d="M252.08,-109C260.63,-109 269.28,-109 277.89,-109"/>
+<polygon fill="#000000" stroke="#000000" points="277.98,-112.5 287.98,-109 277.98,-105.5 277.98,-112.5"/>
+</g>
+<!-- proc~strings -->
+<g id="proc~~unionwithset~~CallsGraph_node4" class="node">
+<title>proc~strings</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node4"><a xlink:href=".././proc/strings.html" xlink:title="FTStringSetClass::FTStringSet%strings">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="525,-61 309,-61 309,-37 525,-37 525,-61"/>
+<text text-anchor="middle" x="417" y="-46.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%strings</text>
+</a>
+</g>
+</g>
+<!-- proc~unionwithset&#45;&gt;proc~strings -->
+<g id="proc~~unionwithset~~CallsGraph_edge3" class="edge">
+<title>proc~unionwithset&#45;&gt;proc~strings</title>
+<path fill="none" stroke="#000000" d="M185.14,-96.93C232.17,-87.17 298.48,-73.4 347.98,-63.12"/>
+<polygon fill="#000000" stroke="#000000" points="348.88,-66.51 357.96,-61.05 347.45,-59.66 348.88,-66.51"/>
+</g>
+<!-- interface~release -->
+<g id="proc~~unionwithset~~CallsGraph_node5" class="node">
+<title>interface~release</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node5"><a xlink:href=".././interface/release.html" xlink:title="FTObjectClass::release">
+<polygon fill="#a7506f" stroke="#a7506f" points="1367,-302 1233,-302 1233,-278 1367,-278 1367,-302"/>
+<text text-anchor="middle" x="1300" y="-287.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::release</text>
+</a>
+</g>
+</g>
+<!-- proc~addstring&#45;&gt;interface~release -->
+<g id="proc~~unionwithset~~CallsGraph_edge4" class="edge">
+<title>proc~addstring&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M714.66,-175.16C740.94,-194.81 796.34,-233.06 850,-250 976.29,-289.87 1131.82,-294.51 1222.74,-293.07"/>
+<polygon fill="#000000" stroke="#000000" points="1223.03,-296.57 1232.96,-292.88 1222.9,-289.57 1223.03,-296.57"/>
+</g>
+<!-- proc~addobjectforkey -->
+<g id="proc~~unionwithset~~CallsGraph_node6" class="node">
+<title>proc~addobjectforkey</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node6"><a xlink:href=".././proc/addobjectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%addObjectForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1133,-180 850,-180 850,-156 1133,-156 1133,-180"/>
+<text text-anchor="middle" x="991.5" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%addObjectForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addstring&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~unionwithset~~CallsGraph_edge5" class="edge">
+<title>proc~addstring&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M814.21,-164.98C822.47,-165.12 830.86,-165.26 839.28,-165.41"/>
+<polygon fill="#000000" stroke="#000000" points="839.5,-168.91 849.56,-165.58 839.62,-161.91 839.5,-168.91"/>
+</g>
+<!-- proc~containskey -->
+<g id="proc~~unionwithset~~CallsGraph_node8" class="node">
+<title>proc~containskey</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node8"><a xlink:href=".././proc/containskey.html" xlink:title="FTDictionaryClass::FTDictionary%containsKey">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1119.5,-241 863.5,-241 863.5,-217 1119.5,-217 1119.5,-241"/>
+<text text-anchor="middle" x="991.5" y="-226.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%containsKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addstring&#45;&gt;proc~containskey -->
+<g id="proc~~unionwithset~~CallsGraph_edge6" class="edge">
+<title>proc~addstring&#45;&gt;proc~containskey</title>
+<path fill="none" stroke="#000000" d="M752.13,-175.03C801.49,-186.21 875.07,-202.86 927.4,-214.71"/>
+<polygon fill="#000000" stroke="#000000" points="926.72,-218.15 937.25,-216.94 928.27,-211.32 926.72,-218.15"/>
+</g>
+<!-- proc~initftobject -->
+<g id="proc~~unionwithset~~CallsGraph_node9" class="node">
+<title>proc~initftobject</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node9"><a xlink:href=".././proc/initftobject.html" xlink:title="FTObjectClass::FTObject%initFTObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="2098.5,-102 1882.5,-102 1882.5,-78 2098.5,-78 2098.5,-102"/>
+<text text-anchor="middle" x="1990.5" y="-87.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%initFTObject</text>
+</a>
+</g>
+</g>
+<!-- proc~addstring&#45;&gt;proc~initftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge7" class="edge">
+<title>proc~addstring&#45;&gt;proc~initftobject</title>
+<path fill="none" stroke="#000000" d="M807,-150.97C821.45,-149.53 836.08,-148.17 850,-147 1222.45,-115.81 1664.91,-99.63 1871.84,-93.28"/>
+<polygon fill="#000000" stroke="#000000" points="1872.23,-96.77 1882.12,-92.97 1872.02,-89.77 1872.23,-96.77"/>
+</g>
+<!-- proc~initwithstrings&#45;&gt;proc~addstring -->
+<g id="proc~~unionwithset~~CallsGraph_edge8" class="edge">
+<title>proc~initwithstrings&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M480.27,-121.05C523.12,-129.35 580.17,-140.39 624.98,-149.06"/>
+<polygon fill="#000000" stroke="#000000" points="624.44,-152.52 634.92,-150.99 625.77,-145.65 624.44,-152.52"/>
+</g>
+<!-- proc~initftstringset -->
+<g id="proc~~unionwithset~~CallsGraph_node10" class="node">
+<title>proc~initftstringset</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node10"><a xlink:href=".././proc/initftstringset.html" xlink:title="FTStringSetClass::FTStringSet%initFTStringSet">
+<polygon fill="#d9534f" stroke="#d9534f" points="1429.5,-62 1170.5,-62 1170.5,-38 1429.5,-38 1429.5,-62"/>
+<text text-anchor="middle" x="1300" y="-47.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%initFTStringSet</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithstrings&#45;&gt;proc~initftstringset -->
+<g id="proc~~unionwithset~~CallsGraph_edge9" class="edge">
+<title>proc~initwithstrings&#45;&gt;proc~initftstringset</title>
+<path fill="none" stroke="#000000" d="M546.02,-98.6C631.97,-91.77 747.75,-82.87 850,-76 953.9,-69.02 1071.39,-62.26 1160.13,-57.38"/>
+<polygon fill="#000000" stroke="#000000" points="1160.46,-60.87 1170.26,-56.83 1160.08,-53.88 1160.46,-60.87"/>
+</g>
+<!-- proc~allkeys -->
+<g id="proc~~unionwithset~~CallsGraph_node7" class="node">
+<title>proc~allkeys</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node7"><a xlink:href=".././proc/allkeys.html" xlink:title="FTDictionaryClass::FTDictionary%AllKeys">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="813,-24 583,-24 583,0 813,0 813,-24"/>
+<text text-anchor="middle" x="698" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%AllKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~strings&#45;&gt;proc~allkeys -->
+<g id="proc~~unionwithset~~CallsGraph_edge10" class="edge">
+<title>proc~strings&#45;&gt;proc~allkeys</title>
+<path fill="none" stroke="#000000" d="M508.58,-36.99C536.62,-33.27 567.68,-29.15 596.36,-25.35"/>
+<polygon fill="#000000" stroke="#000000" points="596.94,-28.8 606.39,-24.02 596.02,-21.86 596.94,-28.8"/>
+</g>
+<!-- proc~releaseftobject -->
+<g id="proc~~unionwithset~~CallsGraph_node17" class="node">
+<title>proc~releaseftobject</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node17"><a xlink:href=".././proc/releaseftobject.html" xlink:title="FTObjectClass::releaseFTObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="1730,-302 1549,-302 1549,-278 1730,-278 1730,-302"/>
+<text text-anchor="middle" x="1639.5" y="-287.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::releaseFTObject</text>
+</a>
+</g>
+</g>
+<!-- interface~release&#45;&gt;proc~releaseftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge11" class="edge">
+<title>interface~release&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1367.28,-290C1416.07,-290 1483.26,-290 1538.56,-290"/>
+<polygon fill="#000000" stroke="#000000" points="1538.74,-293.5 1548.74,-290 1538.74,-286.5 1538.74,-293.5"/>
+</g>
+<!-- proc~addobjectforkey&#45;&gt;interface~release -->
+<g id="proc~~unionwithset~~CallsGraph_edge12" class="edge">
+<title>proc~addobjectforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1073.98,-180.06C1094.72,-185.99 1115.94,-194.83 1133,-208 1157.92,-227.24 1143,-251.25 1169,-269 1184.69,-279.71 1203.88,-285.68 1222.66,-288.85"/>
+<polygon fill="#000000" stroke="#000000" points="1222.32,-292.34 1232.71,-290.31 1223.32,-285.41 1222.32,-292.34"/>
+</g>
+<!-- proc~add -->
+<g id="proc~~unionwithset~~CallsGraph_node12" class="node">
+<title>proc~add</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node12"><a xlink:href=".././proc/add.html" xlink:title="FTLinkedListClass::FTLinkedList%add">
+<polygon fill="#d9534f" stroke="#d9534f" points="1405,-180 1195,-180 1195,-156 1405,-156 1405,-180"/>
+<text text-anchor="middle" x="1300" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%add</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjectforkey&#45;&gt;proc~add -->
+<g id="proc~~unionwithset~~CallsGraph_edge13" class="edge">
+<title>proc~addobjectforkey&#45;&gt;proc~add</title>
+<path fill="none" stroke="#000000" d="M1133.19,-168C1150.39,-168 1167.81,-168 1184.56,-168"/>
+<polygon fill="#000000" stroke="#000000" points="1184.9,-171.5 1194.9,-168 1184.9,-164.5 1184.9,-171.5"/>
+</g>
+<!-- proc~b3hs_hash_key_jenkins -->
+<g id="proc~~unionwithset~~CallsGraph_node13" class="node">
+<title>proc~b3hs_hash_key_jenkins</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node13"><a xlink:href=".././proc/b3hs_hash_key_jenkins.html" xlink:title="HashModule::b3hs_hash_key_jenkins">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1744,-243 1535,-243 1535,-219 1744,-219 1744,-243"/>
+<text text-anchor="middle" x="1639.5" y="-228.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HashModule::b3hs_hash_key_jenkins</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjectforkey&#45;&gt;proc~b3hs_hash_key_jenkins -->
+<g id="proc~~unionwithset~~CallsGraph_edge14" class="edge">
+<title>proc~addobjectforkey&#45;&gt;proc~b3hs_hash_key_jenkins</title>
+<path fill="none" stroke="#000000" d="M1089.09,-180.01C1115.02,-183.09 1143.06,-186.3 1169,-189 1290.33,-201.64 1429.56,-213.8 1524.69,-221.76"/>
+<polygon fill="#000000" stroke="#000000" points="1524.66,-225.26 1534.92,-222.61 1525.24,-218.29 1524.66,-225.26"/>
+</g>
+<!-- proc~initwithobjectandkey -->
+<g id="proc~~unionwithset~~CallsGraph_node14" class="node">
+<title>proc~initwithobjectandkey</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node14"><a xlink:href=".././proc/initwithobjectandkey.html" xlink:title="FTKeyObjectPairClass::FTKeyObjectPair%initWithObjectAndKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1812,-142 1467,-142 1467,-118 1812,-118 1812,-142"/>
+<text text-anchor="middle" x="1639.5" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass::FTKeyObjectPair%initWithObjectAndKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjectforkey&#45;&gt;proc~initwithobjectandkey -->
+<g id="proc~~unionwithset~~CallsGraph_edge15" class="edge">
+<title>proc~addobjectforkey&#45;&gt;proc~initwithobjectandkey</title>
+<path fill="none" stroke="#000000" d="M1081.24,-156C1109.27,-152.59 1140.39,-149.22 1169,-147 1263.75,-139.66 1369.5,-135.48 1456.62,-133.1"/>
+<polygon fill="#000000" stroke="#000000" points="1456.98,-136.6 1466.88,-132.83 1456.79,-129.6 1456.98,-136.6"/>
+</g>
+<!-- key -->
+<g id="proc~~unionwithset~~CallsGraph_node11" class="node">
+<title>key</title>
+<polygon fill="#777777" stroke="#777777" points="1018.5,-24 964.5,-24 964.5,0 1018.5,0 1018.5,-24"/>
+<text text-anchor="middle" x="991.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">key</text>
+</g>
+<!-- proc~allkeys&#45;&gt;key -->
+<g id="proc~~unionwithset~~CallsGraph_edge16" class="edge">
+<title>proc~allkeys&#45;&gt;key</title>
+<path fill="none" stroke="#000000" d="M813.37,-12C863.53,-12 918.89,-12 954.15,-12"/>
+<polygon fill="#000000" stroke="#000000" points="954.41,-15.5 964.41,-12 954.41,-8.5 954.41,-15.5"/>
+</g>
+<!-- proc~objectforkey -->
+<g id="proc~~unionwithset~~CallsGraph_node16" class="node">
+<title>proc~objectforkey</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node16"><a xlink:href=".././proc/objectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%objectForKey">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1431,-260 1169,-260 1169,-236 1431,-236 1431,-260"/>
+<text text-anchor="middle" x="1300" y="-245.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%objectForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~containskey&#45;&gt;proc~objectforkey -->
+<g id="proc~~unionwithset~~CallsGraph_edge17" class="edge">
+<title>proc~containskey&#45;&gt;proc~objectforkey</title>
+<path fill="none" stroke="#000000" d="M1119.82,-236.89C1132.54,-237.68 1145.5,-238.48 1158.35,-239.28"/>
+<polygon fill="#000000" stroke="#000000" points="1158.42,-242.79 1168.62,-239.92 1158.85,-235.81 1158.42,-242.79"/>
+</g>
+<!-- proc~initftstringset&#45;&gt;proc~initftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge18" class="edge">
+<title>proc~initftstringset&#45;&gt;proc~initftobject</title>
+<path fill="none" stroke="#000000" d="M1429.69,-55.55C1533.05,-60.25 1681.92,-67.56 1812,-76 1831.4,-77.26 1851.97,-78.74 1871.98,-80.27"/>
+<polygon fill="#000000" stroke="#000000" points="1871.82,-83.76 1882.06,-81.04 1872.36,-76.79 1871.82,-83.76"/>
+</g>
+<!-- proc~initwithsize -->
+<g id="proc~~unionwithset~~CallsGraph_node15" class="node">
+<title>proc~initwithsize</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node15"><a xlink:href=".././proc/initwithsize.html" xlink:title="FTDictionaryClass::FTDictionary%initWithSize">
+<polygon fill="#d9534f" stroke="#d9534f" points="1767,-24 1512,-24 1512,0 1767,0 1767,-24"/>
+<text text-anchor="middle" x="1639.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%initWithSize</text>
+</a>
+</g>
+</g>
+<!-- proc~initftstringset&#45;&gt;proc~initwithsize -->
+<g id="proc~~unionwithset~~CallsGraph_edge19" class="edge">
+<title>proc~initftstringset&#45;&gt;proc~initwithsize</title>
+<path fill="none" stroke="#000000" d="M1407.79,-37.98C1443.97,-33.9 1484.58,-29.33 1521.51,-25.17"/>
+<polygon fill="#000000" stroke="#000000" points="1522.28,-28.61 1531.83,-24.01 1521.5,-21.65 1522.28,-28.61"/>
+</g>
+<!-- proc~initwithobject -->
+<g id="proc~~unionwithset~~CallsGraph_node18" class="node">
+<title>proc~initwithobject</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node18"><a xlink:href=".././proc/initwithobject.html" xlink:title="FTLinkedListRecordClass::FTLinkedListRecord%initWithObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="1809.5,-184 1469.5,-184 1469.5,-160 1809.5,-160 1809.5,-184"/>
+<text text-anchor="middle" x="1639.5" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass::FTLinkedListRecord%initWithObject</text>
+</a>
+</g>
+</g>
+<!-- proc~add&#45;&gt;proc~initwithobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge20" class="edge">
+<title>proc~add&#45;&gt;proc~initwithobject</title>
+<path fill="none" stroke="#000000" d="M1405.02,-169.23C1422.34,-169.44 1440.73,-169.66 1459.29,-169.88"/>
+<polygon fill="#000000" stroke="#000000" points="1459.27,-173.38 1469.31,-169.99 1459.35,-166.38 1459.27,-173.38"/>
+</g>
+<!-- proc~initwithobjectandkey&#45;&gt;proc~initftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge21" class="edge">
+<title>proc~initwithobjectandkey&#45;&gt;proc~initftobject</title>
+<path fill="none" stroke="#000000" d="M1745.21,-118C1785.93,-113.33 1832.71,-107.97 1874.37,-103.2"/>
+<polygon fill="#000000" stroke="#000000" points="1875.02,-106.64 1884.56,-102.03 1874.23,-99.69 1875.02,-106.64"/>
+</g>
+<!-- proc~retainftobject -->
+<g id="proc~~unionwithset~~CallsGraph_node20" class="node">
+<title>proc~retainftobject</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node20"><a xlink:href=".././proc/retainftobject.html" xlink:title="FTObjectClass::FTObject%retainFTObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="2105.5,-164 1875.5,-164 1875.5,-140 2105.5,-140 2105.5,-164"/>
+<text text-anchor="middle" x="1990.5" y="-149.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%retainFTObject</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithobjectandkey&#45;&gt;proc~retainftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge22" class="edge">
+<title>proc~initwithobjectandkey&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M1812.19,-140.82C1830.04,-141.95 1847.93,-143.08 1865.11,-144.16"/>
+<polygon fill="#000000" stroke="#000000" points="1864.94,-147.66 1875.14,-144.79 1865.38,-140.67 1864.94,-147.66"/>
+</g>
+<!-- proc~initwithsize&#45;&gt;proc~initftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge23" class="edge">
+<title>proc~initwithsize&#45;&gt;proc~initftobject</title>
+<path fill="none" stroke="#000000" d="M1735.27,-24.04C1760.35,-27.86 1787.3,-32.54 1812,-38 1857.42,-48.05 1908.28,-63.38 1943.88,-74.79"/>
+<polygon fill="#000000" stroke="#000000" points="1942.9,-78.16 1953.5,-77.9 1945.06,-71.5 1942.9,-78.16"/>
+</g>
+<!-- proc~objectforkey&#45;&gt;proc~b3hs_hash_key_jenkins -->
+<g id="proc~~unionwithset~~CallsGraph_edge24" class="edge">
+<title>proc~objectforkey&#45;&gt;proc~b3hs_hash_key_jenkins</title>
+<path fill="none" stroke="#000000" d="M1431,-241.45C1461.87,-239.9 1494.56,-238.25 1524.64,-236.74"/>
+<polygon fill="#000000" stroke="#000000" points="1524.92,-240.23 1534.74,-236.23 1524.57,-233.23 1524.92,-240.23"/>
+</g>
+<!-- proc~printftobjectdescription -->
+<g id="proc~~unionwithset~~CallsGraph_node19" class="node">
+<title>proc~printftobjectdescription</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node19"><a xlink:href=".././proc/printftobjectdescription.html" xlink:title="FTObjectClass::FTObject%printFTObjectDescription">
+<polygon fill="#d9534f" stroke="#d9534f" points="2133,-302 1848,-302 1848,-278 2133,-278 2133,-302"/>
+<text text-anchor="middle" x="1990.5" y="-287.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%printFTObjectDescription</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftobject&#45;&gt;proc~printftobjectdescription -->
+<g id="proc~~unionwithset~~CallsGraph_edge25" class="edge">
+<title>proc~releaseftobject&#45;&gt;proc~printftobjectdescription</title>
+<path fill="none" stroke="#000000" d="M1730.38,-290C1763.05,-290 1800.95,-290 1837.51,-290"/>
+<polygon fill="#000000" stroke="#000000" points="1837.78,-293.5 1847.78,-290 1837.78,-286.5 1837.78,-293.5"/>
+</g>
+<!-- proc~initwithobject&#45;&gt;proc~initftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge26" class="edge">
+<title>proc~initwithobject&#45;&gt;proc~initftobject</title>
+<path fill="none" stroke="#000000" d="M1778.2,-159.92C1789.76,-157.47 1801.16,-154.53 1812,-151 1829.41,-145.34 1831.1,-138.04 1848,-131 1873.43,-120.41 1902.51,-111.47 1927.66,-104.67"/>
+<polygon fill="#000000" stroke="#000000" points="1928.69,-108.03 1937.46,-102.08 1926.89,-101.26 1928.69,-108.03"/>
+</g>
+<!-- proc~initwithobject&#45;&gt;proc~retainftobject -->
+<g id="proc~~unionwithset~~CallsGraph_edge27" class="edge">
+<title>proc~initwithobject&#45;&gt;proc~retainftobject</title>
+<path fill="none" stroke="#000000" d="M1809.63,-162.31C1828.32,-161.24 1847.09,-160.16 1865.08,-159.13"/>
+<polygon fill="#000000" stroke="#000000" points="1865.5,-162.61 1875.28,-158.55 1865.1,-155.62 1865.5,-162.61"/>
+</g>
+<!-- proc~refcount -->
+<g id="proc~~unionwithset~~CallsGraph_node21" class="node">
+<title>proc~refcount</title>
+<g id="a_proc~~unionwithset~~CallsGraph_node21"><a xlink:href=".././proc/refcount.html" xlink:title="FTObjectClass::FTObject%refCount">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="2367,-302 2169,-302 2169,-278 2367,-278 2367,-302"/>
+<text text-anchor="middle" x="2268" y="-287.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%refCount</text>
+</a>
+</g>
+</g>
+<!-- proc~printftobjectdescription&#45;&gt;proc~refcount -->
+<g id="proc~~unionwithset~~CallsGraph_edge28" class="edge">
+<title>proc~printftobjectdescription&#45;&gt;proc~refcount</title>
+<path fill="none" stroke="#000000" d="M2133.29,-290C2141.81,-290 2150.32,-290 2158.68,-290"/>
+<polygon fill="#000000" stroke="#000000" points="2158.79,-293.5 2168.79,-290 2158.79,-286.5 2158.79,-293.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocunionwithsetCallsGraph = svgPanZoom('#procunionwithsetCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
 
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
 
 
     
@@ -250,6 +657,7 @@
 
     
     
+
 
 
     
@@ -261,12 +669,12 @@
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
             </p>
@@ -276,17 +684,12 @@
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

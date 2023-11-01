@@ -10,77 +10,52 @@
 
     <title>releaseFTObject &ndash; FTObjectLibrary</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -88,33 +63,37 @@
       <small>Subroutine</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 0.6% of total for procedures.">17 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.6% of total for procedures.">17 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/FTObjectClass.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></li>
-              <li><a href='../module/ftobjectclass.html'>FTObjectClass</a></li>
-          <li class="active">releaseFTObject</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ftobjectclass.html'>FTObjectClass</a></li>
+            <li class="breadcrumb-item active" aria-current="page">releaseFTObject</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -124,6 +103,7 @@
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
       <div id="sidebar">
       <h3>Contents</h3>
+  
   
   
   
@@ -165,16 +145,16 @@ is called automatically and the object is deallocated.</p>
         <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~177"></span>
+              <span class="anchor" id="variable-self~165"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -191,807 +171,66 @@ is called automatically and the object is deallocated.</p>
   </table>
 
     <br>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Called by</h3>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
   <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
-<!-- Title: proc~~releaseftobject~~CalledByGraph Pages: 1 -->
-<svg id="procreleaseftobjectCalledByGraph" width="641pt" height="895pt"
- viewBox="0.00 0.00 641.00 895.05" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~releaseftobject~~CalledByGraph" class="graph" transform="scale(1.8 1.8) rotate(0) translate(4 1603.18)">
-<title>proc~~releaseftobject~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-1603.18 1147,-1603.18 1147,4 -4,4"/>
+<!-- Title: proc~~releaseftobject~~CallsGraph Pages: 1 -->
+<svg id="procreleaseftobjectCallsGraph" width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.57" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~releaseftobject~~CallsGraph" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<title>proc~~releaseftobject~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 740,-28 740,4 -4,4"/>
 <!-- proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_node1" class="node">
+<g id="proc~~releaseftobject~~CallsGraph_node1" class="node">
 <title>proc~releaseftobject</title>
-<polygon fill="none" stroke="black" points="1143,-340.18 962,-340.18 962,-316.18 1143,-316.18 1143,-340.18"/>
-<text text-anchor="middle" x="1052.5" y="-325.78" font-family="Helvetica,sans-Serif" font-size="10.50">FTObjectClass::releaseFTObject</text>
+<polygon fill="none" stroke="black" points="181,-24 0,-24 0,0 181,0 181,-24"/>
+<text text-anchor="middle" x="90.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">FTObjectClass::releaseFTObject</text>
 </g>
-<!-- interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_node2" class="node">
-<title>interface~release</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node2"><a xlink:href=".././interface/release.html" xlink:title="FTObjectClass::release">
-<polygon fill="#a7506f" stroke="#a7506f" points="759,-1053.18 625,-1053.18 625,-1029.18 759,-1029.18 759,-1053.18"/>
-<text text-anchor="middle" x="692" y="-1038.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::release</text>
+<!-- proc~printftobjectdescription -->
+<g id="proc~~releaseftobject~~CallsGraph_node2" class="node">
+<title>proc~printftobjectdescription</title>
+<g id="a_proc~~releaseftobject~~CallsGraph_node2"><a xlink:href=".././proc/printftobjectdescription.html" xlink:title="FTObjectClass::FTObject%printFTObjectDescription">
+<polygon fill="#d9534f" stroke="#d9534f" points="502,-24 217,-24 217,0 502,0 502,-24"/>
+<text text-anchor="middle" x="359.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%printFTObjectDescription</text>
 </a>
 </g>
 </g>
-<!-- interface~release&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge16" class="edge">
-<title>interface~release&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M700.3,-1028.95C730.05,-978.91 844.41,-784.54 926,-618.18 974.27,-519.75 1023.65,-398.28 1043,-349.72"/>
-<polygon fill="#000000" stroke="#000000" points="1046.32,-350.83 1046.76,-340.24 1039.82,-348.25 1046.32,-350.83"/>
+<!-- proc~releaseftobject&#45;&gt;proc~printftobjectdescription -->
+<g id="proc~~releaseftobject~~CallsGraph_edge1" class="edge">
+<title>proc~releaseftobject&#45;&gt;proc~printftobjectdescription</title>
+<path fill="none" stroke="#000000" d="M181.15,-12C189.43,-12 197.95,-12 206.59,-12"/>
+<polygon fill="#000000" stroke="#000000" points="206.76,-15.5 216.76,-12 206.76,-8.5 206.76,-15.5"/>
 </g>
-<!-- proc~addobjecttomultiindextableforkeys -->
-<g id="proc~~releaseftobject~~CalledByGraph_node3" class="node">
-<title>proc~addobjecttomultiindextableforkeys</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node3"><a xlink:href=".././proc/addobjecttomultiindextableforkeys.html" xlink:title="FTMultiIndexTableClass::FTMultiIndexTable%addObjectToMultiIndexTableForKeys">
-<polygon fill="#d9534f" stroke="#d9534f" points="910,-609.18 474,-609.18 474,-585.18 910,-585.18 910,-609.18"/>
-<text text-anchor="middle" x="692" y="-594.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass::FTMultiIndexTable%addObjectToMultiIndexTableForKeys</text>
+<!-- proc~refcount -->
+<g id="proc~~releaseftobject~~CallsGraph_node3" class="node">
+<title>proc~refcount</title>
+<g id="a_proc~~releaseftobject~~CallsGraph_node3"><a xlink:href=".././proc/refcount.html" xlink:title="FTObjectClass::FTObject%refCount">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="736,-24 538,-24 538,0 736,0 736,-24"/>
+<text text-anchor="middle" x="637" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%refCount</text>
 </a>
 </g>
 </g>
-<!-- proc~addobjecttomultiindextableforkeys&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge1" class="edge">
-<title>proc~addobjecttomultiindextableforkeys&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M910.02,-585.62C915.53,-582.8 920.87,-579.66 926,-576.18 1006,-521.9 1037.65,-400.69 1047.63,-350.55"/>
-<polygon fill="#000000" stroke="#000000" points="1051.12,-350.93 1049.53,-340.46 1044.24,-349.63 1051.12,-350.93"/>
-</g>
-<!-- proc~addobjecttosparsematrixforkeys -->
-<g id="proc~~releaseftobject~~CalledByGraph_node4" class="node">
-<title>proc~addobjecttosparsematrixforkeys</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node4"><a xlink:href=".././proc/addobjecttosparsematrixforkeys.html" xlink:title="FTSparseMatrixClass::FTSparseMatrix%addObjectToSparseMatrixForKeys">
-<polygon fill="#d9534f" stroke="#d9534f" points="892,-567.18 492,-567.18 492,-543.18 892,-543.18 892,-567.18"/>
-<text text-anchor="middle" x="692" y="-552.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::FTSparseMatrix%addObjectToSparseMatrixForKeys</text>
-</a>
-</g>
-</g>
-<!-- proc~addobjecttosparsematrixforkeys&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge2" class="edge">
-<title>proc~addobjecttosparsematrixforkeys&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M892.12,-545.7C904,-541.29 915.41,-535.85 926,-529.18 993.72,-486.55 1030.98,-392.66 1044.98,-350.02"/>
-<polygon fill="#000000" stroke="#000000" points="1048.36,-350.93 1048.04,-340.34 1041.69,-348.82 1048.36,-350.93"/>
-</g>
-<!-- proc~destructftexceptions -->
-<g id="proc~~releaseftobject~~CalledByGraph_node5" class="node">
-<title>proc~destructftexceptions</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node5"><a xlink:href=".././proc/destructftexceptions.html" xlink:title="SharedExceptionManagerModule::destructFTExceptions">
-<polygon fill="#d9534f" stroke="#d9534f" points="366,-507.18 56,-507.18 56,-483.18 366,-483.18 366,-507.18"/>
-<text text-anchor="middle" x="211" y="-492.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::destructFTExceptions</text>
-</a>
-</g>
-</g>
-<!-- proc~destructftexceptions&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge3" class="edge">
-<title>proc~destructftexceptions&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M322.29,-507.19C495.82,-524.13 823.42,-547.59 926,-496.18 987.58,-465.32 1026.69,-388.3 1042.91,-350.22"/>
-<polygon fill="#000000" stroke="#000000" points="1046.3,-351.16 1046.87,-340.58 1039.83,-348.49 1046.3,-351.16"/>
-</g>
-<!-- proc~releasecurrenterror -->
-<g id="proc~~releaseftobject~~CalledByGraph_node11" class="node">
-<title>proc~releasecurrenterror</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node11"><a xlink:href=".././proc/releasecurrenterror.html" xlink:title="SharedExceptionManagerModule::releaseCurrentError">
-<polygon fill="#d9534f" stroke="#d9534f" points="842.5,-487.18 541.5,-487.18 541.5,-463.18 842.5,-463.18 842.5,-487.18"/>
-<text text-anchor="middle" x="692" y="-472.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::releaseCurrentError</text>
-</a>
-</g>
-</g>
-<!-- proc~destructftexceptions&#45;&gt;proc~releasecurrenterror -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge43" class="edge">
-<title>proc~destructftexceptions&#45;&gt;proc~releasecurrenterror</title>
-<path fill="none" stroke="#000000" d="M366.2,-488.74C418.87,-486.54 477.87,-484.08 530.99,-481.86"/>
-<polygon fill="#000000" stroke="#000000" points="531.34,-485.35 541.18,-481.44 531.04,-478.36 531.34,-485.35"/>
-</g>
-<!-- proc~destructftkeyobjectpair -->
-<g id="proc~~releaseftobject~~CalledByGraph_node6" class="node">
-<title>proc~destructftkeyobjectpair</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node6"><a xlink:href=".././proc/destructftkeyobjectpair.html" xlink:title="FTKeyObjectPairClass::destructFTKeyObjectPair">
-<polygon fill="#d9534f" stroke="#d9534f" points="824,-445.18 560,-445.18 560,-421.18 824,-421.18 824,-445.18"/>
-<text text-anchor="middle" x="692" y="-430.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass::destructFTKeyObjectPair</text>
-</a>
-</g>
-</g>
-<!-- proc~destructftkeyobjectpair&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge4" class="edge">
-<title>proc~destructftkeyobjectpair&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M824.25,-432.83C858.12,-429.65 894.03,-423.49 926,-412.18 966.91,-397.72 1007.37,-366.85 1030.87,-346.83"/>
-<polygon fill="#000000" stroke="#000000" points="1033.19,-349.45 1038.45,-340.25 1028.6,-344.17 1033.19,-349.45"/>
-</g>
-<!-- proc~destructftlinkedlistrecord -->
-<g id="proc~~releaseftobject~~CalledByGraph_node7" class="node">
-<title>proc~destructftlinkedlistrecord</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node7"><a xlink:href=".././proc/destructftlinkedlistrecord.html" xlink:title="FTLinkedListRecordClass::destructFTLinkedListRecord">
-<polygon fill="#d9534f" stroke="#d9534f" points="841,-403.18 543,-403.18 543,-379.18 841,-379.18 841,-403.18"/>
-<text text-anchor="middle" x="692" y="-388.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass::destructFTLinkedListRecord</text>
-</a>
-</g>
-</g>
-<!-- proc~destructftlinkedlistrecord&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge5" class="edge">
-<title>proc~destructftlinkedlistrecord&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M841.06,-383.06C869.43,-380.04 898.77,-375.88 926,-370.18 955.65,-363.97 988.04,-353.02 1012.49,-343.86"/>
-<polygon fill="#000000" stroke="#000000" points="1014.02,-347.02 1022.12,-340.19 1011.53,-340.48 1014.02,-347.02"/>
-</g>
-<!-- proc~destructmatrixdata -->
-<g id="proc~~releaseftobject~~CalledByGraph_node8" class="node">
-<title>proc~destructmatrixdata</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node8"><a xlink:href=".././proc/destructmatrixdata.html" xlink:title="FTSparseMatrixData::destructMatrixData">
-<polygon fill="#d9534f" stroke="#d9534f" points="807,-361.18 577,-361.18 577,-337.18 807,-337.18 807,-361.18"/>
-<text text-anchor="middle" x="692" y="-346.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData::destructMatrixData</text>
-</a>
-</g>
-</g>
-<!-- proc~destructmatrixdata&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge6" class="edge">
-<title>proc~destructmatrixdata&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M807.42,-342.48C853.9,-339.76 907.11,-336.64 951.96,-334.01"/>
-<polygon fill="#000000" stroke="#000000" points="952.2,-337.5 961.98,-333.43 951.79,-330.52 952.2,-337.5"/>
-</g>
-<!-- proc~destructmultiindexmatrixdata -->
-<g id="proc~~releaseftobject~~CalledByGraph_node9" class="node">
-<title>proc~destructmultiindexmatrixdata</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node9"><a xlink:href=".././proc/destructmultiindexmatrixdata.html" xlink:title="FTMultiIndexTableData::destructMultiIndexMatrixData">
-<polygon fill="#d9534f" stroke="#d9534f" points="840,-319.18 544,-319.18 544,-295.18 840,-295.18 840,-319.18"/>
-<text text-anchor="middle" x="692" y="-304.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData::destructMultiIndexMatrixData</text>
-</a>
-</g>
-</g>
-<!-- proc~destructmultiindexmatrixdata&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge7" class="edge">
-<title>proc~destructmultiindexmatrixdata&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M840.11,-315.8C877.66,-318 917.16,-320.31 951.71,-322.34"/>
-<polygon fill="#000000" stroke="#000000" points="951.61,-325.84 961.8,-322.93 952.02,-318.85 951.61,-325.84"/>
-</g>
-<!-- proc~destructobjectarray -->
-<g id="proc~~releaseftobject~~CalledByGraph_node10" class="node">
-<title>proc~destructobjectarray</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node10"><a xlink:href=".././proc/destructobjectarray.html" xlink:title="FTMutableObjectArrayClass::destructObjectArray">
-<polygon fill="#d9534f" stroke="#d9534f" points="829,-277.18 555,-277.18 555,-253.18 829,-253.18 829,-277.18"/>
-<text text-anchor="middle" x="692" y="-262.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::destructObjectArray</text>
-</a>
-</g>
-</g>
-<!-- proc~destructobjectarray&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge8" class="edge">
-<title>proc~destructobjectarray&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M829.01,-272.07C861.03,-275.17 894.89,-279.67 926,-286.18 955.65,-292.39 988.04,-303.34 1012.49,-312.51"/>
-<polygon fill="#000000" stroke="#000000" points="1011.53,-315.88 1022.12,-316.18 1014.02,-309.34 1011.53,-315.88"/>
-</g>
-<!-- proc~releasecurrenterror&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge9" class="edge">
-<title>proc~releasecurrenterror&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M842.5,-477.16C871.18,-473.3 900.26,-466.26 926,-454.18 976.19,-430.64 1017.72,-378.13 1038.04,-348.87"/>
-<polygon fill="#000000" stroke="#000000" points="1041.17,-350.5 1043.88,-340.26 1035.37,-346.57 1041.17,-350.5"/>
-</g>
-<!-- proc~releaseftvaluedictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_node12" class="node">
-<title>proc~releaseftvaluedictionary</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node12"><a xlink:href=".././proc/releaseftvaluedictionary.html" xlink:title="FTValueDictionaryClass::releaseFTValueDictionary">
-<polygon fill="#d9534f" stroke="#d9534f" points="832,-235.18 552,-235.18 552,-211.18 832,-211.18 832,-235.18"/>
-<text text-anchor="middle" x="692" y="-220.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::releaseFTValueDictionary</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftvaluedictionary&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge10" class="edge">
-<title>proc~releaseftvaluedictionary&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M832.2,-224.33C863.69,-227.7 896.52,-233.76 926,-244.18 966.91,-258.65 1007.37,-289.51 1030.87,-309.53"/>
-<polygon fill="#000000" stroke="#000000" points="1028.6,-312.2 1038.45,-316.11 1033.19,-306.91 1028.6,-312.2"/>
-</g>
-<!-- proc~releasememberdictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_node13" class="node">
-<title>proc~releasememberdictionary</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node13"><a xlink:href=".././proc/releasememberdictionary.html" xlink:title="FTExceptionClass::releaseMemberDictionary">
-<polygon fill="#d9534f" stroke="#d9534f" points="817.5,-193.18 566.5,-193.18 566.5,-169.18 817.5,-169.18 817.5,-193.18"/>
-<text text-anchor="middle" x="692" y="-178.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::releaseMemberDictionary</text>
-</a>
-</g>
-</g>
-<!-- proc~releasememberdictionary&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge11" class="edge">
-<title>proc~releasememberdictionary&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M817.51,-176.59C853.85,-179.37 892.72,-186.57 926,-202.18 976.19,-225.73 1017.72,-278.23 1038.04,-307.49"/>
-<polygon fill="#000000" stroke="#000000" points="1035.37,-309.79 1043.88,-316.1 1041.17,-305.86 1035.37,-309.79"/>
-</g>
-<!-- proc~releasememberlist -->
-<g id="proc~~releaseftobject~~CalledByGraph_node14" class="node">
-<title>proc~releasememberlist</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node14"><a xlink:href=".././proc/releasememberlist.html" xlink:title="FTLinkedListIteratorClass::releaseMemberList">
-<polygon fill="#d9534f" stroke="#d9534f" points="819.5,-151.18 564.5,-151.18 564.5,-127.18 819.5,-127.18 819.5,-151.18"/>
-<text text-anchor="middle" x="692" y="-136.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::releaseMemberList</text>
-</a>
-</g>
-</g>
-<!-- proc~releasememberlist&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge12" class="edge">
-<title>proc~releasememberlist&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M819.6,-131.73C855.82,-134.46 894.09,-142.35 926,-160.18 986.13,-193.78 1025.94,-269.49 1042.61,-306.7"/>
-<polygon fill="#000000" stroke="#000000" points="1039.5,-308.34 1046.7,-316.11 1045.92,-305.55 1039.5,-308.34"/>
-</g>
-<!-- proc~releasesmmemberlist -->
-<g id="proc~~releaseftobject~~CalledByGraph_node15" class="node">
-<title>proc~releasesmmemberlist</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node15"><a xlink:href=".././proc/releasesmmemberlist.html" xlink:title="FTSparseMatrixClass::releaseSMMemberList">
-<polygon fill="#d9534f" stroke="#d9534f" points="815.5,-109.18 568.5,-109.18 568.5,-85.18 815.5,-85.18 815.5,-109.18"/>
-<text text-anchor="middle" x="692" y="-94.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::releaseSMMemberList</text>
-</a>
-</g>
-</g>
-<!-- proc~releasesmmemberlist&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge13" class="edge">
-<title>proc~releasesmmemberlist&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M815.69,-87.35C853.46,-89.6 893.59,-97.82 926,-118.18 996.43,-162.44 1032.55,-261.89 1045.64,-306.18"/>
-<polygon fill="#000000" stroke="#000000" points="1042.31,-307.28 1048.41,-315.95 1049.04,-305.37 1042.31,-307.28"/>
-</g>
-<!-- proc~removeobjectatindex -->
-<g id="proc~~releaseftobject~~CalledByGraph_node16" class="node">
-<title>proc~removeobjectatindex</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node16"><a xlink:href=".././proc/removeobjectatindex.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%removeObjectAtIndex">
-<polygon fill="#d9534f" stroke="#d9534f" points="897,-67.18 487,-67.18 487,-43.18 897,-43.18 897,-67.18"/>
-<text text-anchor="middle" x="692" y="-52.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%removeObjectAtIndex</text>
-</a>
-</g>
-</g>
-<!-- proc~removeobjectatindex&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge14" class="edge">
-<title>proc~removeobjectatindex&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M897.03,-60.68C907.21,-64.88 916.94,-70 926,-76.18 1007.21,-131.66 1038.3,-255.63 1047.88,-306.13"/>
-<polygon fill="#000000" stroke="#000000" points="1044.44,-306.78 1049.65,-316.01 1051.33,-305.55 1044.44,-306.78"/>
-</g>
-<!-- proc~replaceobjectatindexwithobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_node17" class="node">
-<title>proc~replaceobjectatindexwithobject</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node17"><a xlink:href=".././proc/replaceobjectatindexwithobject.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%replaceObjectAtIndexWithObject">
-<polygon fill="#d9534f" stroke="#d9534f" points="926,-25.18 458,-25.18 458,-1.18 926,-1.18 926,-25.18"/>
-<text text-anchor="middle" x="692" y="-10.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%replaceObjectAtIndexWithObject</text>
-</a>
-</g>
-</g>
-<!-- proc~replaceobjectatindexwithobject&#45;&gt;proc~releaseftobject -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge15" class="edge">
-<title>proc~replaceobjectatindexwithobject&#45;&gt;proc~releaseftobject</title>
-<path fill="none" stroke="#000000" d="M770.77,-1.18C819.74,2.11 881.81,-2.06 926,-34.18 1018.16,-101.18 1043.22,-249.82 1049.53,-306.05"/>
-<polygon fill="#000000" stroke="#000000" points="1046.05,-306.42 1050.55,-316.01 1053.01,-305.71 1046.05,-306.42"/>
-</g>
-<!-- proc~adddoubleprecisionvalueforkey -->
-<g id="proc~~releaseftobject~~CalledByGraph_node18" class="node">
-<title>proc~adddoubleprecisionvalueforkey</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node18"><a xlink:href=".././proc/adddoubleprecisionvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addDoublePrecisionValueForKey">
-<polygon fill="#d9534f" stroke="#d9534f" points="422,-1599.18 0,-1599.18 0,-1575.18 422,-1575.18 422,-1599.18"/>
-<text text-anchor="middle" x="211" y="-1584.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addDoublePrecisionValueForKey</text>
-</a>
-</g>
-</g>
-<!-- proc~adddoubleprecisionvalueforkey&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge17" class="edge">
-<title>proc~adddoubleprecisionvalueforkey&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M406.87,-1575.13C412.1,-1572.46 417.16,-1569.48 422,-1566.18 607.03,-1440.01 672.24,-1146.3 687.31,-1063.35"/>
-<polygon fill="#000000" stroke="#000000" points="690.76,-1063.95 689.05,-1053.49 683.87,-1062.73 690.76,-1063.95"/>
-</g>
-<!-- proc~addintegervalueforkey -->
-<g id="proc~~releaseftobject~~CalledByGraph_node19" class="node">
-<title>proc~addintegervalueforkey</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node19"><a xlink:href=".././proc/addintegervalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addIntegerValueForKey">
-<polygon fill="#d9534f" stroke="#d9534f" points="398.5,-1557.18 23.5,-1557.18 23.5,-1533.18 398.5,-1533.18 398.5,-1557.18"/>
-<text text-anchor="middle" x="211" y="-1542.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addIntegerValueForKey</text>
-</a>
-</g>
-</g>
-<!-- proc~addintegervalueforkey&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge18" class="edge">
-<title>proc~addintegervalueforkey&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M398.7,-1536.6C406.83,-1533.12 414.65,-1529.01 422,-1524.18 596.31,-1409.69 668.51,-1141.61 686.36,-1063.13"/>
-<polygon fill="#000000" stroke="#000000" points="689.78,-1063.87 688.53,-1053.35 682.95,-1062.36 689.78,-1063.87"/>
-</g>
-<!-- proc~addlogicalvalueforkey -->
-<g id="proc~~releaseftobject~~CalledByGraph_node20" class="node">
-<title>proc~addlogicalvalueforkey</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node20"><a xlink:href=".././proc/addlogicalvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addLogicalValueForKey">
-<polygon fill="#d9534f" stroke="#d9534f" points="398.5,-1515.18 23.5,-1515.18 23.5,-1491.18 398.5,-1491.18 398.5,-1515.18"/>
-<text text-anchor="middle" x="211" y="-1500.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addLogicalValueForKey</text>
-</a>
-</g>
-</g>
-<!-- proc~addlogicalvalueforkey&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge19" class="edge">
-<title>proc~addlogicalvalueforkey&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M398.72,-1494.13C406.83,-1490.77 414.63,-1486.81 422,-1482.18 585.53,-1379.34 664.32,-1137.34 685.19,-1063.17"/>
-<polygon fill="#000000" stroke="#000000" points="688.58,-1064.06 687.85,-1053.49 681.83,-1062.2 688.58,-1064.06"/>
-</g>
-<!-- proc~addobjectforkey -->
-<g id="proc~~releaseftobject~~CalledByGraph_node21" class="node">
-<title>proc~addobjectforkey</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node21"><a xlink:href=".././proc/addobjectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%addObjectForKey">
-<polygon fill="#d9534f" stroke="#d9534f" points="352.5,-1473.18 69.5,-1473.18 69.5,-1449.18 352.5,-1449.18 352.5,-1473.18"/>
-<text text-anchor="middle" x="211" y="-1458.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%addObjectForKey</text>
-</a>
-</g>
-</g>
-<!-- proc~addobjectforkey&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge20" class="edge">
-<title>proc~addobjectforkey&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M352.74,-1464.2C377.05,-1460.05 401.16,-1452.63 422,-1440.18 574.82,-1348.86 659.62,-1133.1 683.74,-1063.35"/>
-<polygon fill="#000000" stroke="#000000" points="687.2,-1064.04 687.1,-1053.45 680.57,-1061.8 687.2,-1064.04"/>
-</g>
-<!-- proc~addquadvalueforkey -->
-<g id="proc~~releaseftobject~~CalledByGraph_node22" class="node">
-<title>proc~addquadvalueforkey</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node22"><a xlink:href=".././proc/addquadvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addQuadValueForKey">
-<polygon fill="#d9534f" stroke="#d9534f" points="393.5,-1431.18 28.5,-1431.18 28.5,-1407.18 393.5,-1407.18 393.5,-1431.18"/>
-<text text-anchor="middle" x="211" y="-1416.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addQuadValueForKey</text>
-</a>
-</g>
-</g>
-<!-- proc~addquadvalueforkey&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge21" class="edge">
-<title>proc~addquadvalueforkey&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M393.73,-1410.85C403.56,-1407.39 413.06,-1403.21 422,-1398.18 564.88,-1317.82 655.12,-1127 682.31,-1062.74"/>
-<polygon fill="#000000" stroke="#000000" points="685.66,-1063.8 686.26,-1053.22 679.19,-1061.11 685.66,-1063.8"/>
-</g>
-<!-- proc~addrealvalueforkey -->
-<g id="proc~~releaseftobject~~CalledByGraph_node23" class="node">
-<title>proc~addrealvalueforkey</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node23"><a xlink:href=".././proc/addrealvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addRealValueForKey">
-<polygon fill="#d9534f" stroke="#d9534f" points="391,-1389.18 31,-1389.18 31,-1365.18 391,-1365.18 391,-1389.18"/>
-<text text-anchor="middle" x="211" y="-1374.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addRealValueForKey</text>
-</a>
-</g>
-</g>
-<!-- proc~addrealvalueforkey&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge22" class="edge">
-<title>proc~addrealvalueforkey&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M391.25,-1368.89C401.92,-1365.46 412.26,-1361.28 422,-1356.18 554.83,-1286.72 649.69,-1121.54 680.35,-1062.56"/>
-<polygon fill="#000000" stroke="#000000" points="683.58,-1063.93 685.02,-1053.43 677.35,-1060.74 683.58,-1063.93"/>
-</g>
-<!-- proc~addstring -->
-<g id="proc~~releaseftobject~~CalledByGraph_node24" class="node">
-<title>proc~addstring</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node24"><a xlink:href=".././proc/addstring.html" xlink:title="FTStringSetClass::FTStringSet%AddString">
-<polygon fill="#d9534f" stroke="#d9534f" points="327,-1347.18 95,-1347.18 95,-1323.18 327,-1323.18 327,-1347.18"/>
-<text text-anchor="middle" x="211" y="-1332.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%AddString</text>
-</a>
-</g>
-</g>
-<!-- proc~addstring&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge23" class="edge">
-<title>proc~addstring&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M327.04,-1337.9C359.01,-1334.93 392.91,-1328.1 422,-1314.18 545.44,-1255.13 644.15,-1114.78 678.2,-1061.85"/>
-<polygon fill="#000000" stroke="#000000" points="681.23,-1063.62 683.63,-1053.3 675.31,-1059.87 681.23,-1063.62"/>
-</g>
-<!-- proc~addstringvalueforkey -->
-<g id="proc~~releaseftobject~~CalledByGraph_node25" class="node">
-<title>proc~addstringvalueforkey</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node25"><a xlink:href=".././proc/addstringvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addStringValueForKey">
-<polygon fill="#d9534f" stroke="#d9534f" points="395,-1305.18 27,-1305.18 27,-1281.18 395,-1281.18 395,-1305.18"/>
-<text text-anchor="middle" x="211" y="-1290.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addStringValueForKey</text>
-</a>
-</g>
-</g>
-<!-- proc~addstringvalueforkey&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge24" class="edge">
-<title>proc~addstringvalueforkey&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M395.01,-1281.79C404.27,-1279.08 413.33,-1275.9 422,-1272.18 536.27,-1223.25 637.64,-1107.78 675.36,-1061.19"/>
-<polygon fill="#000000" stroke="#000000" points="678.14,-1063.32 681.65,-1053.33 672.67,-1058.95 678.14,-1063.32"/>
-</g>
-<!-- proc~destructexception -->
-<g id="proc~~releaseftobject~~CalledByGraph_node26" class="node">
-<title>proc~destructexception</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node26"><a xlink:href=".././proc/destructexception.html" xlink:title="FTExceptionClass::destructException">
-<polygon fill="#d9534f" stroke="#d9534f" points="315.5,-340.18 106.5,-340.18 106.5,-316.18 315.5,-316.18 315.5,-340.18"/>
-<text text-anchor="middle" x="211" y="-325.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::destructException</text>
-</a>
-</g>
-</g>
-<!-- proc~destructexception&#45;&gt;proc~releasememberdictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge45" class="edge">
-<title>proc~destructexception&#45;&gt;proc~releasememberdictionary</title>
-<path fill="none" stroke="#000000" d="M315.67,-339.76C352.65,-338.6 392.42,-330.62 422,-307.18 460.67,-276.54 419.18,-232.63 458,-202.18 501.5,-168.06 564.62,-164.29 614.19,-168.24"/>
-<polygon fill="#000000" stroke="#000000" points="613.95,-171.73 624.23,-169.15 614.59,-164.76 613.95,-171.73"/>
-</g>
-<!-- proc~destructiterator -->
-<g id="proc~~releaseftobject~~CalledByGraph_node27" class="node">
-<title>proc~destructiterator</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node27"><a xlink:href=".././proc/destructiterator.html" xlink:title="FTLinkedListIteratorClass::destructIterator">
-<polygon fill="#d9534f" stroke="#d9534f" points="329.5,-130.18 92.5,-130.18 92.5,-106.18 329.5,-106.18 329.5,-130.18"/>
-<text text-anchor="middle" x="211" y="-115.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::destructIterator</text>
-</a>
-</g>
-</g>
-<!-- proc~destructiterator&#45;&gt;proc~releasememberlist -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge50" class="edge">
-<title>proc~destructiterator&#45;&gt;proc~releasememberlist</title>
-<path fill="none" stroke="#000000" d="M329.79,-123.35C397.64,-126.32 483.25,-130.07 554.09,-133.18"/>
-<polygon fill="#000000" stroke="#000000" points="554.29,-136.69 564.43,-133.63 554.59,-129.7 554.29,-136.69"/>
-</g>
-<!-- proc~destructsparsematrix -->
-<g id="proc~~releaseftobject~~CalledByGraph_node28" class="node">
-<title>proc~destructsparsematrix</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node28"><a xlink:href=".././proc/destructsparsematrix.html" xlink:title="FTSparseMatrixClass::destructSparseMatrix">
-<polygon fill="#d9534f" stroke="#d9534f" points="333,-46.18 89,-46.18 89,-22.18 333,-22.18 333,-46.18"/>
-<text text-anchor="middle" x="211" y="-31.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::destructSparseMatrix</text>
-</a>
-</g>
-</g>
-<!-- proc~destructsparsematrix&#45;&gt;proc~releasesmmemberlist -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge52" class="edge">
-<title>proc~destructsparsematrix&#45;&gt;proc~releasesmmemberlist</title>
-<path fill="none" stroke="#000000" d="M333.21,-37.42C362.77,-40.62 393.95,-46.08 422,-55.18 439.62,-60.9 440.35,-70.55 458,-76.18 489.65,-86.28 524.85,-92.07 558.12,-95.28"/>
-<polygon fill="#000000" stroke="#000000" points="558.1,-98.79 568.37,-96.19 558.72,-91.82 558.1,-98.79"/>
-</g>
-<!-- proc~initassertionfailureexception -->
-<g id="proc~~releaseftobject~~CalledByGraph_node29" class="node">
-<title>proc~initassertionfailureexception</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node29"><a xlink:href=".././proc/initassertionfailureexception.html" xlink:title="FTExceptionClass::FTException%initAssertionFailureException">
-<polygon fill="#d9534f" stroke="#d9534f" points="382,-298.18 40,-298.18 40,-274.18 382,-274.18 382,-298.18"/>
-<text text-anchor="middle" x="211" y="-283.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initAssertionFailureException</text>
-</a>
-</g>
-</g>
-<!-- proc~initassertionfailureexception&#45;&gt;proc~releasememberdictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge46" class="edge">
-<title>proc~initassertionfailureexception&#45;&gt;proc~releasememberdictionary</title>
-<path fill="none" stroke="#000000" d="M382.23,-283.52C396.3,-279.08 409.78,-273.11 422,-265.18 449.05,-247.63 430.86,-219.61 458,-202.18 486.85,-183.66 522.01,-175.07 556.18,-171.87"/>
-<polygon fill="#000000" stroke="#000000" points="556.57,-175.35 566.26,-171.08 556.02,-168.37 556.57,-175.35"/>
-</g>
-<!-- proc~initfatalexception -->
-<g id="proc~~releaseftobject~~CalledByGraph_node30" class="node">
-<title>proc~initfatalexception</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node30"><a xlink:href=".././proc/initfatalexception.html" xlink:title="FTExceptionClass::FTException%initFatalException">
-<polygon fill="#d9534f" stroke="#d9534f" points="352.5,-256.18 69.5,-256.18 69.5,-232.18 352.5,-232.18 352.5,-256.18"/>
-<text text-anchor="middle" x="211" y="-241.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initFatalException</text>
-</a>
-</g>
-</g>
-<!-- proc~initfatalexception&#45;&gt;proc~releasememberdictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge47" class="edge">
-<title>proc~initfatalexception&#45;&gt;proc~releasememberdictionary</title>
-<path fill="none" stroke="#000000" d="M352.67,-238.52C376.18,-235.2 400.04,-230.31 422,-223.18 439.62,-217.46 440.35,-207.81 458,-202.18 489.03,-192.28 523.49,-186.52 556.18,-183.28"/>
-<polygon fill="#000000" stroke="#000000" points="556.63,-186.75 566.26,-182.35 555.98,-179.78 556.63,-186.75"/>
-</g>
-<!-- proc~initwarningexception -->
-<g id="proc~~releaseftobject~~CalledByGraph_node31" class="node">
-<title>proc~initwarningexception</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node31"><a xlink:href=".././proc/initwarningexception.html" xlink:title="FTExceptionClass::FTException%initWarningException">
-<polygon fill="#d9534f" stroke="#d9534f" points="361.5,-214.18 60.5,-214.18 60.5,-190.18 361.5,-190.18 361.5,-214.18"/>
-<text text-anchor="middle" x="211" y="-199.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initWarningException</text>
-</a>
-</g>
-</g>
-<!-- proc~initwarningexception&#45;&gt;proc~releasememberdictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge48" class="edge">
-<title>proc~initwarningexception&#45;&gt;proc~releasememberdictionary</title>
-<path fill="none" stroke="#000000" d="M361.59,-195.62C423.86,-192.89 495.63,-189.75 556.24,-187.09"/>
-<polygon fill="#000000" stroke="#000000" points="556.42,-190.59 566.26,-186.65 556.12,-183.59 556.42,-190.59"/>
-</g>
-<!-- proc~pop -->
-<g id="proc~~releaseftobject~~CalledByGraph_node32" class="node">
-<title>proc~pop</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node32"><a xlink:href=".././proc/pop.html" xlink:title="FTStackClass::FTStack%pop">
-<polygon fill="#d9534f" stroke="#d9534f" points="292,-1263.18 130,-1263.18 130,-1239.18 292,-1239.18 292,-1263.18"/>
-<text text-anchor="middle" x="211" y="-1248.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass::FTStack%pop</text>
-</a>
-</g>
-</g>
-<!-- proc~pop&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge25" class="edge">
-<title>proc~pop&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M292.19,-1252.67C332.27,-1251.06 380.88,-1245.48 422,-1230.18 527.54,-1190.93 630.17,-1099.93 671.7,-1060.25"/>
-<polygon fill="#000000" stroke="#000000" points="674.19,-1062.71 678.95,-1053.25 669.32,-1057.68 674.19,-1062.71"/>
-</g>
-<!-- proc~releaseftdata -->
-<g id="proc~~releaseftobject~~CalledByGraph_node33" class="node">
-<title>proc~releaseftdata</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node33"><a xlink:href=".././proc/releaseftdata.html" xlink:title="FTDataClass::releaseFTData">
-<polygon fill="#d9534f" stroke="#d9534f" points="292.5,-1221.18 129.5,-1221.18 129.5,-1197.18 292.5,-1197.18 292.5,-1221.18"/>
-<text text-anchor="middle" x="211" y="-1206.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDataClass::releaseFTData</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftdata&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge26" class="edge">
-<title>proc~releaseftdata&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M292.52,-1208.63C332.24,-1206.48 380.43,-1201.04 422,-1188.18 518.76,-1158.26 620.32,-1091.59 666.07,-1059.34"/>
-<polygon fill="#000000" stroke="#000000" points="668.34,-1062.02 674.46,-1053.37 664.28,-1056.32 668.34,-1062.02"/>
-</g>
-<!-- proc~releaseftdictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_node34" class="node">
-<title>proc~releaseftdictionary</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node34"><a xlink:href=".././proc/releaseftdictionary.html" xlink:title="FTDictionaryClass::releaseFTDictionary">
-<polygon fill="#d9534f" stroke="#d9534f" points="322,-1179.18 100,-1179.18 100,-1155.18 322,-1155.18 322,-1179.18"/>
-<text text-anchor="middle" x="211" y="-1164.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::releaseFTDictionary</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftdictionary&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge27" class="edge">
-<title>proc~releaseftdictionary&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M322.21,-1161.84C354.66,-1158.75 390.03,-1153.87 422,-1146.18 510.15,-1124.99 608,-1081.34 657.85,-1057.54"/>
-<polygon fill="#000000" stroke="#000000" points="659.39,-1060.68 666.88,-1053.19 656.35,-1054.38 659.39,-1060.68"/>
-</g>
-<!-- proc~releaseftexception -->
-<g id="proc~~releaseftobject~~CalledByGraph_node35" class="node">
-<title>proc~releaseftexception</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node35"><a xlink:href=".././proc/releaseftexception.html" xlink:title="FTExceptionClass::releaseFTException">
-<polygon fill="#d9534f" stroke="#d9534f" points="319.5,-1137.18 102.5,-1137.18 102.5,-1113.18 319.5,-1113.18 319.5,-1137.18"/>
-<text text-anchor="middle" x="211" y="-1122.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::releaseFTException</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftexception&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge28" class="edge">
-<title>proc~releaseftexception&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M319.73,-1117.13C352.67,-1113.94 388.93,-1109.68 422,-1104.18 497.72,-1091.58 583.9,-1070.12 637.86,-1055.79"/>
-<polygon fill="#000000" stroke="#000000" points="638.8,-1059.16 647.56,-1053.2 636.99,-1052.4 638.8,-1059.16"/>
-</g>
-<!-- proc~releaseftkeyobjectpair -->
-<g id="proc~~releaseftobject~~CalledByGraph_node36" class="node">
-<title>proc~releaseftkeyobjectpair</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node36"><a xlink:href=".././proc/releaseftkeyobjectpair.html" xlink:title="FTKeyObjectPairClass::releaseFTKeyObjectPair">
-<polygon fill="#d9534f" stroke="#d9534f" points="340.5,-1095.18 81.5,-1095.18 81.5,-1071.18 340.5,-1071.18 340.5,-1095.18"/>
-<text text-anchor="middle" x="211" y="-1080.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass::releaseFTKeyObjectPair</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftkeyobjectpair&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge29" class="edge">
-<title>proc~releaseftkeyobjectpair&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M340.68,-1071.9C428.15,-1064.23 540.92,-1054.34 614.55,-1047.89"/>
-<polygon fill="#000000" stroke="#000000" points="615.01,-1051.36 624.67,-1047 614.4,-1044.38 615.01,-1051.36"/>
-</g>
-<!-- proc~releaseftlinkedlist -->
-<g id="proc~~releaseftobject~~CalledByGraph_node37" class="node">
-<title>proc~releaseftlinkedlist</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node37"><a xlink:href=".././proc/releaseftlinkedlist.html" xlink:title="FTLinkedListClass::releaseFTLinkedList">
-<polygon fill="#d9534f" stroke="#d9534f" points="320.5,-1053.18 101.5,-1053.18 101.5,-1029.18 320.5,-1029.18 320.5,-1053.18"/>
-<text text-anchor="middle" x="211" y="-1038.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::releaseFTLinkedList</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftlinkedlist&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge30" class="edge">
-<title>proc~releaseftlinkedlist&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M320.69,-1041.18C410.24,-1041.18 534.99,-1041.18 614.38,-1041.18"/>
-<polygon fill="#000000" stroke="#000000" points="614.79,-1044.68 624.79,-1041.18 614.79,-1037.68 614.79,-1044.68"/>
-</g>
-<!-- proc~releaseftlinkedlistiterator -->
-<g id="proc~~releaseftobject~~CalledByGraph_node38" class="node">
-<title>proc~releaseftlinkedlistiterator</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node38"><a xlink:href=".././proc/releaseftlinkedlistiterator.html" xlink:title="FTLinkedListIteratorClass::releaseFTLinkedListIterator">
-<polygon fill="#d9534f" stroke="#d9534f" points="360,-1011.18 62,-1011.18 62,-987.18 360,-987.18 360,-1011.18"/>
-<text text-anchor="middle" x="211" y="-996.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::releaseFTLinkedListIterator</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftlinkedlistiterator&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge31" class="edge">
-<title>proc~releaseftlinkedlistiterator&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M348.94,-1011.19C435.11,-1018.74 543.13,-1028.22 614.46,-1034.47"/>
-<polygon fill="#000000" stroke="#000000" points="614.44,-1037.98 624.71,-1035.37 615.05,-1031.01 614.44,-1037.98"/>
-</g>
-<!-- proc~releaseftlinkedlistrecord -->
-<g id="proc~~releaseftobject~~CalledByGraph_node39" class="node">
-<title>proc~releaseftlinkedlistrecord</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node39"><a xlink:href=".././proc/releaseftlinkedlistrecord.html" xlink:title="FTLinkedListRecordClass::releaseFTLinkedListRecord">
-<polygon fill="#d9534f" stroke="#d9534f" points="358,-969.18 64,-969.18 64,-945.18 358,-945.18 358,-969.18"/>
-<text text-anchor="middle" x="211" y="-954.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass::releaseFTLinkedListRecord</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftlinkedlistrecord&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge32" class="edge">
-<title>proc~releaseftlinkedlistrecord&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M357.21,-969.21C378.98,-971.73 401.13,-974.71 422,-978.18 497.72,-990.78 583.9,-1012.25 637.86,-1026.57"/>
-<polygon fill="#000000" stroke="#000000" points="636.99,-1029.96 647.56,-1029.16 638.8,-1023.2 636.99,-1029.96"/>
-</g>
-<!-- proc~releaseftmatrixdata -->
-<g id="proc~~releaseftobject~~CalledByGraph_node40" class="node">
-<title>proc~releaseftmatrixdata</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node40"><a xlink:href=".././proc/releaseftmatrixdata.html" xlink:title="FTSparseMatrixData::releaseFTMatrixData">
-<polygon fill="#d9534f" stroke="#d9534f" points="330,-927.18 92,-927.18 92,-903.18 330,-903.18 330,-927.18"/>
-<text text-anchor="middle" x="211" y="-912.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData::releaseFTMatrixData</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftmatrixdata&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge33" class="edge">
-<title>proc~releaseftmatrixdata&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M330.13,-921.31C360.35,-924.42 392.61,-929.12 422,-936.18 510.15,-957.37 608,-1001.02 657.85,-1024.83"/>
-<polygon fill="#000000" stroke="#000000" points="656.35,-1027.99 666.88,-1029.17 659.39,-1021.68 656.35,-1027.99"/>
-</g>
-<!-- proc~releaseftmultiindexmatrixdata -->
-<g id="proc~~releaseftobject~~CalledByGraph_node41" class="node">
-<title>proc~releaseftmultiindexmatrixdata</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node41"><a xlink:href=".././proc/releaseftmultiindexmatrixdata.html" xlink:title="FTMultiIndexTableData::releaseFTMultiIndexMatrixData">
-<polygon fill="#d9534f" stroke="#d9534f" points="363,-885.18 59,-885.18 59,-861.18 363,-861.18 363,-885.18"/>
-<text text-anchor="middle" x="211" y="-870.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData::releaseFTMultiIndexMatrixData</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftmultiindexmatrixdata&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge34" class="edge">
-<title>proc~releaseftmultiindexmatrixdata&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M363.16,-880.94C383.2,-884.1 403.27,-888.39 422,-894.18 518.76,-924.1 620.32,-990.78 666.07,-1023.02"/>
-<polygon fill="#000000" stroke="#000000" points="664.28,-1026.05 674.46,-1028.99 668.34,-1020.34 664.28,-1026.05"/>
-</g>
-<!-- proc~releaseftmultiindextable -->
-<g id="proc~~releaseftobject~~CalledByGraph_node42" class="node">
-<title>proc~releaseftmultiindextable</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node42"><a xlink:href=".././proc/releaseftmultiindextable.html" xlink:title="FTMultiIndexTableClass::releaseFTMultiIndexTable">
-<polygon fill="#d9534f" stroke="#d9534f" points="349,-843.18 73,-843.18 73,-819.18 349,-819.18 349,-843.18"/>
-<text text-anchor="middle" x="211" y="-828.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass::releaseFTMultiIndexTable</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftmultiindextable&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge35" class="edge">
-<title>proc~releaseftmultiindextable&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M349.03,-834.67C373.83,-838.15 399.08,-843.66 422,-852.18 527.54,-891.43 630.17,-982.43 671.7,-1022.11"/>
-<polygon fill="#000000" stroke="#000000" points="669.32,-1024.68 678.95,-1029.11 674.19,-1019.65 669.32,-1024.68"/>
-</g>
-<!-- proc~releaseftmutableobjectarray -->
-<g id="proc~~releaseftobject~~CalledByGraph_node43" class="node">
-<title>proc~releaseftmutableobjectarray</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node43"><a xlink:href=".././proc/releaseftmutableobjectarray.html" xlink:title="FTMutableObjectArrayClass::releaseFTMutableObjectArray">
-<polygon fill="#d9534f" stroke="#d9534f" points="373.5,-801.18 48.5,-801.18 48.5,-777.18 373.5,-777.18 373.5,-801.18"/>
-<text text-anchor="middle" x="211" y="-786.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::releaseFTMutableObjectArray</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftmutableobjectarray&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge36" class="edge">
-<title>proc~releaseftmutableobjectarray&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M373.65,-795.18C390.34,-798.78 406.76,-803.65 422,-810.18 536.27,-859.12 637.64,-974.58 675.36,-1021.17"/>
-<polygon fill="#000000" stroke="#000000" points="672.67,-1023.41 681.65,-1029.04 678.14,-1019.04 672.67,-1023.41"/>
-</g>
-<!-- proc~releaseftsparsematrix -->
-<g id="proc~~releaseftobject~~CalledByGraph_node44" class="node">
-<title>proc~releaseftsparsematrix</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node44"><a xlink:href=".././proc/releaseftsparsematrix.html" xlink:title="FTSparseMatrixClass::releaseFTSparseMatrix">
-<polygon fill="#d9534f" stroke="#d9534f" points="337,-759.18 85,-759.18 85,-735.18 337,-735.18 337,-759.18"/>
-<text text-anchor="middle" x="211" y="-744.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::releaseFTSparseMatrix</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftsparsematrix&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge37" class="edge">
-<title>proc~releaseftsparsematrix&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M337.18,-745.53C366.08,-748.95 395.97,-755.73 422,-768.18 545.44,-827.24 644.15,-967.59 678.2,-1020.51"/>
-<polygon fill="#000000" stroke="#000000" points="675.31,-1022.49 683.63,-1029.06 681.23,-1018.74 675.31,-1022.49"/>
-</g>
-<!-- proc~releaseftstack -->
-<g id="proc~~releaseftobject~~CalledByGraph_node45" class="node">
-<title>proc~releaseftstack</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node45"><a xlink:href=".././proc/releaseftstack.html" xlink:title="FTStackClass::releaseFTStack">
-<polygon fill="#d9534f" stroke="#d9534f" points="296.5,-717.18 125.5,-717.18 125.5,-693.18 296.5,-693.18 296.5,-717.18"/>
-<text text-anchor="middle" x="211" y="-702.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass::releaseFTStack</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftstack&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge38" class="edge">
-<title>proc~releaseftstack&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M296.65,-699.46C336.68,-700.2 383.93,-706.27 422,-726.18 554.83,-795.65 649.69,-960.82 680.35,-1019.8"/>
-<polygon fill="#000000" stroke="#000000" points="677.35,-1021.62 685.02,-1028.93 683.58,-1018.43 677.35,-1021.62"/>
-</g>
-<!-- proc~releaseftstringset -->
-<g id="proc~~releaseftobject~~CalledByGraph_node46" class="node">
-<title>proc~releaseftstringset</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node46"><a xlink:href=".././proc/releaseftstringset.html" xlink:title="FTStringSetClass::releaseFTStringSet">
-<polygon fill="#d9534f" stroke="#d9534f" points="316,-675.18 106,-675.18 106,-651.18 316,-651.18 316,-675.18"/>
-<text text-anchor="middle" x="211" y="-660.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::releaseFTStringSet</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftstringset&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge39" class="edge">
-<title>proc~releaseftstringset&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M316.13,-657.11C351.62,-659.19 390.3,-666.35 422,-684.18 564.88,-764.55 655.12,-955.36 682.31,-1019.63"/>
-<polygon fill="#000000" stroke="#000000" points="679.19,-1021.25 686.26,-1029.14 685.66,-1018.57 679.19,-1021.25"/>
-</g>
-<!-- proc~releaseftvalue -->
-<g id="proc~~releaseftobject~~CalledByGraph_node47" class="node">
-<title>proc~releaseftvalue</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node47"><a xlink:href=".././proc/releaseftvalue.html" xlink:title="FTValueClass::releaseFTValue">
-<polygon fill="#d9534f" stroke="#d9534f" points="296.5,-633.18 125.5,-633.18 125.5,-609.18 296.5,-609.18 296.5,-633.18"/>
-<text text-anchor="middle" x="211" y="-618.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass::releaseFTValue</text>
-</a>
-</g>
-</g>
-<!-- proc~releaseftvalue&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge40" class="edge">
-<title>proc~releaseftvalue&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M296.67,-613.57C337.17,-613.78 384.81,-619.96 422,-642.18 574.82,-733.51 659.62,-949.27 683.74,-1019.02"/>
-<polygon fill="#000000" stroke="#000000" points="680.57,-1020.57 687.1,-1028.92 687.2,-1018.32 680.57,-1020.57"/>
-</g>
-<!-- proc~removealllinkedlistobjects -->
-<g id="proc~~releaseftobject~~CalledByGraph_node48" class="node">
-<title>proc~removealllinkedlistobjects</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node48"><a xlink:href=".././proc/removealllinkedlistobjects.html" xlink:title="FTLinkedListClass::FTLinkedList%removeAllLinkedListObjects">
-<polygon fill="#d9534f" stroke="#d9534f" points="379.5,-591.18 42.5,-591.18 42.5,-567.18 379.5,-567.18 379.5,-591.18"/>
-<text text-anchor="middle" x="211" y="-576.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeAllLinkedListObjects</text>
-</a>
-</g>
-</g>
-<!-- proc~removealllinkedlistobjects&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge41" class="edge">
-<title>proc~removealllinkedlistobjects&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M379.59,-581.5C394.57,-585.92 408.97,-591.99 422,-600.18 585.53,-703.02 664.32,-945.03 685.19,-1019.19"/>
-<polygon fill="#000000" stroke="#000000" points="681.83,-1020.16 687.85,-1028.88 688.58,-1018.31 681.83,-1020.16"/>
-</g>
-<!-- proc~removelinkedlistrecord -->
-<g id="proc~~releaseftobject~~CalledByGraph_node49" class="node">
-<title>proc~removelinkedlistrecord</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node49"><a xlink:href=".././proc/removelinkedlistrecord.html" xlink:title="FTLinkedListClass::FTLinkedList%removeLinkedListRecord">
-<polygon fill="#d9534f" stroke="#d9534f" points="371.5,-549.18 50.5,-549.18 50.5,-525.18 371.5,-525.18 371.5,-549.18"/>
-<text text-anchor="middle" x="211" y="-534.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeLinkedListRecord</text>
-</a>
-</g>
-</g>
-<!-- proc~removelinkedlistrecord&#45;&gt;interface~release -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge42" class="edge">
-<title>proc~removelinkedlistrecord&#45;&gt;interface~release</title>
-<path fill="none" stroke="#000000" d="M371.62,-536.62C389.52,-541.26 406.76,-548.17 422,-558.18 427.61,-561.86 628.61,-927.55 679.42,-1020.09"/>
-<polygon fill="#000000" stroke="#000000" points="676.36,-1021.78 684.24,-1028.86 682.5,-1018.41 676.36,-1021.78"/>
-</g>
-<!-- proc~setcurrenterror -->
-<g id="proc~~releaseftobject~~CalledByGraph_node50" class="node">
-<title>proc~setcurrenterror</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node50"><a xlink:href=".././proc/setcurrenterror.html" xlink:title="SharedExceptionManagerModule::setCurrentError">
-<polygon fill="#d9534f" stroke="#d9534f" points="350,-465.18 72,-465.18 72,-441.18 350,-441.18 350,-465.18"/>
-<text text-anchor="middle" x="211" y="-450.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::setCurrentError</text>
-</a>
-</g>
-</g>
-<!-- proc~setcurrenterror&#45;&gt;proc~releasecurrenterror -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge44" class="edge">
-<title>proc~setcurrenterror&#45;&gt;proc~releasecurrenterror</title>
-<path fill="none" stroke="#000000" d="M350.23,-459.53C406.78,-462.13 472.57,-465.15 531.18,-467.84"/>
-<polygon fill="#000000" stroke="#000000" points="531.13,-471.34 541.28,-468.3 531.45,-464.35 531.13,-471.34"/>
-</g>
-<!-- proc~setinfodictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_node51" class="node">
-<title>proc~setinfodictionary</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node51"><a xlink:href=".././proc/setinfodictionary.html" xlink:title="FTExceptionClass::FTException%setInfoDictionary">
-<polygon fill="#d9534f" stroke="#d9534f" points="350.5,-172.18 71.5,-172.18 71.5,-148.18 350.5,-148.18 350.5,-172.18"/>
-<text text-anchor="middle" x="211" y="-157.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%setInfoDictionary</text>
-</a>
-</g>
-</g>
-<!-- proc~setinfodictionary&#45;&gt;proc~releasememberdictionary -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge49" class="edge">
-<title>proc~setinfodictionary&#45;&gt;proc~releasememberdictionary</title>
-<path fill="none" stroke="#000000" d="M350.55,-166.26C415.2,-169.09 491.86,-172.45 556.05,-175.27"/>
-<polygon fill="#000000" stroke="#000000" points="556.1,-178.77 566.25,-175.71 556.41,-171.78 556.1,-178.77"/>
-</g>
-<!-- proc~setlinkedlist -->
-<g id="proc~~releaseftobject~~CalledByGraph_node52" class="node">
-<title>proc~setlinkedlist</title>
-<g id="a_proc~~releaseftobject~~CalledByGraph_node52"><a xlink:href=".././proc/setlinkedlist.html" xlink:title="FTLinkedListIteratorClass::FTLinkedListIterator%setLinkedList">
-<polygon fill="#d9534f" stroke="#d9534f" points="380,-88.18 42,-88.18 42,-64.18 380,-64.18 380,-88.18"/>
-<text text-anchor="middle" x="211" y="-73.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::FTLinkedListIterator%setLinkedList</text>
-</a>
-</g>
-</g>
-<!-- proc~setlinkedlist&#45;&gt;proc~releasememberlist -->
-<g id="proc~~releaseftobject~~CalledByGraph_edge51" class="edge">
-<title>proc~setlinkedlist&#45;&gt;proc~releasememberlist</title>
-<path fill="none" stroke="#000000" d="M380.12,-86.47C394.45,-89.31 408.58,-92.83 422,-97.18 439.62,-102.9 440.35,-112.55 458,-118.18 488.37,-127.88 522.03,-133.6 554.1,-136.88"/>
-<polygon fill="#000000" stroke="#000000" points="554.16,-140.4 564.45,-137.86 554.82,-133.43 554.16,-140.4"/>
+<!-- proc~printftobjectdescription&#45;&gt;proc~refcount -->
+<g id="proc~~releaseftobject~~CallsGraph_edge2" class="edge">
+<title>proc~printftobjectdescription&#45;&gt;proc~refcount</title>
+<path fill="none" stroke="#000000" d="M502.29,-12C510.81,-12 519.32,-12 527.68,-12"/>
+<polygon fill="#000000" stroke="#000000" points="527.79,-15.5 537.79,-12 527.79,-8.5 527.79,-15.5"/>
 </g>
 </g>
 </svg>
 </div>                <script>
-                  var panprocreleaseftobjectCalledByGraph = svgPanZoom('#procreleaseftobjectCalledByGraph',
+                  var panprocreleaseftobjectCallsGraph = svgPanZoom('#procreleaseftobjectCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -1008,11 +247,11 @@ is called automatically and the object is deallocated.</p>
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="597pt" height="32pt"
- viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
 <!-- Subroutine -->
 <g id="node1" class="node">
 <title>Subroutine</title>
@@ -1031,23 +270,1219 @@ is called automatically and the object is deallocated.</p>
 <polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
 <text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
 </g>
-<!-- Unknown Procedure Type -->
+<!-- Type Bound Procedure -->
 <g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
 <title>Unknown Procedure Type</title>
-<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
-<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
 </g>
 <!-- Program -->
-<g id="node5" class="node">
+<g id="node6" class="node">
 <title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
-<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
-<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~releaseftobject~~CalledByGraph Pages: 1 -->
+<svg id="procreleaseftobjectCalledByGraph" width="641pt" height="456pt"
+ viewBox="0.00 0.00 641.00 455.56" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~releaseftobject~~CalledByGraph" class="graph" transform="scale(3.65 3.65) rotate(0) translate(4 1658.32)">
+<title>proc~~releaseftobject~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1658.32 2335,-1658.32 2335,4 -4,4"/>
+<!-- proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_node1" class="node">
+<title>proc~releaseftobject</title>
+<polygon fill="none" stroke="black" points="2331,-340.18 2150,-340.18 2150,-316.18 2331,-316.18 2331,-340.18"/>
+<text text-anchor="middle" x="2240.5" y="-325.78" font-family="Helvetica,sans-Serif" font-size="10.50">FTObjectClass::releaseFTObject</text>
+</g>
+<!-- interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_node2" class="node">
+<title>interface~release</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node2"><a xlink:href=".././interface/release.html" xlink:title="FTObjectClass::release">
+<polygon fill="#a7506f" stroke="#a7506f" points="1947,-1067.18 1813,-1067.18 1813,-1043.18 1947,-1043.18 1947,-1067.18"/>
+<text text-anchor="middle" x="1880" y="-1052.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::release</text>
+</a>
+</g>
+</g>
+<!-- interface~release&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge16" class="edge">
+<title>interface~release&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1886.92,-1043.17C1928.37,-959.12 2174.9,-459.18 2229.01,-349.46"/>
+<polygon fill="#000000" stroke="#000000" points="2232.22,-350.87 2233.5,-340.35 2225.94,-347.77 2232.22,-350.87"/>
+</g>
+<!-- proc~addobjecttomultiindextableforkeys -->
+<g id="proc~~releaseftobject~~CalledByGraph_node3" class="node">
+<title>proc~addobjecttomultiindextableforkeys</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node3"><a xlink:href=".././proc/addobjecttomultiindextableforkeys.html" xlink:title="FTMultiIndexTableClass::FTMultiIndexTable%addObjectToMultiIndexTableForKeys">
+<polygon fill="#d9534f" stroke="#d9534f" points="2098,-569.18 1662,-569.18 1662,-545.18 2098,-545.18 2098,-569.18"/>
+<text text-anchor="middle" x="1880" y="-554.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass::FTMultiIndexTable%addObjectToMultiIndexTableForKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjecttomultiindextableforkeys&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge1" class="edge">
+<title>proc~addobjecttomultiindextableforkeys&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2086.76,-545.17C2096.26,-541.25 2105.4,-536.62 2114,-531.18 2182.27,-487.99 2219.35,-392.83 2233.14,-349.92"/>
+<polygon fill="#000000" stroke="#000000" points="2236.54,-350.79 2236.16,-340.2 2229.85,-348.72 2236.54,-350.79"/>
+</g>
+<!-- proc~addobjecttosparsematrixforkeys -->
+<g id="proc~~releaseftobject~~CalledByGraph_node4" class="node">
+<title>proc~addobjecttosparsematrixforkeys</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node4"><a xlink:href=".././proc/addobjecttosparsematrixforkeys.html" xlink:title="FTSparseMatrixClass::FTSparseMatrix%addObjectToSparseMatrixForKeys">
+<polygon fill="#d9534f" stroke="#d9534f" points="778,-470.18 378,-470.18 378,-446.18 778,-446.18 778,-470.18"/>
+<text text-anchor="middle" x="578" y="-455.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::FTSparseMatrix%addObjectToSparseMatrixForKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjecttosparsematrixforkeys&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge2" class="edge">
+<title>proc~addobjecttosparsematrixforkeys&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M778.04,-459.99C790.21,-460.07 802.27,-460.13 814,-460.18 1102.89,-461.41 1846.94,-560.37 2114,-450.18 2164.44,-429.37 2205.87,-377.73 2226.11,-348.75"/>
+<polygon fill="#000000" stroke="#000000" points="2229.19,-350.44 2231.92,-340.2 2223.4,-346.5 2229.19,-350.44"/>
+</g>
+<!-- proc~sparsematrixcontainskeys -->
+<g id="proc~~releaseftobject~~CalledByGraph_node64" class="node">
+<title>proc~sparsematrixcontainskeys</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node64"><a xlink:href=".././proc/sparsematrixcontainskeys.html" xlink:title="FTSparseMatrixClass::FTSparseMatrix%SparseMatrixContainsKeys">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1206.5,-451.18 843.5,-451.18 843.5,-427.18 1206.5,-427.18 1206.5,-451.18"/>
+<text text-anchor="middle" x="1025" y="-436.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::FTSparseMatrix%SparseMatrixContainsKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~addobjecttosparsematrixforkeys&#45;&gt;proc~sparsematrixcontainskeys -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge82" class="edge">
+<title>proc~addobjecttosparsematrixforkeys&#45;&gt;proc~sparsematrixcontainskeys</title>
+<path fill="none" stroke="#000000" d="M778.07,-449.68C796.43,-448.9 814.99,-448.11 833.27,-447.33"/>
+<polygon fill="#000000" stroke="#000000" points="833.55,-450.82 843.39,-446.89 833.25,-443.82 833.55,-450.82"/>
+</g>
+<!-- proc~destructftexceptions -->
+<g id="proc~~releaseftobject~~CalledByGraph_node5" class="node">
+<title>proc~destructftexceptions</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node5"><a xlink:href=".././proc/destructftexceptions.html" xlink:title="SharedExceptionManagerModule::destructFTExceptions">
+<polygon fill="#d9534f" stroke="#d9534f" points="326,-409.18 16,-409.18 16,-385.18 326,-385.18 326,-409.18"/>
+<text text-anchor="middle" x="171" y="-394.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::destructFTExceptions</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftexceptions&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge3" class="edge">
+<title>proc~destructftexceptions&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M195.01,-409.19C232.28,-427.98 308.67,-463.77 378,-479.18 658.75,-541.61 736.39,-517.18 1024,-517.18 1024,-517.18 1024,-517.18 1442,-517.18 1591.45,-517.18 1981.15,-558.65 2114,-490.18 2173.55,-459.49 2213.39,-386.3 2230.3,-349.74"/>
+<polygon fill="#000000" stroke="#000000" points="2233.57,-351.02 2234.46,-340.46 2227.18,-348.16 2233.57,-351.02"/>
+</g>
+<!-- proc~releasecurrenterror -->
+<g id="proc~~releaseftobject~~CalledByGraph_node11" class="node">
+<title>proc~releasecurrenterror</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node11"><a xlink:href=".././proc/releasecurrenterror.html" xlink:title="SharedExceptionManagerModule::releaseCurrentError">
+<polygon fill="#d9534f" stroke="#d9534f" points="728.5,-347.18 427.5,-347.18 427.5,-323.18 728.5,-323.18 728.5,-347.18"/>
+<text text-anchor="middle" x="578" y="-332.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::releaseCurrentError</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftexceptions&#45;&gt;proc~releasecurrenterror -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge43" class="edge">
+<title>proc~destructftexceptions&#45;&gt;proc~releasecurrenterror</title>
+<path fill="none" stroke="#000000" d="M250.57,-385.15C318.65,-374.73 417.09,-359.66 488.04,-348.8"/>
+<polygon fill="#000000" stroke="#000000" points="488.95,-352.2 498.31,-347.23 487.89,-345.28 488.95,-352.2"/>
+</g>
+<!-- proc~printallexceptions -->
+<g id="proc~~releaseftobject~~CalledByGraph_node66" class="node">
+<title>proc~printallexceptions</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node66"><a xlink:href=".././proc/printallexceptions.html" xlink:title="SharedExceptionManagerModule::printAllExceptions">
+<polygon fill="#d9534f" stroke="#d9534f" points="724,-409.18 432,-409.18 432,-385.18 724,-385.18 724,-409.18"/>
+<text text-anchor="middle" x="578" y="-394.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::printAllExceptions</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftexceptions&#45;&gt;proc~printallexceptions -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge83" class="edge">
+<title>proc~destructftexceptions&#45;&gt;proc~printallexceptions</title>
+<path fill="none" stroke="#000000" d="M326.27,-397.18C357.53,-397.18 390.43,-397.18 421.73,-397.18"/>
+<polygon fill="#000000" stroke="#000000" points="421.83,-400.68 431.83,-397.18 421.83,-393.68 421.83,-400.68"/>
+</g>
+<!-- proc~destructftkeyobjectpair -->
+<g id="proc~~releaseftobject~~CalledByGraph_node6" class="node">
+<title>proc~destructftkeyobjectpair</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node6"><a xlink:href=".././proc/destructftkeyobjectpair.html" xlink:title="FTKeyObjectPairClass::destructFTKeyObjectPair">
+<polygon fill="#d9534f" stroke="#d9534f" points="2012,-361.18 1748,-361.18 1748,-337.18 2012,-337.18 2012,-361.18"/>
+<text text-anchor="middle" x="1880" y="-346.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass::destructFTKeyObjectPair</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftkeyobjectpair&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge4" class="edge">
+<title>proc~destructftkeyobjectpair&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2012.2,-341.5C2054.32,-339.03 2100.26,-336.34 2139.74,-334.03"/>
+<polygon fill="#000000" stroke="#000000" points="2140.12,-337.51 2149.9,-333.43 2139.71,-330.52 2140.12,-337.51"/>
+</g>
+<!-- proc~destructftlinkedlistrecord -->
+<g id="proc~~releaseftobject~~CalledByGraph_node7" class="node">
+<title>proc~destructftlinkedlistrecord</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node7"><a xlink:href=".././proc/destructftlinkedlistrecord.html" xlink:title="FTLinkedListRecordClass::destructFTLinkedListRecord">
+<polygon fill="#d9534f" stroke="#d9534f" points="2029,-319.18 1731,-319.18 1731,-295.18 2029,-295.18 2029,-319.18"/>
+<text text-anchor="middle" x="1880" y="-304.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass::destructFTLinkedListRecord</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftlinkedlistrecord&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge5" class="edge">
+<title>proc~destructftlinkedlistrecord&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2029.14,-315.86C2066.42,-318.04 2105.56,-320.34 2139.82,-322.34"/>
+<polygon fill="#000000" stroke="#000000" points="2139.63,-325.84 2149.82,-322.93 2140.04,-318.85 2139.63,-325.84"/>
+</g>
+<!-- proc~destructmatrixdata -->
+<g id="proc~~releaseftobject~~CalledByGraph_node8" class="node">
+<title>proc~destructmatrixdata</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node8"><a xlink:href=".././proc/destructmatrixdata.html" xlink:title="FTSparseMatrixData::destructMatrixData">
+<polygon fill="#d9534f" stroke="#d9534f" points="1995,-277.18 1765,-277.18 1765,-253.18 1995,-253.18 1995,-277.18"/>
+<text text-anchor="middle" x="1880" y="-262.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData::destructMatrixData</text>
+</a>
+</g>
+</g>
+<!-- proc~destructmatrixdata&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge6" class="edge">
+<title>proc~destructmatrixdata&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M1995.26,-270.15C2033.31,-273.21 2075.74,-278.17 2114,-286.18 2143.65,-292.39 2176.04,-303.34 2200.49,-312.51"/>
+<polygon fill="#000000" stroke="#000000" points="2199.53,-315.88 2210.12,-316.18 2202.02,-309.34 2199.53,-315.88"/>
+</g>
+<!-- proc~destructmultiindexmatrixdata -->
+<g id="proc~~releaseftobject~~CalledByGraph_node9" class="node">
+<title>proc~destructmultiindexmatrixdata</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node9"><a xlink:href=".././proc/destructmultiindexmatrixdata.html" xlink:title="FTMultiIndexTableData::destructMultiIndexMatrixData">
+<polygon fill="#d9534f" stroke="#d9534f" points="2028,-235.18 1732,-235.18 1732,-211.18 2028,-211.18 2028,-235.18"/>
+<text text-anchor="middle" x="1880" y="-220.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData::destructMultiIndexMatrixData</text>
+</a>
+</g>
+</g>
+<!-- proc~destructmultiindexmatrixdata&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge7" class="edge">
+<title>proc~destructmultiindexmatrixdata&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2028.2,-225.25C2057.21,-228.76 2087,-234.64 2114,-244.18 2154.91,-258.65 2195.37,-289.51 2218.87,-309.53"/>
+<polygon fill="#000000" stroke="#000000" points="2216.6,-312.2 2226.45,-316.11 2221.19,-306.91 2216.6,-312.2"/>
+</g>
+<!-- proc~destructobjectarray -->
+<g id="proc~~releaseftobject~~CalledByGraph_node10" class="node">
+<title>proc~destructobjectarray</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node10"><a xlink:href=".././proc/destructobjectarray.html" xlink:title="FTMutableObjectArrayClass::destructObjectArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="2017,-193.18 1743,-193.18 1743,-169.18 2017,-169.18 2017,-193.18"/>
+<text text-anchor="middle" x="1880" y="-178.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::destructObjectArray</text>
+</a>
+</g>
+</g>
+<!-- proc~destructobjectarray&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge8" class="edge">
+<title>proc~destructobjectarray&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2017.03,-177.62C2049.95,-180.98 2084.22,-188.21 2114,-202.18 2164.19,-225.73 2205.72,-278.23 2226.04,-307.49"/>
+<polygon fill="#000000" stroke="#000000" points="2223.37,-309.79 2231.88,-316.1 2229.17,-305.86 2223.37,-309.79"/>
+</g>
+<!-- proc~releasecurrenterror&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge9" class="edge">
+<title>proc~releasecurrenterror&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M728.81,-334.45C757.11,-334.34 786.46,-334.24 814,-334.18 1001.56,-333.78 1048.62,-326.18 1236,-334.18 1402.68,-341.3 1443.97,-349.86 1610,-366.18 1626.02,-367.76 1629.93,-369.29 1646,-370.18 1853.68,-381.68 1908.71,-403.62 2114,-370.18 2144.63,-365.19 2177.87,-353.78 2202.45,-344.1"/>
+<polygon fill="#000000" stroke="#000000" points="2203.78,-347.34 2211.75,-340.36 2201.17,-340.85 2203.78,-347.34"/>
+</g>
+<!-- proc~releaseftvaluedictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_node12" class="node">
+<title>proc~releaseftvaluedictionary</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node12"><a xlink:href=".././proc/releaseftvaluedictionary.html" xlink:title="FTValueDictionaryClass::releaseFTValueDictionary">
+<polygon fill="#d9534f" stroke="#d9534f" points="2020,-151.18 1740,-151.18 1740,-127.18 2020,-127.18 2020,-151.18"/>
+<text text-anchor="middle" x="1880" y="-136.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::releaseFTValueDictionary</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftvaluedictionary&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge10" class="edge">
+<title>proc~releaseftvaluedictionary&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2020.04,-132.87C2052.45,-136.39 2085.72,-144.38 2114,-160.18 2174.13,-193.78 2213.94,-269.49 2230.61,-306.7"/>
+<polygon fill="#000000" stroke="#000000" points="2227.5,-308.34 2234.7,-316.11 2233.92,-305.55 2227.5,-308.34"/>
+</g>
+<!-- proc~releasememberdictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_node13" class="node">
+<title>proc~releasememberdictionary</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node13"><a xlink:href=".././proc/releasememberdictionary.html" xlink:title="FTExceptionClass::releaseMemberDictionary">
+<polygon fill="#d9534f" stroke="#d9534f" points="1566.5,-1633.18 1315.5,-1633.18 1315.5,-1609.18 1566.5,-1609.18 1566.5,-1633.18"/>
+<text text-anchor="middle" x="1441" y="-1618.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::releaseMemberDictionary</text>
+</a>
+</g>
+</g>
+<!-- proc~releasememberdictionary&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge11" class="edge">
+<title>proc~releasememberdictionary&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M1566.87,-1615.27C1581.87,-1611.77 1596.6,-1606.9 1610,-1600.18 1898.88,-1455.4 1968.79,-1364.84 2114,-1076.18 2181.01,-942.97 2227.68,-460 2237.55,-350.41"/>
+<polygon fill="#000000" stroke="#000000" points="2241.06,-350.48 2238.46,-340.2 2234.09,-349.85 2241.06,-350.48"/>
+</g>
+<!-- proc~releasememberlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_node14" class="node">
+<title>proc~releasememberlist</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node14"><a xlink:href=".././proc/releasememberlist.html" xlink:title="FTLinkedListIteratorClass::releaseMemberList">
+<polygon fill="#d9534f" stroke="#d9534f" points="2007.5,-441.18 1752.5,-441.18 1752.5,-417.18 2007.5,-417.18 2007.5,-441.18"/>
+<text text-anchor="middle" x="1880" y="-426.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::releaseMemberList</text>
+</a>
+</g>
+</g>
+<!-- proc~releasememberlist&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge12" class="edge">
+<title>proc~releasememberlist&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2007.69,-424.93C2042.78,-421.11 2080.44,-414.49 2114,-403.18 2152.56,-390.19 2192.04,-364.06 2216.17,-346.34"/>
+<polygon fill="#000000" stroke="#000000" points="2218.42,-349.02 2224.33,-340.23 2214.23,-343.42 2218.42,-349.02"/>
+</g>
+<!-- proc~releasesmmemberlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_node15" class="node">
+<title>proc~releasesmmemberlist</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node15"><a xlink:href=".././proc/releasesmmemberlist.html" xlink:title="FTSparseMatrixClass::releaseSMMemberList">
+<polygon fill="#d9534f" stroke="#d9534f" points="2003.5,-109.18 1756.5,-109.18 1756.5,-85.18 2003.5,-85.18 2003.5,-109.18"/>
+<text text-anchor="middle" x="1880" y="-94.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::releaseSMMemberList</text>
+</a>
+</g>
+</g>
+<!-- proc~releasesmmemberlist&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge13" class="edge">
+<title>proc~releasesmmemberlist&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2003.69,-87.35C2041.46,-89.6 2081.59,-97.82 2114,-118.18 2184.43,-162.44 2220.55,-261.89 2233.64,-306.18"/>
+<polygon fill="#000000" stroke="#000000" points="2230.31,-307.28 2236.41,-315.95 2237.04,-305.37 2230.31,-307.28"/>
+</g>
+<!-- proc~removeobjectatindex -->
+<g id="proc~~releaseftobject~~CalledByGraph_node16" class="node">
+<title>proc~removeobjectatindex</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node16"><a xlink:href=".././proc/removeobjectatindex.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%removeObjectAtIndex">
+<polygon fill="#d9534f" stroke="#d9534f" points="2085,-67.18 1675,-67.18 1675,-43.18 2085,-43.18 2085,-67.18"/>
+<text text-anchor="middle" x="1880" y="-52.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%removeObjectAtIndex</text>
+</a>
+</g>
+</g>
+<!-- proc~removeobjectatindex&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge14" class="edge">
+<title>proc~removeobjectatindex&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M2085.03,-60.68C2095.21,-64.88 2104.94,-70 2114,-76.18 2195.21,-131.66 2226.3,-255.63 2235.88,-306.13"/>
+<polygon fill="#000000" stroke="#000000" points="2232.44,-306.78 2237.65,-316.01 2239.33,-305.55 2232.44,-306.78"/>
+</g>
+<!-- proc~replaceobjectatindexwithobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_node17" class="node">
+<title>proc~replaceobjectatindexwithobject</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node17"><a xlink:href=".././proc/replaceobjectatindexwithobject.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%replaceObjectAtIndexWithObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="2114,-25.18 1646,-25.18 1646,-1.18 2114,-1.18 2114,-25.18"/>
+<text text-anchor="middle" x="1880" y="-10.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%replaceObjectAtIndexWithObject</text>
+</a>
+</g>
+</g>
+<!-- proc~replaceobjectatindexwithobject&#45;&gt;proc~releaseftobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge15" class="edge">
+<title>proc~replaceobjectatindexwithobject&#45;&gt;proc~releaseftobject</title>
+<path fill="none" stroke="#000000" d="M1958.77,-1.18C2007.74,2.11 2069.81,-2.06 2114,-34.18 2206.16,-101.18 2231.22,-249.82 2237.53,-306.05"/>
+<polygon fill="#000000" stroke="#000000" points="2234.05,-306.42 2238.55,-316.01 2241.01,-305.71 2234.05,-306.42"/>
+</g>
+<!-- proc~adddoubleprecisionvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node18" class="node">
+<title>proc~adddoubleprecisionvalueforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node18"><a xlink:href=".././proc/adddoubleprecisionvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addDoublePrecisionValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1236,-1267.18 814,-1267.18 814,-1243.18 1236,-1243.18 1236,-1267.18"/>
+<text text-anchor="middle" x="1025" y="-1252.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addDoublePrecisionValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~adddoubleprecisionvalueforkey&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge17" class="edge">
+<title>proc~adddoubleprecisionvalueforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1236.05,-1263.61C1349.18,-1262.43 1489.79,-1251.62 1610,-1214.18 1710.03,-1183.02 1812.23,-1108.39 1856.39,-1073.61"/>
+<polygon fill="#000000" stroke="#000000" points="1858.79,-1076.17 1864.43,-1067.2 1854.43,-1070.69 1858.79,-1076.17"/>
+</g>
+<!-- proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node21" class="node">
+<title>proc~addobjectforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node21"><a xlink:href=".././proc/addobjectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%addObjectForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1582.5,-1145.18 1299.5,-1145.18 1299.5,-1121.18 1582.5,-1121.18 1582.5,-1145.18"/>
+<text text-anchor="middle" x="1441" y="-1130.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%addObjectForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~adddoubleprecisionvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge53" class="edge">
+<title>proc~adddoubleprecisionvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1197.74,-1243.17C1210.79,-1240.69 1223.67,-1237.72 1236,-1234.18 1303.06,-1214.92 1374.64,-1174.19 1412.62,-1150.77"/>
+<polygon fill="#000000" stroke="#000000" points="1414.9,-1153.47 1421.53,-1145.21 1411.19,-1147.53 1414.9,-1153.47"/>
+</g>
+<!-- proc~addintegervalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node19" class="node">
+<title>proc~addintegervalueforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node19"><a xlink:href=".././proc/addintegervalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addIntegerValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1212.5,-1225.18 837.5,-1225.18 837.5,-1201.18 1212.5,-1201.18 1212.5,-1225.18"/>
+<text text-anchor="middle" x="1025" y="-1210.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addIntegerValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addintegervalueforkey&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge18" class="edge">
+<title>proc~addintegervalueforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1212.83,-1220.94C1328.81,-1221.36 1480.01,-1213.87 1610,-1181.18 1703.54,-1157.66 1803.98,-1101.25 1851.31,-1072.57"/>
+<polygon fill="#000000" stroke="#000000" points="1853.35,-1075.42 1860.06,-1067.22 1849.7,-1069.45 1853.35,-1075.42"/>
+</g>
+<!-- proc~addintegervalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge54" class="edge">
+<title>proc~addintegervalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1179.02,-1201.16C1198.28,-1198.68 1217.65,-1195.72 1236,-1192.18 1292.02,-1181.37 1354.85,-1162.07 1395.79,-1148.5"/>
+<polygon fill="#000000" stroke="#000000" points="1397.08,-1151.76 1405.46,-1145.27 1394.86,-1145.12 1397.08,-1151.76"/>
+</g>
+<!-- proc~addlogicalvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node20" class="node">
+<title>proc~addlogicalvalueforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node20"><a xlink:href=".././proc/addlogicalvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addLogicalValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1212.5,-1183.18 837.5,-1183.18 837.5,-1159.18 1212.5,-1159.18 1212.5,-1183.18"/>
+<text text-anchor="middle" x="1025" y="-1168.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addLogicalValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addlogicalvalueforkey&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge19" class="edge">
+<title>proc~addlogicalvalueforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1212.77,-1180.98C1328.24,-1183.29 1478.92,-1179.51 1610,-1154.18 1698.13,-1137.15 1795.61,-1094.97 1845.52,-1071.54"/>
+<polygon fill="#000000" stroke="#000000" points="1847.02,-1074.7 1854.56,-1067.25 1844.02,-1068.37 1847.02,-1074.7"/>
+</g>
+<!-- proc~addlogicalvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge55" class="edge">
+<title>proc~addlogicalvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1156.99,-1159.16C1202.24,-1155.01 1253.1,-1150.34 1299.11,-1146.11"/>
+<polygon fill="#000000" stroke="#000000" points="1299.51,-1149.59 1309.15,-1145.19 1298.87,-1142.62 1299.51,-1149.59"/>
+</g>
+<!-- proc~addobjectforkey&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge20" class="edge">
+<title>proc~addobjectforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1523.7,-1121.16C1551.16,-1116.96 1581.94,-1112.06 1610,-1107.18 1678.27,-1095.3 1755.95,-1080.11 1810.23,-1069.21"/>
+<polygon fill="#000000" stroke="#000000" points="1810.97,-1072.63 1820.08,-1067.23 1809.59,-1065.77 1810.97,-1072.63"/>
+</g>
+<!-- proc~addquadvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node22" class="node">
+<title>proc~addquadvalueforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node22"><a xlink:href=".././proc/addquadvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addQuadValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1207.5,-1309.18 842.5,-1309.18 842.5,-1285.18 1207.5,-1285.18 1207.5,-1309.18"/>
+<text text-anchor="middle" x="1025" y="-1294.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addQuadValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addquadvalueforkey&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge21" class="edge">
+<title>proc~addquadvalueforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1207.75,-1294.01C1351.21,-1289.5 1538.65,-1278.59 1610,-1252.18 1717.61,-1212.35 1819.85,-1116.09 1860.52,-1074.67"/>
+<polygon fill="#000000" stroke="#000000" points="1863.15,-1076.99 1867.6,-1067.37 1858.13,-1072.11 1863.15,-1076.99"/>
+</g>
+<!-- proc~addquadvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge56" class="edge">
+<title>proc~addquadvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1206.95,-1285.17C1216.89,-1282.63 1226.64,-1279.66 1236,-1276.18 1311.83,-1248.03 1385.73,-1184.7 1420.06,-1152.61"/>
+<polygon fill="#000000" stroke="#000000" points="1422.68,-1154.94 1427.53,-1145.53 1417.87,-1149.86 1422.68,-1154.94"/>
+</g>
+<!-- proc~addrealvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node23" class="node">
+<title>proc~addrealvalueforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node23"><a xlink:href=".././proc/addrealvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addRealValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1205,-1103.18 845,-1103.18 845,-1079.18 1205,-1079.18 1205,-1103.18"/>
+<text text-anchor="middle" x="1025" y="-1088.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addRealValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addrealvalueforkey&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge22" class="edge">
+<title>proc~addrealvalueforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1205.08,-1083.62C1389.84,-1075.83 1669.3,-1064.03 1802.79,-1058.4"/>
+<polygon fill="#000000" stroke="#000000" points="1803.08,-1061.89 1812.92,-1057.97 1802.78,-1054.9 1803.08,-1061.89"/>
+</g>
+<!-- proc~addrealvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge57" class="edge">
+<title>proc~addrealvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1144.36,-1103.19C1196.55,-1108.48 1258.02,-1114.72 1311.35,-1120.13"/>
+<polygon fill="#000000" stroke="#000000" points="1311.25,-1123.64 1321.55,-1121.17 1311.96,-1116.67 1311.25,-1123.64"/>
+</g>
+<!-- proc~addstring -->
+<g id="proc~~releaseftobject~~CalledByGraph_node24" class="node">
+<title>proc~addstring</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node24"><a xlink:href=".././proc/addstring.html" xlink:title="FTStringSetClass::FTStringSet%AddString">
+<polygon fill="#d9534f" stroke="#d9534f" points="1141,-1061.18 909,-1061.18 909,-1037.18 1141,-1037.18 1141,-1061.18"/>
+<text text-anchor="middle" x="1025" y="-1046.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%AddString</text>
+</a>
+</g>
+</g>
+<!-- proc~addstring&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge23" class="edge">
+<title>proc~addstring&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1141.04,-1049.99C1318.08,-1051.24 1652.54,-1053.59 1802.68,-1054.64"/>
+<polygon fill="#000000" stroke="#000000" points="1802.7,-1058.14 1812.73,-1054.72 1802.75,-1051.15 1802.7,-1058.14"/>
+</g>
+<!-- proc~addstring&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge58" class="edge">
+<title>proc~addstring&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1141.06,-1056.51C1172.07,-1059.62 1205.47,-1064.01 1236,-1070.18 1293.39,-1081.79 1357.64,-1103.06 1398.42,-1117.65"/>
+<polygon fill="#000000" stroke="#000000" points="1397.42,-1121.01 1408.01,-1121.11 1399.79,-1114.43 1397.42,-1121.01"/>
+</g>
+<!-- proc~addstringvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node25" class="node">
+<title>proc~addstringvalueforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node25"><a xlink:href=".././proc/addstringvalueforkey.html" xlink:title="FTValueDictionaryClass::FTValueDictionary%addStringValueForKey">
+<polygon fill="#d9534f" stroke="#d9534f" points="1209,-1019.18 841,-1019.18 841,-995.18 1209,-995.18 1209,-1019.18"/>
+<text text-anchor="middle" x="1025" y="-1004.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addStringValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~addstringvalueforkey&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge24" class="edge">
+<title>proc~addstringvalueforkey&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1209.25,-1017.49C1393.91,-1027.88 1669.96,-1043.42 1802.55,-1050.88"/>
+<polygon fill="#000000" stroke="#000000" points="1802.43,-1054.38 1812.61,-1051.45 1802.82,-1047.39 1802.43,-1054.38"/>
+</g>
+<!-- proc~addstringvalueforkey&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge59" class="edge">
+<title>proc~addstringvalueforkey&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M1198.92,-1019.2C1211.58,-1021.68 1224.05,-1024.65 1236,-1028.18 1303.79,-1048.23 1375.62,-1090.94 1413.32,-1115.26"/>
+<polygon fill="#000000" stroke="#000000" points="1411.86,-1118.48 1422.14,-1121.02 1415.68,-1112.62 1411.86,-1118.48"/>
+</g>
+<!-- proc~destructexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_node26" class="node">
+<title>proc~destructexception</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node26"><a xlink:href=".././proc/destructexception.html" xlink:title="FTExceptionClass::destructException">
+<polygon fill="#d9534f" stroke="#d9534f" points="1129.5,-1637.18 920.5,-1637.18 920.5,-1613.18 1129.5,-1613.18 1129.5,-1637.18"/>
+<text text-anchor="middle" x="1025" y="-1622.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::destructException</text>
+</a>
+</g>
+</g>
+<!-- proc~destructexception&#45;&gt;proc~releasememberdictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge45" class="edge">
+<title>proc~destructexception&#45;&gt;proc~releasememberdictionary</title>
+<path fill="none" stroke="#000000" d="M1129.67,-1624.18C1182.77,-1623.67 1248.06,-1623.04 1305.04,-1622.49"/>
+<polygon fill="#000000" stroke="#000000" points="1305.24,-1625.98 1315.21,-1622.39 1305.17,-1618.98 1305.24,-1625.98"/>
+</g>
+<!-- proc~destructiterator -->
+<g id="proc~~releaseftobject~~CalledByGraph_node27" class="node">
+<title>proc~destructiterator</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node27"><a xlink:href=".././proc/destructiterator.html" xlink:title="FTLinkedListIteratorClass::destructIterator">
+<polygon fill="#d9534f" stroke="#d9534f" points="1559.5,-399.18 1322.5,-399.18 1322.5,-375.18 1559.5,-375.18 1559.5,-399.18"/>
+<text text-anchor="middle" x="1441" y="-384.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::destructIterator</text>
+</a>
+</g>
+</g>
+<!-- proc~destructiterator&#45;&gt;proc~releasememberlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge50" class="edge">
+<title>proc~destructiterator&#45;&gt;proc~releasememberlist</title>
+<path fill="none" stroke="#000000" d="M1559.68,-398.49C1616.44,-403.95 1684.82,-410.52 1743.72,-416.18"/>
+<polygon fill="#000000" stroke="#000000" points="1743.55,-419.68 1753.84,-417.15 1744.22,-412.71 1743.55,-419.68"/>
+</g>
+<!-- proc~destructsparsematrix -->
+<g id="proc~~releaseftobject~~CalledByGraph_node28" class="node">
+<title>proc~destructsparsematrix</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node28"><a xlink:href=".././proc/destructsparsematrix.html" xlink:title="FTSparseMatrixClass::destructSparseMatrix">
+<polygon fill="#d9534f" stroke="#d9534f" points="1563,-109.18 1319,-109.18 1319,-85.18 1563,-85.18 1563,-109.18"/>
+<text text-anchor="middle" x="1441" y="-94.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::destructSparseMatrix</text>
+</a>
+</g>
+</g>
+<!-- proc~destructsparsematrix&#45;&gt;proc~releasesmmemberlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge52" class="edge">
+<title>proc~destructsparsematrix&#45;&gt;proc~releasesmmemberlist</title>
+<path fill="none" stroke="#000000" d="M1563.15,-97.18C1620.1,-97.18 1688.14,-97.18 1746.46,-97.18"/>
+<polygon fill="#000000" stroke="#000000" points="1746.48,-100.68 1756.48,-97.18 1746.48,-93.68 1746.48,-100.68"/>
+</g>
+<!-- proc~initassertionfailureexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_node29" class="node">
+<title>proc~initassertionfailureexception</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node29"><a xlink:href=".././proc/initassertionfailureexception.html" xlink:title="FTExceptionClass::FTException%initAssertionFailureException">
+<polygon fill="#d9534f" stroke="#d9534f" points="342,-1495.18 0,-1495.18 0,-1471.18 342,-1471.18 342,-1495.18"/>
+<text text-anchor="middle" x="171" y="-1480.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initAssertionFailureException</text>
+</a>
+</g>
+</g>
+<!-- proc~initassertionfailureexception&#45;&gt;proc~releasememberdictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge46" class="edge">
+<title>proc~initassertionfailureexception&#45;&gt;proc~releasememberdictionary</title>
+<path fill="none" stroke="#000000" d="M342.03,-1482.29C354.2,-1482.25 366.29,-1482.21 378,-1482.18 568.89,-1481.72 1079.53,-1414.83 1236,-1524.18 1266.64,-1545.59 1241.72,-1578.27 1272,-1600.18 1282.15,-1607.52 1293.57,-1613 1305.56,-1617.04"/>
+<polygon fill="#000000" stroke="#000000" points="1304.71,-1620.43 1315.29,-1619.97 1306.73,-1613.73 1304.71,-1620.43"/>
+</g>
+<!-- proc~initassertionfailureexception&#45;&gt;proc~addobjectforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge60" class="edge">
+<title>proc~initassertionfailureexception&#45;&gt;proc~addobjectforkey</title>
+<path fill="none" stroke="#000000" d="M188.21,-1471.16C258.24,-1420.02 543.51,-1220.06 814,-1150.18 983.62,-1106.36 1187.73,-1110.97 1315.7,-1120.4"/>
+<polygon fill="#000000" stroke="#000000" points="1315.69,-1123.91 1325.93,-1121.18 1316.22,-1116.93 1315.69,-1123.91"/>
+</g>
+<!-- none~addvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_node53" class="node">
+<title>none~addvalueforkey</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node53"><a xlink:href=".././type/ftvaluedictionary.html#boundprocedure-addvalueforkey" xlink:title="FTValueDictionaryClass::FTValueDictionary%addValueForKey">
+<polygon fill="#a7506f" stroke="#a7506f" points="746.5,-1515.18 409.5,-1515.18 409.5,-1491.18 746.5,-1491.18 746.5,-1515.18"/>
+<text text-anchor="middle" x="578" y="-1500.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass::FTValueDictionary%addValueForKey</text>
+</a>
+</g>
+</g>
+<!-- proc~initassertionfailureexception&#45;&gt;none~addvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge74" class="edge">
+<title>proc~initassertionfailureexception&#45;&gt;none~addvalueforkey</title>
+<path fill="none" stroke="#000000" d="M342.29,-1491.59C361.08,-1492.52 380.26,-1493.47 399.14,-1494.4"/>
+<polygon fill="#000000" stroke="#000000" points="399.13,-1497.9 409.3,-1494.9 399.48,-1490.91 399.13,-1497.9"/>
+</g>
+<!-- proc~initftexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_node55" class="node">
+<title>proc~initftexception</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node55"><a xlink:href=".././proc/initftexception.html" xlink:title="FTExceptionClass::FTException%initFTException">
+<polygon fill="#d9534f" stroke="#d9534f" points="713,-1557.18 443,-1557.18 443,-1533.18 713,-1533.18 713,-1557.18"/>
+<text text-anchor="middle" x="578" y="-1542.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initFTException</text>
+</a>
+</g>
+</g>
+<!-- proc~initassertionfailureexception&#45;&gt;proc~initftexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge77" class="edge">
+<title>proc~initassertionfailureexception&#45;&gt;proc~initftexception</title>
+<path fill="none" stroke="#000000" d="M246.35,-1495.24C276.21,-1500.47 310.86,-1507.03 342,-1514.18 358.18,-1517.9 361.69,-1521.08 378,-1524.18 395.65,-1527.54 414.28,-1530.4 432.79,-1532.82"/>
+<polygon fill="#000000" stroke="#000000" points="432.39,-1536.3 442.75,-1534.09 433.27,-1529.35 432.39,-1536.3"/>
+</g>
+<!-- proc~initfatalexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_node30" class="node">
+<title>proc~initfatalexception</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node30"><a xlink:href=".././proc/initfatalexception.html" xlink:title="FTExceptionClass::FTException%initFatalException">
+<polygon fill="#d9534f" stroke="#d9534f" points="312.5,-1589.18 29.5,-1589.18 29.5,-1565.18 312.5,-1565.18 312.5,-1589.18"/>
+<text text-anchor="middle" x="171" y="-1574.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initFatalException</text>
+</a>
+</g>
+</g>
+<!-- proc~initfatalexception&#45;&gt;proc~releasememberdictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge47" class="edge">
+<title>proc~initfatalexception&#45;&gt;proc~releasememberdictionary</title>
+<path fill="none" stroke="#000000" d="M256.67,-1589.2C379.26,-1605.95 613.49,-1635.44 814,-1646.18 1001.29,-1656.22 1048.79,-1657.61 1236,-1646.18 1273.44,-1643.9 1314.53,-1639.27 1349.96,-1634.62"/>
+<polygon fill="#000000" stroke="#000000" points="1350.83,-1638.03 1360.28,-1633.24 1349.9,-1631.09 1350.83,-1638.03"/>
+</g>
+<!-- proc~initfatalexception&#45;&gt;none~addvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge75" class="edge">
+<title>proc~initfatalexception&#45;&gt;none~addvalueforkey</title>
+<path fill="none" stroke="#000000" d="M312.58,-1566.72C322.74,-1563.88 332.65,-1560.41 342,-1556.18 361.5,-1547.36 358.42,-1532.83 378,-1524.18 384.88,-1521.14 392.02,-1518.47 399.33,-1516.12"/>
+<polygon fill="#000000" stroke="#000000" points="400.82,-1519.32 409.39,-1513.11 398.81,-1512.62 400.82,-1519.32"/>
+</g>
+<!-- proc~initfatalexception&#45;&gt;proc~initftexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge78" class="edge">
+<title>proc~initfatalexception&#45;&gt;proc~initftexception</title>
+<path fill="none" stroke="#000000" d="M312.51,-1566.08C351.31,-1563.01 393.47,-1559.68 432.49,-1556.6"/>
+<polygon fill="#000000" stroke="#000000" points="433.18,-1560.06 442.87,-1555.78 432.63,-1553.08 433.18,-1560.06"/>
+</g>
+<!-- proc~initwarningexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_node31" class="node">
+<title>proc~initwarningexception</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node31"><a xlink:href=".././proc/initwarningexception.html" xlink:title="FTExceptionClass::FTException%initWarningException">
+<polygon fill="#d9534f" stroke="#d9534f" points="321.5,-1547.18 20.5,-1547.18 20.5,-1523.18 321.5,-1523.18 321.5,-1547.18"/>
+<text text-anchor="middle" x="171" y="-1532.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%initWarningException</text>
+</a>
+</g>
+</g>
+<!-- proc~initwarningexception&#45;&gt;proc~releasememberdictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge48" class="edge">
+<title>proc~initwarningexception&#45;&gt;proc~releasememberdictionary</title>
+<path fill="none" stroke="#000000" d="M288.05,-1547.19C306.18,-1549.73 324.65,-1552.72 342,-1556.18 358.28,-1559.43 361.6,-1563.58 378,-1566.18 754.98,-1626.09 855.07,-1579.88 1236,-1604.18 1258.4,-1605.61 1282.16,-1607.37 1305.25,-1609.21"/>
+<polygon fill="#000000" stroke="#000000" points="1305.2,-1612.71 1315.45,-1610.03 1305.77,-1605.74 1305.2,-1612.71"/>
+</g>
+<!-- proc~initwarningexception&#45;&gt;none~addvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge76" class="edge">
+<title>proc~initwarningexception&#45;&gt;none~addvalueforkey</title>
+<path fill="none" stroke="#000000" d="M321.66,-1523.36C351.92,-1520.97 383.88,-1518.44 414.56,-1516.02"/>
+<polygon fill="#000000" stroke="#000000" points="415.22,-1519.48 424.91,-1515.2 414.67,-1512.5 415.22,-1519.48"/>
+</g>
+<!-- proc~initwarningexception&#45;&gt;proc~initftexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge79" class="edge">
+<title>proc~initwarningexception&#45;&gt;proc~initftexception</title>
+<path fill="none" stroke="#000000" d="M321.66,-1538.88C358.01,-1539.77 396.81,-1540.73 432.9,-1541.62"/>
+<polygon fill="#000000" stroke="#000000" points="432.92,-1545.12 443,-1541.87 433.09,-1538.13 432.92,-1545.12"/>
+</g>
+<!-- proc~pop -->
+<g id="proc~~releaseftobject~~CalledByGraph_node32" class="node">
+<title>proc~pop</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node32"><a xlink:href=".././proc/pop.html" xlink:title="FTStackClass::FTStack%pop">
+<polygon fill="#d9534f" stroke="#d9534f" points="1522,-989.18 1360,-989.18 1360,-965.18 1522,-965.18 1522,-989.18"/>
+<text text-anchor="middle" x="1441" y="-974.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass::FTStack%pop</text>
+</a>
+</g>
+</g>
+<!-- proc~pop&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge25" class="edge">
+<title>proc~pop&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1522,-988.94C1549.89,-993.2 1581.36,-998.2 1610,-1003.18 1678.27,-1015.06 1755.95,-1030.26 1810.23,-1041.15"/>
+<polygon fill="#000000" stroke="#000000" points="1809.59,-1044.59 1820.08,-1043.13 1810.97,-1037.73 1809.59,-1044.59"/>
+</g>
+<!-- proc~releaseftdata -->
+<g id="proc~~releaseftobject~~CalledByGraph_node33" class="node">
+<title>proc~releaseftdata</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node33"><a xlink:href=".././proc/releaseftdata.html" xlink:title="FTDataClass::releaseFTData">
+<polygon fill="#d9534f" stroke="#d9534f" points="1522.5,-947.18 1359.5,-947.18 1359.5,-923.18 1522.5,-923.18 1522.5,-947.18"/>
+<text text-anchor="middle" x="1441" y="-932.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDataClass::releaseFTData</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftdata&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge26" class="edge">
+<title>proc~releaseftdata&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1522.58,-941.48C1550.51,-944.66 1581.87,-949.34 1610,-956.18 1696.08,-977.11 1792.53,-1016.81 1843.29,-1039.05"/>
+<polygon fill="#000000" stroke="#000000" points="1841.96,-1042.29 1852.53,-1043.12 1844.79,-1035.88 1841.96,-1042.29"/>
+</g>
+<!-- proc~releaseftdictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_node34" class="node">
+<title>proc~releaseftdictionary</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node34"><a xlink:href=".././proc/releaseftdictionary.html" xlink:title="FTDictionaryClass::releaseFTDictionary">
+<polygon fill="#d9534f" stroke="#d9534f" points="1552,-905.18 1330,-905.18 1330,-881.18 1552,-881.18 1552,-905.18"/>
+<text text-anchor="middle" x="1441" y="-890.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::releaseFTDictionary</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftdictionary&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge27" class="edge">
+<title>proc~releaseftdictionary&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1552.11,-901.2C1571.66,-904.24 1591.63,-908.43 1610,-914.18 1705.05,-943.96 1806.3,-1006.57 1852.84,-1037.34"/>
+<polygon fill="#000000" stroke="#000000" points="1851.14,-1040.41 1861.4,-1043.05 1855.02,-1034.59 1851.14,-1040.41"/>
+</g>
+<!-- proc~releaseftexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_node35" class="node">
+<title>proc~releaseftexception</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node35"><a xlink:href=".././proc/releaseftexception.html" xlink:title="FTExceptionClass::releaseFTException">
+<polygon fill="#d9534f" stroke="#d9534f" points="1549.5,-863.18 1332.5,-863.18 1332.5,-839.18 1549.5,-839.18 1549.5,-863.18"/>
+<text text-anchor="middle" x="1441" y="-848.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::releaseFTException</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftexception&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge28" class="edge">
+<title>proc~releaseftexception&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1549.59,-856.96C1570.07,-860.19 1591.02,-865.02 1610,-872.18 1713.76,-911.34 1816.6,-998.08 1858.89,-1036.38"/>
+<polygon fill="#000000" stroke="#000000" points="1856.56,-1038.99 1866.3,-1043.16 1861.28,-1033.82 1856.56,-1038.99"/>
+</g>
+<!-- proc~releaseftkeyobjectpair -->
+<g id="proc~~releaseftobject~~CalledByGraph_node36" class="node">
+<title>proc~releaseftkeyobjectpair</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node36"><a xlink:href=".././proc/releaseftkeyobjectpair.html" xlink:title="FTKeyObjectPairClass::releaseFTKeyObjectPair">
+<polygon fill="#d9534f" stroke="#d9534f" points="1570.5,-821.18 1311.5,-821.18 1311.5,-797.18 1570.5,-797.18 1570.5,-821.18"/>
+<text text-anchor="middle" x="1441" y="-806.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass::releaseFTKeyObjectPair</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftkeyobjectpair&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge29" class="edge">
+<title>proc~releaseftkeyobjectpair&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1570.65,-817.5C1584.24,-820.65 1597.6,-824.79 1610,-830.18 1722.21,-879.01 1824.04,-989.86 1862.62,-1035.24"/>
+<polygon fill="#000000" stroke="#000000" points="1859.96,-1037.52 1869.07,-1042.93 1865.32,-1033.02 1859.96,-1037.52"/>
+</g>
+<!-- proc~releaseftlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_node37" class="node">
+<title>proc~releaseftlinkedlist</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node37"><a xlink:href=".././proc/releaseftlinkedlist.html" xlink:title="FTLinkedListClass::releaseFTLinkedList">
+<polygon fill="#d9534f" stroke="#d9534f" points="1550.5,-779.18 1331.5,-779.18 1331.5,-755.18 1550.5,-755.18 1550.5,-779.18"/>
+<text text-anchor="middle" x="1441" y="-764.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::releaseFTLinkedList</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftlinkedlist&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge30" class="edge">
+<title>proc~releaseftlinkedlist&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1550.77,-770.22C1571.15,-773.69 1591.76,-779.3 1610,-788.18 1731.39,-847.27 1831,-983.16 1865.76,-1034.78"/>
+<polygon fill="#000000" stroke="#000000" points="1862.86,-1036.74 1871.31,-1043.13 1868.69,-1032.87 1862.86,-1036.74"/>
+</g>
+<!-- proc~releaseftlinkedlistiterator -->
+<g id="proc~~releaseftobject~~CalledByGraph_node38" class="node">
+<title>proc~releaseftlinkedlistiterator</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node38"><a xlink:href=".././proc/releaseftlinkedlistiterator.html" xlink:title="FTLinkedListIteratorClass::releaseFTLinkedListIterator">
+<polygon fill="#d9534f" stroke="#d9534f" points="1590,-737.18 1292,-737.18 1292,-713.18 1590,-713.18 1590,-737.18"/>
+<text text-anchor="middle" x="1441" y="-722.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::releaseFTLinkedListIterator</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftlinkedlistiterator&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge31" class="edge">
+<title>proc~releaseftlinkedlistiterator&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1590.09,-737.34C1596.97,-739.87 1603.64,-742.8 1610,-746.18 1740.55,-815.72 1836.52,-976.2 1867.93,-1033.97"/>
+<polygon fill="#000000" stroke="#000000" points="1864.92,-1035.77 1872.73,-1042.93 1871.09,-1032.46 1864.92,-1035.77"/>
+</g>
+<!-- proc~releaseftlinkedlistrecord -->
+<g id="proc~~releaseftobject~~CalledByGraph_node39" class="node">
+<title>proc~releaseftlinkedlistrecord</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node39"><a xlink:href=".././proc/releaseftlinkedlistrecord.html" xlink:title="FTLinkedListRecordClass::releaseFTLinkedListRecord">
+<polygon fill="#d9534f" stroke="#d9534f" points="1588,-695.18 1294,-695.18 1294,-671.18 1588,-671.18 1588,-695.18"/>
+<text text-anchor="middle" x="1441" y="-680.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass::releaseFTLinkedListRecord</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftlinkedlistrecord&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge32" class="edge">
+<title>proc~releaseftlinkedlistrecord&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1588.26,-694.05C1595.81,-696.89 1603.12,-700.23 1610,-704.18 1750.38,-784.67 1841.94,-970.55 1869.92,-1033.72"/>
+<polygon fill="#000000" stroke="#000000" points="1866.8,-1035.32 1874,-1043.09 1873.22,-1032.52 1866.8,-1035.32"/>
+</g>
+<!-- proc~releaseftmatrixdata -->
+<g id="proc~~releaseftobject~~CalledByGraph_node40" class="node">
+<title>proc~releaseftmatrixdata</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node40"><a xlink:href=".././proc/releaseftmatrixdata.html" xlink:title="FTSparseMatrixData::releaseFTMatrixData">
+<polygon fill="#d9534f" stroke="#d9534f" points="1560,-653.18 1322,-653.18 1322,-629.18 1560,-629.18 1560,-653.18"/>
+<text text-anchor="middle" x="1441" y="-638.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData::releaseFTMatrixData</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftmatrixdata&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge33" class="edge">
+<title>proc~releaseftmatrixdata&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1560.16,-643.12C1577.71,-646.97 1594.94,-653 1610,-662.18 1760.11,-753.69 1846.43,-964.3 1871.38,-1033.04"/>
+<polygon fill="#000000" stroke="#000000" points="1868.21,-1034.56 1874.85,-1042.81 1874.8,-1032.22 1868.21,-1034.56"/>
+</g>
+<!-- proc~releaseftmultiindexmatrixdata -->
+<g id="proc~~releaseftobject~~CalledByGraph_node41" class="node">
+<title>proc~releaseftmultiindexmatrixdata</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node41"><a xlink:href=".././proc/releaseftmultiindexmatrixdata.html" xlink:title="FTMultiIndexTableData::releaseFTMultiIndexMatrixData">
+<polygon fill="#d9534f" stroke="#d9534f" points="1593,-611.18 1289,-611.18 1289,-587.18 1593,-587.18 1593,-611.18"/>
+<text text-anchor="middle" x="1441" y="-596.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData::releaseFTMultiIndexMatrixData</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftmultiindexmatrixdata&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge34" class="edge">
+<title>proc~releaseftmultiindexmatrixdata&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1593.26,-611.17C1599.07,-613.78 1604.68,-616.77 1610,-620.18 1770.63,-723.29 1851.17,-959.96 1872.86,-1033.18"/>
+<polygon fill="#000000" stroke="#000000" points="1869.6,-1034.49 1875.74,-1043.13 1876.32,-1032.55 1869.6,-1034.49"/>
+</g>
+<!-- proc~releaseftmultiindextable -->
+<g id="proc~~releaseftobject~~CalledByGraph_node42" class="node">
+<title>proc~releaseftmultiindextable</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node42"><a xlink:href=".././proc/releaseftmultiindextable.html" xlink:title="FTMultiIndexTableClass::releaseFTMultiIndexTable">
+<polygon fill="#d9534f" stroke="#d9534f" points="1579,-569.18 1303,-569.18 1303,-545.18 1579,-545.18 1579,-569.18"/>
+<text text-anchor="middle" x="1441" y="-554.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass::releaseFTMultiIndexTable</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftmultiindextable&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge35" class="edge">
+<title>proc~releaseftmultiindextable&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1579.39,-563.25C1590.23,-566.99 1600.6,-571.88 1610,-578.18 1780.83,-692.77 1855.05,-954.38 1873.94,-1032.65"/>
+<polygon fill="#000000" stroke="#000000" points="1870.63,-1033.9 1876.33,-1042.83 1877.45,-1032.3 1870.63,-1033.9"/>
+</g>
+<!-- proc~releaseftmutableobjectarray -->
+<g id="proc~~releaseftobject~~CalledByGraph_node43" class="node">
+<title>proc~releaseftmutableobjectarray</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node43"><a xlink:href=".././proc/releaseftmutableobjectarray.html" xlink:title="FTMutableObjectArrayClass::releaseFTMutableObjectArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="1603.5,-1591.18 1278.5,-1591.18 1278.5,-1567.18 1603.5,-1567.18 1603.5,-1591.18"/>
+<text text-anchor="middle" x="1441" y="-1576.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::releaseFTMutableObjectArray</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftmutableobjectarray&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge36" class="edge">
+<title>proc~releaseftmutableobjectarray&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1599.16,-1567C1602.98,-1564.37 1606.6,-1561.44 1610,-1558.18 1679.63,-1491.44 1606.44,-1432.14 1646,-1344.18 1698.72,-1226.94 1810.73,-1116.95 1857.64,-1074.09"/>
+<polygon fill="#000000" stroke="#000000" points="1860.04,-1076.64 1865.1,-1067.33 1855.34,-1071.45 1860.04,-1076.64"/>
+</g>
+<!-- proc~releaseftsparsematrix -->
+<g id="proc~~releaseftobject~~CalledByGraph_node44" class="node">
+<title>proc~releaseftsparsematrix</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node44"><a xlink:href=".././proc/releaseftsparsematrix.html" xlink:title="FTSparseMatrixClass::releaseFTSparseMatrix">
+<polygon fill="#d9534f" stroke="#d9534f" points="1567,-1549.18 1315,-1549.18 1315,-1525.18 1567,-1525.18 1567,-1549.18"/>
+<text text-anchor="middle" x="1441" y="-1534.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::releaseFTSparseMatrix</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftsparsematrix&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge37" class="edge">
+<title>proc~releaseftsparsematrix&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1567.23,-1539.18C1583.04,-1534.61 1597.89,-1527.33 1610,-1516.18 1667.44,-1463.27 1612.56,-1414.76 1646,-1344.18 1701.04,-1228.01 1811.76,-1117.42 1857.98,-1074.24"/>
+<polygon fill="#000000" stroke="#000000" points="1860.37,-1076.8 1865.33,-1067.44 1855.61,-1071.66 1860.37,-1076.8"/>
+</g>
+<!-- proc~releaseftstack -->
+<g id="proc~~releaseftobject~~CalledByGraph_node45" class="node">
+<title>proc~releaseftstack</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node45"><a xlink:href=".././proc/releaseftstack.html" xlink:title="FTStackClass::releaseFTStack">
+<polygon fill="#d9534f" stroke="#d9534f" points="1526.5,-1507.18 1355.5,-1507.18 1355.5,-1483.18 1526.5,-1483.18 1526.5,-1507.18"/>
+<text text-anchor="middle" x="1441" y="-1492.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass::releaseFTStack</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftstack&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge38" class="edge">
+<title>proc~releaseftstack&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1526.61,-1502.8C1556.03,-1501.1 1587.31,-1493.78 1610,-1474.18 1655.37,-1434.99 1618.62,-1397.51 1646,-1344.18 1704.73,-1229.79 1813.45,-1118.16 1858.56,-1074.47"/>
+<polygon fill="#000000" stroke="#000000" points="1861.18,-1076.8 1865.97,-1067.35 1856.33,-1071.75 1861.18,-1076.8"/>
+</g>
+<!-- proc~releaseftstringset -->
+<g id="proc~~releaseftobject~~CalledByGraph_node46" class="node">
+<title>proc~releaseftstringset</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node46"><a xlink:href=".././proc/releaseftstringset.html" xlink:title="FTStringSetClass::releaseFTStringSet">
+<polygon fill="#d9534f" stroke="#d9534f" points="1546,-1465.18 1336,-1465.18 1336,-1441.18 1546,-1441.18 1546,-1465.18"/>
+<text text-anchor="middle" x="1441" y="-1450.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::releaseFTStringSet</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftstringset&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge39" class="edge">
+<title>proc~releaseftstringset&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1546.31,-1457.06C1569.09,-1453.51 1591.8,-1446.12 1610,-1432.18 1643.55,-1406.49 1624.51,-1380.57 1646,-1344.18 1711.54,-1233.2 1816.88,-1119.24 1859.83,-1074.69"/>
+<polygon fill="#000000" stroke="#000000" points="1862.42,-1077.05 1866.87,-1067.43 1857.4,-1072.17 1862.42,-1077.05"/>
+</g>
+<!-- proc~releaseftvalue -->
+<g id="proc~~releaseftobject~~CalledByGraph_node47" class="node">
+<title>proc~releaseftvalue</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node47"><a xlink:href=".././proc/releaseftvalue.html" xlink:title="FTValueClass::releaseFTValue">
+<polygon fill="#d9534f" stroke="#d9534f" points="1526.5,-1423.18 1355.5,-1423.18 1355.5,-1399.18 1526.5,-1399.18 1526.5,-1423.18"/>
+<text text-anchor="middle" x="1441" y="-1408.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass::releaseFTValue</text>
+</a>
+</g>
+</g>
+<!-- proc~releaseftvalue&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge40" class="edge">
+<title>proc~releaseftvalue&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1526.78,-1413.25C1554.76,-1410.72 1585.07,-1404.31 1610,-1390.18 1632.59,-1377.38 1629.85,-1364.51 1646,-1344.18 1726.76,-1242.51 1824.71,-1121.88 1862.78,-1075.1"/>
+<polygon fill="#000000" stroke="#000000" points="1865.57,-1077.21 1869.17,-1067.25 1860.14,-1072.79 1865.57,-1077.21"/>
+</g>
+<!-- proc~removealllinkedlistobjects -->
+<g id="proc~~releaseftobject~~CalledByGraph_node48" class="node">
+<title>proc~removealllinkedlistobjects</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node48"><a xlink:href=".././proc/removealllinkedlistobjects.html" xlink:title="FTLinkedListClass::FTLinkedList%removeAllLinkedListObjects">
+<polygon fill="#d9534f" stroke="#d9534f" points="1609.5,-1381.18 1272.5,-1381.18 1272.5,-1357.18 1609.5,-1357.18 1609.5,-1381.18"/>
+<text text-anchor="middle" x="1441" y="-1366.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeAllLinkedListObjects</text>
+</a>
+</g>
+</g>
+<!-- proc~removealllinkedlistobjects&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge41" class="edge">
+<title>proc~removealllinkedlistobjects&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1589.13,-1357.12C1596.34,-1354.58 1603.34,-1351.62 1610,-1348.18 1736.79,-1282.78 1834.13,-1132.12 1866.98,-1076.4"/>
+<polygon fill="#000000" stroke="#000000" points="1870.19,-1077.83 1872.19,-1067.43 1864.14,-1074.32 1870.19,-1077.83"/>
+</g>
+<!-- proc~removelinkedlistrecord -->
+<g id="proc~~releaseftobject~~CalledByGraph_node49" class="node">
+<title>proc~removelinkedlistrecord</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node49"><a xlink:href=".././proc/removelinkedlistrecord.html" xlink:title="FTLinkedListClass::FTLinkedList%removeLinkedListRecord">
+<polygon fill="#d9534f" stroke="#d9534f" points="1601.5,-1339.18 1280.5,-1339.18 1280.5,-1315.18 1601.5,-1315.18 1601.5,-1339.18"/>
+<text text-anchor="middle" x="1441" y="-1324.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeLinkedListRecord</text>
+</a>
+</g>
+</g>
+<!-- proc~removelinkedlistrecord&#45;&gt;interface~release -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge42" class="edge">
+<title>proc~removelinkedlistrecord&#45;&gt;interface~release</title>
+<path fill="none" stroke="#000000" d="M1571.4,-1315.13C1584.78,-1311.55 1597.89,-1306.99 1610,-1301.18 1725.77,-1245.67 1826.98,-1123.65 1864.01,-1075.4"/>
+<polygon fill="#000000" stroke="#000000" points="1866.91,-1077.36 1870.17,-1067.28 1861.34,-1073.13 1866.91,-1077.36"/>
+</g>
+<!-- proc~setcurrenterror -->
+<g id="proc~~releaseftobject~~CalledByGraph_node50" class="node">
+<title>proc~setcurrenterror</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node50"><a xlink:href=".././proc/setcurrenterror.html" xlink:title="SharedExceptionManagerModule::setCurrentError">
+<polygon fill="#d9534f" stroke="#d9534f" points="310,-347.18 32,-347.18 32,-323.18 310,-323.18 310,-347.18"/>
+<text text-anchor="middle" x="171" y="-332.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::setCurrentError</text>
+</a>
+</g>
+</g>
+<!-- proc~setcurrenterror&#45;&gt;proc~releasecurrenterror -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge44" class="edge">
+<title>proc~setcurrenterror&#45;&gt;proc~releasecurrenterror</title>
+<path fill="none" stroke="#000000" d="M310.25,-335.18C344.55,-335.18 381.61,-335.18 416.87,-335.18"/>
+<polygon fill="#000000" stroke="#000000" points="417.25,-338.68 427.25,-335.18 417.25,-331.68 417.25,-338.68"/>
+</g>
+<!-- proc~setinfodictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_node51" class="node">
+<title>proc~setinfodictionary</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node51"><a xlink:href=".././proc/setinfodictionary.html" xlink:title="FTExceptionClass::FTException%setInfoDictionary">
+<polygon fill="#d9534f" stroke="#d9534f" points="1164.5,-1557.18 885.5,-1557.18 885.5,-1533.18 1164.5,-1533.18 1164.5,-1557.18"/>
+<text text-anchor="middle" x="1025" y="-1542.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%setInfoDictionary</text>
+</a>
+</g>
+</g>
+<!-- proc~setinfodictionary&#45;&gt;proc~releasememberdictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge49" class="edge">
+<title>proc~setinfodictionary&#45;&gt;proc~releasememberdictionary</title>
+<path fill="none" stroke="#000000" d="M1164.71,-1551.31C1189.09,-1555.46 1213.76,-1561.76 1236,-1571.18 1254.92,-1579.19 1253.09,-1592.16 1272,-1600.18 1282.68,-1604.71 1294.05,-1608.34 1305.66,-1611.25"/>
+<polygon fill="#000000" stroke="#000000" points="1304.92,-1614.67 1315.45,-1613.52 1306.5,-1607.85 1304.92,-1614.67"/>
+</g>
+<!-- proc~setlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_node52" class="node">
+<title>proc~setlinkedlist</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node52"><a xlink:href=".././proc/setlinkedlist.html" xlink:title="FTLinkedListIteratorClass::FTLinkedListIterator%setLinkedList">
+<polygon fill="#d9534f" stroke="#d9534f" points="1610,-441.18 1272,-441.18 1272,-417.18 1610,-417.18 1610,-441.18"/>
+<text text-anchor="middle" x="1441" y="-426.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::FTLinkedListIterator%setLinkedList</text>
+</a>
+</g>
+</g>
+<!-- proc~setlinkedlist&#45;&gt;proc~releasememberlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge51" class="edge">
+<title>proc~setlinkedlist&#45;&gt;proc~releasememberlist</title>
+<path fill="none" stroke="#000000" d="M1610.02,-429.18C1653.69,-429.18 1700.21,-429.18 1742.06,-429.18"/>
+<polygon fill="#000000" stroke="#000000" points="1742.31,-432.68 1752.31,-429.18 1742.31,-425.68 1742.31,-432.68"/>
+</g>
+<!-- none~addvalueforkey&#45;&gt;proc~addquadvalueforkey -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge61" class="edge">
+<title>none~addvalueforkey&#45;&gt;proc~addquadvalueforkey</title>
+<path fill="none" stroke="#000000" d="M589.68,-1490.87C620.41,-1456.39 713.35,-1358.77 814,-1318.18 819.97,-1315.78 826.1,-1313.6 832.35,-1311.64"/>
+<polygon fill="#000000" stroke="#000000" points="833.66,-1314.9 842.27,-1308.72 831.69,-1308.19 833.66,-1314.9"/>
+</g>
+<!-- proc~destructftlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_node54" class="node">
+<title>proc~destructftlinkedlist</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node54"><a xlink:href=".././proc/destructftlinkedlist.html" xlink:title="FTLinkedListClass::destructFTLinkedList">
+<polygon fill="#d9534f" stroke="#d9534f" points="1136.5,-1435.18 913.5,-1435.18 913.5,-1411.18 1136.5,-1411.18 1136.5,-1435.18"/>
+<text text-anchor="middle" x="1025" y="-1420.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::destructFTLinkedList</text>
+</a>
+</g>
+</g>
+<!-- proc~destructftlinkedlist&#45;&gt;proc~removealllinkedlistobjects -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge67" class="edge">
+<title>proc~destructftlinkedlist&#45;&gt;proc~removealllinkedlistobjects</title>
+<path fill="none" stroke="#000000" d="M1136.52,-1416.76C1168.82,-1413.64 1204.02,-1409.02 1236,-1402.18 1252.49,-1398.65 1255.55,-1393.91 1272,-1390.18 1284.34,-1387.38 1297.27,-1384.93 1310.25,-1382.79"/>
+<polygon fill="#000000" stroke="#000000" points="1310.86,-1386.24 1320.18,-1381.21 1309.76,-1379.33 1310.86,-1386.24"/>
+</g>
+<!-- proc~initftexception&#45;&gt;proc~setinfodictionary -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge70" class="edge">
+<title>proc~initftexception&#45;&gt;proc~setinfodictionary</title>
+<path fill="none" stroke="#000000" d="M713.12,-1545.18C764.21,-1545.18 822.72,-1545.18 875.1,-1545.18"/>
+<polygon fill="#000000" stroke="#000000" points="875.15,-1548.68 885.15,-1545.18 875.15,-1541.68 875.15,-1548.68"/>
+</g>
+<!-- proc~initwithftlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_node56" class="node">
+<title>proc~initwithftlinkedlist</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node56"><a xlink:href=".././proc/initwithftlinkedlist.html" xlink:title="FTLinkedListIteratorClass::FTLinkedListIterator%initWithFTLinkedList">
+<polygon fill="#d9534f" stroke="#d9534f" points="1213,-409.18 837,-409.18 837,-385.18 1213,-385.18 1213,-409.18"/>
+<text text-anchor="middle" x="1025" y="-394.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::FTLinkedListIterator%initWithFTLinkedList</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithftlinkedlist&#45;&gt;proc~setlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge71" class="edge">
+<title>proc~initwithftlinkedlist&#45;&gt;proc~setlinkedlist</title>
+<path fill="none" stroke="#000000" d="M1181.34,-409.19C1211.64,-411.53 1243.52,-413.99 1274.15,-416.36"/>
+<polygon fill="#000000" stroke="#000000" points="1274.24,-419.88 1284.48,-417.16 1274.78,-412.9 1274.24,-419.88"/>
+</g>
+<!-- proc~initwithstrings -->
+<g id="proc~~releaseftobject~~CalledByGraph_node57" class="node">
+<title>proc~initwithstrings</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node57"><a xlink:href=".././proc/initwithstrings.html" xlink:title="FTStringSetClass::FTStringSet%initWithStrings">
+<polygon fill="#d9534f" stroke="#d9534f" points="707,-981.18 449,-981.18 449,-957.18 707,-957.18 707,-981.18"/>
+<text text-anchor="middle" x="578" y="-966.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%initWithStrings</text>
+</a>
+</g>
+</g>
+<!-- proc~initwithstrings&#45;&gt;proc~addstring -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge62" class="edge">
+<title>proc~initwithstrings&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M707.01,-974.19C731.35,-978.37 756.05,-984.96 778,-995.18 797.68,-1004.35 794.19,-1019.32 814,-1028.18 840.18,-1039.9 869.98,-1046.41 898.74,-1049.81"/>
+<polygon fill="#000000" stroke="#000000" points="898.55,-1053.31 908.86,-1050.89 899.29,-1046.35 898.55,-1053.31"/>
+</g>
+<!-- proc~intersectionwithset -->
+<g id="proc~~releaseftobject~~CalledByGraph_node58" class="node">
+<title>proc~intersectionwithset</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node58"><a xlink:href=".././proc/intersectionwithset.html" xlink:title="FTStringSetClass::FTStringSet%intersectionWithSet">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="720.5,-1103.18 435.5,-1103.18 435.5,-1079.18 720.5,-1079.18 720.5,-1103.18"/>
+<text text-anchor="middle" x="578" y="-1088.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%intersectionWithSet</text>
+</a>
+</g>
+</g>
+<!-- proc~intersectionwithset&#45;&gt;proc~addstring -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge63" class="edge">
+<title>proc~intersectionwithset&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M706.22,-1079.17C766.56,-1073.48 838.43,-1066.7 898.54,-1061.02"/>
+<polygon fill="#000000" stroke="#000000" points="899.22,-1064.47 908.85,-1060.05 898.56,-1057.51 899.22,-1064.47"/>
+</g>
+<!-- proc~objectinsparsematrixforkeys -->
+<g id="proc~~releaseftobject~~CalledByGraph_node59" class="node">
+<title>proc~objectinsparsematrixforkeys</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node59"><a xlink:href=".././proc/objectinsparsematrixforkeys.html" xlink:title="FTSparseMatrixClass::FTSparseMatrix%objectInSparseMatrixForKeys">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1213,-367.18 837,-367.18 837,-343.18 1213,-343.18 1213,-367.18"/>
+<text text-anchor="middle" x="1025" y="-352.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass::FTSparseMatrix%objectInSparseMatrixForKeys</text>
+</a>
+</g>
+</g>
+<!-- proc~objectinsparsematrixforkeys&#45;&gt;proc~setlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge72" class="edge">
+<title>proc~objectinsparsematrixforkeys&#45;&gt;proc~setlinkedlist</title>
+<path fill="none" stroke="#000000" d="M1211.77,-367.21C1220.08,-369.79 1228.2,-372.76 1236,-376.18 1255.61,-384.78 1252.5,-399.35 1272,-408.18 1276.65,-410.29 1281.44,-412.21 1286.34,-413.95"/>
+<polygon fill="#000000" stroke="#000000" points="1285.27,-417.28 1295.86,-417.1 1287.46,-410.64 1285.27,-417.28"/>
+</g>
+<!-- proc~poplastexception -->
+<g id="proc~~releaseftobject~~CalledByGraph_node60" class="node">
+<title>proc~poplastexception</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node60"><a xlink:href=".././proc/poplastexception.html" xlink:title="SharedExceptionManagerModule::popLastException">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1170.5,-977.18 879.5,-977.18 879.5,-953.18 1170.5,-953.18 1170.5,-977.18"/>
+<text text-anchor="middle" x="1025" y="-962.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::popLastException</text>
+</a>
+</g>
+</g>
+<!-- proc~poplastexception&#45;&gt;proc~pop -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge66" class="edge">
+<title>proc~poplastexception&#45;&gt;proc~pop</title>
+<path fill="none" stroke="#000000" d="M1170.51,-969.37C1230.1,-971.1 1297.32,-973.05 1349.71,-974.56"/>
+<polygon fill="#000000" stroke="#000000" points="1349.89,-978.07 1359.99,-974.86 1350.09,-971.07 1349.89,-978.07"/>
+</g>
+<!-- proc~removecurrentrecord -->
+<g id="proc~~releaseftobject~~CalledByGraph_node61" class="node">
+<title>proc~removecurrentrecord</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node61"><a xlink:href=".././proc/removecurrentrecord.html" xlink:title="FTLinkedListIteratorClass::FTLinkedListIterator%removeCurrentRecord">
+<polygon fill="#d9534f" stroke="#d9534f" points="1218.5,-1393.18 831.5,-1393.18 831.5,-1369.18 1218.5,-1369.18 1218.5,-1393.18"/>
+<text text-anchor="middle" x="1025" y="-1378.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass::FTLinkedListIterator%removeCurrentRecord</text>
+</a>
+</g>
+</g>
+<!-- proc~removecurrentrecord&#45;&gt;proc~removelinkedlistrecord -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge68" class="edge">
+<title>proc~removecurrentrecord&#45;&gt;proc~removelinkedlistrecord</title>
+<path fill="none" stroke="#000000" d="M1184.26,-1369.17C1201.8,-1366.71 1219.34,-1363.75 1236,-1360.18 1252.49,-1356.65 1255.55,-1351.91 1272,-1348.18 1284.34,-1345.38 1297.27,-1342.93 1310.25,-1340.79"/>
+<polygon fill="#000000" stroke="#000000" points="1310.86,-1344.24 1320.18,-1339.21 1309.76,-1337.33 1310.86,-1344.24"/>
+</g>
+<!-- proc~removeobject -->
+<g id="proc~~releaseftobject~~CalledByGraph_node62" class="node">
+<title>proc~removeobject</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node62"><a xlink:href=".././proc/removeobject.html" xlink:title="FTLinkedListClass::FTLinkedList%removeObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="1157.5,-1351.18 892.5,-1351.18 892.5,-1327.18 1157.5,-1327.18 1157.5,-1351.18"/>
+<text text-anchor="middle" x="1025" y="-1336.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%removeObject</text>
+</a>
+</g>
+</g>
+<!-- proc~removeobject&#45;&gt;proc~removelinkedlistrecord -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge69" class="edge">
+<title>proc~removeobject&#45;&gt;proc~removelinkedlistrecord</title>
+<path fill="none" stroke="#000000" d="M1157.56,-1335.37C1193.42,-1334.33 1232.78,-1333.19 1270.44,-1332.1"/>
+<polygon fill="#000000" stroke="#000000" points="1270.59,-1335.59 1280.49,-1331.81 1270.39,-1328.6 1270.59,-1335.59"/>
+</g>
+<!-- proc~setfromdifference -->
+<g id="proc~~releaseftobject~~CalledByGraph_node63" class="node">
+<title>proc~setfromdifference</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node63"><a xlink:href=".././proc/setfromdifference.html" xlink:title="FTStringSetClass::FTStringSet%setFromDifference">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="717,-1061.18 439,-1061.18 439,-1037.18 717,-1037.18 717,-1061.18"/>
+<text text-anchor="middle" x="578" y="-1046.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%setFromDifference</text>
+</a>
+</g>
+</g>
+<!-- proc~setfromdifference&#45;&gt;proc~addstring -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge64" class="edge">
+<title>proc~setfromdifference&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M717.06,-1049.18C775.08,-1049.18 842.09,-1049.18 898.67,-1049.18"/>
+<polygon fill="#000000" stroke="#000000" points="898.75,-1052.68 908.75,-1049.18 898.75,-1045.68 898.75,-1052.68"/>
+</g>
+<!-- proc~sparsematrixcontainskeys&#45;&gt;proc~setlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge73" class="edge">
+<title>proc~sparsematrixcontainskeys&#45;&gt;proc~setlinkedlist</title>
+<path fill="none" stroke="#000000" d="M1206.68,-434.82C1224.96,-434.38 1243.52,-433.93 1261.78,-433.49"/>
+<polygon fill="#000000" stroke="#000000" points="1261.97,-436.98 1271.88,-433.24 1261.8,-429.99 1261.97,-436.98"/>
+</g>
+<!-- proc~unionwithset -->
+<g id="proc~~releaseftobject~~CalledByGraph_node65" class="node">
+<title>proc~unionwithset</title>
+<g id="a_proc~~releaseftobject~~CalledByGraph_node65"><a xlink:href=".././proc/unionwithset.html" xlink:title="FTStringSetClass::FTStringSet%unionWithSet">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="297,-1001.18 45,-1001.18 45,-977.18 297,-977.18 297,-1001.18"/>
+<text text-anchor="middle" x="171" y="-986.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%unionWithSet</text>
+</a>
+</g>
+</g>
+<!-- proc~unionwithset&#45;&gt;proc~addstring -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge65" class="edge">
+<title>proc~unionwithset&#45;&gt;proc~addstring</title>
+<path fill="none" stroke="#000000" d="M297.11,-996.47C419.68,-1003.79 611.76,-1015.74 778,-1028.18 817.24,-1031.12 859.97,-1034.65 898.64,-1037.97"/>
+<polygon fill="#000000" stroke="#000000" points="898.64,-1041.48 908.9,-1038.86 899.24,-1034.51 898.64,-1041.48"/>
+</g>
+<!-- proc~unionwithset&#45;&gt;proc~initwithstrings -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge81" class="edge">
+<title>proc~unionwithset&#45;&gt;proc~initwithstrings</title>
+<path fill="none" stroke="#000000" d="M297.09,-983C342.01,-980.79 392.92,-978.27 438.88,-976"/>
+<polygon fill="#000000" stroke="#000000" points="439.1,-979.5 448.91,-975.51 438.75,-972.5 439.1,-979.5"/>
+</g>
+<!-- proc~printallexceptions&#45;&gt;proc~initwithftlinkedlist -->
+<g id="proc~~releaseftobject~~CalledByGraph_edge80" class="edge">
+<title>proc~printallexceptions&#45;&gt;proc~initwithftlinkedlist</title>
+<path fill="none" stroke="#000000" d="M724.09,-397.18C756.87,-397.18 792.21,-397.18 826.73,-397.18"/>
+<polygon fill="#000000" stroke="#000000" points="826.93,-400.68 836.93,-397.18 826.93,-393.68 826.93,-400.68"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocreleaseftobjectCalledByGraph = svgPanZoom('#procreleaseftobjectCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
@@ -1065,38 +1500,13 @@ implementation in a submodule of an interface in a parent module.
     </div>
     <br>
 
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
 
     
     
 
     
     
+
 
 
     
@@ -1108,12 +1518,12 @@ implementation in a submodule of an interface in a parent module.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
             </p>
@@ -1123,17 +1533,12 @@ implementation in a submodule of an interface in a parent module.
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">
