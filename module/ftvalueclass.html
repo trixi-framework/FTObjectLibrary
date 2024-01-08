@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -277,10 +280,10 @@ not a numeric, Huge(1) will be returned, for integers and NaN for reals.</p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/ftolconstants.html'>FTOLConstants</a></li>
-                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
-                  <li class="list-inline-item"><a href='../module/ftobjectclass.html'>FTObjectClass</a></li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/ieee_arithmetic'>ieee_arithmetic</a></li>
+                  <li class="list-inline-item"><a href='ftobjectclass.html'>FTObjectClass</a></li>
+                  <li class="list-inline-item"><a href='ftolconstants.html'>FTOLConstants</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -328,7 +331,7 @@ not a numeric, Huge(1) will be returned, for integers and NaN for reals.</p>
 <!-- module~ftobjectclass -->
 <g id="module~~ftvalueclass~~UsesGraph_node4" class="node">
 <title>module~ftobjectclass</title>
-<g id="a_module~~ftvalueclass~~UsesGraph_node4"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<g id="a_module~~ftvalueclass~~UsesGraph_node4"><a xlink:href="../module/ftobjectclass.html" xlink:title="FTObjectClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="92,-66 4,-66 4,-42 92,-42 92,-66"/>
 <text text-anchor="middle" x="48" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
 </a>
@@ -343,7 +346,7 @@ not a numeric, Huge(1) will be returned, for integers and NaN for reals.</p>
 <!-- module~ftolconstants -->
 <g id="module~~ftvalueclass~~UsesGraph_node5" class="node">
 <title>module~ftolconstants</title>
-<g id="a_module~~ftvalueclass~~UsesGraph_node5"><a xlink:href=".././module/ftolconstants.html" xlink:title="FTOLConstants">
+<g id="a_module~~ftvalueclass~~UsesGraph_node5"><a xlink:href="../module/ftolconstants.html" xlink:title="FTOLConstants">
 <polygon fill="#337ab7" stroke="#337ab7" points="94,-24 2,-24 2,0 94,0 94,-24"/>
 <text text-anchor="middle" x="48" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants</text>
 </a>
@@ -357,17 +360,17 @@ not a numeric, Huge(1) will be returned, for integers and NaN for reals.</p>
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -457,7 +460,7 @@ modules which it uses.
 <!-- module~ftobjectlibrary -->
 <g id="module~~ftvalueclass~~UsedByGraph_node2" class="node">
 <title>module~ftobjectlibrary</title>
-<g id="a_module~~ftvalueclass~~UsedByGraph_node2"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<g id="a_module~~ftvalueclass~~UsedByGraph_node2"><a xlink:href="../module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
 <polygon fill="#337ab7" stroke="#337ab7" points="576,-66 479,-66 479,-42 576,-42 576,-66"/>
 <text text-anchor="middle" x="527.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
 </a>
@@ -472,7 +475,7 @@ modules which it uses.
 <!-- module~ftvaluedictionaryclass -->
 <g id="module~~ftvalueclass~~UsedByGraph_node3" class="node">
 <title>module~ftvaluedictionaryclass</title>
-<g id="a_module~~ftvalueclass~~UsedByGraph_node3"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
+<g id="a_module~~ftvalueclass~~UsedByGraph_node3"><a xlink:href="../module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="255,-26 118,-26 118,-2 255,-2 255,-26"/>
 <text text-anchor="middle" x="186.5" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
 </a>
@@ -488,7 +491,7 @@ modules which it uses.
 <!-- module~ftexceptionclass -->
 <g id="module~~ftvalueclass~~UsedByGraph_node4" class="node">
 <title>module~ftexceptionclass</title>
-<g id="a_module~~ftvalueclass~~UsedByGraph_node4"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
+<g id="a_module~~ftvalueclass~~UsedByGraph_node4"><a xlink:href="../module/ftexceptionclass.html" xlink:title="FTExceptionClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="397,-26 291,-26 291,-2 397,-2 397,-26"/>
 <text text-anchor="middle" x="344" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
 </a>
@@ -515,7 +518,7 @@ modules which it uses.
 <!-- module~sharedexceptionmanagermodule -->
 <g id="module~~ftvalueclass~~UsedByGraph_node5" class="node">
 <title>module~sharedexceptionmanagermodule</title>
-<g id="a_module~~ftvalueclass~~UsedByGraph_node5"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
+<g id="a_module~~ftvalueclass~~UsedByGraph_node5"><a xlink:href="../module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
 <polygon fill="#337ab7" stroke="#337ab7" points="622,-24 433,-24 433,0 622,0 622,-24"/>
 <text text-anchor="middle" x="527.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
 </a>
@@ -529,17 +532,17 @@ modules which it uses.
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -759,7 +762,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~27"></span>
+              <span class="anchor" id="variable-obj~62"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -830,7 +833,7 @@ parameter
           <tbody>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-init~2'>init</a></strong> => <a href='../proc/initftobject.html'>initFTObject</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-init~2'>init</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initftobject.html'>initFTObject</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -840,7 +843,7 @@ parameter
               </tr>
               <tr>
                 <td>  procedure, public, non_overridable ::
-  <strong><a href='../type/ftobject.html#boundprocedure-retain'>retain</a></strong> => <a href='../proc/retainftobject.html'>retainFTObject</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-retain'>retain</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/retainftobject.html'>retainFTObject</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -855,12 +858,12 @@ parameter
               </tr>
               <tr>
                 <td>  generic, public ::
-  <strong><a href='../type/ftvalue.html#boundprocedure-initwithvalue~2'>initWithValue</a></strong> => initWithReal, initWithDoublePrecision, initWithString, initWithLogical, initWithInteger</td>
+  <strong><a href='../type/ftvalue.html#boundprocedure-initwithvalue'>initWithValue</a></strong> => initWithReal, initWithDoublePrecision, initWithString, initWithLogical, initWithInteger</td>
                 <td></td>
               </tr>
               <tr>
                 <td>  generic, public ::
-  <strong><a href='../type/ftvalue.html#boundprocedure-initwithvalue'>initWithValue</a></strong> => initWithQuad</td>
+  <strong><a href='../type/ftvalue.html#boundprocedure-initwithvalue~2'>initWithValue</a></strong> => initWithQuad</td>
                 <td></td>
               </tr>
               <tr>
@@ -895,17 +898,17 @@ parameter
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftvalue.html#boundprocedure-description~5'>description</a></strong> => <a href='../proc/ftvaluedescription.html'>FTValueDescription</a></td>
+  <strong><a href='../type/ftvalue.html#boundprocedure-description~4'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftvaluedescription.html'>FTValueDescription</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftvalue.html#boundprocedure-printdescription~8'>printDescription</a></strong> => <a href='../proc/printvaluedescription.html'>printValueDescription</a></td>
+  <strong><a href='../type/ftvalue.html#boundprocedure-printdescription~8'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printvaluedescription.html'>printValueDescription</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftvalue.html#boundprocedure-classname~7'>className</a></strong> => <a href='../proc/valueclassname.html'>valueClassName</a></td>
+  <strong><a href='../type/ftvalue.html#boundprocedure-classname~8'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/valueclassname.html'>valueClassName</a></td>
                 <td></td>
               </tr>
           </tbody>
@@ -919,7 +922,7 @@ parameter
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-realvalue"></span><h3>public  function <a href='../proc/realvalue.html'>realValue</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-realvalue"></span> <h3>public  function <a href='../proc/realvalue.html'>realValue</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -939,7 +942,7 @@ in the object to a real if it is of a different type.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~112"></span>
+              <span class="anchor" id="variable-self~128"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -965,7 +968,7 @@ in the object to a real if it is of a different type.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-doubleprecisionvalue"></span><h3>public  function <a href='../proc/doubleprecisionvalue.html'>doublePrecisionValue</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-doubleprecisionvalue"></span> <h3>public  function <a href='../proc/doubleprecisionvalue.html'>doublePrecisionValue</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -985,7 +988,7 @@ in the object to a double precision if it is of a different type.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~113"></span>
+              <span class="anchor" id="variable-self~129"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1011,7 +1014,7 @@ in the object to a double precision if it is of a different type.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-quadvalue"></span><h3>public  function <a href='../proc/quadvalue.html'>quadValue</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-quadvalue"></span> <h3>public  function <a href='../proc/quadvalue.html'>quadValue</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1031,7 +1034,7 @@ in the object to a double precision if it is of a different type.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~114"></span>
+              <span class="anchor" id="variable-self~130"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1057,7 +1060,7 @@ in the object to a double precision if it is of a different type.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-integervalue"></span><h3>public  function <a href='../proc/integervalue.html'>integerValue</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-integervalue"></span> <h3>public  function <a href='../proc/integervalue.html'>integerValue</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1077,7 +1080,7 @@ in the object to an integer if it is of a different type.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~117"></span>
+              <span class="anchor" id="variable-self~131"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1103,7 +1106,7 @@ in the object to an integer if it is of a different type.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-logicalvalue"></span><h3>public  function <a href='../proc/logicalvalue.html'>logicalValue</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-logicalvalue"></span> <h3>public  function <a href='../proc/logicalvalue.html'>logicalValue</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1123,7 +1126,7 @@ in the object to a logical if it is of a different type.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~116"></span>
+              <span class="anchor" id="variable-self~132"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1149,7 +1152,7 @@ in the object to a logical if it is of a different type.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-stringvalue"></span><h3>public  function <a href='../proc/stringvalue.html'>stringValue</a>(self, requestedLength) result(s)  
+    <div class="card-header codesum"><span class="anchor" id="proc-stringvalue"></span> <h3>public  function <a href='../proc/stringvalue.html'>stringValue</a>(self, requestedLength) result(s)  
 </h3></div>
     <div class="card-body">
           
@@ -1170,7 +1173,7 @@ in the object to a string of that length if it is of a different type.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~115"></span>
+              <span class="anchor" id="variable-self~133"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1211,7 +1214,7 @@ in the object to a string of that length if it is of a different type.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-ftvaluedescription"></span><h3>public  function <a href='../proc/ftvaluedescription.html'>FTValueDescription</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-ftvaluedescription"></span> <h3>public  function <a href='../proc/ftvaluedescription.html'>FTValueDescription</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1231,7 +1234,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~118"></span>
+              <span class="anchor" id="variable-self~134"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1257,7 +1260,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-valuefromobject"></span><h3>public  function <a href='../proc/valuefromobject.html'>valueFromObject</a>(obj) result(cast)  
+    <div class="card-header codesum"><span class="anchor" id="proc-valuefromobject"></span> <h3>public  function <a href='../proc/valuefromobject.html'>valueFromObject</a>(obj) result(cast)  
 </h3></div>
     <div class="card-body">
           
@@ -1276,7 +1279,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~26"></span>
+              <span class="anchor" id="variable-obj~63"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1302,7 +1305,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-valueclassname"></span><h3>public  function <a href='../proc/valueclassname.html'>valueClassName</a>(self) result(s)  
+    <div class="card-header codesum"><span class="anchor" id="proc-valueclassname"></span> <h3>public  function <a href='../proc/valueclassname.html'>valueClassName</a>(self) result(s)  
 </h3></div>
     <div class="card-body">
           
@@ -1321,7 +1324,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~120"></span>
+              <span class="anchor" id="variable-self~136"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1352,7 +1355,7 @@ stringValue() of the object. </p>
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithreal"></span><h3>public  subroutine <a href='../proc/initwithreal.html'>initWithReal</a>(self, v)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithreal"></span> <h3>public  subroutine <a href='../proc/initwithreal.html'>initWithReal</a>(self, v)  
 </h3></div>
     <div class="card-body">
           
@@ -1371,7 +1374,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~106"></span>
+              <span class="anchor" id="variable-self~120"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1386,7 +1389,7 @@ stringValue() of the object. </p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~2"></span>
+              <span class="anchor" id="variable-v~14"></span>
               real
             </td>
 <td></td>
@@ -1407,7 +1410,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithdoubleprecision"></span><h3>public  subroutine <a href='../proc/initwithdoubleprecision.html'>initWithDoublePrecision</a>(self, v)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithdoubleprecision"></span> <h3>public  subroutine <a href='../proc/initwithdoubleprecision.html'>initWithDoublePrecision</a>(self, v)  
 </h3></div>
     <div class="card-body">
           
@@ -1426,7 +1429,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~107"></span>
+              <span class="anchor" id="variable-self~121"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1441,7 +1444,7 @@ stringValue() of the object. </p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~3"></span>
+              <span class="anchor" id="variable-v~15"></span>
               doubleprecision
             </td>
 <td></td>
@@ -1462,7 +1465,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithquad"></span><h3>public  subroutine <a href='../proc/initwithquad.html'>initWithQuad</a>(self, v)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithquad"></span> <h3>public  subroutine <a href='../proc/initwithquad.html'>initWithQuad</a>(self, v)  
 </h3></div>
     <div class="card-body">
           
@@ -1481,7 +1484,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~111"></span>
+              <span class="anchor" id="variable-self~122"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1496,7 +1499,7 @@ stringValue() of the object. </p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~7"></span>
+              <span class="anchor" id="variable-v~16"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS))
             </td>
 <td></td>
@@ -1517,7 +1520,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithinteger"></span><h3>public  subroutine <a href='../proc/initwithinteger.html'>initWithInteger</a>(self, v)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithinteger"></span> <h3>public  subroutine <a href='../proc/initwithinteger.html'>initWithInteger</a>(self, v)  
 </h3></div>
     <div class="card-body">
           
@@ -1536,7 +1539,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~110"></span>
+              <span class="anchor" id="variable-self~123"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1551,7 +1554,7 @@ stringValue() of the object. </p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~6"></span>
+              <span class="anchor" id="variable-v~17"></span>
               integer
             </td>
 <td></td>
@@ -1572,7 +1575,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithlogical"></span><h3>public  subroutine <a href='../proc/initwithlogical.html'>initWithLogical</a>(self, v)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithlogical"></span> <h3>public  subroutine <a href='../proc/initwithlogical.html'>initWithLogical</a>(self, v)  
 </h3></div>
     <div class="card-body">
           
@@ -1591,7 +1594,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~109"></span>
+              <span class="anchor" id="variable-self~124"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1606,7 +1609,7 @@ stringValue() of the object. </p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~5"></span>
+              <span class="anchor" id="variable-v~18"></span>
               logical
             </td>
 <td></td>
@@ -1627,7 +1630,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithstring"></span><h3>public  subroutine <a href='../proc/initwithstring.html'>initWithString</a>(self, v)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithstring"></span> <h3>public  subroutine <a href='../proc/initwithstring.html'>initWithString</a>(self, v)  
 </h3></div>
     <div class="card-body">
           
@@ -1646,7 +1649,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~108"></span>
+              <span class="anchor" id="variable-self~125"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1661,7 +1664,7 @@ stringValue() of the object. </p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~4"></span>
+              <span class="anchor" id="variable-v~19"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1682,7 +1685,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-releaseftvalue"></span><h3>public  subroutine <a href='../proc/releaseftvalue.html'>releaseFTValue</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-releaseftvalue"></span> <h3>public  subroutine <a href='../proc/releaseftvalue.html'>releaseFTValue</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1701,7 +1704,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~173"></span>
+              <span class="anchor" id="variable-self~126"></span>
               type(<a href='../type/ftvalue.html'>FTValue</a>),
             </td>
 <td></td>
@@ -1722,7 +1725,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-destructvalue"></span><h3>public  subroutine <a href='../proc/destructvalue.html'>destructValue</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-destructvalue"></span> <h3>public  subroutine <a href='../proc/destructvalue.html'>destructValue</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1741,7 +1744,7 @@ stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~105"></span>
+              <span class="anchor" id="variable-self~127"></span>
               type(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1762,7 +1765,7 @@ stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-printvaluedescription"></span><h3>public  subroutine <a href='../proc/printvaluedescription.html'>printValueDescription</a>(self, iUnit)  
+    <div class="card-header codesum"><span class="anchor" id="proc-printvaluedescription"></span> <h3>public  subroutine <a href='../proc/printvaluedescription.html'>printValueDescription</a>(self, iUnit)  
 </h3></div>
     <div class="card-body">
           
@@ -1782,7 +1785,7 @@ the stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~119"></span>
+              <span class="anchor" id="variable-self~135"></span>
               class(<a href='../type/ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1818,7 +1821,7 @@ the stringValue() of the object. </p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-casttovalue"></span><h3>public  subroutine <a href='../proc/casttovalue.html'>castToValue</a>(obj, cast)  
+    <div class="card-header codesum"><span class="anchor" id="proc-casttovalue"></span> <h3>public  subroutine <a href='../proc/casttovalue.html'>castToValue</a>(obj, cast)  
 </h3></div>
     <div class="card-body">
           
@@ -1837,7 +1840,7 @@ the stringValue() of the object. </p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~27"></span>
+              <span class="anchor" id="variable-obj~62"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1885,7 +1888,7 @@ the stringValue() of the object. </p>
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

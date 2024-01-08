@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -65,46 +68,138 @@
 			 <table class="table">
 			 <thead><tr><th>Module</th><th>Source File</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr class="active"><td><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></td><td><a href='../sourcefile/comparisons.f90.html'>Comparisons.f90</a></td><td><p>Defines procedures that test equality of different kinds of arguments.
-Procedures defined here are USEd by the FTAssertions Module.</p></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftassertions.html'>FTAssertions</a></td><td><a href='../sourcefile/assert.f90.html'>Assert.f90</a></td><td><p>Assertions are functions that return true or false
+			   <tr class="active">
+                 <td><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></td>
+                 <td><a href='../sourcefile/comparisons.f90.html'>Comparisons.f90</a></td>
+                 <td><p>Defines procedures that test equality of different kinds of arguments.
+Procedures defined here are USEd by the FTAssertions Module.</p></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftassertions.html'>FTAssertions</a></td>
+                 <td><a href='../sourcefile/assert.f90.html'>Assert.f90</a></td>
+                 <td><p>Assertions are functions that return true or false
  that can be placed in a program to test whether
- a predicate is true.</p><a href="../module/ftassertions.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftdataclass.html'>FTDataClass</a></td><td><a href='../sourcefile/ftdataclass.f90.html'>FTDataClass.f90</a></td><td><p>FTData defines a subclass of FTObject to contain immutable
-generic data, including derived types. </p><a href="../module/ftdataclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></td><td><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></td><td><p>A dictionary is a special case of a hash table that stores key-value pairs. </p><a href="../module/ftdictionaryclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftexceptionclass.html'>FTExceptionClass</a></td><td><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></td><td><p>An FTException object gives a way to pass generic
-information about an exceptional situation.</p><a href="../module/ftexceptionclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftkeyobjectpairclass.html'>FTKeyObjectPairClass</a></td><td><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></td><td><p>The FTKeyObjectPairClass is for use by the FTDictionary Class and will
-generally not be interacted with by the user.</p></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></td><td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td><td><p>FTLinkedList is a container class that stores objects in a linked list.</p><a href="../module/ftlinkedlistclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></td><td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td><td><p>An object for stepping through a linked list.</p><a href="../module/ftlinkedlistiteratorclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftlinkedlistrecordclass.html'>FTLinkedListRecordClass</a></td><td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td><td><p>FTLinkedListRecord is the record type (object and next) for the
-LinkedList class.</p><a href="../module/ftlinkedlistrecordclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftmultiindextableclass.html'>FTMultiIndexTableClass</a></td><td><a href='../sourcefile/ftmultiindextable.f90.html'>FTMultiIndexTable.f90</a></td><td><p>The MultiIndexTable stores an FTObject pointer associated
-with any number of integer keys(:) as a hash table. </p><a href="../module/ftmultiindextableclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftmultiindextabledata.html'>FTMultiIndexTableData</a></td><td><a href='../sourcefile/ftmultiindextable.f90.html'>FTMultiIndexTable.f90</a></td><td></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftmutableobjectarrayclass.html'>FTMutableObjectArrayClass</a></td><td><a href='../sourcefile/ftobjectarrayclass.f90.html'>FTObjectArrayClass.f90</a></td><td><p>FTMutableObjectArray is a mutable array class to which objects
+ a predicate is true.</p><a href="../module/ftassertions.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftdataclass.html'>FTDataClass</a></td>
+                 <td><a href='../sourcefile/ftdataclass.f90.html'>FTDataClass.f90</a></td>
+                 <td><p>FTData defines a subclass of FTObject to contain immutable
+generic data, including derived types. </p><a href="../module/ftdataclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></td>
+                 <td><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></td>
+                 <td><p>A dictionary is a special case of a hash table that stores key-value pairs. </p><a href="../module/ftdictionaryclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftexceptionclass.html'>FTExceptionClass</a></td>
+                 <td><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></td>
+                 <td><p>An FTException object gives a way to pass generic
+information about an exceptional situation.</p><a href="../module/ftexceptionclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftkeyobjectpairclass.html'>FTKeyObjectPairClass</a></td>
+                 <td><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></td>
+                 <td><p>The FTKeyObjectPairClass is for use by the FTDictionary Class and will
+generally not be interacted with by the user.</p></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></td>
+                 <td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td>
+                 <td><p>FTLinkedList is a container class that stores objects in a linked list.</p><a href="../module/ftlinkedlistclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></td>
+                 <td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td>
+                 <td><p>An object for stepping through a linked list.</p><a href="../module/ftlinkedlistiteratorclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftlinkedlistrecordclass.html'>FTLinkedListRecordClass</a></td>
+                 <td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td>
+                 <td><p>FTLinkedListRecord is the record type (object and next) for the
+LinkedList class.</p><a href="../module/ftlinkedlistrecordclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftmultiindextableclass.html'>FTMultiIndexTableClass</a></td>
+                 <td><a href='../sourcefile/ftmultiindextable.f90.html'>FTMultiIndexTable.f90</a></td>
+                 <td><p>The MultiIndexTable stores an FTObject pointer associated
+with any number of integer keys(:) as a hash table. </p><a href="../module/ftmultiindextableclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftmultiindextabledata.html'>FTMultiIndexTableData</a></td>
+                 <td><a href='../sourcefile/ftmultiindextable.f90.html'>FTMultiIndexTable.f90</a></td>
+                 <td></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftmutableobjectarrayclass.html'>FTMutableObjectArrayClass</a></td>
+                 <td><a href='../sourcefile/ftobjectarrayclass.f90.html'>FTObjectArrayClass.f90</a></td>
+                 <td><p>FTMutableObjectArray is a mutable array class to which objects
 can be added, removed, replaced and accessed according to their 
-index in the array.</p><a href="../module/ftmutableobjectarrayclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftobjectclass.html'>FTObjectClass</a></td><td><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></td><td><p>FTObject is the root class for all object types.</p><a href="../module/ftobjectclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftobjectlibrary.html'>FTObjectLibrary</a></td><td><a href='../sourcefile/ftobjectlibrary.f90.html'>FTObjectLibrary.f90</a></td><td><p>A module that simply USEs the entire library modules.</p></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftolconstants.html'>FTOLConstants</a></td><td><a href='../sourcefile/ftolconstants.f90.html'>FTOLConstants.f90</a></td><td><p>Defines constants to be used by the library</p></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftsparsematrixclass.html'>FTSparseMatrixClass</a></td><td><a href='../sourcefile/ftsparsematrixclass.f90.html'>FTSparseMatrixClass.f90</a></td><td><p>The sparse matrix stores an FTObject pointer associated
-with two keys (i,j) as a hash table.</p><a href="../module/ftsparsematrixclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftsparsematrixdata.html'>FTSparseMatrixData</a></td><td><a href='../sourcefile/ftsparsematrixclass.f90.html'>FTSparseMatrixClass.f90</a></td><td><p>FTSparseMatrixData is used by the FTSparseMatrix Class. Users will 
-usually not interact with or use this class directly.</p></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftstackclass.html'>FTStackClass</a></td><td><a href='../sourcefile/ftstackclass.f90.html'>FTStackClass.f90</a></td><td><p>Inherits from FTLinkedListClass : FTObjectClass</p><a href="../module/ftstackclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftstringsetclass.html'>FTStringSetClass</a></td><td><a href='../sourcefile/ftstringsetclass.f90.html'>FTStringSetClass.f90</a></td><td><p>FTStringSet is a class for an unordered collection of strings. Use a FTStringSet
+index in the array.</p><a href="../module/ftmutableobjectarrayclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftobjectclass.html'>FTObjectClass</a></td>
+                 <td><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></td>
+                 <td><p>FTObject is the root class for all object types.</p><a href="../module/ftobjectclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftobjectlibrary.html'>FTObjectLibrary</a></td>
+                 <td><a href='../sourcefile/ftobjectlibrary.f90.html'>FTObjectLibrary.f90</a></td>
+                 <td><p>A module that simply USEs the entire library modules.</p></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftolconstants.html'>FTOLConstants</a></td>
+                 <td><a href='../sourcefile/ftolconstants.f90.html'>FTOLConstants.f90</a></td>
+                 <td><p>Defines constants to be used by the library</p></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftsparsematrixclass.html'>FTSparseMatrixClass</a></td>
+                 <td><a href='../sourcefile/ftsparsematrixclass.f90.html'>FTSparseMatrixClass.f90</a></td>
+                 <td><p>The sparse matrix stores an FTObject pointer associated
+with two keys (i,j) as a hash table.</p><a href="../module/ftsparsematrixclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftsparsematrixdata.html'>FTSparseMatrixData</a></td>
+                 <td><a href='../sourcefile/ftsparsematrixclass.f90.html'>FTSparseMatrixClass.f90</a></td>
+                 <td><p>FTSparseMatrixData is used by the FTSparseMatrix Class. Users will 
+usually not interact with or use this class directly.</p></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftstackclass.html'>FTStackClass</a></td>
+                 <td><a href='../sourcefile/ftstackclass.f90.html'>FTStackClass.f90</a></td>
+                 <td><p>Inherits from FTLinkedListClass : FTObjectClass</p><a href="../module/ftstackclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftstringsetclass.html'>FTStringSetClass</a></td>
+                 <td><a href='../sourcefile/ftstringsetclass.f90.html'>FTStringSetClass.f90</a></td>
+                 <td><p>FTStringSet is a class for an unordered collection of strings. Use a FTStringSet
 to store strings as an alternative to arrays when the order is not important, but
-testing for membership is.</p><a href="../module/ftstringsetclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/ftvalueclass.html'>FTValueClass</a></td><td><a href='../sourcefile/ftvalueclass.f90.html'>FTValueClass.f90</a></td><td><p>A not completely F2003/2008 version of an immutable class
+testing for membership is.</p><a href="../module/ftstringsetclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/ftvalueclass.html'>FTValueClass</a></td>
+                 <td><a href='../sourcefile/ftvalueclass.f90.html'>FTValueClass.f90</a></td>
+                 <td><p>A not completely F2003/2008 version of an immutable class
 to store primitive values: integer, real, double precision, logical,
-character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/ftvaluedictionaryclass.html'>FTValueDictionaryClass</a></td><td><a href='../sourcefile/ftvaluedictionaryclass.f90.html'>FTValueDictionaryClass.f90</a></td><td><p>The FTValueDictionary subclass of FTDictionary adds convenient methods
- to easily add fundamental (Real, integer,…) values to a dictionary.</p><a href="../module/ftvaluedictionaryclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/hashmodule.html'>HashModule</a></td><td><a href='../sourcefile/hash.f90.html'>Hash.f90</a></td><td></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/sharedexceptionmanagermodule.html'>SharedExceptionManagerModule</a></td><td><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></td><td><p>All exceptions are posted to the SharedExceptionManagerModule. </p><a href="../module/sharedexceptionmanagermodule.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
+character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/ftvaluedictionaryclass.html'>FTValueDictionaryClass</a></td>
+                 <td><a href='../sourcefile/ftvaluedictionaryclass.f90.html'>FTValueDictionaryClass.f90</a></td>
+                 <td><p>The FTValueDictionary subclass of FTDictionary adds convenient methods
+ to easily add fundamental (Real, integer,…) values to a dictionary.</p><a href="../module/ftvaluedictionaryclass.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/hashmodule.html'>HashModule</a></td>
+                 <td><a href='../sourcefile/hash.f90.html'>Hash.f90</a></td>
+                 <td></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/sharedexceptionmanagermodule.html'>SharedExceptionManagerModule</a></td>
+                 <td><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></td>
+                 <td><p>All exceptions are posted to the SharedExceptionManagerModule. </p><a href="../module/sharedexceptionmanagermodule.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
 <!--active-->			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -120,7 +215,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~comparisonsmodule -->
 <g id="module~~graph~~ModuleGraph_node1" class="node">
 <title>module~comparisonsmodule</title>
-<g id="a_module~~graph~~ModuleGraph_node1"><a xlink:href=".././module/comparisonsmodule.html" xlink:title="ComparisonsModule">
+<g id="a_module~~graph~~ModuleGraph_node1"><a xlink:href="../module/comparisonsmodule.html" xlink:title="ComparisonsModule">
 <polygon fill="#337ab7" stroke="#337ab7" points="787,-502 666,-502 666,-478 787,-478 787,-502"/>
 <text text-anchor="middle" x="726.5" y="-487.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ComparisonsModule</text>
 </a>
@@ -129,7 +224,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftolconstants -->
 <g id="module~~graph~~ModuleGraph_node15" class="node">
 <title>module~ftolconstants</title>
-<g id="a_module~~graph~~ModuleGraph_node15"><a xlink:href=".././module/ftolconstants.html" xlink:title="FTOLConstants">
+<g id="a_module~~graph~~ModuleGraph_node15"><a xlink:href="../module/ftolconstants.html" xlink:title="FTOLConstants">
 <polygon fill="#337ab7" stroke="#337ab7" points="602,-542 510,-542 510,-518 602,-518 602,-542"/>
 <text text-anchor="middle" x="556" y="-527.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants</text>
 </a>
@@ -156,7 +251,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftassertions -->
 <g id="module~~graph~~ModuleGraph_node2" class="node">
 <title>module~ftassertions</title>
-<g id="a_module~~graph~~ModuleGraph_node2"><a xlink:href=".././module/ftassertions.html" xlink:title="FTAssertions">
+<g id="a_module~~graph~~ModuleGraph_node2"><a xlink:href="../module/ftassertions.html" xlink:title="FTAssertions">
 <polygon fill="#337ab7" stroke="#337ab7" points="932,-462 853,-462 853,-438 932,-438 932,-462"/>
 <text text-anchor="middle" x="892.5" y="-447.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertions</text>
 </a>
@@ -182,7 +277,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftdataclass -->
 <g id="module~~graph~~ModuleGraph_node3" class="node">
 <title>module~ftdataclass</title>
-<g id="a_module~~graph~~ModuleGraph_node3"><a xlink:href=".././module/ftdataclass.html" xlink:title="FTDataClass">
+<g id="a_module~~graph~~ModuleGraph_node3"><a xlink:href="../module/ftdataclass.html" xlink:title="FTDataClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="243.5,-622 164.5,-622 164.5,-598 243.5,-598 243.5,-622"/>
 <text text-anchor="middle" x="204" y="-607.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDataClass</text>
 </a>
@@ -191,7 +286,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftobjectclass -->
 <g id="module~~graph~~ModuleGraph_node13" class="node">
 <title>module~ftobjectclass</title>
-<g id="a_module~~graph~~ModuleGraph_node13"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<g id="a_module~~graph~~ModuleGraph_node13"><a xlink:href="../module/ftobjectclass.html" xlink:title="FTObjectClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="88,-300 0,-300 0,-276 88,-276 88,-300"/>
 <text text-anchor="middle" x="44" y="-285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
 </a>
@@ -206,7 +301,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftdictionaryclass -->
 <g id="module~~graph~~ModuleGraph_node4" class="node">
 <title>module~ftdictionaryclass</title>
-<g id="a_module~~graph~~ModuleGraph_node4"><a xlink:href=".././module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
+<g id="a_module~~graph~~ModuleGraph_node4"><a xlink:href="../module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="780.5,-222 672.5,-222 672.5,-198 780.5,-198 780.5,-222"/>
 <text text-anchor="middle" x="726.5" y="-207.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
 </a>
@@ -215,7 +310,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftkeyobjectpairclass -->
 <g id="module~~graph~~ModuleGraph_node6" class="node">
 <title>module~ftkeyobjectpairclass</title>
-<g id="a_module~~graph~~ModuleGraph_node6"><a xlink:href=".././module/ftkeyobjectpairclass.html" xlink:title="FTKeyObjectPairClass">
+<g id="a_module~~graph~~ModuleGraph_node6"><a xlink:href="../module/ftkeyobjectpairclass.html" xlink:title="FTKeyObjectPairClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="447,-260 320,-260 320,-236 447,-236 447,-260"/>
 <text text-anchor="middle" x="383.5" y="-245.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPairClass</text>
 </a>
@@ -230,7 +325,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftlinkedlistclass -->
 <g id="module~~graph~~ModuleGraph_node7" class="node">
 <title>module~ftlinkedlistclass</title>
-<g id="a_module~~graph~~ModuleGraph_node7"><a xlink:href=".././module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
+<g id="a_module~~graph~~ModuleGraph_node7"><a xlink:href="../module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="436.5,-142 330.5,-142 330.5,-118 436.5,-118 436.5,-142"/>
 <text text-anchor="middle" x="383.5" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
 </a>
@@ -246,7 +341,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftlinkedlistiteratorclass -->
 <g id="module~~graph~~ModuleGraph_node8" class="node">
 <title>module~ftlinkedlistiteratorclass</title>
-<g id="a_module~~graph~~ModuleGraph_node8"><a xlink:href=".././module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
+<g id="a_module~~graph~~ModuleGraph_node8"><a xlink:href="../module/ftlinkedlistiteratorclass.html" xlink:title="FTLinkedListIteratorClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="629,-142 483,-142 483,-118 629,-118 629,-142"/>
 <text text-anchor="middle" x="556" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIteratorClass</text>
 </a>
@@ -261,7 +356,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftmutableobjectarrayclass -->
 <g id="module~~graph~~ModuleGraph_node12" class="node">
 <title>module~ftmutableobjectarrayclass</title>
-<g id="a_module~~graph~~ModuleGraph_node12"><a xlink:href=".././module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
+<g id="a_module~~graph~~ModuleGraph_node12"><a xlink:href="../module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="284,-202 124,-202 124,-178 284,-178 284,-202"/>
 <text text-anchor="middle" x="204" y="-187.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
 </a>
@@ -277,7 +372,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~hashmodule -->
 <g id="module~~graph~~ModuleGraph_node22" class="node">
 <title>module~hashmodule</title>
-<g id="a_module~~graph~~ModuleGraph_node22"><a xlink:href=".././module/hashmodule.html" xlink:title="HashModule">
+<g id="a_module~~graph~~ModuleGraph_node22"><a xlink:href="../module/hashmodule.html" xlink:title="HashModule">
 <polygon fill="#337ab7" stroke="#337ab7" points="595.5,-222 516.5,-222 516.5,-198 595.5,-198 595.5,-222"/>
 <text text-anchor="middle" x="556" y="-207.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HashModule</text>
 </a>
@@ -292,7 +387,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftexceptionclass -->
 <g id="module~~graph~~ModuleGraph_node5" class="node">
 <title>module~ftexceptionclass</title>
-<g id="a_module~~graph~~ModuleGraph_node5"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
+<g id="a_module~~graph~~ModuleGraph_node5"><a xlink:href="../module/ftexceptionclass.html" xlink:title="FTExceptionClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="1117.5,-123 1011.5,-123 1011.5,-99 1117.5,-99 1117.5,-123"/>
 <text text-anchor="middle" x="1064.5" y="-108.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
 </a>
@@ -315,7 +410,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftstackclass -->
 <g id="module~~graph~~ModuleGraph_node18" class="node">
 <title>module~ftstackclass</title>
-<g id="a_module~~graph~~ModuleGraph_node18"><a xlink:href=".././module/ftstackclass.html" xlink:title="FTStackClass">
+<g id="a_module~~graph~~ModuleGraph_node18"><a xlink:href="../module/ftstackclass.html" xlink:title="FTStackClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="933.5,-104 851.5,-104 851.5,-80 933.5,-80 933.5,-104"/>
 <text text-anchor="middle" x="892.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass</text>
 </a>
@@ -330,7 +425,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftvaluedictionaryclass -->
 <g id="module~~graph~~ModuleGraph_node21" class="node">
 <title>module~ftvaluedictionaryclass</title>
-<g id="a_module~~graph~~ModuleGraph_node21"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
+<g id="a_module~~graph~~ModuleGraph_node21"><a xlink:href="../module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="961,-382 824,-382 824,-358 961,-358 961,-382"/>
 <text text-anchor="middle" x="892.5" y="-367.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
 </a>
@@ -352,7 +447,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftlinkedlistrecordclass -->
 <g id="module~~graph~~ModuleGraph_node9" class="node">
 <title>module~ftlinkedlistrecordclass</title>
-<g id="a_module~~graph~~ModuleGraph_node9"><a xlink:href=".././module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
+<g id="a_module~~graph~~ModuleGraph_node9"><a xlink:href="../module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="276,-151 132,-151 132,-127 276,-127 276,-151"/>
 <text text-anchor="middle" x="204" y="-136.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
 </a>
@@ -385,7 +480,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftmultiindextableclass -->
 <g id="module~~graph~~ModuleGraph_node10" class="node">
 <title>module~ftmultiindextableclass</title>
-<g id="a_module~~graph~~ModuleGraph_node10"><a xlink:href=".././module/ftmultiindextableclass.html" xlink:title="FTMultiIndexTableClass">
+<g id="a_module~~graph~~ModuleGraph_node10"><a xlink:href="../module/ftmultiindextableclass.html" xlink:title="FTMultiIndexTableClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="623.5,-420 488.5,-420 488.5,-396 623.5,-396 623.5,-420"/>
 <text text-anchor="middle" x="556" y="-405.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass</text>
 </a>
@@ -400,7 +495,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftmultiindextabledata -->
 <g id="module~~graph~~ModuleGraph_node11" class="node">
 <title>module~ftmultiindextabledata</title>
-<g id="a_module~~graph~~ModuleGraph_node11"><a xlink:href=".././module/ftmultiindextabledata.html" xlink:title="FTMultiIndexTableData">
+<g id="a_module~~graph~~ModuleGraph_node11"><a xlink:href="../module/ftmultiindextabledata.html" xlink:title="FTMultiIndexTableData">
 <polygon fill="#337ab7" stroke="#337ab7" points="270.5,-340 137.5,-340 137.5,-316 270.5,-316 270.5,-340"/>
 <text text-anchor="middle" x="204" y="-325.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableData</text>
 </a>
@@ -433,7 +528,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftobjectlibrary -->
 <g id="module~~graph~~ModuleGraph_node14" class="node">
 <title>module~ftobjectlibrary</title>
-<g id="a_module~~graph~~ModuleGraph_node14"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<g id="a_module~~graph~~ModuleGraph_node14"><a xlink:href="../module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
 <polygon fill="#337ab7" stroke="#337ab7" points="1311,-164 1214,-164 1214,-140 1311,-140 1311,-164"/>
 <text text-anchor="middle" x="1262.5" y="-149.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
 </a>
@@ -491,7 +586,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftsparsematrixclass -->
 <g id="module~~graph~~ModuleGraph_node16" class="node">
 <title>module~ftsparsematrixclass</title>
-<g id="a_module~~graph~~ModuleGraph_node16"><a xlink:href=".././module/ftsparsematrixclass.html" xlink:title="FTSparseMatrixClass">
+<g id="a_module~~graph~~ModuleGraph_node16"><a xlink:href="../module/ftsparsematrixclass.html" xlink:title="FTSparseMatrixClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="788,-64 665,-64 665,-40 788,-40 788,-64"/>
 <text text-anchor="middle" x="726.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass</text>
 </a>
@@ -512,7 +607,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftvalueclass -->
 <g id="module~~graph~~ModuleGraph_node20" class="node">
 <title>module~ftvalueclass</title>
-<g id="a_module~~graph~~ModuleGraph_node20"><a xlink:href=".././module/ftvalueclass.html" xlink:title="FTValueClass">
+<g id="a_module~~graph~~ModuleGraph_node20"><a xlink:href="../module/ftvalueclass.html" xlink:title="FTValueClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="767.5,-422 685.5,-422 685.5,-398 767.5,-398 767.5,-422"/>
 <text text-anchor="middle" x="726.5" y="-407.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass</text>
 </a>
@@ -562,7 +657,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftsparsematrixdata -->
 <g id="module~~graph~~ModuleGraph_node17" class="node">
 <title>module~ftsparsematrixdata</title>
-<g id="a_module~~graph~~ModuleGraph_node17"><a xlink:href=".././module/ftsparsematrixdata.html" xlink:title="FTSparseMatrixData">
+<g id="a_module~~graph~~ModuleGraph_node17"><a xlink:href="../module/ftsparsematrixdata.html" xlink:title="FTSparseMatrixData">
 <polygon fill="#337ab7" stroke="#337ab7" points="444,-24 323,-24 323,0 444,0 444,-24"/>
 <text text-anchor="middle" x="383.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixData</text>
 </a>
@@ -591,7 +686,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~ftstringsetclass -->
 <g id="module~~graph~~ModuleGraph_node19" class="node">
 <title>module~ftstringsetclass</title>
-<g id="a_module~~graph~~ModuleGraph_node19"><a xlink:href=".././module/ftstringsetclass.html" xlink:title="FTStringSetClass">
+<g id="a_module~~graph~~ModuleGraph_node19"><a xlink:href="../module/ftstringsetclass.html" xlink:title="FTStringSetClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="943.5,-271 841.5,-271 841.5,-247 943.5,-247 943.5,-271"/>
 <text text-anchor="middle" x="892.5" y="-256.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
 </a>
@@ -661,7 +756,7 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
 <!-- module~sharedexceptionmanagermodule -->
 <g id="module~~graph~~ModuleGraph_node23" class="node">
 <title>module~sharedexceptionmanagermodule</title>
-<g id="a_module~~graph~~ModuleGraph_node23"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
+<g id="a_module~~graph~~ModuleGraph_node23"><a xlink:href="../module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
 <polygon fill="#337ab7" stroke="#337ab7" points="1357,-122 1168,-122 1168,-98 1357,-98 1357,-122"/>
 <text text-anchor="middle" x="1262.5" y="-107.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
 </a>
@@ -679,17 +774,17 @@ character. (To Add: complex)</p><a href="../module/ftvalueclass.html" class="pul
                   var panmodulegraphModuleGraph = svgPanZoom('#modulegraphModuleGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#ModuleGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#ModuleGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="ModuleGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -756,7 +851,7 @@ modules which it uses.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

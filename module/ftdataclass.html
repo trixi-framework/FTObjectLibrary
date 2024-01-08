@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -192,7 +195,7 @@ FTObject.</p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/ftobjectclass.html'>FTObjectClass</a></li>
+                  <li class="list-inline-item"><a href='ftobjectclass.html'>FTObjectClass</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -216,7 +219,7 @@ FTObject.</p>
 <!-- module~ftobjectclass -->
 <g id="module~~ftdataclass~~UsesGraph_node2" class="node">
 <title>module~ftobjectclass</title>
-<g id="a_module~~ftdataclass~~UsesGraph_node2"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<g id="a_module~~ftdataclass~~UsesGraph_node2"><a xlink:href="../module/ftobjectclass.html" xlink:title="FTObjectClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="88,-24 0,-24 0,0 88,0 88,-24"/>
 <text text-anchor="middle" x="44" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
 </a>
@@ -230,17 +233,17 @@ FTObject.</p>
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -378,17 +381,17 @@ parameter
           <tbody>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-init~2'>init</a></strong> => <a href='../proc/initftobject.html'>initFTObject</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-init~2'>init</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initftobject.html'>initFTObject</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-description~3'>description</a></strong> => <a href='../proc/ftobjectdescription.html'>FTObjectDescription</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-description'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-printdescription~3'>printDescription</a></strong> => <a href='../proc/printftobjectdescription.html'>printFTObjectDescription</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-printdescription~4'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftobjectdescription.html'>printFTObjectDescription</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -398,7 +401,7 @@ parameter
               </tr>
               <tr>
                 <td>  procedure, public, non_overridable ::
-  <strong><a href='../type/ftobject.html#boundprocedure-retain'>retain</a></strong> => <a href='../proc/retainftobject.html'>retainFTObject</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-retain'>retain</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/retainftobject.html'>retainFTObject</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -438,7 +441,7 @@ parameter
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftdata.html#boundprocedure-classname~12'>className</a></strong> => <a href='../proc/dataclassname.html'>dataClassName</a></td>
+  <strong><a href='../type/ftdata.html#boundprocedure-classname'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/dataclassname.html'>dataClassName</a></td>
                 <td></td>
               </tr>
           </tbody>
@@ -452,7 +455,7 @@ parameter
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-storeddata"></span><h3>public  function <a href='../proc/storeddata.html'>storedData</a>(self) result(d)  
+    <div class="card-header codesum"><span class="anchor" id="proc-storeddata"></span> <h3>public  function <a href='../proc/storeddata.html'>storedData</a>(self) result(d)  
 </h3></div>
     <div class="card-body">
           
@@ -471,7 +474,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~156"></span>
+              <span class="anchor" id="variable-self~4"></span>
               class(<a href='../type/ftdata.html'>FTData</a>)
             </td>
 <td></td>
@@ -497,7 +500,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-storeddatasize"></span><h3>public  function <a href='../proc/storeddatasize.html'>storedDataSize</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-storeddatasize"></span> <h3>public  function <a href='../proc/storeddatasize.html'>storedDataSize</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -516,7 +519,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~157"></span>
+              <span class="anchor" id="variable-self~5"></span>
               class(<a href='../type/ftdata.html'>FTData</a>)
             </td>
 <td></td>
@@ -542,7 +545,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-storeddatatype"></span><h3>public  function <a href='../proc/storeddatatype.html'>storedDataType</a>(self) result(t)  
+    <div class="card-header codesum"><span class="anchor" id="proc-storeddatatype"></span> <h3>public  function <a href='../proc/storeddatatype.html'>storedDataType</a>(self) result(t)  
 </h3></div>
     <div class="card-body">
           
@@ -561,7 +564,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~158"></span>
+              <span class="anchor" id="variable-self~6"></span>
               class(<a href='../type/ftdata.html'>FTData</a>)
             </td>
 <td></td>
@@ -587,7 +590,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-datafromobject"></span><h3>public  function <a href='../proc/datafromobject.html'>dataFromObject</a>(obj) result(cast)  
+    <div class="card-header codesum"><span class="anchor" id="proc-datafromobject"></span> <h3>public  function <a href='../proc/datafromobject.html'>dataFromObject</a>(obj) result(cast)  
 </h3></div>
     <div class="card-body">
           
@@ -606,7 +609,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~31"></span>
+              <span class="anchor" id="variable-obj~2"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -632,7 +635,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-dataclassname"></span><h3>public  function <a href='../proc/dataclassname.html'>dataClassName</a>(self) result(s)  
+    <div class="card-header codesum"><span class="anchor" id="proc-dataclassname"></span> <h3>public  function <a href='../proc/dataclassname.html'>dataClassName</a>(self) result(s)  
 </h3></div>
     <div class="card-body">
           
@@ -651,7 +654,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~160"></span>
+              <span class="anchor" id="variable-self~7"></span>
               class(<a href='../type/ftdata.html'>FTData</a>)
             </td>
 <td></td>
@@ -677,7 +680,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-dataisoftype"></span><h3>public  function <a href='../proc/dataisoftype.html'>dataIsOfType</a>(self, dataType) result(t)  
+    <div class="card-header codesum"><span class="anchor" id="proc-dataisoftype"></span> <h3>public  function <a href='../proc/dataisoftype.html'>dataIsOfType</a>(self, dataType) result(t)  
 </h3></div>
     <div class="card-body">
           
@@ -696,7 +699,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~159"></span>
+              <span class="anchor" id="variable-self~8"></span>
               class(<a href='../type/ftdata.html'>FTData</a>)
             </td>
 <td></td>
@@ -711,7 +714,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-datatype~2"></span>
+              <span class="anchor" id="variable-datatype~3"></span>
               character(len=*)
             </td>
 <td></td>
@@ -742,7 +745,7 @@ parameter
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithdataoftype"></span><h3>public  subroutine <a href='../proc/initwithdataoftype.html'>initWithDataOfType</a>(self, genericData, dataType)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithdataoftype"></span> <h3>public  subroutine <a href='../proc/initwithdataoftype.html'>initWithDataOfType</a>(self, genericData, dataType)  
 </h3></div>
     <div class="card-body">
           
@@ -761,7 +764,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~155"></span>
+              <span class="anchor" id="variable-self"></span>
               class(<a href='../type/ftdata.html'>FTData</a>)
             </td>
 <td></td>
@@ -791,7 +794,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-datatype"></span>
+              <span class="anchor" id="variable-datatype~2"></span>
               character(len=*)
             </td>
 <td></td>
@@ -812,7 +815,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-destructdata"></span><h3>public  subroutine <a href='../proc/destructdata.html'>destructData</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-destructdata"></span> <h3>public  subroutine <a href='../proc/destructdata.html'>destructData</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -831,7 +834,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~154"></span>
+              <span class="anchor" id="variable-self~2"></span>
               type(<a href='../type/ftdata.html'>FTData</a>)
             </td>
 <td></td>
@@ -852,7 +855,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-releaseftdata"></span><h3>public  subroutine <a href='../proc/releaseftdata.html'>releaseFTData</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-releaseftdata"></span> <h3>public  subroutine <a href='../proc/releaseftdata.html'>releaseFTData</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -871,7 +874,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~179"></span>
+              <span class="anchor" id="variable-self~3"></span>
               type(<a href='../type/ftdata.html'>FTData</a>),
             </td>
 <td></td>
@@ -904,7 +907,7 @@ parameter
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

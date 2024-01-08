@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -128,8 +131,8 @@
       </a>
       <div id="modprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../interface/catch.html#moduleprocedure-catchall">catchAll</a>
-            <a class="list-group-item" href="../interface/catch.html#moduleprocedure-catcherrorwithname">catchErrorWithName</a>
+            <a class="list-group-item" href="../interface/catch.html#moduleprocedure-catchall~2">catchAll</a>
+            <a class="list-group-item" href="../interface/catch.html#moduleprocedure-catcherrorwithname~2">catchErrorWithName</a>
         </div>
       </div>
     </div>
@@ -169,7 +172,7 @@
 <!-- proc~destructftexceptions -->
 <g id="interface~~catch~~CalledByGraph_node2" class="node">
 <title>proc~destructftexceptions</title>
-<g id="a_interface~~catch~~CalledByGraph_node2"><a xlink:href=".././proc/destructftexceptions.html" xlink:title="SharedExceptionManagerModule::destructFTExceptions">
+<g id="a_interface~~catch~~CalledByGraph_node2"><a xlink:href="../proc/destructftexceptions.html" xlink:title="SharedExceptionManagerModule::destructFTExceptions">
 <polygon fill="#d9534f" stroke="#d9534f" points="310,-24 0,-24 0,0 310,0 310,-24"/>
 <text text-anchor="middle" x="155" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::destructFTExceptions</text>
 </a>
@@ -183,17 +186,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -267,7 +270,7 @@ implementation in a submodule of an interface in a parent module.
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-catchall"></span><h3>private  function catchAll()  
+    <div class="card-header codesum"><span class="anchor" id="proc-catchall"></span> <h3>private  function catchAll()  
 </h3></div>
     <div class="card-body">
         <p>Returns .TRUE. if there are any exceptions.</p>
@@ -284,7 +287,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-catcherrorwithname"></span><h3>private  function catchErrorWithName(exceptionName)  
+    <div class="card-header codesum"><span class="anchor" id="proc-catcherrorwithname"></span> <h3>private  function catchErrorWithName(exceptionName)  
 </h3></div>
     <div class="card-body">
         <p>Returns .TRUE. if there is an exception with
@@ -338,7 +341,7 @@ function.</p>
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

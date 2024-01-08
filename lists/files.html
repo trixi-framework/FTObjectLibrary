@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -65,23 +68,74 @@
 			 <table class="table table-striped">
 			 <thead><tr><th>File</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr><td><a href='../sourcefile/assert.f90.html'>Assert.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/comparisons.f90.html'>Comparisons.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftdataclass.f90.html'>FTDataClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftmultiindextable.f90.html'>FTMultiIndexTable.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftobjectarrayclass.f90.html'>FTObjectArrayClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftobjectlibrary.f90.html'>FTObjectLibrary.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftolconstants.f90.html'>FTOLConstants.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftsparsematrixclass.f90.html'>FTSparseMatrixClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftstackclass.f90.html'>FTStackClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftstringsetclass.f90.html'>FTStringSetClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftvalueclass.f90.html'>FTValueClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/ftvaluedictionaryclass.f90.html'>FTValueDictionaryClass.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/hash.f90.html'>Hash.f90</a></td><td></td></tr>
+			   <tr>
+                 <td><a href='../sourcefile/assert.f90.html'>Assert.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/comparisons.f90.html'>Comparisons.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftdataclass.f90.html'>FTDataClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftdictionaryclass.f90.html'>FTDictionaryClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftexceptionclass.f90.html'>FTExceptionClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftlinkedlistclass.f90.html'>FTLinkedListClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftmultiindextable.f90.html'>FTMultiIndexTable.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftobjectarrayclass.f90.html'>FTObjectArrayClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftobjectclass.f90.html'>FTObjectClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftobjectlibrary.f90.html'>FTObjectLibrary.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftolconstants.f90.html'>FTOLConstants.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftsparsematrixclass.f90.html'>FTSparseMatrixClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftstackclass.f90.html'>FTStackClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftstringsetclass.f90.html'>FTStringSetClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftvalueclass.f90.html'>FTValueClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/ftvaluedictionaryclass.f90.html'>FTValueDictionaryClass.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/hash.f90.html'>Hash.f90</a></td>
+                 <td></td>
+               </tr>
 			 </tbody></table>
 			 <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -97,7 +151,7 @@
 <!-- sourcefile~assert.f90 -->
 <g id="file~~graph~~FileGraph_node1" class="node">
 <title>sourcefile~assert.f90</title>
-<g id="a_file~~graph~~FileGraph_node1"><a xlink:href=".././sourcefile/assert.f90.html" xlink:title="Assert.f90">
+<g id="a_file~~graph~~FileGraph_node1"><a xlink:href="../sourcefile/assert.f90.html" xlink:title="Assert.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="425.5,-337.2 359.5,-337.2 359.5,-313.2 425.5,-313.2 425.5,-337.2"/>
 <text text-anchor="middle" x="392.5" y="-322.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Assert.f90</text>
 </a>
@@ -106,7 +160,7 @@
 <!-- sourcefile~ftobjectlibrary.f90 -->
 <g id="file~~graph~~FileGraph_node10" class="node">
 <title>sourcefile~ftobjectlibrary.f90</title>
-<g id="a_file~~graph~~FileGraph_node10"><a xlink:href=".././sourcefile/ftobjectlibrary.f90.html" xlink:title="FTObjectLibrary.f90">
+<g id="a_file~~graph~~FileGraph_node10"><a xlink:href="../sourcefile/ftobjectlibrary.f90.html" xlink:title="FTObjectLibrary.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="116,-175.2 0,-175.2 0,-151.2 116,-151.2 116,-175.2"/>
 <text text-anchor="middle" x="58" y="-160.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary.f90</text>
 </a>
@@ -120,7 +174,7 @@
 <!-- sourcefile~comparisons.f90 -->
 <g id="file~~graph~~FileGraph_node2" class="node">
 <title>sourcefile~comparisons.f90</title>
-<g id="a_file~~graph~~FileGraph_node2"><a xlink:href=".././sourcefile/comparisons.f90.html" xlink:title="Comparisons.f90">
+<g id="a_file~~graph~~FileGraph_node2"><a xlink:href="../sourcefile/comparisons.f90.html" xlink:title="Comparisons.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="630,-303.2 527,-303.2 527,-279.2 630,-279.2 630,-303.2"/>
 <text text-anchor="middle" x="578.5" y="-288.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Comparisons.f90</text>
 </a>
@@ -140,7 +194,7 @@
 <!-- sourcefile~ftdataclass.f90 -->
 <g id="file~~graph~~FileGraph_node3" class="node">
 <title>sourcefile~ftdataclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node3"><a xlink:href=".././sourcefile/ftdataclass.f90.html" xlink:title="FTDataClass.f90">
+<g id="a_file~~graph~~FileGraph_node3"><a xlink:href="../sourcefile/ftdataclass.f90.html" xlink:title="FTDataClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="967,-301.2 868,-301.2 868,-277.2 967,-277.2 967,-301.2"/>
 <text text-anchor="middle" x="917.5" y="-286.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDataClass.f90</text>
 </a>
@@ -149,7 +203,7 @@
 <!-- sourcefile~ftdictionaryclass.f90 -->
 <g id="file~~graph~~FileGraph_node4" class="node">
 <title>sourcefile~ftdictionaryclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node4"><a xlink:href=".././sourcefile/ftdictionaryclass.f90.html" xlink:title="FTDictionaryClass.f90">
+<g id="a_file~~graph~~FileGraph_node4"><a xlink:href="../sourcefile/ftdictionaryclass.f90.html" xlink:title="FTDictionaryClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="642.5,-139.2 514.5,-139.2 514.5,-115.2 642.5,-115.2 642.5,-139.2"/>
 <text text-anchor="middle" x="578.5" y="-124.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass.f90</text>
 </a>
@@ -158,7 +212,7 @@
 <!-- sourcefile~ftexceptionclass.f90 -->
 <g id="file~~graph~~FileGraph_node5" class="node">
 <title>sourcefile~ftexceptionclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node5"><a xlink:href=".././sourcefile/ftexceptionclass.f90.html" xlink:title="FTExceptionClass.f90">
+<g id="a_file~~graph~~FileGraph_node5"><a xlink:href="../sourcefile/ftexceptionclass.f90.html" xlink:title="FTExceptionClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="278,-175.2 152,-175.2 152,-151.2 278,-151.2 278,-175.2"/>
 <text text-anchor="middle" x="215" y="-160.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass.f90</text>
 </a>
@@ -179,7 +233,7 @@
 <!-- sourcefile~ftstringsetclass.f90 -->
 <g id="file~~graph~~FileGraph_node14" class="node">
 <title>sourcefile~ftstringsetclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node14"><a xlink:href=".././sourcefile/ftstringsetclass.f90.html" xlink:title="FTStringSetClass.f90">
+<g id="a_file~~graph~~FileGraph_node14"><a xlink:href="../sourcefile/ftstringsetclass.f90.html" xlink:title="FTStringSetClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="453.5,-59.2 331.5,-59.2 331.5,-35.2 453.5,-35.2 453.5,-59.2"/>
 <text text-anchor="middle" x="392.5" y="-44.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass.f90</text>
 </a>
@@ -194,7 +248,7 @@
 <!-- sourcefile~ftvaluedictionaryclass.f90 -->
 <g id="file~~graph~~FileGraph_node16" class="node">
 <title>sourcefile~ftvaluedictionaryclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node16"><a xlink:href=".././sourcefile/ftvaluedictionaryclass.f90.html" xlink:title="FTValueDictionaryClass.f90">
+<g id="a_file~~graph~~FileGraph_node16"><a xlink:href="../sourcefile/ftvaluedictionaryclass.f90.html" xlink:title="FTValueDictionaryClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="471,-257.2 314,-257.2 314,-233.2 471,-233.2 471,-257.2"/>
 <text text-anchor="middle" x="392.5" y="-242.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass.f90</text>
 </a>
@@ -215,7 +269,7 @@
 <!-- sourcefile~ftlinkedlistclass.f90 -->
 <g id="file~~graph~~FileGraph_node6" class="node">
 <title>sourcefile~ftlinkedlistclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node6"><a xlink:href=".././sourcefile/ftlinkedlistclass.f90.html" xlink:title="FTLinkedListClass.f90">
+<g id="a_file~~graph~~FileGraph_node6"><a xlink:href="../sourcefile/ftlinkedlistclass.f90.html" xlink:title="FTLinkedListClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="813,-219.2 686,-219.2 686,-195.2 813,-195.2 813,-219.2"/>
 <text text-anchor="middle" x="749.5" y="-204.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass.f90</text>
 </a>
@@ -237,7 +291,7 @@
 <!-- sourcefile~ftmultiindextable.f90 -->
 <g id="file~~graph~~FileGraph_node7" class="node">
 <title>sourcefile~ftmultiindextable.f90</title>
-<g id="a_file~~graph~~FileGraph_node7"><a xlink:href=".././sourcefile/ftmultiindextable.f90.html" xlink:title="FTMultiIndexTable.f90">
+<g id="a_file~~graph~~FileGraph_node7"><a xlink:href="../sourcefile/ftmultiindextable.f90.html" xlink:title="FTMultiIndexTable.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="642,-219.2 515,-219.2 515,-195.2 642,-195.2 642,-219.2"/>
 <text text-anchor="middle" x="578.5" y="-204.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTable.f90</text>
 </a>
@@ -258,7 +312,7 @@
 <!-- sourcefile~ftsparsematrixclass.f90 -->
 <g id="file~~graph~~FileGraph_node12" class="node">
 <title>sourcefile~ftsparsematrixclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node12"><a xlink:href=".././sourcefile/ftsparsematrixclass.f90.html" xlink:title="FTSparseMatrixClass.f90">
+<g id="a_file~~graph~~FileGraph_node12"><a xlink:href="../sourcefile/ftsparsematrixclass.f90.html" xlink:title="FTSparseMatrixClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="650,-59.2 507,-59.2 507,-35.2 650,-35.2 650,-59.2"/>
 <text text-anchor="middle" x="578.5" y="-44.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass.f90</text>
 </a>
@@ -273,7 +327,7 @@
 <!-- sourcefile~ftstackclass.f90 -->
 <g id="file~~graph~~FileGraph_node13" class="node">
 <title>sourcefile~ftstackclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node13"><a xlink:href=".././sourcefile/ftstackclass.f90.html" xlink:title="FTStackClass.f90">
+<g id="a_file~~graph~~FileGraph_node13"><a xlink:href="../sourcefile/ftstackclass.f90.html" xlink:title="FTStackClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="444,-215.2 341,-215.2 341,-191.2 444,-191.2 444,-215.2"/>
 <text text-anchor="middle" x="392.5" y="-200.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass.f90</text>
 </a>
@@ -288,7 +342,7 @@
 <!-- sourcefile~ftobjectarrayclass.f90 -->
 <g id="file~~graph~~FileGraph_node8" class="node">
 <title>sourcefile~ftobjectarrayclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node8"><a xlink:href=".././sourcefile/ftobjectarrayclass.f90.html" xlink:title="FTObjectArrayClass.f90">
+<g id="a_file~~graph~~FileGraph_node8"><a xlink:href="../sourcefile/ftobjectarrayclass.f90.html" xlink:title="FTObjectArrayClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="986,-199.2 849,-199.2 849,-175.2 986,-175.2 986,-199.2"/>
 <text text-anchor="middle" x="917.5" y="-184.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectArrayClass.f90</text>
 </a>
@@ -314,7 +368,7 @@
 <!-- sourcefile~ftobjectclass.f90 -->
 <g id="file~~graph~~FileGraph_node9" class="node">
 <title>sourcefile~ftobjectclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node9"><a xlink:href=".././sourcefile/ftobjectclass.f90.html" xlink:title="FTObjectClass.f90">
+<g id="a_file~~graph~~FileGraph_node9"><a xlink:href="../sourcefile/ftobjectclass.f90.html" xlink:title="FTObjectClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="1130,-220.2 1022,-220.2 1022,-196.2 1130,-196.2 1130,-220.2"/>
 <text text-anchor="middle" x="1076" y="-205.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass.f90</text>
 </a>
@@ -377,7 +431,7 @@
 <!-- sourcefile~ftvalueclass.f90 -->
 <g id="file~~graph~~FileGraph_node15" class="node">
 <title>sourcefile~ftvalueclass.f90</title>
-<g id="a_file~~graph~~FileGraph_node15"><a xlink:href=".././sourcefile/ftvalueclass.f90.html" xlink:title="FTValueClass.f90">
+<g id="a_file~~graph~~FileGraph_node15"><a xlink:href="../sourcefile/ftvalueclass.f90.html" xlink:title="FTValueClass.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="630,-261.2 527,-261.2 527,-237.2 630,-237.2 630,-261.2"/>
 <text text-anchor="middle" x="578.5" y="-246.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass.f90</text>
 </a>
@@ -392,7 +446,7 @@
 <!-- sourcefile~ftolconstants.f90 -->
 <g id="file~~graph~~FileGraph_node11" class="node">
 <title>sourcefile~ftolconstants.f90</title>
-<g id="a_file~~graph~~FileGraph_node11"><a xlink:href=".././sourcefile/ftolconstants.f90.html" xlink:title="FTOLConstants.f90">
+<g id="a_file~~graph~~FileGraph_node11"><a xlink:href="../sourcefile/ftolconstants.f90.html" xlink:title="FTOLConstants.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="805.5,-303.2 693.5,-303.2 693.5,-279.2 805.5,-279.2 805.5,-303.2"/>
 <text text-anchor="middle" x="749.5" y="-288.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants.f90</text>
 </a>
@@ -459,7 +513,7 @@
 <!-- sourcefile~hash.f90 -->
 <g id="file~~graph~~FileGraph_node17" class="node">
 <title>sourcefile~hash.f90</title>
-<g id="a_file~~graph~~FileGraph_node17"><a xlink:href=".././sourcefile/hash.f90.html" xlink:title="Hash.f90">
+<g id="a_file~~graph~~FileGraph_node17"><a xlink:href="../sourcefile/hash.f90.html" xlink:title="Hash.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="779.5,-139.2 719.5,-139.2 719.5,-115.2 779.5,-115.2 779.5,-139.2"/>
 <text text-anchor="middle" x="749.5" y="-124.8" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Hash.f90</text>
 </a>
@@ -477,17 +531,17 @@
                   var panfilegraphFileGraph = svgPanZoom('#filegraphFileGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#FileGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#FileGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="FileGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -530,7 +584,7 @@ can be.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

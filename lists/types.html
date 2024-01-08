@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -66,26 +69,126 @@
 			 <thead>
 			 <tr><th>Type</th><th>Location</th><th>Extends</th><th>Description</th></tr>
 			 </thead><tbody>
-			   <tr><td><a href='../type/assertinfoarray1d.html'>assertInfoArray1D</a></td><td><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/assertinfoarray2d.html'>assertInfoArray2D</a></td><td><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/ftassertionsmanager.html'>FTAssertionsManager</a></td><td><a href='../module/ftassertions.html'>FTAssertions</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/ftdata.html'>FTData</a></td><td><a href='../module/ftdataclass.html'>FTDataClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftdictionary.html'>FTDictionary</a></td><td><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftexception.html'>FTException</a></td><td><a href='../module/ftexceptionclass.html'>FTExceptionClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftkeyobjectpair.html'>FTKeyObjectPair</a></td><td><a href='../module/ftkeyobjectpairclass.html'>FTKeyObjectPairClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftlinkedlist.html'>FTLinkedList</a></td><td><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a></td><td><a href='../module/ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a></td><td><a href='../module/ftlinkedlistrecordclass.html'>FTLinkedListRecordClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftmultiindextable.html'>FTMultiIndexTable</a></td><td><a href='../module/ftmultiindextableclass.html'>FTMultiIndexTableClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a></td><td><a href='../module/ftmutableobjectarrayclass.html'>FTMutableObjectArrayClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftobject.html'>FTObject</a></td><td><a href='../module/ftobjectclass.html'>FTObjectClass</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/ftsparsematrix.html'>FTSparseMatrix</a></td><td><a href='../module/ftsparsematrixclass.html'>FTSparseMatrixClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftstack.html'>FTStack</a></td><td><a href='../module/ftstackclass.html'>FTStackClass</a></td><td><a href='../type/ftlinkedlist.html'>FTLinkedList</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftstringset.html'>FTStringSet</a></td><td><a href='../module/ftstringsetclass.html'>FTStringSetClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftvalue.html'>FTValue</a></td><td><a href='../module/ftvalueclass.html'>FTValueClass</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/ftvaluedictionary.html'>FTValueDictionary</a></td><td><a href='../module/ftvaluedictionaryclass.html'>FTValueDictionaryClass</a></td><td><a href='../type/ftdictionary.html'>FTDictionary</a></td><td></td></tr>
-			   <tr><td><a href='../type/matrixdata.html'>MatrixData</a></td><td><a href='../module/ftsparsematrixdata.html'>FTSparseMatrixData</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
-			   <tr><td><a href='../type/multiindexmatrixdata.html'>MultiIndexMatrixData</a></td><td><a href='../module/ftmultiindextabledata.html'>FTMultiIndexTableData</a></td><td><a href='../type/ftobject.html'>FTObject</a></td><td></td></tr>
+			   <tr>
+                 <td><a href='../type/assertinfoarray1d.html'>assertInfoArray1D</a></td>
+                 <td><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/assertinfoarray2d.html'>assertInfoArray2D</a></td>
+                 <td><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftassertionsmanager.html'>FTAssertionsManager</a></td>
+                 <td><a href='../module/ftassertions.html'>FTAssertions</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftdata.html'>FTData</a></td>
+                 <td><a href='../module/ftdataclass.html'>FTDataClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftdictionary.html'>FTDictionary</a></td>
+                 <td><a href='../module/ftdictionaryclass.html'>FTDictionaryClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftexception.html'>FTException</a></td>
+                 <td><a href='../module/ftexceptionclass.html'>FTExceptionClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftkeyobjectpair.html'>FTKeyObjectPair</a></td>
+                 <td><a href='../module/ftkeyobjectpairclass.html'>FTKeyObjectPairClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftlinkedlist.html'>FTLinkedList</a></td>
+                 <td><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a></td>
+                 <td><a href='../module/ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a></td>
+                 <td><a href='../module/ftlinkedlistrecordclass.html'>FTLinkedListRecordClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftmultiindextable.html'>FTMultiIndexTable</a></td>
+                 <td><a href='../module/ftmultiindextableclass.html'>FTMultiIndexTableClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a></td>
+                 <td><a href='../module/ftmutableobjectarrayclass.html'>FTMutableObjectArrayClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td><a href='../module/ftobjectclass.html'>FTObjectClass</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftsparsematrix.html'>FTSparseMatrix</a></td>
+                 <td><a href='../module/ftsparsematrixclass.html'>FTSparseMatrixClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftstack.html'>FTStack</a></td>
+                 <td><a href='../module/ftstackclass.html'>FTStackClass</a></td>
+                 <td><a href='../type/ftlinkedlist.html'>FTLinkedList</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftstringset.html'>FTStringSet</a></td>
+                 <td><a href='../module/ftstringsetclass.html'>FTStringSetClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftvalue.html'>FTValue</a></td>
+                 <td><a href='../module/ftvalueclass.html'>FTValueClass</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/ftvaluedictionary.html'>FTValueDictionary</a></td>
+                 <td><a href='../module/ftvaluedictionaryclass.html'>FTValueDictionaryClass</a></td>
+                 <td><a href='../type/ftdictionary.html'>FTDictionary</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/matrixdata.html'>MatrixData</a></td>
+                 <td><a href='../module/ftsparsematrixdata.html'>FTSparseMatrixData</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/multiindexmatrixdata.html'>MultiIndexMatrixData</a></td>
+                 <td><a href='../module/ftmultiindextabledata.html'>FTMultiIndexTableData</a></td>
+                 <td><a href='../type/ftobject.html'>FTObject</a></td>
+                 <td></td>
+               </tr>
 			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -101,7 +204,7 @@
 <!-- type~assertinfoarray1d -->
 <g id="type~~graph~~TypeGraph_node1" class="node">
 <title>type~assertinfoarray1d</title>
-<g id="a_type~~graph~~TypeGraph_node1"><a xlink:href=".././type/assertinfoarray1d.html" xlink:title="assertInfoArray1D">
+<g id="a_type~~graph~~TypeGraph_node1"><a xlink:href="../type/assertinfoarray1d.html" xlink:title="assertInfoArray1D">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="1049.5,-24 940.5,-24 940.5,0 1049.5,0 1049.5,-24"/>
 <text text-anchor="middle" x="995" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">assertInfoArray1D</text>
 </a>
@@ -110,7 +213,7 @@
 <!-- type~assertinfoarray2d -->
 <g id="type~~graph~~TypeGraph_node2" class="node">
 <title>type~assertinfoarray2d</title>
-<g id="a_type~~graph~~TypeGraph_node2"><a xlink:href=".././type/assertinfoarray2d.html" xlink:title="assertInfoArray2D">
+<g id="a_type~~graph~~TypeGraph_node2"><a xlink:href="../type/assertinfoarray2d.html" xlink:title="assertInfoArray2D">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="1049.5,-66 940.5,-66 940.5,-42 1049.5,-42 1049.5,-66"/>
 <text text-anchor="middle" x="995" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">assertInfoArray2D</text>
 </a>
@@ -119,7 +222,7 @@
 <!-- type~ftassertionsmanager -->
 <g id="type~~graph~~TypeGraph_node3" class="node">
 <title>type~ftassertionsmanager</title>
-<g id="a_type~~graph~~TypeGraph_node3"><a xlink:href=".././type/ftassertionsmanager.html" xlink:title="FTAssertionsManager">
+<g id="a_type~~graph~~TypeGraph_node3"><a xlink:href="../type/ftassertionsmanager.html" xlink:title="FTAssertionsManager">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="1058,-108 932,-108 932,-84 1058,-84 1058,-108"/>
 <text text-anchor="middle" x="995" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertionsManager</text>
 </a>
@@ -141,7 +244,7 @@
 <!-- type~ftdata -->
 <g id="type~~graph~~TypeGraph_node4" class="node">
 <title>type~ftdata</title>
-<g id="a_type~~graph~~TypeGraph_node4"><a xlink:href=".././type/ftdata.html" xlink:title="FTData">
+<g id="a_type~~graph~~TypeGraph_node4"><a xlink:href="../type/ftdata.html" xlink:title="FTData">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="335,-464 281,-464 281,-440 335,-440 335,-464"/>
 <text text-anchor="middle" x="308" y="-449.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTData</text>
 </a>
@@ -150,7 +253,7 @@
 <!-- type~ftobject -->
 <g id="type~~graph~~TypeGraph_node13" class="node">
 <title>type~ftobject</title>
-<g id="a_type~~graph~~TypeGraph_node13"><a xlink:href=".././type/ftobject.html" xlink:title="FTObject">
+<g id="a_type~~graph~~TypeGraph_node13"><a xlink:href="../type/ftobject.html" xlink:title="FTObject">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="101.5,-259 41.5,-259 41.5,-235 101.5,-235 101.5,-259"/>
 <text text-anchor="middle" x="71.5" y="-244.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObject</text>
 </a>
@@ -164,7 +267,7 @@
 <!-- type~ftdictionary -->
 <g id="type~~graph~~TypeGraph_node5" class="node">
 <title>type~ftdictionary</title>
-<g id="a_type~~graph~~TypeGraph_node5"><a xlink:href=".././type/ftdictionary.html" xlink:title="FTDictionary">
+<g id="a_type~~graph~~TypeGraph_node5"><a xlink:href="../type/ftdictionary.html" xlink:title="FTDictionary">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="718,-314 638,-314 638,-290 718,-290 718,-314"/>
 <text text-anchor="middle" x="678" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionary</text>
 </a>
@@ -173,7 +276,7 @@
 <!-- type~ftlinkedlist -->
 <g id="type~~graph~~TypeGraph_node8" class="node">
 <title>type~ftlinkedlist</title>
-<g id="a_type~~graph~~TypeGraph_node8"><a xlink:href=".././type/ftlinkedlist.html" xlink:title="FTLinkedList">
+<g id="a_type~~graph~~TypeGraph_node8"><a xlink:href="../type/ftlinkedlist.html" xlink:title="FTLinkedList">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="535,-271 456,-271 456,-247 535,-247 535,-271"/>
 <text text-anchor="middle" x="495.5" y="-256.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedList</text>
 </a>
@@ -195,7 +298,7 @@
 <!-- type~ftexception -->
 <g id="type~~graph~~TypeGraph_node6" class="node">
 <title>type~ftexception</title>
-<g id="a_type~~graph~~TypeGraph_node6"><a xlink:href=".././type/ftexception.html" xlink:title="FTException">
+<g id="a_type~~graph~~TypeGraph_node6"><a xlink:href="../type/ftexception.html" xlink:title="FTException">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="1034,-412 956,-412 956,-388 1034,-388 1034,-412"/>
 <text text-anchor="middle" x="995" y="-397.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTException</text>
 </a>
@@ -216,7 +319,7 @@
 <!-- type~ftkeyobjectpair -->
 <g id="type~~graph~~TypeGraph_node7" class="node">
 <title>type~ftkeyobjectpair</title>
-<g id="a_type~~graph~~TypeGraph_node7"><a xlink:href=".././type/ftkeyobjectpair.html" xlink:title="FTKeyObjectPair">
+<g id="a_type~~graph~~TypeGraph_node7"><a xlink:href="../type/ftkeyobjectpair.html" xlink:title="FTKeyObjectPair">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="357.5,-384 258.5,-384 258.5,-360 357.5,-360 357.5,-384"/>
 <text text-anchor="middle" x="308" y="-369.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTKeyObjectPair</text>
 </a>
@@ -237,7 +340,7 @@
 <!-- type~ftlinkedlistrecord -->
 <g id="type~~graph~~TypeGraph_node10" class="node">
 <title>type~ftlinkedlistrecord</title>
-<g id="a_type~~graph~~TypeGraph_node10"><a xlink:href=".././type/ftlinkedlistrecord.html" xlink:title="FTLinkedListRecord">
+<g id="a_type~~graph~~TypeGraph_node10"><a xlink:href="../type/ftlinkedlistrecord.html" xlink:title="FTLinkedListRecord">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="366,-234 250,-234 250,-210 366,-210 366,-234"/>
 <text text-anchor="middle" x="308" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecord</text>
 </a>
@@ -259,7 +362,7 @@
 <!-- type~ftlinkedlistiterator -->
 <g id="type~~graph~~TypeGraph_node9" class="node">
 <title>type~ftlinkedlistiterator</title>
-<g id="a_type~~graph~~TypeGraph_node9"><a xlink:href=".././type/ftlinkedlistiterator.html" xlink:title="FTLinkedListIterator">
+<g id="a_type~~graph~~TypeGraph_node9"><a xlink:href="../type/ftlinkedlistiterator.html" xlink:title="FTLinkedListIterator">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="737,-188 619,-188 619,-164 737,-164 737,-188"/>
 <text text-anchor="middle" x="678" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListIterator</text>
 </a>
@@ -308,7 +411,7 @@
 <!-- type~ftmultiindextable -->
 <g id="type~~graph~~TypeGraph_node11" class="node">
 <title>type~ftmultiindextable</title>
-<g id="a_type~~graph~~TypeGraph_node11"><a xlink:href=".././type/ftmultiindextable.html" xlink:title="FTMultiIndexTable">
+<g id="a_type~~graph~~TypeGraph_node11"><a xlink:href="../type/ftmultiindextable.html" xlink:title="FTMultiIndexTable">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="731.5,-356 624.5,-356 624.5,-332 731.5,-332 731.5,-356"/>
 <text text-anchor="middle" x="678" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTable</text>
 </a>
@@ -329,7 +432,7 @@
 <!-- type~ftmutableobjectarray -->
 <g id="type~~graph~~TypeGraph_node12" class="node">
 <title>type~ftmutableobjectarray</title>
-<g id="a_type~~graph~~TypeGraph_node12"><a xlink:href=".././type/ftmutableobjectarray.html" xlink:title="FTMutableObjectArray">
+<g id="a_type~~graph~~TypeGraph_node12"><a xlink:href="../type/ftmutableobjectarray.html" xlink:title="FTMutableObjectArray">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="374,-58 242,-58 242,-34 374,-34 374,-58"/>
 <text text-anchor="middle" x="308" y="-43.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArray</text>
 </a>
@@ -358,7 +461,7 @@
 <!-- type~ftsparsematrix -->
 <g id="type~~graph~~TypeGraph_node14" class="node">
 <title>type~ftsparsematrix</title>
-<g id="a_type~~graph~~TypeGraph_node14"><a xlink:href=".././type/ftsparsematrix.html" xlink:title="FTSparseMatrix">
+<g id="a_type~~graph~~TypeGraph_node14"><a xlink:href="../type/ftsparsematrix.html" xlink:title="FTSparseMatrix">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="1042.5,-188 947.5,-188 947.5,-164 1042.5,-164 1042.5,-188"/>
 <text text-anchor="middle" x="995" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrix</text>
 </a>
@@ -393,7 +496,7 @@
 <!-- type~ftstack -->
 <g id="type~~graph~~TypeGraph_node15" class="node">
 <title>type~ftstack</title>
-<g id="a_type~~graph~~TypeGraph_node15"><a xlink:href=".././type/ftstack.html" xlink:title="FTStack">
+<g id="a_type~~graph~~TypeGraph_node15"><a xlink:href="../type/ftstack.html" xlink:title="FTStack">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="705.5,-272 650.5,-272 650.5,-248 705.5,-248 705.5,-272"/>
 <text text-anchor="middle" x="678" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStack</text>
 </a>
@@ -408,7 +511,7 @@
 <!-- type~ftstringset -->
 <g id="type~~graph~~TypeGraph_node16" class="node">
 <title>type~ftstringset</title>
-<g id="a_type~~graph~~TypeGraph_node16"><a xlink:href=".././type/ftstringset.html" xlink:title="FTStringSet">
+<g id="a_type~~graph~~TypeGraph_node16"><a xlink:href="../type/ftstringset.html" xlink:title="FTStringSet">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="1032,-358 958,-358 958,-334 1032,-334 1032,-358"/>
 <text text-anchor="middle" x="995" y="-343.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSet</text>
 </a>
@@ -432,7 +535,7 @@
 <!-- type~ftvalue -->
 <g id="type~~graph~~TypeGraph_node17" class="node">
 <title>type~ftvalue</title>
-<g id="a_type~~graph~~TypeGraph_node17"><a xlink:href=".././type/ftvalue.html" xlink:title="FTValue">
+<g id="a_type~~graph~~TypeGraph_node17"><a xlink:href="../type/ftvalue.html" xlink:title="FTValue">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="335.5,-142 280.5,-142 280.5,-118 335.5,-118 335.5,-142"/>
 <text text-anchor="middle" x="308" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValue</text>
 </a>
@@ -448,7 +551,7 @@
 <!-- type~ftvaluedictionary -->
 <g id="type~~graph~~TypeGraph_node18" class="node">
 <title>type~ftvaluedictionary</title>
-<g id="a_type~~graph~~TypeGraph_node18"><a xlink:href=".././type/ftvaluedictionary.html" xlink:title="FTValueDictionary">
+<g id="a_type~~graph~~TypeGraph_node18"><a xlink:href="../type/ftvaluedictionary.html" xlink:title="FTValueDictionary">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="1049.5,-308 940.5,-308 940.5,-284 1049.5,-284 1049.5,-308"/>
 <text text-anchor="middle" x="995" y="-293.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionary</text>
 </a>
@@ -463,7 +566,7 @@
 <!-- type~matrixdata -->
 <g id="type~~graph~~TypeGraph_node19" class="node">
 <title>type~matrixdata</title>
-<g id="a_type~~graph~~TypeGraph_node19"><a xlink:href=".././type/matrixdata.html" xlink:title="MatrixData">
+<g id="a_type~~graph~~TypeGraph_node19"><a xlink:href="../type/matrixdata.html" xlink:title="MatrixData">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="343.5,-100 272.5,-100 272.5,-76 343.5,-76 343.5,-100"/>
 <text text-anchor="middle" x="308" y="-85.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">MatrixData</text>
 </a>
@@ -484,7 +587,7 @@
 <!-- type~multiindexmatrixdata -->
 <g id="type~~graph~~TypeGraph_node20" class="node">
 <title>type~multiindexmatrixdata</title>
-<g id="a_type~~graph~~TypeGraph_node20"><a xlink:href=".././type/multiindexmatrixdata.html" xlink:title="MultiIndexMatrixData">
+<g id="a_type~~graph~~TypeGraph_node20"><a xlink:href="../type/multiindexmatrixdata.html" xlink:title="MultiIndexMatrixData">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="370.5,-304 245.5,-304 245.5,-280 370.5,-280 370.5,-304"/>
 <text text-anchor="middle" x="308" y="-289.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">MultiIndexMatrixData</text>
 </a>
@@ -510,17 +613,17 @@
                   var pantypegraphTypeGraph = svgPanZoom('#typegraphTypeGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#TypeGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#TypeGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="TypeGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -564,7 +667,7 @@ said component(s).
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

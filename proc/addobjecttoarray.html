@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -159,7 +162,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~95"></span>
+              <span class="anchor" id="variable-self~79"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -174,7 +177,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~8"></span>
+              <span class="anchor" id="variable-obj~40"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -216,7 +219,7 @@
 <!-- proc~retainftobject -->
 <g id="proc~~addobjecttoarray~~CallsGraph_node2" class="node">
 <title>proc~retainftobject</title>
-<g id="a_proc~~addobjecttoarray~~CallsGraph_node2"><a xlink:href=".././proc/retainftobject.html" xlink:title="FTObjectClass::FTObject%retainFTObject">
+<g id="a_proc~~addobjecttoarray~~CallsGraph_node2"><a xlink:href="../proc/retainftobject.html" xlink:title="FTObjectClass::FTObject%retainFTObject">
 <polygon fill="#d9534f" stroke="#d9534f" points="657,-24 427,-24 427,0 657,0 657,-24"/>
 <text text-anchor="middle" x="542" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%retainFTObject</text>
 </a>
@@ -234,17 +237,17 @@
                   var panprocaddobjecttoarrayCallsGraph = svgPanZoom('#procaddobjecttoarrayCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -338,7 +341,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~alllinkedlistobjects -->
 <g id="proc~~addobjecttoarray~~CalledByGraph_node2" class="node">
 <title>proc~alllinkedlistobjects</title>
-<g id="a_proc~~addobjecttoarray~~CalledByGraph_node2"><a xlink:href=".././proc/alllinkedlistobjects.html" xlink:title="FTLinkedListClass::FTLinkedList%allLinkedListObjects">
+<g id="a_proc~~addobjecttoarray~~CalledByGraph_node2"><a xlink:href="../proc/alllinkedlistobjects.html" xlink:title="FTLinkedListClass::FTLinkedList%allLinkedListObjects">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="295,-66 0,-66 0,-42 295,-42 295,-66"/>
 <text text-anchor="middle" x="147.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%allLinkedListObjects</text>
 </a>
@@ -353,7 +356,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~allobjects -->
 <g id="proc~~addobjecttoarray~~CalledByGraph_node3" class="node">
 <title>proc~allobjects</title>
-<g id="a_proc~~addobjecttoarray~~CalledByGraph_node3"><a xlink:href=".././proc/allobjects.html" xlink:title="FTDictionaryClass::FTDictionary%AllObjects">
+<g id="a_proc~~addobjecttoarray~~CalledByGraph_node3"><a xlink:href="../proc/allobjects.html" xlink:title="FTDictionaryClass::FTDictionary%AllObjects">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="270.5,-24 24.5,-24 24.5,0 270.5,0 270.5,-24"/>
 <text text-anchor="middle" x="147.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%AllObjects</text>
 </a>
@@ -371,17 +374,17 @@ implementation in a submodule of an interface in a parent module.
                   var panprocaddobjecttoarrayCalledByGraph = svgPanZoom('#procaddobjecttoarrayCalledByGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -471,7 +474,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -151,7 +154,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~90"></span>
+              <span class="anchor" id="variable-self~64"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -166,7 +169,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~20"></span>
+              <span class="anchor" id="variable-key~14"></span>
               character(len=*)
             </td>
 <td></td>
@@ -230,7 +233,7 @@
 <!-- proc~objectforkey -->
 <g id="proc~~stringvalueforkey~~CallsGraph_node2" class="node">
 <title>proc~objectforkey</title>
-<g id="a_proc~~stringvalueforkey~~CallsGraph_node2"><a xlink:href=".././proc/objectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%objectForKey">
+<g id="a_proc~~stringvalueforkey~~CallsGraph_node2"><a xlink:href="../proc/objectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%objectForKey">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="644,-108 382,-108 382,-84 644,-84 644,-108"/>
 <text text-anchor="middle" x="513" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%objectForKey</text>
 </a>
@@ -245,7 +248,7 @@
 <!-- proc~stringvalue -->
 <g id="proc~~stringvalueforkey~~CallsGraph_node3" class="node">
 <title>proc~stringvalue</title>
-<g id="a_proc~~stringvalueforkey~~CallsGraph_node3"><a xlink:href=".././proc/stringvalue.html" xlink:title="FTValueClass::FTValue%stringValue">
+<g id="a_proc~~stringvalueforkey~~CallsGraph_node3"><a xlink:href="../proc/stringvalue.html" xlink:title="FTValueClass::FTValue%stringValue">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="613.5,-66 412.5,-66 412.5,-42 613.5,-42 613.5,-66"/>
 <text text-anchor="middle" x="513" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass::FTValue%stringValue</text>
 </a>
@@ -260,7 +263,7 @@
 <!-- proc~valuefromobject -->
 <g id="proc~~stringvalueforkey~~CallsGraph_node4" class="node">
 <title>proc~valuefromobject</title>
-<g id="a_proc~~stringvalueforkey~~CallsGraph_node4"><a xlink:href=".././proc/valuefromobject.html" xlink:title="FTValueClass::valueFromObject">
+<g id="a_proc~~stringvalueforkey~~CallsGraph_node4"><a xlink:href="../proc/valuefromobject.html" xlink:title="FTValueClass::valueFromObject">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="603,-24 423,-24 423,0 603,0 603,-24"/>
 <text text-anchor="middle" x="513" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueClass::valueFromObject</text>
 </a>
@@ -275,7 +278,7 @@
 <!-- proc~b3hs_hash_key_jenkins -->
 <g id="proc~~stringvalueforkey~~CallsGraph_node5" class="node">
 <title>proc~b3hs_hash_key_jenkins</title>
-<g id="a_proc~~stringvalueforkey~~CallsGraph_node5"><a xlink:href=".././proc/b3hs_hash_key_jenkins.html" xlink:title="HashModule::b3hs_hash_key_jenkins">
+<g id="a_proc~~stringvalueforkey~~CallsGraph_node5"><a xlink:href="../proc/b3hs_hash_key_jenkins.html" xlink:title="HashModule::b3hs_hash_key_jenkins">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="889,-108 680,-108 680,-84 889,-84 889,-108"/>
 <text text-anchor="middle" x="784.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HashModule::b3hs_hash_key_jenkins</text>
 </a>
@@ -293,17 +296,17 @@
                   var panprocstringvalueforkeyCallsGraph = svgPanZoom('#procstringvalueforkeyCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -393,7 +396,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

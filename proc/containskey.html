@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -151,7 +154,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~22"></span>
+              <span class="anchor" id="variable-self~104"></span>
               class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
@@ -166,7 +169,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~5"></span>
+              <span class="anchor" id="variable-key~20"></span>
               character(len=*)
             </td>
 <td></td>
@@ -184,7 +187,7 @@
 
       <h3>Return Value
         <small>
-          <span class="anchor" id="variable-r~4"></span>
+          <span class="anchor" id="variable-r~6"></span>
           logical
         </small>
       </h3>
@@ -215,7 +218,7 @@
 <!-- proc~objectforkey -->
 <g id="proc~~containskey~~CallsGraph_node2" class="node">
 <title>proc~objectforkey</title>
-<g id="a_proc~~containskey~~CallsGraph_node2"><a xlink:href=".././proc/objectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%objectForKey">
+<g id="a_proc~~containskey~~CallsGraph_node2"><a xlink:href="../proc/objectforkey.html" xlink:title="FTDictionaryClass::FTDictionary%objectForKey">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="554,-24 292,-24 292,0 554,0 554,-24"/>
 <text text-anchor="middle" x="423" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%objectForKey</text>
 </a>
@@ -230,7 +233,7 @@
 <!-- proc~b3hs_hash_key_jenkins -->
 <g id="proc~~containskey~~CallsGraph_node3" class="node">
 <title>proc~b3hs_hash_key_jenkins</title>
-<g id="a_proc~~containskey~~CallsGraph_node3"><a xlink:href=".././proc/b3hs_hash_key_jenkins.html" xlink:title="HashModule::b3hs_hash_key_jenkins">
+<g id="a_proc~~containskey~~CallsGraph_node3"><a xlink:href="../proc/b3hs_hash_key_jenkins.html" xlink:title="HashModule::b3hs_hash_key_jenkins">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="799,-24 590,-24 590,0 799,0 799,-24"/>
 <text text-anchor="middle" x="694.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HashModule::b3hs_hash_key_jenkins</text>
 </a>
@@ -248,17 +251,17 @@
                   var panproccontainskeyCallsGraph = svgPanZoom('#proccontainskeyCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -352,7 +355,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~addstring -->
 <g id="proc~~containskey~~CalledByGraph_node2" class="node">
 <title>proc~addstring</title>
-<g id="a_proc~~containskey~~CalledByGraph_node2"><a xlink:href=".././proc/addstring.html" xlink:title="FTStringSetClass::FTStringSet%AddString">
+<g id="a_proc~~containskey~~CalledByGraph_node2"><a xlink:href="../proc/addstring.html" xlink:title="FTStringSetClass::FTStringSet%AddString">
 <polygon fill="#d9534f" stroke="#d9534f" points="853.5,-86 621.5,-86 621.5,-62 853.5,-62 853.5,-86"/>
 <text text-anchor="middle" x="737.5" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%AddString</text>
 </a>
@@ -367,7 +370,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~containsstring -->
 <g id="proc~~containskey~~CalledByGraph_node3" class="node">
 <title>proc~containsstring</title>
-<g id="a_proc~~containskey~~CalledByGraph_node3"><a xlink:href=".././proc/containsstring.html" xlink:title="FTStringSetClass::FTStringSet%containsString">
+<g id="a_proc~~containskey~~CalledByGraph_node3"><a xlink:href="../proc/containsstring.html" xlink:title="FTStringSetClass::FTStringSet%containsString">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="866,-44 609,-44 609,-20 866,-20 866,-44"/>
 <text text-anchor="middle" x="737.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%containsString</text>
 </a>
@@ -382,7 +385,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~initwithstrings -->
 <g id="proc~~containskey~~CalledByGraph_node4" class="node">
 <title>proc~initwithstrings</title>
-<g id="a_proc~~containskey~~CalledByGraph_node4"><a xlink:href=".././proc/initwithstrings.html" xlink:title="FTStringSetClass::FTStringSet%initWithStrings">
+<g id="a_proc~~containskey~~CalledByGraph_node4"><a xlink:href="../proc/initwithstrings.html" xlink:title="FTStringSetClass::FTStringSet%initWithStrings">
 <polygon fill="#d9534f" stroke="#d9534f" points="559.5,-146 301.5,-146 301.5,-122 559.5,-122 559.5,-146"/>
 <text text-anchor="middle" x="430.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%initWithStrings</text>
 </a>
@@ -397,7 +400,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~intersectionwithset -->
 <g id="proc~~containskey~~CalledByGraph_node5" class="node">
 <title>proc~intersectionwithset</title>
-<g id="a_proc~~containskey~~CalledByGraph_node5"><a xlink:href=".././proc/intersectionwithset.html" xlink:title="FTStringSetClass::FTStringSet%intersectionWithSet">
+<g id="a_proc~~containskey~~CalledByGraph_node5"><a xlink:href="../proc/intersectionwithset.html" xlink:title="FTStringSetClass::FTStringSet%intersectionWithSet">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="573,-66 288,-66 288,-42 573,-42 573,-66"/>
 <text text-anchor="middle" x="430.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%intersectionWithSet</text>
 </a>
@@ -418,7 +421,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~setfromdifference -->
 <g id="proc~~containskey~~CalledByGraph_node6" class="node">
 <title>proc~setfromdifference</title>
-<g id="a_proc~~containskey~~CalledByGraph_node6"><a xlink:href=".././proc/setfromdifference.html" xlink:title="FTStringSetClass::FTStringSet%setFromDifference">
+<g id="a_proc~~containskey~~CalledByGraph_node6"><a xlink:href="../proc/setfromdifference.html" xlink:title="FTStringSetClass::FTStringSet%setFromDifference">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="569.5,-24 291.5,-24 291.5,0 569.5,0 569.5,-24"/>
 <text text-anchor="middle" x="430.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%setFromDifference</text>
 </a>
@@ -439,7 +442,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~unionwithset -->
 <g id="proc~~containskey~~CalledByGraph_node7" class="node">
 <title>proc~unionwithset</title>
-<g id="a_proc~~containskey~~CalledByGraph_node7"><a xlink:href=".././proc/unionwithset.html" xlink:title="FTStringSetClass::FTStringSet%unionWithSet">
+<g id="a_proc~~containskey~~CalledByGraph_node7"><a xlink:href="../proc/unionwithset.html" xlink:title="FTStringSetClass::FTStringSet%unionWithSet">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="252,-126 0,-126 0,-102 252,-102 252,-126"/>
 <text text-anchor="middle" x="126" y="-111.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass::FTStringSet%unionWithSet</text>
 </a>
@@ -463,17 +466,17 @@ implementation in a submodule of an interface in a parent module.
                   var panproccontainskeyCalledByGraph = svgPanZoom('#proccontainskeyCalledByGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -563,7 +566,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

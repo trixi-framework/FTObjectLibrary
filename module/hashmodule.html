@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -167,7 +170,7 @@
 <!-- module~ftdictionaryclass -->
 <g id="module~~hashmodule~~UsedByGraph_node2" class="node">
 <title>module~ftdictionaryclass</title>
-<g id="a_module~~hashmodule~~UsedByGraph_node2"><a xlink:href=".././module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
+<g id="a_module~~hashmodule~~UsedByGraph_node2"><a xlink:href="../module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="223,-84 115,-84 115,-60 223,-60 223,-84"/>
 <text text-anchor="middle" x="169" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
 </a>
@@ -182,7 +185,7 @@
 <!-- module~ftexceptionclass -->
 <g id="module~~hashmodule~~UsedByGraph_node3" class="node">
 <title>module~ftexceptionclass</title>
-<g id="a_module~~hashmodule~~UsedByGraph_node3"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
+<g id="a_module~~hashmodule~~UsedByGraph_node3"><a xlink:href="../module/ftexceptionclass.html" xlink:title="FTExceptionClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="538,-103 432,-103 432,-79 538,-79 538,-103"/>
 <text text-anchor="middle" x="485" y="-88.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
 </a>
@@ -197,7 +200,7 @@
 <!-- module~ftvaluedictionaryclass -->
 <g id="module~~hashmodule~~UsedByGraph_node6" class="node">
 <title>module~ftvaluedictionaryclass</title>
-<g id="a_module~~hashmodule~~UsedByGraph_node6"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
+<g id="a_module~~hashmodule~~UsedByGraph_node6"><a xlink:href="../module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="396,-104 259,-104 259,-80 396,-80 396,-104"/>
 <text text-anchor="middle" x="327.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
 </a>
@@ -212,7 +215,7 @@
 <!-- module~ftobjectlibrary -->
 <g id="module~~hashmodule~~UsedByGraph_node4" class="node">
 <title>module~ftobjectlibrary</title>
-<g id="a_module~~hashmodule~~UsedByGraph_node4"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<g id="a_module~~hashmodule~~UsedByGraph_node4"><a xlink:href="../module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
 <polygon fill="#337ab7" stroke="#337ab7" points="717,-144 620,-144 620,-120 717,-120 717,-144"/>
 <text text-anchor="middle" x="668.5" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
 </a>
@@ -240,7 +243,7 @@
 <!-- module~ftstringsetclass -->
 <g id="module~~hashmodule~~UsedByGraph_node5" class="node">
 <title>module~ftstringsetclass</title>
-<g id="a_module~~hashmodule~~UsedByGraph_node5"><a xlink:href=".././module/ftstringsetclass.html" xlink:title="FTStringSetClass">
+<g id="a_module~~hashmodule~~UsedByGraph_node5"><a xlink:href="../module/ftstringsetclass.html" xlink:title="FTStringSetClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="378.5,-24 276.5,-24 276.5,0 378.5,0 378.5,-24"/>
 <text text-anchor="middle" x="327.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
 </a>
@@ -261,7 +264,7 @@
 <!-- module~sharedexceptionmanagermodule -->
 <g id="module~~hashmodule~~UsedByGraph_node7" class="node">
 <title>module~sharedexceptionmanagermodule</title>
-<g id="a_module~~hashmodule~~UsedByGraph_node7"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
+<g id="a_module~~hashmodule~~UsedByGraph_node7"><a xlink:href="../module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
 <polygon fill="#337ab7" stroke="#337ab7" points="763,-102 574,-102 574,-78 763,-78 763,-102"/>
 <text text-anchor="middle" x="668.5" y="-87.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
 </a>
@@ -279,17 +282,17 @@
                   var panmodulehashmoduleUsedByGraph = svgPanZoom('#modulehashmoduleUsedByGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -365,7 +368,7 @@ modules which it uses.
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-b3hs_hash_key_jenkins"></span><h3>public  function <a href='../proc/b3hs_hash_key_jenkins.html'>b3hs_hash_key_jenkins</a>(key, range) result(code)  
+    <div class="card-header codesum"><span class="anchor" id="proc-b3hs_hash_key_jenkins"></span> <h3>public  function <a href='../proc/b3hs_hash_key_jenkins.html'>b3hs_hash_key_jenkins</a>(key, range) result(code)  
 </h3></div>
     <div class="card-body">
           
@@ -438,7 +441,7 @@ modules which it uses.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

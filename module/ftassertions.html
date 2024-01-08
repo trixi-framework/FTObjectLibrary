@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -225,8 +228,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/ftolconstants.html'>FTOLConstants</a></li>
-                  <li class="list-inline-item"><a href='../module/comparisonsmodule.html'>ComparisonsModule</a></li>
+                  <li class="list-inline-item"><a href='comparisonsmodule.html'>ComparisonsModule</a></li>
+                  <li class="list-inline-item"><a href='ftolconstants.html'>FTOLConstants</a></li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
               </ul>
             </li>
@@ -263,7 +266,7 @@
 <!-- module~comparisonsmodule -->
 <g id="module~~ftassertions~~UsesGraph_node3" class="node">
 <title>module~comparisonsmodule</title>
-<g id="a_module~~ftassertions~~UsesGraph_node3"><a xlink:href=".././module/comparisonsmodule.html" xlink:title="ComparisonsModule">
+<g id="a_module~~ftassertions~~UsesGraph_node3"><a xlink:href="../module/comparisonsmodule.html" xlink:title="ComparisonsModule">
 <polygon fill="#337ab7" stroke="#337ab7" points="251,-45 130,-45 130,-21 251,-21 251,-45"/>
 <text text-anchor="middle" x="190.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ComparisonsModule</text>
 </a>
@@ -278,7 +281,7 @@
 <!-- module~ftolconstants -->
 <g id="module~~ftassertions~~UsesGraph_node4" class="node">
 <title>module~ftolconstants</title>
-<g id="a_module~~ftassertions~~UsesGraph_node4"><a xlink:href=".././module/ftolconstants.html" xlink:title="FTOLConstants">
+<g id="a_module~~ftassertions~~UsesGraph_node4"><a xlink:href="../module/ftolconstants.html" xlink:title="FTOLConstants">
 <polygon fill="#337ab7" stroke="#337ab7" points="93,-24 1,-24 1,0 93,0 93,-24"/>
 <text text-anchor="middle" x="47" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTOLConstants</text>
 </a>
@@ -304,17 +307,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -404,7 +407,7 @@ modules which it uses.
 <!-- module~ftobjectlibrary -->
 <g id="module~~ftassertions~~UsedByGraph_node2" class="node">
 <title>module~ftobjectlibrary</title>
-<g id="a_module~~ftassertions~~UsedByGraph_node2"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<g id="a_module~~ftassertions~~UsedByGraph_node2"><a xlink:href="../module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
 <polygon fill="#337ab7" stroke="#337ab7" points="212,-24 115,-24 115,0 212,0 212,-24"/>
 <text text-anchor="middle" x="163.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
 </a>
@@ -418,17 +421,17 @@ modules which it uses.
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -561,7 +564,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue~2"></span>
+              <span class="anchor" id="variable-expectedvalue"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -576,7 +579,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue~2"></span>
+              <span class="anchor" id="variable-actualvalue"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -591,7 +594,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~7"></span>
+              <span class="anchor" id="variable-msg~4"></span>
               character(len=*),
             </td>
 <td></td>
@@ -629,7 +632,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue~3"></span>
+              <span class="anchor" id="variable-expectedvalue~2"></span>
               real,
             </td>
 <td>intent(in)</td>
@@ -644,7 +647,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue~3"></span>
+              <span class="anchor" id="variable-actualvalue~2"></span>
               real,
             </td>
 <td>intent(in)</td>
@@ -659,7 +662,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-reltol~2"></span>
+              <span class="anchor" id="variable-reltol"></span>
               real,
             </td>
 <td>intent(in)</td>
@@ -674,7 +677,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-abstol~2"></span>
+              <span class="anchor" id="variable-abstol"></span>
               real,
             </td>
 <td>intent(in),</td>
@@ -689,7 +692,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~8"></span>
+              <span class="anchor" id="variable-msg~5"></span>
               character(len=*),
             </td>
 <td></td>
@@ -727,7 +730,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue~4"></span>
+              <span class="anchor" id="variable-expectedvalue~3"></span>
               double precision,
             </td>
 <td>intent(in)</td>
@@ -742,7 +745,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue~4"></span>
+              <span class="anchor" id="variable-actualvalue~3"></span>
               double precision,
             </td>
 <td>intent(in)</td>
@@ -757,7 +760,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-reltol~3"></span>
+              <span class="anchor" id="variable-reltol~2"></span>
               double precision,
             </td>
 <td>intent(in)</td>
@@ -772,7 +775,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-abstol~3"></span>
+              <span class="anchor" id="variable-abstol~2"></span>
               double precision,
             </td>
 <td>intent(in),</td>
@@ -787,7 +790,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~9"></span>
+              <span class="anchor" id="variable-msg~6"></span>
               character(len=*),
             </td>
 <td></td>
@@ -826,7 +829,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue"></span>
+              <span class="anchor" id="variable-expectedvalue~4"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in)</td>
@@ -841,7 +844,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue"></span>
+              <span class="anchor" id="variable-actualvalue~4"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in)</td>
@@ -856,7 +859,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-reltol"></span>
+              <span class="anchor" id="variable-reltol~3"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in)</td>
@@ -871,7 +874,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-abstol"></span>
+              <span class="anchor" id="variable-abstol~3"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in),</td>
@@ -886,7 +889,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~6"></span>
+              <span class="anchor" id="variable-msg~7"></span>
               character(len=*),
             </td>
 <td></td>
@@ -924,7 +927,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue~5"></span>
+              <span class="anchor" id="variable-expectedvalue~6"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -939,7 +942,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue~5"></span>
+              <span class="anchor" id="variable-actualvalue~6"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -954,7 +957,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~10"></span>
+              <span class="anchor" id="variable-msg~9"></span>
               character(len=*),
             </td>
 <td></td>
@@ -992,7 +995,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue~6"></span>
+              <span class="anchor" id="variable-expectedvalue~5"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1007,7 +1010,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue~6"></span>
+              <span class="anchor" id="variable-actualvalue~5"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1022,7 +1025,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~11"></span>
+              <span class="anchor" id="variable-msg~8"></span>
               character(len=*),
             </td>
 <td></td>
@@ -1103,7 +1106,7 @@ parameter
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-sharedassertionsmanager"></span><h3>public  function <a href='../proc/sharedassertionsmanager.html'>sharedAssertionsManager</a>()  
+    <div class="card-header codesum"><span class="anchor" id="proc-sharedassertionsmanager"></span> <h3>public  function <a href='../proc/sharedassertionsmanager.html'>sharedAssertionsManager</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -1121,7 +1124,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-numberofassertions"></span><h3>public  function <a href='../proc/numberofassertions.html'>numberOfAssertions</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-numberofassertions"></span> <h3>public  function <a href='../proc/numberofassertions.html'>numberOfAssertions</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1140,7 +1143,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~40"></span>
+              <span class="anchor" id="variable-self~20"></span>
               class(<a href='../type/ftassertionsmanager.html'>FTAssertionsManager</a>)
             </td>
 <td></td>
@@ -1166,7 +1169,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-numberofassertionfailures"></span><h3>public  function <a href='../proc/numberofassertionfailures.html'>numberOfAssertionFailures</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-numberofassertionfailures"></span> <h3>public  function <a href='../proc/numberofassertionfailures.html'>numberOfAssertionFailures</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1185,7 +1188,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~39"></span>
+              <span class="anchor" id="variable-self~21"></span>
               class(<a href='../type/ftassertionsmanager.html'>FTAssertionsManager</a>)
             </td>
 <td></td>
@@ -1211,7 +1214,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-selftestassertion"></span><h3>public  function <a href='../proc/selftestassertion.html'>SelfTestAssertion</a>(assertionNumber, assertionType, expected, actual, msg)  
+    <div class="card-header codesum"><span class="anchor" id="proc-selftestassertion"></span> <h3>public  function <a href='../proc/selftestassertion.html'>SelfTestAssertion</a>(assertionNumber, assertionType, expected, actual, msg)  
 </h3></div>
     <div class="card-body">
           
@@ -1245,7 +1248,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-assertiontype"></span>
+              <span class="anchor" id="variable-assertiontype~3"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1260,7 +1263,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-expected"></span>
+              <span class="anchor" id="variable-expected~6"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1275,7 +1278,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actual"></span>
+              <span class="anchor" id="variable-actual~6"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1290,7 +1293,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~4"></span>
+              <span class="anchor" id="variable-msg~10"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1321,7 +1324,7 @@ parameter
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-detachsharedassertionsmanager"></span><h3>public  subroutine <a href='../proc/detachsharedassertionsmanager.html'>detachSharedAssertionsManager</a>()  
+    <div class="card-header codesum"><span class="anchor" id="proc-detachsharedassertionsmanager"></span> <h3>public  subroutine <a href='../proc/detachsharedassertionsmanager.html'>detachSharedAssertionsManager</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -1334,7 +1337,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initializesharedassertionsmanager"></span><h3>public  subroutine <a href='../proc/initializesharedassertionsmanager.html'>initializeSharedAssertionsManager</a>()  
+    <div class="card-header codesum"><span class="anchor" id="proc-initializesharedassertionsmanager"></span> <h3>public  subroutine <a href='../proc/initializesharedassertionsmanager.html'>initializeSharedAssertionsManager</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -1347,7 +1350,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-finalizesharedassertionsmanager"></span><h3>public  subroutine <a href='../proc/finalizesharedassertionsmanager.html'>finalizeSharedAssertionsManager</a>()  
+    <div class="card-header codesum"><span class="anchor" id="proc-finalizesharedassertionsmanager"></span> <h3>public  subroutine <a href='../proc/finalizesharedassertionsmanager.html'>finalizeSharedAssertionsManager</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -1360,7 +1363,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-ftassert"></span><h3>public  subroutine <a href='../proc/ftassert.html'>FTAssert</a>(test, msg)  
+    <div class="card-header codesum"><span class="anchor" id="proc-ftassert"></span> <h3>public  subroutine <a href='../proc/ftassert.html'>FTAssert</a>(test, msg)  
 </h3></div>
     <div class="card-body">
           
@@ -1394,7 +1397,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~5"></span>
+              <span class="anchor" id="variable-msg~3"></span>
               character(len=*),
             </td>
 <td></td>
@@ -1415,7 +1418,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span><h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, relTol, absTol, msg)  
+    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span> <h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, relTol, absTol, msg)  
 </h3></div>
     <div class="card-body">
           
@@ -1434,7 +1437,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue"></span>
+              <span class="anchor" id="variable-expectedvalue~4"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in)</td>
@@ -1449,7 +1452,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue"></span>
+              <span class="anchor" id="variable-actualvalue~4"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in)</td>
@@ -1464,7 +1467,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-reltol"></span>
+              <span class="anchor" id="variable-reltol~3"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in)</td>
@@ -1479,7 +1482,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-abstol"></span>
+              <span class="anchor" id="variable-abstol~3"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
             </td>
 <td>intent(in),</td>
@@ -1494,7 +1497,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~6"></span>
+              <span class="anchor" id="variable-msg~7"></span>
               character(len=*),
             </td>
 <td></td>
@@ -1527,7 +1530,7 @@ parameter
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

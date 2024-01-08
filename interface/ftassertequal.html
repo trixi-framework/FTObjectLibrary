@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -173,7 +176,7 @@
 <!-- proc~assertwithintolerancetwoquad -->
 <g id="interface~~ftassertequal~~CallsGraph_node2" class="node">
 <title>proc~assertwithintolerancetwoquad</title>
-<g id="a_interface~~ftassertequal~~CallsGraph_node2"><a xlink:href=".././proc/assertwithintolerancetwoquad.html" xlink:title="FTAssertions::assertWithinToleranceTwoQuad">
+<g id="a_interface~~ftassertequal~~CallsGraph_node2"><a xlink:href="../proc/assertwithintolerancetwoquad.html" xlink:title="FTAssertions::assertWithinToleranceTwoQuad">
 <polygon fill="#d9534f" stroke="#d9534f" points="448,-45 196,-45 196,-21 448,-21 448,-45"/>
 <text text-anchor="middle" x="322" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertions::assertWithinToleranceTwoQuad</text>
 </a>
@@ -188,7 +191,7 @@
 <!-- interface~isequal -->
 <g id="interface~~ftassertequal~~CallsGraph_node3" class="node">
 <title>interface~isequal</title>
-<g id="a_interface~~ftassertequal~~CallsGraph_node3"><a xlink:href=".././interface/isequal.html" xlink:title="ComparisonsModule::isEqual">
+<g id="a_interface~~ftassertequal~~CallsGraph_node3"><a xlink:href="../interface/isequal.html" xlink:title="ComparisonsModule::isEqual">
 <polygon fill="#a7506f" stroke="#a7506f" points="702.5,-66 535.5,-66 535.5,-42 702.5,-42 702.5,-66"/>
 <text text-anchor="middle" x="619" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ComparisonsModule::isEqual</text>
 </a>
@@ -203,7 +206,7 @@
 <!-- proc~initializesharedassertionsmanager -->
 <g id="interface~~ftassertequal~~CallsGraph_node4" class="node">
 <title>proc~initializesharedassertionsmanager</title>
-<g id="a_interface~~ftassertequal~~CallsGraph_node4"><a xlink:href=".././proc/initializesharedassertionsmanager.html" xlink:title="FTAssertions::initializeSharedAssertionsManager">
+<g id="a_interface~~ftassertequal~~CallsGraph_node4"><a xlink:href="../proc/initializesharedassertionsmanager.html" xlink:title="FTAssertions::initializeSharedAssertionsManager">
 <polygon fill="#d9534f" stroke="#d9534f" points="754,-24 484,-24 484,0 754,0 754,-24"/>
 <text text-anchor="middle" x="619" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertions::initializeSharedAssertionsManager</text>
 </a>
@@ -218,7 +221,7 @@
 <!-- none~init -->
 <g id="interface~~ftassertequal~~CallsGraph_node5" class="node">
 <title>none~init</title>
-<g id="a_interface~~ftassertequal~~CallsGraph_node5"><a xlink:href=".././type/ftassertionsmanager.html#boundprocedure-init" xlink:title="FTAssertions::FTAssertionsManager%init">
+<g id="a_interface~~ftassertequal~~CallsGraph_node5"><a xlink:href="../type/ftassertionsmanager.html#boundprocedure-init" xlink:title="FTAssertions::FTAssertionsManager%init">
 <polygon fill="#a7506f" stroke="#a7506f" points="1016,-24 790,-24 790,0 1016,0 1016,-24"/>
 <text text-anchor="middle" x="903" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTAssertions::FTAssertionsManager%init</text>
 </a>
@@ -236,17 +239,17 @@
                   var paninterfaceftassertequalCallsGraph = svgPanZoom('#interfaceftassertequalCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -320,7 +323,76 @@ implementation in a submodule of an interface in a parent module.
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-assertequaltwointegers"></span><h3>private  subroutine assertEqualTwoIntegers(expectedValue, actualValue, msg)  
+    <div class="card-header codesum"><span class="anchor" id="proc-assertequaltwointegers"></span> <h3>private  subroutine assertEqualTwoIntegers(expectedValue, actualValue, msg)  
+</h3></div>
+    <div class="card-body">
+        
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-expectedvalue"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>expectedValue</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-actualvalue"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>actualValue</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-msg~4"></span>
+              character(len=*),
+            </td>
+<td></td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>msg</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+            <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetworeal"></span> <h3>private  subroutine assertWithinToleranceTwoReal(expectedValue, actualValue, relTol, absTol, msg)  
 </h3></div>
     <div class="card-body">
         
@@ -339,7 +411,7 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-expectedvalue~2"></span>
-              integer,
+              real,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -354,7 +426,7 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-actualvalue~2"></span>
-              integer,
+              real,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -368,7 +440,37 @@ implementation in a submodule of an interface in a parent module.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~7"></span>
+              <span class="anchor" id="variable-reltol"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>relTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-abstol"></span>
+              real,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-msg~5"></span>
               character(len=*),
             </td>
 <td></td>
@@ -389,7 +491,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetworeal"></span><h3>private  subroutine assertWithinToleranceTwoReal(expectedValue, actualValue, relTol, absTol, msg)  
+    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetwodouble"></span> <h3>private  subroutine assertWithinToleranceTwoDouble(expectedValue, actualValue, relTol, absTol, msg)  
 </h3></div>
     <div class="card-body">
         
@@ -408,7 +510,7 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-expectedvalue~3"></span>
-              real,
+              double precision,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -423,7 +525,7 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-actualvalue~3"></span>
-              real,
+              double precision,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -438,7 +540,7 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-reltol~2"></span>
-              real,
+              double precision,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -453,7 +555,7 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-abstol~2"></span>
-              real,
+              double precision,
             </td>
 <td>intent(in),</td>
               <td>optional</td>            <td>
@@ -467,7 +569,7 @@ implementation in a submodule of an interface in a parent module.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~8"></span>
+              <span class="anchor" id="variable-msg~6"></span>
               character(len=*),
             </td>
 <td></td>
@@ -488,7 +590,107 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetwodouble"></span><h3>private  subroutine assertWithinToleranceTwoDouble(expectedValue, actualValue, relTol, absTol, msg)  
+    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span> <h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, relTol, absTol, msg)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-expectedvalue~4"></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>expectedValue</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-actualvalue~4"></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>actualValue</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-reltol~3"></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>relTol</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-abstol~3"></span>
+              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>absTol</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-msg~7"></span>
+              character(len=*),
+            </td>
+<td></td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>msg</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+            <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-assertequaltwologicals"></span> <h3>private  subroutine assertEqualTwoLogicals(expectedValue, actualValue, msg)  
 </h3></div>
     <div class="card-body">
         
@@ -506,8 +708,8 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-expectedvalue~4"></span>
-              double precision,
+              <span class="anchor" id="variable-expectedvalue~6"></span>
+              logical,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -521,8 +723,8 @@ implementation in a submodule of an interface in a parent module.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-actualvalue~4"></span>
-              double precision,
+              <span class="anchor" id="variable-actualvalue~6"></span>
+              logical,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -530,36 +732,6 @@ implementation in a submodule of an interface in a parent module.
             </td>
             <td>::</td>
             <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-reltol~3"></span>
-              double precision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>relTol</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-abstol~3"></span>
-              double precision,
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>absTol</strong></td>
             <td>
                 
             </td>
@@ -587,107 +759,7 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-assertwithintolerancetwoquad"></span><h3>public  subroutine <a href='../proc/assertwithintolerancetwoquad.html'>assertWithinToleranceTwoQuad</a>(expectedValue, actualValue, relTol, absTol, msg)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-expectedvalue"></span>
-              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-actualvalue"></span>
-              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-reltol"></span>
-              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>relTol</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-abstol"></span>
-              real(kind=SELECTED_REAL_KIND(QUAD_DIGITS)),
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>absTol</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-msg~6"></span>
-              character(len=*),
-            </td>
-<td></td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>msg</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-assertequaltwologicals"></span><h3>private  subroutine assertEqualTwoLogicals(expectedValue, actualValue, msg)  
+    <div class="card-header codesum"><span class="anchor" id="proc-assertequalstring"></span> <h3>private  subroutine assertEqualString(expectedValue, actualValue, msg)  
 </h3></div>
     <div class="card-body">
         
@@ -706,9 +778,9 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-expectedvalue~5"></span>
-              logical,
+              character(len=*)
             </td>
-<td>intent(in)</td>
+<td></td>
               <td></td>            <td>
               
             </td>
@@ -721,75 +793,6 @@ implementation in a submodule of an interface in a parent module.
         <tr>
             <td>
               <span class="anchor" id="variable-actualvalue~5"></span>
-              logical,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>actualValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-msg~10"></span>
-              character(len=*),
-            </td>
-<td></td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>msg</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-assertequalstring"></span><h3>private  subroutine assertEqualString(expectedValue, actualValue, msg)  
-</h3></div>
-    <div class="card-body">
-        
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-expectedvalue~6"></span>
-              character(len=*)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>expectedValue</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-actualvalue~6"></span>
               character(len=*)
             </td>
 <td></td>
@@ -804,7 +807,7 @@ implementation in a submodule of an interface in a parent module.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~11"></span>
+              <span class="anchor" id="variable-msg~8"></span>
               character(len=*),
             </td>
 <td></td>
@@ -831,7 +834,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

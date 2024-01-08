@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -151,7 +154,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~59"></span>
+              <span class="anchor" id="variable-self~141"></span>
               class(<a href='../type/ftstack.html'>FTStack</a>)
             </td>
 <td></td>
@@ -208,7 +211,7 @@
 <!-- interface~release -->
 <g id="proc~~pop~~CallsGraph_node2" class="node">
 <title>interface~release</title>
-<g id="a_proc~~pop~~CallsGraph_node2"><a xlink:href=".././interface/release.html" xlink:title="FTObjectClass::release">
+<g id="a_proc~~pop~~CallsGraph_node2"><a xlink:href="../interface/release.html" xlink:title="FTObjectClass::release">
 <polygon fill="#a7506f" stroke="#a7506f" points="380,-66 246,-66 246,-42 380,-42 380,-66"/>
 <text text-anchor="middle" x="313" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::release</text>
 </a>
@@ -223,7 +226,7 @@
 <!-- proc~retainftobject -->
 <g id="proc~~pop~~CallsGraph_node3" class="node">
 <title>proc~retainftobject</title>
-<g id="a_proc~~pop~~CallsGraph_node3"><a xlink:href=".././proc/retainftobject.html" xlink:title="FTObjectClass::FTObject%retainFTObject">
+<g id="a_proc~~pop~~CallsGraph_node3"><a xlink:href="../proc/retainftobject.html" xlink:title="FTObjectClass::FTObject%retainFTObject">
 <polygon fill="#d9534f" stroke="#d9534f" points="428,-24 198,-24 198,0 428,0 428,-24"/>
 <text text-anchor="middle" x="313" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%retainFTObject</text>
 </a>
@@ -238,7 +241,7 @@
 <!-- proc~releaseftobject -->
 <g id="proc~~pop~~CallsGraph_node4" class="node">
 <title>proc~releaseftobject</title>
-<g id="a_proc~~pop~~CallsGraph_node4"><a xlink:href=".././proc/releaseftobject.html" xlink:title="FTObjectClass::releaseFTObject">
+<g id="a_proc~~pop~~CallsGraph_node4"><a xlink:href="../proc/releaseftobject.html" xlink:title="FTObjectClass::releaseFTObject">
 <polygon fill="#d9534f" stroke="#d9534f" points="645,-66 464,-66 464,-42 645,-42 645,-66"/>
 <text text-anchor="middle" x="554.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::releaseFTObject</text>
 </a>
@@ -253,7 +256,7 @@
 <!-- proc~printftobjectdescription -->
 <g id="proc~~pop~~CallsGraph_node5" class="node">
 <title>proc~printftobjectdescription</title>
-<g id="a_proc~~pop~~CallsGraph_node5"><a xlink:href=".././proc/printftobjectdescription.html" xlink:title="FTObjectClass::FTObject%printFTObjectDescription">
+<g id="a_proc~~pop~~CallsGraph_node5"><a xlink:href="../proc/printftobjectdescription.html" xlink:title="FTObjectClass::FTObject%printFTObjectDescription">
 <polygon fill="#d9534f" stroke="#d9534f" points="966,-66 681,-66 681,-42 966,-42 966,-66"/>
 <text text-anchor="middle" x="823.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%printFTObjectDescription</text>
 </a>
@@ -268,7 +271,7 @@
 <!-- proc~refcount -->
 <g id="proc~~pop~~CallsGraph_node6" class="node">
 <title>proc~refcount</title>
-<g id="a_proc~~pop~~CallsGraph_node6"><a xlink:href=".././proc/refcount.html" xlink:title="FTObjectClass::FTObject%refCount">
+<g id="a_proc~~pop~~CallsGraph_node6"><a xlink:href="../proc/refcount.html" xlink:title="FTObjectClass::FTObject%refCount">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="1200,-66 1002,-66 1002,-42 1200,-42 1200,-66"/>
 <text text-anchor="middle" x="1101" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%refCount</text>
 </a>
@@ -286,17 +289,17 @@
                   var panprocpopCallsGraph = svgPanZoom('#procpopCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -390,7 +393,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~poplastexception -->
 <g id="proc~~pop~~CalledByGraph_node2" class="node">
 <title>proc~poplastexception</title>
-<g id="a_proc~~pop~~CalledByGraph_node2"><a xlink:href=".././proc/poplastexception.html" xlink:title="SharedExceptionManagerModule::popLastException">
+<g id="a_proc~~pop~~CalledByGraph_node2"><a xlink:href="../proc/poplastexception.html" xlink:title="SharedExceptionManagerModule::popLastException">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="291,-24 0,-24 0,0 291,0 291,-24"/>
 <text text-anchor="middle" x="145.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::popLastException</text>
 </a>
@@ -404,17 +407,17 @@ implementation in a submodule of an interface in a parent module.
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -504,7 +507,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

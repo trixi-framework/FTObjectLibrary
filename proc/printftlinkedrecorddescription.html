@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -151,7 +154,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~136"></span>
+              <span class="anchor" id="variable-self~147"></span>
               class(<a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a>)
             </td>
 <td></td>
@@ -208,7 +211,7 @@
 <!-- proc~printftobjectdescription -->
 <g id="proc~~printftlinkedrecorddescription~~CallsGraph_node2" class="node">
 <title>proc~printftobjectdescription</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CallsGraph_node2"><a xlink:href=".././proc/printftobjectdescription.html" xlink:title="FTObjectClass::FTObject%printFTObjectDescription">
+<g id="a_proc~~printftlinkedrecorddescription~~CallsGraph_node2"><a xlink:href="../proc/printftobjectdescription.html" xlink:title="FTObjectClass::FTObject%printFTObjectDescription">
 <polygon fill="#d9534f" stroke="#d9534f" points="757,-24 472,-24 472,0 757,0 757,-24"/>
 <text text-anchor="middle" x="614.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%printFTObjectDescription</text>
 </a>
@@ -223,7 +226,7 @@
 <!-- proc~refcount -->
 <g id="proc~~printftlinkedrecorddescription~~CallsGraph_node3" class="node">
 <title>proc~refcount</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CallsGraph_node3"><a xlink:href=".././proc/refcount.html" xlink:title="FTObjectClass::FTObject%refCount">
+<g id="a_proc~~printftlinkedrecorddescription~~CallsGraph_node3"><a xlink:href="../proc/refcount.html" xlink:title="FTObjectClass::FTObject%refCount">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="991,-24 793,-24 793,0 991,0 991,-24"/>
 <text text-anchor="middle" x="892" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%refCount</text>
 </a>
@@ -241,17 +244,17 @@
                   var panprocprintftlinkedrecorddescriptionCallsGraph = svgPanZoom('#procprintftlinkedrecorddescriptionCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -345,7 +348,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~printftlinkedlistdescription -->
 <g id="proc~~printftlinkedrecorddescription~~CalledByGraph_node2" class="node">
 <title>proc~printftlinkedlistdescription</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node2"><a xlink:href=".././proc/printftlinkedlistdescription.html" xlink:title="FTLinkedListClass::FTLinkedList%printFTLinkedListDescription">
+<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node2"><a xlink:href="../proc/printftlinkedlistdescription.html" xlink:title="FTLinkedListClass::FTLinkedList%printFTLinkedListDescription">
 <polygon fill="#d9534f" stroke="#d9534f" points="1840,-66 1499,-66 1499,-42 1840,-42 1840,-66"/>
 <text text-anchor="middle" x="1669.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass::FTLinkedList%printFTLinkedListDescription</text>
 </a>
@@ -360,7 +363,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~printftdictionarydescription -->
 <g id="proc~~printftlinkedrecorddescription~~CalledByGraph_node3" class="node">
 <title>proc~printftdictionarydescription</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node3"><a xlink:href=".././proc/printftdictionarydescription.html" xlink:title="FTDictionaryClass::FTDictionary%printFTDictionaryDescription">
+<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node3"><a xlink:href="../proc/printftdictionarydescription.html" xlink:title="FTDictionaryClass::FTDictionary%printFTDictionaryDescription">
 <polygon fill="#d9534f" stroke="#d9534f" points="1429,-108 1083,-108 1083,-84 1429,-84 1429,-108"/>
 <text text-anchor="middle" x="1256" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass::FTDictionary%printFTDictionaryDescription</text>
 </a>
@@ -375,7 +378,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~printmultiindextabledescription -->
 <g id="proc~~printftlinkedrecorddescription~~CalledByGraph_node4" class="node">
 <title>proc~printmultiindextabledescription</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node4"><a xlink:href=".././proc/printmultiindextabledescription.html" xlink:title="FTMultiIndexTableClass::FTMultiIndexTable%printMultiIndexTableDescription">
+<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node4"><a xlink:href="../proc/printmultiindextabledescription.html" xlink:title="FTMultiIndexTableClass::FTMultiIndexTable%printMultiIndexTableDescription">
 <polygon fill="#d9534f" stroke="#d9534f" points="1463,-66 1049,-66 1049,-42 1463,-42 1463,-66"/>
 <text text-anchor="middle" x="1256" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMultiIndexTableClass::FTMultiIndexTable%printMultiIndexTableDescription</text>
 </a>
@@ -390,7 +393,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~printstackdescription -->
 <g id="proc~~printftlinkedrecorddescription~~CalledByGraph_node5" class="node">
 <title>proc~printstackdescription</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node5"><a xlink:href=".././proc/printstackdescription.html" xlink:title="FTStackClass::FTStack%printStackDescription">
+<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node5"><a xlink:href="../proc/printstackdescription.html" xlink:title="FTStackClass::FTStack%printStackDescription">
 <polygon fill="#d9534f" stroke="#d9534f" points="1384,-24 1128,-24 1128,0 1384,0 1384,-24"/>
 <text text-anchor="middle" x="1256" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStackClass::FTStack%printStackDescription</text>
 </a>
@@ -405,7 +408,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~printftexceptiondescription -->
 <g id="proc~~printftlinkedrecorddescription~~CalledByGraph_node6" class="node">
 <title>proc~printftexceptiondescription</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node6"><a xlink:href=".././proc/printftexceptiondescription.html" xlink:title="FTExceptionClass::FTException%printFTExceptionDescription">
+<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node6"><a xlink:href="../proc/printftexceptiondescription.html" xlink:title="FTExceptionClass::FTException%printFTExceptionDescription">
 <polygon fill="#d9534f" stroke="#d9534f" points="1013,-108 674,-108 674,-84 1013,-84 1013,-108"/>
 <text text-anchor="middle" x="843.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass::FTException%printFTExceptionDescription</text>
 </a>
@@ -420,7 +423,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~printallexceptions -->
 <g id="proc~~printftlinkedrecorddescription~~CalledByGraph_node7" class="node">
 <title>proc~printallexceptions</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node7"><a xlink:href=".././proc/printallexceptions.html" xlink:title="SharedExceptionManagerModule::printAllExceptions">
+<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node7"><a xlink:href="../proc/printallexceptions.html" xlink:title="SharedExceptionManagerModule::printAllExceptions">
 <polygon fill="#d9534f" stroke="#d9534f" points="638,-108 346,-108 346,-84 638,-84 638,-108"/>
 <text text-anchor="middle" x="492" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::printAllExceptions</text>
 </a>
@@ -435,7 +438,7 @@ implementation in a submodule of an interface in a parent module.
 <!-- proc~destructftexceptions -->
 <g id="proc~~printftlinkedrecorddescription~~CalledByGraph_node8" class="node">
 <title>proc~destructftexceptions</title>
-<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node8"><a xlink:href=".././proc/destructftexceptions.html" xlink:title="SharedExceptionManagerModule::destructFTExceptions">
+<g id="a_proc~~printftlinkedrecorddescription~~CalledByGraph_node8"><a xlink:href="../proc/destructftexceptions.html" xlink:title="SharedExceptionManagerModule::destructFTExceptions">
 <polygon fill="#d9534f" stroke="#d9534f" points="310,-108 0,-108 0,-84 310,-84 310,-108"/>
 <text text-anchor="middle" x="155" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule::destructFTExceptions</text>
 </a>
@@ -453,17 +456,17 @@ implementation in a submodule of an interface in a parent module.
                   var panprocprintftlinkedrecorddescriptionCalledByGraph = svgPanZoom('#procprintftlinkedrecorddescriptionCalledByGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -553,7 +556,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

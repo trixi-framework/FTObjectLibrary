@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -212,7 +215,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/ftlinkedlistclass.html'>FTLinkedListClass</a></li>
+                  <li class="list-inline-item"><a href='ftlinkedlistclass.html'>FTLinkedListClass</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -236,7 +239,7 @@
 <!-- module~ftlinkedlistclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node2" class="node">
 <title>module~ftlinkedlistclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node2"><a xlink:href=".././module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node2"><a xlink:href="../module/ftlinkedlistclass.html" xlink:title="FTLinkedListClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="426,-45 320,-45 320,-21 426,-21 426,-45"/>
 <text text-anchor="middle" x="373" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListClass</text>
 </a>
@@ -251,7 +254,7 @@
 <!-- module~ftlinkedlistrecordclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node3" class="node">
 <title>module~ftlinkedlistrecordclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node3"><a xlink:href=".././module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node3"><a xlink:href="../module/ftlinkedlistrecordclass.html" xlink:title="FTLinkedListRecordClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="276,-66 132,-66 132,-42 276,-42 276,-66"/>
 <text text-anchor="middle" x="204" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecordClass</text>
 </a>
@@ -266,7 +269,7 @@
 <!-- module~ftmutableobjectarrayclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node4" class="node">
 <title>module~ftmutableobjectarrayclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node4"><a xlink:href=".././module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node4"><a xlink:href="../module/ftmutableobjectarrayclass.html" xlink:title="FTMutableObjectArrayClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="284,-24 124,-24 124,0 284,0 284,-24"/>
 <text text-anchor="middle" x="204" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass</text>
 </a>
@@ -281,7 +284,7 @@
 <!-- module~ftobjectclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsesGraph_node5" class="node">
 <title>module~ftobjectclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node5"><a xlink:href=".././module/ftobjectclass.html" xlink:title="FTObjectClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsesGraph_node5"><a xlink:href="../module/ftobjectclass.html" xlink:title="FTObjectClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="88,-45 0,-45 0,-21 88,-21 88,-45"/>
 <text text-anchor="middle" x="44" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass</text>
 </a>
@@ -301,17 +304,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -401,7 +404,7 @@ modules which it uses.
 <!-- module~ftdictionaryclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node2" class="node">
 <title>module~ftdictionaryclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node2"><a xlink:href=".././module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node2"><a xlink:href="../module/ftdictionaryclass.html" xlink:title="FTDictionaryClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="297.5,-77.38 189.5,-77.38 189.5,-53.38 297.5,-53.38 297.5,-77.38"/>
 <text text-anchor="middle" x="243.5" y="-62.98" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionaryClass</text>
 </a>
@@ -416,7 +419,7 @@ modules which it uses.
 <!-- module~ftexceptionclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node3" class="node">
 <title>module~ftexceptionclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node3"><a xlink:href=".././module/ftexceptionclass.html" xlink:title="FTExceptionClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node3"><a xlink:href="../module/ftexceptionclass.html" xlink:title="FTExceptionClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="620,-98.38 514,-98.38 514,-74.38 620,-74.38 620,-98.38"/>
 <text text-anchor="middle" x="567" y="-83.98" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTExceptionClass</text>
 </a>
@@ -438,7 +441,7 @@ modules which it uses.
 <!-- module~ftvaluedictionaryclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node7" class="node">
 <title>module~ftvaluedictionaryclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node7"><a xlink:href=".././module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node7"><a xlink:href="../module/ftvaluedictionaryclass.html" xlink:title="FTValueDictionaryClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="478,-99.38 341,-99.38 341,-75.38 478,-75.38 478,-99.38"/>
 <text text-anchor="middle" x="409.5" y="-84.98" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTValueDictionaryClass</text>
 </a>
@@ -453,7 +456,7 @@ modules which it uses.
 <!-- module~ftobjectlibrary -->
 <g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node4" class="node">
 <title>module~ftobjectlibrary</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node4"><a xlink:href=".././module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node4"><a xlink:href="../module/ftobjectlibrary.html" xlink:title="FTObjectLibrary">
 <polygon fill="#337ab7" stroke="#337ab7" points="799,-139.38 702,-139.38 702,-115.38 799,-115.38 799,-139.38"/>
 <text text-anchor="middle" x="750.5" y="-124.98" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectLibrary</text>
 </a>
@@ -481,7 +484,7 @@ modules which it uses.
 <!-- module~ftsparsematrixclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node5" class="node">
 <title>module~ftsparsematrixclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node5"><a xlink:href=".././module/ftsparsematrixclass.html" xlink:title="FTSparseMatrixClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node5"><a xlink:href="../module/ftsparsematrixclass.html" xlink:title="FTSparseMatrixClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="305,-179.38 182,-179.38 182,-155.38 305,-155.38 305,-179.38"/>
 <text text-anchor="middle" x="243.5" y="-164.98" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTSparseMatrixClass</text>
 </a>
@@ -509,7 +512,7 @@ modules which it uses.
 <!-- module~ftstringsetclass -->
 <g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node6" class="node">
 <title>module~ftstringsetclass</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node6"><a xlink:href=".././module/ftstringsetclass.html" xlink:title="FTStringSetClass">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node6"><a xlink:href="../module/ftstringsetclass.html" xlink:title="FTStringSetClass">
 <polygon fill="#337ab7" stroke="#337ab7" points="460.5,-57.38 358.5,-57.38 358.5,-33.38 460.5,-33.38 460.5,-57.38"/>
 <text text-anchor="middle" x="409.5" y="-42.98" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSetClass</text>
 </a>
@@ -530,7 +533,7 @@ modules which it uses.
 <!-- module~sharedexceptionmanagermodule -->
 <g id="module~~ftlinkedlistiteratorclass~~UsedByGraph_node8" class="node">
 <title>module~sharedexceptionmanagermodule</title>
-<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node8"><a xlink:href=".././module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
+<g id="a_module~~ftlinkedlistiteratorclass~~UsedByGraph_node8"><a xlink:href="../module/sharedexceptionmanagermodule.html" xlink:title="SharedExceptionManagerModule">
 <polygon fill="#337ab7" stroke="#337ab7" points="845,-97.38 656,-97.38 656,-73.38 845,-73.38 845,-97.38"/>
 <text text-anchor="middle" x="750.5" y="-82.98" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SharedExceptionManagerModule</text>
 </a>
@@ -548,17 +551,17 @@ modules which it uses.
                   var panmoduleftlinkedlistiteratorclassUsedByGraph = svgPanZoom('#moduleftlinkedlistiteratorclassUsedByGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -657,7 +660,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-list~2"></span>
+              <span class="anchor" id="variable-list~7"></span>
               class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),
             </td>
               <td>public,</td>
@@ -674,7 +677,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-current"></span>
+              <span class="anchor" id="variable-current~7"></span>
               class(<a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a>),
             </td>
               <td>public,</td>
@@ -709,12 +712,12 @@ modules which it uses.
           <tbody>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-description~3'>description</a></strong> => <a href='../proc/ftobjectdescription.html'>FTObjectDescription</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-description'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-printdescription~3'>printDescription</a></strong> => <a href='../proc/printftobjectdescription.html'>printFTObjectDescription</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-printdescription~4'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftobjectdescription.html'>printFTObjectDescription</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -724,7 +727,7 @@ modules which it uses.
               </tr>
               <tr>
                 <td>  procedure, public, non_overridable ::
-  <strong><a href='../type/ftobject.html#boundprocedure-retain'>retain</a></strong> => <a href='../proc/retainftobject.html'>retainFTObject</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-retain'>retain</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/retainftobject.html'>retainFTObject</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -739,7 +742,7 @@ modules which it uses.
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-init~6'>init</a></strong> => <a href='../proc/initempty.html'>initEmpty</a></td>
+  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-init~6'>init</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initempty.html'>initEmpty</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -749,27 +752,27 @@ modules which it uses.
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-isatend'>isAtEnd</a></strong> => <a href='../proc/ftlinkedlistisatend.html'>FTLinkedListIsAtEnd</a></td>
+  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-isatend'>isAtEnd</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftlinkedlistisatend.html'>FTLinkedListIsAtEnd</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-object~7'>object</a></strong> => <a href='../proc/ftlinkedlistobject.html'>FTLinkedListObject</a></td>
+  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-object~9'>object</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftlinkedlistobject.html'>FTLinkedListObject</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-currentrecord'>currentRecord</a></strong> => <a href='../proc/ftlinkedlistcurrentrecord.html'>FTLinkedListCurrentRecord</a></td>
+  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-currentrecord~3'>currentRecord</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftlinkedlistcurrentrecord.html'>FTLinkedListCurrentRecord</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-linkedlist'>linkedList</a></strong> => <a href='../proc/returnlinkedlist.html'>returnLinkedList</a></td>
+  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-linkedlist'>linkedList</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/returnlinkedlist.html'>returnLinkedList</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-classname~11'>className</a></strong> => <a href='../proc/linkedlistiteratorclassname.html'>linkedListIteratorClassName</a></td>
+  <strong><a href='../type/ftlinkedlistiterator.html#boundprocedure-classname~12'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/linkedlistiteratorclassname.html'>linkedListIteratorClassName</a></td>
                 <td></td>
               </tr>
               <tr>
@@ -803,7 +806,7 @@ modules which it uses.
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-ftlinkedlistisatend"></span><h3>public  function <a href='../proc/ftlinkedlistisatend.html'>FTLinkedListIsAtEnd</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-ftlinkedlistisatend"></span> <h3>public  function <a href='../proc/ftlinkedlistisatend.html'>FTLinkedListIsAtEnd</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -822,7 +825,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~145"></span>
+              <span class="anchor" id="variable-self~174"></span>
               class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
             </td>
 <td></td>
@@ -848,7 +851,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-returnlinkedlist"></span><h3>public  function <a href='../proc/returnlinkedlist.html'>returnLinkedList</a>(self) result(o)  
+    <div class="card-header codesum"><span class="anchor" id="proc-returnlinkedlist"></span> <h3>public  function <a href='../proc/returnlinkedlist.html'>returnLinkedList</a>(self) result(o)  
 </h3></div>
     <div class="card-body">
           
@@ -867,7 +870,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~148"></span>
+              <span class="anchor" id="variable-self~176"></span>
               class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
             </td>
 <td></td>
@@ -893,7 +896,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-ftlinkedlistobject"></span><h3>public  function <a href='../proc/ftlinkedlistobject.html'>FTLinkedListObject</a>(self) result(o)  
+    <div class="card-header codesum"><span class="anchor" id="proc-ftlinkedlistobject"></span> <h3>public  function <a href='../proc/ftlinkedlistobject.html'>FTLinkedListObject</a>(self) result(o)  
 </h3></div>
     <div class="card-body">
           
@@ -912,7 +915,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~146"></span>
+              <span class="anchor" id="variable-self~177"></span>
               class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
             </td>
 <td></td>
@@ -938,277 +941,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-ftlinkedlistcurrentrecord"></span><h3>public  function <a href='../proc/ftlinkedlistcurrentrecord.html'>FTLinkedListCurrentRecord</a>(self) result(o)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~147"></span>
-              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>class(<a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a>), POINTER</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-linkedlistiteratorclassname"></span><h3>public  function <a href='../proc/linkedlistiteratorclassname.html'>linkedListIteratorClassName</a>(self) result(s)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Class name returns a string with the name of the type of the object</p><a href="../proc/linkedlistiteratorclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~149"></span>
-              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>character(len=CLASS_NAME_CHARACTER_LENGTH)</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-        </section>
-        <br>
-
-        <section>
-          <h2>Subroutines</h2>
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initempty"></span><h3>public  subroutine <a href='../proc/initempty.html'>initEmpty</a>(self)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~143"></span>
-              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initwithftlinkedlist"></span><h3>public  subroutine <a href='../proc/initwithftlinkedlist.html'>initWithFTLinkedList</a>(self, list)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~144"></span>
-              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-list~3"></span>
-              class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),
-            </td>
-<td></td>
-              <td></td>            <td>
-              POINTER
-            </td>
-            <td>::</td>
-            <td><strong>list</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-releaseftlinkedlistiterator"></span><h3>public  subroutine <a href='../proc/releaseftlinkedlistiterator.html'>releaseFTLinkedListIterator</a>(self)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~177"></span>
-              type(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>),
-            </td>
-<td></td>
-              <td></td>            <td>
-              POINTER
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-destructiterator"></span><h3>public  subroutine <a href='../proc/destructiterator.html'>destructIterator</a>(self)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~142"></span>
-              type(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-releasememberlist"></span><h3>public  subroutine <a href='../proc/releasememberlist.html'>releaseMemberList</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-ftlinkedlistcurrentrecord"></span> <h3>public  function <a href='../proc/ftlinkedlistcurrentrecord.html'>FTLinkedListCurrentRecord</a>(self) result(o)  
 </h3></div>
     <div class="card-body">
           
@@ -1243,12 +976,67 @@ modules which it uses.
     </tbody>
   </table>
 
+    <h4>
+    Return Value
+    <small>class(<a href='../type/ftlinkedlistrecord.html'>FTLinkedListRecord</a>), POINTER</small>
+    </h4>
+    
 
     </div>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-settostart"></span><h3>public  subroutine <a href='../proc/settostart.html'>setToStart</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-linkedlistiteratorclassname"></span> <h3>public  function <a href='../proc/linkedlistiteratorclassname.html'>linkedListIteratorClassName</a>(self) result(s)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Class name returns a string with the name of the type of the object</p><a href="../proc/linkedlistiteratorclassname.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~180"></span>
+              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=CLASS_NAME_CHARACTER_LENGTH)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-initempty"></span> <h3>public  subroutine <a href='../proc/initempty.html'>initEmpty</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1267,7 +1055,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~151"></span>
+              <span class="anchor" id="variable-self~167"></span>
               class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
             </td>
 <td></td>
@@ -1288,7 +1076,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-movetonext"></span><h3>public  subroutine <a href='../proc/movetonext.html'>moveToNext</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initwithftlinkedlist"></span> <h3>public  subroutine <a href='../proc/initwithftlinkedlist.html'>initWithFTLinkedList</a>(self, list)  
 </h3></div>
     <div class="card-body">
           
@@ -1307,47 +1095,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~152"></span>
-              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-setlinkedlist"></span><h3>public  subroutine <a href='../proc/setlinkedlist.html'>setLinkedList</a>(self, list)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~150"></span>
+              <span class="anchor" id="variable-self~168"></span>
               class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
             </td>
 <td></td>
@@ -1362,7 +1110,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-list~4"></span>
+              <span class="anchor" id="variable-list~8"></span>
               class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),
             </td>
 <td></td>
@@ -1383,7 +1131,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-removecurrentrecord"></span><h3>public  subroutine <a href='../proc/removecurrentrecord.html'>removeCurrentRecord</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-releaseftlinkedlistiterator"></span> <h3>public  subroutine <a href='../proc/releaseftlinkedlistiterator.html'>releaseFTLinkedListIterator</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1402,7 +1150,262 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~153"></span>
+              <span class="anchor" id="variable-self~169"></span>
+              type(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              POINTER
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-destructiterator"></span> <h3>public  subroutine <a href='../proc/destructiterator.html'>destructIterator</a>(self)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~170"></span>
+              type(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-releasememberlist"></span> <h3>public  subroutine <a href='../proc/releasememberlist.html'>releaseMemberList</a>(self)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~171"></span>
+              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-settostart"></span> <h3>public  subroutine <a href='../proc/settostart.html'>setToStart</a>(self)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~172"></span>
+              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-movetonext"></span> <h3>public  subroutine <a href='../proc/movetonext.html'>moveToNext</a>(self)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~173"></span>
+              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-setlinkedlist"></span> <h3>public  subroutine <a href='../proc/setlinkedlist.html'>setLinkedList</a>(self, list)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~175"></span>
+              class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-list~9"></span>
+              class(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              POINTER
+            </td>
+            <td>::</td>
+            <td><strong>list</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-removecurrentrecord"></span> <h3>public  subroutine <a href='../proc/removecurrentrecord.html'>removeCurrentRecord</a>(self)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~179"></span>
               class(<a href='../type/ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
             </td>
 <td></td>
@@ -1435,7 +1438,7 @@ modules which it uses.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

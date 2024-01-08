@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -151,7 +154,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~17"></span>
+              <span class="anchor" id="variable-self~107"></span>
               class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
@@ -224,7 +227,7 @@
 <!-- proc~addobjecttoarray -->
 <g id="proc~~allobjects~~CallsGraph_node4" class="node">
 <title>proc~addobjecttoarray</title>
-<g id="a_proc~~allobjects~~CallsGraph_node4"><a xlink:href=".././proc/addobjecttoarray.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%addObjectToArray">
+<g id="a_proc~~allobjects~~CallsGraph_node4"><a xlink:href="../proc/addobjecttoarray.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%addObjectToArray">
 <polygon fill="#d9534f" stroke="#d9534f" points="688.5,-66 297.5,-66 297.5,-42 688.5,-42 688.5,-66"/>
 <text text-anchor="middle" x="493" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%addObjectToArray</text>
 </a>
@@ -239,7 +242,7 @@
 <!-- proc~initobjectarraywithsize -->
 <g id="proc~~allobjects~~CallsGraph_node5" class="node">
 <title>proc~initobjectarraywithsize</title>
-<g id="a_proc~~allobjects~~CallsGraph_node5"><a xlink:href=".././proc/initobjectarraywithsize.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%initObjectArrayWithSize">
+<g id="a_proc~~allobjects~~CallsGraph_node5"><a xlink:href="../proc/initobjectarraywithsize.html" xlink:title="FTMutableObjectArrayClass::FTMutableObjectArray%initObjectArrayWithSize">
 <polygon fill="#d9534f" stroke="#d9534f" points="704,-24 282,-24 282,0 704,0 704,-24"/>
 <text text-anchor="middle" x="493" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTMutableObjectArrayClass::FTMutableObjectArray%initObjectArrayWithSize</text>
 </a>
@@ -254,7 +257,7 @@
 <!-- proc~retainftobject -->
 <g id="proc~~allobjects~~CallsGraph_node7" class="node">
 <title>proc~retainftobject</title>
-<g id="a_proc~~allobjects~~CallsGraph_node7"><a xlink:href=".././proc/retainftobject.html" xlink:title="FTObjectClass::FTObject%retainFTObject">
+<g id="a_proc~~allobjects~~CallsGraph_node7"><a xlink:href="../proc/retainftobject.html" xlink:title="FTObjectClass::FTObject%retainFTObject">
 <polygon fill="#d9534f" stroke="#d9534f" points="970,-66 740,-66 740,-42 970,-42 970,-66"/>
 <text text-anchor="middle" x="855" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%retainFTObject</text>
 </a>
@@ -269,7 +272,7 @@
 <!-- proc~initftobject -->
 <g id="proc~~allobjects~~CallsGraph_node6" class="node">
 <title>proc~initftobject</title>
-<g id="a_proc~~allobjects~~CallsGraph_node6"><a xlink:href=".././proc/initftobject.html" xlink:title="FTObjectClass::FTObject%initFTObject">
+<g id="a_proc~~allobjects~~CallsGraph_node6"><a xlink:href="../proc/initftobject.html" xlink:title="FTObjectClass::FTObject%initFTObject">
 <polygon fill="#d9534f" stroke="#d9534f" points="963,-24 747,-24 747,0 963,0 963,-24"/>
 <text text-anchor="middle" x="855" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObjectClass::FTObject%initFTObject</text>
 </a>
@@ -287,17 +290,17 @@
                   var panprocallobjectsCallsGraph = svgPanZoom('#procallobjectsCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -387,7 +390,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

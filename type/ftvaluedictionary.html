@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -144,25 +147,25 @@
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-retain">retain</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-isunreferenced">isUnreferenced</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-refcount">refCount</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-initwithsize">initWithSize</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-initwithsize~3">initWithSize</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-init~3">init</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-allkeys">allKeys</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-allobjects">allObjects</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-addobjectforkey">addObjectForKey</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-description~2">description</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-printdescription~2">printDescription</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-description~3">description</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-printdescription~7">printDescription</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-objectforkey">objectForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-containskey">containsKey</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-count">COUNT</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-addvalueforkey~2">addValueForKey</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-count~2">COUNT</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-addvalueforkey">addValueForKey</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-addvalueforkey~2">addValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-realvalueforkey">realValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-doubleprecisionvalueforkey">doublePrecisionValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-quadvalueforkey">quadValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-integervalueforkey">integerValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-stringvalueforkey">stringValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-logicalvalueforkey">logicalValueForKey</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-classname~5">className</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-classname~4">className</a>
         </div>
       </div>
     </div>
@@ -176,14 +179,15 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, public, extends(<a href='../type/ftdictionary.html'>FTDictionary</a>) :: FTValueDictionary</h2>
+      <h2>
+        type, public, extends(<a href='ftdictionary.html'>FTDictionary</a>) :: FTValueDictionary</h2>
     
-<br>    <div class="card">
-      <div class="card-header">
-  <h3 class="card-title">Inherits</h3>
-      </div>
-      <div class="card-body">
-    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<br>      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Inherits</h3>
+        </div>
+        <div class="card-body">
+          <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -203,7 +207,7 @@
 <!-- type~ftdictionary -->
 <g id="type~~ftvaluedictionary~~InheritsGraph_node2" class="node">
 <title>type~ftdictionary</title>
-<g id="a_type~~ftvaluedictionary~~InheritsGraph_node2"><a xlink:href=".././type/ftdictionary.html" xlink:title="FTDictionary">
+<g id="a_type~~ftvaluedictionary~~InheritsGraph_node2"><a xlink:href="../type/ftdictionary.html" xlink:title="FTDictionary">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="586,-37.51 506,-37.51 506,-13.51 586,-13.51 586,-37.51"/>
 <text text-anchor="middle" x="546" y="-23.11" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionary</text>
 </a>
@@ -218,7 +222,7 @@
 <!-- type~ftlinkedlist -->
 <g id="type~~ftvaluedictionary~~InheritsGraph_node3" class="node">
 <title>type~ftlinkedlist</title>
-<g id="a_type~~ftvaluedictionary~~InheritsGraph_node3"><a xlink:href=".././type/ftlinkedlist.html" xlink:title="FTLinkedList">
+<g id="a_type~~ftvaluedictionary~~InheritsGraph_node3"><a xlink:href="../type/ftlinkedlist.html" xlink:title="FTLinkedList">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="436,-61.51 357,-61.51 357,-37.51 436,-37.51 436,-61.51"/>
 <text text-anchor="middle" x="396.5" y="-47.11" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedList</text>
 </a>
@@ -234,7 +238,7 @@
 <!-- type~ftobject -->
 <g id="type~~ftvaluedictionary~~InheritsGraph_node4" class="node">
 <title>type~ftobject</title>
-<g id="a_type~~ftvaluedictionary~~InheritsGraph_node4"><a xlink:href=".././type/ftobject.html" xlink:title="FTObject">
+<g id="a_type~~ftvaluedictionary~~InheritsGraph_node4"><a xlink:href="../type/ftobject.html" xlink:title="FTObject">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="60,-61.51 0,-61.51 0,-37.51 60,-37.51 60,-61.51"/>
 <text text-anchor="middle" x="30" y="-47.11" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTObject</text>
 </a>
@@ -256,7 +260,7 @@
 <!-- type~ftlinkedlistrecord -->
 <g id="type~~ftvaluedictionary~~InheritsGraph_node5" class="node">
 <title>type~ftlinkedlistrecord</title>
-<g id="a_type~~ftvaluedictionary~~InheritsGraph_node5"><a xlink:href=".././type/ftlinkedlistrecord.html" xlink:title="FTLinkedListRecord">
+<g id="a_type~~ftvaluedictionary~~InheritsGraph_node5"><a xlink:href="../type/ftlinkedlistrecord.html" xlink:title="FTLinkedListRecord">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="275,-61.51 159,-61.51 159,-37.51 275,-37.51 275,-61.51"/>
 <text text-anchor="middle" x="217" y="-47.11" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTLinkedListRecord</text>
 </a>
@@ -294,17 +298,17 @@
                   var pantypeftvaluedictionaryInheritsGraph = svgPanZoom('#typeftvaluedictionaryInheritsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#InheritsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#InheritsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="InheritsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -341,8 +345,8 @@ said component(s).
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
     <br>
 
     <section>
@@ -394,7 +398,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" id="variable-entries"></span>
-              type(<a href='../type/ftlinkedlist.html'>FTLinkedList</a>),
+              type(<a href='ftlinkedlist.html'>FTLinkedList</a>),
             </td>
               <td>public,</td>
             <td>
@@ -454,7 +458,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftobject.html'>FTObject</a>),
+              class(<a href='ftobject.html'>FTObject</a>),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -471,7 +475,7 @@ said component(s).
 
     <h4>
     Return Value
-    <small>class(<a href='../type/ftobject.html'>FTObject</a>), POINTER</small>
+    <small>class(<a href='ftobject.html'>FTObject</a>), POINTER</small>
     </h4>
     
 
@@ -486,7 +490,7 @@ said component(s).
       <span class="anchor" id="boundprocedure-retain"></span>
       <h3>
           procedure, public, non_overridable ::
-  <strong>retain</strong> => <a href='../proc/retainftobject.html'>retainFTObject</a>
+  <strong>retain</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/retainftobject.html'>retainFTObject</a>
         
       </h3>
     </div>
@@ -516,7 +520,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftobject.html'>FTObject</a>)
+              class(<a href='ftobject.html'>FTObject</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -572,7 +576,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftobject.html'>FTObject</a>)
+              class(<a href='ftobject.html'>FTObject</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -632,7 +636,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftobject.html'>FTObject</a>)
+              class(<a href='ftobject.html'>FTObject</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -661,7 +665,7 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-initwithsize"></span>
+      <span class="anchor" id="boundprocedure-initwithsize~3"></span>
       <h3>
           procedure, public ::
   <strong>initWithSize</strong>
@@ -691,7 +695,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -740,7 +744,7 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  subroutine <a href='../proc/init.html'>init</a>(self)  
+    public  subroutine <a href='../proc/init~2.html'>init</a>(self)  
 </h3>
     
 
@@ -760,7 +764,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -787,7 +791,7 @@ said component(s).
       <span class="anchor" id="boundprocedure-allkeys"></span>
       <h3>
           procedure, public ::
-  <strong>allKeys</strong> => <a href='../proc/allkeys.html'>AllKeys</a>
+  <strong>allKeys</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/allkeys.html'>AllKeys</a>
         
       </h3>
     </div>
@@ -814,7 +818,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -846,7 +850,7 @@ said component(s).
       <span class="anchor" id="boundprocedure-allobjects"></span>
       <h3>
           procedure, public ::
-  <strong>allObjects</strong> => <a href='../proc/allobjects.html'>AllObjects</a>
+  <strong>allObjects</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/allobjects.html'>AllObjects</a>
         
       </h3>
     </div>
@@ -873,7 +877,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -890,7 +894,7 @@ said component(s).
 
     <h4>
     Return Value
-    <small>class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>), POINTER</small>
+    <small>class(<a href='ftmutableobjectarray.html'>FTMutableObjectArray</a>), POINTER</small>
     </h4>
     
 
@@ -932,7 +936,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -947,7 +951,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftobject.html'>FTObject</a>),
+              class(<a href='ftobject.html'>FTObject</a>),
             </td>
 <td></td>
               <td></td>            <td>
@@ -986,10 +990,10 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-description~2"></span>
+      <span class="anchor" id="boundprocedure-description~3"></span>
       <h3>
           procedure, public ::
-  <strong>description</strong> => <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescription</a>
+  <strong>description</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftdictionarydescription.html'>FTDictionaryDescription</a>
         
       </h3>
     </div>
@@ -1016,7 +1020,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1045,10 +1049,10 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-printdescription~2"></span>
+      <span class="anchor" id="boundprocedure-printdescription~7"></span>
       <h3>
           procedure, public ::
-  <strong>printDescription</strong> => <a href='../proc/printftdictionarydescription.html'>printFTDictionaryDescription</a>
+  <strong>printDescription</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftdictionarydescription.html'>printFTDictionaryDescription</a>
         
       </h3>
     </div>
@@ -1075,7 +1079,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1144,7 +1148,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1176,7 +1180,7 @@ said component(s).
 
     <h4>
     Return Value
-    <small>class(<a href='../type/ftobject.html'>FTObject</a>), POINTER</small>
+    <small>class(<a href='ftobject.html'>FTObject</a>), POINTER</small>
     </h4>
     
 
@@ -1218,7 +1222,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1262,7 +1266,7 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-count"></span>
+      <span class="anchor" id="boundprocedure-count~2"></span>
       <h3>
           procedure, public ::
   <strong>COUNT</strong>
@@ -1292,7 +1296,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftdictionary.html'>FTDictionary</a>)
+              class(<a href='ftdictionary.html'>FTDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1321,7 +1325,7 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-addvalueforkey~2"></span>
+      <span class="anchor" id="boundprocedure-addvalueforkey"></span>
       <h3>
           generic, public ::
   <strong>addValueForKey</strong> => addRealValueForKey, addDoublePrecisionValueForKey, addIntegerValueForKey, addStringValueForKey, addLogicalValueForKey
@@ -1351,7 +1355,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1420,7 +1424,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1489,7 +1493,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1558,7 +1562,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1627,7 +1631,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1681,7 +1685,7 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-addvalueforkey"></span>
+      <span class="anchor" id="boundprocedure-addvalueforkey~2"></span>
       <h3>
           generic, public ::
   <strong>addValueForKey</strong> => addQuadValueForKey
@@ -1711,7 +1715,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1795,7 +1799,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1869,7 +1873,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -1943,7 +1947,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -2017,7 +2021,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -2091,7 +2095,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -2180,7 +2184,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -2224,10 +2228,10 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-classname~5"></span>
+      <span class="anchor" id="boundprocedure-classname~4"></span>
       <h3>
           procedure, public ::
-  <strong>className</strong> => <a href='../proc/valuedictionaryclassname.html'>valueDictionaryClassName</a>
+  <strong>className</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/valuedictionaryclassname.html'>valueDictionaryClassName</a>
         
       </h3>
     </div>
@@ -2254,7 +2258,7 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+              class(<a href='ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -2291,7 +2295,7 @@ said component(s).
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2023 
+          <div class="col"><p>FTObjectLibrary was developed by David A. Kopriva<br>&copy; 2024 
 </p>
           </div>
           <div class="col">
