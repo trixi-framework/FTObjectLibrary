@@ -76,12 +76,14 @@ jobs:
           sudo apt-get install -y lcov
           cd TestSuiteBuild
           FC=${{ matrix.compiler }} ./createcoverage
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
         if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           files: ./TestSuiteBuild/lcov.info
           flags: unittests
           name: codecov-umbrella
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
       - name: Coveralls
         if: ${{ matrix.os == 'ubuntu-latest' }}
         uses: coverallsapp/github-action@master
