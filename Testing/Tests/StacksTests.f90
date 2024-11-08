@@ -79,7 +79,7 @@
          CALL stack % push(objectPtr)
          CALL FTAssertEqual(1,stack % COUNT(),"testStackPush: Initial push reference count")
          
-         CALL FTAssertEqual(2,r1%refCount()  ,"testStackPush: Reference count on stored object")
+         CALL FTAssertEqual(2,r1 % refCount()  ,"testStackPush: Reference count on stored object")
          
          CALL releaseFTValue(r1)
          CALL FTAssertEqual(1,r1 % refCount(),"testStackPush: Release on stored object")
@@ -88,8 +88,8 @@
          rPeek     => valueFromObject(objectPtr)
          CALL FTAssertEqual(expectedValue = 3.14d0 , &
                             actualValue   = rPeek % doublePrecisionValue()  , &
-                            tol           = 1.0d-12, &
-                            msg = "testStackPush: Value of stored object")
+                            relTol        = 1.0d-12, &
+                            msg           = "testStackPush: Value of stored object")
          
       END SUBROUTINE testStackPush
       
@@ -105,7 +105,7 @@
          USE StackUnitTestsModule
          IMPLICIT NONE  
          
-         TYPE (FTStack) , POINTER :: stack
+         TYPE (FTStack) , POINTER :: stack, castStack
          TYPE (FTValue) , POINTER :: r2, r3
          CLASS(FTObject), POINTER :: objectPtr
 !
@@ -115,6 +115,16 @@
 !
          ALLOCATE(stack)
          CALL testStackInit(stack)
+         CALL FTAssertEqual(expectedValue = "FTStack", &
+                            actualValue   = stack % className(), &
+                            msg           = "Check class name")
+         CALL stack % pop(objectPtr)
+         CALL FTAssert(.NOT. ASSOCIATED(objectPtr),msg = "Empty stack pop")
+         objectPtr => stack % peek()
+         CALL FTAssert(.NOT. ASSOCIATED(objectPtr),msg = "Empty stack peek")
+         objectPtr => stack
+         castStack => stackFromObject(objectPtr)
+         CALL FTAssert(ASSOCIATED(castStack, stack ),msg = "Cast of object to stack")
 !
 !        ------------
 !        Add an entry
@@ -127,45 +137,45 @@
 !        ------------
 !
          ALLOCATE(r2)
-         CALL r2%initWithValue("r2 is a string")
+         CALL r2 % initWithValue("r2 is a string")
          objectPtr => r2
-         CALL stack%push(objectPtr)
+         CALL stack % push(objectPtr)
          CALL releaseFTValue(r2)
-         CALL FTAssertEqual(2,stack%count(),"StackClassTests: Stack size after second push")
+         CALL FTAssertEqual(2,stack % count(),"StackClassTests: Stack size after second push")
 !
 !        -----------
 !        Third entry
 !        -----------
 !
          ALLOCATE(r3)
-         CALL r3%initWithValue(17)
+         CALL r3 % initWithValue(17)
          objectPtr => r3
-         CALL stack%push(objectPtr)
-         CALL FTAssertEqual(3,stack%COUNT(),"StackClassTests: Stack size after third push")
+         CALL stack % push(objectPtr)
+         CALL FTAssertEqual(3,stack % COUNT(),"StackClassTests: Stack size after third push")
          CALL releaseFTValue(r3)
 !
 !        ------------
 !        Peek and pop
 !        ------------
 !
-         objectPtr => stack%peek()
+         objectPtr => stack % peek()
          SELECT TYPE(objectPtr)
             TYPE is (FTValue)
                CALL FTAssertEqual(17,objectPtr%integerValue(),&
-               "StackClassTests: Interger value stored at top of stack")
+               "StackClassTests: Integer value stored at top of stack")
             CLASS DEFAULT
                PRINT *, "uncaught cast in stack object"
          END SELECT
          
-         CALL stack%pop(objectPtr)
+         CALL stack % pop(objectPtr)
          SELECT TYPE(objectPtr)
             TYPE is (FTValue)
-               CALL FTAssertEqual(17,objectPtr%integerValue(),&
+               CALL FTAssertEqual(17,objectPtr % integerValue(),&
                "StackClassTests: Incorrect integervalue popped from top of stack")
             CLASS DEFAULT
                CALL FTAssert(.false.,"StackClassTests: UnKnown type stored in linked list")
          END SELECT
-         CALL FTAssertEqual(2,stack%COUNT(),"StackClassTests: Stack count after popping")
+         CALL FTAssertEqual(2,stack % COUNT(),"StackClassTests: Stack count after popping")
 !
 !        ------------------------
 !        Finish up with the stack

@@ -42,19 +42,30 @@
          USE FTAssertions
          IMPLICIT NONE  
          
-         TYPE(FTDictionary)                               :: dict
+         CLASS(FTDictionary)                    , POINTER :: dict, dictFromObj
          CLASS(FTObject)                        , POINTER :: obj
          TYPE (FTValue)                         , POINTER :: v
          TYPE (FTMutableObjectArray)            , POINTER :: storedObjects
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: storedKeys(:)
+         TYPE(FTKeyObjectPair)                  , POINTER :: kvPair
 
          
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: keys   = ["first ","second","third ","fourth"]
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), DIMENSION(4) :: values = ["one  ","two  ","three","four "]
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH)               :: s, msg, storedKey, sExpected, sActual
          INTEGER                                               :: i
+         CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH)           :: dictDescription =  " (first,one)"
 
-         CALL dict % initWithSize(64)
+         ALLOCATE(dict)
+         CALL dict % init()
+!
+!        ----------------------------
+!        Make sure it is a dictionary
+!        ----------------------------
+!
+         CALL FTAssertEqual(expectedValue = dict % className(), &
+                            actualValue   = "FTDictionary",  &
+                            msg           = "Class name for FTDictionary")
 !
 !        ----------------------
 !        Check empty dictionary
@@ -71,7 +82,16 @@
 !        Add the keys and values to the dictionary
 !        -----------------------------------------
 !
-         DO i = 1, 4
+         ALLOCATE(v)
+         CALL v % initWithValue(values(1))
+         obj => v
+         CALL dict % addObjectForKey(obj,keys(1))
+         CALL releaseFTValue(v)
+
+         CALL FTAssertEqual(expectedValue = TRIM(dictDescription) //NEW_LINE('a'), &
+                            actualValue   = dict % description(), &
+                            msg           = "Description on a simple dictionary") 
+         DO i = 2, 4
             ALLOCATE(v)
             CALL v % initWithValue(values(i))
             obj => v
@@ -80,6 +100,23 @@
             CALL FTAssertEqual(1,v % refCount(),"Reference Counting: Addition of object and release")
             CALL FTAssertEqual(i,dict % count(),"Adding to dictionary object count")
          END DO
+!
+!        -------
+!        Casting
+!        -------
+!
+         obj         => dict
+         dictFromObj => dictionaryFromObject(obj)
+         CALL FTAssertEqual(expectedValue = dictFromObj % className(), &
+                            actualValue   = "FTDictionary",  &
+                            msg           = "Class name for FTDictionary")
+         CALL FTAssert( dictFromObj % containsKey(keys(1)))
+         dictFromObj => NULL()
+         CALL castToDictionary(obj, dictFromObj)
+         CALL FTAssertEqual(expectedValue = dictFromObj % className(), &
+                            actualValue   = "FTDictionary",  &
+                            msg           = "Class name for FTDictionary")
+         CALL FTAssert( dictFromObj % containsKey(keys(1)))
 !
 !        ------------------
 !        Get them back out 
@@ -94,7 +131,7 @@
             ELSE
                msg = "Value for key "//TRIM(values(i))// " not of correct type"
                CALL FTAssert(.false.,msg)
-            END IF 
+            END IF
          END DO
 !
 !        -------------------------
@@ -130,5 +167,25 @@
 !
          DEALLOCATE(storedKeys)
          CALL releaseFTMutableObjectArray(storedObjects)
+         CALL releaseFTDictionary(dict)
+         CALL FTAssert(.NOT.ASSOCIATED(dict),"Released dictionary should have been deallocated")
+!
+!        -------------------------
+!        Key-Value Pair operations
+!        -------------------------
+!
+         ALLOCATE(kvPair)
+         ALLOCATE(v)
+         CALL v % initWithValue(1024)
+         obj => v
+         CALL kvPair % initWithObjectAndKey(obj,"magna")
+         CALL releaseFTValue(v)
+         CALL FTAssertEqual(expectedValue = "magna",actualValue = kvPair % key())
+         obj => kvPair % object()
+         v => valueFromObject(obj)
+         CALL FTAssertEqual(expectedValue = 1,actualValue = v % refCount())
+         CALL FTAssertEqual(expectedValue = 1024,actualValue = v % integerValue())
+         CALL releaseFTKeyObjectPair(kvPair)
+         CALL FTAssert(.NOT.ASSOCIATED(kvPair),msg = "Final deletion of key-object pair")
          
       END SUBROUTINE FTDictionaryClassTests    

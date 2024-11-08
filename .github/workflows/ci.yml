@@ -27,18 +27,30 @@ jobs:
           - os: ubuntu-latest
             compiler: gfortran-10
             cmake_generator: Unix Makefiles
+            shell: bash
           - os: macos-latest
-            compiler: gfortran-10
+            compiler: gfortran-11
             cmake_generator: Unix Makefiles
+            shell: bash
           - os: windows-latest
             compiler: gfortran
             cmake_generator: MinGW Makefiles
+            shell: 'msys2 {0}'
+    # Set default shell as suggested here: https://github.community/t/setting-default-shell-or-other-step-metadata-conditionally-in-workflows/154055
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       # - name: Add msbuild to PATH
       #   if: ${{ matrix.os == 'windows-latest' }}
       #   uses: microsoft/setup-msbuild@v1.0.2
+      - uses: msys2/setup-msys2@v2
+        if: ${{ matrix.os == 'windows-latest' }}
+        with:
+          update: true
+          install: git base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-cmake
       - name: Verify CMake build
         run: |
           mkdir build && cd build
@@ -52,11 +64,11 @@ jobs:
           make -j 2 FC=${{ matrix.compiler }}
       - name: Build test suite
         run: |
-          cd TestSuiteBuild 
+          cd TestSuiteBuild
           make -j 2 FC=${{ matrix.compiler }}
       - name: Run tests
         run: |
-          cd TestSuiteBuild 
+          cd TestSuiteBuild
           ./runSuite
       - name: Run tests for coverage
         if: ${{ matrix.os == 'ubuntu-latest' }}
@@ -64,12 +76,14 @@ jobs:
           sudo apt-get install -y lcov
           cd TestSuiteBuild
           FC=${{ matrix.compiler }} ./createcoverage
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v4
         if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           files: ./TestSuiteBuild/lcov.info
           flags: unittests
           name: codecov-umbrella
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
       - name: Coveralls
         if: ${{ matrix.os == 'ubuntu-latest' }}
         uses: coverallsapp/github-action@master

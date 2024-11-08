@@ -132,7 +132,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE printFTKeyObjectPairDescription(self,iUnit)  
+         RECURSIVE SUBROUTINE printFTKeyObjectPairDescription(self,iUnit)  
             IMPLICIT NONE  
             CLASS(FTKeyObjectPair) :: self
             INTEGER                :: iUnit
@@ -351,6 +351,7 @@
             CALL pair % initWithObjectAndKey(object,key)
             ptr => pair
             CALL self % entries(h) % add(ptr)
+            CALL release(self = ptr )
             self % numberOfEntries = self % numberOfEntries + 1
             
          END SUBROUTINE addObjectForKey
@@ -363,13 +364,44 @@
             CHARACTER(LEN=*)                     :: key
             CLASS(FTObject)       , POINTER      :: objectForKey
             INTEGER                              :: h
+            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
+            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
            
             objectForKey => NULL()
             IF(self % COUNT() == 0)     RETURN 
-            
+!
+!           -------------
+!           Find the hash
+!           -------------
+!
             h = b3hs_hash_key_jenkins(key,SIZE(self % entries))
+            
             IF ( self % entries(h) % COUNT() > 0 )     THEN
-               objectForKey => objectForKeyInList(key,self % entries(h))
+!
+!              -----------------------
+!              Search through the list
+!              -----------------------
+!
+               listRecordPtr => self % entries(h) % head
+               DO WHILE(ASSOCIATED(listRecordPtr))
+!
+!                 --------------------------------------------
+!                 The list's recordObject is a FTKeyObjectPair
+!                 --------------------------------------------
+!
+                  SELECT TYPE (pair => listRecordPtr % recordObject)
+                     TYPE is (FTKeyObjectPair)
+                        keyString = pair % keyString
+                        IF ( TRIM(keyString) == TRIM(key) .AND.         &
+                             ASSOCIATED( pair % valueObject) )     THEN
+                           objectForKey => pair % valueObject
+                           EXIT 
+                        END IF 
+                     CLASS DEFAULT
+                  END SELECT
+                  listRecordPtr  => listRecordPtr % next
+               END DO
+               
             END IF 
  
          END FUNCTION ObjectForKey
@@ -392,40 +424,6 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         FUNCTION objectForKeyInList(key,list)  
-            IMPLICIT NONE  
-            CHARACTER(LEN=*)            :: key
-            CLASS(FTLinkedList)         :: list
-            CLASS(FTObject), POINTER    :: objectForKeyInList
-            
-            CLASS(FTLinkedListRecord)     , POINTER :: listRecordPtr => NULL()
-            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: keyString
-
-            objectForKeyInList => NULL()
-            
-            listRecordPtr => list % head
-            DO WHILE(ASSOCIATED(listRecordPtr))
-!
-!              --------------------------------------------
-!              The list's recordObject is a FTKeyObjectPair
-!              --------------------------------------------
-!
-               SELECT TYPE (pair => listRecordPtr % recordObject)
-                  TYPE is (FTKeyObjectPair)
-                     keyString = pair % key()
-                     IF ( TRIM(keyString) == TRIM(key) )     THEN
-                        objectForKeyInList => pair % object()
-                        EXIT 
-                     END IF 
-                  CLASS DEFAULT
-               END SELECT
-               listRecordPtr  => listRecordPtr % next
-            END DO    
-
-         END FUNCTION objectForKeyInList
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
          CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH) FUNCTION FTDictionaryDescription(self)  
             IMPLICIT NONE  
             CLASS(FTDictionary) :: self
@@ -440,8 +438,7 @@
                s = self % entries(i) % description()
                IF ( LEN_TRIM(s) > 0 )     THEN
                   FTDictionaryDescription =  TRIM(FTDictionaryDescription) // &
-                                             TRIM(self % entries(i) % description()) // &
-                                             CHAR(13)
+                                             TRIM(s) // NEW_LINE('a')
                END IF 
             END DO
             
@@ -449,7 +446,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE printFTDictionaryDescription(self,iUnit)  
+         RECURSIVE SUBROUTINE printFTDictionaryDescription(self,iUnit)  
             IMPLICIT NONE  
             CLASS(FTDictionary) :: self
             INTEGER             :: iUnit

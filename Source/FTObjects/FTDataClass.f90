@@ -71,6 +71,8 @@
          PROCEDURE, PUBLIC :: initWithDataOfType
          PROCEDURE, PUBLIC :: storedData
          PROCEDURE, PUBLIC :: storedDataSize
+         PROCEDURE, PUBLIC :: storedDataType
+         PROCEDURE, PUBLIC :: dataIsOfType
          PROCEDURE, PUBLIC :: className => dataClassName
          FINAL             :: destructData
       END TYPE FTData
@@ -104,7 +106,7 @@
          IMPLICIT NONE
          TYPE(FTData)  :: self
          
-         DEALLOCATE( self % dataStorage)
+         IF(ASSOCIATED(self % dataStorage)) DEALLOCATE( self % dataStorage)
          
       END SUBROUTINE destructData
 !
@@ -112,7 +114,7 @@
 ! 
       SUBROUTINE releaseFTData(self)  
          IMPLICIT NONE
-         TYPE(FTData)  , POINTER :: self
+         TYPE(FTData)   , POINTER :: self
          CLASS(FTObject), POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN
@@ -142,12 +144,12 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      FUNCTION dataType(self)  RESULT(t)
+      FUNCTION storedDataType(self)  RESULT(t)
          IMPLICIT NONE  
          CLASS(FTData)    :: self
          CHARACTER(LEN=DATA_CLASS_TYPE_LENGTH) :: t
          t = self % dataType
-      END FUNCTION dataType
+      END FUNCTION storedDataType
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -195,9 +197,9 @@
 ! 
       FUNCTION dataIsOfType(self, dataType)  RESULT(t)
          IMPLICIT NONE  
-         CLASS(FTData)                         :: self
-         CHARACTER(LEN=DATA_CLASS_TYPE_LENGTH) :: dataType
-         LOGICAL                               :: t
+         CLASS(FTData)    :: self
+         CHARACTER(LEN=*) :: dataType
+         LOGICAL          :: t
          
          IF ( dataType == self % dataType )     THEN
             t = .TRUE. 

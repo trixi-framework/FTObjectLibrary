@@ -376,7 +376,8 @@
       SUBROUTINE castDictionaryToValueDictionary(dict,valueDict) 
 !
 !     -----------------------------------------------------
-!     Cast the base class FTObject to the FTException class
+!     Cast a FTDictionary to a FTValueDictionary as a
+!     subroutine call.
 !     -----------------------------------------------------
 !
          IMPLICIT NONE  
@@ -405,7 +406,7 @@
          CLASS(FTValueDictionary), POINTER :: valueDict
          CLASS(FTObject)         , POINTER :: obj
          
-         obj => NULL()
+         valueDict => NULL()
          SELECT TYPE (obj)
             TYPE is (FTValueDictionary)
                valueDict => obj
@@ -420,7 +421,8 @@
       FUNCTION valueDictionaryFromDictionary(dict) RESULT(valueDict)
 !
 !     -----------------------------------------------------
-!     Cast the base class FTObject to the FTException class
+!     Cast FTDictionary to the FTValueDictionary class as
+!     a function call.
 !     -----------------------------------------------------
 !
          IMPLICIT NONE  

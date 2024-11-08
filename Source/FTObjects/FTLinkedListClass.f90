@@ -131,7 +131,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE printFTLinkedRecordDescription(self,iUnit)  
+      RECURSIVE SUBROUTINE printFTLinkedRecordDescription(self,iUnit)  
          IMPLICIT NONE  
          CLASS(FTLinkedListRecord) :: self
          INTEGER                   :: iUnit
@@ -446,51 +446,6 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE removeObject1(self,obj)
-         IMPLICIT NONE 
-         CLASS(FTLinkedList)                :: self
-         CLASS(FTObject)          , POINTER :: obj
-         
-         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), previous => NULL()
-                  
-         IF ( .NOT.ASSOCIATED(self % head) )     RETURN
-         
-         current  => self % head
-         previous => NULL()
-!
-!        -------------------------------------------------------------
-!        Find the object in the list by a linear search and remove it.
-!        It will be deallocated if necessary.
-!        -------------------------------------------------------------
-!
-         DO WHILE (ASSOCIATED(current))
-            IF ( ASSOCIATED(current % recordObject,obj) )     THEN
-            
-               IF ( ASSOCIATED(previous) )     THEN
-                  previous % next => current % next
-               ELSE
-                  self % head => current % next
-               END IF 
-               
-               IF ( ASSOCIATED(current,self % tail) )     THEN
-                  self % tail => previous 
-               END IF 
-               
-               obj => current
-               CALL release(obj)
-               
-               self % nRecords = self % nRecords - 1
-               EXIT
-            END IF 
-            
-            previous => current
-            current  => current % next
-         END DO
-         
-      END SUBROUTINE removeObject1 
-!
-!////////////////////////////////////////////////////////////////////////
-!
       SUBROUTINE removeObject(self,obj)
          IMPLICIT NONE 
          CLASS(FTLinkedList)                :: self
@@ -673,13 +628,12 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE printFTLinkedListDescription(self,iUnit)  
+      RECURSIVE SUBROUTINE printFTLinkedListDescription(self,iUnit)  
          IMPLICIT NONE  
          CLASS(FTLinkedList)                 :: self
          INTEGER                             :: iUnit
          CLASS(FTLinkedListRecord), POINTER  :: listRecord => NULL()
          LOGICAL                             :: circular
-         
          
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
@@ -689,8 +643,9 @@
          
          listRecord => self % head
 
-         DO WHILE (ASSOCIATED(listRecord))
+         DO WHILE (ASSOCIATED(listRecord)) 
             CALL listRecord % printDescription(iUnit)
+            IF(.NOT. ASSOCIATED(listRecord)) EXIT !TODO Don't understand why this is necessary. Why is record being unassociated?
             listRecord => listRecord % next
          END DO
          
@@ -768,6 +723,7 @@
          array => NULL()
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
+         circular                        = .FALSE.
          IF(self % isCircular_) circular = .TRUE.
          CALL self % makeCircular(.FALSE.)
          
@@ -996,7 +952,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-!< The destuctor must not be called except at the end of destructors of
+!< The destructor must not be called except at the end of destructors of
 ! subclasses.
 !
       SUBROUTINE destructIterator(self)

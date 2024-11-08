@@ -46,24 +46,11 @@
 !
       SUBROUTINE FTLinkedListClassTests  
          IMPLICIT NONE
-!
-!        ------------
-!        Basic tests 
-!        ------------
-!
+
          CALL basicTests
-!
-!        --------------------------------------
-!        Do more with deleting objects in lists
-!        --------------------------------------
-!
          CALL TestDeletingObjects
-!
-!        ---------------------------------
-!        Now test appending lists to lists
-!        ---------------------------------
-!
-         CALL testAppendingLists
+         CALL TestAppendingLists
+         CALL TestInsertingObjects
          
       END SUBROUTINE FTLinkedListClassTests
 !
@@ -94,7 +81,7 @@
 !        can be a non-pointer, too, like the iterator.
 !        -------------------------------------------------
 !
-         CLASS (FTLinkedList)        , POINTER :: list
+         CLASS (FTLinkedList)       , POINTER :: list, listPtr
          TYPE (FTLinkedListIterator), POINTER :: iterator
          
          INTEGER                      :: i
@@ -108,6 +95,9 @@
 !
          ALLOCATE(list)
          CALL list % init()
+         CALL FTAssertEqual(expectedValue = "FTLinkedList", &
+                            actualValue   = list % className(), &
+                            msg           = "Class name test for linked list")
 !
 !        --------------------------------------------------------------------------
 !        Test Reference counting.
@@ -181,6 +171,16 @@
          CALL FTAssertEqual(3,list % COUNT(),"List size after adding third object")
          CALL releaseFTValue(r3)
 !
+!        -------
+!        Casting
+!        -------
+!
+         objectPtr => list
+         CALL cast(objectPtr, listPtr)
+         CALL FTAssert(ASSOCIATED(list,listPtr),msg = "Cast by subroutine call" )
+         listPtr => linkedListFromObject(obj = objectPtr)
+         CALL FTAssert(ASSOCIATED(list,listPtr),msg = "Cast by function call" )
+!
 !        ---------------------------------------------------------------------------------
 !        Check integrity of stored objects. We iterate
 !        through the linked list with an iterator. The
@@ -197,6 +197,10 @@
          ALLOCATE(iterator)
          CALL iterator % initWithFTLinkedList(list)
          CALL FTAssertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
+         CALL FTAssertEqual(expectedValue = "FTLinkedListIterator", &
+                            actualValue   = iterator % className(), &
+                            msg           = "Class name test for linked list")
+         CALL FTAssert(ASSOCIATED(list, iterator % linkedList()),msg = "List stored vs list returned")
 !
 !        -------------------------------------------
 !        Iterate through the list from the beginning
@@ -223,7 +227,7 @@
                      CASE(2)
                         CALL FTAssertEqual("r2 is a string",v % stringValue(14),"Second item is string value")
                      CASE(3)
-                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,"Third item in list is real value")
+                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,msg="Third item in list is real value")
                   END SELECT
                CLASS DEFAULT
                   CALL FTAssert(.false.,"Unknown type stored in linked list")
@@ -254,7 +258,7 @@
                      CASE(1)  
                         CALL FTAssertEqual(1,v % integerValue(),"First item in list doesn't have proper value")
                      CASE(3)
-                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,"third item in list doesn't have proper value")
+                        CALL FTAssertEqual(3.14,v % realValue(),singleTol,msg="third item in list doesn't have proper value")
                   END SELECT
                CLASS DEFAULT
                   CALL FTAssert(.false.,"Known type stored in linked list")
@@ -291,7 +295,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE testAppendingLists  
+      SUBROUTINE TestAppendingLists  
          USE FTAssertions
          USE FTValueClass
          USE FTLinkedListClass
@@ -379,7 +383,7 @@
          DO WHILE (.NOT.iterator % isAtEnd())
          
             v         => valueFromObject(iterator % object())
-            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly after release of added list")
             CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
             objectPtr => iterator % object()
@@ -413,7 +417,7 @@
          DO WHILE (.NOT.iterator % isAtEnd())
          
             v => valueFromObject(iterator % object())
-            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly afer release of added list")
+            CALL FTAssertEqual(j, v % integerValue(),"Item value stored properly after release of added list")
             CALL FTAssertEqual(1, v % refCount(),"Item value pointed to by list refCount")
             
             objectPtr => iterator % object()
@@ -429,7 +433,7 @@
          CALL releaseFTLinkedList(list1)
          CALL releaseFTLinkedListIterator(iterator)
          
-      END SUBROUTINE testAppendingLists
+      END SUBROUTINE TestAppendingLists
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -546,3 +550,70 @@
          CALL releaseFTLinkedListIterator(iterator)
 
       END SUBROUTINE TestDeletingObjects
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE TestInsertingObjects  
+         USE FTLinkedListClass
+         USE FTLinkedListIteratorClass
+         USE FTValueClass
+         USE FTAssertions
+         IMPLICIT NONE
+         
+         TYPE (FTValue)           , POINTER   :: v 
+         CLASS(FTObject)          , POINTER   :: obj, savObj
+         CLASS(FTLinkedList)      , POINTER   :: list
+         INTEGER                              :: j
+         TYPE(FTLinkedListIterator), POINTER  :: iterator
+         
+         ALLOCATE(list)
+         CALL list % init()
+!
+!        -----------------------------
+!        Add some objects to the lists
+!        and save one of them
+!        -----------------------------
+!
+         DO j = 1, 6
+            ALLOCATE(v)
+            CALL v % initWithValue(j)
+            obj => v
+            
+            IF ( j == 3 )     THEN
+               savObj => obj 
+            END IF 
+
+            CALL list % add(obj)
+            CALL releaseFTValue(v)
+         END DO
+!
+!        ------------------
+!        Add the new object
+!        ------------------
+!
+         ALLOCATE(v)
+         CALL v % initWithValue(99)
+         obj => v
+         CALL list % insertObjectAfterObject(obj = obj,after = savObj)
+         savObj => obj
+         CALL releaseFTValue(v)
+         CALL FTAssertEqual(expectedValue = 7,actualValue = list % count(),msg = "Length after adding object")
+!
+!        ---------------------------------
+!        Make sure it's in the right place
+!        ---------------------------------
+!
+         ALLOCATE(iterator)
+         CALL iterator % initwithFTLinkedList(list)
+         CALL releaseFTLinkedList(list)
+         
+         CALL iterator % setToStart()
+         DO j = 1, 3 
+            CALL iterator % moveToNext() 
+         END DO 
+         obj => iterator % object()
+         CALL FTAssert(ASSOCIATED(obj, savObj),msg = "Location of inserted object test")
+         
+         CALL releaseFTLinkedListIterator(iterator)
+         
+      END SUBROUTINE TestInsertingObjects

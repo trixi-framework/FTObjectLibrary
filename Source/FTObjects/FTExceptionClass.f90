@@ -294,10 +294,10 @@
 ! 
       SUBROUTINE destructException(self)
 !
-! --------------------------------------------------------------
-!>The destructor for the class. Do not call this direectly. Call
+! -------------------------------------------------------------
+!>The destructor for the class. Do not call this directly. Call
 !>the release() procedure instead
-! --------------------------------------------------------------
+! -------------------------------------------------------------
 !
 
          IMPLICIT NONE  
@@ -390,7 +390,7 @@
 !
 ! ----------------------------------------------
 !>A basic printing of the exception and the info
-!>held in the infoDicitonary.
+!>held in the infoDictionary.
 ! ----------------------------------------------
 !
         IMPLICIT NONE  
@@ -590,7 +590,7 @@
            END IF
            PRINT *,"   ***********************************"
            PRINT *
-           CALL errorStack % printDescription(iUnit = 6)
+           CALL printAllExceptions
          END IF 
 !
 !        -----------------------

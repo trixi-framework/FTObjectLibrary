@@ -36,7 +36,8 @@
 !!
 !////////////////////////////////////////////////////////////////////////
 !
-      PROGRAM TestObjectsMain 
+   PROGRAM TestObjectsMain 
+      USE FTAssertions
       USE TestSuiteManagerClass
       IMPLICIT NONE
       
@@ -55,6 +56,8 @@
       EXTERNAL :: MultiIndexTableTests
       EXTERNAL :: FTStringSetTests
       EXTERNAL :: OptionalDataTest
+      EXTERNAL :: ComparisonTests
+      EXTERNAL :: DataTests
       
       CHARACTER(LEN=1), POINTER :: optData(:) 
       
@@ -65,6 +68,11 @@
 !     -----
 !
       CALL testSuite % init()
+      CALL testSuite % setOutputUnit(11)
+      CALL FTAssertEqual(expectedValue = 11,                     &
+                         actualValue = testSuite % outputUnit(), &
+                         msg = "Setting output unit for test suite")
+      CALL testSuite % setOutputUnit(6)
       
       CALL testSuite % addTestSubroutineWithName(FTValueClassTests,"FTValueClass Tests")
       CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,"FTDictionaryClass Tests")
@@ -76,19 +84,19 @@
       CALL testSuite % addTestSubroutineWithName(SparseMatrixTests,"SparseMatrixClass Tests")
       CALL testSuite % addTestSubroutineWithName(MultiIndexTableTests,"MultiIndexTable Tests" )
       CALL testSuite % addTestSubroutineWithName(FTStringSetTests,"String set Tests" )
+      CALL testSuite % addTestSubroutineWithName(ComparisonTests,"Comparisons Tests" )
+      CALL testSuite % addTestSubroutineWithName(DataTests,"FTData Tests" )
       
       ALLOCATE(optData(2))
       optData(1) = "a"
       optdata(2) = "b"
       CALL testSuite % addTestSubroutineWithName(OptionalDataTest,"Optional Data Tests", optData)
-      
 !
 !     -------------
 !     Run the tests
 !     -------------
 !
       CALL testSuite % performTests(numberOfFailedTests)
-
 !
 !     ---------------------------------------
 !     Exit with error in case of failed tests
@@ -97,5 +105,18 @@
       IF (numberOfFailedTests .gt. 0) THEN
         ERROR STOP 'At least one test has failed'
       END IF
-      
-      END PROGRAM TestObjectsMain  
+!
+!     ---------------------------------------------------------------
+!     Test failures: At this point everything has worked. 
+!     Now test assertion failures and only fail if the failures fail.
+!     ---------------------------------------------------------------
+!
+      CALL AssertionFailureTests
+!
+!     --------
+!     Clean up
+!     --------
+!
+      CALL finalizeTestSuiteManager(testSuite)
+
+   END PROGRAM TestObjectsMain  
