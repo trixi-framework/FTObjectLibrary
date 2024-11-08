@@ -97,7 +97,7 @@ Before making an update to the Spack package, you should familiarize yourself wi
 
 
 To add a new FTObjectLibrary release to Spack,
-1. Fork the Spack repository on Github to your personal account or the trixi-framework organization account.
+1. Fork the Spack repository on GitHub.
 
 2. Install and initialize spack on your local system from your fork
 ```
@@ -134,7 +134,7 @@ spack install ftobjectlibrary@v1.0.1
 
 9. When ready, commit your changes and push them to your Github repository.
 
-10. Open a Pull Request with `github.com/spack/spack` to merge your changes with the `spack/spack/develop` branch.
+10. Open a Pull Request against `github.com/spack/spack` to merge your changes with the `spack/spack/develop` branch.
 
 ## Authors
 FTObjectLibrary was initiated by
