@@ -25,7 +25,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            compiler: gfortran-10
+            compiler: gfortran-12
             cmake_generator: Unix Makefiles
             shell: bash
           - os: macos-latest
