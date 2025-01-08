@@ -24,6 +24,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - os: ubuntu-22.04
+            compiler: gfortran-10
+            cmake_generator: Unix Makefiles
+            shell: bash
           - os: ubuntu-latest
             compiler: gfortran-13
             cmake_generator: Unix Makefiles
