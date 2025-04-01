@@ -12,14 +12,29 @@
 
     <title>FTMutableObjectArrayClass &ndash; FTObjectLibrary</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -93,9 +108,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -119,7 +136,7 @@
       </a>
       <div id="inters-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../module/ftmutableobjectarrayclass.html#interface-cast~7">cast</a>
+            <a class="list-group-item" href="../module/ftmutableobjectarrayclass.html#interface-cast">cast</a>
         </div>
       </div>
     </div>
@@ -728,8 +745,8 @@ modules which it uses.
           <h2>Interfaces</h2>
               <div class="card">
     <div class="card-header bg-light codesum">
-      <span class="anchor" id="interface-cast~7"></span>
-      <h3>public        interface <a href='../interface/cast~7.html'>cast</a> 
+      <span class="anchor" id="interface-cast"></span>
+      <h3>public        interface <a href='../interface/cast.html'>cast</a> 
       </h3>
     </div>
     <ul class="list-group">
@@ -754,7 +771,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~82"></span>
+              <span class="anchor" id="variable-obj~24"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -769,7 +786,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-cast~19"></span>
+              <span class="anchor" id="variable-cast~2"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>),
             </td>
 <td></td>
@@ -825,88 +842,88 @@ modules which it uses.
           <tbody>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-init'>init</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initftobject.html'>initFTObject</a></td>
-                <td></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-init~4'>init</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initftobject.html'>initFTObject</a></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-description~2'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a></td>
-                <td></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-description~4'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public, non_overridable ::
   <strong><a href='../type/ftobject.html#boundprocedure-copy'>copy</a></strong> => copyFTObject</td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public, non_overridable ::
   <strong><a href='../type/ftobject.html#boundprocedure-retain'>retain</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/retainftobject.html'>retainFTObject</a></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public, non_overridable ::
   <strong><a href='../type/ftobject.html#boundprocedure-isunreferenced'>isUnreferenced</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public, non_overridable ::
   <strong><a href='../type/ftobject.html#boundprocedure-refcount'>refCount</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-initwithsize~4'>initWithSize</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initobjectarraywithsize.html'>initObjectArrayWithSize</a></td>
-                <td></td>
+  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-initwithsize'>initWithSize</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initobjectarraywithsize.html'>initObjectArrayWithSize</a></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-addobject'>addObject</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/addobjecttoarray.html'>addObjectToArray</a></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-replaceobjectatindexwithobject'>replaceObjectAtIndexWithObject</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-removeobjectatindex'>removeObjectAtIndex</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-objectatindex'>objectAtIndex</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-printdescription~11'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printarray.html'>printArray</a></td>
-                <td></td>
+  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-printdescription'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printarray.html'>printArray</a></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-classname~12'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/arrayclassname.html'>arrayClassName</a></td>
-                <td></td>
+  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-classname~2'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/arrayclassname.html'>arrayClassName</a></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-setchunksize'>setChunkSize</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-chunksize'>chunkSize</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-count~3'>COUNT</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/numberofitems.html'>numberOfItems</a></td>
-                <td></td>
+  <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-count'>COUNT</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/numberofitems.html'>numberOfItems</a></td>
+                  <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/ftmutableobjectarray.html#boundprocedure-allocatedsize'>allocatedSize</a></strong></td>
-                <td></td>
+                  <td></td>
               </tr>
           </tbody>
         </table>
@@ -938,7 +955,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~174"></span>
+              <span class="anchor" id="variable-self~22"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -998,7 +1015,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~177"></span>
+              <span class="anchor" id="variable-self~25"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1043,7 +1060,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~178"></span>
+              <span class="anchor" id="variable-self~26"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1088,7 +1105,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~179"></span>
+              <span class="anchor" id="variable-self~27"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1133,7 +1150,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~81"></span>
+              <span class="anchor" id="variable-obj~23"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1178,7 +1195,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~180"></span>
+              <span class="anchor" id="variable-self~28"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1229,7 +1246,7 @@ the array remains empty.</p><a href="../proc/initobjectarraywithsize.html" class
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~167"></span>
+              <span class="anchor" id="variable-self~15"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1284,7 +1301,7 @@ the array remains empty.</p><a href="../proc/initobjectarraywithsize.html" class
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~168"></span>
+              <span class="anchor" id="variable-self~16"></span>
               type(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>),
             </td>
 <td></td>
@@ -1325,7 +1342,7 @@ reference count reaches zero. Do not call this yourself.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~169"></span>
+              <span class="anchor" id="variable-self~17"></span>
               type(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1365,7 +1382,7 @@ reference count reaches zero. Do not call this yourself.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~170"></span>
+              <span class="anchor" id="variable-self~18"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1380,7 +1397,7 @@ reference count reaches zero. Do not call this yourself.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~76"></span>
+              <span class="anchor" id="variable-obj~18"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1420,7 +1437,7 @@ reference count reaches zero. Do not call this yourself.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~171"></span>
+              <span class="anchor" id="variable-self~19"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1475,7 +1492,7 @@ reference count reaches zero. Do not call this yourself.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~172"></span>
+              <span class="anchor" id="variable-self~20"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1545,7 +1562,7 @@ reference count reaches zero. Do not call this yourself.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~173"></span>
+              <span class="anchor" id="variable-self~21"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1560,7 +1577,7 @@ reference count reaches zero. Do not call this yourself.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iunit~12"></span>
+              <span class="anchor" id="variable-iunit"></span>
               integer
             </td>
 <td></td>
@@ -1600,7 +1617,7 @@ reference count reaches zero. Do not call this yourself.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~176"></span>
+              <span class="anchor" id="variable-self~24"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>)
             </td>
 <td></td>
@@ -1655,7 +1672,7 @@ reference count reaches zero. Do not call this yourself.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~82"></span>
+              <span class="anchor" id="variable-obj~24"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1670,7 +1687,7 @@ reference count reaches zero. Do not call this yourself.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-cast~19"></span>
+              <span class="anchor" id="variable-cast~2"></span>
               class(<a href='../type/ftmutableobjectarray.html'>FTMutableObjectArray</a>),
             </td>
 <td></td>
@@ -1719,27 +1736,5 @@ reference count reaches zero. Do not call this yourself.</p>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

@@ -12,14 +12,29 @@
 
     <title>FTObject &ndash; FTObjectLibrary </title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -94,9 +109,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -140,10 +157,10 @@
       </a>
       <div id="boundprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-init">init</a>
-            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-description~2">description</a>
-            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-printdescription~2">printDescription</a>
-            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-classname~3">className</a>
+            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-init~4">init</a>
+            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-description~4">description</a>
+            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-printdescription~9">printDescription</a>
+            <a class="list-group-item" href="../type/ftobject.html#boundprocedure-classname~10">className</a>
             <a class="list-group-item" href="../type/ftobject.html#boundprocedure-copy">copy</a>
             <a class="list-group-item" href="../type/ftobject.html#boundprocedure-retain">retain</a>
             <a class="list-group-item" href="../type/ftobject.html#boundprocedure-isunreferenced">isUnreferenced</a>
@@ -196,7 +213,7 @@
 </g>
 </g>
 <!-- type~ftdata&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge6" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge15" class="edge">
 <title>type~ftdata&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M203.39,-418.9C178.22,-413.16 139.75,-402.18 110.5,-384"/>
 </g>
@@ -210,7 +227,7 @@
 </g>
 </g>
 <!-- type~ftdictionary&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge19" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge7" class="edge">
 <title>type~ftdictionary&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M604.83,-145.9C588.05,-144.82 568.56,-145.66 552,-152"/>
 </g>
@@ -224,7 +241,7 @@
 </g>
 </g>
 <!-- type~ftdictionary&#45;&gt;type~ftlinkedlist -->
-<g id="type~~ftobject~~InheritedByGraph_edge26" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge23" class="edge">
 <title>type~ftdictionary&#45;&gt;type~ftlinkedlist</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M622.82,-164.17C597.52,-178.65 553.87,-203.45 516,-224 505.54,-229.67 494.07,-235.73 483.7,-241.14"/>
 <polygon fill="#000000" stroke="#000000" points="481.82,-238.18 474.56,-245.9 485.05,-244.39 481.82,-238.18"/>
@@ -240,7 +257,7 @@
 </g>
 </g>
 <!-- type~ftexception&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge12" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge18" class="edge">
 <title>type~ftexception&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M828.42,-66.58C799.08,-70.52 757.63,-77.01 722,-86 687.38,-94.73 679.6,-99.94 646,-112"/>
 <path fill="none" stroke="#000000" d="M644,-112C618.03,-119.83 610.6,-119.57 586,-131 569.89,-138.48 568.59,-145.65 552,-152"/>
@@ -249,7 +266,7 @@
 <path fill="none" stroke="#000000" d="M342,-258C239.74,-269.33 208.21,-290.22 110.5,-258"/>
 </g>
 <!-- type~ftexception&#45;&gt;type~ftdictionary -->
-<g id="type~~ftobject~~InheritedByGraph_edge21" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge20" class="edge">
 <title>type~ftexception&#45;&gt;type~ftdictionary</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M833.89,-74.1C804.47,-85.13 760.12,-102.1 722,-118 719.86,-118.89 700.77,-127.43 682.26,-135.73"/>
 <polygon fill="#000000" stroke="#000000" points="680.71,-132.59 673.01,-139.88 683.57,-138.98 680.71,-132.59"/>
@@ -265,21 +282,21 @@
 </g>
 </g>
 <!-- type~ftkeyobjectpair&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge4" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge5" class="edge">
 <title>type~ftkeyobjectpair&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M180.78,-210.36C150.94,-205.34 112.07,-198.2 78,-190 75.37,-189.37 72.68,-188.68 69.97,-187.95"/>
 <polygon fill="#000000" stroke="#000000" points="70.78,-184.55 60.2,-185.22 68.89,-191.29 70.78,-184.55"/>
 <text text-anchor="middle" x="109.5" y="-205.4" font-family="Helvetica,sans-Serif" font-size="9.50">valueObject</text>
 </g>
 <!-- type~ftkeyobjectpair&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge7" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge11" class="edge">
 <title>type~ftkeyobjectpair&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M196.7,-230.1C162.97,-242.38 114.77,-259.41 110.5,-258"/>
 <path fill="none" stroke="#000000" d="M108.5,-258C78.33,-248.05 55.29,-217.8 42.44,-196.97"/>
 <polygon fill="#000000" stroke="#000000" points="45.36,-195.01 37.27,-188.16 39.32,-198.56 45.36,-195.01"/>
 </g>
 <!-- type~ftlinkedlist&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge17" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge6" class="edge">
 <title>type~ftlinkedlist&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M410.49,-255.97C390.58,-255.44 365.92,-255.57 344,-258"/>
 </g>
@@ -309,7 +326,7 @@
 </g>
 </g>
 <!-- type~ftlinkedlistiterator&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge15" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge17" class="edge">
 <title>type~ftlinkedlistiterator&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M550,-359C534.29,-361.31 531.34,-365.88 516,-370 487.46,-377.67 480.5,-382.18 451,-384"/>
 <path fill="none" stroke="#000000" d="M449,-384C373.92,-388.63 174.39,-423.71 110.5,-384"/>
@@ -330,14 +347,14 @@
 <text text-anchor="middle" x="450" y="-361.4" font-family="Helvetica,sans-Serif" font-size="9.50">current</text>
 </g>
 <!-- type~ftlinkedlistrecord&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge2" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge1" class="edge">
 <title>type~ftlinkedlistrecord&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M172.15,-307.14C141.37,-302.97 104.45,-293.42 78,-272 54.7,-253.13 42.09,-219.84 35.96,-197.85"/>
 <polygon fill="#000000" stroke="#000000" points="39.32,-196.89 33.45,-188.07 32.54,-198.63 39.32,-196.89"/>
 <text text-anchor="middle" x="109.5" y="-302.4" font-family="Helvetica,sans-Serif" font-size="9.50">recordObject</text>
 </g>
 <!-- type~ftlinkedlistrecord&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge18" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge8" class="edge">
 <title>type~ftlinkedlistrecord&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M216.29,-322.36C189.75,-346.52 130.75,-396.59 110.5,-384"/>
 <path fill="none" stroke="#000000" d="M108.5,-384C44.39,-344.15 33.01,-243.49 31.21,-198.42"/>
@@ -360,7 +377,7 @@
 </g>
 </g>
 <!-- type~ftmultiindextable&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge11" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge9" class="edge">
 <title>type~ftmultiindextable&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M591.11,-202.2C551.34,-196.42 496.16,-193.48 451,-210"/>
 </g>
@@ -381,7 +398,7 @@
 </g>
 </g>
 <!-- type~ftmutableobjectarray&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge14" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge12" class="edge">
 <title>type~ftmutableobjectarray&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M383.77,-143.12C299.56,-131.49 158.15,-116.12 110.5,-136"/>
 </g>
@@ -399,7 +416,7 @@
 <text text-anchor="middle" x="343" y="-169.4" font-family="Helvetica,sans-Serif" font-size="9.50">array</text>
 </g>
 <!-- type~ftobjectpointerwrapper&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge5" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge2" class="edge">
 <title>type~ftobjectpointerwrapper&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M158.96,-176C129.22,-176 95.72,-176 70.45,-176"/>
 <polygon fill="#000000" stroke="#000000" points="70.17,-172.5 60.17,-176 70.17,-179.5 70.17,-172.5"/>
@@ -415,7 +432,7 @@
 </g>
 </g>
 <!-- type~ftsparsematrix&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge13" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge10" class="edge">
 <title>type~ftsparsematrix&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M819.71,-352.96C811.5,-354.48 803.02,-355.9 795,-357 643.05,-377.77 603.46,-367.44 451,-384"/>
 </g>
@@ -449,12 +466,12 @@
 </g>
 </g>
 <!-- type~ftstringset&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge8" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge13" class="edge">
 <title>type~ftstringset&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M830.24,-111C785.59,-101.63 708.05,-91.01 646,-112"/>
 </g>
 <!-- type~ftstringset&#45;&gt;type~ftdictionary -->
-<g id="type~~ftobject~~InheritedByGraph_edge20" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge21" class="edge">
 <title>type~ftstringset&#45;&gt;type~ftdictionary</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M830.09,-125.28C793.21,-130.64 735.95,-138.95 695.08,-144.88"/>
 <polygon fill="#000000" stroke="#000000" points="694.46,-141.43 685.07,-146.33 695.47,-148.36 694.46,-141.43"/>
@@ -470,7 +487,7 @@
 </g>
 </g>
 <!-- type~ftvalue&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge16" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge14" class="edge">
 <title>type~ftvalue&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M202.63,-103.84C178.25,-111.23 141.48,-123.08 110.5,-136"/>
 </g>
@@ -484,14 +501,14 @@
 </g>
 </g>
 <!-- type~matrixdata&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge1" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge4" class="edge">
 <title>type~matrixdata&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M194.76,-60.72C161.82,-68.5 112.41,-84.01 78,-112 63.4,-123.87 51.01,-141.28 42.62,-154.95"/>
 <polygon fill="#000000" stroke="#000000" points="39.53,-153.3 37.47,-163.69 45.56,-156.85 39.53,-153.3"/>
 <text text-anchor="middle" x="109.5" y="-114.4" font-family="Helvetica,sans-Serif" font-size="9.50">object</text>
 </g>
 <!-- type~matrixdata&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge10" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge19" class="edge">
 <title>type~matrixdata&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M194.76,-57.87C182.2,-60.81 168.74,-65.97 159,-75 142.59,-90.2 156.3,-105.68 141,-122 130.8,-132.88 124.27,-130.26 110.5,-136"/>
 <path fill="none" stroke="#000000" d="M108.5,-136C92.45,-142.69 75.21,-151.43 61.07,-159.03"/>
@@ -514,13 +531,13 @@
 <text text-anchor="middle" x="109.5" y="-41.4" font-family="Helvetica,sans-Serif" font-size="9.50">object</text>
 </g>
 <!-- type~multiindexmatrixdata&#45;&gt;type~ftobject -->
-<g id="type~~ftobject~~InheritedByGraph_edge9" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge16" class="edge">
 <title>type~multiindexmatrixdata&#45;&gt;type~ftobject</title>
 <path fill="none" stroke="#000000" d="M179.09,-24.05C172.14,-26.56 165.25,-29.52 159,-33 149.65,-38.21 150,-43.2 141,-49 115.24,-65.6 99.94,-55.61 78,-77 56.11,-98.35 43.18,-131.91 36.59,-153.93"/>
 <polygon fill="#000000" stroke="#000000" points="33.18,-153.14 33.85,-163.71 39.92,-155.03 33.18,-153.14"/>
 </g>
 <!-- type~ftlinkedlistptr&#45;&gt;type~ftlinkedlist -->
-<g id="type~~ftobject~~InheritedByGraph_edge23" class="edge">
+<g id="type~~ftobject~~InheritedByGraph_edge26" class="edge">
 <title>type~ftlinkedlistptr&#45;&gt;type~ftlinkedlist</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M598.26,-258.76C568.65,-258.61 530.12,-258.41 499.89,-258.25"/>
 <polygon fill="#000000" stroke="#000000" points="499.6,-254.75 489.58,-258.2 499.56,-261.75 499.6,-254.75"/>
@@ -648,7 +665,7 @@ said component(s).
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~37"></span>
+              <span class="anchor" id="variable-self~143"></span>
               type(<a href='ftobject.html'>FTObject</a>)
             </td>
 <td></td>
@@ -677,16 +694,16 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-init"></span>
+      <span class="anchor" id="boundprocedure-init~4"></span>
       <h3>
           procedure, public ::
   <strong>init</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initftobject.html'>initFTObject</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/initftobject.html'>initFTObject</a>(self)  
 </h3>
     
@@ -723,24 +740,24 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-description~2"></span>
+      <span class="anchor" id="boundprocedure-description~4"></span>
       <h3>
           procedure, public ::
   <strong>description</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/ftobjectdescription.html'>FTObjectDescription</a>(self)  
 </h3>
     
@@ -785,24 +802,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-printdescription~2"></span>
+      <span class="anchor" id="boundprocedure-printdescription~9"></span>
       <h3>
           procedure, public ::
   <strong>printDescription</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftobjectdescription.html'>printFTObjectDescription</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/printftobjectdescription.html'>printFTObjectDescription</a>(self, iUnit)  
 </h3>
     
@@ -854,24 +871,24 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-classname~3"></span>
+      <span class="anchor" id="boundprocedure-classname~10"></span>
       <h3>
           procedure, public ::
   <strong>className</strong>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/classname.html'>className</a>(self) result(s)  
 </h3>
     
@@ -913,8 +930,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -928,9 +945,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     private  function copyFTObject(self) result(copy)  
 </h3>
 
@@ -975,8 +992,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -990,9 +1007,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/retainftobject.html'>retainFTObject</a>(self)  
 </h3>
     
@@ -1032,8 +1049,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1047,9 +1064,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/isunreferenced.html'>isUnreferenced</a>(self)  
 </h3>
     
@@ -1093,8 +1110,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1108,9 +1125,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/refcount.html'>refCount</a>(self)  
 </h3>
     
@@ -1153,8 +1170,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1185,27 +1202,5 @@ said component(s).
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

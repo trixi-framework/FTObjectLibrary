@@ -12,14 +12,29 @@
 
     <title>FTValueDictionary &ndash; FTObjectLibrary </title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -94,9 +109,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -146,16 +163,16 @@
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-retain">retain</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-isunreferenced">isUnreferenced</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-refcount">refCount</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-initwithsize~3">initWithSize</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-init~6">init</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-initwithsize~4">initWithSize</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-init~3">init</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-allkeys">allKeys</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-allobjects~2">allObjects</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-addobjectforkey">addObjectForKey</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-description~5">description</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-printdescription~9">printDescription</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-description~3">description</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-printdescription~8">printDescription</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-objectforkey">objectForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-containskey">containsKey</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-count">COUNT</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-count~2">COUNT</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-addvalueforkey">addValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-addvalueforkey~2">addValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-realvalueforkey">realValueForKey</a>
@@ -164,7 +181,7 @@
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-integervalueforkey">integerValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-stringvalueforkey">stringValueForKey</a>
             <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-logicalvalueforkey">logicalValueForKey</a>
-            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-classname~11">className</a>
+            <a class="list-group-item" href="../type/ftvaluedictionary.html#boundprocedure-classname">className</a>
         </div>
       </div>
     </div>
@@ -431,9 +448,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     private  function copyFTObject(self) result(copy)  
 </h3>
 
@@ -478,8 +495,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -493,9 +510,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/retainftobject.html'>retainFTObject</a>(self)  
 </h3>
     
@@ -535,8 +552,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -550,9 +567,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/isunreferenced.html'>isUnreferenced</a>(self)  
 </h3>
     
@@ -596,8 +613,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -611,9 +628,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/refcount.html'>refCount</a>(self)  
 </h3>
     
@@ -656,24 +673,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-initwithsize~3"></span>
+      <span class="anchor" id="boundprocedure-initwithsize~4"></span>
       <h3>
           procedure, public ::
   <strong>initWithSize</strong>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/initwithsize.html'>initWithSize</a>(self, sze)  
 </h3>
     
@@ -725,25 +742,25 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-init~6"></span>
+      <span class="anchor" id="boundprocedure-init~3"></span>
       <h3>
           procedure, public ::
   <strong>init</strong>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
-    public  subroutine <a href='../proc/init~2.html'>init</a>(self)  
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    public  subroutine <a href='../proc/init.html'>init</a>(self)  
 </h3>
     
 
@@ -779,8 +796,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -794,9 +811,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/allkeys.html'>AllKeys</a>(self) result(keys)  
 </h3>
     
@@ -838,8 +855,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -853,9 +870,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/allobjects.html'>AllObjects</a>(self) result(objectArray)  
 </h3>
     
@@ -897,8 +914,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -912,9 +929,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/addobjectforkey.html'>addObjectForKey</a>(self, object, key)  
 </h3>
     
@@ -981,24 +998,24 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-description~5"></span>
+      <span class="anchor" id="boundprocedure-description~3"></span>
       <h3>
           procedure, public ::
   <strong>description</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftdictionarydescription.html'>FTDictionaryDescription</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/ftdictionarydescription.html'>FTDictionaryDescription</a>(self)  
 </h3>
     
@@ -1040,24 +1057,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-printdescription~9"></span>
+      <span class="anchor" id="boundprocedure-printdescription~8"></span>
       <h3>
           procedure, public ::
   <strong>printDescription</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftdictionarydescription.html'>printFTDictionaryDescription</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public recursive subroutine <a href='../proc/printftdictionarydescription.html'>printFTDictionaryDescription</a>(self, iUnit)  
 </h3>
     
@@ -1109,8 +1126,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1124,9 +1141,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/objectforkey.html'>objectForKey</a>(self, key)  
 </h3>
     
@@ -1183,8 +1200,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1198,9 +1215,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/containskey.html'>containsKey</a>(self, key) result(r)  
 </h3>
     
@@ -1257,24 +1274,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-count"></span>
+      <span class="anchor" id="boundprocedure-count~2"></span>
       <h3>
           procedure, public ::
   <strong>COUNT</strong>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/count.html'>COUNT</a>(self)  
 </h3>
     
@@ -1316,8 +1333,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1331,9 +1348,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/addrealvalueforkey.html'>addRealValueForKey</a>(self, r, key)  
 </h3>
     
@@ -1400,9 +1417,9 @@ said component(s).
   </table>
 
 
-        </li>
-        <li class="list-group-item">
-                  <h3>
+          </li>
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/adddoubleprecisionvalueforkey.html'>addDoublePrecisionValueForKey</a>(self, r, key)  
 </h3>
     
@@ -1469,9 +1486,9 @@ said component(s).
   </table>
 
 
-        </li>
-        <li class="list-group-item">
-                  <h3>
+          </li>
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/addintegervalueforkey.html'>addIntegerValueForKey</a>(self, i, key)  
 </h3>
     
@@ -1538,9 +1555,9 @@ said component(s).
   </table>
 
 
-        </li>
-        <li class="list-group-item">
-                  <h3>
+          </li>
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/addstringvalueforkey.html'>addStringValueForKey</a>(self, s, key)  
 </h3>
     
@@ -1607,9 +1624,9 @@ said component(s).
   </table>
 
 
-        </li>
-        <li class="list-group-item">
-                  <h3>
+          </li>
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/addlogicalvalueforkey.html'>addLogicalValueForKey</a>(self, l, key)  
 </h3>
     
@@ -1676,8 +1693,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1691,9 +1708,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/addquadvalueforkey.html'>addQuadValueForKey</a>(self, r, key)  
 </h3>
     
@@ -1760,8 +1777,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1775,9 +1792,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/realvalueforkey.html'>realValueForKey</a>(self, key)  
 </h3>
     
@@ -1834,8 +1851,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1849,9 +1866,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/doubleprecisionvalueforkey.html'>doublePrecisionValueForKey</a>(self, key)  
 </h3>
     
@@ -1908,8 +1925,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1923,9 +1940,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/quadvalueforkey.html'>quadValueForKey</a>(self, key)  
 </h3>
     
@@ -1982,8 +1999,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1997,9 +2014,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/integervalueforkey.html'>integerValueForKey</a>(self, key)  
 </h3>
     
@@ -2056,8 +2073,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -2071,9 +2088,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/stringvalueforkey.html'>stringValueForKey</a>(self, key, requestedLength)  
 </h3>
     
@@ -2145,8 +2162,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -2160,9 +2177,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/logicalvalueforkey.html'>logicalValueForKey</a>(self, key)  
 </h3>
     
@@ -2219,24 +2236,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-classname~11"></span>
+      <span class="anchor" id="boundprocedure-classname"></span>
       <h3>
           procedure, public ::
   <strong>className</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/valuedictionaryclassname.html'>valueDictionaryClassName</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/valuedictionaryclassname.html'>valueDictionaryClassName</a>(self) result(s)  
 </h3>
     
@@ -2278,8 +2295,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -2310,27 +2327,5 @@ said component(s).
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

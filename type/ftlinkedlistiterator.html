@@ -12,14 +12,29 @@
 
     <title>FTLinkedListIterator &ndash; FTObjectLibrary </title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -94,9 +109,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -113,7 +130,7 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#variable-list~6">list</a>
+            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#variable-list~3">list</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#variable-current~4">current</a>
         </div>
       </div>
@@ -152,19 +169,19 @@
       </a>
       <div id="boundprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-description~2">description</a>
-            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-printdescription~2">printDescription</a>
+            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-description~4">description</a>
+            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-printdescription~9">printDescription</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-copy">copy</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-retain">retain</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-isunreferenced">isUnreferenced</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-refcount">refCount</a>
-            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-init~4">init</a>
+            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-init~2">init</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-initwithftlinkedlist">initWithFTLinkedList</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-isatend">isAtEnd</a>
-            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-object~5">object</a>
-            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-currentrecord~3">currentRecord</a>
+            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-object~2">object</a>
+            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-currentrecord">currentRecord</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-linkedlist">linkedList</a>
-            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-classname~7">className</a>
+            <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-classname~6">className</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-setlinkedlist">setLinkedList</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-settostart">setToStart</a>
             <a class="list-group-item" href="../type/ftlinkedlistiterator.html#boundprocedure-movetonext">moveToNext</a>
@@ -444,7 +461,7 @@ said component(s).
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-list~6"></span>
+              <span class="anchor" id="variable-list~3"></span>
               class(<a href='ftlinkedlist.html'>FTLinkedList</a>),
             </td>
               <td>public,</td>
@@ -516,7 +533,7 @@ said component(s).
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~90"></span>
+              <span class="anchor" id="variable-self~68"></span>
               type(<a href='ftlinkedlistiterator.html'>FTLinkedListIterator</a>)
             </td>
 <td></td>
@@ -545,16 +562,16 @@ said component(s).
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-description~2"></span>
+      <span class="anchor" id="boundprocedure-description~4"></span>
       <h3>
           procedure, public ::
   <strong>description</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/ftobjectdescription.html'>FTObjectDescription</a>(self)  
 </h3>
     
@@ -599,24 +616,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-printdescription~2"></span>
+      <span class="anchor" id="boundprocedure-printdescription~9"></span>
       <h3>
           procedure, public ::
   <strong>printDescription</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftobjectdescription.html'>printFTObjectDescription</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/printftobjectdescription.html'>printFTObjectDescription</a>(self, iUnit)  
 </h3>
     
@@ -668,8 +685,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -683,9 +700,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     private  function copyFTObject(self) result(copy)  
 </h3>
 
@@ -730,8 +747,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -745,9 +762,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/retainftobject.html'>retainFTObject</a>(self)  
 </h3>
     
@@ -787,8 +804,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -802,9 +819,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/isunreferenced.html'>isUnreferenced</a>(self)  
 </h3>
     
@@ -848,8 +865,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -863,9 +880,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/refcount.html'>refCount</a>(self)  
 </h3>
     
@@ -908,24 +925,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-init~4"></span>
+      <span class="anchor" id="boundprocedure-init~2"></span>
       <h3>
           procedure, public ::
   <strong>init</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initempty.html'>initEmpty</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/initempty.html'>initEmpty</a>(self)  
 </h3>
     
@@ -962,8 +979,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -977,9 +994,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/initwithftlinkedlist.html'>initWithFTLinkedList</a>(self, list)  
 </h3>
     
@@ -1031,8 +1048,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1046,9 +1063,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/ftlinkedlistisatend.html'>FTLinkedListIsAtEnd</a>(self)  
 </h3>
     
@@ -1090,24 +1107,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-object~5"></span>
+      <span class="anchor" id="boundprocedure-object~2"></span>
       <h3>
           procedure, public ::
   <strong>object</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftlinkedlistobject.html'>FTLinkedListObject</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/ftlinkedlistobject.html'>FTLinkedListObject</a>(self) result(o)  
 </h3>
     
@@ -1149,24 +1166,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-currentrecord~3"></span>
+      <span class="anchor" id="boundprocedure-currentrecord"></span>
       <h3>
           procedure, public ::
   <strong>currentRecord</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftlinkedlistcurrentrecord.html'>FTLinkedListCurrentRecord</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/ftlinkedlistcurrentrecord.html'>FTLinkedListCurrentRecord</a>(self) result(o)  
 </h3>
     
@@ -1208,8 +1225,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1223,9 +1240,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/returnlinkedlist.html'>returnLinkedList</a>(self) result(o)  
 </h3>
     
@@ -1267,24 +1284,24 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-classname~7"></span>
+      <span class="anchor" id="boundprocedure-classname~6"></span>
       <h3>
           procedure, public ::
   <strong>className</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/linkedlistiteratorclassname.html'>linkedListIteratorClassName</a>
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  function <a href='../proc/linkedlistiteratorclassname.html'>linkedListIteratorClassName</a>(self) result(s)  
 </h3>
     
@@ -1326,8 +1343,8 @@ said component(s).
     </h4>
     
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1341,9 +1358,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/setlinkedlist.html'>setLinkedList</a>(self, list)  
 </h3>
     
@@ -1395,8 +1412,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1410,9 +1427,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/settostart.html'>setToStart</a>(self)  
 </h3>
     
@@ -1449,8 +1466,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1464,9 +1481,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/movetonext.html'>moveToNext</a>(self)  
 </h3>
     
@@ -1503,8 +1520,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1518,9 +1535,9 @@ said component(s).
         
       </h3>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">
-                  <h3>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
     public  subroutine <a href='../proc/removecurrentrecord.html'>removeCurrentRecord</a>(self)  
 </h3>
     
@@ -1557,8 +1574,8 @@ said component(s).
   </table>
 
 
-        </li>
-    </ul>
+          </li>
+      </ul>
   </div>
 
           </div>
@@ -1589,27 +1606,5 @@ said component(s).
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

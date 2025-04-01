@@ -12,14 +12,29 @@
 
     <title>initFTObject &ndash; FTObjectLibrary</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -94,9 +109,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -156,7 +173,7 @@ nothing but set the reference count to one.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~36"></span>
+              <span class="anchor" id="variable-self~142"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>)
             </td>
 <td></td>
@@ -295,7 +312,7 @@ nothing but set the reference count to one.</p>
 </g>
 </g>
 <!-- proc~initftstringset&#45;&gt;proc~initwithsize -->
-<g id="proc~~initftobject~~CalledByGraph_edge45" class="edge">
+<g id="proc~~initftobject~~CalledByGraph_edge46" class="edge">
 <title>proc~initftstringset&#45;&gt;proc~initwithsize</title>
 <path fill="none" stroke="#000000" d="M744.22,-198.33C765.17,-194.52 787.58,-189.76 808,-184 824.52,-179.34 827.55,-174.9 844,-170 867.41,-163.04 893.28,-156.99 916.94,-152.09"/>
 <polygon fill="#000000" stroke="#000000" points="917.82,-155.48 926.93,-150.06 916.43,-148.62 917.82,-155.48"/>
@@ -645,10 +662,25 @@ nothing but set the reference count to one.</p>
 <path fill="none" stroke="#000000" d="M1385.28,-712C1409.87,-712 1438.41,-712 1466.72,-712"/>
 <polygon fill="#000000" stroke="#000000" points="1466.73,-715.5 1476.73,-712 1466.73,-708.5 1466.73,-715.5"/>
 </g>
-<!-- proc~initassertionfailureexception -->
+<!-- proc~init -->
 <g id="proc~~initftobject~~CalledByGraph_node30" class="node">
+<title>proc~init</title>
+<g id="a_proc~~initftobject~~CalledByGraph_node30"><a xlink:href="../proc/init.html" xlink:title="FTDictionary%init">
+<polygon fill="#d9534f" stroke="#d9534f" points="716,-104 610,-104 610,-80 716,-80 716,-104"/>
+<text text-anchor="middle" x="663" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionary%init</text>
+</a>
+</g>
+</g>
+<!-- proc~init&#45;&gt;proc~initwithsize -->
+<g id="proc~~initftobject~~CalledByGraph_edge43" class="edge">
+<title>proc~init&#45;&gt;proc~initwithsize</title>
+<path fill="none" stroke="#000000" d="M716.24,-99.24C768.39,-106.46 849.41,-117.69 910.87,-126.2"/>
+<polygon fill="#000000" stroke="#000000" points="910.55,-129.69 920.94,-127.6 911.51,-122.76 910.55,-129.69"/>
+</g>
+<!-- proc~initassertionfailureexception -->
+<g id="proc~~initftobject~~CalledByGraph_node31" class="node">
 <title>proc~initassertionfailureexception</title>
-<g id="a_proc~~initftobject~~CalledByGraph_node30"><a xlink:href="../proc/initassertionfailureexception.html" xlink:title="FTException%initAssertionFailureException">
+<g id="a_proc~~initftobject~~CalledByGraph_node31"><a xlink:href="../proc/initassertionfailureexception.html" xlink:title="FTException%initAssertionFailureException">
 <polygon fill="#d9534f" stroke="#d9534f" points="241,-187 0,-187 0,-163 241,-163 241,-187"/>
 <text text-anchor="middle" x="120.5" y="-172.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTException%initAssertionFailureException</text>
 </a>
@@ -661,7 +693,7 @@ nothing but set the reference count to one.</p>
 <polygon fill="#000000" stroke="#000000" points="345.96,-92.66 353.48,-85.2 342.95,-86.35 345.96,-92.66"/>
 </g>
 <!-- proc~initassertionfailureexception&#45;&gt;proc~initwithsize -->
-<g id="proc~~initftobject~~CalledByGraph_edge43" class="edge">
+<g id="proc~~initftobject~~CalledByGraph_edge44" class="edge">
 <title>proc~initassertionfailureexception&#45;&gt;proc~initwithsize</title>
 <path fill="none" stroke="#000000" d="M241.3,-176.68C311.46,-177.16 401.79,-176.92 482,-174 633.03,-168.51 808.58,-154.59 910.51,-145.75"/>
 <polygon fill="#000000" stroke="#000000" points="911.09,-149.21 920.75,-144.86 910.48,-142.24 911.09,-149.21"/>
@@ -688,9 +720,9 @@ nothing but set the reference count to one.</p>
 <polygon fill="#000000" stroke="#000000" points="267.29,-166.03 276.96,-161.69 266.7,-159.06 267.29,-166.03"/>
 </g>
 <!-- proc~initfatalexception -->
-<g id="proc~~initftobject~~CalledByGraph_node31" class="node">
+<g id="proc~~initftobject~~CalledByGraph_node32" class="node">
 <title>proc~initfatalexception</title>
-<g id="a_proc~~initftobject~~CalledByGraph_node31"><a xlink:href="../proc/initfatalexception.html" xlink:title="FTException%initFatalException">
+<g id="a_proc~~initftobject~~CalledByGraph_node32"><a xlink:href="../proc/initfatalexception.html" xlink:title="FTException%initFatalException">
 <polygon fill="#d9534f" stroke="#d9534f" points="211.5,-126 29.5,-126 29.5,-102 211.5,-102 211.5,-126"/>
 <text text-anchor="middle" x="120.5" y="-111.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTException%initFatalException</text>
 </a>
@@ -703,7 +735,7 @@ nothing but set the reference count to one.</p>
 <polygon fill="#000000" stroke="#000000" points="293.81,-90.06 303.13,-85.02 292.7,-83.14 293.81,-90.06"/>
 </g>
 <!-- proc~initfatalexception&#45;&gt;proc~initwithsize -->
-<g id="proc~~initftobject~~CalledByGraph_edge44" class="edge">
+<g id="proc~~initftobject~~CalledByGraph_edge45" class="edge">
 <title>proc~initfatalexception&#45;&gt;proc~initwithsize</title>
 <path fill="none" stroke="#000000" d="M211.79,-116.48C381.27,-121.13 744.85,-131.11 910.55,-135.66"/>
 <polygon fill="#000000" stroke="#000000" points="910.61,-139.16 920.7,-135.93 910.8,-132.16 910.61,-139.16"/>
@@ -715,9 +747,9 @@ nothing but set the reference count to one.</p>
 <polygon fill="#000000" stroke="#000000" points="288.7,-142.91 299.11,-140.95 289.75,-135.99 288.7,-142.91"/>
 </g>
 <!-- proc~initftstack -->
-<g id="proc~~initftobject~~CalledByGraph_node32" class="node">
+<g id="proc~~initftobject~~CalledByGraph_node33" class="node">
 <title>proc~initftstack</title>
-<g id="a_proc~~initftobject~~CalledByGraph_node32"><a xlink:href="../proc/initftstack.html" xlink:title="FTStack%initFTStack">
+<g id="a_proc~~initftobject~~CalledByGraph_node33"><a xlink:href="../proc/initftstack.html" xlink:title="FTStack%initFTStack">
 <polygon fill="#d9534f" stroke="#d9534f" points="1375,-825 1252,-825 1252,-801 1375,-801 1375,-825"/>
 <text text-anchor="middle" x="1313.5" y="-810.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStack%initFTStack</text>
 </a>
@@ -730,9 +762,9 @@ nothing but set the reference count to one.</p>
 <polygon fill="#000000" stroke="#000000" points="1515.26,-830.78 1525.49,-827.99 1515.76,-823.79 1515.26,-830.78"/>
 </g>
 <!-- proc~initwarningexception -->
-<g id="proc~~initftobject~~CalledByGraph_node33" class="node">
+<g id="proc~~initftobject~~CalledByGraph_node34" class="node">
 <title>proc~initwarningexception</title>
-<g id="a_proc~~initftobject~~CalledByGraph_node33"><a xlink:href="../proc/initwarningexception.html" xlink:title="FTException%initWarningException">
+<g id="a_proc~~initftobject~~CalledByGraph_node34"><a xlink:href="../proc/initwarningexception.html" xlink:title="FTException%initWarningException">
 <polygon fill="#d9534f" stroke="#d9534f" points="221,-84 20,-84 20,-60 221,-60 221,-84"/>
 <text text-anchor="middle" x="120.5" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTException%initWarningException</text>
 </a>
@@ -745,7 +777,7 @@ nothing but set the reference count to one.</p>
 <polygon fill="#000000" stroke="#000000" points="284.64,-76.13 294.66,-72.67 284.67,-69.13 284.64,-76.13"/>
 </g>
 <!-- proc~initwarningexception&#45;&gt;proc~initwithsize -->
-<g id="proc~~initftobject~~CalledByGraph_edge46" class="edge">
+<g id="proc~~initftobject~~CalledByGraph_edge47" class="edge">
 <title>proc~initwarningexception&#45;&gt;proc~initwithsize</title>
 <path fill="none" stroke="#000000" d="M199.62,-59.97C224.31,-56.7 251.74,-53.62 277,-52 512.67,-36.91 576.57,-24.02 808,-71 862.71,-82.11 923.01,-105.77 960.2,-121.78"/>
 <polygon fill="#000000" stroke="#000000" points="959.04,-125.09 969.6,-125.88 961.83,-118.68 959.04,-125.09"/>
@@ -757,9 +789,9 @@ nothing but set the reference count to one.</p>
 <polygon fill="#000000" stroke="#000000" points="344.79,-139.5 355.3,-140.84 347.92,-133.24 344.79,-139.5"/>
 </g>
 <!-- proc~initwithstrings -->
-<g id="proc~~initftobject~~CalledByGraph_node34" class="node">
+<g id="proc~~initftobject~~CalledByGraph_node35" class="node">
 <title>proc~initwithstrings</title>
-<g id="a_proc~~initftobject~~CalledByGraph_node34"><a xlink:href="../proc/initwithstrings.html" xlink:title="FTStringSet%initWithStrings">
+<g id="a_proc~~initftobject~~CalledByGraph_node35"><a xlink:href="../proc/initwithstrings.html" xlink:title="FTStringSet%initWithStrings">
 <polygon fill="#d9534f" stroke="#d9534f" points="460,-554 299,-554 299,-530 460,-530 460,-554"/>
 <text text-anchor="middle" x="379.5" y="-539.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTStringSet%initWithStrings</text>
 </a>
@@ -776,21 +808,6 @@ nothing but set the reference count to one.</p>
 <title>proc~initwithstrings&#45;&gt;proc~initftstringset</title>
 <path fill="none" stroke="#000000" d="M460.05,-535.94C468.31,-532.44 475.9,-527.61 482,-521 570.07,-425.54 427.15,-323.81 518,-231 532.28,-216.42 551.88,-208.94 572.03,-205.55"/>
 <polygon fill="#000000" stroke="#000000" points="572.51,-209.02 581.95,-204.2 571.56,-202.08 572.51,-209.02"/>
-</g>
-<!-- proc~init~2 -->
-<g id="proc~~initftobject~~CalledByGraph_node35" class="node">
-<title>proc~init~2</title>
-<g id="a_proc~~initftobject~~CalledByGraph_node35"><a xlink:href="../proc/init~2.html" xlink:title="FTDictionary%init">
-<polygon fill="#d9534f" stroke="#d9534f" points="716,-104 610,-104 610,-80 716,-80 716,-104"/>
-<text text-anchor="middle" x="663" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FTDictionary%init</text>
-</a>
-</g>
-</g>
-<!-- proc~init~2&#45;&gt;proc~initwithsize -->
-<g id="proc~~initftobject~~CalledByGraph_edge47" class="edge">
-<title>proc~init~2&#45;&gt;proc~initwithsize</title>
-<path fill="none" stroke="#000000" d="M716.24,-99.24C768.39,-106.46 849.41,-117.69 910.87,-126.2"/>
-<polygon fill="#000000" stroke="#000000" points="910.55,-129.69 920.94,-127.6 911.51,-122.76 910.55,-129.69"/>
 </g>
 <!-- proc~insertobjectafterrecord -->
 <g id="proc~~initftobject~~CalledByGraph_node36" class="node">
@@ -1316,27 +1333,5 @@ implementation in a submodule of an interface in a parent module.
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>
