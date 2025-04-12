@@ -225,7 +225,7 @@
                      CASE(1)  
                         CALL FTAssertEqual(1,v % integerValue(),"First item is integer value")
                      CASE(2)
-                        CALL FTAssertEqual("r2 is a string",v % stringValue(14),"Second item is string value")
+                        CALL FTAssertEqual("r2 is a string",v % stringValue(),"Second item is string value")
                      CASE(3)
                         CALL FTAssertEqual(3.14,v % realValue(),singleTol,msg="Third item in list is real value")
                   END SELECT

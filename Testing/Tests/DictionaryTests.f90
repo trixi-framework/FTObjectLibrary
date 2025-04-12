@@ -126,7 +126,7 @@
             obj => dict % objectForKey(keys(i))
             v   => valueFromObject(obj)
             IF ( ASSOCIATED(v) )     THEN
-               s = v % stringValue(FTDICT_KWD_STRING_LENGTH)
+               s = v % stringValue()
                CALL FTAssertEqual(values(i),s,"Value for key in dictionary class")
             ELSE
                msg = "Value for key "//TRIM(values(i))// " not of correct type"
@@ -145,11 +145,11 @@
             storedKey = storedKeys(i)
             obj       => dict % objectForKey(storedKey)
             v         => valueFromObject(obj)
-            sExpected = v % stringValue(FTDICT_KWD_STRING_LENGTH)
+            sExpected = v % stringValue()
             
             obj      => storedObjects % objectAtIndex(indx = i)
             v        => valueFromObject(obj)
-            sActual  =  v % stringValue(FTDICT_KWD_STRING_LENGTH)
+            sActual  =  v % stringValue()
             
             CALL FTAssertEqual(sExpected, sActual,"String for stored key")
          END DO   

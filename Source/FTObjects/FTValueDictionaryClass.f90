@@ -53,7 +53,7 @@
 !>     r = dict % realValueForKey("real")
 !>     d = dict % doublePrecisionValueForKey("double")
 !>     l = dict % logicalValueForKey("logical")
-!>     s = dict % stringValueForKey("string",15)
+!>     s = dict % stringValueForKey("string")
 !>#Converting an FTDictionary to an FTValueDictionary
 !>            valueDict => valueDictionaryFromDictionary(dict)
 !>#Converting an FTObject to an FTValueDictionary
@@ -350,12 +350,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-       FUNCTION stringValueForKey(self,key,requestedLength)  
+       FUNCTION stringValueForKey(self,key)  
          IMPLICIT NONE  
          CLASS(FTValueDictionary)       :: self
          CHARACTER(LEN=*)               :: key
-         INTEGER                        :: requestedLength
-         CHARACTER(LEN=requestedLength) :: stringValueForKey
+         CHARACTER(LEN=:), ALLOCATABLE  :: stringValueForKey
          
          CLASS(FTValue) , POINTER :: v   => NULL()
          CLASS(FTObject), POINTER :: obj => NULL()
@@ -363,7 +362,7 @@
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
             v => valueFromObject(obj)
-            stringValueForKey = v % stringValue(requestedLength)
+            stringValueForKey = v % stringValue()
          ELSE 
             stringValueForKey = "" 
          END IF 

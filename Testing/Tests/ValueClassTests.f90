@@ -114,7 +114,7 @@
 !        Also test the string value
 !        --------------------------
 !
-         s = v % stringValue(8)
+         s = v % stringValue()
          CALL FTAssertEqual("3.140000",s(1:8),"Compare string value for real value")
 
 !
@@ -143,7 +143,7 @@
          CALL FTAssertEqual(3.14,v % realValue(),singleTol,msg="Real storage to real")
          CALL FTAssertEqual(3,v % integerValue(),"Integer return for real object")
          CALL FTAssertEqual(DBLE(3.14),v % doublePrecisionValue(),doubleTol,msg="Double return for real object")
-         s = v % stringValue(8)
+         s = v % stringValue()
          CALL FTAssertEqual("3.140000",s(1:8),"String return for real object")
          CALL FTAssertEqual(.true.,v % logicalValue(),"Logical return for real object")
 !
@@ -165,7 +165,7 @@
          CALL FTAssertEqual(666.0,v % realValue(),singleTol,msg="Integer storage to real")
          CALL FTAssertEqual(666,v % integerValue(),"Integer storage to integer")
          CALL FTAssertEqual(DBLE(666.0),v % doublePrecisionValue(),doubleTol,msg="Integer storage to double")
-         CALL FTAssertEqual("666",v % stringValue(3),"Integer storage to string")
+         CALL FTAssertEqual("666",v % stringValue(),"Integer storage to string")
          CALL FTAssertEqual(.true.,v % logicalValue(),"Integer storage to logical")
 !
 !        ------------------------------------------
@@ -186,7 +186,7 @@
          CALL FTAssertEqual(REAL(d),v % realValue(),singleTol,msg="Double storage to real")
          CALL FTAssertEqual(0,v % integerValue(),"Double storage to integer")
          CALL FTAssertEqual(d,v % doublePrecisionValue(),doubleTol,msg="Double storage to double")
-         s = v % stringValue(16)
+         s = v % stringValue()
          CALL FTAssertEqual("0.33333333333333",s(1:16),"Double storage to string")
          CALL FTAssertEqual(.true.,v % logicalValue(),"Double storage to logical")
 !
@@ -238,7 +238,7 @@
                                actualValue = v % integerValue(), &
                                msg = "Integer value from logical:"// logicalToStr(j))
             CALL FTAssertEqual(expectedValue = logicalToStr(j),                    &
-                               actualValue = v % stringValue(requestedLength = 7), &
+                               actualValue = v % stringValue(), &
                                msg = "String value from logical:"// logicalToStr(j))
             CALL FTAssertEqual(expectedValue = logicalToReal(j),                    &
                                actualValue = v % realValue(),                       &
@@ -277,7 +277,7 @@
          CALL castToValue(obj, vFromObj)
          CALL FTAssert(ASSOCIATED(vFromObj),msg = "Cast value from object as subroutine")
          CALL FTAssertEqual(expectedValue = "stringValue", &
-                            actualValue   = vFromObj % stringValue(requestedLength = 11), &
+                            actualValue   = vFromObj % stringValue(), &
                             msg           = "Check that cast is correct")
 !
 !        ---------------

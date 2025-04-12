@@ -144,7 +144,7 @@
                        msg = "Conversion of dictionary to valueDictionary")
          
          CALL FTAssertEqual(expectedValue = "TAF:Designed to fail!", &
-                            actualValue = userDictionary % stringValueForKey(key = "message",requestedLength = 21),&
+                            actualValue = userDictionary % stringValueForKey("message"),&
                             msg = "Message set for assertion failure")
          
          CALL FTAssertEqual(expectedValue = 777, &
@@ -192,7 +192,7 @@
                                actualValue = e % className(), &
                                msg = "Class name for FTException")
                                
-            msg = userDictionary % stringValueForKey("message",FTDICT_KWD_STRING_LENGTH)
+            msg = userDictionary % stringValueForKey("message")
             CALL FTAssertEqual("An error has occurred",msg,"String for key: message")
 
             r   = userDictionary % realValueForKey("value")

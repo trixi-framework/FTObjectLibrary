@@ -101,7 +101,7 @@
 !        -----------------------
 !
          DO i = 1,4
-            sValue = dict % stringValueForKey(keys(i),8)
+            sValue = dict % stringValueForKey(keys(i))
             CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
          END DO
 !
@@ -182,7 +182,7 @@
                             actualValue   = i)
          lgcal = dict2 % logicalValueForKey("bologna")
          CALL FTAssert(.NOT. lgcal,msg = "Retrieve nonexistent logical")
-         sValue = dict2 % stringValueForKey("bologna",8)
+         sValue = dict2 % stringValueForKey("bologna")
          CALL FTAssertEqual(expectedValue = "", &
                             actualValue   = sValue)
 !

@@ -61,7 +61,7 @@
 !>            int  = i % integerValue()
 !>            doub = d % doublePrecisionValue()
 !>            logc = l % logicalValue()
-!>            str  = s % stringValue(nChars)
+!>            str  = s % stringValue()
 !>
 !> - Description
 !>
@@ -77,7 +77,7 @@
 !> The class will attempt to convert between the different types:
 !>
 !>            CALL r % initWithReal(3.14)
-!>            print *, r % stringValue(8)
+!>            print *, r % stringValue()
 !>
 !>            Logical variables rules:
 !>
@@ -619,18 +619,16 @@
       END FUNCTION logicalValue   
 !
 !---------------------------------------------------------------------------
-!> Get the string value of length requestedLength stored in the object, or 
-!> convert the value
+!> Get the string value stored in the object, or convert the value
 !> in the object to a string of that length if it is of a different type.
 !---------------------------------------------------------------------------
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      FUNCTION stringValue(self,requestedLength) RESULT(s)
+      FUNCTION stringValue(self) RESULT(s)
          IMPLICIT NONE 
          CLASS(FTValue)                 :: self
-         INTEGER                        :: requestedLength
-         CHARACTER(LEN=requestedLength) :: s
+         CHARACTER(LEN=:), ALLOCATABLE  :: s
  
          CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: tmpString
          
@@ -679,7 +677,7 @@
          CLASS(FTValue)      :: self
          CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH) :: FTValueDescription
          
-         FTValueDescription =  self % stringValue(DESCRIPTION_CHARACTER_LENGTH)
+         FTValueDescription =  self % stringValue()
          
       END FUNCTION FTValueDescription
 !
