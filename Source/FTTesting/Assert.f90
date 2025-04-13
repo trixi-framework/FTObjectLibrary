@@ -133,8 +133,8 @@
 !     -------
 !
       TYPE FTAssertionFailureRecord
-         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: msg, expected, actual
-         CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: assertionType
+         CHARACTER(LEN=:), ALLOCATABLE :: msg, expected, actual
+         CHARACTER(LEN=:), ALLOCATABLE :: assertionType
          TYPE(FTAssertionFailureRecord), POINTER   :: next
       END TYPE FTAssertionFailureRecord
 !
