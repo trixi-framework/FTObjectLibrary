@@ -158,6 +158,8 @@ In this way, any object that inherits from FTObject can be stored in a
 container, including other containers, making these containers quite
 generic.
 
+Other examples can be found in the [Examples](../Examples) directory, which has examples for using a linked list, and for a simple RPN calculator. Finally, the test routines in the [Testing](../Testing) directory provide examples of all of the features of the library.
+
 # Memory Management
 
 FTObjectLibrary uses a manual retain-release memory management model
@@ -1221,16 +1223,17 @@ An example of running a suite of tests is the following:
 
           CALL testSuite % performTests()
 
-The test subroutines have no arguments. The interface is
+The test subroutines have no arguments or include optional data. The interface is
 
           ABSTRACT INTERFACE
-             SUBROUTINE testSuiteFunction()
-             END SUBROUTINE testSuiteFunction
+              SUBROUTINE testSuiteFunction(optData)
+                 CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
+              END SUBROUTINE testSuiteFunction
           END INTERFACE
 
 The test functions should USE the FTAssertions module as in the previous
 section. You don't have to do any reporting code in your tests, however.
-Reporting is managed by the testSuiteManager at the end of performTests. Look at the Testing directory in the repository for examples on how to set up testing.
+Reporting is managed by the testSuiteManager at the end of performTests. Look at the [Testing](../Testing) directory in the repository for examples on how to set up testing.
 
 **Definition:**
 
