@@ -93,26 +93,26 @@ In the snippet of code below, we prepare the dictionary for objects to
 be added to it by the init() method. We then create two values that are
 added to the dictionary.
 
-             SUBROUTINE constructDictionary(dict)
-                     CLASS(FTDictionary), POINTER :: dict
-                     CLASS(FTObject)    , POINTER :: obj
-                     CLASS(FTValue)     , POINTER :: v
+            SUBROUTINE constructDictionary(dict)
+              CLASS(FTDictionary), POINTER :: dict
+              CLASS(FTObject)    , POINTER :: obj
+              CLASS(FTValue)     , POINTER :: v
                      
-                     ALLOCATE(dict)
-                     CALL dict % initWithSize(64)
+              ALLOCATE(dict)
+              CALL dict % initWithSize(64)
                  
-                     ALLOCATE(v)
-                     CALL v % initWithValue(3.14159)
-                     obj => v
-                     CALL dict % addObjectForKey(obj,``Pi'')
-                     CALL releaseFTValue(v)
+              ALLOCATE(v)
+              CALL v % initWithValue(3.14159)
+              obj => v
+              CALL dict % addObjectForKey(obj,``Pi'')
+              CALL releaseFTValue(v)
                  
-                     ALLOCATE(v)
-                     CALL v % initWithValue(``Ratio of circumference to diameter'')
-                     obj => v
-                     CALL dict % addObjectForKey(obj,"definition")
-                     CALL releaseFTValue(v)
-             END SUBROUTINE constructDictionary
+              ALLOCATE(v)
+              CALL v % initWithValue(``Ratio of circumference to diameter'')
+              obj => v
+              CALL dict % addObjectForKey(obj,"definition")
+              CALL releaseFTValue(v)
+            END SUBROUTINE constructDictionary
 
 Notice that in the subroutine we have allocated memory for the
 dictionary "dict" and two FTValue objects. The dictionary is returned to
@@ -131,17 +131,17 @@ not need them any more.
 
 We use the dictionary as shown in the next snippet of code:
 
-                CLASS(FTDictionary), POINTER  :: dict
-                CLASS(FTValue)     , POINTER  :: v
-                REAL                          :: pi
-                CALL constructDictionary(dict)
+            CLASS(FTDictionary), POINTER  :: dict
+            CLASS(FTValue)     , POINTER  :: v
+            REAL                          :: pi
+            CALL constructDictionary(dict)
                 
-                v   => valueFromObject(dict % objectForKey("Pi"))
-                pi  = v % realValue()
+            v   => valueFromObject(dict % objectForKey("Pi"))
+            pi  = v % realValue()
                 
-                v   => valueFromObject(dict % objectForKey(``definition''))
-                PRINT *, "The num pi = ", pi," is defined as", TRIM(v % stringValue())
-                CALL  releaseFTDictionary(dict)
+            v   => valueFromObject(dict % objectForKey(``definition''))
+            PRINT *, "The num pi = ", pi," is defined as", TRIM(v % stringValue())
+            CALL  releaseFTDictionary(dict)
 
 In this snippet, the values for the two keys "Pi" and "definition" are
 retrieved and then used.
@@ -199,28 +199,28 @@ In the example below, the main program creates a linked list to store
 points in, a "point" object (e.g. that stores x,y,z values), and adds
 the point object to the linked list.
 
-          PROGRAM main
-             CLASS(FTLinkedList), POINTER :: list ! Subclass of FTObject
-             CLASS(Point)       , POINTER :: pnt  ! Subclass of FTObject
-             CLASS(FTObject)    , POINTER :: obj
+            PROGRAM main
+              CLASS(FTLinkedList), POINTER :: list ! Subclass of FTObject
+              CLASS(Point)       , POINTER :: pnt  ! Subclass of FTObject
+              CLASS(FTObject)    , POINTER :: obj
              
-             ALLOCATE(list)
-             CALL list % init() ! main now owns the list
+              ALLOCATE(list)
+              CALL list % init() ! main now owns the list
              
-             ALLOCATE(pnt)
-             CALL pnt % initWithXYZ(0.0,0.0,0.0) ! main now owns pnt
+              ALLOCATE(pnt)
+              CALL pnt % initWithXYZ(0.0,0.0,0.0) ! main now owns pnt
              
-             obj => pnt
-             CALL list % add(obj) !list also owns pnt
-             CALL releasePoint(pnt) ! main gives up ownership to pnt
-             .
-             .
-             .
-             ! we're done with the list, it will deallocate pnt since the list is the last owner.
-             ! It will also deallocate itself since main is the last owner.
-             CALL releaseFTLinkedList(list) 
+              obj => pnt
+              CALL list % add(obj) !list also owns pnt
+              CALL releasePoint(pnt) ! main gives up ownership to pnt
+              .
+              .
+              .
+              ! we're done with the list, it will deallocate pnt since the list is the last owner.
+              ! It will also deallocate itself since main is the last owner.
+              CALL releaseFTLinkedList(list) 
 
-          END PROGRAM main
+            END PROGRAM main
 
 # Class Descriptions
 
@@ -597,7 +597,7 @@ stepping through (iterating) a linked list to access its entries.
                     .
                     .
 
-  Or
+  OR
 
                     CLASS(FTLinkedList)        , POINTER :: list
                     CLASS(FTLinkedListIterator), POINTER :: iterator
@@ -695,7 +695,7 @@ be efficient, it adds more than one entry at a time given by the
 
 **Definition (Subclass of FTObject):**
 
-                TYPE(FTMutableObjectArray) :: array
+            TYPE(FTMutableObjectArray) :: array
 
 **Usage:**
 
@@ -707,49 +707,49 @@ be efficient, it adds more than one entry at a time given by the
 
 - Destruction
 
-                 CALL  releaseFTMutableObjectArray(array) !If array is a pointer
+            CALL  releaseFTMutableObjectArray(array) !If array is a pointer
 
 - Adding an object
 
-                 TYPE(FTObject) :: obj
-                 obj => r1
-                 CALL array % addObject(obj)
+             TYPE(FTObject) :: obj
+             obj => r1
+             CALL array % addObject(obj)
 
 - Removing an object
 
-                 TYPE(FTObject) :: obj
-                 CALL array % removeObjectAtIndex(i)
+             TYPE(FTObject) :: obj
+             CALL array % removeObjectAtIndex(i)
 
 - Accessing an object
 
-                 TYPE(FTObject) :: obj
-                 obj => array % objectAtIndex(i)
+             TYPE(FTObject) :: obj
+             obj => array % objectAtIndex(i)
 
 - Replacing an object
 
-                 TYPE(FTObject) :: obj
-                 obj => r1
-                 CALL array % replaceObjectAtIndexWithObject(i,obj)
+              TYPE(FTObject) :: obj
+              obj => r1
+              CALL array % replaceObjectAtIndexWithObject(i,obj)
 
 - Setting the chunk size
 
-                 CALL array % setChunkSize(size)
+              CALL array % setChunkSize(size)
 
 - Getting the chunk size
 
-                 i = array % chunkSize(size)
+              i = array % chunkSize(size)
 
 - Finding the number of items in the array
 
-                 n =  array % count()
+              n =  array % count()
 
 - Finding the actual allocated size of the array
 
-                 n =  array % allocatedSize()
+              n =  array % allocatedSize()
 
 - Converting a base class pointer to an object array
 
-                 Array =>  objectArrayFromObject(obj)
+              Array =>  objectArrayFromObject(obj)
 
 ## Sparse Matrices
 
@@ -771,7 +771,7 @@ singly dimensioned array as a special case of a hash table, its hash
 function is just the array index, $H(j)=j$. A doubly dimensioned array
 could be (and often is) stored columnwise as a singly dimensioned array
 by creating a hash function that maps the two indices to a single
-location in the array, e.g., $H(i,j) = i + j*N$, where $N$ is the range
+location in the array, e.g., $H(i,j) = i + jN$, where $N$ is the range
 of the first index, $i$.
 
 Two classes are included in FTObjectLibrary. The first, FTSparseMatrix,
@@ -785,14 +785,14 @@ the key. Be sure to retain any object returned by the objectForKeys
 methods if you want to keep it beyond the lifespan of the matrix or
 table. For example,
 
-               TYPE(FTObject) :: obj
-               obj => matrix % objectForKeys(i,j)
-               IF ( ASSOCIATED(OBJ) ) THEN
-                 CALL obj % retain()
-                     ! Cast obj to something useful
-               ELSE
-                 ! Perform some kind of error recovery
-               END IF 
+            TYPE(FTObject) :: obj
+            obj => matrix % objectForKeys(i,j)
+            IF ( ASSOCIATED(OBJ) ) THEN
+               CALL obj % retain()
+               ! Cast obj to something useful
+            ELSE
+               ! Perform some kind of error recovery
+            END IF 
 
 ### FTSparseMatrix
 
@@ -802,7 +802,7 @@ initialize the matrix with the number of rows.
 
 **Definition (Subclass of FTObject):**
 
-                TYPE(FTSparseMatrix) :: matrix
+            TYPE(FTSparseMatrix) :: matrix
 
 **Usage:**
 
@@ -814,22 +814,22 @@ initialize the matrix with the number of rows.
 
 - Destruction
 
-                 CALL  releaseFTSparseMatrix(matrix)      !If matrix is a pointer
+            CALL  releaseFTSparseMatrix(matrix)      !If matrix is a pointer
 
 - Adding an object
 
-                 TYPE(FTObject) :: obj
-                 matrix % addObjectForKeys(obj,i,j)
+            TYPE(FTObject) :: obj
+            matrix % addObjectForKeys(obj,i,j)
 
 - Accessing an object
 
-                 TYPE(FTObject) :: obj
-                 obj => matrix % objectForKeys(i,j)
+            TYPE(FTObject) :: obj
+            obj => matrix % objectForKeys(i,j)
 
 - Checking if an entry exists
 
-                 LOGICAL :: exists
-                 exists = matrix % containsKeys(i,j)
+            LOGICAL :: exists
+            exists = matrix % containsKeys(i,j)
 
 ### FTMultiIndexTable
 
@@ -841,7 +841,7 @@ another element.
 
 **Definition (Subclass of FTObject):**
 
-                TYPE(FTMultiIndexTable) :: table
+            TYPE(FTMultiIndexTable) :: table
 
 **Usage:**
 
@@ -853,25 +853,25 @@ another element.
 
 - Destruction
 
-                 CALL  releaseFTMultiIndexTable(table)      !If table is a pointer
+            CALL  releaseFTMultiIndexTable(table)      !If table is a pointer
 
 - Adding an object
 
-                 TYPE(FTObject) :: obj
-                 INTEGER        :: keys(m) ! m = # keys
-                 matrix % addObjectForKeys(obj,keys)
+            TYPE(FTObject) :: obj
+            INTEGER        :: keys(m) ! m = # keys
+            matrix % addObjectForKeys(obj,keys)
 
 - Accessing an object
 
-                 TYPE(FTObject) :: obj
-                 INTEGER        :: keys(m) ! m = # keys
-                 obj => matrix % objectForKeys(keys)
+            TYPE(FTObject) :: obj
+            INTEGER        :: keys(m) ! m = # keys
+            obj => matrix % objectForKeys(keys)
 
 - Checking if an entry exists
 
-                 LOGICAL :: exists
-                 INTEGER :: keys(m) ! m = # keys
-                 exists = matrix % containsKeys(keys)
+            LOGICAL :: exists
+            INTEGER :: keys(m) ! m = # keys
+            exists = matrix % containsKeys(keys)
 
 ## Dictionaries
 
@@ -887,7 +887,7 @@ retrieve FTValue objects.
 
 **Definition (Subclass of FTObject):**
 
-                TYPE(FTDictionary) :: dict
+            TYPE(FTDictionary) :: dict
 
 **Usage:**
 
@@ -899,35 +899,35 @@ retrieve FTValue objects.
 
 - Destruction
 
-                 CALL releaseFTDictionary(dict)       !If dict is a pointer
+            CALL releaseFTDictionary(dict)       !If dict is a pointer
 
 - Adding a key-object pair
 
-                    CLASS(FTDictionary), POINTER :: dict
-                    CLASS(FTObject)    , POINTER :: obj
-                    CHARACTER(LEN=M)             :: key
-                    obj => r                            ! r is subclass of FTObject
-                    CALL dict % addObjectForKey(obj,key)
+            CLASS(FTDictionary), POINTER :: dict
+            CLASS(FTObject)    , POINTER :: obj
+            CHARACTER(LEN=M)             :: key
+            obj => r                            ! r is subclass of FTObject
+            CALL dict % addObjectForKey(obj,key)
 
 - Accessing an object
 
-                 TYPE(FTObject) :: obj
-                 obj => dict % objectForKey(key)
+            TYPE(FTObject) :: obj
+            obj => dict % objectForKey(key)
 
 - Converting a base class pointer to a dictionary
 
-                 dict =>  dictionaryFromObject(obj)
+            dict =>  dictionaryFromObject(obj)
 
 - Getting all of the keys (The target of the pointer must be deallocated
   by the caller)
 
-                 CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
-                 keys =>  dict % allKeys()
+            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
+            keys =>  dict % allKeys()
 
 - Getting all of the objects
 
-                 CLASS(FTMutableObjectArray), POINTER :: objectArray
-                 objectArray =>  dict % allObjects() ! The array is owned by the caller.
+            CLASS(FTMutableObjectArray), POINTER :: objectArray
+            objectArray =>  dict % allObjects() ! The array is owned by the caller.
 
 ### FTValueDictionary
 
@@ -935,39 +935,39 @@ FTValueDictionary adds methods to store and retrieve FTValue objects.
 
 **Definition (Subclass of FTDictionary):**
 
-                TYPE(FTValueDictionary) :: dict
+            TYPE(FTValueDictionary) :: dict
 
 **Usage:**
 
 - Adding a value
 
-          CALL dict % addValueForKey(1,"integer")
-          CALL dict % addValueForKey(3.14,"real")
-          CALL dict % addValueForKey(98.6d0,"double")
-          CALL dict % addValueForKey(.true.,"logical")
-          CALL dict % addValueForKey("Hello World","string")
+            CALL dict % addValueForKey(1,"integer")
+            CALL dict % addValueForKey(3.14,"real")
+            CALL dict % addValueForKey(98.6d0,"double")
+            CALL dict % addValueForKey(.true.,"logical")
+            CALL dict % addValueForKey("Hello World","string")
 
 - Accessing a value
 
-           i = dict % integerValueForKey("integer")
-           r = dict % realValueForKey("real")
-           d = dict % doublePrecisionValueForKey("double")
-           l = dict % logicalValueForKey("logical")
-           s = dict % stringValueForKey("string")
+            i = dict % integerValueForKey("integer")
+            r = dict % realValueForKey("real")
+            d = dict % doublePrecisionValueForKey("double")
+            l = dict % logicalValueForKey("logical")
+            s = dict % stringValueForKey("string")
 
   Note that the FTValue class will do type conversion, so you can also
   access something like
 
-           i = dict % integerValueForKey("real")
-           s = dict % stringValueForKey("real")
+            i = dict % integerValueForKey("real")
+            s = dict % stringValueForKey("real")
 
 - Converting an FTDictionary to an FTValueDictionary
 
-                   valueDict => valueDictionaryFromDictionary(dict)
+            valueDict => valueDictionaryFromDictionary(dict)
 
 - Converting an FTObject to an FTValueDictionary
 
-                   valueDict => valueDictionaryFromObject(obj)
+            valueDict => valueDictionaryFromObject(obj)
 
 # String Sets
 
@@ -985,7 +985,7 @@ FTDICT\_KWD\_STRING_LENGTH or less.
 
 **Definition (Subclass of FTObject):**
 
-                TYPE(FTStringSet) :: set
+            TYPE(FTStringSet) :: set
 
 **Usage:**
 
@@ -1001,48 +1001,48 @@ FTDICT\_KWD\_STRING_LENGTH or less.
 
 - Destruction
 
-                 CALL releaseFTStringSet(set)       !If set is a pointer
+            CALL releaseFTStringSet(set)       !If set is a pointer
 
 - Adding a string
 
-                    CHARACTER(LEN=M)  :: str
-                    CALL set % addString(str)
+            CHARACTER(LEN=M)  :: str
+            CALL set % addString(str)
 
 - Testing for inclusion
 
-                 LOGICAL :: test
-                 CHARACTER(LEN=M) :: str
-                 test = set % containsString(str)
+            LOGICAL :: test
+            CHARACTER(LEN=M) :: str
+            test = set % containsString(str)
 
 - Finding the union of two sets (Release when through)
 
-                 unionSet =>  set1 % unionWithSet(set2)
-                 ...
-                 call ReleaseFTStringSet(unionSet)
+            unionSet =>  set1 % unionWithSet(set2)
+            ...
+            call ReleaseFTStringSet(unionSet)
 
 - Finding the intersection of two sets (Release when through)
 
-                 intersectionSet =>  set1 % intersectionWithSet(set2)
-                 ...
-                 call ReleaseFTStringSet(intersectionSet)
+            intersectionSet =>  set1 % intersectionWithSet(set2)
+            ...
+            call ReleaseFTStringSet(intersectionSet)
 
 - Finding the difference of two sets (Release when through)
 
-                 differenceSet =>  set1 % setFromDifference(set2)
-                 ...
-                 call ReleaseFTStringSet(differenceSet)
+            differenceSet =>  set1 % setFromDifference(set2)
+            ...
+            call ReleaseFTStringSet(differenceSet)
 
 - Converting a base class pointer to a set
 
-                 set =>  FTStringSetFromObject(obj)
+            set =>  FTStringSetFromObject(obj)
 
 - Getting all of the strings (The target of the pointer must be
   deallocated by the caller)
 
-                 CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: strings(:)
-                 strings =>  set % strings()
-                 ...
-                 deallocate(strings)
+            CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: strings(:)
+            strings =>  set % strings()
+            ...
+            deallocate(strings)
 
 # Advanced Classes: Testing and Error Reporting
 
@@ -1059,7 +1059,7 @@ in a code. For example, knowing that density always must be positive,
 you might assert that fact before using it, and if the result is false
 generate an error. With FTObjectLibrary that would be
 
-                CALL assert(rho > 0,``Density must be positive'')
+            CALL assert(rho > 0,``Density must be positive'')
 
 Fortran does not have an assertion mechanism, and so pretty much
 everyone writes their own. There are a couple of open source projects
@@ -1070,114 +1070,114 @@ the grand Fortran tradition of writing one's own, FTObjectLibrary has an
 To use assertions, you will USE the FTAssertions module and initialize
 the assertions system by calling
 
-                CALL initializeSharedAssertionsManager
+            CALL initializeSharedAssertionsManager
 
 During the course of your program, the sharedAssertionsManager will keep
 track of the success or failure of the assertions that you make. You can
 enquire at any time how many assertions have failed and how many
 assertions have been made with the two enquiry functions
 
-         INTEGER FUNCTION numberOfAssertionFailures()
-         INTEGER FUNCTION numberOfAssertions()
+            INTEGER FUNCTION numberOfAssertionFailures()
+            INTEGER FUNCTION numberOfAssertions()
 
 You can get a summary of the assertions by calling the subroutine
 
-         SUBROUTINE SummarizeFTAssertions(title,iUnit)  
-            IMPLICIT NONE
-            CHARACTER(LEN=*)                        :: title
-            INTEGER                                 :: iUnit
+            SUBROUTINE SummarizeFTAssertions(title,iUnit)  
+               IMPLICIT NONE
+               CHARACTER(LEN=*)                        :: title
+               INTEGER                                 :: iUnit
 
 When you are done, you finalize the sharedAssertionsManager with
 
-                CALL finalizeSharedAssertionsManager
+            CALL finalizeSharedAssertionsManager
 
 So how do you make assertions? FTObjectLibrary supplies two subroutines
 that post failures to the sharedAssertionsManager. The first takes a
 LOGICAL variable
 
-          SUBROUTINE assert(test,msg)  
-             IMPLICIT NONE
-             CHARACTER(LEN=*), OPTIONAL :: msg
-             LOGICAL                    :: test
+            SUBROUTINE assert(test,msg)  
+              IMPLICIT NONE
+              CHARACTER(LEN=*), OPTIONAL :: msg
+              LOGICAL                    :: test
 
 The second tests equality through the overloaded subroutine assertEqual,
 which allows a variety of argument type listed below:
 
-           INTERFACE assertEqual
-             MODULE PROCEDURE assertEqualTwoIntegers
-             MODULE PROCEDURE assertEqualTwoIntegerArrays1D
-             MODULE PROCEDURE assertEqualTwoIntegerArrays2D
-             MODULE PROCEDURE assertWithinToleranceTwoReal
-             MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
-             MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
-             MODULE PROCEDURE assertWithinToleranceTwoDouble
-             MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays1D
-             MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
-             MODULE PROCEDURE assertEqualTwoLogicals
-             MODULE PROCEDURE assertEqualString
-          END INTERFACE assertEqual
+            INTERFACE assertEqual
+              MODULE PROCEDURE assertEqualTwoIntegers
+              MODULE PROCEDURE assertEqualTwoIntegerArrays1D
+              MODULE PROCEDURE assertEqualTwoIntegerArrays2D
+              MODULE PROCEDURE assertWithinToleranceTwoReal
+              MODULE PROCEDURE assertWithinToleranceTwoRealArrays1D
+              MODULE PROCEDURE assertWithinToleranceTwoRealArrays2D
+              MODULE PROCEDURE assertWithinToleranceTwoDouble
+              MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays1D
+              MODULE PROCEDURE assertWithinToleranceTwoDoubleArrays2D
+              MODULE PROCEDURE assertEqualTwoLogicals
+              MODULE PROCEDURE assertEqualString
+            END INTERFACE assertEqual
 
 The individual calls have the signatures
 
-          SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)  
-             IMPLICIT NONE  
-             INTEGER, INTENT(in)        :: expectedValue,actualValue
-             CHARACTER(LEN=*), OPTIONAL :: msg
+            SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)  
+              IMPLICIT NONE  
+              INTEGER, INTENT(in)        :: expectedValue,actualValue
+              CHARACTER(LEN=*), OPTIONAL :: msg
              
-          SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
+            SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
              IMPLICIT NONE  
              INTEGER, INTENT(in)    , DIMENSION(:)            :: expectedValue,actualValue
              
-          SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
-             IMPLICIT NONE  
-             INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
+            SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
+              IMPLICIT NONE  
+              INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
              
-          SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,absTol,msg)  
-             IMPLICIT NONE  
-             REAL, INTENT(in)           :: x,y,tol
-             REAL, INTENT(IN), OPTIONAL :: absTol
-             CHARACTER(LEN=*), OPTIONAL :: msg
+            SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,absTol,msg)  
+              IMPLICIT NONE  
+              REAL, INTENT(in)           :: x,y,tol
+              REAL, INTENT(IN), OPTIONAL :: absTol
+              CHARACTER(LEN=*), OPTIONAL :: msg
              
-          SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,absTol,msg)  
-             IMPLICIT NONE  
-             REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-             REAL, INTENT(IN)               :: tol
-             REAL, INTENT(IN), OPTIONAL     :: absTol
-             CHARACTER(LEN=*), OPTIONAL     :: msg
+            SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,absTol,msg)  
+              IMPLICIT NONE  
+              REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+              REAL, INTENT(IN)               :: tol
+              REAL, INTENT(IN), OPTIONAL     :: absTol
+              CHARACTER(LEN=*), OPTIONAL     :: msg
              
-          SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
-             IMPLICIT NONE  
-             REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-             REAL, INTENT(IN)                 :: tol
+            SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
+              IMPLICIT NONE  
+              REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+              REAL, INTENT(IN)                 :: tol
              
-          SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,absTol,msg)  
-             IMPLICIT NONE  
-             DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
-             REAL, INTENT(IN), OPTIONAL   :: absTol
-             CHARACTER(LEN=*), OPTIONAL   :: msg
+            SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,absTol,msg)  
+              IMPLICIT NONE  
+              DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
+              REAL, INTENT(IN), OPTIONAL   :: absTol
+              CHARACTER(LEN=*), OPTIONAL   :: msg
              
-          SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,absTol,msg)  
-             IMPLICIT NONE  
-             DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-             DOUBLE PRECISION, INTENT(IN)               :: tol
-             REAL, INTENT(IN), OPTIONAL                 :: absTol
-             CHARACTER(LEN=*), OPTIONAL                 :: msg
+            SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,absTol,msg)  
+              IMPLICIT NONE  
+              DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+              DOUBLE PRECISION, INTENT(IN)               :: tol
+              REAL, INTENT(IN), OPTIONAL                 :: absTol
+              CHARACTER(LEN=*), OPTIONAL                 :: msg
              
-          SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol,abstol)  
-             IMPLICIT NONE  
-             DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-             DOUBLE PRECISION, INTENT(IN)                 :: tol
-             REAL, INTENT(IN), OPTIONAL :: absTol
+            SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol,abstol)  
+              IMPLICIT NONE  
+              DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+              DOUBLE PRECISION, INTENT(IN)                 :: tol
+              REAL, INTENT(IN), OPTIONAL :: absTol
              
-          SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
-             IMPLICIT NONE
-             CHARACTER(LEN=*)           :: expectedValue,actualValue
-             CHARACTER(LEN=*), OPTIONAL :: msg
+            SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
+              IMPLICIT NONE
+              CHARACTER(LEN=*)           :: expectedValue,actualValue
+              CHARACTER(LEN=*), OPTIONAL :: msg
              
-          SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)  
-             IMPLICIT NONE  
-             LOGICAL, INTENT(in)        :: expectedValue,actualValue
-             CHARACTER(LEN=*), OPTIONAL :: msg
+            SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)  
+              IMPLICIT NONE  
+              LOGICAL, INTENT(in)        :: expectedValue,actualValue
+              CHARACTER(LEN=*), OPTIONAL :: msg
 
 Notice that you can only check the equality of two floating point
 numbers to within some tolerance. One can either specify just a relative error tolerance, tol, or a relative and optional absolute tolerance, tol and absTol.
@@ -1199,37 +1199,37 @@ used with minimal fuss. You
 
 An example of running a suite of tests is the following:
 
-          TYPE(TestSuiteManager) :: testSuite
+            TYPE(TestSuiteManager) :: testSuite
           
-          EXTERNAL :: FTDictionaryClassTests
-          EXTERNAL :: FTExceptionClassTests
-          EXTERNAL :: FTValueClassTests
-          EXTERNAL :: FTValueDictionaryClassTests
-          EXTERNAL :: FTLinkedListClassTests
-          EXTERNAL :: StackClassTests
-          EXTERNAL :: MutableArrayClassTests
-          EXTERNAL :: HashTableTests
+            EXTERNAL :: FTDictionaryClassTests
+            EXTERNAL :: FTExceptionClassTests
+            EXTERNAL :: FTValueClassTests
+            EXTERNAL :: FTValueDictionaryClassTests
+            EXTERNAL :: FTLinkedListClassTests
+            EXTERNAL :: StackClassTests
+            EXTERNAL :: MutableArrayClassTests
+            EXTERNAL :: HashTableTests
 
-          CALL testSuite % init()
+            CALL testSuite % init()
           
-          CALL testSuite % addTestSubroutineWithName(FTValueClassTests,"FTValueClass Tests")
-          CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,"FTDictionaryClass Tests")
-          CALL testSuite % addTestSubroutineWithName(FTValueDictionaryClassTests,"FTValueDictionaryClass Tests")
-          CALL testSuite % addTestSubroutineWithName(FTLinkedListClassTests,"FTLinkedListClass Tests")
-          CALL testSuite % addTestSubroutineWithName(StackClassTests,"StackClass Tests")
-          CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,"Mutable Array Tests")
-          CALL testSuite % addTestSubroutineWithName(HashTableTests,"Hash Table Tests")
-          CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,"FTExceptionClass Tests")
+            CALL testSuite % addTestSubroutineWithName(FTValueClassTests,"FTValueClass Tests")
+            CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,"FTDictionaryClass Tests")
+            CALL testSuite % addTestSubroutineWithName(FTValueDictionaryClassTests,"FTValueDictionaryClass Tests")
+            CALL testSuite % addTestSubroutineWithName(FTLinkedListClassTests,"FTLinkedListClass Tests")
+            CALL testSuite % addTestSubroutineWithName(StackClassTests,"StackClass Tests")
+            CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,"Mutable Array Tests")
+            CALL testSuite % addTestSubroutineWithName(HashTableTests,"Hash Table Tests")
+            CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,"FTExceptionClass Tests")
 
-          CALL testSuite % performTests()
+            CALL testSuite % performTests()
 
 The test subroutines have no arguments or include optional data. The interface is
 
-          ABSTRACT INTERFACE
+            ABSTRACT INTERFACE
               SUBROUTINE testSuiteFunction(optData)
                  CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
               END SUBROUTINE testSuiteFunction
-          END INTERFACE
+            END INTERFACE
 
 The test functions should USE the FTAssertions module as in the previous
 section. You don't have to do any reporting code in your tests, however.
@@ -1237,13 +1237,13 @@ Reporting is managed by the testSuiteManager at the end of performTests. Look at
 
 **Definition:**
 
-                TYPE(TestSuiteManager) :: tester
+            TYPE(TestSuiteManager) :: tester
 
 **Usage:**
 
 - Initialization
 
-          CALL tester % init()
+            CALL tester % init()
 
 - Creating a test Create subroutines with the interface
 
@@ -1258,7 +1258,7 @@ Reporting is managed by the testSuiteManager at the end of performTests. Look at
 
 - Adding a test case
 
-               CALL tester % addTestSubroutineWithName(SubroutineName, description)
+            CALL tester % addTestSubroutineWithName(SubroutineName, description)
 
   where
 
@@ -1269,11 +1269,11 @@ Reporting is managed by the testSuiteManager at the end of performTests. Look at
 
 - Setting the output location
 
-               CALL tester % setOutputUnit(iUnit)
+            CALL tester % setOutputUnit(iUnit)
 
 - Running tests
 
-               CALL tester % performTests()
+            CALL tester % performTests()
 
 ## Exceptions
 
@@ -1295,22 +1295,22 @@ An FTException object wraps:
 
 Defined constants:
 
-             FT_ERROR_NONE    = 0
-             FT_ERROR_WARNING = 1
-             FT_ERROR_FATAL   = 2
+            FT_ERROR_NONE    = 0
+            FT_ERROR_WARNING = 1
+            FT_ERROR_FATAL   = 2
 
 **Usage:**
 
 - Initialization
 
-                  e  %  initFTException(severity,exceptionName,infoDictionary)
+            e  %  initFTException(severity,exceptionName,infoDictionary)
 
-                  Plus the convenience initializers, which automatically 
-                  create a FTValueDictionary with a single key called "message":
+            Plus the convenience initializers, which automatically 
+            create a FTValueDictionary with a single key called "message":
 
-                  e % initWarningException(msg = "message")
-                  e % initFatalException(msg = "message")
+            e % initWarningException(msg = "message")
+            e % initFatalException(msg = "message")
 
 - Setting components Create subroutines with the interface
 
-                  e  %  setInfoDictionary(infoDictionary)
+            e  %  setInfoDictionary(infoDictionary)
