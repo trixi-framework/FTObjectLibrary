@@ -981,7 +981,7 @@ then loop over that array.
 
 An empty set can be initialized, to which strings can be added, or a set
 can be initialized with an array of strings. The string length must be
-FTDICT\_KWD\_STRING_LENGTH or less.
+FTDICT\_KWD\_STRING\_LENGTH or less.
 
 **Definition (Subclass of FTObject):**
 
