@@ -1227,7 +1227,7 @@ The test subroutines have no arguments or include optional data. The interface i
 
           ABSTRACT INTERFACE
             SUBROUTINE testSuiteFunction(optData)
-          CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
+            CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
             END SUBROUTINE testSuiteFunction
           END INTERFACE
 
@@ -1249,7 +1249,7 @@ Reporting is managed by the testSuiteManager at the end of performTests. Look at
 
           ABSTRACT INTERFACE
             SUBROUTINE testSuiteFunction(optData)
-          CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
+            CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
             END SUBROUTINE testSuiteFunction
           END INTERFACE
 
