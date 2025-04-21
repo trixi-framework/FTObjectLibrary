@@ -382,7 +382,7 @@ TYPE to work only on that specific subclass.
            obj => self
            CALL releaseFTObject(self = obj)
            IF ( .NOT. ASSOCIATED(obj) )     THEN
-          self => NULL() 
+             self => NULL() 
            END IF      
           END SUBROUTINE releaseSubclass
 
@@ -405,9 +405,9 @@ include a function like this:
            CLASS(Subclass), POINTER :: cast
            cast => NULL()
            SELECT TYPE (e => obj)
-          TYPE is (Subclass)
-          cast => e
-          CLASS DEFAULT
+            TYPE is (Subclass)
+              cast => e
+            CLASS DEFAULT
            END SELECT
           END FUNCTION subclassFromSuperclass
 
@@ -620,12 +620,12 @@ stepping through (iterating) a linked list to access its entries.
            CLASS(FTObject), POINTER :: obj
            CALL iterator % setToStart()
            DO WHILE (.NOT.iterator % isAtEnd())
-           obj => iterator % object()            ! if the object is wanted
-           recordPtr => iterator % currentRecord() ! if the record is wanted
+              obj => iterator % object()            ! if the object is wanted
+              recordPtr => iterator % currentRecord() ! if the record is wanted
           
-           !Do something with object or record
+              !Do something with object or record
 
-           CALL iterator % moveToNext() ! FORGET THIS CALL AND YOU GET AN INFINITE LOOP!
+              CALL iterator % moveToNext() ! FORGET THIS CALL AND YOU GET AN INFINITE LOOP!
            END DO
 
 - Destruction
@@ -667,16 +667,16 @@ stack, for instance.
 
           obj => stack % peek() ! No change of ownership
           SELECT TYPE(obj)
-          TYPE is (*SubclassType*)
-             ! Do something with obj as subclass
-          CLASS DEFAULT
+             TYPE is (*SubclassType*)
+                ! Do something with obj as subclass
+             CLASS DEFAULT
              ! Problem with casting
           END SELECT
 
 - Popping the top of the stack
 
           obj => stack % pop() ! Ownership transferred to caller.
-             ! Call releaseFTObject(obj) when done with it
+          Call releaseFTObject(obj) ! when done with it
 
 ## Object Arrays
 
@@ -702,7 +702,7 @@ be efficient, it adds more than one entry at a time given by the
 - Initialization
 
           CLASS(FTMutableObjectArray)  :: array
-          INTEGER            :: N = 11
+          INTEGER                      :: N = 11
           CALL array % initWithSize(N)
 
 - Destruction
@@ -894,7 +894,7 @@ retrieve FTValue objects.
 - Initialization
 
           CLASS(FTDictionary)  :: dict
-          INTEGER            :: N = 16 ! Should be a power of two.
+          INTEGER              :: N = 16 ! Should be a power of two.
           CALL dict % initWithSize(N)
 
 - Destruction
@@ -905,7 +905,7 @@ retrieve FTValue objects.
 
           CLASS(FTDictionary), POINTER :: dict
           CLASS(FTObject)    , POINTER :: obj
-          CHARACTER(LEN=M)           :: key
+          CHARACTER(LEN=M)             :: key
           obj => r           ! r is subclass of FTObject
           CALL dict % addObjectForKey(obj,key)
 
@@ -992,7 +992,7 @@ FTDICT\_KWD\_STRING\_LENGTH or less.
 - Initialization
 
           CLASS(FTStringSet)  :: set
-          INTEGER            :: N = 16 ! Should be a power of two.
+          INTEGER             :: N = 16 ! Should be a power of two.
           CALL dict % initFTStringSet(FTStringSetSize = N)
 
           CLASS(FTStringSet)  :: set
@@ -1010,7 +1010,7 @@ FTDICT\_KWD\_STRING\_LENGTH or less.
 
 - Testing for inclusion
 
-          LOGICAL :: test
+          LOGICAL          :: test
           CHARACTER(LEN=M) :: str
           test = set % containsString(str)
 
@@ -1084,7 +1084,7 @@ You can get a summary of the assertions by calling the subroutine
 
           SUBROUTINE SummarizeFTAssertions(title,iUnit)  
              IMPLICIT NONE
-             CHARACTER(LEN=*)          :: title
+             CHARACTER(LEN=*) :: title
              INTEGER          :: iUnit
 
 When you are done, you finalize the sharedAssertionsManager with
@@ -1098,7 +1098,7 @@ LOGICAL variable
           SUBROUTINE assert(test,msg)  
             IMPLICIT NONE
             CHARACTER(LEN=*), OPTIONAL :: msg
-            LOGICAL          :: test
+            LOGICAL                    :: test
 
 The second tests equality through the overloaded subroutine assertEqual,
 which allows a variety of argument type listed below:
@@ -1126,11 +1126,11 @@ The individual calls have the signatures
            
           SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
            IMPLICIT NONE  
-           INTEGER, INTENT(in)    , DIMENSION(:)          :: expectedValue,actualValue
+           INTEGER, INTENT(in)    , DIMENSION(:) :: expectedValue,actualValue
            
           SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
             IMPLICIT NONE  
-            INTEGER, INTENT(in)    , DIMENSION(:,:)          :: expectedValue,actualValue
+            INTEGER, INTENT(in)    , DIMENSION(:,:) :: expectedValue,actualValue
            
           SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,absTol,msg)  
             IMPLICIT NONE  
@@ -1141,14 +1141,14 @@ The individual calls have the signatures
           SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,absTol,msg)  
             IMPLICIT NONE  
             REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-            REAL, INTENT(IN)             :: tol
+            REAL, INTENT(IN)               :: tol
             REAL, INTENT(IN), OPTIONAL     :: absTol
             CHARACTER(LEN=*), OPTIONAL     :: msg
            
           SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
             IMPLICIT NONE  
             REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-            REAL, INTENT(IN)          :: tol
+            REAL, INTENT(IN)                 :: tol
            
           SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,absTol,msg)  
             IMPLICIT NONE  
@@ -1159,15 +1159,15 @@ The individual calls have the signatures
           SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,absTol,msg)  
             IMPLICIT NONE  
             DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-            DOUBLE PRECISION, INTENT(IN)             :: tol
-            REAL, INTENT(IN), OPTIONAL          :: absTol
-            CHARACTER(LEN=*), OPTIONAL          :: msg
+            DOUBLE PRECISION, INTENT(IN)               :: tol
+            REAL, INTENT(IN), OPTIONAL                 :: absTol
+            CHARACTER(LEN=*), OPTIONAL                 :: msg
            
           SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol,abstol)  
             IMPLICIT NONE  
             DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-            DOUBLE PRECISION, INTENT(IN)          :: tol
-            REAL, INTENT(IN), OPTIONAL :: absTol
+            DOUBLE PRECISION, INTENT(IN)                 :: tol
+            REAL, INTENT(IN), OPTIONAL                   :: absTol
            
           SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
             IMPLICIT NONE
