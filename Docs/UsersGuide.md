@@ -859,19 +859,19 @@ another element.
 
           TYPE(FTObject) :: obj
           INTEGER        :: keys(m) ! m = # keys
-          matrix % addObjectForKeys(obj,keys)
+          table % addObjectForKeys(obj,keys)
 
 - Accessing an object
 
           TYPE(FTObject) :: obj
           INTEGER        :: keys(m) ! m = # keys
-          obj => matrix % objectForKeys(keys)
+          obj => table % objectForKeys(keys)
 
 - Checking if an entry exists
 
           LOGICAL :: exists
           INTEGER :: keys(m) ! m = # keys
-          exists = matrix % containsKeys(keys)
+          exists = table % containsKeys(keys)
 
 ## Dictionaries
 
@@ -997,7 +997,7 @@ FTDICT\_KWD\_STRING\_LENGTH or less.
 
           CLASS(FTStringSet)  :: set
           CHARACTER(LEN=*)    :: strings(:)
-          CALL dict % initWithStrings(strings)
+          CALL set % initWithStrings(strings)
 
 - Destruction
 
