@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0.2)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 # Default compiler gfortran, otherwise cmake Fortran package will set it to f95
 # You can override the compiler with cmake -DFTOBJ_COMPILER=
 #set(FTOBJ_AR "/usr/bin/gcc-ar" CACHE STRING "Static archive command")
