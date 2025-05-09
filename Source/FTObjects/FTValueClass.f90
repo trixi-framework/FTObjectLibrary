@@ -665,7 +665,7 @@
                END IF
          END SELECT
          
-      END FUNCTION stringValueA   
+      END FUNCTION stringValueA
 !
 !---------------------------------------------------------------------------
 !> Get the string value of length requestedLength stored in the object, or 

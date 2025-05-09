@@ -190,6 +190,9 @@
          sValue = dict2 % stringValueForKey("bologna")
          CALL FTAssertEqual(expectedValue = "", &
                             actualValue   = sValue)
+         sValue6 = dict2 % stringValueForKey("bologna",6)
+         CALL FTAssertEqual(expectedValue = "", &
+                            actualValue   = sValue)
 !
 !        -----------------------
 !        Check superclass method
