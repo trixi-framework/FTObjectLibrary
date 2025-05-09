@@ -707,9 +707,9 @@
             CASE (FTVALUECLASS_LOGICAL)
                l = TRANSFER(self % valueStorage, l)
                IF ( l )     THEN
-                  s = "TRUE"
+                  s = ".true."
                ELSE
-                  s = "FALSE"
+                  s = ".false."
                END IF
          END SELECT
          

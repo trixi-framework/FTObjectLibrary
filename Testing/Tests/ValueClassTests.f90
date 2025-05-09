@@ -242,6 +242,9 @@
             CALL FTAssertEqual(expectedValue = logicalToStr(j),                    &
                                actualValue = v % stringValue(), &
                                msg = "String value from logical:"// logicalToStr(j))
+            CALL FTAssertEqual(expectedValue = logicalToStr(j),                    &
+                               actualValue = v % stringValue(7), &
+                               msg = "String value from logical:"// logicalToStr(j))
             CALL FTAssertEqual(expectedValue = logicalToReal(j),                    &
                                actualValue = v % realValue(),                       &
                                relTol      = 2.0*EPSILON(x),                        &
