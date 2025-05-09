@@ -384,7 +384,7 @@
          CLASS(FTValueDictionary)              :: self
          CHARACTER(LEN=*)                      :: key
          INTEGER                               :: requestedLength
-         CHARACTER(LEN=FTVALUE_STRING_LENGTH)  :: stringValueForKeyR
+         CHARACTER(LEN=requestedLength)        :: stringValueForKeyR
          
          CLASS(FTValue) , POINTER :: v   => NULL()
          CLASS(FTObject), POINTER :: obj => NULL()

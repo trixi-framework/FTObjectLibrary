@@ -59,7 +59,8 @@
          REAL                                                  :: x,r
          DOUBLE PRECISION                                      :: xd
          LOGICAL                                               :: lgcal
-         CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH)               :: sValue
+         CHARACTER(LEN=:), ALLOCATABLE                         :: sValue
+         CHARACTER(LEN=6)                                      :: sValue6
 !
 !        -------------------------------------------------------
 !        Initialize the dictionary. We set it up with
@@ -105,8 +106,8 @@
             CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
          END DO
          DO i = 1,4
-            sValue = dict % stringValueForKey(keys(i),6)
-            CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
+            sValue6 = dict % stringValueForKey(keys(i),6)
+            CALL FTAssertEqual(sValue6,stringValues(i),"Value for key as string ")
          END DO
 !
 !        ------------------------
