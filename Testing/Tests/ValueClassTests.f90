@@ -115,7 +115,9 @@
 !        --------------------------
 !
          s = v % stringValue()
-         CALL FTAssertEqual("3.140000",s(1:8),"Compare string value for real value")
+         CALL FTAssertEqual("3.140000",s(1:8),"Compare string value for real value using allocated string")
+         s = v % stringValue(8)
+         CALL FTAssertEqual("3.140000",s(1:8),"Compare string value for real value using requestedLength string")
 
 !
 !        --------------------------------------------------------------------------

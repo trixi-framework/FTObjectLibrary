@@ -104,8 +104,10 @@
          PROCEDURE :: quadValueForKey
 #endif
          PROCEDURE :: integerValueForKey
-         PROCEDURE :: stringValueForKey
          PROCEDURE :: logicalValueForKey
+         PROCEDURE :: stringValueForKeyA
+         PROCEDURE :: stringValueForKeyR
+         GENERIC   :: stringValueForKey => stringValueForKeyA, stringValueForKeyR
 !
 !        -------------
 !        Introspection
@@ -350,11 +352,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-       FUNCTION stringValueForKey(self,key)  
+       FUNCTION stringValueForKeyA(self,key)  
          IMPLICIT NONE  
          CLASS(FTValueDictionary)       :: self
          CHARACTER(LEN=*)               :: key
-         CHARACTER(LEN=:), ALLOCATABLE  :: stringValueForKey
+         CHARACTER(LEN=:), ALLOCATABLE  :: stringValueForKeyA
          
          CLASS(FTValue) , POINTER :: v   => NULL()
          CLASS(FTObject), POINTER :: obj => NULL()
@@ -362,12 +364,40 @@
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
             v => valueFromObject(obj)
-            stringValueForKey = v % stringValue()
+            stringValueForKeyA = v % stringValue()
          ELSE 
-            stringValueForKey = "" 
+            stringValueForKeyA = "" 
          END IF 
          
-      END FUNCTION stringValueForKey    
+      END FUNCTION stringValueForKeyA    
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+       FUNCTION stringValueForKeyR(self,key,requestedLength)
+!
+!      -----------------------------------------------------------------
+!      Legacy function from before gfortran had allocatable string. Kept
+!      to not break code that already uses it.
+!      -----------------------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTValueDictionary)              :: self
+         CHARACTER(LEN=*)                      :: key
+         INTEGER                               :: requestedLength
+         CHARACTER(LEN=FTVALUE_STRING_LENGTH)  :: stringValueForKeyR
+         
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
+         
+         obj => self % objectForKey(key)
+         IF ( ASSOCIATED(obj) )     THEN
+            v => valueFromObject(obj)
+            stringValueForKeyR = v % stringValue(requestedLength)
+         ELSE 
+            stringValueForKeyR = "" 
+         END IF 
+         
+      END FUNCTION stringValueForKeyR    
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 

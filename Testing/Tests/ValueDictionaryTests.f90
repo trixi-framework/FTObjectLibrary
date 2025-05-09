@@ -104,6 +104,10 @@
             sValue = dict % stringValueForKey(keys(i))
             CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
          END DO
+         DO i = 1,4
+            sValue = dict % stringValueForKey(keys(i),6)
+            CALL FTAssertEqual(sValue,stringValues(i),"Value for key as string ")
+         END DO
 !
 !        ------------------------
 !        Get them out as logicals

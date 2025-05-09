@@ -168,7 +168,10 @@
 #ifdef _has_Quad
          PROCEDURE :: quadValue
 #endif
-         PROCEDURE :: stringValue
+         
+         PROCEDURE :: stringvalueR
+         PROCEDURE :: stringValueA
+         GENERIC   :: stringValue => stringvalueR, stringValueA
          PROCEDURE :: logicalValue
          PROCEDURE :: integerValue
 !
@@ -625,7 +628,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      FUNCTION stringValue(self) RESULT(s)
+      FUNCTION stringValueA(self) RESULT(s)
          IMPLICIT NONE 
          CLASS(FTValue)                 :: self
          CHARACTER(LEN=:), ALLOCATABLE  :: s
@@ -662,7 +665,55 @@
                END IF
          END SELECT
          
-      END FUNCTION stringValue   
+      END FUNCTION stringValueA   
+!
+!---------------------------------------------------------------------------
+!> Get the string value of length requestedLength stored in the object, or 
+!> convert the value
+!> in the object to a string of that length if it is of a different type.
+!---------------------------------------------------------------------------
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      FUNCTION stringValueR(self,requestedLength) RESULT(s)
+         IMPLICIT NONE 
+         CLASS(FTValue)                 :: self
+         INTEGER                        :: requestedLength
+         CHARACTER(LEN=requestedLength) :: s
+ 
+         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: tmpString
+         
+         REAL                                  :: r
+         INTEGER                               :: i
+         DOUBLE PRECISION                      :: d
+         LOGICAL                               :: l
+
+          SELECT CASE (self % valueType)
+            CASE (FTVALUECLASS_INTEGER)
+               i = TRANSFER(self % valueStorage, i)
+               WRITE(tmpString,*) i
+               s = TRIM(ADJUSTL(tmpString))
+           CASE (FTVALUECLASS_DOUBLE)
+               d = TRANSFER( self % valueStorage, d)
+               WRITE(tmpString,*) d
+               s = TRIM(ADJUSTL(tmpString))
+            CASE (FTVALUECLASS_REAL)
+               r = TRANSFER(self % valueStorage, r)
+               WRITE(tmpString,*) r
+               s = TRIM(ADJUSTL(tmpString))
+            CASE (FTVALUECLASS_STRING)
+               tmpString = TRANSFER(self % valueStorage, tmpString)
+               s         = tmpString(1:SIZE(self % valueStorage))
+            CASE (FTVALUECLASS_LOGICAL)
+               l = TRANSFER(self % valueStorage, l)
+               IF ( l )     THEN
+                  s = "TRUE"
+               ELSE
+                  s = "FALSE"
+               END IF
+         END SELECT
+         
+      END FUNCTION stringValueR   
 !@mark -
 !
 !---------------------------------------------------------------------------
