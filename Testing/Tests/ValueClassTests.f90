@@ -147,6 +147,8 @@
          CALL FTAssertEqual(DBLE(3.14),v % doublePrecisionValue(),doubleTol,msg="Double return for real object")
          s = v % stringValue()
          CALL FTAssertEqual("3.140000",s(1:8),"String return for real object")
+         s = v % stringValue(8)
+         CALL FTAssertEqual("3.140000",s(1:8),"String return for real object")
          CALL FTAssertEqual(.true.,v % logicalValue(),"Logical return for real object")
 !
 !        ----------------------------------------------------------------
@@ -168,6 +170,7 @@
          CALL FTAssertEqual(666,v % integerValue(),"Integer storage to integer")
          CALL FTAssertEqual(DBLE(666.0),v % doublePrecisionValue(),doubleTol,msg="Integer storage to double")
          CALL FTAssertEqual("666",v % stringValue(),"Integer storage to string")
+         CALL FTAssertEqual("666",v % stringValue(3),"Integer storage to string")
          CALL FTAssertEqual(.true.,v % logicalValue(),"Integer storage to logical")
 !
 !        ------------------------------------------
@@ -189,6 +192,8 @@
          CALL FTAssertEqual(0,v % integerValue(),"Double storage to integer")
          CALL FTAssertEqual(d,v % doublePrecisionValue(),doubleTol,msg="Double storage to double")
          s = v % stringValue()
+         CALL FTAssertEqual("0.33333333333333",s(1:16),"Double storage to string")
+         s = v % stringValue(16)
          CALL FTAssertEqual("0.33333333333333",s(1:16),"Double storage to string")
          CALL FTAssertEqual(.true.,v % logicalValue(),"Double storage to logical")
 !
@@ -283,6 +288,9 @@
          CALL FTAssert(ASSOCIATED(vFromObj),msg = "Cast value from object as subroutine")
          CALL FTAssertEqual(expectedValue = "stringValue", &
                             actualValue   = vFromObj % stringValue(), &
+                            msg           = "Check that cast is correct")
+         CALL FTAssertEqual(expectedValue = "stringValue", &
+                            actualValue   = vFromObj % stringValue(11), &
                             msg           = "Check that cast is correct")
 !
 !        ---------------
