@@ -37,6 +37,10 @@ values.
 
  The library also contains classes for testing (FTAssertions, TestSuiteManagerClass) and for reporting errors through the FTException class.
 
+## News
+
+New about changes can be found [here](Docs/News.md).
+
 ## Documentation
 
 Documentation can be found in the [user's guide](Docs/UsersGuide.md).
