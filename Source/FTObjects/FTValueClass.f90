@@ -624,6 +624,7 @@
 !---------------------------------------------------------------------------
 !> Get the string value stored in the object, or convert the value
 !> in the object to a string of that length if it is of a different type.
+!> It is overloaded as stringValue().
 !---------------------------------------------------------------------------
 !
 !////////////////////////////////////////////////////////////////////////
@@ -669,8 +670,11 @@
 !
 !---------------------------------------------------------------------------
 !> Get the string value of length requestedLength stored in the object, or 
-!> convert the value
-!> in the object to a string of that length if it is of a different type.
+!> convert the value in the object to a string of that length if it is of a 
+!> different type. This version is deprecated in favor of the stringValueA
+!> function that uses allocated strings. This version is included only so
+!> that other code that uses this library doesn't break. It is overloaded
+!> as stringValue(requestedLength).
 !---------------------------------------------------------------------------
 !
 !////////////////////////////////////////////////////////////////////////
