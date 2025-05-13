@@ -17,13 +17,6 @@ predocmark:>
  facilitate writing generic object oriented Fortran programs. Reference counting
  is implemented to assist with memory management so that the lifespans of objects
  are properly maintained and are so that objects are deleted only when no other references are made to them.
-
-
- FTObjectLibrary tries, as much as the maturity of Fortran compilers allow, to
- use the new F2003/2008 features to make generic programming possible. The LCD
- for the library is gfortran, and as modern features get implemented in the
- compiler, FTObjectLibrary will be updated to include those features. In the meantime, there
- are a few workarounds that exist in the code.
  
  The library includes three categories of classes:
 
@@ -53,11 +46,11 @@ values.
 
 # Documentation
 
-Documentation can be found in the linked pages, and in the user's guide *FTObjectLibrary.pdf* found in the Docs directory.
+Documentation can be found in the [user's guide](UsersGuide.md).
 
 # Examples
 
-Examples can be found in the Examples directory and in the Testing directory. The examples include a simple reverse Polish calculator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.
+Examples can be found in the [Examples](../Examples) directory and in the [Testing](../Testing) directory. The examples include a simple reverse Polish calculator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.
 
 # Building the Library
 

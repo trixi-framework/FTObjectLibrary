@@ -53,7 +53,7 @@
 !>     r = dict % realValueForKey("real")
 !>     d = dict % doublePrecisionValueForKey("double")
 !>     l = dict % logicalValueForKey("logical")
-!>     s = dict % stringValueForKey("string",15)
+!>     s = dict % stringValueForKey("string")
 !>#Converting an FTDictionary to an FTValueDictionary
 !>            valueDict => valueDictionaryFromDictionary(dict)
 !>#Converting an FTObject to an FTValueDictionary
@@ -104,8 +104,10 @@
          PROCEDURE :: quadValueForKey
 #endif
          PROCEDURE :: integerValueForKey
-         PROCEDURE :: stringValueForKey
          PROCEDURE :: logicalValueForKey
+         PROCEDURE :: stringValueForKeyA
+         PROCEDURE :: stringValueForKeyR
+         GENERIC   :: stringValueForKey => stringValueForKeyA, stringValueForKeyR
 !
 !        -------------
 !        Introspection
@@ -350,12 +352,11 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-       FUNCTION stringValueForKey(self,key,requestedLength)  
+       FUNCTION stringValueForKeyA(self,key)  
          IMPLICIT NONE  
          CLASS(FTValueDictionary)       :: self
          CHARACTER(LEN=*)               :: key
-         INTEGER                        :: requestedLength
-         CHARACTER(LEN=requestedLength) :: stringValueForKey
+         CHARACTER(LEN=:), ALLOCATABLE  :: stringValueForKeyA
          
          CLASS(FTValue) , POINTER :: v   => NULL()
          CLASS(FTObject), POINTER :: obj => NULL()
@@ -363,12 +364,40 @@
          obj => self % objectForKey(key)
          IF ( ASSOCIATED(obj) )     THEN
             v => valueFromObject(obj)
-            stringValueForKey = v % stringValue(requestedLength)
+            stringValueForKeyA = v % stringValue()
          ELSE 
-            stringValueForKey = "" 
+            stringValueForKeyA = "" 
          END IF 
          
-      END FUNCTION stringValueForKey    
+      END FUNCTION stringValueForKeyA    
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+       FUNCTION stringValueForKeyR(self,key,requestedLength)
+!
+!      -----------------------------------------------------------------
+!      Legacy function from before gfortran had allocatable string. Kept
+!      to not break code that already uses it.
+!      -----------------------------------------------------------------
+!
+         IMPLICIT NONE  
+         CLASS(FTValueDictionary)              :: self
+         CHARACTER(LEN=*)                      :: key
+         INTEGER                               :: requestedLength
+         CHARACTER(LEN=requestedLength)        :: stringValueForKeyR
+         
+         CLASS(FTValue) , POINTER :: v   => NULL()
+         CLASS(FTObject), POINTER :: obj => NULL()
+         
+         obj => self % objectForKey(key)
+         IF ( ASSOCIATED(obj) )     THEN
+            v => valueFromObject(obj)
+            stringValueForKeyR = v % stringValue(requestedLength)
+         ELSE 
+            stringValueForKeyR = "" 
+         END IF 
+         
+      END FUNCTION stringValueForKeyR    
 !@mark -
 !
 !//////////////////////////////////////////////////////////////////////// 

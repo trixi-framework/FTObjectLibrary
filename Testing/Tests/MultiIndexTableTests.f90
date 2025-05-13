@@ -131,7 +131,7 @@
 !
          DO j = 1, 4
             v   => valueFromObject(table % objectForKeys(keys(:,j)))
-            str = v % stringValue(5)
+            str = v % stringValue()
             CALL FTAssertEqual(expectedValue = strs(j),actualValue = str,msg = "object retrieval")
          END DO
 !

@@ -21,7 +21,7 @@
       TYPE(FTAssertionsManager), POINTER :: assertionsManager
       INTEGER                            :: numberUnexpectedFailures
       
-      CHARACTER(LEN=FT_ASSERTION_STRING_LENGTH) :: expected, actual
+      CHARACTER(LEN=64)  :: expected, actual
 !
 !     -----
 !     Setup

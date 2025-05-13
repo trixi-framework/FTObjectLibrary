@@ -518,7 +518,7 @@
 !>            e              => errorObject()
 !>            d              => e % infoDictionary()
 !>            userDictionary => valueDictionaryFromDictionary(dict = d)
-!>            msg = userDictionary % stringValueForKey("message",FTDICT_KWD_STRING_LENGTH)
+!>            msg = userDictionary % stringValueForKey("message")
 !>         END IF
 !>###Printing all exceptions
 !>      call printAllExceptions
