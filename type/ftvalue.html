@@ -88,7 +88,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 9.0% of total for derived types.</p>Including implementation: 356 statements, 11.2% of total for derived types.">24 statements</a>
+                 title="<p> 9.6% of total for derived types.</p>Including implementation: 392 statements, 12.1% of total for derived types.">26 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -167,12 +167,14 @@
             <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-realvalue">realValue</a>
             <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-doubleprecisionvalue">doublePrecisionValue</a>
             <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-quadvalue">quadValue</a>
+            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-stringvaluer">stringvalueR</a>
+            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-stringvaluea">stringValueA</a>
             <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-stringvalue">stringValue</a>
             <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-logicalvalue">logicalValue</a>
             <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-integervalue">integerValue</a>
-            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-description~3">description</a>
-            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-printdescription~6">printDescription</a>
-            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-classname~7">className</a>
+            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-description">description</a>
+            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-printdescription">printDescription</a>
+            <a class="list-group-item" href="../type/ftvalue.html#boundprocedure-classname">className</a>
         </div>
       </div>
     </div>
@@ -314,7 +316,7 @@ said component(s).
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~93"></span>
+              <span class="anchor" id="variable-self~8"></span>
               type(<a href='ftvalue.html'>FTValue</a>)
             </td>
 <td></td>
@@ -1171,23 +1173,26 @@ in the object to a double precision if it is of a different type.</p>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-stringvalue"></span>
+      <span class="anchor" id="boundprocedure-stringvaluer"></span>
       <h3>
           procedure, public ::
-  <strong>stringValue</strong>
+  <strong>stringvalueR</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/stringvaluer.html'>stringValueR</a>
         
       </h3>
     </div>
       <ul class="list-group">
           <li class="list-group-item">
                     <h3>
-    public  function <a href='../proc/stringvalue.html'>stringValue</a>(self, requestedLength) result(s)  
+    public  function <a href='../proc/stringvaluer.html'>stringValueR</a>(self, requestedLength) result(s)  
 </h3>
     
 
   <p>Get the string value of length requestedLength stored in the object, or 
-convert the value
-in the object to a string of that length if it is of a different type.</p>
+convert the value in the object to a string of that length if it is of a 
+different type. This version is deprecated in favor of the stringValueA
+function that uses allocated strings. This version is included only so
+that other code that uses this library doesn't break. It is overloaded
+as stringValue(requestedLength).</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1236,6 +1241,192 @@ in the object to a string of that length if it is of a different type.</p>
     <h4>
     Return Value
     <small>character(len=requestedLength)</small>
+    </h4>
+    
+
+          </li>
+      </ul>
+  </div>
+
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-stringvaluea"></span>
+      <h3>
+          procedure, public ::
+  <strong>stringValueA</strong>
+        
+      </h3>
+    </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    public  function <a href='../proc/stringvaluea.html'>stringValueA</a>(self) result(s)  
+</h3>
+    
+
+  <p>Get the string value stored in the object, or convert the value
+in the object to a string of that length if it is of a different type.
+It is overloaded as stringValue().</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='ftvalue.html'>FTValue</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=:), ALLOCATABLE</small>
+    </h4>
+    
+
+          </li>
+      </ul>
+  </div>
+
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-stringvalue"></span>
+      <h3>
+          generic, public ::
+  <strong>stringValue</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/type/ftvalue.html#boundprocedure-stringvaluer'>stringvalueR</a>, <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/type/ftvalue.html#boundprocedure-stringvaluea'>stringValueA</a>
+        
+      </h3>
+    </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    public  function <a href='../proc/stringvaluer.html'>stringValueR</a>(self, requestedLength) result(s)  
+</h3>
+    
+
+  <p>Get the string value of length requestedLength stored in the object, or 
+convert the value in the object to a string of that length if it is of a 
+different type. This version is deprecated in favor of the stringValueA
+function that uses allocated strings. This version is included only so
+that other code that uses this library doesn't break. It is overloaded
+as stringValue(requestedLength).</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='ftvalue.html'>FTValue</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>requestedLength</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=requestedLength)</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                    <h3>
+    public  function <a href='../proc/stringvaluea.html'>stringValueA</a>(self) result(s)  
+</h3>
+    
+
+  <p>Get the string value stored in the object, or convert the value
+in the object to a string of that length if it is of a different type.
+It is overloaded as stringValue().</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='ftvalue.html'>FTValue</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=:), ALLOCATABLE</small>
     </h4>
     
 
@@ -1367,7 +1558,7 @@ in the object to an integer if it is of a different type.</p>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-description~3"></span>
+      <span class="anchor" id="boundprocedure-description"></span>
       <h3>
           procedure, public ::
   <strong>description</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftvaluedescription.html'>FTValueDescription</a>
@@ -1427,7 +1618,7 @@ stringValue() of the object. </p>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-printdescription~6"></span>
+      <span class="anchor" id="boundprocedure-printdescription"></span>
       <h3>
           procedure, public ::
   <strong>printDescription</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printvaluedescription.html'>printValueDescription</a>
@@ -1497,7 +1688,7 @@ the stringValue() of the object. </p>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-classname~7"></span>
+      <span class="anchor" id="boundprocedure-classname"></span>
       <h3>
           procedure, public ::
   <strong>className</strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/valueclassname.html'>valueClassName</a>

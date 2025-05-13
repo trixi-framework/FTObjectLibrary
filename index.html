@@ -97,11 +97,6 @@
  facilitate writing generic object oriented Fortran programs. Reference counting
  is implemented to assist with memory management so that the lifespans of objects
  are properly maintained and are so that objects are deleted only when no other references are made to them.</p>
-<p>FTObjectLibrary tries, as much as the maturity of Fortran compilers allow, to
- use the new F2003/2008 features to make generic programming possible. The LCD
- for the library is gfortran, and as modern features get implemented in the
- compiler, FTObjectLibrary will be updated to include those features. In the meantime, there
- are a few workarounds that exist in the code.</p>
 <p>The library includes three categories of classes:</p>
 <ul>
 <li>Value classes</li>
@@ -127,9 +122,9 @@ values.</li>
 </ul>
 <p>The library also contains classes for testing (FTAssertions, TestSuiteManagerClass) and for reporting errors through the FTException class.</p>
 <h1>Documentation</h1>
-<p>Documentation can be found in the linked pages, and in the user's guide <em>FTObjectLibrary.pdf</em> found in the Docs directory.</p>
+<p>Documentation can be found in the <a href="UsersGuide.md">user's guide</a>.</p>
 <h1>Examples</h1>
-<p>Examples can be found in the Examples directory and in the Testing directory. The examples include a simple reverse Polish calculator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.</p>
+<p>Examples can be found in the <a href="../Examples">Examples</a> directory and in the <a href="../Testing">Testing</a> directory. The examples include a simple reverse Polish calculator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.</p>
 <h1>Building the Library</h1>
 <p>The library (.a) can be built with either CMake or default make.</p>
 <h3>CMake</h3>

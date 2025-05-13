@@ -61,7 +61,7 @@
 !>            int  = i % integerValue()
 !>            doub = d % doublePrecisionValue()
 !>            logc = l % logicalValue()
-!>            str  = s % stringValue(nChars)
+!>            str  = s % stringValue()
 !>
 !> - Description
 !>
@@ -77,7 +77,7 @@
 !> The class will attempt to convert between the different types:
 !>
 !>            CALL r % initWithReal(3.14)
-!>            print *, r % stringValue(8)
+!>            print *, r % stringValue()
 !>
 !>            Logical variables rules:
 !>
@@ -168,7 +168,10 @@
 #ifdef _has_Quad
          PROCEDURE :: quadValue
 #endif
-         PROCEDURE :: stringValue
+         
+         PROCEDURE :: stringvalueR
+         PROCEDURE :: stringValueA
+         GENERIC   :: stringValue => stringvalueR, stringValueA
          PROCEDURE :: logicalValue
          PROCEDURE :: integerValue
 !
@@ -619,14 +622,64 @@
       END FUNCTION logicalValue   
 !
 !---------------------------------------------------------------------------
-!> Get the string value of length requestedLength stored in the object, or 
-!> convert the value
+!> Get the string value stored in the object, or convert the value
 !> in the object to a string of that length if it is of a different type.
+!> It is overloaded as stringValue().
 !---------------------------------------------------------------------------
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      FUNCTION stringValue(self,requestedLength) RESULT(s)
+      FUNCTION stringValueA(self) RESULT(s)
+         IMPLICIT NONE 
+         CLASS(FTValue)                 :: self
+         CHARACTER(LEN=:), ALLOCATABLE  :: s
+ 
+         CHARACTER(LEN= FTVALUE_STRING_LENGTH) :: tmpString
+         
+         REAL                                  :: r
+         INTEGER                               :: i
+         DOUBLE PRECISION                      :: d
+         LOGICAL                               :: l
+
+          SELECT CASE (self % valueType)
+            CASE (FTVALUECLASS_INTEGER)
+               i = TRANSFER(self % valueStorage, i)
+               WRITE(tmpString,*) i
+               s = TRIM(ADJUSTL(tmpString))
+           CASE (FTVALUECLASS_DOUBLE)
+               d = TRANSFER( self % valueStorage, d)
+               WRITE(tmpString,*) d
+               s = TRIM(ADJUSTL(tmpString))
+            CASE (FTVALUECLASS_REAL)
+               r = TRANSFER(self % valueStorage, r)
+               WRITE(tmpString,*) r
+               s = TRIM(ADJUSTL(tmpString))
+            CASE (FTVALUECLASS_STRING)
+               tmpString = TRANSFER(self % valueStorage, tmpString)
+               s         = tmpString(1:SIZE(self % valueStorage))
+            CASE (FTVALUECLASS_LOGICAL)
+               l = TRANSFER(self % valueStorage, l)
+               IF ( l )     THEN
+                  s = ".true."
+               ELSE
+                  s = ".false."
+               END IF
+         END SELECT
+         
+      END FUNCTION stringValueA
+!
+!---------------------------------------------------------------------------
+!> Get the string value of length requestedLength stored in the object, or 
+!> convert the value in the object to a string of that length if it is of a 
+!> different type. This version is deprecated in favor of the stringValueA
+!> function that uses allocated strings. This version is included only so
+!> that other code that uses this library doesn't break. It is overloaded
+!> as stringValue(requestedLength).
+!---------------------------------------------------------------------------
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      FUNCTION stringValueR(self,requestedLength) RESULT(s)
          IMPLICIT NONE 
          CLASS(FTValue)                 :: self
          INTEGER                        :: requestedLength
@@ -664,7 +717,7 @@
                END IF
          END SELECT
          
-      END FUNCTION stringValue   
+      END FUNCTION stringValueR   
 !@mark -
 !
 !---------------------------------------------------------------------------
@@ -679,7 +732,7 @@
          CLASS(FTValue)      :: self
          CHARACTER(LEN=DESCRIPTION_CHARACTER_LENGTH) :: FTValueDescription
          
-         FTValueDescription =  self % stringValue(DESCRIPTION_CHARACTER_LENGTH)
+         FTValueDescription =  self % stringValue()
          
       END FUNCTION FTValueDescription
 !
