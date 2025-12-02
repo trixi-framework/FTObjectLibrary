@@ -33,7 +33,7 @@ jobs:
             cmake_generator: Unix Makefiles
             shell: bash
           - os: macos-latest
-            compiler: gfortran-12
+            compiler: gfortran-13
             cmake_generator: Unix Makefiles
             shell: bash
           - os: windows-latest
