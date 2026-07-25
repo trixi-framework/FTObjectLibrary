@@ -487,7 +487,7 @@
 !
          IMPLICIT NONE  
          CLASS(FTObject)            , POINTER :: obj
-         CLASS(FTMutableObjectArray), POINTER :: cast
+         TYPE (FTMutableObjectArray), POINTER :: cast
          
          cast => NULL()
          SELECT TYPE (e => obj)

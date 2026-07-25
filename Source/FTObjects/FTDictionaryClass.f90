@@ -571,7 +571,7 @@
 !
          IMPLICIT NONE  
          CLASS(FTObject)    , POINTER :: obj
-         CLASS(FTDictionary), POINTER :: cast
+         TYPE (FTDictionary), POINTER :: cast
          
          cast => NULL()
          SELECT TYPE (e => obj)

@@ -59,7 +59,7 @@
       IMPLICIT NONE
       
       CHARACTER(LEN=1), ALLOCATABLE :: enc(:)
-      CLASS(FTData)   , POINTER :: dat, datPtr
+      TYPE (FTData)   , POINTER :: dat, datPtr
       CLASS(FTObject) , POINTER :: obj
       CHARACTER(LEN=1), POINTER :: storedDat(:)
       CHARACTER(LEN=11)         :: outString

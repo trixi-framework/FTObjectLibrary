@@ -124,8 +124,8 @@
 !        Cast the base class FTObject to the FTException class
 !        -----------------------------------------------------
 !
-         CLASS(FTObject)  , POINTER :: obj
-         CLASS(MultiIndexMatrixData), POINTER :: cast
+         CLASS(FTObject)            , POINTER :: obj
+         TYPE (MultiIndexMatrixData), POINTER :: cast
          
          cast => NULL()
          SELECT TYPE (e => obj)
@@ -380,7 +380,7 @@
          DO WHILE (ASSOCIATED(currentRecord))
          
             obj => currentRecord % recordObject
-            CALL cast(obj,mData)
+            mData => MultiIndexMatrixDataCast(obj)
             IF ( keysMatch(key1 = mData % key,key2 = orderedKeys) )     THEN
                r => mData % object
                EXIT 
@@ -429,8 +429,8 @@
          currentRecord => self % table(i) % head
          DO WHILE (ASSOCIATED(currentRecord))
          
-            obj => currentRecord % recordObject
-            CALL cast(obj,mData)
+            obj   => currentRecord % recordObject
+            mData => MultiIndexMatrixDataCast(obj)
             IF ( keysMatch(key1 = mData % key,key2 = orderedKeys))     THEN
                r = .TRUE.
                EXIT   

@@ -50,7 +50,7 @@
 !        ------------
 !
          TYPE (FTMutableObjectArray) , POINTER :: array
-         CLASS (FTMutableObjectArray), POINTER :: arrayPtr
+         TYPE (FTMutableObjectArray), POINTER :: arrayPtr
 
          INTEGER                    :: i
          INTEGER, DIMENSION(10)     :: values         = [(i,i=1,10)]

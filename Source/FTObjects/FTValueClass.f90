@@ -768,7 +768,7 @@
 !
          IMPLICIT NONE  
          CLASS(FTObject), POINTER :: obj
-         CLASS(FTValue) , POINTER :: cast
+         TYPE (FTValue) , POINTER :: cast
          
          cast => NULL()
          SELECT TYPE (e => obj)

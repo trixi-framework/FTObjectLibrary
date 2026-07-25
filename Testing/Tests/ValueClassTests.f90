@@ -61,7 +61,7 @@
 !
          TYPE(FTValue)  , POINTER :: v
          CLASS(FTObject), POINTER :: obj
-         CLASS(FTValue) , POINTER :: vFromObj
+         TYPE (FTValue) , POINTER :: vFromObj
 !
 !        -------------------------------------------
 !        Some values to convert into FTValue objects

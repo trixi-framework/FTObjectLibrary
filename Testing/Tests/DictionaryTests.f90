@@ -42,7 +42,7 @@
          USE FTAssertions
          IMPLICIT NONE  
          
-         CLASS(FTDictionary)                    , POINTER :: dict, dictFromObj
+         TYPE (FTDictionary)                    , POINTER :: dict, dictFromObj
          CLASS(FTObject)                        , POINTER :: obj
          TYPE (FTValue)                         , POINTER :: v
          TYPE (FTMutableObjectArray)            , POINTER :: storedObjects

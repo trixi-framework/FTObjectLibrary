@@ -107,7 +107,7 @@
 !>     SUBROUTINE castToSubclass(obj,cast) 
 !>        IMPLICIT NONE  
 !>        CLASS(FTObject), POINTER :: obj
-!>        CLASS(SubClass), POINTER :: cast
+!>        TYPE (SubClass), POINTER :: cast
 !>        
 !>        cast => NULL()
 !>        SELECT TYPE (e => obj)

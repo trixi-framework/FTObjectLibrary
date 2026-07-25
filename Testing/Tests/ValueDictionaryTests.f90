@@ -42,7 +42,7 @@
          IMPLICIT NONE  
          
          TYPE(FTValueDictionary)           :: dict, dict2
-         CLASS(FTValueDictionary), POINTER :: dict3, valDict
+         TYPE(FTValueDictionary) , POINTER :: dict3, valDict
          CLASS(FTDictionary)     , POINTER :: plainDict
          CLASS(FTObject)         , POINTER :: obj
 !

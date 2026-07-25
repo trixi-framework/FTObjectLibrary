@@ -46,7 +46,7 @@
       
       TYPE(FTStringSet)           :: set1, set2
       TYPE(FTStringSet) , POINTER :: intersectionSet, differenceSet, setPtr
-      CLASS(FTStringSet), POINTER :: unionSet
+      TYPE(FTStringSet) , POINTER :: unionSet
       CHARACTER(LEN=5)            :: s1(5) = ['one  ','two  ','three','four ','five ']
       CHARACTER(LEN=5)            :: s2(5) = ['one  ','two  ','six  ','seven','eight']
       CHARACTER(LEN=5)            :: s3(6) = ['one  ','two  ','three','four ','five ','six  ']
@@ -150,7 +150,7 @@
                          actualValue   = unionSet % COUNT(), &
                          msg           = "union set count")
       
-      CALL releaseFTStringSet(self = unionSet)
+      CALL releaseFTStringSet(unionSet)
       CALL FTAssert(test = .NOT.ASSOCIATED(unionSet),msg = 'Release of pointer to set')
 !
 !     ----------------------

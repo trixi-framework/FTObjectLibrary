@@ -42,7 +42,7 @@
             USE FTExceptionClass
             USE FTValueDictionaryClass
             IMPLICIT NONE  
-            CLASS(FTException)      , POINTER :: testException
+            TYPE (FTException)      , POINTER :: testException
             TYPE (FTValueDictionary), POINTER :: userDictionary
             CLASS(FTDictionary)     , POINTER :: ptr
             REAL                              :: r = 3.1416
@@ -71,9 +71,11 @@
          IMPLICIT NONE 
          
          TYPE (FTException) , POINTER :: exception
+         CLASS(FTException) , POINTER :: ePtr
          
          exception => testException()
-         CALL throw(exception)
+         ePtr      => exception
+         CALL throw(ePtr)
          CALL releaseFTException(exception)
          
       END SUBROUTINE subroutineThatThrowsError    
@@ -86,11 +88,12 @@
          USE FTAssertions
          IMPLICIT NONE
          
-         CLASS(FTException)      , POINTER       :: e, ePtr
-         CLASS(FTDictionary)     , POINTER       :: d
-         CLASS(FTValueDictionary), POINTER       :: userDictionary
-         CLASS(FTValue)          , POINTER       :: vGood, vBad
-         CLASS(FTObject)         , POINTER       :: obj
+         TYPE(FTException)      , POINTER        :: e, ePtr
+         CLASS(FTException)     , POINTER        :: eClassPtr
+         CLASS(FTDictionary)    , POINTER        :: d
+         TYPE(FTValueDictionary), POINTER        :: userDictionary
+         CLASS(FTValue)         , POINTER        :: vGood, vBad
+         CLASS(FTObject)        , POINTER        :: obj
          REAL                                    :: r
          CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH) :: msg
          REAL                                    :: singleTol = 2*EPSILON(1.0e0)
@@ -111,7 +114,8 @@
          CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
                             actualValue   = e % severity(),  &
                             msg           = "Warning error level match")
-         CALL throw(e)
+         eClassPtr => e
+         CALL throw(eClassPtr)
          CALL releaseFTException(e)
          
          ALLOCATE(e)
@@ -119,7 +123,8 @@
          CALL FTAssertEqual(expectedValue = FT_ERROR_FATAL, &
                             actualValue   = e % severity(),  &
                             msg           = "Fatal error level match")
-         CALL throw(e)
+         eClassPtr => e
+         CALL throw(eClassPtr)
          CALL releaseFTException(e)
 
          ALLOCATE(e)
@@ -131,8 +136,10 @@
                                                 expectedValueObject = vGood, &
                                                 ObservedValueObject = vBad,  &
                                                 level               = FT_ERROR_WARNING)
-         CALL releaseFTValue(vBad)
-         CALL releaseFTValue(vGood)
+         obj => vBad
+         CALL release(obj)
+         obj => vGood
+         CALL release(obj)
          
          CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
                             actualValue    = e % severity(),  &
@@ -157,11 +164,11 @@
          obj => e
          CALL cast(obj,ePtr)
          CALL FTAssert(ASSOCIATED(ePtr),msg = "Test casting of exception")
-         ePtr => NULL()
          ePtr => exceptionFromObject(obj)
          CALL FTAssert(ASSOCIATED(ePtr),msg = "Test casting of exception by function")
          
-         CALL throw(e)
+         eClassPtr => e
+         CALL throw(eClassPtr)
          CALL releaseFTException(e)
 !
 !        -----------------------------

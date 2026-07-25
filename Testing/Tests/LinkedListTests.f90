@@ -81,8 +81,9 @@
 !        can be a non-pointer, too, like the iterator.
 !        -------------------------------------------------
 !
-         CLASS (FTLinkedList)       , POINTER :: list, listPtr
-         TYPE (FTLinkedListIterator), POINTER :: iterator
+         TYPE  (FTLinkedList)        , POINTER :: list
+         CLASS (FTLinkedList)        , POINTER :: listPtr
+         TYPE (FTLinkedListIterator) , POINTER :: iterator
          
          INTEGER                      :: i
          REAL                         :: singleTol = 2*EPSILON(1.0e0)
@@ -176,7 +177,7 @@
 !        -------
 !
          objectPtr => list
-         CALL cast(objectPtr, listPtr)
+         listPtr   => linkedListFromObject(objectPtr)
          CALL FTAssert(ASSOCIATED(list,listPtr),msg = "Cast by subroutine call" )
          listPtr => linkedListFromObject(obj = objectPtr)
          CALL FTAssert(ASSOCIATED(list,listPtr),msg = "Cast by function call" )
@@ -195,7 +196,8 @@
 !        ---------------------------------------------------------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initWithFTLinkedList(list)
+         listPtr => list
+         CALL iterator % initWithFTLinkedList(listPtr)
          CALL FTAssertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
          CALL FTAssertEqual(expectedValue = "FTLinkedListIterator", &
                             actualValue   = iterator % className(), &
@@ -304,7 +306,8 @@
 !         
          TYPE (FTValue)             , POINTER :: v 
          CLASS(FTObject)            , POINTER :: objectPtr
-         CLASS(FTLinkedList)        , POINTER :: list1, list2
+         TYPE (FTLinkedList)        , POINTER :: list1, list2
+         CLASS(FTLinkedList)        , POINTER :: listClassPtr
          TYPE (FTMutableObjectArray), POINTER :: array
          
          TYPE (FTLinkedListIterator), POINTER :: iterator
@@ -344,7 +347,8 @@
 !        Add the elements of list2 to list 1
 !        -----------------------------------
 !
-         CALL list1 % addObjectsFromList(list2)
+         listClassPtr => list2
+         CALL list1 % addObjectsFromList(listClassPtr)
          CALL FTAssertEqual(10, list1 % COUNT(),"Append list increases list size")
 !
 !        -------------------------------------------
@@ -352,7 +356,8 @@
 !        Note that objects are owned by both lists.
 !        -------------------------------------------
 !
-         CALL iterator % initWithFTLinkedList(list1)
+         listClassPtr => list1
+         CALL iterator % initWithFTLinkedList(listClassPtr)
          j = 1
          DO WHILE (.NOT.iterator % isAtEnd())
             v => valueFromObject(iterator % object())
@@ -451,7 +456,8 @@
 !
          TYPE (FTValue)           , POINTER   :: v 
          CLASS(FTObject)          , POINTER   :: obj
-         CLASS(FTLinkedList)      , POINTER   :: list
+         TYPE (FTLinkedList)      , POINTER   :: list
+         CLASS(FTLinkedList)      , POINTER   :: listClassPtr
          CLASS(FTLinkedListRecord), POINTER   :: recordPtr
          
          TYPE(FTLinkedListIterator), POINTER :: iterator
@@ -481,7 +487,8 @@
 !        ------------------------------------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initwithFTLinkedList(list)
+         listClassPtr => list
+         CALL iterator % initwithFTLinkedList(listClassPtr)
 !
 !        ---------------
 !        Delete the tail
@@ -562,7 +569,8 @@
          
          TYPE (FTValue)           , POINTER   :: v 
          CLASS(FTObject)          , POINTER   :: obj, savObj
-         CLASS(FTLinkedList)      , POINTER   :: list
+         TYPE (FTLinkedList)      , POINTER   :: list
+         CLASS(FTLinkedList)      , POINTER   :: listClassPtr
          INTEGER                              :: j
          TYPE(FTLinkedListIterator), POINTER  :: iterator
          
@@ -604,7 +612,8 @@
 !        ---------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initwithFTLinkedList(list)
+         listClassPtr => list
+         CALL iterator % initwithFTLinkedList(listClassPtr)
          CALL releaseFTLinkedList(list)
          
          CALL iterator % setToStart()

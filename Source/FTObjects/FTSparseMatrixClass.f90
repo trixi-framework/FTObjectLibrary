@@ -128,7 +128,7 @@
 !        -----------------------------------------------------
 !
          CLASS(FTObject)  , POINTER :: obj
-         CLASS(MatrixData), POINTER :: cast
+         TYPE (MatrixData), POINTER :: cast
          
          cast => NULL()
          SELECT TYPE (e => obj)
@@ -382,7 +382,7 @@
          DO WHILE (.NOT.self % iterator % isAtEnd())
          
             obj => self % iterator % object()
-            CALL cast(obj,mData)
+            mData => matrixDataCast(obj)
             IF ( mData % key == j )     THEN
                r => mData % object
                EXIT 
@@ -428,8 +428,8 @@
          CALL self % iterator % setToStart()
          DO WHILE (.NOT.self % iterator % isAtEnd())
          
-            obj => self % iterator % object()
-            CALL cast(obj,mData)
+            obj   => self % iterator % object()
+            mData => matrixDataCast(obj)
             IF ( mData % key == j )     THEN
                r = .TRUE.
                RETURN  

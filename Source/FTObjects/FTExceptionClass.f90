@@ -417,7 +417,7 @@
 !
          IMPLICIT NONE  
          CLASS(FTObject)   , POINTER :: obj
-         CLASS(FTException), POINTER :: cast
+         TYPE (FTException), POINTER :: cast
          
          cast => NULL()
          SELECT TYPE (e => obj)
@@ -611,7 +611,7 @@
 !>Throws the exception: exceptionToThrow
 !
          IMPLICIT NONE  
-         TYPE (FTException), POINTER :: exceptionToThrow
+         CLASS(FTException), POINTER :: exceptionToThrow
          CLASS(FTObject)   , POINTER :: ptr => NULL()
          
          IF ( .NOT.ASSOCIATED(errorStack) )     THEN
@@ -702,9 +702,10 @@
          CHARACTER(LEN=*) :: exceptionName
          
          TYPE(FTLinkedListIterator)   :: iterator
-         CLASS(FTLinkedList), POINTER :: ptr => NULL()
-         CLASS(FTObject)    , POINTER :: obj => NULL()
-         CLASS(FTException) , POINTER :: e   => NULL()
+         CLASS(FTLinkedList), POINTER :: ptr    => NULL()
+         CLASS(FTObject)    , POINTER :: obj    => NULL()
+         TYPE (FTException) , POINTER :: e      => NULL()
+         CLASS(FTException) , POINTER :: ePtr   => NULL()
          
          catchErrorWithName = .false.
                   
@@ -725,7 +726,8 @@
             obj => iterator % object()
             CALL cast(obj,e)
             IF ( e % exceptionName() == exceptionName )     THEN
-               CALL setCurrentError(e)
+               ePtr => e
+               CALL setCurrentError(ePtr)
                catchErrorWithName = .true.
                CALL errorStack % remove(obj)
                EXIT
@@ -795,7 +797,9 @@
             CALL initializeFTExceptions 
          ELSE
             CALL errorStack % pop(obj)
-            IF(ASSOCIATED(obj)) CALL cast(obj,popLastException)
+            IF(ASSOCIATED(obj))      THEN
+               popLastException => exceptionFromObject(obj)
+            END IF 
          END IF 
          
       END FUNCTION popLastException
@@ -819,7 +823,7 @@
          
          peekLastException => NULL()
          obj => errorStack % peek()
-         CALL cast(obj,peekLastException)
+         peekLastException => exceptionFromObject(obj)
          
       END FUNCTION peekLastException
 !
@@ -842,7 +846,7 @@
         CALL iterator % setToStart
         DO WHILE (.NOT.iterator % isAtEnd())
             objectPtr => iterator % object()
-            CALL cast(objectPtr,e)
+            e => exceptionFromObject(objectPtr)
             CALL e % printDescription(6)
             CALL iterator % moveToNext()
          END DO

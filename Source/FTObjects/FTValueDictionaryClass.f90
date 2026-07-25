@@ -410,8 +410,8 @@
 !     -----------------------------------------------------
 !
          IMPLICIT NONE  
-         CLASS(FTDictionary)     , POINTER :: dict
-         CLASS(FTValueDictionary), POINTER :: valueDict
+         CLASS (FTDictionary)     , POINTER :: dict
+         TYPE  (FTValueDictionary), POINTER :: valueDict
          
          valueDict => NULL()
          SELECT TYPE (dict)
@@ -432,8 +432,8 @@
 !     -----------------------------------------------------------
 !
          IMPLICIT NONE  
-         CLASS(FTValueDictionary), POINTER :: valueDict
          CLASS(FTObject)         , POINTER :: obj
+         TYPE (FTValueDictionary), POINTER :: valueDict
          
          valueDict => NULL()
          SELECT TYPE (obj)
