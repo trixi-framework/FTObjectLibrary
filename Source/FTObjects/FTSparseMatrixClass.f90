@@ -456,6 +456,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTSparseMatrixClass(self)  
+         IMPLICIT NONE
+         CLASS(FTSparseMatrix), POINTER :: self
+         CLASS(FTObject)      , POINTER :: obj
+           
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTSparseMatrixClass
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE destructSparseMatrix(self)
          IMPLICIT NONE  
 !

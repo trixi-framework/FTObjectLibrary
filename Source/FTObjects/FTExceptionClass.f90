@@ -73,7 +73,8 @@
 !>
 !>### Destruction
 !>
-!>        CALL releaseFTException(e) [pointers]
+!>        CALL releaseFTExceptionClass(e) [pointers]
+!>        CALL releaseFTException(e) [pointers, TYPE]
 !>
 !>###Setting the infoDictionary
 !>
@@ -275,6 +276,20 @@
          CALL releaseMemberDictionary(self)
          
       END SUBROUTINE initAssertionFailureException
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTExceptionClass(self)  
+         IMPLICIT NONE
+         CLASS(FTException) , POINTER :: self
+         CLASS(FTObject)    , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTExceptionClass
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -624,6 +639,27 @@
          maxErrorLevel = MAX(maxErrorLevel, exceptionToThrow % severity())
          
       END SUBROUTINE throw
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE throwClass(exceptionToThrow)
+!
+!>Throws the exception: exceptionToThrow
+!
+         IMPLICIT NONE  
+         CLASS (FTException), POINTER :: exceptionToThrow
+         CLASS(FTObject)    , POINTER :: ptr => NULL()
+         
+         IF ( .NOT.ASSOCIATED(errorStack) )     THEN
+            CALL initializeFTExceptions 
+         END IF 
+         
+         ptr => exceptionToThrow
+         CALL errorStack % push(ptr)
+         
+         maxErrorLevel = MAX(maxErrorLevel, exceptionToThrow % severity())
+         
+      END SUBROUTINE throwClass
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

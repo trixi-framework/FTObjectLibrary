@@ -577,9 +577,23 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedList(self)  
+      SUBROUTINE releaseFTLinkedListClass(self)  
          IMPLICIT NONE
          CLASS (FTLinkedList), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedListClass
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedList(self)  
+         IMPLICIT NONE
+         TYPE (FTLinkedList), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
           
          IF(.NOT. ASSOCIATED(self)) RETURN
@@ -949,6 +963,20 @@
          CALL release(obj) 
          IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTLinkedListIterator
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedListIteratorClass(self)  
+         IMPLICIT NONE
+         TYPE(FTLinkedListIterator), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedListIteratorClass
 !
 !////////////////////////////////////////////////////////////////////////
 !

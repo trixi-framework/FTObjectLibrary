@@ -113,7 +113,7 @@
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: Initial object refCount")
          CALL list % retain()
          CALL FTAssertEqual(2,list % refCount(), "Reference counting: Test retain")
-         CALL releaseFTLinkedList(list)
+         CALL releaseFTLinkedListClass(list)
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: test release")
 !
 !        ---------------------------------------------------------------------------------
@@ -272,7 +272,7 @@
 !        Otherwise, it is possible to get an undefined pointer.
 !        ------------------------------------------------------
 !
-         CALL releaseFTLinkedList(list)
+         CALL releaseFTLinkedListClass(list)
          CALL FTAssertEqual(1,list % refCount(),"Ref count decrease on release")
 !
 !        -------------------------------------------------------------------
@@ -370,7 +370,7 @@
 !        in list1
 !        --------------------------------------------------
 !
-         CALL releaseFTLinkedList(list2)
+         CALL releaseFTLinkedListClass(list2)
          CALL FTAssertEqual(.TRUE., .NOT. ASSOCIATED(list2),"List has only one owner and should deallocate on release")
 !
 !        --------------------------------------------------
@@ -430,7 +430,7 @@
 !        Clean up
 !        --------
 !
-         CALL releaseFTLinkedList(list1)
+         CALL releaseFTLinkedListClass(list1)
          CALL releaseFTLinkedListIterator(iterator)
          
       END SUBROUTINE TestAppendingLists
@@ -546,7 +546,7 @@
 !        Clean up
 !        --------
 !
-         CALL releaseFTLinkedList(list)
+         CALL releaseFTLinkedListClass(list)
          CALL releaseFTLinkedListIterator(iterator)
 
       END SUBROUTINE TestDeletingObjects
@@ -605,7 +605,7 @@
 !
          ALLOCATE(iterator)
          CALL iterator % initwithFTLinkedList(list)
-         CALL releaseFTLinkedList(list)
+         CALL releaseFTLinkedListClass(list)
          
          CALL iterator % setToStart()
          DO j = 1, 3 

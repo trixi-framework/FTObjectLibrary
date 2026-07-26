@@ -150,7 +150,7 @@
                          actualValue   = unionSet % COUNT(), &
                          msg           = "union set count")
       
-      CALL releaseFTStringSet(self = unionSet)
+      CALL releaseFTStringSetClass(self = unionSet)
       CALL FTAssert(test = .NOT.ASSOCIATED(unionSet),msg = 'Release of pointer to set')
 !
 !     ----------------------

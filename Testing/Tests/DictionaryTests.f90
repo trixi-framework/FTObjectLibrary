@@ -167,7 +167,7 @@
 !
          DEALLOCATE(storedKeys)
          CALL releaseFTMutableObjectArray(storedObjects)
-         CALL releaseFTDictionary(dict)
+         CALL releaseFTDictionaryClass(dict)
          CALL FTAssert(.NOT.ASSOCIATED(dict),"Released dictionary should have been deallocated")
 !
 !        -------------------------

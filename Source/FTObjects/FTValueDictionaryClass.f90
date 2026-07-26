@@ -145,6 +145,22 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTValueDictionaryClass(self)  
+         IMPLICIT NONE
+         CLASS(FTValueDictionary), POINTER :: self
+         CLASS(FTObject)         , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL releaseFTObject(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            self => NULL() 
+         END IF      
+      END SUBROUTINE releaseFTValueDictionaryClass
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE addIntegerValueForKey(self,i,key)
          IMPLICIT NONE
          CLASS(FTValueDictionary) :: self

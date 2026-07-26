@@ -102,7 +102,7 @@
 !     Cleanup
 !     -------
 !
-      CALL releaseFTData(dat)
+      CALL releaseFTDataClass(dat)
       CALL FTAssert(.NOT. ASSOCIATED(dat),msg = "Destruction of FTData")
       
    END SUBROUTINE DataTests
