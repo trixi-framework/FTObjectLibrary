@@ -195,7 +195,7 @@
 !        ---------------------------------------------------------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initWithFTLinkedList(list)
+         CALL iterator % initWithFTLinkedListClass(list)
          CALL FTAssertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
          CALL FTAssertEqual(expectedValue = "FTLinkedListIterator", &
                             actualValue   = iterator % className(), &
@@ -352,7 +352,7 @@
 !        Note that objects are owned by both lists.
 !        -------------------------------------------
 !
-         CALL iterator % initWithFTLinkedList(list1)
+         CALL iterator % initWithFTLinkedListClass(list1)
          j = 1
          DO WHILE (.NOT.iterator % isAtEnd())
             v => valueFromObject(iterator % object())
@@ -481,7 +481,7 @@
 !        ------------------------------------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initwithFTLinkedList(list)
+         CALL iterator % initwithFTLinkedListClass(list)
 !
 !        ---------------
 !        Delete the tail
@@ -604,7 +604,7 @@
 !        ---------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initwithFTLinkedList(list)
+         CALL iterator % initwithFTLinkedListClass(list)
          CALL releaseFTLinkedListClass(list)
          
          CALL iterator % setToStart()

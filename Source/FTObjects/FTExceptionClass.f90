@@ -754,7 +754,7 @@
          END IF 
 
          ptr => errorStack
-         CALL iterator % initWithFTLinkedList(ptr)
+         CALL iterator % initWithFTLinkedListClass(ptr)
          CALL iterator % setToStart()
          
          DO WHILE (.NOT.iterator % isAtEnd())
@@ -869,7 +869,7 @@
          CLASS(FTException) , POINTER :: e         => NULL()
            
         list => errorStack
-        CALL iterator % initWithFTLinkedList(list)
+        CALL iterator % initWithFTLinkedListClass(list)
 !
 !       ----------------------------------------------------
 !       Write out the descriptions of each of the exceptions
