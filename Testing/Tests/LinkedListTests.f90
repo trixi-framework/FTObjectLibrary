@@ -299,6 +299,7 @@
 !        since it is the last owner.
 !        ------------------------------------------------------------------------------
 !
+         CALL iteratorClass % setLinkedListClass(list)   !This will destroy the linked list ince list => null()
          CALL releaseFTLinkedListIterator(iterator)
          CALL releaseFTLinkedListIteratorClass(iteratorClass)
 !
