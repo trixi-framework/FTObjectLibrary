@@ -994,7 +994,7 @@
 ! 
       SUBROUTINE releaseFTLinkedListIteratorClass(self)  
          IMPLICIT NONE
-         TYPE(FTLinkedListIterator), POINTER :: self
+         CLASS(FTLinkedListIterator), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
          
          IF(.NOT. ASSOCIATED(self)) RETURN

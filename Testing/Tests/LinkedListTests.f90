@@ -81,8 +81,10 @@
 !        can be a non-pointer, too, like the iterator.
 !        -------------------------------------------------
 !
-         CLASS (FTLinkedList)       , POINTER :: list, listPtr
+         CLASS(FTLinkedList)        , POINTER :: list, listPtr
+         TYPE (FTLinkedList)        , POINTER :: listType
          TYPE (FTLinkedListIterator), POINTER :: iterator
+         CLASS(FTLinkedListIterator), POINTER :: iteratorClass
          
          INTEGER                      :: i
          REAL                         :: singleTol = 2*EPSILON(1.0e0)
@@ -94,7 +96,9 @@
 !        -------------------------------------------------------
 !
          ALLOCATE(list)
+         ALLOCATE(listType)
          CALL list % init()
+         CALL listType % init()
          CALL FTAssertEqual(expectedValue = "FTLinkedList", &
                             actualValue   = list % className(), &
                             msg           = "Class name test for linked list")
@@ -121,6 +125,7 @@
 !        ---------------------------------------------------------------------------------
 !
          CALL FTAssertEqual(0,list % COUNT(),"Initial list size")
+         CALL FTAssertEqual(0,listType % COUNT(),"Initial list size")
 !
 !        ------------------------------------------------------------------
 !        Add some items to the linked list.
@@ -139,13 +144,14 @@
          CALL r1 % initWithValue(1)
          objectPtr => r1
          CALL list % add(objectPtr)
+         CALL listType % add(objectPtr)
          CALL FTAssertEqual(1,list % COUNT(),"List size after adding one object")
 !         
-         CALL FTAssertEqual(2,r1 % refCount(),&
+         CALL FTAssertEqual(3,r1 % refCount(),&
          "Reference counting: Stored object should have reference count increased")
          CALL releaseFTValue(r1)
             
-         CALL FTAssertEqual(1,objectPtr % refCount(),&
+         CALL FTAssertEqual(2,objectPtr % refCount(),&
          "Reference counting: Stored object should have reference count decreased")
 !
 !        ---------------------------------------------------------------------
@@ -195,8 +201,11 @@
 !        ---------------------------------------------------------------------------------
 !
          ALLOCATE(iterator)
+         ALLOCATE(iteratorClass)         
          CALL iterator % initWithFTLinkedListClass(list)
+         CALL iteratorClass % initWithFTLinkedList(listType)
          CALL FTAssertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
+         CALL FTAssertEqual(2,listType % refCount(),"Ref count increase on addition of list to iterator type")
          CALL FTAssertEqual(expectedValue = "FTLinkedListIterator", &
                             actualValue   = iterator % className(), &
                             msg           = "Class name test for linked list")
@@ -274,6 +283,7 @@
 !
          CALL releaseFTLinkedListClass(list)
          CALL FTAssertEqual(1,list % refCount(),"Ref count decrease on release")
+         CALL releaseFTLinkedList(listType)
 !
 !        -------------------------------------------------------------------
 !        Normally we would now check if the list should be deallocated. But 
@@ -290,7 +300,12 @@
 !        ------------------------------------------------------------------------------
 !
          CALL releaseFTLinkedListIterator(iterator)
-         
+         CALL releaseFTLinkedListIteratorClass(iteratorClass)
+!
+!        ----------------------------------------------
+!        Operations on the class version of the pointer
+!        ----------------------------------------------
+!
       END SUBROUTINE basicTests
 !
 !//////////////////////////////////////////////////////////////////////// 
