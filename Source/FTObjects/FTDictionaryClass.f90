@@ -107,20 +107,20 @@
          CALL release(obj) 
          IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTKeyObjectPair
-!
-!//////////////////////////////////////////////////////////////////////// 
-! 
-      SUBROUTINE releaseFTKeyObjectPairClass(self)  
-         IMPLICIT NONE
-         CLASS(FTKeyObjectPair), POINTER :: self
-         CLASS(FTObject)       , POINTER :: obj
-         
-         IF(.NOT. ASSOCIATED(self)) RETURN
-         
-         obj => self
-         CALL release(obj) 
-         IF(.NOT.ASSOCIATED(obj)) self => NULL()
-      END SUBROUTINE releaseFTKeyObjectPairClass
+!!
+!!//////////////////////////////////////////////////////////////////////// 
+!! 
+!      SUBROUTINE releaseFTKeyObjectPairClass(self)  
+!         IMPLICIT NONE
+!         CLASS(FTKeyObjectPair), POINTER :: self
+!         CLASS(FTObject)       , POINTER :: obj
+!         
+!         IF(.NOT. ASSOCIATED(self)) RETURN
+!         
+!         obj => self
+!         CALL release(obj) 
+!         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+!      END SUBROUTINE releaseFTKeyObjectPairClass
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
