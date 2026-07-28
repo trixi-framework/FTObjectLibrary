@@ -197,10 +197,15 @@
          CLASS(FTObject), POINTER     :: obj     => NULL()
          INTEGER                      :: i
 
-         DO i = 1, self % count_
-            obj => self % array(i) % object 
-            IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
-         END DO
+         !TODO The following is commented out because it tries to delete and
+         !     unallocated object with the ifx and ifort compilers. This will
+         !     cause a memory leak. Unfortunately, this is a recursive subroutine,
+         !     and so far I have not been able to track down why this is happening.
+         !     --- DAK
+!         DO i = 1, self % count_
+!            obj => self % array(i) % object 
+!            IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
+!         END DO
          
          DEALLOCATE(self % array)
          self % array => NULL()
