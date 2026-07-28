@@ -197,10 +197,10 @@
          CLASS(FTObject), POINTER     :: obj     => NULL()
          INTEGER                      :: i
 
-         DO i = 1, self % count_
-            obj => self % array(i) % object 
-            IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
-         END DO
+!         DO i = 1, self % count_
+!            obj => self % array(i) % object 
+!            IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
+!         END DO
          
          DEALLOCATE(self % array)
          self % array => NULL()
