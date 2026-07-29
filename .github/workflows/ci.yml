@@ -15,15 +15,21 @@ on:
       - 'README.md'
   workflow_dispatch:
 
+env:
+  # Modify this variable to change the ifx compiler version - do NOT hardcode the version
+  # anywhere else!
+  INTEL_ONEAPI_VERSION: 2025.2
+
 jobs:
   test:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
-    name: ${{ matrix.os }} - ${{ github.event_name }}
+    name: ${{ matrix.os }} - ${{ matrix.compiler }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         include:
+          # Linux
           - os: ubuntu-22.04
             compiler: gfortran-10
             cmake_generator: Unix Makefiles
@@ -32,10 +38,24 @@ jobs:
             compiler: gfortran-13
             cmake_generator: Unix Makefiles
             shell: bash
+          - os: ubuntu-26.04
+            compiler: gfortran-15
+            cmake_generator: Unix Makefiles
+            shell: bash
+          - os: ubuntu-latest
+            compiler: ifx
+            cmake_generator: Unix Makefiles
+            shell: bash
+          # macOS
           - os: macos-latest
             compiler: gfortran-13
             cmake_generator: Unix Makefiles
             shell: bash
+          - os: macos-latest
+            compiler: gfortran-15
+            cmake_generator: Unix Makefiles
+            shell: bash
+          # Windows
           - os: windows-latest
             compiler: gfortran
             cmake_generator: MinGW Makefiles
@@ -55,6 +75,34 @@ jobs:
         with:
           update: true
           install: git base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-cmake
+      - uses: actions/cache@v6
+        id: cache
+        with:
+          path: /opt/intel/oneapi
+          key: ${{ matrix.os }}-${{ matrix.compiler }}-${{ env.INTEL_ONEAPI_VERSION }}
+      - name: Install Intel oneAPI Fortran compiler
+        if: matrix.compiler == 'ifx' && steps.cache.outputs.cache-hit != 'true'
+        run: |
+          # download the key to system keyring
+          wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+          | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+
+          # add signed entry to apt sources and configure the APT client to use Intel repository:
+          echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+
+          # update package index and install Fortran compiler
+          sudo apt update
+          sudo apt-get install intel-oneapi-compiler-fortran-$INTEL_ONEAPI_VERSION
+
+          # set environment variables and make them persistent across steps
+          . /opt/intel/oneapi/setvars.sh
+          env | grep oneapi >> $GITHUB_ENV
+      - name: Use existing Intel oneAPI Fortran compiler
+        if: matrix.compiler == 'ifx' && steps.cache.outputs.cache-hit == 'true'
+        run: |
+          # set environment variables and make them persistent across steps
+          . /opt/intel/oneapi/setvars.sh
+          env | grep oneapi >> $GITHUB_ENV
       - name: Verify CMake build
         run: |
           mkdir build && cd build
