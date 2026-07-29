@@ -23,7 +23,7 @@ env:
 jobs:
   test:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
-    name: ${{ matrix.os }} - ${{ matrix.compiler }} - ${{ matrix.test_type }} - ${{ github.event_name }}
+    name: ${{ matrix.os_name }} - ${{ matrix.compiler }} - ${{ matrix.test_type }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -31,6 +31,7 @@ jobs:
         include:
           # Linux
           - os: ubuntu-22.04
+            os_name: linux
             compiler: gfortran-10
             cmake_generator: Unix Makefiles
             shell: bash
@@ -43,6 +44,7 @@ jobs:
             test_type: valgrind
             coverage: false
           - os: ubuntu-24.04
+            os_name: linux
             compiler: gfortran-13
             cmake_generator: Unix Makefiles
             shell: bash
@@ -55,6 +57,7 @@ jobs:
             test_type: valgrind
             coverage: false
           - os: ubuntu-26.04
+            os_name: linux
             compiler: gfortran-15
             cmake_generator: Unix Makefiles
             shell: bash
@@ -67,6 +70,7 @@ jobs:
             test_type: valgrind
             coverage: false
           - os: ubuntu-latest
+            os_name: linux
             compiler: ifx
             cmake_generator: Unix Makefiles
             shell: bash
@@ -74,12 +78,14 @@ jobs:
             coverage: false
           # macOS
           - os: macos-latest
+            os_name: macos
             compiler: gfortran-13
             cmake_generator: Unix Makefiles
             shell: bash
             test_type: regular
             coverage: false
           - os: macos-latest
+            os_name: macos
             compiler: gfortran-15
             cmake_generator: Unix Makefiles
             shell: bash
@@ -87,6 +93,7 @@ jobs:
             coverage: false
           # Windows
           - os: windows-latest
+            os_name: windows
             compiler: gfortran
             cmake_generator: MinGW Makefiles
             shell: 'msys2 {0}'
@@ -154,6 +161,13 @@ jobs:
         run: |
           cd TestSuiteBuild
           ./runSuite
+      - name: Run memory checks with Valgrind (only Linux)
+        if: ${{ matrix.os_name == 'linux' && matrix.test_type == 'valgrind' }}
+        run: |
+          sudo apt update
+          sudo apt-get install -y valgrind
+          cd TestSuiteBuild
+          valgrind --error-exitcode=1 -s ./runSuite
       - name: Run tests for coverage
         if: ${{ matrix.coverage }}
         run: |
