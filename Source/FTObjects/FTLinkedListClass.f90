@@ -743,7 +743,10 @@
          
          array => NULL()
          N = self % count()
-         IF(N==0)     RETURN
+         IF(N==0)     THEN 
+            CALL self % makeCircular(circular)
+            RETURN
+         END IF
          
          ALLOCATE(array)
          CALL array % initWithSize(arraySize  = N)
