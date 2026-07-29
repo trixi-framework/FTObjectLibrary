@@ -105,13 +105,13 @@ added to the dictionary.
             CALL v % initWithValue(3.14159)
             obj => v
             CALL dict % addObjectForKey(obj,``Pi'')
-            CALL releaseFTValue(v)
+            CALL releaseFTValueClass(v)
           
             ALLOCATE(v)
             CALL v % initWithValue(``Ratio of circumference to diameter'')
             obj => v
             CALL dict % addObjectForKey(obj,"definition")
-            CALL releaseFTValue(v)
+            CALL releaseFTValueClass(v)
           END SUBROUTINE constructDictionary
 
 Notice that in the subroutine we have allocated memory for the
@@ -125,7 +125,7 @@ later through the dictionary. This is where a systematic approach to
 memory management comes in. When we allocate and initialize an object,
 we assume ownership of it. When we add it to the dictionary, it assumes
 partial ownership. So instead of deallocating the two value objects, we
-relinquish ownership by way of the releaseFTValue() procedure, leaving
+relinquish ownership by way of the releaseFTValueClass() procedure, since v is typed by CLASS, leaving
 only the dictionary to be responsible for deallocating them when it does
 not need them any more.
 
@@ -141,7 +141,7 @@ We use the dictionary as shown in the next snippet of code:
           
           v   => valueFromObject(dict % objectForKey(``definition''))
           PRINT *, "The num pi = ", pi," is defined as", TRIM(v % stringValue())
-          CALL  releaseFTDictionary(dict)
+          CALL  releaseFTDictionaryClass(dict)
 
 In this snippet, the values for the two keys "Pi" and "definition" are
 retrieved and then used.
@@ -183,8 +183,8 @@ Ownership rules are as follows:
   creates (allocates and initializes) it.
 
 - When you no longer need an object (or are going out of scope) you must
-  release it using the releaseXXX() subroutine, where XXX refers to the
-  specific name of the extended type.
+  release it using the releaseXXX() subroutine, or releaseXXXClass(), where XXX refers to the
+  specific name of the extended type, depending on whether the object is declared by TYPE or CLASS.
 
 - You must neither relinquish ownership, nor deallocate a pointer object
   that you do not own.
@@ -212,13 +212,13 @@ the point object to the linked list.
            
             obj => pnt
             CALL list % add(obj) !list also owns pnt
-            CALL releasePoint(pnt) ! main gives up ownership to pnt
+            CALL releasePointClass(pnt) ! main gives up ownership to pnt
             .
             .
             .
             ! we're done with the list, it will deallocate pnt since the list is the last owner.
             ! It will also deallocate itself since main is the last owner.
-            CALL releaseFTLinkedList(list) 
+            CALL releaseFTLinkedListClass(list) 
 
           END PROGRAM main
 
@@ -371,9 +371,7 @@ cascading of what is stored in the object.
 
 The release subroutine will call the base class releaseFTObject which
 will, in turn, release all objects that it owns. If the object itself is
-no longer referenced, it will deallocate itself. If the subclass is
-going to be subclassed again, use the CLASS specifier, otherwise, we
-TYPE to work only on that specific subclass.
+no longer referenced, it will deallocate itself. Due to fortran's rules, create one as below with the pointer TYPEed, and another with CLASS, usually with the word Class appended, e.g. releaseXXXClass(self).
 
           SUBROUTINE releaseSubclass(self)  
            IMPLICIT NONE
@@ -433,7 +431,8 @@ character. (To Add: complex)
 
 - Destruction
 
-          CALL releaseFTValue(r)    !For Pointers
+          CALL releaseFTValue(r)      !For Pointers
+          CALL releaseFTValueClass(r) !For Pointers typed by CLASS
 
 - Accessors
 
@@ -573,6 +572,7 @@ inherits from FTObjectClass.
 - Destruction
 
           CALL  releaseFTLinkedList(list) ! If list is a pointer
+          CALL  releaseFTLinkedListClass(list) ! If list is a pointer typed by CLASS
 
 ### FTLinkedListIterator
 
@@ -630,7 +630,8 @@ stepping through (iterating) a linked list to access its entries.
 
 - Destruction
 
-           CALL  releaseFTLinkedListIterator(iterator)    ! If a pointer
+           CALL  releaseFTLinkedListIterator(iterator)     ! If a pointer
+           CALL  releaseFTLinkedListIteratorClass(iterator)! If a pointer typed by CLASS
 
 ## Stacks
 
@@ -655,7 +656,8 @@ stack, for instance.
 
 - Destruction
 
-          CALL  releaseFTStack(stack)    ! If stack is a pointer
+          CALL  releaseFTStack(stack)     ! If stack is a pointer
+          CALL  releaseFTStackClass(stack)! If stack is a pointer typed by CLASS
 
 - Pushing an object onto the stack
 
@@ -708,6 +710,7 @@ be efficient, it adds more than one entry at a time given by the
 - Destruction
 
           CALL  releaseFTMutableObjectArray(array) !If array is a pointer
+          CALL  releaseFTMutableObjectArray(array) !If array is a pointer and CLASS
 
 - Adding an object
 
@@ -815,6 +818,7 @@ initialize the matrix with the number of rows.
 - Destruction
 
           CALL releaseFTSparseMatrix(matrix)      !If matrix is a pointer
+          CALL releaseFTSparseMatrixClass(matrix) !If matrix is a pointer typed by CLASS
 
 - Adding an object
 
@@ -854,6 +858,7 @@ another element.
 - Destruction
 
           CALL  releaseFTMultiIndexTable(table)      !If table is a pointer
+          CALL  releaseFTMultiIndexTableClass(table) !If table is a pointer typed by CLASS
 
 - Adding an object
 
@@ -900,6 +905,7 @@ retrieve FTValue objects.
 - Destruction
 
           CALL releaseFTDictionary(dict)       !If dict is a pointer
+          CALL releaseFTDictionaryClass(dict)  !If dict is a pointer typed by CLASS
 
 - Adding a key-object pair
 
@@ -1002,6 +1008,7 @@ FTDICT\_KWD\_STRING\_LENGTH or less.
 - Destruction
 
           CALL releaseFTStringSet(set)       !If set is a pointer
+          CALL releaseFTStringSetClass(set)  !If set is a pointer typed by CLASS
 
 - Adding a string
 
