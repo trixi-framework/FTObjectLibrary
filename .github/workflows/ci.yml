@@ -40,6 +40,7 @@ jobs:
           - os: ubuntu-22.04
             os_name: linux
             compiler: gfortran-10
+            cmake_generator: Unix Makefiles
             shell: bash
             test_type: valgrind
             coverage: false
@@ -53,6 +54,7 @@ jobs:
           - os: ubuntu-24.04
             os_name: linux
             compiler: gfortran-13
+            cmake_generator: Unix Makefiles
             shell: bash
             test_type: valgrind
             coverage: false
@@ -66,6 +68,7 @@ jobs:
           - os: ubuntu-26.04
             os_name: linux
             compiler: gfortran-15
+            cmake_generator: Unix Makefiles
             shell: bash
             test_type: valgrind
             coverage: false
@@ -115,6 +118,7 @@ jobs:
           update: true
           install: git base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-cmake
       - uses: actions/cache@v6
+        if: matrix.compiler == 'ifx'
         id: cache
         with:
           path: /opt/intel/oneapi
@@ -158,6 +162,7 @@ jobs:
           cd TestSuiteBuild
           make -j 2 FC=${{ matrix.compiler }}
       - name: Run tests
+        if: ${{ matrix.test_type == 'regular' }}
         run: |
           cd TestSuiteBuild
           ./runSuite
