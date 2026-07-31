@@ -371,6 +371,20 @@
          IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTValue
 !
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTValueClass(self)  
+         IMPLICIT NONE
+         CLASS(FTValue) , POINTER :: self
+         CLASS(FTObject), POINTER :: obj
+           
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTValueClass
+!
 !------------------------------------------------
 !> Public, generic name: destruct()
 !>

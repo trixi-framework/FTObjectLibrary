@@ -577,9 +577,23 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedList(self)  
+      SUBROUTINE releaseFTLinkedListClass(self)  
          IMPLICIT NONE
          CLASS (FTLinkedList), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedListClass
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedList(self)  
+         IMPLICIT NONE
+         TYPE (FTLinkedList), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
           
          IF(.NOT. ASSOCIATED(self)) RETURN
@@ -729,7 +743,10 @@
          
          array => NULL()
          N = self % count()
-         IF(N==0)     RETURN
+         IF(N==0)     THEN 
+            CALL self % makeCircular(circular)
+            RETURN
+         END IF
          
          ALLOCATE(array)
          CALL array % initWithSize(arraySize  = N)
@@ -873,6 +890,7 @@
 !
          PROCEDURE :: init           => initEmpty
          PROCEDURE :: initWithFTLinkedList
+         PROCEDURE :: initWithFTLinkedListClass
          FINAL     :: destructIterator
          PROCEDURE :: isAtEnd        => FTLinkedListIsAtEnd
          PROCEDURE :: object         => FTLinkedListObject
@@ -880,6 +898,7 @@
          PROCEDURE :: linkedList     => returnLinkedList
          PROCEDURE :: className      => linkedListIteratorClassName
          PROCEDURE :: setLinkedList
+         PROCEDURE :: setLinkedListClass
          PROCEDURE :: setToStart
          PROCEDURE :: moveToNext
          PROCEDURE :: removeCurrentRecord
@@ -917,7 +936,7 @@
       SUBROUTINE initWithFTLinkedList(self,list) 
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
-         CLASS(FTLinkedList), POINTER :: list
+         TYPE(FTLinkedList), POINTER  :: list
 !
 !        --------------------------------------------
 !        Always call the superclass initializer first
@@ -936,6 +955,30 @@
          
       END SUBROUTINE initWithFTLinkedList   
 !
+!////////////////////////////////////////////////////////////////////////
+!
+      SUBROUTINE initWithFTLinkedListClass(self,list) 
+         IMPLICIT NONE 
+         CLASS(FTLinkedListIterator)  :: self
+         CLASS(FTLinkedList), POINTER :: list
+!
+!        --------------------------------------------
+!        Always call the superclass initializer first
+!        --------------------------------------------
+!
+         CALL self % FTObject % init()
+!
+!        ----------------------------------------------
+!        Then call the initializations for the subclass
+!        ----------------------------------------------
+!
+         self % list    => NULL()
+         self % current => NULL()
+         CALL self % setLinkedListClass(list)
+         CALL self % setToStart()
+         
+      END SUBROUTINE initWithFTLinkedListClass   
+!
 !//////////////////////////////////////////////////////////////////////// 
 ! 
       SUBROUTINE releaseFTLinkedListIterator(self)  
@@ -949,6 +992,20 @@
          CALL release(obj) 
          IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTLinkedListIterator
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTLinkedListIteratorClass(self)  
+         IMPLICIT NONE
+         CLASS(FTLinkedListIterator), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTLinkedListIteratorClass
 !
 !////////////////////////////////////////////////////////////////////////
 !
@@ -1018,10 +1075,47 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE setLinkedList(self,list)
+      SUBROUTINE setLinkedListClass(self,list)
          IMPLICIT NONE 
          CLASS(FTLinkedListIterator)  :: self
          CLASS(FTLinkedList), POINTER :: list
+!
+!        -----------------------------------
+!        Remove current list if there is one
+!        -----------------------------------
+!
+         IF ( ASSOCIATED(list) )     THEN
+         
+            IF ( ASSOCIATED(self % list, list) )     THEN
+               CALL self % setToStart()
+            ELSE IF( ASSOCIATED(self % list) )     THEN
+               CALL releaseMemberList(self)
+               self % list => list
+               CALL self % list % retain()
+               CALL self % setToStart
+            ELSE
+               self % list => list
+               CALL self % list % retain()
+               CALL self % setToStart()
+            END IF 
+            
+         ELSE
+         
+            IF( ASSOCIATED(self % list) )     THEN
+               CALL releaseMemberList(self)
+            END IF 
+            self % list => NULL()
+            
+         END IF
+         
+      END SUBROUTINE setLinkedListClass   
+!
+!////////////////////////////////////////////////////////////////////////
+!
+      SUBROUTINE setLinkedList(self,list)
+         IMPLICIT NONE 
+         CLASS(FTLinkedListIterator)  :: self
+         TYPE (FTLinkedList), POINTER :: list
 !
 !        -----------------------------------
 !        Remove current list if there is one

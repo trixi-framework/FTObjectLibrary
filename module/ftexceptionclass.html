@@ -88,7 +88,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 4.9% of total for modules and submodules.">181 statements</a>
+                 title=" 5.0% of total for modules and submodules.">190 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -153,7 +153,7 @@
       </a>
       <div id="inters-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../module/ftexceptionclass.html#interface-cast~2">cast</a>
+            <a class="list-group-item" href="../module/ftexceptionclass.html#interface-cast~5">cast</a>
         </div>
       </div>
     </div>
@@ -198,6 +198,7 @@
             <a class="list-group-item" href="../module/ftexceptionclass.html#proc-initfatalexception">initFatalException</a>
             <a class="list-group-item" href="../module/ftexceptionclass.html#proc-initftexception">initFTException</a>
             <a class="list-group-item" href="../module/ftexceptionclass.html#proc-initassertionfailureexception">initAssertionFailureException</a>
+            <a class="list-group-item" href="../module/ftexceptionclass.html#proc-releaseftexceptionclass">releaseFTExceptionClass</a>
             <a class="list-group-item" href="../module/ftexceptionclass.html#proc-releaseftexception">releaseFTException</a>
             <a class="list-group-item" href="../module/ftexceptionclass.html#proc-destructexception">destructException</a>
             <a class="list-group-item" href="../module/ftexceptionclass.html#proc-setinfodictionary">setInfoDictionary</a>
@@ -256,7 +257,8 @@ of the FTException Class.</p>
 </code></pre></div>
 
 <h3>Destruction</h3>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="k">CALL</span><span class="w"> </span><span class="n">releaseFTException</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">pointers</span><span class="o">]</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="k">CALL</span><span class="w"> </span><span class="n">releaseFTExceptionClass</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">pointers</span><span class="o">]</span>
+<span class="w">    </span><span class="k">CALL</span><span class="w"> </span><span class="n">releaseFTException</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">pointers, TYPE</span><span class="o">]</span>
 </code></pre></div>
 
 <h3>Setting the infoDictionary</h3>
@@ -285,10 +287,10 @@ of the FTException Class.</p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='ftstackclass.html'>FTStackClass</a></li>
+                  <li class="list-inline-item"><a href='ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></li>
                   <li class="list-inline-item"><a href='ftdictionaryclass.html'>FTDictionaryClass</a></li>
                   <li class="list-inline-item"><a href='ftvaluedictionaryclass.html'>FTValueDictionaryClass</a></li>
-                  <li class="list-inline-item"><a href='ftlinkedlistiteratorclass.html'>FTLinkedListIteratorClass</a></li>
+                  <li class="list-inline-item"><a href='ftstackclass.html'>FTStackClass</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -930,8 +932,8 @@ parameter
           <h2>Interfaces</h2>
               <div class="card">
     <div class="card-header bg-light codesum">
-      <span class="anchor" id="interface-cast~2"></span>
-      <h3>public        interface <a href='../interface/cast~2.html'>cast</a> 
+      <span class="anchor" id="interface-cast~5"></span>
+      <h3>public        interface <a href='../interface/cast~5.html'>cast</a> 
       </h3>
     </div>
     <ul class="list-group">
@@ -956,7 +958,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~8"></span>
+              <span class="anchor" id="variable-obj~66"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -971,7 +973,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-cast~3"></span>
+              <span class="anchor" id="variable-cast~14"></span>
               class(<a href='../type/ftexception.html'>FTException</a>),
             </td>
 <td></td>
@@ -1027,12 +1029,12 @@ parameter
           <tbody>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-init~5'>init</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initftobject.html'>initFTObject</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-init~3'>init</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/initftobject.html'>initFTObject</a></td>
                   <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftobject.html#boundprocedure-description~4'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a></td>
+  <strong><a href='../type/ftobject.html#boundprocedure-description~2'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftobjectdescription.html'>FTObjectDescription</a></td>
                   <td></td>
               </tr>
               <tr>
@@ -1097,12 +1099,12 @@ parameter
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftexception.html#boundprocedure-printdescription~3'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftexceptiondescription.html'>printFTExceptionDescription</a></td>
+  <strong><a href='../type/ftexception.html#boundprocedure-printdescription~7'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftexceptiondescription.html'>printFTExceptionDescription</a></td>
                   <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftexception.html#boundprocedure-classname~2'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/exceptionclassname.html'>exceptionClassName</a></td>
+  <strong><a href='../type/ftexception.html#boundprocedure-classname~8'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/exceptionclassname.html'>exceptionClassName</a></td>
                   <td></td>
               </tr>
           </tbody>
@@ -1137,7 +1139,7 @@ unchanged.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~34"></span>
+              <span class="anchor" id="variable-self~130"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1183,7 +1185,7 @@ for the exception.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~35"></span>
+              <span class="anchor" id="variable-self~131"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1228,7 +1230,7 @@ for the exception.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~36"></span>
+              <span class="anchor" id="variable-self~132"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1273,7 +1275,7 @@ for the exception.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~9"></span>
+              <span class="anchor" id="variable-obj~67"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1318,7 +1320,7 @@ for the exception.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~38"></span>
+              <span class="anchor" id="variable-self~134"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1371,7 +1373,7 @@ example of how to write one's own exception.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~26"></span>
+              <span class="anchor" id="variable-self~121"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1429,7 +1431,7 @@ example of how to write one's own exception.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~27"></span>
+              <span class="anchor" id="variable-self~122"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1484,7 +1486,7 @@ example of how to write one's own exception.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~28"></span>
+              <span class="anchor" id="variable-self~123"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1570,7 +1572,7 @@ that includes the keys:</p><a href="../proc/initassertionfailureexception.html" 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~29"></span>
+              <span class="anchor" id="variable-self~124"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1651,6 +1653,46 @@ that includes the keys:</p><a href="../proc/initassertionfailureexception.html" 
   </div>
 
               <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-releaseftexceptionclass"></span> <h3>public  subroutine <a href='../proc/releaseftexceptionclass.html'>releaseFTExceptionClass</a>(self)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~125"></span>
+              class(<a href='../type/ftexception.html'>FTException</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              POINTER
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-releaseftexception"></span> <h3>public  subroutine <a href='../proc/releaseftexception.html'>releaseFTException</a>(self)  
 </h3></div>
     <div class="card-body">
@@ -1670,7 +1712,7 @@ that includes the keys:</p><a href="../proc/initassertionfailureexception.html" 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~30"></span>
+              <span class="anchor" id="variable-self~126"></span>
               type(<a href='../type/ftexception.html'>FTException</a>),
             </td>
 <td></td>
@@ -1711,7 +1753,7 @@ the release() procedure instead</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~31"></span>
+              <span class="anchor" id="variable-self~127"></span>
               type(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1751,7 +1793,7 @@ the release() procedure instead</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~32"></span>
+              <span class="anchor" id="variable-self~128"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1766,7 +1808,7 @@ the release() procedure instead</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dict"></span>
+              <span class="anchor" id="variable-dict~4"></span>
               class(<a href='../type/ftdictionary.html'>FTDictionary</a>),
             </td>
 <td></td>
@@ -1806,7 +1848,7 @@ the release() procedure instead</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~33"></span>
+              <span class="anchor" id="variable-self~129"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1847,7 +1889,7 @@ held in the infoDictionary.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~37"></span>
+              <span class="anchor" id="variable-self~133"></span>
               class(<a href='../type/ftexception.html'>FTException</a>)
             </td>
 <td></td>
@@ -1862,7 +1904,7 @@ held in the infoDictionary.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iunit~4"></span>
+              <span class="anchor" id="variable-iunit~8"></span>
               integer
             </td>
 <td></td>
@@ -1902,7 +1944,7 @@ held in the infoDictionary.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~8"></span>
+              <span class="anchor" id="variable-obj~66"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1917,7 +1959,7 @@ held in the infoDictionary.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-cast~3"></span>
+              <span class="anchor" id="variable-cast~14"></span>
               class(<a href='../type/ftexception.html'>FTException</a>),
             </td>
 <td></td>

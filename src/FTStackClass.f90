@@ -144,6 +144,20 @@
          IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTStack
 !
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTStackClass(self)  
+         IMPLICIT NONE
+         CLASS(FTStack)  , POINTER :: self
+         CLASS(FTObject) , POINTER :: obj
+            
+         IF(.NOT. ASSOCIATED(self)) RETURN
+       
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTStackClass
+!
 !     -----------------------------------
 !     push: Push an object onto the stack
 !     -----------------------------------

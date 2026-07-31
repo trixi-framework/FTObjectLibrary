@@ -88,7 +88,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 6.1% of total for source files.">222 statements</a>
+                 title=" 6.0% of total for source files.">231 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -764,7 +764,7 @@ can be.
 <a id="ln-378" name="ln-378" href="#ln-378"></a><span class="c">!</span>
 <a id="ln-379" name="ln-379" href="#ln-379"></a><span class="w">         </span><span class="n">r</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">NULL</span><span class="p">()</span>
 <a id="ln-380" name="ln-380" href="#ln-380"></a><span class="w">         </span>
-<a id="ln-381" name="ln-381" href="#ln-381"></a><span class="w">         </span><span class="k">CALL </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">setLinkedList</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+<a id="ln-381" name="ln-381" href="#ln-381"></a><span class="w">         </span><span class="k">CALL </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">setLinkedListClass</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
 <a id="ln-382" name="ln-382" href="#ln-382"></a><span class="w">         </span><span class="k">DO WHILE</span><span class="w"> </span><span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">isAtEnd</span><span class="p">())</span>
 <a id="ln-383" name="ln-383" href="#ln-383"></a><span class="w">         </span>
 <a id="ln-384" name="ln-384" href="#ln-384"></a><span class="w">            </span><span class="n">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">object</span><span class="p">()</span>
@@ -810,7 +810,7 @@ can be.
 <a id="ln-424" name="ln-424" href="#ln-424"></a><span class="c">!        ----------------------------</span>
 <a id="ln-425" name="ln-425" href="#ln-425"></a><span class="c">!</span>
 <a id="ln-426" name="ln-426" href="#ln-426"></a><span class="w">         </span><span class="n">list</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">list</span>
-<a id="ln-427" name="ln-427" href="#ln-427"></a><span class="w">         </span><span class="k">CALL </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">setLinkedList</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+<a id="ln-427" name="ln-427" href="#ln-427"></a><span class="w">         </span><span class="k">CALL </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">setLinkedListClass</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
 <a id="ln-428" name="ln-428" href="#ln-428"></a><span class="w">         </span><span class="k">CALL </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">setToStart</span><span class="p">()</span>
 <a id="ln-429" name="ln-429" href="#ln-429"></a><span class="w">         </span><span class="k">DO WHILE</span><span class="w"> </span><span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">isAtEnd</span><span class="p">())</span>
 <a id="ln-430" name="ln-430" href="#ln-430"></a><span class="w">         </span>
@@ -842,94 +842,108 @@ can be.
 <a id="ln-456" name="ln-456" href="#ln-456"></a><span class="c">!</span>
 <a id="ln-457" name="ln-457" href="#ln-457"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-458" name="ln-458" href="#ln-458"></a><span class="c">! </span>
-<a id="ln-459" name="ln-459" href="#ln-459"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">destructSparseMatrix</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
-<a id="ln-460" name="ln-460" href="#ln-460"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span><span class="w">  </span>
-<a id="ln-461" name="ln-461" href="#ln-461"></a><span class="c">!</span>
-<a id="ln-462" name="ln-462" href="#ln-462"></a><span class="c">!        ---------</span>
-<a id="ln-463" name="ln-463" href="#ln-463"></a><span class="c">!        Arguments</span>
-<a id="ln-464" name="ln-464" href="#ln-464"></a><span class="c">!        ---------</span>
-<a id="ln-465" name="ln-465" href="#ln-465"></a><span class="c">!</span>
-<a id="ln-466" name="ln-466" href="#ln-466"></a><span class="w">         </span><span class="k">TYPE</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
-<a id="ln-467" name="ln-467" href="#ln-467"></a><span class="c">!</span>
-<a id="ln-468" name="ln-468" href="#ln-468"></a><span class="c">!        ---------------</span>
-<a id="ln-469" name="ln-469" href="#ln-469"></a><span class="c">!        Local variables</span>
-<a id="ln-470" name="ln-470" href="#ln-470"></a><span class="c">!        ---------------</span>
-<a id="ln-471" name="ln-471" href="#ln-471"></a><span class="c">!</span>
-<a id="ln-472" name="ln-472" href="#ln-472"></a><span class="w">         </span><span class="kt">INTEGER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span>
-<a id="ln-473" name="ln-473" href="#ln-473"></a>
-<a id="ln-474" name="ln-474" href="#ln-474"></a><span class="w">         </span><span class="k">IF</span><span class="p">(</span><span class="nb">ALLOCATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">))</span><span class="w">     </span><span class="k">THEN </span>
-<a id="ln-475" name="ln-475" href="#ln-475"></a><span class="k">            DO </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">SIZE</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
-<a id="ln-476" name="ln-476" href="#ln-476"></a><span class="w">               </span><span class="k">IF</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">     </span><span class="k">THEN</span>
-<a id="ln-477" name="ln-477" href="#ln-477"></a><span class="k">                  CALL </span><span class="n">releaseSMMemberList</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
-<a id="ln-478" name="ln-478" href="#ln-478"></a><span class="w">               </span><span class="k">END IF </span>
-<a id="ln-479" name="ln-479" href="#ln-479"></a><span class="k">            END DO</span>
-<a id="ln-480" name="ln-480" href="#ln-480"></a><span class="k">         END IF </span>
-<a id="ln-481" name="ln-481" href="#ln-481"></a>
-<a id="ln-482" name="ln-482" href="#ln-482"></a><span class="k">         IF</span><span class="p">(</span><span class="nb">ALLOCATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">))</span><span class="w">   </span><span class="k">DEALLOCATE</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
-<a id="ln-483" name="ln-483" href="#ln-483"></a><span class="w">         </span>
-<a id="ln-484" name="ln-484" href="#ln-484"></a><span class="w">      </span><span class="k">END SUBROUTINE </span><span class="n">destructSparseMatrix</span>
+<a id="ln-459" name="ln-459" href="#ln-459"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseFTSparseMatrixClass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-460" name="ln-460" href="#ln-460"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span>
+<a id="ln-461" name="ln-461" href="#ln-461"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-462" name="ln-462" href="#ln-462"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
+<a id="ln-463" name="ln-463" href="#ln-463"></a><span class="w">           </span>
+<a id="ln-464" name="ln-464" href="#ln-464"></a><span class="w">         </span><span class="k">IF</span><span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span><span class="w"> </span><span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">self</span><span class="p">))</span><span class="w"> </span><span class="k">RETURN</span>
+<a id="ln-465" name="ln-465" href="#ln-465"></a><span class="k">        </span>
+<a id="ln-466" name="ln-466" href="#ln-466"></a><span class="k">         </span><span class="n">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-467" name="ln-467" href="#ln-467"></a><span class="w">         </span><span class="k">CALL </span><span class="n">release</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span>
+<a id="ln-468" name="ln-468" href="#ln-468"></a><span class="w">         </span><span class="k">IF</span><span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span><span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="w"> </span><span class="n">self</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">NULL</span><span class="p">()</span>
+<a id="ln-469" name="ln-469" href="#ln-469"></a><span class="w">      </span><span class="k">END SUBROUTINE </span><span class="n">releaseFTSparseMatrixClass</span>
+<a id="ln-470" name="ln-470" href="#ln-470"></a><span class="c">!</span>
+<a id="ln-471" name="ln-471" href="#ln-471"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a id="ln-472" name="ln-472" href="#ln-472"></a><span class="c">! </span>
+<a id="ln-473" name="ln-473" href="#ln-473"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">destructSparseMatrix</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<a id="ln-474" name="ln-474" href="#ln-474"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span><span class="w">  </span>
+<a id="ln-475" name="ln-475" href="#ln-475"></a><span class="c">!</span>
+<a id="ln-476" name="ln-476" href="#ln-476"></a><span class="c">!        ---------</span>
+<a id="ln-477" name="ln-477" href="#ln-477"></a><span class="c">!        Arguments</span>
+<a id="ln-478" name="ln-478" href="#ln-478"></a><span class="c">!        ---------</span>
+<a id="ln-479" name="ln-479" href="#ln-479"></a><span class="c">!</span>
+<a id="ln-480" name="ln-480" href="#ln-480"></a><span class="w">         </span><span class="k">TYPE</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-481" name="ln-481" href="#ln-481"></a><span class="c">!</span>
+<a id="ln-482" name="ln-482" href="#ln-482"></a><span class="c">!        ---------------</span>
+<a id="ln-483" name="ln-483" href="#ln-483"></a><span class="c">!        Local variables</span>
+<a id="ln-484" name="ln-484" href="#ln-484"></a><span class="c">!        ---------------</span>
 <a id="ln-485" name="ln-485" href="#ln-485"></a><span class="c">!</span>
-<a id="ln-486" name="ln-486" href="#ln-486"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
-<a id="ln-487" name="ln-487" href="#ln-487"></a><span class="c">! </span>
-<a id="ln-488" name="ln-488" href="#ln-488"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseSMMemberList</span><span class="p">(</span><span class="n">list</span><span class="p">)</span><span class="w">  </span>
-<a id="ln-489" name="ln-489" href="#ln-489"></a><span class="w">          </span><span class="k">IMPLICIT NONE  </span>
-<a id="ln-490" name="ln-490" href="#ln-490"></a><span class="k">          CLASS</span><span class="p">(</span><span class="n">FTLinkedList</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">list</span>
-<a id="ln-491" name="ln-491" href="#ln-491"></a><span class="w">          </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
-<a id="ln-492" name="ln-492" href="#ln-492"></a>
-<a id="ln-493" name="ln-493" href="#ln-493"></a><span class="w">          </span><span class="n">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">list</span>
-<a id="ln-494" name="ln-494" href="#ln-494"></a><span class="w">          </span><span class="k">CALL </span><span class="n">releaseFTObject</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
-<a id="ln-495" name="ln-495" href="#ln-495"></a><span class="w">          </span><span class="k">IF</span><span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span><span class="w"> </span><span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">NULL</span><span class="p">()</span>
-<a id="ln-496" name="ln-496" href="#ln-496"></a><span class="w">      </span><span class="k">END SUBROUTINE </span><span class="n">releaseSMMemberList</span>
-<a id="ln-497" name="ln-497" href="#ln-497"></a><span class="c">!</span>
-<a id="ln-498" name="ln-498" href="#ln-498"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
-<a id="ln-499" name="ln-499" href="#ln-499"></a><span class="c">! </span>
-<a id="ln-500" name="ln-500" href="#ln-500"></a><span class="w">      </span><span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">SparseMatrixSize</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
-<a id="ln-501" name="ln-501" href="#ln-501"></a><span class="w">         </span><span class="k">IMPLICIT NONE  </span>
-<a id="ln-502" name="ln-502" href="#ln-502"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
-<a id="ln-503" name="ln-503" href="#ln-503"></a><span class="w">         </span><span class="k">IF</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">ALLOCATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">     </span><span class="k">THEN</span>
-<a id="ln-504" name="ln-504" href="#ln-504"></a><span class="k">            </span><span class="n">SparseMatrixSize</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">SIZE</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
-<a id="ln-505" name="ln-505" href="#ln-505"></a><span class="w">         </span><span class="k">ELSE</span>
-<a id="ln-506" name="ln-506" href="#ln-506"></a><span class="k">            </span><span class="n">SparseMatrixSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<a id="ln-507" name="ln-507" href="#ln-507"></a><span class="w">         </span><span class="k">END IF </span>
-<a id="ln-508" name="ln-508" href="#ln-508"></a><span class="k">      END FUNCTION </span><span class="n">SparseMatrixSize</span>
-<a id="ln-509" name="ln-509" href="#ln-509"></a><span class="c">!</span>
-<a id="ln-510" name="ln-510" href="#ln-510"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
-<a id="ln-511" name="ln-511" href="#ln-511"></a><span class="c">! </span>
-<a id="ln-512" name="ln-512" href="#ln-512"></a><span class="w">      </span><span class="k">FUNCTION </span><span class="n">SparseMatrixFromObject</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="k">RESULT</span><span class="p">(</span><span class="n">cast</span><span class="p">)</span>
-<a id="ln-513" name="ln-513" href="#ln-513"></a><span class="c">!</span>
-<a id="ln-514" name="ln-514" href="#ln-514"></a><span class="c">!     --------------------------------------------------------</span>
-<a id="ln-515" name="ln-515" href="#ln-515"></a><span class="c">!     Cast the base class FTObject to the FTSparseMatrix class</span>
-<a id="ln-516" name="ln-516" href="#ln-516"></a><span class="c">!     --------------------------------------------------------</span>
-<a id="ln-517" name="ln-517" href="#ln-517"></a><span class="c">!</span>
-<a id="ln-518" name="ln-518" href="#ln-518"></a><span class="w">         </span><span class="k">IMPLICIT NONE  </span>
-<a id="ln-519" name="ln-519" href="#ln-519"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
-<a id="ln-520" name="ln-520" href="#ln-520"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cast</span>
-<a id="ln-521" name="ln-521" href="#ln-521"></a><span class="w">         </span>
-<a id="ln-522" name="ln-522" href="#ln-522"></a><span class="w">         </span><span class="n">cast</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">NULL</span><span class="p">()</span>
-<a id="ln-523" name="ln-523" href="#ln-523"></a><span class="w">         </span><span class="k">SELECT TYPE</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
-<a id="ln-524" name="ln-524" href="#ln-524"></a><span class="w">            </span><span class="k">TYPE is</span><span class="w"> </span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">)</span>
-<a id="ln-525" name="ln-525" href="#ln-525"></a><span class="w">               </span><span class="n">cast</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">e</span>
-<a id="ln-526" name="ln-526" href="#ln-526"></a><span class="w">            </span><span class="k">CLASS </span><span class="n">DEFAULT</span>
-<a id="ln-527" name="ln-527" href="#ln-527"></a><span class="w">               </span>
-<a id="ln-528" name="ln-528" href="#ln-528"></a><span class="w">         </span><span class="k">END SELECT</span>
-<a id="ln-529" name="ln-529" href="#ln-529"></a><span class="k">         </span>
-<a id="ln-530" name="ln-530" href="#ln-530"></a><span class="k">      END FUNCTION </span><span class="n">SparseMatrixFromObject</span>
+<a id="ln-486" name="ln-486" href="#ln-486"></a><span class="w">         </span><span class="kt">INTEGER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span>
+<a id="ln-487" name="ln-487" href="#ln-487"></a>
+<a id="ln-488" name="ln-488" href="#ln-488"></a><span class="w">         </span><span class="k">IF</span><span class="p">(</span><span class="nb">ALLOCATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">))</span><span class="w">     </span><span class="k">THEN </span>
+<a id="ln-489" name="ln-489" href="#ln-489"></a><span class="k">            DO </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">SIZE</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<a id="ln-490" name="ln-490" href="#ln-490"></a><span class="w">               </span><span class="k">IF</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">     </span><span class="k">THEN</span>
+<a id="ln-491" name="ln-491" href="#ln-491"></a><span class="k">                  CALL </span><span class="n">releaseSMMemberList</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+<a id="ln-492" name="ln-492" href="#ln-492"></a><span class="w">               </span><span class="k">END IF </span>
+<a id="ln-493" name="ln-493" href="#ln-493"></a><span class="k">            END DO</span>
+<a id="ln-494" name="ln-494" href="#ln-494"></a><span class="k">         END IF </span>
+<a id="ln-495" name="ln-495" href="#ln-495"></a>
+<a id="ln-496" name="ln-496" href="#ln-496"></a><span class="k">         IF</span><span class="p">(</span><span class="nb">ALLOCATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">))</span><span class="w">   </span><span class="k">DEALLOCATE</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<a id="ln-497" name="ln-497" href="#ln-497"></a><span class="w">         </span>
+<a id="ln-498" name="ln-498" href="#ln-498"></a><span class="w">      </span><span class="k">END SUBROUTINE </span><span class="n">destructSparseMatrix</span>
+<a id="ln-499" name="ln-499" href="#ln-499"></a><span class="c">!</span>
+<a id="ln-500" name="ln-500" href="#ln-500"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a id="ln-501" name="ln-501" href="#ln-501"></a><span class="c">! </span>
+<a id="ln-502" name="ln-502" href="#ln-502"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseSMMemberList</span><span class="p">(</span><span class="n">list</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-503" name="ln-503" href="#ln-503"></a><span class="w">          </span><span class="k">IMPLICIT NONE  </span>
+<a id="ln-504" name="ln-504" href="#ln-504"></a><span class="k">          CLASS</span><span class="p">(</span><span class="n">FTLinkedList</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">list</span>
+<a id="ln-505" name="ln-505" href="#ln-505"></a><span class="w">          </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
+<a id="ln-506" name="ln-506" href="#ln-506"></a>
+<a id="ln-507" name="ln-507" href="#ln-507"></a><span class="w">          </span><span class="n">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">list</span>
+<a id="ln-508" name="ln-508" href="#ln-508"></a><span class="w">          </span><span class="k">CALL </span><span class="n">releaseFTObject</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<a id="ln-509" name="ln-509" href="#ln-509"></a><span class="w">          </span><span class="k">IF</span><span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span><span class="w"> </span><span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">NULL</span><span class="p">()</span>
+<a id="ln-510" name="ln-510" href="#ln-510"></a><span class="w">      </span><span class="k">END SUBROUTINE </span><span class="n">releaseSMMemberList</span>
+<a id="ln-511" name="ln-511" href="#ln-511"></a><span class="c">!</span>
+<a id="ln-512" name="ln-512" href="#ln-512"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a id="ln-513" name="ln-513" href="#ln-513"></a><span class="c">! </span>
+<a id="ln-514" name="ln-514" href="#ln-514"></a><span class="w">      </span><span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">SparseMatrixSize</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-515" name="ln-515" href="#ln-515"></a><span class="w">         </span><span class="k">IMPLICIT NONE  </span>
+<a id="ln-516" name="ln-516" href="#ln-516"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-517" name="ln-517" href="#ln-517"></a><span class="w">         </span><span class="k">IF</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">ALLOCATED</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">     </span><span class="k">THEN</span>
+<a id="ln-518" name="ln-518" href="#ln-518"></a><span class="k">            </span><span class="n">SparseMatrixSize</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">SIZE</span><span class="p">(</span><span class="n">self</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<a id="ln-519" name="ln-519" href="#ln-519"></a><span class="w">         </span><span class="k">ELSE</span>
+<a id="ln-520" name="ln-520" href="#ln-520"></a><span class="k">            </span><span class="n">SparseMatrixSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<a id="ln-521" name="ln-521" href="#ln-521"></a><span class="w">         </span><span class="k">END IF </span>
+<a id="ln-522" name="ln-522" href="#ln-522"></a><span class="k">      END FUNCTION </span><span class="n">SparseMatrixSize</span>
+<a id="ln-523" name="ln-523" href="#ln-523"></a><span class="c">!</span>
+<a id="ln-524" name="ln-524" href="#ln-524"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
+<a id="ln-525" name="ln-525" href="#ln-525"></a><span class="c">! </span>
+<a id="ln-526" name="ln-526" href="#ln-526"></a><span class="w">      </span><span class="k">FUNCTION </span><span class="n">SparseMatrixFromObject</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="k">RESULT</span><span class="p">(</span><span class="n">cast</span><span class="p">)</span>
+<a id="ln-527" name="ln-527" href="#ln-527"></a><span class="c">!</span>
+<a id="ln-528" name="ln-528" href="#ln-528"></a><span class="c">!     --------------------------------------------------------</span>
+<a id="ln-529" name="ln-529" href="#ln-529"></a><span class="c">!     Cast the base class FTObject to the FTSparseMatrix class</span>
+<a id="ln-530" name="ln-530" href="#ln-530"></a><span class="c">!     --------------------------------------------------------</span>
 <a id="ln-531" name="ln-531" href="#ln-531"></a><span class="c">!</span>
-<a id="ln-532" name="ln-532" href="#ln-532"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
-<a id="ln-533" name="ln-533" href="#ln-533"></a><span class="c">!</span>
-<a id="ln-534" name="ln-534" href="#ln-534"></a><span class="w">      </span><span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">Hash1</span><span class="p">(</span><span class="w"> </span><span class="n">idPair</span><span class="w"> </span><span class="p">)</span>
-<a id="ln-535" name="ln-535" href="#ln-535"></a><span class="w">         </span><span class="kt">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="k">DIMENSION</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">idPair</span>
-<a id="ln-536" name="ln-536" href="#ln-536"></a><span class="w">         </span><span class="n">Hash1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">MAXVAL</span><span class="p">(</span><span class="n">idPair</span><span class="p">)</span>
-<a id="ln-537" name="ln-537" href="#ln-537"></a><span class="w">      </span><span class="k">END FUNCTION </span><span class="n">Hash1</span>
-<a id="ln-538" name="ln-538" href="#ln-538"></a><span class="c">!</span>
-<a id="ln-539" name="ln-539" href="#ln-539"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
-<a id="ln-540" name="ln-540" href="#ln-540"></a><span class="c">!</span>
-<a id="ln-541" name="ln-541" href="#ln-541"></a><span class="w">      </span><span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">Hash2</span><span class="p">(</span><span class="w"> </span><span class="n">idPair</span><span class="w"> </span><span class="p">)</span>
-<a id="ln-542" name="ln-542" href="#ln-542"></a><span class="w">         </span><span class="kt">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="k">DIMENSION</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">idPair</span>
-<a id="ln-543" name="ln-543" href="#ln-543"></a><span class="w">         </span><span class="n">Hash2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">MINVAL</span><span class="p">(</span><span class="n">idPair</span><span class="p">)</span>
-<a id="ln-544" name="ln-544" href="#ln-544"></a><span class="w">      </span><span class="k">END FUNCTION </span><span class="n">Hash2</span>
-<a id="ln-545" name="ln-545" href="#ln-545"></a>
-<a id="ln-546" name="ln-546" href="#ln-546"></a><span class="w">      </span><span class="k">END Module </span><span class="n">FTSparseMatrixClass</span>
+<a id="ln-532" name="ln-532" href="#ln-532"></a><span class="w">         </span><span class="k">IMPLICIT NONE  </span>
+<a id="ln-533" name="ln-533" href="#ln-533"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
+<a id="ln-534" name="ln-534" href="#ln-534"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cast</span>
+<a id="ln-535" name="ln-535" href="#ln-535"></a><span class="w">         </span>
+<a id="ln-536" name="ln-536" href="#ln-536"></a><span class="w">         </span><span class="n">cast</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">NULL</span><span class="p">()</span>
+<a id="ln-537" name="ln-537" href="#ln-537"></a><span class="w">         </span><span class="k">SELECT TYPE</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<a id="ln-538" name="ln-538" href="#ln-538"></a><span class="w">            </span><span class="k">TYPE is</span><span class="w"> </span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">)</span>
+<a id="ln-539" name="ln-539" href="#ln-539"></a><span class="w">               </span><span class="n">cast</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">e</span>
+<a id="ln-540" name="ln-540" href="#ln-540"></a><span class="w">            </span><span class="k">CLASS </span><span class="n">DEFAULT</span>
+<a id="ln-541" name="ln-541" href="#ln-541"></a><span class="w">               </span>
+<a id="ln-542" name="ln-542" href="#ln-542"></a><span class="w">         </span><span class="k">END SELECT</span>
+<a id="ln-543" name="ln-543" href="#ln-543"></a><span class="k">         </span>
+<a id="ln-544" name="ln-544" href="#ln-544"></a><span class="k">      END FUNCTION </span><span class="n">SparseMatrixFromObject</span>
+<a id="ln-545" name="ln-545" href="#ln-545"></a><span class="c">!</span>
+<a id="ln-546" name="ln-546" href="#ln-546"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
+<a id="ln-547" name="ln-547" href="#ln-547"></a><span class="c">!</span>
+<a id="ln-548" name="ln-548" href="#ln-548"></a><span class="w">      </span><span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">Hash1</span><span class="p">(</span><span class="w"> </span><span class="n">idPair</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-549" name="ln-549" href="#ln-549"></a><span class="w">         </span><span class="kt">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="k">DIMENSION</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">idPair</span>
+<a id="ln-550" name="ln-550" href="#ln-550"></a><span class="w">         </span><span class="n">Hash1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">MAXVAL</span><span class="p">(</span><span class="n">idPair</span><span class="p">)</span>
+<a id="ln-551" name="ln-551" href="#ln-551"></a><span class="w">      </span><span class="k">END FUNCTION </span><span class="n">Hash1</span>
+<a id="ln-552" name="ln-552" href="#ln-552"></a><span class="c">!</span>
+<a id="ln-553" name="ln-553" href="#ln-553"></a><span class="c">!////////////////////////////////////////////////////////////////////////</span>
+<a id="ln-554" name="ln-554" href="#ln-554"></a><span class="c">!</span>
+<a id="ln-555" name="ln-555" href="#ln-555"></a><span class="w">      </span><span class="kt">INTEGER </span><span class="k">FUNCTION </span><span class="n">Hash2</span><span class="p">(</span><span class="w"> </span><span class="n">idPair</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-556" name="ln-556" href="#ln-556"></a><span class="w">         </span><span class="kt">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="k">DIMENSION</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">idPair</span>
+<a id="ln-557" name="ln-557" href="#ln-557"></a><span class="w">         </span><span class="n">Hash2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">MINVAL</span><span class="p">(</span><span class="n">idPair</span><span class="p">)</span>
+<a id="ln-558" name="ln-558" href="#ln-558"></a><span class="w">      </span><span class="k">END FUNCTION </span><span class="n">Hash2</span>
+<a id="ln-559" name="ln-559" href="#ln-559"></a>
+<a id="ln-560" name="ln-560" href="#ln-560"></a><span class="w">      </span><span class="k">END Module </span><span class="n">FTSparseMatrixClass</span>
 </pre></div>
 
       </section>
