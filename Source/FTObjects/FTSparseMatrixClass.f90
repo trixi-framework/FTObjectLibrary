@@ -378,7 +378,7 @@
 !
          r => NULL()
          
-         CALL self % iterator % setLinkedList(self % table(i) % list)
+         CALL self % iterator % setLinkedListClass(self % table(i) % list)
          DO WHILE (.NOT.self % iterator % isAtEnd())
          
             obj => self % iterator % object()
@@ -424,7 +424,7 @@
 !        ----------------------------
 !
          list => self % table(i) % list
-         CALL self % iterator % setLinkedList(list)
+         CALL self % iterator % setLinkedListClass(list)
          CALL self % iterator % setToStart()
          DO WHILE (.NOT.self % iterator % isAtEnd())
          
@@ -453,6 +453,20 @@
          CALL release(obj) 
          IF(.NOT.ASSOCIATED(obj)) self => NULL()
       END SUBROUTINE releaseFTSparseMatrix
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTSparseMatrixClass(self)  
+         IMPLICIT NONE
+         CLASS(FTSparseMatrix), POINTER :: self
+         CLASS(FTObject)      , POINTER :: obj
+           
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTSparseMatrixClass
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 

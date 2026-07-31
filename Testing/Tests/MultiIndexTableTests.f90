@@ -47,7 +47,8 @@
          TYPE (FTValue) , POINTER :: v
          CLASS(FTObject), POINTER :: obj
          
-         TYPE(FTMultiIndexTable), POINTER :: table, tablePtr
+         TYPE (FTMultiIndexTable), POINTER :: table
+         CLASS(FTMultiIndexTable), POINTER :: tableClass, tablePtr
          INTEGER, DIMENSION(1)   :: unsorted1 = [3]
          INTEGER, DIMENSION(1)   :: sorted1   = [3]
          INTEGER, DIMENSION(2)   :: unsorted2 = [5,3]
@@ -99,7 +100,9 @@
          keys(:,4) = [4,6,7,2]
          
          ALLOCATE(table)
+         ALLOCATE(tableClass)
          CALL table % initWithSize(N = 10) ! Says first item of the multiIndex array is at most 10
+         CALL tableClass % initWithSize(N = 10) ! Says first item of the multiIndex array is at most 10
          CALL FTAssertEqual(expectedValue = 10,                            &
                             actualValue   = table % MultiIndexTableSize(), &
                             msg           = "Size of table")
@@ -148,6 +151,7 @@
 !        --------
 !
          CALL releaseFTMultiIndexTable(table)
+         CALL releaseFTMultiIndexTableClass(tableClass)
          CALL FTAssert(.NOT. ASSOCIATED(table),msg = "Final release of table")
          
       END SUBROUTINE MultiIndexTableTests

@@ -276,6 +276,20 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTMultiIndexTableClass(self)  
+         IMPLICIT NONE
+         CLASS(FTMultiIndexTable), POINTER :: self
+         CLASS(FTObject)         , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+        
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTMultiIndexTableClass
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       SUBROUTINE destructMultiIndexTable(self)
          IMPLICIT NONE  
 !

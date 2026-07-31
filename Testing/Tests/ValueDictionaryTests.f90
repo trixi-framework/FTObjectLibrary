@@ -229,7 +229,7 @@
          CALL FTAssert(ASSOCIATED(valDict),msg = "Cast dictionary to valuedictionary as subroutine call ")
          CALL FTAssert(valDict  % containsKey(key = "name"),msg = "Test integrity of casting")
          
-         CALL releaseFTValueDictionary(dict3)
+         CALL releaseFTValueDictionaryClass(dict3)
          CALL FTAssert(.NOT.ASSOCIATED(dict3),msg = "Release dictionary should deallocate")
          
          

@@ -73,7 +73,8 @@
 !>
 !>### Destruction
 !>
-!>        CALL releaseFTException(e) [pointers]
+!>        CALL releaseFTExceptionClass(e) [pointers]
+!>        CALL releaseFTException(e) [pointers, TYPE]
 !>
 !>###Setting the infoDictionary
 !>
@@ -275,6 +276,20 @@
          CALL releaseMemberDictionary(self)
          
       END SUBROUTINE initAssertionFailureException
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
+      SUBROUTINE releaseFTExceptionClass(self)  
+         IMPLICIT NONE
+         CLASS(FTException) , POINTER :: self
+         CLASS(FTObject)    , POINTER :: obj
+         
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTExceptionClass
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
@@ -627,6 +642,27 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE throwClass(exceptionToThrow)
+!
+!>Throws the exception: exceptionToThrow
+!
+         IMPLICIT NONE  
+         CLASS (FTException), POINTER :: exceptionToThrow
+         CLASS(FTObject)    , POINTER :: ptr => NULL()
+         
+         IF ( .NOT.ASSOCIATED(errorStack) )     THEN
+            CALL initializeFTExceptions 
+         END IF 
+         
+         ptr => exceptionToThrow
+         CALL errorStack % push(ptr)
+         
+         maxErrorLevel = MAX(maxErrorLevel, exceptionToThrow % severity())
+         
+      END SUBROUTINE throwClass
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
       LOGICAL FUNCTION catchAll()
 !
 ! -------------------------------------------
@@ -718,7 +754,7 @@
          END IF 
 
          ptr => errorStack
-         CALL iterator % initWithFTLinkedList(ptr)
+         CALL iterator % initWithFTLinkedListClass(ptr)
          CALL iterator % setToStart()
          
          DO WHILE (.NOT.iterator % isAtEnd())
@@ -833,7 +869,7 @@
          CLASS(FTException) , POINTER :: e         => NULL()
            
         list => errorStack
-        CALL iterator % initWithFTLinkedList(list)
+        CALL iterator % initWithFTLinkedListClass(list)
 !
 !       ----------------------------------------------------
 !       Write out the descriptions of each of the exceptions

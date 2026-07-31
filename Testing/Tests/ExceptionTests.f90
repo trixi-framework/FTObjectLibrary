@@ -111,16 +111,16 @@
          CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
                             actualValue   = e % severity(),  &
                             msg           = "Warning error level match")
-         CALL throw(e)
-         CALL releaseFTException(e)
+         CALL throwClass(e)
+         CALL releaseFTExceptionClass(e)
          
          ALLOCATE(e)
          CALL e % initFatalException(msg = "I'm Sorry, I can't do that Dave  (Designed Uncaught)")
          CALL FTAssertEqual(expectedValue = FT_ERROR_FATAL, &
                             actualValue   = e % severity(),  &
                             msg           = "Fatal error level match")
-         CALL throw(e)
-         CALL releaseFTException(e)
+         CALL throwClass(e)
+         CALL releaseFTExceptionClass(e)
 
          ALLOCATE(e)
          ALLOCATE(vGood, vBad)
@@ -131,8 +131,8 @@
                                                 expectedValueObject = vGood, &
                                                 ObservedValueObject = vBad,  &
                                                 level               = FT_ERROR_WARNING)
-         CALL releaseFTValue(vBad)
-         CALL releaseFTValue(vGood)
+         CALL releaseFTValueClass(vBad)
+         CALL releaseFTValueClass(vGood)
          
          CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
                             actualValue    = e % severity(),  &
@@ -161,8 +161,8 @@
          ePtr => exceptionFromObject(obj)
          CALL FTAssert(ASSOCIATED(ePtr),msg = "Test casting of exception by function")
          
-         CALL throw(e)
-         CALL releaseFTException(e)
+         CALL throwClass(e)
+         CALL releaseFTExceptionClass(e)
 !
 !        -----------------------------
 !        Testing the exception manager
@@ -208,7 +208,7 @@
          CALL FTAssertEqual(expectedValue = FT_ERROR_WARNING, &
                             actualValue    = e % severity(),  &
                             msg = "Popped error level match")
-         CALL releaseFTException(e)
+         CALL releaseFTExceptionClass(e)
          
          CALL destructFTExceptions
          

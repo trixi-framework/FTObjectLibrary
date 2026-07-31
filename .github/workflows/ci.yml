@@ -15,31 +15,93 @@ on:
       - 'README.md'
   workflow_dispatch:
 
+env:
+  # Modify this variable to change the ifx compiler version - do NOT hardcode the version
+  # anywhere else!
+  INTEL_ONEAPI_VERSION: 2025.2
+
 jobs:
   test:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
-    name: ${{ matrix.os }} - ${{ github.event_name }}
+    name: ${{ matrix.os_name }} - ${{ matrix.compiler }} - ${{ matrix.test_type }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         include:
+          # Linux
           - os: ubuntu-22.04
+            os_name: linux
             compiler: gfortran-10
             cmake_generator: Unix Makefiles
             shell: bash
+            test_type: regular
+            coverage: true
+          - os: ubuntu-22.04
+            os_name: linux
+            compiler: gfortran-10
+            cmake_generator: Unix Makefiles
+            shell: bash
+            test_type: valgrind
+            coverage: false
+          - os: ubuntu-24.04
+            os_name: linux
+            compiler: gfortran-13
+            cmake_generator: Unix Makefiles
+            shell: bash
+            test_type: regular
+            coverage: false
+          - os: ubuntu-24.04
+            os_name: linux
+            compiler: gfortran-13
+            cmake_generator: Unix Makefiles
+            shell: bash
+            test_type: valgrind
+            coverage: false
+          - os: ubuntu-26.04
+            os_name: linux
+            compiler: gfortran-15
+            cmake_generator: Unix Makefiles
+            shell: bash
+            test_type: regular
+            coverage: false
+          - os: ubuntu-26.04
+            os_name: linux
+            compiler: gfortran-15
+            cmake_generator: Unix Makefiles
+            shell: bash
+            test_type: valgrind
+            coverage: false
           - os: ubuntu-latest
-            compiler: gfortran-13
+            os_name: linux
+            compiler: ifx
             cmake_generator: Unix Makefiles
             shell: bash
+            test_type: regular
+            coverage: false
+          # macOS
           - os: macos-latest
+            os_name: macos
             compiler: gfortran-13
             cmake_generator: Unix Makefiles
             shell: bash
+            test_type: regular
+            coverage: false
+          - os: macos-latest
+            os_name: macos
+            compiler: gfortran-15
+            cmake_generator: Unix Makefiles
+            shell: bash
+            test_type: regular
+            coverage: false
+          # Windows
           - os: windows-latest
+            os_name: windows
             compiler: gfortran
             cmake_generator: MinGW Makefiles
             shell: 'msys2 {0}'
+            test_type: regular
+            coverage: false
     # Set default shell as suggested here: https://github.community/t/setting-default-shell-or-other-step-metadata-conditionally-in-workflows/154055
     defaults:
       run:
@@ -55,6 +117,35 @@ jobs:
         with:
           update: true
           install: git base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-cmake
+      - uses: actions/cache@v6
+        if: matrix.compiler == 'ifx'
+        id: cache
+        with:
+          path: /opt/intel/oneapi
+          key: ${{ matrix.os }}-${{ matrix.compiler }}-${{ env.INTEL_ONEAPI_VERSION }}
+      - name: Install Intel oneAPI Fortran compiler
+        if: matrix.compiler == 'ifx' && steps.cache.outputs.cache-hit != 'true'
+        run: |
+          # download the key to system keyring
+          wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+          | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+
+          # add signed entry to apt sources and configure the APT client to use Intel repository:
+          echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+
+          # update package index and install Fortran compiler
+          sudo apt update
+          sudo apt-get install intel-oneapi-compiler-fortran-$INTEL_ONEAPI_VERSION
+
+          # set environment variables and make them persistent across steps
+          . /opt/intel/oneapi/setvars.sh
+          env | grep oneapi >> $GITHUB_ENV
+      - name: Use existing Intel oneAPI Fortran compiler
+        if: matrix.compiler == 'ifx' && steps.cache.outputs.cache-hit == 'true'
+        run: |
+          # set environment variables and make them persistent across steps
+          . /opt/intel/oneapi/setvars.sh
+          env | grep oneapi >> $GITHUB_ENV
       - name: Verify CMake build
         run: |
           mkdir build && cd build
@@ -71,17 +162,25 @@ jobs:
           cd TestSuiteBuild
           make -j 2 FC=${{ matrix.compiler }}
       - name: Run tests
+        if: ${{ matrix.test_type == 'regular' }}
         run: |
           cd TestSuiteBuild
           ./runSuite
+      - name: Run memory checks with Valgrind (only Linux)
+        if: ${{ matrix.os_name == 'linux' && matrix.test_type == 'valgrind' }}
+        run: |
+          sudo apt update
+          sudo apt-get install -y valgrind
+          cd TestSuiteBuild
+          valgrind --error-exitcode=1 -s ./runSuite
       - name: Run tests for coverage
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.coverage }}
         run: |
           sudo apt-get install -y lcov
           cd TestSuiteBuild
           FC=${{ matrix.compiler }} ./createcoverage
       - uses: codecov/codecov-action@v7
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.coverage }}
         with:
           files: ./TestSuiteBuild/lcov.info
           flags: unittests
@@ -89,7 +188,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
       - name: Coveralls
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.coverage }}
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

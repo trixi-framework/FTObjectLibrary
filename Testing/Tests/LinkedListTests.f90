@@ -81,8 +81,10 @@
 !        can be a non-pointer, too, like the iterator.
 !        -------------------------------------------------
 !
-         CLASS (FTLinkedList)       , POINTER :: list, listPtr
+         CLASS(FTLinkedList)        , POINTER :: list, listPtr
+         TYPE (FTLinkedList)        , POINTER :: listType
          TYPE (FTLinkedListIterator), POINTER :: iterator
+         CLASS(FTLinkedListIterator), POINTER :: iteratorClass
          
          INTEGER                      :: i
          REAL                         :: singleTol = 2*EPSILON(1.0e0)
@@ -94,7 +96,9 @@
 !        -------------------------------------------------------
 !
          ALLOCATE(list)
+         ALLOCATE(listType)
          CALL list % init()
+         CALL listType % init()
          CALL FTAssertEqual(expectedValue = "FTLinkedList", &
                             actualValue   = list % className(), &
                             msg           = "Class name test for linked list")
@@ -113,7 +117,7 @@
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: Initial object refCount")
          CALL list % retain()
          CALL FTAssertEqual(2,list % refCount(), "Reference counting: Test retain")
-         CALL releaseFTLinkedList(list)
+         CALL releaseFTLinkedListClass(list)
          CALL FTAssertEqual(1,list % refCount(),"Reference counting: test release")
 !
 !        ---------------------------------------------------------------------------------
@@ -121,6 +125,7 @@
 !        ---------------------------------------------------------------------------------
 !
          CALL FTAssertEqual(0,list % COUNT(),"Initial list size")
+         CALL FTAssertEqual(0,listType % COUNT(),"Initial list size")
 !
 !        ------------------------------------------------------------------
 !        Add some items to the linked list.
@@ -139,13 +144,14 @@
          CALL r1 % initWithValue(1)
          objectPtr => r1
          CALL list % add(objectPtr)
+         CALL listType % add(objectPtr)
          CALL FTAssertEqual(1,list % COUNT(),"List size after adding one object")
 !         
-         CALL FTAssertEqual(2,r1 % refCount(),&
+         CALL FTAssertEqual(3,r1 % refCount(),&
          "Reference counting: Stored object should have reference count increased")
          CALL releaseFTValue(r1)
             
-         CALL FTAssertEqual(1,objectPtr % refCount(),&
+         CALL FTAssertEqual(2,objectPtr % refCount(),&
          "Reference counting: Stored object should have reference count decreased")
 !
 !        ---------------------------------------------------------------------
@@ -195,8 +201,11 @@
 !        ---------------------------------------------------------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initWithFTLinkedList(list)
+         ALLOCATE(iteratorClass)         
+         CALL iterator % initWithFTLinkedListClass(list)
+         CALL iteratorClass % initWithFTLinkedList(listType)
          CALL FTAssertEqual(2,list % refCount(),"Ref count increase on addition of list to iterator")
+         CALL FTAssertEqual(2,listType % refCount(),"Ref count increase on addition of list to iterator type")
          CALL FTAssertEqual(expectedValue = "FTLinkedListIterator", &
                             actualValue   = iterator % className(), &
                             msg           = "Class name test for linked list")
@@ -272,8 +281,9 @@
 !        Otherwise, it is possible to get an undefined pointer.
 !        ------------------------------------------------------
 !
-         CALL releaseFTLinkedList(list)
+         CALL releaseFTLinkedListClass(list)
          CALL FTAssertEqual(1,list % refCount(),"Ref count decrease on release")
+         CALL releaseFTLinkedList(listType)
 !
 !        -------------------------------------------------------------------
 !        Normally we would now check if the list should be deallocated. But 
@@ -289,8 +299,14 @@
 !        since it is the last owner.
 !        ------------------------------------------------------------------------------
 !
+         CALL iteratorClass % setLinkedListClass(list)   !This will destroy the linked list ince list => null()
          CALL releaseFTLinkedListIterator(iterator)
-         
+         CALL releaseFTLinkedListIteratorClass(iteratorClass)
+!
+!        ----------------------------------------------
+!        Operations on the class version of the pointer
+!        ----------------------------------------------
+!
       END SUBROUTINE basicTests
 !
 !//////////////////////////////////////////////////////////////////////// 
@@ -352,7 +368,7 @@
 !        Note that objects are owned by both lists.
 !        -------------------------------------------
 !
-         CALL iterator % initWithFTLinkedList(list1)
+         CALL iterator % initWithFTLinkedListClass(list1)
          j = 1
          DO WHILE (.NOT.iterator % isAtEnd())
             v => valueFromObject(iterator % object())
@@ -370,7 +386,7 @@
 !        in list1
 !        --------------------------------------------------
 !
-         CALL releaseFTLinkedList(list2)
+         CALL releaseFTLinkedListClass(list2)
          CALL FTAssertEqual(.TRUE., .NOT. ASSOCIATED(list2),"List has only one owner and should deallocate on release")
 !
 !        --------------------------------------------------
@@ -430,7 +446,7 @@
 !        Clean up
 !        --------
 !
-         CALL releaseFTLinkedList(list1)
+         CALL releaseFTLinkedListClass(list1)
          CALL releaseFTLinkedListIterator(iterator)
          
       END SUBROUTINE TestAppendingLists
@@ -481,7 +497,7 @@
 !        ------------------------------------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initwithFTLinkedList(list)
+         CALL iterator % initwithFTLinkedListClass(list)
 !
 !        ---------------
 !        Delete the tail
@@ -546,7 +562,7 @@
 !        Clean up
 !        --------
 !
-         CALL releaseFTLinkedList(list)
+         CALL releaseFTLinkedListClass(list)
          CALL releaseFTLinkedListIterator(iterator)
 
       END SUBROUTINE TestDeletingObjects
@@ -604,8 +620,8 @@
 !        ---------------------------------
 !
          ALLOCATE(iterator)
-         CALL iterator % initwithFTLinkedList(list)
-         CALL releaseFTLinkedList(list)
+         CALL iterator % initwithFTLinkedListClass(list)
+         CALL releaseFTLinkedListClass(list)
          
          CALL iterator % setToStart()
          DO j = 1, 3 

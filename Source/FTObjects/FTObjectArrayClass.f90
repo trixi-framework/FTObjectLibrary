@@ -94,9 +94,9 @@
       PRIVATE :: increaseArraysize
       
       TYPE, EXTENDS(FTObject) ::  FTMutableObjectArray
-         INTEGER                                            , PRIVATE :: count_
-         TYPE(FTObjectPointerWrapper), DIMENSION(:), POINTER, PRIVATE :: array => NULL()
-         INTEGER                                            , PRIVATE :: chunkSize_ = 10
+         INTEGER                                             , PRIVATE :: count_
+         TYPE(FTObjectPointerWrapper), DIMENSION(:), POINTER , PRIVATE :: array => NULL()
+         INTEGER                                             , PRIVATE :: chunkSize_ = 10
 !
 !        --------
          CONTAINS
@@ -165,7 +165,6 @@
          CLASS(FTObject)   , POINTER :: obj
           
          IF(.NOT. ASSOCIATED(self)) RETURN
-         
          obj => self
          CALL release(obj) 
          IF(.NOT.ASSOCIATED(obj)) self => NULL()
@@ -173,25 +172,39 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
+      SUBROUTINE releaseFTMutableObjectArrayClass(self)  
+         IMPLICIT NONE
+         CLASS(FTMutableObjectArray), POINTER :: self
+         CLASS(FTObject)            , POINTER :: obj
+          
+         IF(.NOT. ASSOCIATED(self)) RETURN
+         
+         obj => self
+         CALL release(obj) 
+         IF(.NOT.ASSOCIATED(obj)) self => NULL()
+      END SUBROUTINE releaseFTMutableObjectArrayClass
+!
+!//////////////////////////////////////////////////////////////////////// 
+! 
 !>
 !> Destructor for the class. This is called automatically when the
 !> reference count reaches zero. Do not call this yourself.
 !>
-      RECURSIVE SUBROUTINE destructObjectArray(self)  
+       RECURSIVE SUBROUTINE destructObjectArray(self)  
          IMPLICIT NONE
-         TYPE( FTMutableObjectArray) :: self
+         TYPE( FTMutableObjectArray)  :: self
          CLASS(FTObject), POINTER     :: obj     => NULL()
          INTEGER                      :: i
 
          DO i = 1, self % count_
             obj => self % array(i) % object 
-            IF ( ASSOCIATED(obj) ) CALL releaseFTObject(self = obj)
+            IF ( ASSOCIATED(obj) ) CALL releaseFTObject(obj)
          END DO
          
-         DEALLOCATE(self % array)
+         IF(ASSOCIATED(self % array)) DEALLOCATE(self % array)
          self % array => NULL()
-         self % count_ = 0  
-
+         self % count_ = 0
+         
       END SUBROUTINE destructObjectArray
 !
 !//////////////////////////////////////////////////////////////////////// 

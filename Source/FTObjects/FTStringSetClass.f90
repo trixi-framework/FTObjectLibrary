@@ -215,6 +215,20 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
+      SUBROUTINE releaseFTStringSetClass(self)
+         IMPLICIT NONE
+         CLASS(FTStringSet), POINTER :: self
+         CLASS(FTObject)   , POINTER :: obj
+
+         obj => self
+         CALL release(self = obj)
+         IF ( .NOT. ASSOCIATED(obj) )     THEN
+            NULLIFY(self)
+         END IF
+      END SUBROUTINE releaseFTStringSetClass
+!
+!////////////////////////////////////////////////////////////////////////
+!
       INTEGER FUNCTION stringCount(self)
          IMPLICIT NONE
          CLASS(FTStringSet) :: self
