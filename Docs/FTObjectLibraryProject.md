@@ -1,6 +1,7 @@
 project: FTObjectLibrary
 src_dir: ../Source
 output_dir: ./HTMLdocs
+page_dir: ./pages
 summary: A Fortran library for reference counted object and container classes.
 author: David A. Kopriva
 author_description: Department of Mathematics, The Florida State University
@@ -46,7 +47,7 @@ values.
 
 # Documentation
 
-Documentation can be found in the [user's guide](UsersGuide.md).
+Documentation can be found in the [user's guide](UsersGuide.html).
 
 # Examples
 
@@ -73,3 +74,7 @@ make
 ```
 
 That will create the necessary files in that directory, which can be moved to somewhere else as desired.
+
+# News
+
+Notable additions are documented in the [News](News.html)

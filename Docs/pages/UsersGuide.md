@@ -1,3 +1,7 @@
+---
+title: User's Guide
+---
+
 # Introduction
 
 FTObjectLibrary provides a collection of reference counted Fortran 2003
@@ -14,7 +18,7 @@ The library includes three categories of classes:
 
 - Error reporting and testing classes
 
-### Value Classes 
+### Value Classes
 
 Value classes include the base class, FTObject and at the current time,
 a subclass, FTValue.
@@ -36,7 +40,7 @@ a subclass, FTValue.
 You can create your own value classes by extending FTObject and store
 instances of those classes in the containers.
 
-### Container Classes 
+### Container Classes
 
 Container classes let you store any subclass of the base class FTObject
 in them. This makes it easy to store, for instance, a linked list of
@@ -97,16 +101,16 @@ added to the dictionary.
             CLASS(FTDictionary), POINTER :: dict
             CLASS(FTObject)    , POINTER :: obj
             CLASS(FTValue)     , POINTER :: v
-           
+
             ALLOCATE(dict)
             CALL dict % initWithSize(64)
-          
+
             ALLOCATE(v)
             CALL v % initWithValue(3.14159)
             obj => v
             CALL dict % addObjectForKey(obj,``Pi'')
             CALL releaseFTValueClass(v)
-          
+
             ALLOCATE(v)
             CALL v % initWithValue(``Ratio of circumference to diameter'')
             obj => v
@@ -135,10 +139,10 @@ We use the dictionary as shown in the next snippet of code:
           CLASS(FTValue)     , POINTER  :: v
           REAL           :: pi
           CALL constructDictionary(dict)
-          
+
           v   => valueFromObject(dict % objectForKey("Pi"))
           pi  = v % realValue()
-          
+
           v   => valueFromObject(dict % objectForKey(``definition''))
           PRINT *, "The num pi = ", pi," is defined as", TRIM(v % stringValue())
           CALL  releaseFTDictionaryClass(dict)
@@ -203,13 +207,13 @@ the point object to the linked list.
             CLASS(FTLinkedList), POINTER :: list ! Subclass of FTObject
             CLASS(Point)       , POINTER :: pnt  ! Subclass of FTObject
             CLASS(FTObject)    , POINTER :: obj
-           
+
             ALLOCATE(list)
             CALL list % init() ! main now owns the list
-           
+
             ALLOCATE(pnt)
             CALL pnt % initWithXYZ(0.0,0.0,0.0) ! main now owns pnt
-           
+
             obj => pnt
             CALL list % add(obj) !list also owns pnt
             CALL releasePointClass(pnt) ! main gives up ownership to pnt
@@ -218,7 +222,7 @@ the point object to the linked list.
             .
             ! we're done with the list, it will deallocate pnt since the list is the last owner.
             ! It will also deallocate itself since main is the last owner.
-            CALL releaseFTLinkedListClass(list) 
+            CALL releaseFTLinkedListClass(list)
 
           END PROGRAM main
 
@@ -295,10 +299,10 @@ Subclasses that override init() *must* include a call to the super class
 method. For example, if "Subclass" EXTENDS(FTObject), overriding init()
 looks like
 
-          SUBROUTINE initSubclass(self) 
+          SUBROUTINE initSubclass(self)
            IMPLICIT NONE
            CLASS(Subclass) :: self
-           
+
            CALL self % FTObject % init()
            Allocate and initialize all member objects
            ... Other Subclass specific code
@@ -311,10 +315,10 @@ It is also the only one that includes the call to the super class init
 procedure. For example, the designated initializer for a "point" class
 would be the one that takes the (x,y,z) values.
 
-          SUBROUTINE initPointWithXYZ(self,x,y,z) 
+          SUBROUTINE initPointWithXYZ(self,x,y,z)
            IMPLICIT NONE
            CLASS(Subclass) :: self
-           
+
            CALL self % FTObject % init()
            self % x = x
            self % y = y
@@ -326,20 +330,20 @@ an array of length three. They will do nothing but call the designated
 initializer. The default initializer sets the location to the origin, or
 some other reasonable value.
 
-          SUBROUTINE initPoint(self) 
+          SUBROUTINE initPoint(self)
            IMPLICIT NONE
            CLASS(Subclass) :: self
-           
+
            call self % initPointWithXYZ(0.0,0.0,0.0)
           END SUBROUTINE initPoint
 
 The array initializer is
 
-          SUBROUTINE initPointWithArray(self,w) 
+          SUBROUTINE initPointWithArray(self,w)
            IMPLICIT NONE
            CLASS(Subclass) :: self
            REAL          :: w(3)
-           
+
            CALL self % initPointWithXYZ(w(1),w(2),w(3))
           END SUBROUTINE initPointWithArray
 
@@ -349,7 +353,7 @@ The destructor reverses the operations done in the init() procedure. It
 releases and deallocates any pointers that it owns. For example, if
 "Subclass" EXTENDS(FTObject) then overriding destruct looks like
 
-          SUBROUTINE destructSubclass(self) 
+          SUBROUTINE destructSubclass(self)
            IMPLICIT NONE
            TYPE(Subclass) :: self
            .
@@ -373,15 +377,15 @@ The release subroutine will call the base class releaseFTObject which
 will, in turn, release all objects that it owns. If the object itself is
 no longer referenced, it will deallocate itself. Due to fortran's rules, create one as below with the pointer TYPEed, and another with CLASS, usually with the word Class appended, e.g. releaseXXXClass(self).
 
-          SUBROUTINE releaseSubclass(self)  
+          SUBROUTINE releaseSubclass(self)
            IMPLICIT NONE
            TYPE(Subclass) , POINTER :: self
            CLASS(FTObject), POINTER :: obj
            obj => self
            CALL releaseFTObject(self = obj)
            IF ( .NOT. ASSOCIATED(obj) )     THEN
-             self => NULL() 
-           END IF      
+             self => NULL()
+           END IF
           END SUBROUTINE releaseSubclass
 
 It is best to name the release procedures consistently. For instance,
@@ -398,7 +402,7 @@ routine to do this as painlessly as possible. Each subclass should
 include a function like this:
 
           FUNCTION subclassFromSuperclass(obj) RESULT(cast)
-           IMPLICIT NONE  
+           IMPLICIT NONE
            CLASS(FTObject), POINTER :: obj
            CLASS(Subclass), POINTER :: cast
            cast => NULL()
@@ -504,7 +508,7 @@ inherits from FTObjectClass.
 
           CLASS(FTLinkedList), POINTER :: list
           CLASS(FTObject)    , POINTER :: obj
-          
+
           obj => r          ! r is subclass of FTObject
           CALL list % Add(obj)    ! Pointer is retained by list
           CALL release(r)         ! If control is no longer wanted in this scope.
@@ -523,7 +527,7 @@ inherits from FTObjectClass.
           CLASS(FTLinkedList)      , POINTER :: list
           CLASS(FTObject)          , POINTER :: obj
           CLASS(FTLinkedListRecord), POINTER :: record
-          
+
           obj => r           ! r is subclass of FTObject
           CALL list % insertObjectAfterRecord(obj,record) ! Pointer is retained by list
           CALL release(r)          ! If caller wants to reliquish ownership
@@ -533,7 +537,7 @@ inherits from FTObjectClass.
           CLASS(FTLinkedList)      , POINTER :: list
           CLASS(FTObject)          , POINTER :: obj, otherObject
           CLASS(FTLinkedListRecord), POINTER :: record
-          
+
           obj => r           ! r is subclass of FTObject
           CALL list % insertObjectAfterObject(obj,otherObject) ! Pointer is retained by list
           CALL release(r)          ! If caller wants to reliquish ownership
@@ -558,7 +562,7 @@ inherits from FTObjectClass.
 
 - Checking to see if a linked list circular or not
 
-          LOGICAL :: c 
+          LOGICAL :: c
           c = list % isCircular()
 
 - Counting the number of objects in the list
@@ -622,7 +626,7 @@ stepping through (iterating) a linked list to access its entries.
            DO WHILE (.NOT.iterator % isAtEnd())
               obj => iterator % object()            ! if the object is wanted
               recordPtr => iterator % currentRecord() ! if the record is wanted
-          
+
               !Do something with object or record
 
               CALL iterator % moveToNext() ! FORGET THIS CALL AND YOU GET AN INFINITE LOOP!
@@ -795,7 +799,7 @@ table. For example,
              ! Cast obj to something useful
           ELSE
              ! Perform some kind of error recovery
-          END IF 
+          END IF
 
 ### FTSparseMatrix
 
@@ -1089,7 +1093,7 @@ assertions have been made with the two enquiry functions
 
 You can get a summary of the assertions by calling the subroutine
 
-          SUBROUTINE SummarizeFTAssertions(title,iUnit)  
+          SUBROUTINE SummarizeFTAssertions(title,iUnit)
              IMPLICIT NONE
              CHARACTER(LEN=*) :: title
              INTEGER          :: iUnit
@@ -1102,7 +1106,7 @@ So how do you make assertions? FTObjectLibrary supplies two subroutines
 that post failures to the sharedAssertionsManager. The first takes a
 LOGICAL variable
 
-          SUBROUTINE assert(test,msg)  
+          SUBROUTINE assert(test,msg)
             IMPLICIT NONE
             CHARACTER(LEN=*), OPTIONAL :: msg
             LOGICAL                    :: test
@@ -1126,63 +1130,63 @@ which allows a variety of argument type listed below:
 
 The individual calls have the signatures
 
-          SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)  
-            IMPLICIT NONE  
+          SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)
+            IMPLICIT NONE
             INTEGER, INTENT(in)        :: expectedValue,actualValue
             CHARACTER(LEN=*), OPTIONAL :: msg
-           
-          SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)  
-           IMPLICIT NONE  
+
+          SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)
+           IMPLICIT NONE
            INTEGER, INTENT(in)    , DIMENSION(:) :: expectedValue,actualValue
-           
-          SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)
+            IMPLICIT NONE
             INTEGER, INTENT(in)    , DIMENSION(:,:) :: expectedValue,actualValue
-           
-          SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,absTol,msg)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,absTol,msg)
+            IMPLICIT NONE
             REAL, INTENT(in)           :: x,y,tol
             REAL, INTENT(IN), OPTIONAL :: absTol
             CHARACTER(LEN=*), OPTIONAL :: msg
-           
-          SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,absTol,msg)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,absTol,msg)
+            IMPLICIT NONE
             REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
             REAL, INTENT(IN)               :: tol
             REAL, INTENT(IN), OPTIONAL     :: absTol
             CHARACTER(LEN=*), OPTIONAL     :: msg
-           
-          SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)
+            IMPLICIT NONE
             REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
             REAL, INTENT(IN)                 :: tol
-           
-          SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,absTol,msg)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,absTol,msg)
+            IMPLICIT NONE
             DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
             REAL, INTENT(IN), OPTIONAL   :: absTol
             CHARACTER(LEN=*), OPTIONAL   :: msg
-           
-          SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,absTol,msg)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,absTol,msg)
+            IMPLICIT NONE
             DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
             DOUBLE PRECISION, INTENT(IN)               :: tol
             REAL, INTENT(IN), OPTIONAL                 :: absTol
             CHARACTER(LEN=*), OPTIONAL                 :: msg
-           
-          SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol,abstol)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol,abstol)
+            IMPLICIT NONE
             DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
             DOUBLE PRECISION, INTENT(IN)                 :: tol
             REAL, INTENT(IN), OPTIONAL                   :: absTol
-           
+
           SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
             IMPLICIT NONE
             CHARACTER(LEN=*)           :: expectedValue,actualValue
             CHARACTER(LEN=*), OPTIONAL :: msg
-           
-          SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)  
-            IMPLICIT NONE  
+
+          SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)
+            IMPLICIT NONE
             LOGICAL, INTENT(in)        :: expectedValue,actualValue
             CHARACTER(LEN=*), OPTIONAL :: msg
 
@@ -1207,7 +1211,7 @@ used with minimal fuss. You
 An example of running a suite of tests is the following:
 
           TYPE(TestSuiteManager) :: testSuite
-          
+
           EXTERNAL :: FTDictionaryClassTests
           EXTERNAL :: FTExceptionClassTests
           EXTERNAL :: FTValueClassTests
@@ -1218,7 +1222,7 @@ An example of running a suite of tests is the following:
           EXTERNAL :: HashTableTests
 
           CALL testSuite % init()
-          
+
           CALL testSuite % addTestSubroutineWithName(FTValueClassTests,"FTValueClass Tests")
           CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,"FTDictionaryClass Tests")
           CALL testSuite % addTestSubroutineWithName(FTValueDictionaryClassTests,"FTValueDictionaryClass Tests")
@@ -1234,7 +1238,7 @@ The test subroutines have no arguments or include optional data. The interface i
 
           ABSTRACT INTERFACE
             SUBROUTINE testSuiteFunction(optData)
-            CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
+            CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:)
             END SUBROUTINE testSuiteFunction
           END INTERFACE
 
@@ -1256,7 +1260,7 @@ Reporting is managed by the testSuiteManager at the end of performTests. Look at
 
           ABSTRACT INTERFACE
             SUBROUTINE testSuiteFunction(optData)
-            CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:) 
+            CHARACTER(LEN=1), POINTER, OPTIONAL :: optData(:)
             END SUBROUTINE testSuiteFunction
           END INTERFACE
 
@@ -1312,7 +1316,7 @@ Defined constants:
 
           e  %  initFTException(severity,exceptionName,infoDictionary)
 
-          Plus the convenience initializers, which automatically 
+          Plus the convenience initializers, which automatically
           create a FTValueDictionary with a single key called "message":
 
           e % initWarningException(msg = "message")

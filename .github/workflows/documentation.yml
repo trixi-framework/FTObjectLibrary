@@ -24,8 +24,6 @@ jobs:
         run: |
           sudo apt-get install graphviz
           sudo pip install ford
-      - name: Show FORD version
-        run: ford --version
       - name: Build
         run: ford Docs/FTObjectLibraryProject.md
       - name: Deploy
