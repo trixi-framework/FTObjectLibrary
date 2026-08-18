@@ -24,10 +24,10 @@ jobs:
         run: |
           sudo apt-get install graphviz
           sudo pip install ford
+      - name: Show FORD version
+        run: ford --version
       - name: Build
-        run: |
-          ford Docs/FTObjectLibraryProject.md
-          find Docs/HTMLdocs -type f | sort
+        run: ford Docs/FTObjectLibraryProject.md
       - name: Deploy
         if: github.ref == 'refs/heads/main' # Only run on main
         uses: peaceiris/actions-gh-pages@v4
