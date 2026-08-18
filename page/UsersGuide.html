@@ -1,0 +1,1585 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="A Fortran library for reference counted object and container classes.">
+    <meta name="author" content="David A. Kopriva" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>User's Guide &ndash; FTObjectLibrary</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">FTObjectLibrary </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>User's Guide</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='index.html'>Documentation</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User's Guide</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="News.html">News</a>
+              <a class="nav-link active disabled" href="UsersGuide.html">User's Guide</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p><a href="../index.html">Back to the main documentation</a></p>
+<h1>Introduction</h1>
+<p>FTObjectLibrary provides a collection of reference counted Fortran 2003
+classes to facilitate writing generic object oriented Fortran programs.
+Reference counting is implemented to assist with memory management so
+that the lifespans of objects are properly maintained and are so that
+objects are deleted only when no other references are made to them.</p>
+<p>The library includes three categories of classes:</p>
+<ul>
+<li>
+<p>Value classes</p>
+</li>
+<li>
+<p>Container classes</p>
+</li>
+<li>
+<p>Error reporting and testing classes</p>
+</li>
+</ul>
+<h3>Value Classes</h3>
+<p>Value classes include the base class, FTObject and at the current time,
+a subclass, FTValue.</p>
+<ul>
+<li><strong>FTObject</strong></li>
+</ul>
+<p>FTObject is the base class that implements the reference counting
+  mechanism and other functions that should be overridden in subclasses.
+  It the base class for all classes in the FTObjectLibrary library. You
+  will usually not allocate objects of this class. Instead you will
+  create your own subclasses of it that have data and procedures as
+  needed.</p>
+<ul>
+<li><strong>FTValue</strong></li>
+</ul>
+<p>FTValue is a wrapper class that allows storage of real, integer,
+  character and logical values, which can then be stored in containers.</p>
+<p>You can create your own value classes by extending FTObject and store
+instances of those classes in the containers.</p>
+<h3>Container Classes</h3>
+<p>Container classes let you store any subclass of the base class FTObject
+in them. This makes it easy to store, for instance, a linked list of
+linked lists, or an array of dictionaries. Included in the library are
+the following container classes:</p>
+<ul>
+<li><strong>FTLinkedList</strong></li>
+</ul>
+<p>FTLinkedList is an implementation of a doubly (and, optionally,
+  circular) linked list.</p>
+<ul>
+<li><strong>FTStack</strong></li>
+</ul>
+<p>FTStack is a subclass of FTLinkedList that adds the usual push, pop,
+  and peek routines.</p>
+<ul>
+<li><strong>FTSparseMatrix</strong></li>
+</ul>
+<p>FTSparseMatrix associates a double index (i,j) to an FTObject.
+  Basically this is a two dimensional sparse matrix of pointers to
+  FTObjects.</p>
+<ul>
+<li><strong>FTMultiIndexTable</strong></li>
+</ul>
+<p>FTMultiIndexTable associates an integer array keys(:) to an FTObject.
+  Basically this is an m--dimensional sparse matrix of pointers to
+  FTObjects.</p>
+<ul>
+<li><strong>FTDictionary</strong></li>
+</ul>
+<p>FTDictionary is an "associative container", that associates a string
+  to another FTObject.</p>
+<ul>
+<li><strong>FTValueDictionary</strong></li>
+</ul>
+<p>FTValueDictionary is a subclass of FTDictionary that has additional
+  methods to store and retrieve values.</p>
+<ul>
+<li><strong>FTMutableObjectArray</strong></li>
+</ul>
+<p>A mutable one-dimensional array class that can store any FTObject.</p>
+<h3>Error Reporting and Testing Classes</h3>
+<p>The library also contains classes for testing (FTAssertions,
+TestSuiteManagerClass) and for reporting errors through the FTException
+class.</p>
+<h1>Examples</h1>
+<p>To give an idea about how to use the library, we show how to use a
+dictionary to store a real value and a string that describes the value.
+In the snippet of code below, we prepare the dictionary for objects to
+be added to it by the init() method. We then create two values that are
+added to the dictionary.</p>
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">constructDictionary</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+<span class="w">        </span><span class="n">CLASS</span><span class="p">(</span><span class="n">FTDictionary</span><span class="p">),</span><span class="w"> </span><span class="n">POINTER</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="n">dict</span>
+<span class="w">        </span><span class="n">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="n">POINTER</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="n">obj</span>
+<span class="w">        </span><span class="n">CLASS</span><span class="p">(</span><span class="n">FTValue</span><span class="p">)</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="n">POINTER</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="n">v</span>
+
+<span class="w">        </span><span class="n">ALLOCATE</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+<span class="w">        </span><span class="n">CALL</span><span class="w"> </span><span class="n">dict</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">initWithSize</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">ALLOCATE</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="w">        </span><span class="n">CALL</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">initWithValue</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
+<span class="w">        </span><span class="n">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">v</span>
+<span class="w">        </span><span class="n">CALL</span><span class="w"> </span><span class="n">dict</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">addObjectForKey</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="err">``</span><span class="n">Pi</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">CALL</span><span class="w"> </span><span class="n">releaseFTValueClass</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">ALLOCATE</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="w">        </span><span class="n">CALL</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">initWithValue</span><span class="p">(</span><span class="err">``</span><span class="n">Ratio</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">circumference</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">diameter</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">v</span>
+<span class="w">        </span><span class="n">CALL</span><span class="w"> </span><span class="n">dict</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">addObjectForKey</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="s2">&quot;definition&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">CALL</span><span class="w"> </span><span class="n">releaseFTValueClass</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="w">      </span><span class="n">END</span><span class="w"> </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">constructDictionary</span>
+</code></pre></div>
+
+<p>Notice that in the subroutine we have allocated memory for the
+dictionary "dict" and two FTValue objects. The dictionary is returned to
+the calling procedure and can be accessed from that point through the
+actual argument. The two value objects would normally be expected to be
+deallocated when leaving the subroutine, since otherwise they would not
+be accessible outside of the procedure. It would be dangerous if we
+deallocated the two objects that we created and then try to use them
+later through the dictionary. This is where a systematic approach to
+memory management comes in. When we allocate and initialize an object,
+we assume ownership of it. When we add it to the dictionary, it assumes
+partial ownership. So instead of deallocating the two value objects, we
+relinquish ownership by way of the releaseFTValueClass() procedure, since v is typed by CLASS, leaving
+only the dictionary to be responsible for deallocating them when it does
+not need them any more.</p>
+<p>We use the dictionary as shown in the next snippet of code:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="n">CLASS</span><span class="p">(</span><span class="n">FTDictionary</span><span class="p">),</span><span class="w"> </span><span class="n">POINTER</span><span class="w">  </span><span class="p">::</span><span class="w"> </span><span class="n">dict</span>
+<span class="w">      </span><span class="n">CLASS</span><span class="p">(</span><span class="n">FTValue</span><span class="p">)</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="n">POINTER</span><span class="w">  </span><span class="p">::</span><span class="w"> </span><span class="n">v</span>
+<span class="w">      </span><span class="n">REAL</span><span class="w">           </span><span class="p">::</span><span class="w"> </span><span class="n">pi</span>
+<span class="w">      </span><span class="n">CALL</span><span class="w"> </span><span class="n">constructDictionary</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">v</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">valueFromObject</span><span class="p">(</span><span class="n">dict</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">objectForKey</span><span class="p">(</span><span class="s2">&quot;Pi&quot;</span><span class="p">))</span>
+<span class="w">      </span><span class="n">pi</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">realValue</span><span class="p">()</span>
+
+<span class="w">      </span><span class="n">v</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">valueFromObject</span><span class="p">(</span><span class="n">dict</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">objectForKey</span><span class="p">(</span><span class="err">``</span><span class="n">definition</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+<span class="w">      </span><span class="n">PRINT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;The num pi = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">,</span><span class="s2">&quot; is defined as&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TRIM</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">stringValue</span><span class="p">())</span>
+<span class="w">      </span><span class="n">CALL</span><span class="w">  </span><span class="n">releaseFTDictionaryClass</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+</code></pre></div>
+
+<p>In this snippet, the values for the two keys "Pi" and "definition" are
+retrieved and then used.
+The function valueFromObject() converts the generic object to the
+specific FTValue type. (If we try to convert something that is not an
+FTValue, the method returns an ASSOCIATED(v) == .FALSE. pointer.)
+Finally, the dictionary is released, which will release all of its
+objects and then deallocate all of those objects that it is sole owner
+of, which in this example is both the value and definition of $\pi$, and
+then DEALLOCATE it if it is no longer owned (referenced) by another
+object, which is the case here.</p>
+<p>In this way, any object that inherits from FTObject can be stored in a
+container, including other containers, making these containers quite
+generic.</p>
+<p>Other examples can be found in the <a href="../Examples">Examples</a> directory, which has examples for using a linked list, and for a simple RPN calculator. Finally, the test routines in the <a href="../Testing">Testing</a> directory provide examples of all of the features of the library.</p>
+<h1>Memory Management</h1>
+<p>FTObjectLibrary uses a manual retain-release memory management model
+known as reference counting. A description of this model can be found at
+<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmRules.html#apple_ref/doc/uid/20000994-BAJHFBGH">Apple's site</a>.
+The basic idea is that a pointer object exists as long as someone "owns"
+it. When no one owns it any more, the object is automatically
+deallocated upon release. This approach makes it easy to not have to
+keep track of when to deallocate pointers, and ensures that a pointer
+that is in use is not prematurely deallocated. In long, complex,
+programs, this mechanism automatically keeps track of which objects
+(pointers) that have been allocated need to be deallocated, and when.</p>
+<p>Ownership rules are as follows:</p>
+<ul>
+<li>
+<p>If you allocate and initialize an object, you own it.</p>
+</li>
+<li>
+<p>You own an object if you call the retain() subroutine on that object.</p>
+</li>
+<li>
+<p>You may inherit the ownership of an object by calling a method that
+  creates (allocates and initializes) it.</p>
+</li>
+<li>
+<p>When you no longer need an object (or are going out of scope) you must
+  release it using the releaseXXX() subroutine, or releaseXXXClass(), where XXX refers to the
+  specific name of the extended type, depending on whether the object is declared by TYPE or CLASS.</p>
+</li>
+<li>
+<p>You must neither relinquish ownership, nor deallocate a pointer object
+  that you do not own.</p>
+</li>
+<li>
+<p>You generally do not own objects returned as pointers by functions or
+  subroutines.</p>
+</li>
+</ul>
+<p><em>Fundamentally, if you call an init() method on an object, you should
+call a releaseXXX() in the same scope.</em></p>
+<p>In the example below, the main program creates a linked list to store
+points in, a "point" object (e.g. that stores x,y,z values), and adds
+the point object to the linked list.</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">PROGRAM</span> <span class="n">main</span>
+        <span class="n">CLASS</span><span class="p">(</span><span class="n">FTLinkedList</span><span class="p">),</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">list</span> <span class="err">!</span> <span class="n">Subclass</span> <span class="n">of</span> <span class="n">FTObject</span>
+        <span class="n">CLASS</span><span class="p">(</span><span class="n">Point</span><span class="p">)</span>       <span class="p">,</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">pnt</span>  <span class="err">!</span> <span class="n">Subclass</span> <span class="n">of</span> <span class="n">FTObject</span>
+        <span class="n">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span>    <span class="p">,</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">obj</span>
+
+        <span class="n">ALLOCATE</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+        <span class="n">CALL</span> <span class="n">list</span> <span class="err">%</span> <span class="n">init</span><span class="p">()</span> <span class="err">!</span> <span class="n">main</span> <span class="n">now</span> <span class="n">owns</span> <span class="n">the</span> <span class="n">list</span>
+
+        <span class="n">ALLOCATE</span><span class="p">(</span><span class="n">pnt</span><span class="p">)</span>
+        <span class="n">CALL</span> <span class="n">pnt</span> <span class="err">%</span> <span class="n">initWithXYZ</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span> <span class="err">!</span> <span class="n">main</span> <span class="n">now</span> <span class="n">owns</span> <span class="n">pnt</span>
+
+        <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">pnt</span>
+        <span class="n">CALL</span> <span class="n">list</span> <span class="err">%</span> <span class="n">add</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="err">!</span><span class="n">list</span> <span class="n">also</span> <span class="n">owns</span> <span class="n">pnt</span>
+        <span class="n">CALL</span> <span class="n">releasePointClass</span><span class="p">(</span><span class="n">pnt</span><span class="p">)</span> <span class="err">!</span> <span class="n">main</span> <span class="n">gives</span> <span class="n">up</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">pnt</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+        <span class="err">!</span> <span class="n">we</span><span class="err">&#39;</span><span class="n">re</span> <span class="n">done</span> <span class="n">with</span> <span class="n">the</span> <span class="n">list</span><span class="p">,</span> <span class="n">it</span> <span class="n">will</span> <span class="n">deallocate</span> <span class="n">pnt</span> <span class="n">since</span> <span class="n">the</span> <span class="n">list</span> <span class="n">is</span> <span class="n">the</span> <span class="n">last</span> <span class="n">owner</span><span class="p">.</span>
+        <span class="err">!</span> <span class="n">It</span> <span class="n">will</span> <span class="n">also</span> <span class="n">deallocate</span> <span class="n">itself</span> <span class="n">since</span> <span class="n">main</span> <span class="n">is</span> <span class="n">the</span> <span class="n">last</span> <span class="n">owner</span><span class="p">.</span>
+        <span class="n">CALL</span> <span class="n">releaseFTLinkedListClass</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+
+      <span class="kr">END</span> <span class="n">PROGRAM</span> <span class="n">main</span>
+</code></pre></div>
+
+<h1>Class Descriptions</h1>
+<h2>FTObject</h2>
+<p>FTObject defines the basic methods that are essential for reference
+counted objects. FTObject is generally not going to be instantiated by
+itself, but rather it will be subclassed and you will work with
+instances of the subclasses. FTValue, for instance, is a subclass of
+FTObject. Otherwise, pointers of type FTObject that point to instances
+of subclasses will be stored in the container classes.</p>
+<h3>Tasks</h3>
+<ul>
+<li><strong>init()</strong></li>
+</ul>
+<p>Initializes an object and any memory that it needs to allocate, etc.
+  Should be implemented in subclasses.The base class implementation does
+  nothing but increase the reference count of the object.</p>
+<ul>
+<li><strong>printDescription(iUnit)</strong></li>
+</ul>
+<p>Prints a description of the object to a specified file unit. The base
+  class implementation does nothing but print "FTObject"</p>
+<ul>
+<li><strong>copy()</strong></li>
+</ul>
+<p>Creates a copy (pointer) to the object of CLASS(FTObject) sourced with
+  the object.</p>
+<ul>
+<li><strong>retain()</strong></li>
+</ul>
+<p>Increases the reference count of the object. Any procedure or object
+  that retain()'s an object gains an ownership stake in that object.
+  <em>This procedure is not overridable.</em></p>
+<ul>
+<li><strong>releaseFTObject()</strong></li>
+</ul>
+<p>Decreases the reference count of a base class object pointer. To be
+  called only by objects or procedures that have ownership in an object
+  pointer, i.e., for which init() or retain() have been called.</p>
+<ul>
+<li><strong>isUnreferenced()</strong></li>
+</ul>
+<p>Test to see if there are no more owners of an object. Usually this is
+  of interest only for debugging purposes. <em>This procedure is not
+  overridable.</em></p>
+<ul>
+<li><strong>refCount()</strong></li>
+</ul>
+<p>Returns the number of owners of an object. Usually this is of interest
+  only for debugging purposes. <em>This procedure is not overridable.</em></p>
+<h3>Subclassing FTObject</h3>
+<p>In general, subclasses of FTObject implement</p>
+<ul>
+<li>
+<p><strong>init()</strong></p>
+</li>
+<li>
+<p><strong>The destructor (FINAL)</strong></p>
+</li>
+<li>
+<p><strong>printDescription()</strong></p>
+</li>
+<li>
+<p><strong>release(self)</strong></p>
+</li>
+</ul>
+<p><strong>Implementing init()</strong></p>
+<p>The init() procedure performs subclass specific operations to initialize
+an object.</p>
+<p>Subclasses that override init() <em>must</em> include a call to the super class
+method. For example, if "Subclass" EXTENDS(FTObject), overriding init()
+looks like</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">initSubclass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+       <span class="n">IMPLICIT</span> <span class="n">NONE</span>
+       <span class="n">CLASS</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">::</span> <span class="n">self</span>
+
+       <span class="n">CALL</span> <span class="n">self</span> <span class="err">%</span> <span class="n">FTObject</span> <span class="err">%</span> <span class="n">init</span><span class="p">()</span>
+       <span class="n">Allocate</span> <span class="n">and</span> <span class="n">initialize</span> <span class="n">all</span> <span class="n">member</span> <span class="n">objects</span>
+       <span class="p">...</span> <span class="n">Other</span> <span class="n">Subclass</span> <span class="n">specific</span> <span class="n">code</span>
+      <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">initSubclass</span>
+</code></pre></div>
+
+<p>You can have multiple initializers for an object, so it is also
+worthwhile understanding the concept of the "designated initializer".
+Generally speaking this is the initializer that has the most arguments.
+It is also the only one that includes the call to the super class init
+procedure. For example, the designated initializer for a "point" class
+would be the one that takes the (x,y,z) values.</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">initPointWithXYZ</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+       <span class="n">IMPLICIT</span> <span class="n">NONE</span>
+       <span class="n">CLASS</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">::</span> <span class="n">self</span>
+
+       <span class="n">CALL</span> <span class="n">self</span> <span class="err">%</span> <span class="n">FTObject</span> <span class="err">%</span> <span class="n">init</span><span class="p">()</span>
+       <span class="n">self</span> <span class="err">%</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+       <span class="n">self</span> <span class="err">%</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+       <span class="n">self</span> <span class="err">%</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+      <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">initPointWithXYZ</span>
+</code></pre></div>
+
+<p>Other initializers might be the default, and the initializer that takes
+an array of length three. They will do nothing but call the designated
+initializer. The default initializer sets the location to the origin, or
+some other reasonable value.</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">initPoint</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+       <span class="n">IMPLICIT</span> <span class="n">NONE</span>
+       <span class="n">CLASS</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">::</span> <span class="n">self</span>
+
+       <span class="n">call</span> <span class="n">self</span> <span class="err">%</span> <span class="n">initPointWithXYZ</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+      <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">initPoint</span>
+</code></pre></div>
+
+<p>The array initializer is</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">initPointWithArray</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+       <span class="n">IMPLICIT</span> <span class="n">NONE</span>
+       <span class="n">CLASS</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">::</span> <span class="n">self</span>
+       <span class="kt">REAL</span>          <span class="p">::</span> <span class="n">w</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+       <span class="n">CALL</span> <span class="n">self</span> <span class="err">%</span> <span class="n">initPointWithXYZ</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">w</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">w</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+      <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">initPointWithArray</span>
+</code></pre></div>
+
+<p><strong>Implementing the destructor</strong></p>
+<p>The destructor reverses the operations done in the init() procedure. It
+releases and deallocates any pointers that it owns. For example, if
+"Subclass" EXTENDS(FTObject) then overriding destruct looks like</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">destructSubclass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+       <span class="n">IMPLICIT</span> <span class="n">NONE</span>
+       <span class="kr">TYPE</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">::</span> <span class="n">self</span>
+       <span class="p">.</span>
+       <span class="n">Release</span> <span class="n">and</span> <span class="n">deallocate</span> <span class="p">(</span><span class="n">if</span> <span class="n">necessary</span><span class="p">)</span> <span class="n">all</span> <span class="n">member</span> <span class="n">objects</span>
+       <span class="p">.</span>
+      <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">destructSubclass</span>
+</code></pre></div>
+
+<p>The destructor is to be declared as a FINAL procedure for the type, and
+hence is not called directly. It is called automatically by Fortran when
+an object is deallocated or goes out of scope.</p>
+<p><strong>Implementing printDescription(iUnit)</strong></p>
+<p>printDescription is a method whose existence is to support debugging.
+Call printDescription(iUnit) on any objects owned by self for a
+cascading of what is stored in the object.</p>
+<p><strong>Implementing releaseXXX(self)</strong></p>
+<p>The release subroutine will call the base class releaseFTObject which
+will, in turn, release all objects that it owns. If the object itself is
+no longer referenced, it will deallocate itself. Due to fortran's rules, create one as below with the pointer TYPEed, and another with CLASS, usually with the word Class appended, e.g. releaseXXXClass(self).</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">releaseSubclass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+       <span class="n">IMPLICIT</span> <span class="n">NONE</span>
+       <span class="kr">TYPE</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">,</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">self</span>
+       <span class="n">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">obj</span>
+       <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">self</span>
+       <span class="n">CALL</span> <span class="n">releaseFTObject</span><span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
+       <span class="kr">IF</span> <span class="p">(</span> <span class="p">.</span><span class="n">NOT</span><span class="p">.</span> <span class="n">ASSOCIATED</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="p">)</span>     <span class="kr">THEN</span>
+         <span class="n">self</span> <span class="o">=&gt;</span> <span class="n">NULL</span><span class="p">()</span>
+       <span class="kr">END</span> <span class="kr">IF</span>
+      <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">releaseSubclass</span>
+</code></pre></div>
+
+<p>It is best to name the release procedures consistently. For instance,
+all the FTObjectLibrary classes declare their release procedure by using
+the name of the extended type, for example releaseFTDictionary or
+releaseFTValueDictionary.</p>
+<p><strong>Converting an object from the base to a subclass</strong></p>
+<p>Container classes and the copy function return pointers to a
+CLASS(FTObject). To use any subclass features one must "cast" or convert
+a pointer to a pointer to the subclass. We like to have a specific cast
+routine to do this as painlessly as possible. Each subclass should
+include a function like this:</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">FUNCTION</span> <span class="n">subclassFromSuperclass</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="n">RESULT</span><span class="p">(</span><span class="n">cast</span><span class="p">)</span>
+       <span class="n">IMPLICIT</span> <span class="n">NONE</span>
+       <span class="n">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">obj</span>
+       <span class="n">CLASS</span><span class="p">(</span><span class="n">Subclass</span><span class="p">),</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">cast</span>
+       <span class="n">cast</span> <span class="o">=&gt;</span> <span class="n">NULL</span><span class="p">()</span>
+       <span class="n">SELECT</span> <span class="kr">TYPE</span> <span class="p">(</span><span class="n">e</span> <span class="o">=&gt;</span> <span class="n">obj</span><span class="p">)</span>
+        <span class="kr">TYPE</span> <span class="n">is</span> <span class="p">(</span><span class="n">Subclass</span><span class="p">)</span>
+          <span class="n">cast</span> <span class="o">=&gt;</span> <span class="n">e</span>
+        <span class="n">CLASS</span> <span class="n">DEFAULT</span>
+       <span class="kr">END</span> <span class="n">SELECT</span>
+      <span class="kr">END</span> <span class="n">FUNCTION</span> <span class="n">subclassFromSuperclass</span>
+</code></pre></div>
+
+<p>You saw an example above in the "valueFromObject(obj)" function.</p>
+<h2>FTValue</h2>
+<p>FTValue is an immutable class to
+store primitive values: integer, real, double precision, logical,
+character. (To Add: complex)</p>
+<h3>Usage</h3>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  TYPE(FTValue) :: r, i, s, l, d
+
+  CALL r % initWithValue(3.14)
+  CALL i % initWithValue(6)
+  CALL d % initWithValue(3.14d0)
+  CALL l % initWithValue(.true.)
+  CALL s % initWithValue(&quot;A string&quot;)
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTValue</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="w">      </span><span class="p">!</span><span class="nx">For</span><span class="w"> </span><span class="nx">Pointers</span>
+<span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTValueClass</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="w"> </span><span class="p">!</span><span class="nx">For</span><span class="w"> </span><span class="nx">Pointers</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Accessors</p>
+<div class="codehilite"><pre><span></span><code>  real = r % realValue()
+  int  = i % integerValue()
+  doub = d % doublePrecisionValue()
+  logc = l % logicalValue()
+  str  = s % stringValue()
+</code></pre></div>
+
+</li>
+<li>
+<p>Description</p>
+<div class="codehilite"><pre><span></span><code>  str = v % description()
+  call v % printDescription(unit)
+</code></pre></div>
+
+</li>
+<li>
+<p>Converting a base FTObject to an FTValue</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTValue) , POINTER :: v
+  CLASS(FTObject), POINTER :: obj
+  v =&gt; valueFromObject(obj)
+</code></pre></div>
+
+</li>
+</ul>
+<p>The class will attempt to convert between the different types:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="n">CALL</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">initWithReal</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">stringValue</span><span class="p">()</span>
+
+<span class="w">      </span><span class="n">Logical</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="n">rules</span><span class="p">:</span>
+
+<span class="w">      </span><span class="n">real</span><span class="p">,</span><span class="w"> </span><span class="n">doublePrecision</span><span class="p">,</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">values</span>
+<span class="w">      </span><span class="n">logicalValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">.</span><span class="n">FALSE</span><span class="o">.</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">logicalValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">.</span><span class="n">TRUE</span><span class="o">.</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+
+<p>String values can be converted to numeric types. If the string is not a
+numeric, HUGE(x) will be returned, where x is of the requested type.</p>
+<h2>Linked Lists</h2>
+<p>A linked list is a dynamic container that links the objects added to it
+in a chain. The chain can be of any length and objects can be added or
+removed at any time and at any location in the chain. Linked lists are
+useful when you don't know how many objects will be stored. They are
+fast to add or delete objects from, but they are slow to access any
+given object. To access objects, you start at the beginning of the chain
+and then follow the chain it until you reach the desired entry. You use
+a linked list when sequential access is more typical than random access.
+Special classes of linked lists are singly linked lists, which can be
+followed in only one direction from the start, double linked lists that
+can be followed in either direction, and circular lists where the ends
+are connected.</p>
+<h3>FTLinkedList</h3>
+<p>FTLinkedList is a container class that stores objects in a doubly linked
+list. Optionally, the list can be made circular. As usual, FTLinkedList
+inherits from FTObjectClass.</p>
+<p><strong>Definition (Subclass of FTObject):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTLinkedList) :: list
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTLinkedList), POINTER :: list
+  ALLOCATE(list)
+  CALL list % init()
+</code></pre></div>
+
+</li>
+<li>
+<p>Adding an object</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTLinkedList</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">list</span>
+<span class="w">  </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTObject</span><span class="ss">)</span><span class="w">    </span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">obj</span>
+
+<span class="w">  </span><span class="nv">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nv">r</span><span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">subclass</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">FTObject</span>
+<span class="w">  </span><span class="k">CALL</span><span class="w"> </span><span class="nl">list</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nv">Add</span><span class="ss">(</span><span class="nv">obj</span><span class="ss">)</span><span class="w">    </span><span class="o">!</span><span class="w"> </span><span class="nv">Pointer</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">retained</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">list</span>
+<span class="w">  </span><span class="k">CALL</span><span class="w"> </span><span class="nl">release</span><span class="ss">(</span><span class="nv">r</span><span class="ss">)</span><span class="w">         </span><span class="o">!</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="nv">control</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">longer</span><span class="w"> </span><span class="nv">wanted</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="nv">scope</span>.
+</code></pre></div>
+
+</li>
+<li>
+<p>Combining lists</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTLinkedList), POINTER :: list, listToAdd
+  CLASS(FTObject)    , POINTER :: obj
+  .
+  .
+  .
+  CALL list % addObjectsFromList(listToAdd)
+</code></pre></div>
+
+</li>
+<li>
+<p>Inserting objects</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTLinkedList</span><span class="ss">)</span><span class="w">      </span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">list</span>
+<span class="w">  </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTObject</span><span class="ss">)</span><span class="w">          </span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">obj</span>
+<span class="w">  </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTLinkedListRecord</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">record</span>
+
+<span class="w">  </span><span class="nv">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nv">r</span><span class="w">           </span><span class="o">!</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">subclass</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">FTObject</span>
+<span class="w">  </span><span class="k">CALL</span><span class="w"> </span><span class="nl">list</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nv">insertObjectAfterRecord</span><span class="ss">(</span><span class="nv">obj</span>,<span class="nv">record</span><span class="ss">)</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="nv">Pointer</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">retained</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">list</span>
+<span class="w">  </span><span class="k">CALL</span><span class="w"> </span><span class="nl">release</span><span class="ss">(</span><span class="nv">r</span><span class="ss">)</span><span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="nv">caller</span><span class="w"> </span><span class="nv">wants</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">reliquish</span><span class="w"> </span><span class="nv">ownership</span>
+</code></pre></div>
+
+</li>
+</ul>
+<p>OR</p>
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTLinkedList</span><span class="ss">)</span><span class="w">      </span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">list</span>
+<span class="w">      </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTObject</span><span class="ss">)</span><span class="w">          </span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">obj</span>,<span class="w"> </span><span class="nv">otherObject</span>
+<span class="w">      </span><span class="nv">CLASS</span><span class="ss">(</span><span class="nv">FTLinkedListRecord</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">POINTER</span><span class="w"> </span>::<span class="w"> </span><span class="nv">record</span>
+
+<span class="w">      </span><span class="nv">obj</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nv">r</span><span class="w">           </span><span class="o">!</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">subclass</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">FTObject</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="nl">list</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nv">insertObjectAfterObject</span><span class="ss">(</span><span class="nv">obj</span>,<span class="nv">otherObject</span><span class="ss">)</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="nv">Pointer</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">retained</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">list</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="nl">release</span><span class="ss">(</span><span class="nv">r</span><span class="ss">)</span><span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="nv">caller</span><span class="w"> </span><span class="nv">wants</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">reliquish</span><span class="w"> </span><span class="nv">ownership</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>Removing objects</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTLinkedList), POINTER :: list
+  CLASS(FTObject)    , POINTER :: obj
+  obj =&gt; r          ! r is subclass of FTObject
+  CALL list % remove(obj)
+</code></pre></div>
+
+</li>
+<li>
+<p>Getting an array of all of the objects</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTLinkedList)         , POINTER :: list
+  CLASS(FTMutableObjectArray) , POINTER :: array
+  array =&gt; list % allObjects() ! Array has refCount = 1
+</code></pre></div>
+
+</li>
+<li>
+<p>Making a linked list circular or not. The default is not circular.</p>
+<div class="codehilite"><pre><span></span><code>  LOGICAL :: c = .true.
+  CALL list % makeCircular( c )
+</code></pre></div>
+
+</li>
+<li>
+<p>Checking to see if a linked list circular or not</p>
+<div class="codehilite"><pre><span></span><code>  LOGICAL :: c
+  c = list % isCircular()
+</code></pre></div>
+
+</li>
+<li>
+<p>Counting the number of objects in the list</p>
+<div class="codehilite"><pre><span></span><code>  n = list % count()
+</code></pre></div>
+
+</li>
+<li>
+<p>Reversing the order of the list</p>
+<div class="codehilite"><pre><span></span><code>  CALL list % reverse()
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTLinkedList</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span><span class="w"> </span><span class="p">!</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span>
+<span class="w">  </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTLinkedListClass</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span><span class="w"> </span><span class="p">!</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+</ul>
+<h3>FTLinkedListIterator</h3>
+<p>Linked lists must be navigated in order along the chain. This is usually
+accomplished with the help of an <em>iterator</em> to navigate linked lists.
+FTObjectLibrary includes a class called FTLinkedListIterator for
+stepping through (iterating) a linked list to access its entries.</p>
+<p><strong>Definition (Subclass of FTObject):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTLinkedListIterator) :: iterator
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>Initialization<div class="codehilite"><pre><span></span><code>  CLASS(FTLinkedListIterator), POINTER :: iterator
+  CLASS(FTLinkedList)        , POINTER :: list
+  ALLOCATE(iterator)
+  CALL iterator % init()
+  .
+  .
+  .
+</code></pre></div>
+
+</li>
+</ul>
+<p>OR</p>
+<div class="codehilite"><pre><span></span><code>      CLASS(FTLinkedList)        , POINTER :: list
+      CLASS(FTLinkedListIterator), POINTER :: iterator
+      ALLOCATE(iterator)
+      CALL iterator % initWithFTLinkedList(list) ! Increases refCount of list
+      .
+      .
+      .
+</code></pre></div>
+
+<ul>
+<li>
+<p>Setting the iterator to the beginning of the list</p>
+<div class="codehilite"><pre><span></span><code>   CALL iterator % setToStart()
+</code></pre></div>
+
+</li>
+<li>
+<p>Testing if the iterator is at the end of the list</p>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="k">IF</span><span class="ss">(</span><span class="w"> </span><span class="nv">iterator</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nv">isAtEnd</span><span class="ss">()</span><span class="w"> </span><span class="ss">)</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Iterating through the list and accessing contained objects</p>
+<div class="codehilite"><pre><span></span><code>   <span class="n">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">obj</span>
+   <span class="n">CALL</span> <span class="n">iterator</span> <span class="err">%</span> <span class="n">setToStart</span><span class="p">()</span>
+   <span class="kr">DO</span> <span class="kr">WHILE</span> <span class="p">(.</span><span class="n">NOT</span><span class="p">.</span><span class="n">iterator</span> <span class="err">%</span> <span class="n">isAtEnd</span><span class="p">())</span>
+      <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">iterator</span> <span class="err">%</span> <span class="n">object</span><span class="p">()</span>            <span class="err">!</span> <span class="n">if</span> <span class="n">the</span> <span class="n">object</span> <span class="n">is</span> <span class="n">wanted</span>
+      <span class="n">recordPtr</span> <span class="o">=&gt;</span> <span class="n">iterator</span> <span class="err">%</span> <span class="n">currentRecord</span><span class="p">()</span> <span class="err">!</span> <span class="n">if</span> <span class="n">the</span> <span class="n">record</span> <span class="n">is</span> <span class="n">wanted</span>
+
+      <span class="err">!</span><span class="n">Do</span> <span class="n">something</span> <span class="n">with</span> <span class="n">object</span> <span class="n">or</span> <span class="n">record</span>
+
+      <span class="n">CALL</span> <span class="n">iterator</span> <span class="err">%</span> <span class="n">moveToNext</span><span class="p">()</span> <span class="err">!</span> <span class="n">FORGET</span> <span class="n">THIS</span> <span class="n">CALL</span> <span class="n">AND</span> <span class="n">YOU</span> <span class="n">GET</span> <span class="n">AN</span> <span class="n">INFINITE</span> <span class="kr">LOOP</span><span class="err">!</span>
+   <span class="kr">END</span> <span class="kr">DO</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTLinkedListIterator</span><span class="p">(</span><span class="nx">iterator</span><span class="p">)</span><span class="w">     </span><span class="p">!</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span>
+<span class="w">   </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTLinkedListIteratorClass</span><span class="p">(</span><span class="nx">iterator</span><span class="p">)!</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+</ul>
+<h2>Stacks</h2>
+<p>A stack is a data structure that enforces last-in/first-out access to
+the objects stored in it. One puts a new object onto the top of the
+stack with a <em>push</em> operation, and pulls off the object at the top of
+the stack with a <em>pop</em> operation. Usually one has the option to just
+look at the top of the stack with a <em>peek</em> operation that doesn't remove
+the top object. You would implement a Reverse Polish calculator with a
+stack, for instance.</p>
+<p><strong>Definition (Subclass of FTLinkedListClass):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTStack) :: stack
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">ALLOCATE</span><span class="ss">(</span><span class="nv">stack</span><span class="ss">)</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="nv">stack</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">pointer</span>
+<span class="w">  </span><span class="k">CALL</span><span class="w"> </span><span class="nl">stack</span><span class="w">  </span><span class="o">%</span><span class="w">  </span><span class="nv">init</span><span class="ss">()</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTStack</span><span class="p">(</span><span class="nx">stack</span><span class="p">)</span><span class="w">     </span><span class="p">!</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">stack</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span>
+<span class="w">  </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTStackClass</span><span class="p">(</span><span class="nx">stack</span><span class="p">)!</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">stack</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Pushing an object onto the stack</p>
+<div class="codehilite"><pre><span></span><code>  TYPE(FTObject) :: obj
+  obj =&gt; r1
+  CALL stack % push(obj)
+</code></pre></div>
+
+</li>
+<li>
+<p>Peeking at the top of the stack</p>
+<div class="codehilite"><pre><span></span><code>  <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">stack</span> <span class="err">%</span> <span class="n">peek</span><span class="p">()</span> <span class="err">!</span> <span class="n">No</span> <span class="n">change</span> <span class="n">of</span> <span class="n">ownership</span>
+  <span class="n">SELECT</span> <span class="kr">TYPE</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+     <span class="kr">TYPE</span> <span class="n">is</span> <span class="cm">(*SubclassType*)</span>
+        <span class="err">!</span> <span class="n">Do</span> <span class="n">something</span> <span class="n">with</span> <span class="n">obj</span> <span class="n">as</span> <span class="n">subclass</span>
+     <span class="n">CLASS</span> <span class="n">DEFAULT</span>
+     <span class="err">!</span> <span class="n">Problem</span> <span class="n">with</span> <span class="n">casting</span>
+  <span class="kr">END</span> <span class="n">SELECT</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Popping the top of the stack</p>
+<div class="codehilite"><pre><span></span><code>  obj =&gt; stack % pop() ! Ownership transferred to caller.
+  Call releaseFTObject(obj) ! when done with it
+</code></pre></div>
+
+</li>
+</ul>
+<h2>Object Arrays</h2>
+<p>Fortran has pointers to arrays, but not arrays of pointers. To do the
+latter, one creates a wrapper derived type and creates an array of that
+wrapper type. Fortran arrays are great, but they are of fixed length,
+and they don't easily implement reference counting to keep track of
+memory. For that, we have the FTMutableObjectArray. Performance reasons
+dictate that you will use regular arrays for numeric types and the like,
+but for generic objects we would use an Object Array.</p>
+<p>You initialize a FTMutableObjectArray with the number of objects that
+you expect it to hold. However, it can re-size itself if necessary. To
+be efficient, it adds more than one entry at a time given by the
+"chunkSize", which you can choose for yourself. (The default is 10.)</p>
+<p><strong>Definition (Subclass of FTObject):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTMutableObjectArray) :: array
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTMutableObjectArray)  :: array
+  INTEGER                      :: N = 11
+  CALL array % initWithSize(N)
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="k">CALL</span><span class="w">  </span><span class="nl">releaseFTMutableObjectArray</span><span class="ss">(</span><span class="nv">array</span><span class="ss">)</span><span class="w"> </span><span class="o">!</span><span class="k">If</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">pointer</span>
+<span class="w">  </span><span class="k">CALL</span><span class="w">  </span><span class="nl">releaseFTMutableObjectArray</span><span class="ss">(</span><span class="nv">array</span><span class="ss">)</span><span class="w"> </span><span class="o">!</span><span class="k">If</span><span class="w"> </span><span class="nv">array</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">pointer</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">CLASS</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Adding an object</p>
+<div class="codehilite"><pre><span></span><code>   TYPE(FTObject) :: obj
+   obj =&gt; r1
+   CALL array % addObject(obj)
+</code></pre></div>
+
+</li>
+<li>
+<p>Removing an object</p>
+<div class="codehilite"><pre><span></span><code>   TYPE(FTObject) :: obj
+   CALL array % removeObjectAtIndex(i)
+</code></pre></div>
+
+</li>
+<li>
+<p>Accessing an object</p>
+<div class="codehilite"><pre><span></span><code>   TYPE(FTObject) :: obj
+   obj =&gt; array % objectAtIndex(i)
+</code></pre></div>
+
+</li>
+<li>
+<p>Replacing an object</p>
+<div class="codehilite"><pre><span></span><code>   TYPE(FTObject) :: obj
+   obj =&gt; r1
+   CALL array % replaceObjectAtIndexWithObject(i,obj)
+</code></pre></div>
+
+</li>
+<li>
+<p>Setting the chunk size</p>
+<div class="codehilite"><pre><span></span><code>   CALL array % setChunkSize(size)
+</code></pre></div>
+
+</li>
+<li>
+<p>Getting the chunk size</p>
+<div class="codehilite"><pre><span></span><code>   i = array % chunkSize(size)
+</code></pre></div>
+
+</li>
+<li>
+<p>Finding the number of items in the array</p>
+<div class="codehilite"><pre><span></span><code>   n =  array % count()
+</code></pre></div>
+
+</li>
+<li>
+<p>Finding the actual allocated size of the array</p>
+<div class="codehilite"><pre><span></span><code>   n =  array % allocatedSize()
+</code></pre></div>
+
+</li>
+<li>
+<p>Converting a base class pointer to an object array</p>
+<div class="codehilite"><pre><span></span><code>   Array =&gt;  objectArrayFromObject(obj)
+</code></pre></div>
+
+</li>
+</ul>
+<h2>Sparse Matrices</h2>
+<p>Hash tables are data structures designed to enable storage and fast
+retrieval of key-value pairs. An example of a key-value pair is a
+variable name ("gamma") and its associated value ("1.4"). The table
+itself is typically an array. The location of the value in a hash table
+associated with a key, $k$, is specified by way of a <em>hash function</em>,
+$H(k)$. In the case of a variable name and value, the hash function
+would convert the name into an integer that tells where to find the
+associated value in the table.</p>
+<p>A very simple example of a hash table is, in fact, a singly dimensioned
+array. The key is the array index and the value is what is stored at
+that index. Multiple keys can be used to identify data; a two
+dimensional array provides an example of where two keys are used to
+access memory and retrieve the value at that location. If we view a
+singly dimensioned array as a special case of a hash table, its hash
+function is just the array index, $H(j)=j$. A doubly dimensioned array
+could be (and often is) stored columnwise as a singly dimensioned array
+by creating a hash function that maps the two indices to a single
+location in the array, e.g., $H(i,j) = i + jN$, where $N$ is the range
+of the first index, $i$.</p>
+<p>Two classes are included in FTObjectLibrary. The first, FTSparseMatrix,
+works with an ordered pair, (i,j), as the keys. The second,
+FTMultiIndexTable, uses an array of integers as the keys.</p>
+<p>Both classes include enquiry functions to see of an object exists for
+the given keys. Otherwise, the function that returns an object for a
+given key will return an UNASSOCIATED pointer if there is no object for
+the key. Be sure to retain any object returned by the objectForKeys
+methods if you want to keep it beyond the lifespan of the matrix or
+table. For example,</p>
+<div class="codehilite"><pre><span></span><code>      <span class="kr">TYPE</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span> <span class="p">::</span> <span class="n">obj</span>
+      <span class="n">obj</span> <span class="o">=&gt;</span> <span class="n">matrix</span> <span class="err">%</span> <span class="n">objectForKeys</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+      <span class="kr">IF</span> <span class="p">(</span> <span class="n">ASSOCIATED</span><span class="p">(</span><span class="n">OBJ</span><span class="p">)</span> <span class="p">)</span> <span class="kr">THEN</span>
+         <span class="n">CALL</span> <span class="n">obj</span> <span class="err">%</span> <span class="n">retain</span><span class="p">()</span>
+         <span class="err">!</span> <span class="n">Cast</span> <span class="n">obj</span> <span class="n">to</span> <span class="n">something</span> <span class="n">useful</span>
+      <span class="kr">ELSE</span>
+         <span class="err">!</span> <span class="n">Perform</span> <span class="n">some</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">error</span> <span class="n">recovery</span>
+      <span class="kr">END</span> <span class="kr">IF</span>
+</code></pre></div>
+
+<h3>FTSparseMatrix</h3>
+<p>The sparse matrix included in the FTObjectLibrary is very simple in that
+it has a predefined hash function with two keys, $(i,j)$. You will
+initialize the matrix with the number of rows.</p>
+<p><strong>Definition (Subclass of FTObject):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTSparseMatrix) :: matrix
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTSparseMatrix)  :: matrix
+  INTEGER          :: N = 11 ! Number of rows
+  CALL matrix % initWithSize(N)
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTSparseMatrix</span><span class="p">(</span><span class="nx">matrix</span><span class="p">)</span><span class="w">      </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">matrix</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span>
+<span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTSparseMatrixClass</span><span class="p">(</span><span class="nx">matrix</span><span class="p">)</span><span class="w"> </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">matrix</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Adding an object</p>
+<div class="codehilite"><pre><span></span><code>  TYPE(FTObject) :: obj
+  matrix % addObjectForKeys(obj,i,j)
+</code></pre></div>
+
+</li>
+<li>
+<p>Accessing an object</p>
+<div class="codehilite"><pre><span></span><code>  TYPE(FTObject) :: obj
+  obj =&gt; matrix % objectForKeys(i,j)
+</code></pre></div>
+
+</li>
+<li>
+<p>Checking if an entry exists</p>
+<div class="codehilite"><pre><span></span><code>  LOGICAL :: exists
+  exists = matrix % containsKeys(i,j)
+</code></pre></div>
+
+</li>
+</ul>
+<h3>FTMultiIndexTable</h3>
+<p>An extension (not in the subclass sense) of the sparse matrix class is
+the MultiIndexTable. It uses an integer array of keys instead of just an
+(i,j) pair. A multiIndexTable can be used, for instance, to determine if
+the four node ids of a face of an element match those of another face of
+another element.</p>
+<p><strong>Definition (Subclass of FTObject):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTMultiIndexTable) :: table
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTMultiIndexTable)  :: table
+  INTEGER           :: N = 11 ! maximum over all keys
+  CALL table % initWithSize(N)
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTMultiIndexTable</span><span class="p">(</span><span class="nx">table</span><span class="p">)</span><span class="w">      </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span>
+<span class="w">  </span><span class="nx">CALL</span><span class="w">  </span><span class="nx">releaseFTMultiIndexTableClass</span><span class="p">(</span><span class="nx">table</span><span class="p">)</span><span class="w"> </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Adding an object</p>
+<div class="codehilite"><pre><span></span><code>  TYPE(FTObject) :: obj
+  INTEGER        :: keys(m) ! m = # keys
+  table % addObjectForKeys(obj,keys)
+</code></pre></div>
+
+</li>
+<li>
+<p>Accessing an object</p>
+<div class="codehilite"><pre><span></span><code>  TYPE(FTObject) :: obj
+  INTEGER        :: keys(m) ! m = # keys
+  obj =&gt; table % objectForKeys(keys)
+</code></pre></div>
+
+</li>
+<li>
+<p>Checking if an entry exists</p>
+<div class="codehilite"><pre><span></span><code>  LOGICAL :: exists
+  INTEGER :: keys(m) ! m = # keys
+  exists = table % containsKeys(keys)
+</code></pre></div>
+
+</li>
+</ul>
+<h2>Dictionaries</h2>
+<p>A dictionary is a special case of a hash table that stores <em>key-value
+pairs</em>. It is an example of what is called an "associative container".
+In the implementation of FTObjectLibrary, the value can be any subclass
+of FTObject and the key is a character variable. The library includes
+the base dictionary that can store and retrieve any subclass of
+FTObject. It also includes a subclass that is designed to store and
+retrieve FTValue objects.</p>
+<h3>FTDictionary</h3>
+<p><strong>Definition (Subclass of FTObject):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTDictionary) :: dict
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTDictionary)  :: dict
+  INTEGER              :: N = 16 ! Should be a power of two.
+  CALL dict % initWithSize(N)
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTDictionary</span><span class="p">(</span><span class="nx">dict</span><span class="p">)</span><span class="w">       </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">dict</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span>
+<span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTDictionaryClass</span><span class="p">(</span><span class="nx">dict</span><span class="p">)</span><span class="w">  </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">dict</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Adding a key-object pair</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTDictionary), POINTER :: dict
+  CLASS(FTObject)    , POINTER :: obj
+  CHARACTER(LEN=M)             :: key
+  obj =&gt; r           ! r is subclass of FTObject
+  CALL dict % addObjectForKey(obj,key)
+</code></pre></div>
+
+</li>
+<li>
+<p>Accessing an object</p>
+<div class="codehilite"><pre><span></span><code>  TYPE(FTObject) :: obj
+  obj =&gt; dict % objectForKey(key)
+</code></pre></div>
+
+</li>
+<li>
+<p>Converting a base class pointer to a dictionary</p>
+<div class="codehilite"><pre><span></span><code>  dict =&gt;  dictionaryFromObject(obj)
+</code></pre></div>
+
+</li>
+<li>
+<p>Getting all of the keys (The target of the pointer must be deallocated
+  by the caller)</p>
+<div class="codehilite"><pre><span></span><code>  CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: keys(:)
+  keys =&gt;  dict % allKeys()
+</code></pre></div>
+
+</li>
+<li>
+<p>Getting all of the objects</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTMutableObjectArray), POINTER :: objectArray
+  objectArray =&gt;  dict % allObjects() ! The array is owned by the caller.
+</code></pre></div>
+
+</li>
+</ul>
+<h3>FTValueDictionary</h3>
+<p>FTValueDictionary adds methods to store and retrieve FTValue objects.</p>
+<p><strong>Definition (Subclass of FTDictionary):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTValueDictionary) :: dict
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Adding a value</p>
+<div class="codehilite"><pre><span></span><code>  CALL dict % addValueForKey(1,&quot;integer&quot;)
+  CALL dict % addValueForKey(3.14,&quot;real&quot;)
+  CALL dict % addValueForKey(98.6d0,&quot;double&quot;)
+  CALL dict % addValueForKey(.true.,&quot;logical&quot;)
+  CALL dict % addValueForKey(&quot;Hello World&quot;,&quot;string&quot;)
+</code></pre></div>
+
+</li>
+<li>
+<p>Accessing a value</p>
+<div class="codehilite"><pre><span></span><code>  i = dict % integerValueForKey(&quot;integer&quot;)
+  r = dict % realValueForKey(&quot;real&quot;)
+  d = dict % doublePrecisionValueForKey(&quot;double&quot;)
+  l = dict % logicalValueForKey(&quot;logical&quot;)
+  s = dict % stringValueForKey(&quot;string&quot;)
+</code></pre></div>
+
+</li>
+</ul>
+<p>Note that the FTValue class will do type conversion, so you can also
+  access something like</p>
+<div class="codehilite"><pre><span></span><code>      i = dict % integerValueForKey(&quot;real&quot;)
+      s = dict % stringValueForKey(&quot;real&quot;)
+</code></pre></div>
+
+<ul>
+<li>
+<p>Converting an FTDictionary to an FTValueDictionary</p>
+<div class="codehilite"><pre><span></span><code>  valueDict =&gt; valueDictionaryFromDictionary(dict)
+</code></pre></div>
+
+</li>
+<li>
+<p>Converting an FTObject to an FTValueDictionary</p>
+<div class="codehilite"><pre><span></span><code>  valueDict =&gt; valueDictionaryFromObject(obj)
+</code></pre></div>
+
+</li>
+</ul>
+<h1>String Sets</h1>
+<p>A StringSet implements set operations on strings. An FTStringSet is an
+unordered group of unique (case dependent) strings. It is primarily used
+to find whether or not a given string is a member of a set of strings.
+The class also includes usual set operations of intersection, union and
+difference. To enumerate over the items in a set, use the strings()
+procedure to return a pointer to an array of the strings in the set, and
+then loop over that array.</p>
+<p>An empty set can be initialized, to which strings can be added, or a set
+can be initialized with an array of strings. The string length must be
+FTDICT_KWD_STRING_LENGTH or less.</p>
+<p><strong>Definition (Subclass of FTObject):</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(FTStringSet) :: set
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  CLASS(FTStringSet)  :: set
+  INTEGER             :: N = 16 ! Should be a power of two.
+  CALL dict % initFTStringSet(FTStringSetSize = N)
+
+  CLASS(FTStringSet)  :: set
+  CHARACTER(LEN=*)    :: strings(:)
+  CALL set % initWithStrings(strings)
+</code></pre></div>
+
+</li>
+<li>
+<p>Destruction</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTStringSet</span><span class="p">(</span><span class="nx">set</span><span class="p">)</span><span class="w">       </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span>
+<span class="w">  </span><span class="nx">CALL</span><span class="w"> </span><span class="nx">releaseFTStringSetClass</span><span class="p">(</span><span class="nx">set</span><span class="p">)</span><span class="w">  </span><span class="p">!</span><span class="nx">If</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">pointer</span><span class="w"> </span><span class="nx">typed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">CLASS</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Adding a string</p>
+<div class="codehilite"><pre><span></span><code>  CHARACTER(LEN=M)  :: str
+  CALL set % addString(str)
+</code></pre></div>
+
+</li>
+<li>
+<p>Testing for inclusion</p>
+<div class="codehilite"><pre><span></span><code>  LOGICAL          :: test
+  CHARACTER(LEN=M) :: str
+  test = set % containsString(str)
+</code></pre></div>
+
+</li>
+<li>
+<p>Finding the union of two sets (Release when through)</p>
+<div class="codehilite"><pre><span></span><code>  unionSet =&gt;  set1 % unionWithSet(set2)
+  ...
+  call ReleaseFTStringSet(unionSet)
+</code></pre></div>
+
+</li>
+<li>
+<p>Finding the intersection of two sets (Release when through)</p>
+<div class="codehilite"><pre><span></span><code>  intersectionSet =&gt;  set1 % intersectionWithSet(set2)
+  ...
+  call ReleaseFTStringSet(intersectionSet)
+</code></pre></div>
+
+</li>
+<li>
+<p>Finding the difference of two sets (Release when through)</p>
+<div class="codehilite"><pre><span></span><code>  differenceSet =&gt;  set1 % setFromDifference(set2)
+  ...
+  call ReleaseFTStringSet(differenceSet)
+</code></pre></div>
+
+</li>
+<li>
+<p>Converting a base class pointer to a set</p>
+<div class="codehilite"><pre><span></span><code>  set =&gt;  FTStringSetFromObject(obj)
+</code></pre></div>
+
+</li>
+<li>
+<p>Getting all of the strings (The target of the pointer must be
+  deallocated by the caller)</p>
+<div class="codehilite"><pre><span></span><code>  CHARACTER(LEN=FTDICT_KWD_STRING_LENGTH), POINTER :: strings(:)
+  strings =&gt;  set % strings()
+  ...
+  deallocate(strings)
+</code></pre></div>
+
+</li>
+</ul>
+<h1>Advanced Classes: Testing and Error Reporting</h1>
+<p>The library includes classes for testing and reporting errors. Errors
+are reported through instances of the FTException class. Testing is made
+semi-automatic through the TestSuiteManager class and procedures defined
+in the FTAssertions module.</p>
+<h2>Assertions</h2>
+<p>An assertion is a true-false statement that you expect to be true.
+Assertions are used to test for exceptional situations (AKA "Failures")
+in a code. For example, knowing that density always must be positive,
+you might assert that fact before using it, and if the result is false
+generate an error. With FTObjectLibrary that would be</p>
+<div class="codehilite"><pre><span></span><code>      CALL assert(rho &gt; 0,``Density must be positive&#39;&#39;)
+</code></pre></div>
+
+<p>Fortran does not have an assertion mechanism, and so pretty much
+everyone writes their own. There are a couple of open source projects
+available, but one never knows how actively they will be maintained. In
+the grand Fortran tradition of writing one's own, FTObjectLibrary has an
+(incomplete) assertion module.</p>
+<p>To use assertions, you will USE the FTAssertions module and initialize
+the assertions system by calling</p>
+<div class="codehilite"><pre><span></span><code>      CALL initializeSharedAssertionsManager
+</code></pre></div>
+
+<p>During the course of your program, the sharedAssertionsManager will keep
+track of the success or failure of the assertions that you make. You can
+enquire at any time how many assertions have failed and how many
+assertions have been made with the two enquiry functions</p>
+<div class="codehilite"><pre><span></span><code>      INTEGER FUNCTION numberOfAssertionFailures()
+      INTEGER FUNCTION numberOfAssertions()
+</code></pre></div>
+
+<p>You can get a summary of the assertions by calling the subroutine</p>
+<div class="codehilite"><pre><span></span><code>      SUBROUTINE SummarizeFTAssertions(title,iUnit)
+         IMPLICIT NONE
+         CHARACTER(LEN=*) :: title
+         INTEGER          :: iUnit
+</code></pre></div>
+
+<p>When you are done, you finalize the sharedAssertionsManager with</p>
+<div class="codehilite"><pre><span></span><code>      CALL finalizeSharedAssertionsManager
+</code></pre></div>
+
+<p>So how do you make assertions? FTObjectLibrary supplies two subroutines
+that post failures to the sharedAssertionsManager. The first takes a
+LOGICAL variable</p>
+<div class="codehilite"><pre><span></span><code>      SUBROUTINE assert(test,msg)
+        IMPLICIT NONE
+        CHARACTER(LEN=*), OPTIONAL :: msg
+        LOGICAL                    :: test
+</code></pre></div>
+
+<p>The second tests equality through the overloaded subroutine assertEqual,
+which allows a variety of argument type listed below:</p>
+<div class="codehilite"><pre><span></span><code>      <span class="n">INTERFACE</span> <span class="n">assertEqual</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertEqualTwoIntegers</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertEqualTwoIntegerArrays1D</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertEqualTwoIntegerArrays2D</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertWithinToleranceTwoReal</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertWithinToleranceTwoRealArrays1D</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertWithinToleranceTwoRealArrays2D</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertWithinToleranceTwoDouble</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertWithinToleranceTwoDoubleArrays1D</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertWithinToleranceTwoDoubleArrays2D</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertEqualTwoLogicals</span>
+        <span class="kr">MODULE</span> <span class="kr">PROCEDURE</span> <span class="n">assertEqualString</span>
+      <span class="kr">END</span> <span class="n">INTERFACE</span> <span class="n">assertEqual</span>
+</code></pre></div>
+
+<p>The individual calls have the signatures</p>
+<div class="codehilite"><pre><span></span><code>      SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)
+        IMPLICIT NONE
+        INTEGER, INTENT(in)        :: expectedValue,actualValue
+        CHARACTER(LEN=*), OPTIONAL :: msg
+
+      SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)
+       IMPLICIT NONE
+       INTEGER, INTENT(in)    , DIMENSION(:) :: expectedValue,actualValue
+
+      SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)
+        IMPLICIT NONE
+        INTEGER, INTENT(in)    , DIMENSION(:,:) :: expectedValue,actualValue
+
+      SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,absTol,msg)
+        IMPLICIT NONE
+        REAL, INTENT(in)           :: x,y,tol
+        REAL, INTENT(IN), OPTIONAL :: absTol
+        CHARACTER(LEN=*), OPTIONAL :: msg
+
+      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,absTol,msg)
+        IMPLICIT NONE
+        REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+        REAL, INTENT(IN)               :: tol
+        REAL, INTENT(IN), OPTIONAL     :: absTol
+        CHARACTER(LEN=*), OPTIONAL     :: msg
+
+      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)
+        IMPLICIT NONE
+        REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+        REAL, INTENT(IN)                 :: tol
+
+      SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,absTol,msg)
+        IMPLICIT NONE
+        DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
+        REAL, INTENT(IN), OPTIONAL   :: absTol
+        CHARACTER(LEN=*), OPTIONAL   :: msg
+
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,absTol,msg)
+        IMPLICIT NONE
+        DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
+        DOUBLE PRECISION, INTENT(IN)               :: tol
+        REAL, INTENT(IN), OPTIONAL                 :: absTol
+        CHARACTER(LEN=*), OPTIONAL                 :: msg
+
+      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol,abstol)
+        IMPLICIT NONE
+        DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
+        DOUBLE PRECISION, INTENT(IN)                 :: tol
+        REAL, INTENT(IN), OPTIONAL                   :: absTol
+
+      SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
+        IMPLICIT NONE
+        CHARACTER(LEN=*)           :: expectedValue,actualValue
+        CHARACTER(LEN=*), OPTIONAL :: msg
+
+      SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)
+        IMPLICIT NONE
+        LOGICAL, INTENT(in)        :: expectedValue,actualValue
+        CHARACTER(LEN=*), OPTIONAL :: msg
+</code></pre></div>
+
+<p>Notice that you can only check the equality of two floating point
+numbers to within some tolerance. One can either specify just a relative error tolerance, tol, or a relative and optional absolute tolerance, tol and absTol.</p>
+<h2>Testing</h2>
+<p>FTObjectLibrary also includes a testing suite with which you can create
+a suite of tests to make sure your codes are working and stay working.
+The tests are managed by an instance of the class. It is designed to be
+used with minimal fuss. You</p>
+<ol>
+<li>
+<p>Initialize the test suite</p>
+</li>
+<li>
+<p>Add test subroutines</p>
+</li>
+<li>
+<p>Have the testSuiteManager perform the tests</p>
+</li>
+<li>
+<p>Finalize the test suite manager</p>
+</li>
+</ol>
+<p>An example of running a suite of tests is the following:</p>
+<div class="codehilite"><pre><span></span><code>      TYPE(TestSuiteManager) :: testSuite
+
+      EXTERNAL :: FTDictionaryClassTests
+      EXTERNAL :: FTExceptionClassTests
+      EXTERNAL :: FTValueClassTests
+      EXTERNAL :: FTValueDictionaryClassTests
+      EXTERNAL :: FTLinkedListClassTests
+      EXTERNAL :: StackClassTests
+      EXTERNAL :: MutableArrayClassTests
+      EXTERNAL :: HashTableTests
+
+      CALL testSuite % init()
+
+      CALL testSuite % addTestSubroutineWithName(FTValueClassTests,&quot;FTValueClass Tests&quot;)
+      CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,&quot;FTDictionaryClass Tests&quot;)
+      CALL testSuite % addTestSubroutineWithName(FTValueDictionaryClassTests,&quot;FTValueDictionaryClass Tests&quot;)
+      CALL testSuite % addTestSubroutineWithName(FTLinkedListClassTests,&quot;FTLinkedListClass Tests&quot;)
+      CALL testSuite % addTestSubroutineWithName(StackClassTests,&quot;StackClass Tests&quot;)
+      CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,&quot;Mutable Array Tests&quot;)
+      CALL testSuite % addTestSubroutineWithName(HashTableTests,&quot;Hash Table Tests&quot;)
+      CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,&quot;FTExceptionClass Tests&quot;)
+
+      CALL testSuite % performTests()
+</code></pre></div>
+
+<p>The test subroutines have no arguments or include optional data. The interface is</p>
+<div class="codehilite"><pre><span></span><code>      <span class="kr">ABSTRACT</span> <span class="n">INTERFACE</span>
+        <span class="n">SUBROUTINE</span> <span class="n">testSuiteFunction</span><span class="p">(</span><span class="n">optData</span><span class="p">)</span>
+        <span class="n">CHARACTER</span><span class="p">(</span><span class="kr">LEN</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="kr">POINTER</span><span class="p">,</span> <span class="n">OPTIONAL</span> <span class="p">::</span> <span class="n">optData</span><span class="p">(:)</span>
+        <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">testSuiteFunction</span>
+      <span class="kr">END</span> <span class="n">INTERFACE</span>
+</code></pre></div>
+
+<p>The test functions should USE the FTAssertions module as in the previous
+section. You don't have to do any reporting code in your tests, however.
+Reporting is managed by the testSuiteManager at the end of performTests. Look at the <a href="../Testing">Testing</a> directory in the repository for examples on how to set up testing.</p>
+<p><strong>Definition:</strong></p>
+<div class="codehilite"><pre><span></span><code>      TYPE(TestSuiteManager) :: tester
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  CALL tester % init()
+</code></pre></div>
+
+</li>
+<li>
+<p>Creating a test Create subroutines with the interface</p>
+<div class="codehilite"><pre><span></span><code>  <span class="kr">ABSTRACT</span> <span class="n">INTERFACE</span>
+    <span class="n">SUBROUTINE</span> <span class="n">testSuiteFunction</span><span class="p">(</span><span class="n">optData</span><span class="p">)</span>
+    <span class="n">CHARACTER</span><span class="p">(</span><span class="kr">LEN</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="kr">POINTER</span><span class="p">,</span> <span class="n">OPTIONAL</span> <span class="p">::</span> <span class="n">optData</span><span class="p">(:)</span>
+    <span class="kr">END</span> <span class="n">SUBROUTINE</span> <span class="n">testSuiteFunction</span>
+  <span class="kr">END</span> <span class="n">INTERFACE</span>
+</code></pre></div>
+
+</li>
+</ul>
+<p>that (typically) includes unit test calls. The optData is optional data that can be included as part
+  of the test, if necessary. The Fortran TRANSFER function can be used to encode and decode the data, so pretty much any data can be transferred generically.</p>
+<ul>
+<li>Adding a test case<div class="codehilite"><pre><span></span><code>  CALL tester % addTestSubroutineWithName(SubroutineName, description)
+</code></pre></div>
+
+</li>
+</ul>
+<p>where</p>
+<ul>
+<li>
+<p>SubroutineName = a subroutine with the interface as above, and</p>
+</li>
+<li>
+<p>description = a CHARACTER(LEN=128) character string that names the
+    test</p>
+</li>
+<li>
+<p>Setting the output location</p>
+<div class="codehilite"><pre><span></span><code>  CALL tester % setOutputUnit(iUnit)
+</code></pre></div>
+
+</li>
+<li>
+<p>Running tests</p>
+<div class="codehilite"><pre><span></span><code>  CALL tester % performTests()
+</code></pre></div>
+
+</li>
+</ul>
+<h2>Exceptions</h2>
+<p>An FTException object provides a way to pass generic information about
+an exceptional situation. Methods for dealing with exceptions are
+defined in the SharedExceptionManagerModule module.</p>
+<p>An FTException object wraps:</p>
+<ul>
+<li>
+<p>A severity indicator</p>
+</li>
+<li>
+<p>A name for the exception</p>
+</li>
+<li>
+<p>An optional dictionary that contains whatever information is deemed
+  necessary.</p>
+</li>
+</ul>
+<p>It is expected that classes will define exceptions that use instances
+  of the FTException Class.</p>
+<p>Defined constants:</p>
+<div class="codehilite"><pre><span></span><code>      FT_ERROR_NONE    = 0
+      FT_ERROR_WARNING = 1
+      FT_ERROR_FATAL   = 2
+</code></pre></div>
+
+<p><strong>Usage:</strong></p>
+<ul>
+<li>
+<p>Initialization</p>
+<div class="codehilite"><pre><span></span><code>  e  %  initFTException(severity,exceptionName,infoDictionary)
+
+  Plus the convenience initializers, which automatically
+  create a FTValueDictionary with a single key called &quot;message&quot;:
+
+  e % initWarningException(msg = &quot;message&quot;)
+  e % initFatalException(msg = &quot;message&quot;)
+</code></pre></div>
+
+</li>
+<li>
+<p>Setting components Create subroutines with the interface</p>
+<div class="codehilite"><pre><span></span><code>  e  %  setInfoDictionary(infoDictionary)
+</code></pre></div>
+
+</li>
+</ul>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              FTObjectLibrary
+ was developed by David A. Kopriva<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

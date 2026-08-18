@@ -52,6 +52,7 @@
 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="page/index.html">Documentation</a></li>
                   <li class="nav-item">
                     <a class="nav-link" href="./lists/files.html">Source Files</a>
                   </li>
@@ -93,7 +94,7 @@
         <div class=col-md-8>
           <h1>FTObjectLibrary</h1>
           <h1>Overview</h1>
-<p>FTObjectLibrary provides a collection of reference counted Fortran 2003 classes to 
+<p>FTObjectLibrary provides a collection of reference counted Fortran 2003 classes to
  facilitate writing generic object oriented Fortran programs. Reference counting
  is implemented to assist with memory management so that the lifespans of objects
  are properly maintained and are so that objects are deleted only when no other references are made to them.</p>
@@ -114,7 +115,7 @@
 <li>FTStack is a subclass of FTLinkedList that adds the usual push, pop, and peek routines.</li>
 <li>FTSparseMatrix associates a double index (i,j) to an FTObject. Basically this is a two dimensional sparse matrix of pointers to FTObjects.</li>
 <li>FTMultiIndexTable associates an integer array keys(:) to an FTObject. Basically this is an m--dimensional sparse matrix of pointers to FTObjects.</li>
-<li>FTDictionary is an ``associative container'', that associates a string to another FTObject. </li>
+<li>FTDictionary is an ``associative container'', that associates a string to another FTObject.</li>
 <li>FTValueDictionary is a subclass of FTDictionary that has additional methods to store and retrieve
 values.</li>
 <li>FTMutableObjectArray is a mutable one-dimensional array class that can store any FTObject</li>
@@ -122,9 +123,9 @@ values.</li>
 </ul>
 <p>The library also contains classes for testing (FTAssertions, TestSuiteManagerClass) and for reporting errors through the FTException class.</p>
 <h1>Documentation</h1>
-<p>Documentation can be found in the <a href="UsersGuide.md">user's guide</a>.</p>
+<p>Documentation can be found in the <a href="page/UsersGuide.html">user's guide</a>.</p>
 <h1>Examples</h1>
-<p>Examples can be found in the <a href="../Examples">Examples</a> directory and in the <a href="../Testing">Testing</a> directory. The examples include a simple reverse Polish calculator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.</p>
+<p>Examples can be found in the <a href="https://github.com/trixi-framework/FTObjectLibrary/tree/main/Examples">Examples</a> directory and in the <a href="https://github.com/trixi-framework/FTObjectLibrary/tree/main/Testing">Testing</a> directory. The examples include a simple reverse Polish calculator using a stack, and another showing the use of a linked list. The testing directory includes tests that can be run on the library, which themselves serve as examples of the use of all of the classes.</p>
 <h1>Building the Library</h1>
 <p>The library (.a) can be built with either CMake or default make.</p>
 <h3>CMake</h3>
@@ -141,6 +142,8 @@ make install
 </code></pre></div>
 
 <p>That will create the necessary files in that directory, which can be moved to somewhere else as desired.</p>
+<h1>News</h1>
+<p>Notable additions are documented in the <a href="page/News.html">News</a></p>
         </div>
           <div class="col-md-4">
             <div class="card card-body bg-light">
