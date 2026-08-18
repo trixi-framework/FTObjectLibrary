@@ -47,7 +47,7 @@ values.
 
 # Documentation
 
-Documentation can be found in the [user's guide](UsersGuide.html).
+Documentation can be found in the [user's guide](page/UsersGuide.html).
 
 # Examples
 
@@ -59,7 +59,7 @@ The library (.a) can be built with either CMake or default make.
 
 ### CMake
 To install the FTObjectLibrary with CMake,
-```shell
+```
 mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=/path/to/install ../
 make
@@ -69,7 +69,7 @@ make install
 ### make
 
 cd to the directory "makeLibrary" and type
-```shell
+```
 make
 ```
 
@@ -77,4 +77,4 @@ That will create the necessary files in that directory, which can be moved to so
 
 # News
 
-Notable additions are documented in the [News](News.html)
+Notable additions are documented in the [News](page/News.html)

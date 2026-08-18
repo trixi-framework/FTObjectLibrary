@@ -2,6 +2,8 @@
 title: News
 ---
 
+[Back to the main documentation](../index.html)
+
 # News
 
 ## July 29, 2026

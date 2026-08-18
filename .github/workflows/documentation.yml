@@ -26,9 +26,6 @@ jobs:
           sudo pip install ford
       - name: Build
         run: ford Docs/FTObjectLibraryProject.md
-      - name: Inspect generated documentation
-        run: |
-          find Docs/HTMLdocs -type f | sort
       - name: Deploy
         if: github.ref == 'refs/heads/main' # Only run on main
         uses: peaceiris/actions-gh-pages@v4
