@@ -1340,65 +1340,65 @@ which allows a variety of argument type listed below:</p>
 </code></pre></div>
 
 <p>The individual calls have the signatures</p>
-<div class="codehilite"><pre><span></span><code>      SUBROUTINE assertEqualTwoIntegers(expectedValue,actualValue,msg)
-        IMPLICIT NONE
-        INTEGER, INTENT(in)        :: expectedValue,actualValue
-        CHARACTER(LEN=*), OPTIONAL :: msg
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertEqualTwoIntegers</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="n">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">in</span><span class="p">)</span><span class="w">        </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">msg</span>
 
-      SUBROUTINE assertEqualTwoIntegerArrays1D(expectedValue,actualValue)
-       IMPLICIT NONE
-       INTEGER, INTENT(in)    , DIMENSION(:) :: expectedValue,actualValue
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertEqualTwoIntegerArrays1D</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">)</span>
+<span class="w">       </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">       </span><span class="n">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">in</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="n">DIMENSION</span><span class="p">(</span><span class="err">:</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
 
-      SUBROUTINE assertEqualTwoIntegerArrays2D(expectedValue,actualValue)
-        IMPLICIT NONE
-        INTEGER, INTENT(in)    , DIMENSION(:,:) :: expectedValue,actualValue
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertEqualTwoIntegerArrays2D</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="n">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">in</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="n">DIMENSION</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
 
-      SUBROUTINE assertWithinToleranceTwoReal(x,y,tol,absTol,msg)
-        IMPLICIT NONE
-        REAL, INTENT(in)           :: x,y,tol
-        REAL, INTENT(IN), OPTIONAL :: absTol
-        CHARACTER(LEN=*), OPTIONAL :: msg
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertWithinToleranceTwoReal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">absTol</span><span class="p">,</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">in</span><span class="p">)</span><span class="w">           </span><span class="err">::</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tol</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">absTol</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">msg</span>
 
-      SUBROUTINE assertWithinToleranceTwoRealArrays1D(expectedValue,actualValue,tol,absTol,msg)
-        IMPLICIT NONE
-        REAL, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-        REAL, INTENT(IN)               :: tol
-        REAL, INTENT(IN), OPTIONAL     :: absTol
-        CHARACTER(LEN=*), OPTIONAL     :: msg
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertWithinToleranceTwoRealArrays1D</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">absTol</span><span class="p">,</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="n">DIMENSION</span><span class="p">(</span><span class="err">:</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">)</span><span class="w">               </span><span class="err">::</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w">     </span><span class="err">::</span><span class="w"> </span><span class="n">absTol</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w">     </span><span class="err">::</span><span class="w"> </span><span class="n">msg</span>
 
-      SUBROUTINE assertWithinToleranceTwoRealArrays2D(expectedValue,actualValue,tol)
-        IMPLICIT NONE
-        REAL, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-        REAL, INTENT(IN)                 :: tol
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertWithinToleranceTwoRealArrays2D</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">tol</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="n">DIMENSION</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">)</span><span class="w">                 </span><span class="err">::</span><span class="w"> </span><span class="n">tol</span>
 
-      SUBROUTINE assertWithinToleranceTwoDouble(expectedValue,actualValue,tol,absTol,msg)
-        IMPLICIT NONE
-        DOUBLE PRECISION, INTENT(in) :: expectedValue,actualValue,tol
-        REAL, INTENT(IN), OPTIONAL   :: absTol
-        CHARACTER(LEN=*), OPTIONAL   :: msg
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertWithinToleranceTwoDouble</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">absTol</span><span class="p">,</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="kt">DOUBLE</span><span class="w"> </span><span class="n">PRECISION</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">in</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">tol</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w">   </span><span class="err">::</span><span class="w"> </span><span class="n">absTol</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w">   </span><span class="err">::</span><span class="w"> </span><span class="n">msg</span>
 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays1D(expectedValue,actualValue,tol,absTol,msg)
-        IMPLICIT NONE
-        DOUBLE PRECISION, INTENT(IN), DIMENSION(:) :: expectedValue,actualValue
-        DOUBLE PRECISION, INTENT(IN)               :: tol
-        REAL, INTENT(IN), OPTIONAL                 :: absTol
-        CHARACTER(LEN=*), OPTIONAL                 :: msg
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertWithinToleranceTwoDoubleArrays1D</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">absTol</span><span class="p">,</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="kt">DOUBLE</span><span class="w"> </span><span class="n">PRECISION</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="n">DIMENSION</span><span class="p">(</span><span class="err">:</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
+<span class="w">        </span><span class="kt">DOUBLE</span><span class="w"> </span><span class="n">PRECISION</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">)</span><span class="w">               </span><span class="err">::</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w">                 </span><span class="err">::</span><span class="w"> </span><span class="n">absTol</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w">                 </span><span class="err">::</span><span class="w"> </span><span class="n">msg</span>
 
-      SUBROUTINE assertWithinToleranceTwoDoubleArrays2D(expectedValue,actualValue,tol,abstol)
-        IMPLICIT NONE
-        DOUBLE PRECISION, INTENT(IN), DIMENSION(:,:) :: expectedValue,actualValue
-        DOUBLE PRECISION, INTENT(IN)                 :: tol
-        REAL, INTENT(IN), OPTIONAL                   :: absTol
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertWithinToleranceTwoDoubleArrays2D</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">abstol</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="kt">DOUBLE</span><span class="w"> </span><span class="n">PRECISION</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="n">DIMENSION</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
+<span class="w">        </span><span class="kt">DOUBLE</span><span class="w"> </span><span class="n">PRECISION</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">)</span><span class="w">                 </span><span class="err">::</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="n">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">IN</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w">                   </span><span class="err">::</span><span class="w"> </span><span class="n">absTol</span>
 
-      SUBROUTINE assertEqualString(expectedValue,actualValue,msg)
-        IMPLICIT NONE
-        CHARACTER(LEN=*)           :: expectedValue,actualValue
-        CHARACTER(LEN=*), OPTIONAL :: msg
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertEqualString</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">)</span><span class="w">           </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">msg</span>
 
-      SUBROUTINE assertEqualTwoLogicals(expectedValue,actualValue,msg)
-        IMPLICIT NONE
-        LOGICAL, INTENT(in)        :: expectedValue,actualValue
-        CHARACTER(LEN=*), OPTIONAL :: msg
+<span class="w">      </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">assertEqualTwoLogicals</span><span class="p">(</span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span><span class="p">,</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">        </span><span class="n">IMPLICIT</span><span class="w"> </span><span class="n">NONE</span>
+<span class="w">        </span><span class="n">LOGICAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTENT</span><span class="p">(</span><span class="k">in</span><span class="p">)</span><span class="w">        </span><span class="err">::</span><span class="w"> </span><span class="n">expectedValue</span><span class="p">,</span><span class="n">actualValue</span>
+<span class="w">        </span><span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="err">=*</span><span class="p">),</span><span class="w"> </span><span class="k">OPTIONAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">msg</span>
 </code></pre></div>
 
 <p>Notice that you can only check the equality of two floating point
@@ -1423,29 +1423,29 @@ used with minimal fuss. You</p>
 </li>
 </ol>
 <p>An example of running a suite of tests is the following:</p>
-<div class="codehilite"><pre><span></span><code>      TYPE(TestSuiteManager) :: testSuite
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="k">TYPE</span><span class="p">(</span><span class="n">TestSuiteManager</span><span class="p">)</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">testSuite</span>
 
-      EXTERNAL :: FTDictionaryClassTests
-      EXTERNAL :: FTExceptionClassTests
-      EXTERNAL :: FTValueClassTests
-      EXTERNAL :: FTValueDictionaryClassTests
-      EXTERNAL :: FTLinkedListClassTests
-      EXTERNAL :: StackClassTests
-      EXTERNAL :: MutableArrayClassTests
-      EXTERNAL :: HashTableTests
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">FTDictionaryClassTests</span>
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">FTExceptionClassTests</span>
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">FTValueClassTests</span>
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">FTValueDictionaryClassTests</span>
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">FTLinkedListClassTests</span>
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">StackClassTests</span>
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">MutableArrayClassTests</span>
+<span class="w">      </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="err">::</span><span class="w"> </span><span class="n">HashTableTests</span>
 
-      CALL testSuite % init()
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">init</span><span class="p">()</span>
 
-      CALL testSuite % addTestSubroutineWithName(FTValueClassTests,&quot;FTValueClass Tests&quot;)
-      CALL testSuite % addTestSubroutineWithName(FTDictionaryClassTests,&quot;FTDictionaryClass Tests&quot;)
-      CALL testSuite % addTestSubroutineWithName(FTValueDictionaryClassTests,&quot;FTValueDictionaryClass Tests&quot;)
-      CALL testSuite % addTestSubroutineWithName(FTLinkedListClassTests,&quot;FTLinkedListClass Tests&quot;)
-      CALL testSuite % addTestSubroutineWithName(StackClassTests,&quot;StackClass Tests&quot;)
-      CALL testSuite % addTestSubroutineWithName(MutableArrayClassTests,&quot;Mutable Array Tests&quot;)
-      CALL testSuite % addTestSubroutineWithName(HashTableTests,&quot;Hash Table Tests&quot;)
-      CALL testSuite % addTestSubroutineWithName(FTExceptionClassTests,&quot;FTExceptionClass Tests&quot;)
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">FTValueClassTests</span><span class="p">,</span><span class="s2">&quot;FTValueClass Tests&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">FTDictionaryClassTests</span><span class="p">,</span><span class="s2">&quot;FTDictionaryClass Tests&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">FTValueDictionaryClassTests</span><span class="p">,</span><span class="s2">&quot;FTValueDictionaryClass Tests&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">FTLinkedListClassTests</span><span class="p">,</span><span class="s2">&quot;FTLinkedListClass Tests&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">StackClassTests</span><span class="p">,</span><span class="s2">&quot;StackClass Tests&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">MutableArrayClassTests</span><span class="p">,</span><span class="s2">&quot;Mutable Array Tests&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">HashTableTests</span><span class="p">,</span><span class="s2">&quot;Hash Table Tests&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">addTestSubroutineWithName</span><span class="p">(</span><span class="n">FTExceptionClassTests</span><span class="p">,</span><span class="s2">&quot;FTExceptionClass Tests&quot;</span><span class="p">)</span>
 
-      CALL testSuite % performTests()
+<span class="w">      </span><span class="k">CALL</span><span class="w"> </span><span class="n">testSuite</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">performTests</span><span class="p">()</span>
 </code></pre></div>
 
 <p>The test subroutines have no arguments or include optional data. The interface is</p>
