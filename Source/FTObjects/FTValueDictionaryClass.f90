@@ -225,7 +225,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL release(v)
+         CALL release(obj)
       END SUBROUTINE addQuadValueForKey
 #endif
 !

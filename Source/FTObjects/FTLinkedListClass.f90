@@ -451,8 +451,9 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj
          
-         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), previous => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: current, previous
                   
+         NULLIFY(current, previous)
          IF ( .NOT.ASSOCIATED(self % head) )     RETURN
          
          current  => self % head
@@ -492,7 +493,7 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(FTLinkedListRecord), POINTER :: previous => NULL(), next => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: previous, next
          CLASS(FTObject)          , POINTER :: obj
 !
 !        ---------------------------------------------------
@@ -502,6 +503,8 @@
 !        ---------------------------------------------------
 !
          LOGICAL :: circ
+
+         NULLIFY(previous, next)
          circ = self % isCircular()
          IF(circ) CALL self % makeCircular(.FALSE.)
          
@@ -540,10 +543,11 @@
       SUBROUTINE removeAllLinkedListObjects(self)  
          IMPLICIT NONE
          CLASS(FTLinkedList)                :: self
-         CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL(), tmp => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
          LOGICAL                            :: circular
          CLASS(FTObject)          , POINTER :: obj
 
+         NULLIFY(listRecord, tmp)
          IF(.NOT.ASSOCIATED(self % head)) RETURN 
          
          circular = self % isCircular()

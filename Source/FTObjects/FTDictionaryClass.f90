@@ -348,6 +348,13 @@
          SUBROUTINE destructFTDictionary(self)  
             IMPLICIT NONE  
             TYPE(FTDictionary) :: self
+            INTEGER            :: i
+
+            IF ( .NOT. ASSOCIATED(self % entries) ) RETURN
+
+            DO i = 1, SIZE(self % entries)
+               CALL self % entries(i) % removeAllObjects()
+            END DO
 
             DEALLOCATE(self % entries)
             self % entries => NULL()

@@ -187,8 +187,9 @@
 !>
       SUBROUTINE destructFTStringSet(self)
          IMPLICIT NONE
-         TYPE( FTStringSet) :: self
+         TYPE( FTStringSet ) :: self
 
+         CALL destructFTDictionary(self % dict)
       END SUBROUTINE destructFTStringSet
 !
 !------------------------------------------------

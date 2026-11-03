@@ -193,9 +193,10 @@
        RECURSIVE SUBROUTINE destructObjectArray(self)  
          IMPLICIT NONE
          TYPE( FTMutableObjectArray)  :: self
-         CLASS(FTObject), POINTER     :: obj     => NULL()
+         CLASS(FTObject), POINTER     :: obj
          INTEGER                      :: i
 
+         NULLIFY(obj)
          DO i = 1, self % count_
             obj => self % array(i) % object 
             IF ( ASSOCIATED(obj) ) CALL releaseFTObject(obj)
@@ -262,8 +263,9 @@
 !        ---------------
 !
          INTEGER                     :: i
-         CLASS(FTObject), POINTER    :: obj  => NULL()
+         CLASS(FTObject), POINTER    :: obj
          
+         NULLIFY(obj)
          obj => self % array(indx) %  object
          
          IF ( ASSOCIATED(obj) )     THEN
