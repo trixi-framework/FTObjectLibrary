@@ -105,7 +105,7 @@
 !
 !< The destructor must only be called from within subclass destructors
 !
-      SUBROUTINE destructFTLinkedListRecord(self) 
+      RECURSIVE SUBROUTINE destructFTLinkedListRecord(self) 
          IMPLICIT NONE
          TYPE(FTLinkedListRecord) :: self
          
@@ -117,7 +117,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListRecord(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListRecord(self)  
          IMPLICIT NONE
          TYPE(FTLinkedListRecord), POINTER :: self
          CLASS(FTObject)         , POINTER :: obj
@@ -451,8 +451,9 @@
          CLASS(FTLinkedList)                :: self
          CLASS(FTObject)          , POINTER :: obj
          
-         CLASS(FTLinkedListRecord), POINTER :: current => NULL(), previous => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: current, previous
                   
+         NULLIFY(current, previous)
          IF ( .NOT.ASSOCIATED(self % head) )     RETURN
          
          current  => self % head
@@ -492,7 +493,7 @@
 !        Local variables
 !        ---------------
 !
-         CLASS(FTLinkedListRecord), POINTER :: previous => NULL(), next => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: previous, next
          CLASS(FTObject)          , POINTER :: obj
 !
 !        ---------------------------------------------------
@@ -502,6 +503,8 @@
 !        ---------------------------------------------------
 !
          LOGICAL :: circ
+
+         NULLIFY(previous, next)
          circ = self % isCircular()
          IF(circ) CALL self % makeCircular(.FALSE.)
          
@@ -537,13 +540,14 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE removeAllLinkedListObjects(self)  
+      RECURSIVE SUBROUTINE removeAllLinkedListObjects(self)  
          IMPLICIT NONE
          CLASS(FTLinkedList)                :: self
-         CLASS(FTLinkedListRecord), POINTER :: listRecord => NULL(), tmp => NULL()
+         CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
          LOGICAL                            :: circular
          CLASS(FTObject)          , POINTER :: obj
 
+         NULLIFY(listRecord, tmp)
          IF(.NOT.ASSOCIATED(self % head)) RETURN 
          
          circular = self % isCircular()
@@ -577,7 +581,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListClass(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListClass(self)  
          IMPLICIT NONE
          CLASS (FTLinkedList), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -591,7 +595,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedList(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedList(self)  
          IMPLICIT NONE
          TYPE (FTLinkedList), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -608,7 +612,7 @@
 !< The destructor must only be called from within the destructors of subclasses
 !> It is automatically called by release().
 !
-      SUBROUTINE destructFTLinkedList(self) 
+      RECURSIVE SUBROUTINE destructFTLinkedList(self) 
          IMPLICIT NONE
          TYPE(FTLinkedList)                :: self
 
@@ -646,9 +650,10 @@
          IMPLICIT NONE  
          CLASS(FTLinkedList)                 :: self
          INTEGER                             :: iUnit
-         CLASS(FTLinkedListRecord), POINTER  :: listRecord => NULL()
+         CLASS(FTLinkedListRecord), POINTER  :: listRecord
          LOGICAL                             :: circular
          
+         NULLIFY(listRecord)
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
          circular                        = .FALSE.
@@ -981,7 +986,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListIterator(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListIterator(self)  
          IMPLICIT NONE
          TYPE(FTLinkedListIterator), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -995,7 +1000,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListIteratorClass(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListIteratorClass(self)  
          IMPLICIT NONE
          CLASS(FTLinkedListIterator), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -1012,7 +1017,7 @@
 !< The destructor must not be called except at the end of destructors of
 ! subclasses.
 !
-      SUBROUTINE destructIterator(self)
+      RECURSIVE SUBROUTINE destructIterator(self)
           IMPLICIT NONE 
           TYPE(FTLinkedListIterator) :: self
           
@@ -1023,7 +1028,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseMemberList(self)  
+      RECURSIVE SUBROUTINE releaseMemberList(self)  
           IMPLICIT NONE  
           CLASS(FTLinkedListIterator) :: self
           CLASS(FTObject), POINTER    :: obj
@@ -1176,7 +1181,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE removeCurrentRecord(self)  
+      RECURSIVE SUBROUTINE removeCurrentRecord(self)  
          IMPLICIT NONE  
          CLASS(FTLinkedListIterator)        :: self
          CLASS(FTLinkedListRecord), POINTER :: r, n

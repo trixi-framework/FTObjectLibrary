@@ -255,7 +255,7 @@
 !>   The destructor for the class. The base class destructor does nothing.
 !     --------------------------------------------------------------------
 !
-      SUBROUTINE destructFTObject(self)
+      RECURSIVE SUBROUTINE destructFTObject(self)
          IMPLICIT NONE 
          type(FTObject) :: self
          IF(self % refCount() >= 0)     CONTINUE 

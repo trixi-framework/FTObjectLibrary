@@ -96,7 +96,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTKeyObjectPair(self)  
+      RECURSIVE SUBROUTINE releaseFTKeyObjectPair(self)  
          IMPLICIT NONE
          TYPE(FTKeyObjectPair)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
@@ -124,7 +124,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE destructFTKeyObjectPair(self)
+         RECURSIVE SUBROUTINE destructFTKeyObjectPair(self)
             IMPLICIT NONE
             TYPE(FTKeyObjectPair) :: self
             
@@ -317,7 +317,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTDictionary(self)  
+      RECURSIVE SUBROUTINE releaseFTDictionary(self)  
          IMPLICIT NONE
          TYPE(FTDictionary)  , POINTER :: self
          CLASS(FTObject)     , POINTER :: obj
@@ -331,7 +331,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTDictionaryClass(self)  
+      RECURSIVE SUBROUTINE releaseFTDictionaryClass(self)  
          IMPLICIT NONE
          CLASS(FTDictionary) , POINTER :: self
          CLASS(FTObject)     , POINTER :: obj
@@ -345,9 +345,16 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-         SUBROUTINE destructFTDictionary(self)  
+         RECURSIVE SUBROUTINE destructFTDictionary(self)  
             IMPLICIT NONE  
             TYPE(FTDictionary) :: self
+            INTEGER            :: i
+
+            IF ( .NOT. ASSOCIATED(self % entries) ) RETURN
+
+            DO i = 1, SIZE(self % entries)
+               CALL self % entries(i) % removeAllObjects()
+            END DO
 
             DEALLOCATE(self % entries)
             self % entries => NULL()

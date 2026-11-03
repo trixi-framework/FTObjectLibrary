@@ -1,5 +1,6 @@
 # FTObjectLibrary
 
+[![Docs-stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://trixi-framework.github.io/FTObjectLibrary)
 [![Build Status](https://github.com/trixi-framework/FTObjectLibrary/workflows/CI/badge.svg)](https://github.com/trixi-framework/FTObjectLibrary/actions?query=workflow%3ACI)
 [![Coveralls](https://coveralls.io/repos/github/trixi-framework/FTObjectLibrary/badge.svg?branch=main)](https://coveralls.io/github/trixi-framework/FTObjectLibrary?branch=main)
 [![Codecov](https://codecov.io/gh/trixi-framework/FTObjectLibrary/branch/main/graph/badge.svg)](https://codecov.io/gh/trixi-framework/FTObjectLibrary)
@@ -39,11 +40,12 @@ values.
 
 ## News
 
-New about changes can be found [here](Docs/News.md).
+New about changes can be found [here](https://trixi-framework.org/FTObjectLibrary/page/News.html).
 
 ## Documentation
 
-Documentation can be found in the [user's guide](Docs/UsersGuide.md).
+Documentation can be found in the [user's guide](https://trixi-framework.org/FTObjectLibrary/page/UsersGuide.html).
+The full API documentation is available at [trixi-framework.org/FTObjectLibrary](https://trixi-framework.org/FTObjectLibrary/).
 
 ## Examples
 

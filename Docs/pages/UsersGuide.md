@@ -355,7 +355,7 @@ The destructor reverses the operations done in the init() procedure. It
 releases and deallocates any pointers that it owns. For example, if
 "Subclass" EXTENDS(FTObject) then overriding destruct looks like
 
-          SUBROUTINE destructSubclass(self)
+          RECURSIVE SUBROUTINE destructSubclass(self)
            IMPLICIT NONE
            TYPE(Subclass) :: self
            .
@@ -366,6 +366,14 @@ releases and deallocates any pointers that it owns. For example, if
 The destructor is to be declared as a FINAL procedure for the type, and
 hence is not called directly. It is called automatically by Fortran when
 an object is deallocated or goes out of scope.
+The destructor and the release procedure should be declared `RECURSIVE`.
+Releasing an object can release the objects it owns, and those can be of 
+the same class (a list of lists, a dictionary of dictionaries), so these 
+procedures can be re-entered before an earlier call returns. For the same 
+reason, do not give pointer local variables an initial value (`=> NULL()`) 
+in these procedures. An initializer gives the variable the SAVE attribute, 
+so all active calls would share it. Use `NULLIFY` at the start of the 
+procedure instead.
 
 **Implementing printDescription(iUnit)**
 
@@ -379,7 +387,7 @@ The release subroutine will call the base class releaseFTObject which
 will, in turn, release all objects that it owns. If the object itself is
 no longer referenced, it will deallocate itself. Due to fortran's rules, create one as below with the pointer TYPEed, and another with CLASS, usually with the word Class appended, e.g. releaseXXXClass(self).
 
-          SUBROUTINE releaseSubclass(self)
+          RECURSIVE SUBROUTINE releaseSubclass(self)
            IMPLICIT NONE
            TYPE(Subclass) , POINTER :: self
            CLASS(FTObject), POINTER :: obj

@@ -132,7 +132,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTStack(self)  
+      RECURSIVE SUBROUTINE releaseFTStack(self)  
          IMPLICIT NONE
          TYPE(FTStack)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
@@ -146,7 +146,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTStackClass(self)  
+      RECURSIVE SUBROUTINE releaseFTStackClass(self)  
          IMPLICIT NONE
          CLASS(FTStack)  , POINTER :: self
          CLASS(FTObject) , POINTER :: obj
