@@ -481,7 +481,7 @@ can be.
 <a id="ln-94" name="ln-94" href="#ln-94"></a><span class="c">!</span>
 <a id="ln-95" name="ln-95" href="#ln-95"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-96" name="ln-96" href="#ln-96"></a><span class="c">! </span>
-<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseFTMatrixData</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">releaseFTMatrixData</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
 <a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span>
 <a id="ln-99" name="ln-99" href="#ln-99"></a><span class="k">         TYPE</span><span class="p">(</span><span class="n">MatrixData</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
@@ -495,7 +495,7 @@ can be.
 <a id="ln-108" name="ln-108" href="#ln-108"></a><span class="c">!</span>
 <a id="ln-109" name="ln-109" href="#ln-109"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-110" name="ln-110" href="#ln-110"></a><span class="c">! </span>
-<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">destructMatrixData</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">destructMatrixData</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
 <a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">         </span><span class="k">IMPLICIT NONE  </span>
 <a id="ln-113" name="ln-113" href="#ln-113"></a><span class="k">         TYPE</span><span class="p">(</span><span class="n">MatrixData</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-114" name="ln-114" href="#ln-114"></a><span class="w">         </span>
@@ -829,7 +829,7 @@ can be.
 <a id="ln-442" name="ln-442" href="#ln-442"></a><span class="c">!</span>
 <a id="ln-443" name="ln-443" href="#ln-443"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-444" name="ln-444" href="#ln-444"></a><span class="c">! </span>
-<a id="ln-445" name="ln-445" href="#ln-445"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseFTSparseMatrix</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-445" name="ln-445" href="#ln-445"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">releaseFTSparseMatrix</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
 <a id="ln-446" name="ln-446" href="#ln-446"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span>
 <a id="ln-447" name="ln-447" href="#ln-447"></a><span class="k">         TYPE</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-448" name="ln-448" href="#ln-448"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
@@ -843,7 +843,7 @@ can be.
 <a id="ln-456" name="ln-456" href="#ln-456"></a><span class="c">!</span>
 <a id="ln-457" name="ln-457" href="#ln-457"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-458" name="ln-458" href="#ln-458"></a><span class="c">! </span>
-<a id="ln-459" name="ln-459" href="#ln-459"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseFTSparseMatrixClass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-459" name="ln-459" href="#ln-459"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">releaseFTSparseMatrixClass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
 <a id="ln-460" name="ln-460" href="#ln-460"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span>
 <a id="ln-461" name="ln-461" href="#ln-461"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTSparseMatrix</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-462" name="ln-462" href="#ln-462"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
@@ -857,7 +857,7 @@ can be.
 <a id="ln-470" name="ln-470" href="#ln-470"></a><span class="c">!</span>
 <a id="ln-471" name="ln-471" href="#ln-471"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-472" name="ln-472" href="#ln-472"></a><span class="c">! </span>
-<a id="ln-473" name="ln-473" href="#ln-473"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">destructSparseMatrix</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<a id="ln-473" name="ln-473" href="#ln-473"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">destructSparseMatrix</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
 <a id="ln-474" name="ln-474" href="#ln-474"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span><span class="w">  </span>
 <a id="ln-475" name="ln-475" href="#ln-475"></a><span class="c">!</span>
 <a id="ln-476" name="ln-476" href="#ln-476"></a><span class="c">!        ---------</span>
@@ -886,7 +886,7 @@ can be.
 <a id="ln-499" name="ln-499" href="#ln-499"></a><span class="c">!</span>
 <a id="ln-500" name="ln-500" href="#ln-500"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-501" name="ln-501" href="#ln-501"></a><span class="c">! </span>
-<a id="ln-502" name="ln-502" href="#ln-502"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseSMMemberList</span><span class="p">(</span><span class="n">list</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-502" name="ln-502" href="#ln-502"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">releaseSMMemberList</span><span class="p">(</span><span class="n">list</span><span class="p">)</span><span class="w">  </span>
 <a id="ln-503" name="ln-503" href="#ln-503"></a><span class="w">          </span><span class="k">IMPLICIT NONE  </span>
 <a id="ln-504" name="ln-504" href="#ln-504"></a><span class="k">          CLASS</span><span class="p">(</span><span class="n">FTLinkedList</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">list</span>
 <a id="ln-505" name="ln-505" href="#ln-505"></a><span class="w">          </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>

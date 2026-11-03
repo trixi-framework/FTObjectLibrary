@@ -116,6 +116,14 @@
     <div class="col-9" id='text'>
       <p><a href="../index.html">Back to the main documentation</a></p>
 <h1>News</h1>
+<h2>November 03, 2026</h2>
+<p>Fixed memory leaks and re-entry problems in object destruction.
+Dictionaries now release their contents when destroyed, and FTStringSet frees its dictionary.
+Destructors, release procedures and removeAll are now RECURSIVE, and no longer use initialized
+(implicitly SAVEd) pointer locals. These problems could cause leaks, or crashes with some compilers
+such as ifx, when containers held other containers. Subclasses should follow the same pattern:
+declare the destructor and release procedures RECURSIVE, bind the destructor with FINAL,
+and do not initialize pointer locals in them. See "Subclassing FTObject" in the User's Guide.</p>
 <h2>July 29, 2026</h2>
 <p>FTOL now has two versions, as necessary for procedures that need to distinguish between objects declared as TYPE and those declared as CLASS. See the documentation and the tests for examples.</p>
 <h2>May 11, 2025</h2>

@@ -456,7 +456,7 @@ some other reasonable value.</p>
 <p>The destructor reverses the operations done in the init() procedure. It
 releases and deallocates any pointers that it owns. For example, if
 "Subclass" EXTENDS(FTObject) then overriding destruct looks like</p>
-<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">destructSubclass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code>      <span class="n">RECURSIVE</span> <span class="n">SUBROUTINE</span> <span class="n">destructSubclass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
        <span class="n">IMPLICIT</span> <span class="n">NONE</span>
        <span class="kr">TYPE</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">::</span> <span class="n">self</span>
        <span class="p">.</span>
@@ -467,7 +467,15 @@ releases and deallocates any pointers that it owns. For example, if
 
 <p>The destructor is to be declared as a FINAL procedure for the type, and
 hence is not called directly. It is called automatically by Fortran when
-an object is deallocated or goes out of scope.</p>
+an object is deallocated or goes out of scope.
+The destructor and the release procedure should be declared <code>RECURSIVE</code>.
+Releasing an object can release the objects it owns, and those can be of 
+the same class (a list of lists, a dictionary of dictionaries), so these 
+procedures can be re-entered before an earlier call returns. For the same 
+reason, do not give pointer local variables an initial value (<code>=&gt; NULL()</code>) 
+in these procedures. An initializer gives the variable the SAVE attribute, 
+so all active calls would share it. Use <code>NULLIFY</code> at the start of the 
+procedure instead.</p>
 <p><strong>Implementing printDescription(iUnit)</strong></p>
 <p>printDescription is a method whose existence is to support debugging.
 Call printDescription(iUnit) on any objects owned by self for a
@@ -476,7 +484,7 @@ cascading of what is stored in the object.</p>
 <p>The release subroutine will call the base class releaseFTObject which
 will, in turn, release all objects that it owns. If the object itself is
 no longer referenced, it will deallocate itself. Due to fortran's rules, create one as below with the pointer TYPEed, and another with CLASS, usually with the word Class appended, e.g. releaseXXXClass(self).</p>
-<div class="codehilite"><pre><span></span><code>      <span class="n">SUBROUTINE</span> <span class="n">releaseSubclass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code>      <span class="n">RECURSIVE</span> <span class="n">SUBROUTINE</span> <span class="n">releaseSubclass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
        <span class="n">IMPLICIT</span> <span class="n">NONE</span>
        <span class="kr">TYPE</span><span class="p">(</span><span class="n">Subclass</span><span class="p">)</span> <span class="p">,</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">self</span>
        <span class="n">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span> <span class="kr">POINTER</span> <span class="p">::</span> <span class="n">obj</span>

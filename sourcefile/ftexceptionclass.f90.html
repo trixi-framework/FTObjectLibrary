@@ -89,7 +89,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 9.8% of total for source files.">374 statements</a>
+                 title=" 9.7% of total for source files.">374 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -791,7 +791,7 @@ can be.
 <a id="ln-279" name="ln-279" href="#ln-279"></a><span class="c">!</span>
 <a id="ln-280" name="ln-280" href="#ln-280"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-281" name="ln-281" href="#ln-281"></a><span class="c">! </span>
-<a id="ln-282" name="ln-282" href="#ln-282"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseFTExceptionClass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-282" name="ln-282" href="#ln-282"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">releaseFTExceptionClass</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
 <a id="ln-283" name="ln-283" href="#ln-283"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span>
 <a id="ln-284" name="ln-284" href="#ln-284"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTException</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-285" name="ln-285" href="#ln-285"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
@@ -805,7 +805,7 @@ can be.
 <a id="ln-293" name="ln-293" href="#ln-293"></a><span class="c">!</span>
 <a id="ln-294" name="ln-294" href="#ln-294"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-295" name="ln-295" href="#ln-295"></a><span class="c">! </span>
-<a id="ln-296" name="ln-296" href="#ln-296"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseFTException</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-296" name="ln-296" href="#ln-296"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">releaseFTException</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
 <a id="ln-297" name="ln-297" href="#ln-297"></a><span class="w">         </span><span class="k">IMPLICIT NONE</span>
 <a id="ln-298" name="ln-298" href="#ln-298"></a><span class="k">         TYPE</span><span class="p">(</span><span class="n">FTException</span><span class="p">)</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-299" name="ln-299" href="#ln-299"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">)</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
@@ -819,7 +819,7 @@ can be.
 <a id="ln-307" name="ln-307" href="#ln-307"></a><span class="c">!</span>
 <a id="ln-308" name="ln-308" href="#ln-308"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-309" name="ln-309" href="#ln-309"></a><span class="c">! </span>
-<a id="ln-310" name="ln-310" href="#ln-310"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">destructException</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<a id="ln-310" name="ln-310" href="#ln-310"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">destructException</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
 <a id="ln-311" name="ln-311" href="#ln-311"></a><span class="c">!</span>
 <a id="ln-312" name="ln-312" href="#ln-312"></a><span class="c">! -------------------------------------------------------------</span>
 <a id="ln-313" name="ln-313" href="#ln-313"></a><span class="c">!&gt;The destructor for the class. Do not call this directly. Call</span>
@@ -853,7 +853,7 @@ can be.
 <a id="ln-341" name="ln-341" href="#ln-341"></a><span class="c">!</span>
 <a id="ln-342" name="ln-342" href="#ln-342"></a><span class="c">!//////////////////////////////////////////////////////////////////////// </span>
 <a id="ln-343" name="ln-343" href="#ln-343"></a><span class="c">! </span>
-<a id="ln-344" name="ln-344" href="#ln-344"></a><span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">releaseMemberDictionary</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
+<a id="ln-344" name="ln-344" href="#ln-344"></a><span class="w">      </span><span class="k">RECURSIVE SUBROUTINE </span><span class="n">releaseMemberDictionary</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w">  </span>
 <a id="ln-345" name="ln-345" href="#ln-345"></a><span class="w">         </span><span class="k">IMPLICIT NONE  </span>
 <a id="ln-346" name="ln-346" href="#ln-346"></a><span class="k">         CLASS</span><span class="p">(</span><span class="n">FTException</span><span class="p">)</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-347" name="ln-347" href="#ln-347"></a><span class="w">         </span><span class="k">CLASS</span><span class="p">(</span><span class="n">FTObject</span><span class="p">),</span><span class="w"> </span><span class="k">POINTER</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>

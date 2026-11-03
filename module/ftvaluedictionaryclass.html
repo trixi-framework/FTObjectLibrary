@@ -237,8 +237,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='ftdictionaryclass.html'>FTDictionaryClass</a></li>
                   <li class="list-inline-item"><a href='ftvalueclass.html'>FTValueClass</a></li>
+                  <li class="list-inline-item"><a href='ftdictionaryclass.html'>FTDictionaryClass</a></li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
               </ul>
             </li>
@@ -822,12 +822,12 @@ modules which it uses.
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftdictionary.html#boundprocedure-initwithsize~4'>initWithSize</a></strong></td>
+  <strong><a href='../type/ftdictionary.html#boundprocedure-initwithsize~2'>initWithSize</a></strong></td>
                   <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftdictionary.html#boundprocedure-init~6'>init</a></strong></td>
+  <strong><a href='../type/ftdictionary.html#boundprocedure-init~4'>init</a></strong></td>
                   <td></td>
               </tr>
               <tr>
@@ -847,12 +847,12 @@ modules which it uses.
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftdictionary.html#boundprocedure-description~5'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftdictionarydescription.html'>FTDictionaryDescription</a></td>
+  <strong><a href='../type/ftdictionary.html#boundprocedure-description~4'>description</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/ftdictionarydescription.html'>FTDictionaryDescription</a></td>
                   <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftdictionary.html#boundprocedure-printdescription~11'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftdictionarydescription.html'>printFTDictionaryDescription</a></td>
+  <strong><a href='../type/ftdictionary.html#boundprocedure-printdescription~8'>printDescription</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/printftdictionarydescription.html'>printFTDictionaryDescription</a></td>
                   <td></td>
               </tr>
               <tr>
@@ -867,7 +867,7 @@ modules which it uses.
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftdictionary.html#boundprocedure-count~2'>COUNT</a></strong></td>
+  <strong><a href='../type/ftdictionary.html#boundprocedure-count'>COUNT</a></strong></td>
                   <td></td>
               </tr>
               <tr>
@@ -922,7 +922,7 @@ modules which it uses.
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/ftvaluedictionary.html#boundprocedure-classname~5'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/valuedictionaryclassname.html'>valueDictionaryClassName</a></td>
+  <strong><a href='../type/ftvaluedictionary.html#boundprocedure-classname~6'>className</a></strong> => <a href='/home/runner/work/FTObjectLibrary/FTObjectLibrary/Docs/HTMLdocs/proc/valuedictionaryclassname.html'>valueDictionaryClassName</a></td>
                   <td></td>
               </tr>
           </tbody>
@@ -937,6 +937,126 @@ modules which it uses.
           <h2>Functions</h2>
               <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-realvalueforkey"></span> <h3>public  function <a href='../proc/realvalueforkey.html'>realValueForKey</a>(self, key)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~74"></span>
+              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-key~8"></span>
+              character(len=*)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>key</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>real</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-integervalueforkey"></span> <h3>public  function <a href='../proc/integervalueforkey.html'>integerValueForKey</a>(self, key)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~75"></span>
+              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-key~9"></span>
+              character(len=*)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>key</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>integer</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-doubleprecisionvalueforkey"></span> <h3>public  function <a href='../proc/doubleprecisionvalueforkey.html'>doublePrecisionValueForKey</a>(self, key)  
 </h3></div>
     <div class="card-body">
           
@@ -988,7 +1108,7 @@ modules which it uses.
 
     <h4>
     Return Value
-    <small>real</small>
+    <small>doubleprecision</small>
     </h4>
     
 
@@ -996,7 +1116,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-integervalueforkey"></span> <h3>public  function <a href='../proc/integervalueforkey.html'>integerValueForKey</a>(self, key)  
+    <div class="card-header codesum"><span class="anchor" id="proc-quadvalueforkey"></span> <h3>public  function <a href='../proc/quadvalueforkey.html'>quadValueForKey</a>(self, key)  
 </h3></div>
     <div class="card-body">
           
@@ -1048,7 +1168,7 @@ modules which it uses.
 
     <h4>
     Return Value
-    <small>integer</small>
+    <small>real(kind=selected_real_kind(quad_digits))</small>
     </h4>
     
 
@@ -1056,7 +1176,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-doubleprecisionvalueforkey"></span> <h3>public  function <a href='../proc/doubleprecisionvalueforkey.html'>doublePrecisionValueForKey</a>(self, key)  
+    <div class="card-header codesum"><span class="anchor" id="proc-logicalvalueforkey"></span> <h3>public  function <a href='../proc/logicalvalueforkey.html'>logicalValueForKey</a>(self, key)  
 </h3></div>
     <div class="card-body">
           
@@ -1108,7 +1228,7 @@ modules which it uses.
 
     <h4>
     Return Value
-    <small>doubleprecision</small>
+    <small>logical</small>
     </h4>
     
 
@@ -1116,7 +1236,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-quadvalueforkey"></span> <h3>public  function <a href='../proc/quadvalueforkey.html'>quadValueForKey</a>(self, key)  
+    <div class="card-header codesum"><span class="anchor" id="proc-stringvalueforkeya"></span> <h3>public  function <a href='../proc/stringvalueforkeya.html'>stringValueForKeyA</a>(self, key)  
 </h3></div>
     <div class="card-body">
           
@@ -1168,7 +1288,7 @@ modules which it uses.
 
     <h4>
     Return Value
-    <small>real(kind=selected_real_kind(quad_digits))</small>
+    <small>character(len=:), ALLOCATABLE</small>
     </h4>
     
 
@@ -1176,7 +1296,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-logicalvalueforkey"></span> <h3>public  function <a href='../proc/logicalvalueforkey.html'>logicalValueForKey</a>(self, key)  
+    <div class="card-header codesum"><span class="anchor" id="proc-stringvalueforkeyr"></span> <h3>public  function <a href='../proc/stringvalueforkeyr.html'>stringValueForKeyR</a>(self, key, requestedLength)  
 </h3></div>
     <div class="card-body">
           
@@ -1223,129 +1343,9 @@ modules which it uses.
 
             </td>
         </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>logical</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-stringvalueforkeya"></span> <h3>public  function <a href='../proc/stringvalueforkeya.html'>stringValueForKeyA</a>(self, key)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~81"></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-key~15"></span>
-              character(len=*)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>key</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>character(len=:), ALLOCATABLE</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-stringvalueforkeyr"></span> <h3>public  function <a href='../proc/stringvalueforkeyr.html'>stringValueForKeyR</a>(self, key, requestedLength)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-self~82"></span>
-              class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>self</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-key~16"></span>
-              character(len=*)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>key</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-requestedlength~2"></span>
+              <span class="anchor" id="variable-requestedlength"></span>
               integer
             </td>
 <td></td>
@@ -1390,7 +1390,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dict~4"></span>
+              <span class="anchor" id="variable-dict~3"></span>
               class(<a href='../type/ftdictionary.html'>FTDictionary</a>),
             </td>
 <td></td>
@@ -1435,7 +1435,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~56"></span>
+              <span class="anchor" id="variable-obj~41"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>
@@ -1480,7 +1480,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~83"></span>
+              <span class="anchor" id="variable-self~81"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -1511,7 +1511,7 @@ modules which it uses.
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-releaseftvaluedictionary"></span> <h3>public  subroutine <a href='../proc/releaseftvaluedictionary.html'>releaseFTValueDictionary</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-releaseftvaluedictionary"></span> <h3>public recursive subroutine <a href='../proc/releaseftvaluedictionary.html'>releaseFTValueDictionary</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1530,7 +1530,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~68"></span>
+              <span class="anchor" id="variable-self~66"></span>
               type(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>),
             </td>
 <td></td>
@@ -1551,7 +1551,7 @@ modules which it uses.
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-releaseftvaluedictionaryclass"></span> <h3>public  subroutine <a href='../proc/releaseftvaluedictionaryclass.html'>releaseFTValueDictionaryClass</a>(self)  
+    <div class="card-header codesum"><span class="anchor" id="proc-releaseftvaluedictionaryclass"></span> <h3>public recursive subroutine <a href='../proc/releaseftvaluedictionaryclass.html'>releaseFTValueDictionaryClass</a>(self)  
 </h3></div>
     <div class="card-body">
           
@@ -1570,7 +1570,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~69"></span>
+              <span class="anchor" id="variable-self~67"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>),
             </td>
 <td></td>
@@ -1610,7 +1610,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~70"></span>
+              <span class="anchor" id="variable-self~68"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -1625,7 +1625,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~16"></span>
+              <span class="anchor" id="variable-i~6"></span>
               integer
             </td>
 <td></td>
@@ -1640,7 +1640,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~4"></span>
+              <span class="anchor" id="variable-key~2"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1680,7 +1680,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~71"></span>
+              <span class="anchor" id="variable-self~69"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -1695,7 +1695,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-r~9"></span>
+              <span class="anchor" id="variable-r~2"></span>
               real
             </td>
 <td></td>
@@ -1710,7 +1710,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~5"></span>
+              <span class="anchor" id="variable-key~3"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1750,7 +1750,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~72"></span>
+              <span class="anchor" id="variable-self~70"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -1765,7 +1765,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-r~10"></span>
+              <span class="anchor" id="variable-r~3"></span>
               double precision
             </td>
 <td></td>
@@ -1780,7 +1780,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~6"></span>
+              <span class="anchor" id="variable-key~4"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1820,7 +1820,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~73"></span>
+              <span class="anchor" id="variable-self~71"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -1835,7 +1835,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-r~11"></span>
+              <span class="anchor" id="variable-r~4"></span>
               real(kind=SELECTED_REAL_KIND(QUAD_DIGITS))
             </td>
 <td></td>
@@ -1850,7 +1850,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~7"></span>
+              <span class="anchor" id="variable-key~5"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1890,7 +1890,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~74"></span>
+              <span class="anchor" id="variable-self~72"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -1905,7 +1905,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-s~12"></span>
+              <span class="anchor" id="variable-s~7"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1920,7 +1920,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~8"></span>
+              <span class="anchor" id="variable-key~6"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1960,7 +1960,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~75"></span>
+              <span class="anchor" id="variable-self~73"></span>
               class(<a href='../type/ftvaluedictionary.html'>FTValueDictionary</a>)
             </td>
 <td></td>
@@ -1975,7 +1975,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-l~8"></span>
+              <span class="anchor" id="variable-l"></span>
               logical
             </td>
 <td></td>
@@ -1990,7 +1990,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~9"></span>
+              <span class="anchor" id="variable-key~7"></span>
               character(len=*)
             </td>
 <td></td>
@@ -2030,7 +2030,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dict~3"></span>
+              <span class="anchor" id="variable-dict~2"></span>
               class(<a href='../type/ftdictionary.html'>FTDictionary</a>),
             </td>
 <td></td>
@@ -2085,7 +2085,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-obj~55"></span>
+              <span class="anchor" id="variable-obj~40"></span>
               class(<a href='../type/ftobject.html'>FTObject</a>),
             </td>
 <td></td>

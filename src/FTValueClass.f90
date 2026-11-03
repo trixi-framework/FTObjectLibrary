@@ -359,7 +359,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTValue(self)  
+      RECURSIVE SUBROUTINE releaseFTValue(self)  
          IMPLICIT NONE
          TYPE(FTValue)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj
@@ -373,7 +373,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTValueClass(self)  
+      RECURSIVE SUBROUTINE releaseFTValueClass(self)  
          IMPLICIT NONE
          CLASS(FTValue) , POINTER :: self
          CLASS(FTObject), POINTER :: obj
@@ -393,7 +393,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE destructValue(self) 
+      RECURSIVE SUBROUTINE destructValue(self) 
          IMPLICIT NONE
          TYPE(FTValue)  :: self
          

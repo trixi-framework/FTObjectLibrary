@@ -129,7 +129,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTValueDictionary(self)  
+      RECURSIVE SUBROUTINE releaseFTValueDictionary(self)  
          IMPLICIT NONE
          TYPE(FTValueDictionary) , POINTER :: self
          CLASS(FTObject)         , POINTER :: obj
@@ -145,7 +145,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTValueDictionaryClass(self)  
+      RECURSIVE SUBROUTINE releaseFTValueDictionaryClass(self)  
          IMPLICIT NONE
          CLASS(FTValueDictionary), POINTER :: self
          CLASS(FTObject)         , POINTER :: obj
@@ -225,7 +225,7 @@
          CALL v % initWithValue(r)
          obj => v
          CALL self % addObjectforKey(obj,key)
-         CALL release(v)
+         CALL release(obj)
       END SUBROUTINE addQuadValueForKey
 #endif
 !
