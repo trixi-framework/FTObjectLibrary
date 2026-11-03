@@ -92,7 +92,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTMultiIndexMatrixData(self)  
+      RECURSIVE SUBROUTINE releaseFTMultiIndexMatrixData(self)  
          IMPLICIT NONE
          TYPE(MultiIndexMatrixData), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -106,7 +106,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE destructMultiIndexMatrixData(self)
+      RECURSIVE SUBROUTINE destructMultiIndexMatrixData(self)
          IMPLICIT NONE  
          TYPE(MultiIndexMatrixData) :: self
          
@@ -262,7 +262,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTMultiIndexTable(self)  
+      RECURSIVE SUBROUTINE releaseFTMultiIndexTable(self)  
          IMPLICIT NONE
          TYPE(FTMultiIndexTable), POINTER :: self
          CLASS(FTObject)        , POINTER :: obj
@@ -276,7 +276,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTMultiIndexTableClass(self)  
+      RECURSIVE SUBROUTINE releaseFTMultiIndexTableClass(self)  
          IMPLICIT NONE
          CLASS(FTMultiIndexTable), POINTER :: self
          CLASS(FTObject)         , POINTER :: obj
@@ -290,7 +290,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE destructMultiIndexTable(self)
+      RECURSIVE SUBROUTINE destructMultiIndexTable(self)
          IMPLICIT NONE  
 !
 !        ---------

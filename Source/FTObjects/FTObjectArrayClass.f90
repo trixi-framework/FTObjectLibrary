@@ -159,7 +159,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTMutableObjectArray(self)  
+      RECURSIVE SUBROUTINE releaseFTMutableObjectArray(self)  
          IMPLICIT NONE
          TYPE(FTMutableObjectArray), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -172,7 +172,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTMutableObjectArrayClass(self)  
+      RECURSIVE SUBROUTINE releaseFTMutableObjectArrayClass(self)  
          IMPLICIT NONE
          CLASS(FTMutableObjectArray), POINTER :: self
          CLASS(FTObject)            , POINTER :: obj

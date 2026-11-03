@@ -105,7 +105,7 @@
 !
 !< The destructor must only be called from within subclass destructors
 !
-      SUBROUTINE destructFTLinkedListRecord(self) 
+      RECURSIVE SUBROUTINE destructFTLinkedListRecord(self) 
          IMPLICIT NONE
          TYPE(FTLinkedListRecord) :: self
          
@@ -117,7 +117,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListRecord(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListRecord(self)  
          IMPLICIT NONE
          TYPE(FTLinkedListRecord), POINTER :: self
          CLASS(FTObject)         , POINTER :: obj
@@ -540,7 +540,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE removeAllLinkedListObjects(self)  
+      RECURSIVE SUBROUTINE removeAllLinkedListObjects(self)  
          IMPLICIT NONE
          CLASS(FTLinkedList)                :: self
          CLASS(FTLinkedListRecord), POINTER :: listRecord, tmp
@@ -581,7 +581,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListClass(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListClass(self)  
          IMPLICIT NONE
          CLASS (FTLinkedList), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -595,7 +595,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedList(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedList(self)  
          IMPLICIT NONE
          TYPE (FTLinkedList), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -612,7 +612,7 @@
 !< The destructor must only be called from within the destructors of subclasses
 !> It is automatically called by release().
 !
-      SUBROUTINE destructFTLinkedList(self) 
+      RECURSIVE SUBROUTINE destructFTLinkedList(self) 
          IMPLICIT NONE
          TYPE(FTLinkedList)                :: self
 
@@ -650,9 +650,10 @@
          IMPLICIT NONE  
          CLASS(FTLinkedList)                 :: self
          INTEGER                             :: iUnit
-         CLASS(FTLinkedListRecord), POINTER  :: listRecord => NULL()
+         CLASS(FTLinkedListRecord), POINTER  :: listRecord
          LOGICAL                             :: circular
          
+         NULLIFY(listRecord)
          IF(.NOT.ASSOCIATED(self % head)) RETURN
          
          circular                        = .FALSE.
@@ -985,7 +986,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListIterator(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListIterator(self)  
          IMPLICIT NONE
          TYPE(FTLinkedListIterator), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -999,7 +1000,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTLinkedListIteratorClass(self)  
+      RECURSIVE SUBROUTINE releaseFTLinkedListIteratorClass(self)  
          IMPLICIT NONE
          CLASS(FTLinkedListIterator), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -1016,7 +1017,7 @@
 !< The destructor must not be called except at the end of destructors of
 ! subclasses.
 !
-      SUBROUTINE destructIterator(self)
+      RECURSIVE SUBROUTINE destructIterator(self)
           IMPLICIT NONE 
           TYPE(FTLinkedListIterator) :: self
           
@@ -1027,7 +1028,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseMemberList(self)  
+      RECURSIVE SUBROUTINE releaseMemberList(self)  
           IMPLICIT NONE  
           CLASS(FTLinkedListIterator) :: self
           CLASS(FTObject), POINTER    :: obj
@@ -1180,7 +1181,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE removeCurrentRecord(self)  
+      RECURSIVE SUBROUTINE removeCurrentRecord(self)  
          IMPLICIT NONE  
          CLASS(FTLinkedListIterator)        :: self
          CLASS(FTLinkedListRecord), POINTER :: r, n

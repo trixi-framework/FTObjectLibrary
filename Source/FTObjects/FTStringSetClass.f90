@@ -185,7 +185,7 @@
 !> Destructor for the class. This is called automatically when the
 !> reference count reaches zero. Do not call this yourself on pointers
 !>
-      SUBROUTINE destructFTStringSet(self)
+      RECURSIVE SUBROUTINE destructFTStringSet(self)
          IMPLICIT NONE
          TYPE( FTStringSet ) :: self
 
@@ -202,7 +202,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE releaseFTStringSet(self)
+      RECURSIVE SUBROUTINE releaseFTStringSet(self)
          IMPLICIT NONE
          TYPE(FTStringSet) , POINTER :: self
          CLASS(FTObject)   , POINTER :: obj
@@ -216,7 +216,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE releaseFTStringSetClass(self)
+      RECURSIVE SUBROUTINE releaseFTStringSetClass(self)
          IMPLICIT NONE
          CLASS(FTStringSet), POINTER :: self
          CLASS(FTObject)   , POINTER :: obj

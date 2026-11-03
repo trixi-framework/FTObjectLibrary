@@ -60,7 +60,7 @@
 !        --------
 !
          PROCEDURE, PUBLIC :: init<ClassName> => init<ClassName><ClassName>
-         PROCEDURE, PUBLIC :: destruct     => destruct<ClassName>
+         FINAL             :: destruct<ClassName>
          
          PROCEDURE, PUBLIC :: printDescription => print<ClassName>
          PROCEDURE, PUBLIC :: className        => <ClassName>ClassName
@@ -114,10 +114,12 @@
 !> Destructor for the class. This is called automatically when the
 !> reference count reaches zero. Do not call this yourself.
 !>
-      SUBROUTINE destruct<ClassName>(self)  
+      RECURSIVE SUBROUTINE destruct<ClassName>(self)  
          IMPLICIT NONE
          CLASS( <ClassName>) :: self
-         CLASS(FTObject), POINTER     :: obj     => NULL()
+         CLASS(FTObject), POINTER     :: obj
+
+         NULLIFY(obj)
 
       END SUBROUTINE destruct<ClassName>
 !
@@ -131,7 +133,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE release<ClassName>(self)  
+      RECURSIVE SUBROUTINE release<ClassName>(self)  
          IMPLICIT NONE
          TYPE(<ClassName>) , POINTER :: self
          CLASS(FTObject), POINTER :: obj

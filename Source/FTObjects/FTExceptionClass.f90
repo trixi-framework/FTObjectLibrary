@@ -279,7 +279,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTExceptionClass(self)  
+      RECURSIVE SUBROUTINE releaseFTExceptionClass(self)  
          IMPLICIT NONE
          CLASS(FTException) , POINTER :: self
          CLASS(FTObject)    , POINTER :: obj
@@ -293,7 +293,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTException(self)  
+      RECURSIVE SUBROUTINE releaseFTException(self)  
          IMPLICIT NONE
          TYPE(FTException)  , POINTER :: self
          CLASS(FTObject)    , POINTER :: obj
@@ -307,7 +307,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE destructException(self)
+      RECURSIVE SUBROUTINE destructException(self)
 !
 ! -------------------------------------------------------------
 !>The destructor for the class. Do not call this directly. Call
@@ -341,7 +341,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseMemberDictionary(self)  
+      RECURSIVE SUBROUTINE releaseMemberDictionary(self)  
          IMPLICIT NONE  
          CLASS(FTException)       :: self
          CLASS(FTObject), POINTER :: obj

@@ -102,7 +102,7 @@
 !
 !////////////////////////////////////////////////////////////////////////
 !
-      SUBROUTINE destructData(self) 
+      RECURSIVE SUBROUTINE destructData(self) 
          IMPLICIT NONE
          TYPE(FTData)  :: self
          
@@ -112,7 +112,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTData(self)  
+      RECURSIVE SUBROUTINE releaseFTData(self)  
          IMPLICIT NONE
          TYPE(FTData)   , POINTER :: self
          CLASS(FTObject), POINTER :: obj
@@ -126,7 +126,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTDataClass(self)  
+      RECURSIVE SUBROUTINE releaseFTDataClass(self)  
          IMPLICIT NONE
          CLASS(FTData)  , POINTER :: self
          CLASS(FTObject), POINTER :: obj

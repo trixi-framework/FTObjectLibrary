@@ -94,7 +94,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTMatrixData(self)  
+      RECURSIVE SUBROUTINE releaseFTMatrixData(self)  
          IMPLICIT NONE
          TYPE(MatrixData), POINTER :: self
          CLASS(FTObject) , POINTER :: obj
@@ -108,7 +108,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE destructMatrixData(self)
+      RECURSIVE SUBROUTINE destructMatrixData(self)
          IMPLICIT NONE  
          TYPE(MatrixData) :: self
          
@@ -442,7 +442,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTSparseMatrix(self)  
+      RECURSIVE SUBROUTINE releaseFTSparseMatrix(self)  
          IMPLICIT NONE
          TYPE(FTSparseMatrix), POINTER :: self
          CLASS(FTObject)     , POINTER :: obj
@@ -456,7 +456,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseFTSparseMatrixClass(self)  
+      RECURSIVE SUBROUTINE releaseFTSparseMatrixClass(self)  
          IMPLICIT NONE
          CLASS(FTSparseMatrix), POINTER :: self
          CLASS(FTObject)      , POINTER :: obj
@@ -470,7 +470,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE destructSparseMatrix(self)
+      RECURSIVE SUBROUTINE destructSparseMatrix(self)
          IMPLICIT NONE  
 !
 !        ---------
@@ -499,7 +499,7 @@
 !
 !//////////////////////////////////////////////////////////////////////// 
 ! 
-      SUBROUTINE releaseSMMemberList(list)  
+      RECURSIVE SUBROUTINE releaseSMMemberList(list)  
           IMPLICIT NONE  
           CLASS(FTLinkedList), POINTER :: list
           CLASS(FTObject)    , POINTER :: obj
